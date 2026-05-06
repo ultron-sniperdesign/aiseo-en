@@ -15,8 +15,8 @@ faq:
     a: "Primárně ChatGPT (OpenAI), Perplexity, Claude (Anthropic) a Gemini (Google). Každá má vlastní crawler (GPTBot, OAI-SearchBot, PerplexityBot, ClaudeBot, anthropic-ai, Google-Extended) a vlastní citační vzorce. GEO playbook je pro všechny podobný — fact-density, jasné definice, brand authority."
   - q: "Jak změřit, jestli mě AI cituje?"
     a: "Ručně přes ChatGPT/Perplexity dotazy na vaše top 10 KW (jednou měsíčně). Pro automatizaci nástroje Otterly, Profound nebo Brand Radar od Ahrefs — měří citation share napříč LLM platformami. Brand mention bez odkazu je také validní GEO signál."
-  - q: "Kolik času trvá, než GEO investice začne fungovat?"
-    a: "Rychlejší než SEO — typicky 1–3 měsíce. AI engines nemají retargeting cyklus jako Google ranking, citace se aktualizují průběžně s novým crawlem. Faktor: jak rychle se nový obsah dostane do training/RAG dat dané platformy (ChatGPT crawl latence ~14 dní, Perplexity blíž real-time)."
+  - q: "Jak rychle se GEO-friendly obsah objeví v AI citacích?"
+    a: "Rychleji než klasické SEO ranking — typicky 1–3 měsíce od publikace. AI engines nemají retargeting cyklus jako Google, citace se aktualizují průběžně s novým crawlem. Faktor: jak rychle se nový obsah dostane do training/RAG dat dané platformy (ChatGPT crawl latence ~14 dní, Perplexity blíž real-time). GEO ale není 'projekt' s milníkem — je to způsob, jak psát obsah od prvního článku. Pokud píšete GEO-friendly od začátku, nestojí vás to nic navíc oproti běžnému SEO contentu."
 ---
 
 ## Jak <span class="hl">GEO</span> funguje <strong>v praxi</strong>
@@ -136,16 +136,40 @@ Tento web (`aiseo-optimalizace.cz/robots.txt`) je živý příklad této konfigu
 | **Manuální audit** | ChatGPT/Perplexity dotaz na top 10 vašich KW | měsíčně |
 | **Backlinks** z autoritních zdrojů | Ahrefs / Semrush | měsíčně |
 
-## Kdy <strong>investovat</strong> do <span class="hl">GEO</span>
+## <span class="hl">GEO</span> není investice po milníku — je to <strong>způsob psaní obsahu</strong>
 
-GEO **nenahrazuje** [SEO](/seo/). Investice má smysl, pokud:
+Klasická chyba, kterou v roce 2026 vidíme: "Nejdřív dosáhneme dobrého SEO, pak začneme řešit GEO." Tohle uvažování **nefunguje**. Důvody jsou tři:
 
-- Máte minimálně **20 článků v top 10 organicky** — base autority pro AI indexaci
-- Vaše B2B nebo prémiová cílovka **aktivně používá ChatGPT/Perplexity** pro research
-- Brand mention v AI odpovědi je **konverzně cenný** (B2B, SaaS, konzultační služby)
-- Máte schopnost **sledovat citation share** přes nástroje jako Otterly nebo Profound
+1. **GEO mění to, JAK píšete obsah, ne KDY ho začnete optimalizovat.** Jasné definice typu "X je …", fact-density, čísla v každém odstavci, citovatelná struktura — to vás u psaní stojí 0 Kč navíc oproti volně psanému textu. Ale rozdíl v citation rate je 30–40 %.
 
-Pro většinu CZ B2C e-shopů je v roce 2026 GEO ještě **luxus** — efektivnější je investice do [AEO](/aeo/) (Google AI Overviews) a klasického SEO. Detailní rozhodovací rámec v [Rozhodovací matici](/rozhodovaci-matice/).
+2. **Pokud teď píšete obsah bez GEO awareness, budujete dluh.** Za rok budete mít 50 článků, které musíte přepsat — protože jsou napsané jako klasický SEO blog (volně, narativně, marketingově), ne jako citovatelný zdroj. Přepis 50 článků stojí mnohem víc než psát to napoprvé správně.
+
+3. **SEO je dnes z většiny obsahový marketing.** A obsahový marketing 2026 = obsah, který současně **rankuje v Googlu** *a* **je citovatelný v AI**. Tyhle dvě věci se neperou — naopak se posilují. Strukturovaný obsah s definicemi, čísly a FAQ schema má lepší pozice v Google *i* lepší citation rate v ChatGPT.
+
+### Co to znamená v praxi
+
+**Nemyslete na GEO jako na "až bude čas" projekt.** Myslete na to jako na **standard psaní**, který si nastavíte u prvního článku a držíte u všech dalších:
+
+- Každý článek začíná **odpovědí 40–60 slov nahoře** (answer block) — i ten o produktové novince
+- **Definice "X je …"** v prvním odstavci každé sekce, ne až někde uprostřed
+- **Konkrétní čísla a procenta** místo obecných tvrzení ("výkon o 30 % vyšší", ne "výkonný")
+- **FAQ sekce** se 6–10 otázkami u každého většího článku, FAQPage schema markup
+- **Brand mentions** v oborových komunitách (Reddit, Quora, oborové weby) jako součást běžného content marketingu
+- **AI crawlers povolení** v `robots.txt` od první verze webu, ne jako post-mortem fix
+
+Tohle všechno **nestojí čas ani peníze navíc** — jen znamená psát s jiným nastavením v hlavě.
+
+### Kdy si pořídit nástroje na měření citation share
+
+Tady už mluvíme o investici v normálním slova smyslu. **Otterly, Profound nebo Marketing Miner Brand Radar** ($29–500/měs) má smysl pořídit ve chvíli, kdy:
+
+- Máte **alespoň 20 článků** s GEO-friendly strukturou (mít co měřit)
+- Vaše cílovka aktivně používá ChatGPT, Perplexity, Gemini pro research (typicky B2B, prémiové B2C, konzultační služby)
+- Chcete **systematicky reportovat** citation share klientovi nebo vedení
+
+Pro malou firmu na startu je úplně OK měřit ručně — jednou měsíčně se zeptat ChatGPT a Perplexity na top 5 dotazů ve vašem oboru a zaznamenat, jestli vás cituje. Důležité je psát GEO-friendly **už od prvního článku**. Měření přijde později.
+
+Detailní rozhodovací rámec, **co řešit dřív** (SEO základy vs AEO vs GEO vs AIO) podle typu byznysu, najdete v [Rozhodovací matici](/rozhodovaci-matice/).
 
 ## <strong>Časté chyby</strong> v <span class="hl">GEO</span>
 
