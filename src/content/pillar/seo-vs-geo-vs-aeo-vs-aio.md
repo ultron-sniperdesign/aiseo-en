@@ -22,8 +22,8 @@ faq:
     a: "V Google nastavení účtu lze AI Overviews částečně omezit přes Search Labs → AI Overviews → Off, ale úplně vypnout je nelze. Některé prohlížeče (Brave, DuckDuckGo) AI Overviews neobsahují vůbec. Pokud chcete pro vlastní web AIO zablokovat, použijte meta tag nosnippet."
   - q: "Je AEO totéž co AIO?"
     a: "Ne. AEO (Answer Engine Optimization) je užší — týká se konkrétně answer engines napojených na vyhledávač (Google AIO, Bing Chat, Featured Snippets). AIO (AI Optimization) je zastřešující pojem pro celou disciplínu optimalizace pro AI, který zahrnuje SEO + GEO + AEO. AIO je strategický rámec, AEO konkrétní implementační oblast."
-  - q: "Kdy investovat do GEO místo do SEO?"
-    a: "GEO nenahrazuje SEO. Pokud máte web mladší než 12 měsíců nebo slabou indexaci, začněte SEO. GEO investice má smysl až, když: (1) máte minimálně 20 článků v top 10 organicky, (2) vaše B2B cílovka aktivně používá AI nástroje, (3) chcete měřit brand visibility v AI ekosystému jako konverzní metriku."
+  - q: "Mám psát GEO-friendly obsah od začátku, nebo až po dosažení SEO milníku?"
+    a: "Od začátku. GEO-friendly psaní (answer block 40–60 slov, definice 'X je…', fact-density 3+ fakta na 100 slov, FAQPage schema) nestojí žádný extra náklad oproti běžnému SEO contentu — jen znamená psát s jiným nastavením v hlavě. Pokud nyní píšete obsah bez GEO awareness, za rok budete mít 50+ článků k přepisu. Co má smysl odložit až po dosažení SEO milníku (typicky 20+ článků v top 10): pořízení placených nástrojů na měření citation share (Otterly $29/měs, Profound $500+) — tady je investice na místě."
   - q: "Funguje GEO i pro Seznam.cz?"
     a: "Seznam má vlastní AI vyhledávač Asistent, ale jeho rozšíření v ČR je zatím marginální oproti Google. GEO praktiky (strukturovaný obsah, schema markup, fakta nahoře) prospívají i Seznamu, ale dedikovanou GEO strategii pro Seznam zatím nepotřebujete — kvalitní SEO + AEO pro Google obvykle pokryje i Seznam."
   - q: "Jaký je rozdíl mezi AI Overview a AI Overviews?"
@@ -51,7 +51,7 @@ Cílem klasického SEO je modrý odkaz v top 10 výsledcích — ideálně v top
 
 SEO funguje na principu **rankingových algoritmů** — Google hodnotí stránky podle stovek faktorů a řadí je v SERPu (Search Engine Results Page). I v roce 2026 zůstává SEO **základem všeho ostatního**: pokud Google vaši stránku neumí dobře načíst, indexovat a porozumět jí, žádná z dalších disciplín nezafunguje.
 
-→ Detailní rozbor SEO signálů a kdy SEO samo o sobě stačí najdete v sekci [SEO — Search Engine Optimization](/seo/).
+→ Detailní rozbor SEO signálů a proč SEO už samo o sobě v AI éře nestačí najdete v sekci [SEO — Search Engine Optimization](/seo/).
 
 ## Co je <span class="hl">GEO</span> — <strong>Generative Engine Optimization</strong>
 
@@ -143,40 +143,40 @@ Toto je přehledná tabulka, která sumarizuje rozdíly. Použijte ji jako rychl
 | **Časový horizont výsledku** | 3–6 měsíců | 1–3 měsíce | 2–4 měsíce | Závisí na pillaru |
 | **Klíčový nástroj** | Google Search Console, Ahrefs | Mention monitoring (Otterly, Profound) | Google AIO tracker, Search Console | Hybrid stack |
 
-## Kdy použít <strong>kterou disciplínu</strong> <span class="hl">(rozhodovací matrix)</span>
+## Co dělat <strong>od prvního článku</strong> a co <span class="hl">odložit na později</span>
 
-Pokud máte omezené zdroje, není reálné dělat všechny 4 disciplíny naplno. Tady je rozhodovací rámec:
+Klasický model "nejdřív SEO, pak AEO, pak GEO" v roce 2026 **nefunguje**. Důvod: AEO struktura (FAQPage schema, HowTo, answer block) i GEO-friendly psaní (definice, fact-density, citovatelnost) jsou věci, které píšete od **prvního článku** — schema markup ani strukturní pravidla nestojí žádný extra náklad oproti běžnému SEO contentu. Pokud je odložíte, za rok budete mít stovky článků k přepisu.
 
-### Začněte s SEO, pokud…
+### Co patří do balíku "od prvního článku" (0 Kč navíc)
 
-- Web je nový (do 12 měsíců) a nemá ještě indexovou autoritu
-- Hlavní traffic kanál je organic search
-- KPI tým měří podle organic traffic + konverzí
-- Konkurence v SERPu má slabou backlinkovou strukturu
+Tohle všechno se dělá **paralelně**, ne v pořadí — jsou to různé aspekty stejné práce nad obsahem:
 
-### Přidejte AEO, jakmile…
+- **SEO základy** — keyword research, on-page optimalizace (title, meta, H1–H6), technické zdraví (Core Web Vitals, indexovatelnost), interní prolinkování. Bez SEO nezafunguje nic dalšího — Google a AI engines indexují stejný web.
+- **AEO struktura** — FAQPage schema na každý článek s FAQ sekcí, HowTo schema na návody, answer block 40–60 slov nahoře. Cena: 0 Kč navíc, jen kus extra MDX.
+- **GEO-friendly psaní** — definice "X je…" v každé sekci, fact-density 3+ fakta na 100 slov, citovatelná struktura, brand mentions v komunitách (Reddit, Quora, oborové weby). Cena: 0 Kč navíc, jen styl psaní.
+- **AI crawlers v `robots.txt`** — explicitní `Allow: /` pro GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai, Google-Extended. Jednorázový setup.
 
-- Máte 20+ článků v top 10 organické pozice
-- Většina dotazů, které řešíte, jsou informační (jak udělat X, co je Y)
-- Klíčová slova mají vysoký podíl SERP features (featured snippets, PAA boxes)
-- V Google Search Console vidíte rostoucí impressions ale klesající CTR (signál, že AIO odpověď „kradne" kliknutí)
+### Co odložit (skutečné investice po milníku)
 
-### Investujte do GEO, pokud…
+Tyhle věci dávají smysl **až máte něco k měření a reportování** — typicky 20+ článků v top 10 organicky:
 
-- Vaše B2B nebo prémiová cílovka aktivně používá ChatGPT/Perplexity pro research
-- Brand mention v AI odpovědi je pro vás konverzně cenný (B2B, SaaS, konzultace)
-- Máte schopnost sledovat citation share přes nástroje jako Otterly nebo Profound
-- Cíl je „brand visibility v AI ekosystému", ne přímý traffic
+- **Placené citation tracking nástroje** — Otterly ($29/měs Lite, $99/měs Pro), Profound (enterprise $500+), Marketing Miner Brand Radar ($99/měs). Měří citation share v ChatGPT/Perplexity/Gemini napříč desítkami promptů. Bez 20+ článků nemají co měřit.
+- **Pokročilý AIO presence monitoring v Google Search Console** — funguje až s historickými daty (typicky 3–6 měsíců provozu).
+- **AIO jako zastřešující strategický rámec** — když potřebujete reporting pro C-level nebo marketingový tým chce jednu metriku místo tří. Strategický deštník nad SEO+AEO+GEO, dává smysl po zralém SEO programu.
 
-### AIO jako zastřešující strategii nasazujte, když…
+### Praktický harmonogram pro malou firmu
 
-- Máte zralý SEO program a chcete jeden koherentní rámec
-- Marketingový tým potřebuje jednu metriku/strategii místo tří
-- Cílíte na C-level — pojem „AIO strategy" je pro ně srozumitelnější než tři zkratky
+| Fáze | Časový horizont | Co dělat | Cena |
+|---|---|---|---|
+| 1. Setup | Týden 0 | AI crawlers v robots.txt, schema markup template, content guidelines pro tým | 0 Kč |
+| 2. Tvorba obsahu | Měsíce 1–6 | Psát SEO + AEO + GEO-friendly současně. Pillar + 5–10 cluster článků | Cena obsahu |
+| 3. Měření zdarma | Průběžně | Google Search Console, Google Analytics 4, manuální ChatGPT/Perplexity check 1× měsíčně | 0 Kč |
+| 4. Placené měření | Po 20+ článcích v top 10 | Otterly nebo Marketing Miner Brand Radar | $29–99/měs |
+| 5. AIO strategie | Po zralém SEO programu | Strategický rámec pro reporting + selektivní AIO blokace pro dlouhé how-to | Strategická práce |
 
-**Praktická realita CZ trhu:** Většině českých firem doporučuji začít kombinací **SEO + AEO** (FAQ schema, HowTo, krátké odpovědi nahoře). GEO investice má smysl až ve chvíli, kdy máte měřitelnou cílovku v AI nástrojích — pro většinu CZ B2C e-shopů to ještě není priorita.
+**Praktická realita CZ trhu:** Většině českých firem doporučujeme od prvního článku **kombinaci SEO základů + AEO struktury + GEO-friendly psaní**. Není to "tři projekty" — je to **jeden způsob psaní obsahu**, který naplňuje všechny tři disciplíny současně.
 
-→ Detailní rozhodovací matice s konkrétními triggery (kdy přidat AEO, kdy GEO) v sekci [Rozhodovací matice](/rozhodovaci-matice/).
+→ Detailní rozhodovací rámec podle typu businessu (B2C e-shop, B2B SaaS, local business, publisher) v sekci [Rozhodovací matice](/rozhodovaci-matice/).
 
 ## <strong>Praktický postup</strong>: jak začít s <span class="hl">GEO/AEO/AIO</span> ve 4 krocích
 

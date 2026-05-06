@@ -165,13 +165,31 @@ Pro AIO presence stačí jednou měsíčně manuálně otestovat top 10 vašich 
 4. **Schema bez `mainEntity`** — neplatný JSON-LD, Google ignoruje
 5. **Optimalizace pouze pro AIO bez pohledu na CTR** — viz „win/loss" insight výše
 
-## Kdy <strong>přidat</strong> <span class="hl">AEO</span>
+## <span class="hl">AEO</span> není projekt po milníku — je to <strong>standard psaní</strong>
 
-Začněte s [SEO](/seo/) basics. AEO přidejte, jakmile:
+Klasická chyba: "AEO přidáme, až budeme mít 20+ článků v top 10." Tohle uvažování **nefunguje** ze stejného důvodu, jako u GEO — AEO struktura je věc, kterou píšete od prvního článku, ne až po milníku.
 
-- Máte **20+ článků v top 10** organické pozice
-- Většina dotazů, které řešíte, jsou **informační** (jak udělat X, co je Y)
-- Klíčová slova mají vysoký podíl SERP features (Featured Snippets, PAA boxes)
-- V GSC vidíte **rostoucí impressions ale klesající CTR** (typický signál „AIO odpověď kradne kliknutí")
+Co AEO konkrétně znamená v praxi:
 
-Detailní rozhodovací rámec v sekci [Rozhodovací matice](/rozhodovaci-matice/).
+- **FAQPage schema** na každý článek s FAQ sekcí — `<script type="application/ld+json">` blok v `<head>`. Cena: 0 Kč, jen kus MDX/HTML.
+- **HowTo schema** na návody (krok-za-krokem postupy). Stejné jako FAQPage, jiný `@type`.
+- **Answer block 40–60 slov** v úvodu článku — věcný odstavec, ze kterého AI scrapery čerpají citaci. Cena: 0 Kč, je to první odstavec, který stejně píšete.
+- **Datově hutný obsah** — čísla, procenta, konkrétní příklady místo obecných tvrzení. Cena: 0 Kč, jen styl psaní.
+- **Strukturované odstavce** — krátké, jeden topic per odstavec, jasná H2/H3 hierarchie. Cena: 0 Kč.
+
+Žádná z těchto věcí **nestojí extra náklad**. Pokud je odložíte na "až budeme mít 20+ článků", za rok budete mít desítky článků k přepisu — to je drahé.
+
+### Co skutečně dává smysl odložit
+
+Tyhle položky vyžadují **historická data** nebo **kapacitu pro reporting**, takže mají smysl až později:
+
+- **Pokročilá interpretace GSC** — sekce "Search appearance: AI Overview" (od 2025) vám řekne, na kterých KW je váš obsah v AIO panelu. Bez 3–6 měsíců provozu nemá data k vyhodnocení.
+- **A/B testování `data-nosnippet`** — selektivní blokace AIO panelu na dlouhých how-to průvodcích. Vyžaduje měřitelnou baseline (před/po).
+- **Profesionální AIO tracking nástroje** — pro většinu webů stačí ze začátku manuální kontrola top 10 KW v Googlu jednou měsíčně. Placené nástroje (Otterly, Profound) dávají smysl až s 20+ články v top 10.
+- **Strategická diskuse "chci/nechci AIO presence"** — vyžaduje reálná data o tom, kde AIO panel zvyšuje vs. snižuje CTR.
+
+### Praktické pravidlo
+
+**Píšete článek?** AEO struktura (FAQPage + HowTo + answer block + fact-density) jde dovnitř hned. **Reportujete a optimalizujete?** To přijde po několika měsících provozu, až budete mít data.
+
+→ Detailní rozhodovací rámec podle typu businessu v sekci [Rozhodovací matice](/rozhodovaci-matice/).
