@@ -31,12 +31,110 @@ function calcReading(body: string): { wordCount: number; minutes: number } {
 /** Distinct categories ze článků pro filter chips. */
 const usedCategories = Array.from(new Set(articles.map((a) => a.data.category)));
 
+/** Dynamic stats pro fact-density v leadu. */
+const totalWords = articles.reduce((sum, a) => {
+  const wc = (a.body ?? "").replace(/<[^>]+>/g, " ").replace(/[#*_`>~]/g, " ").split(/\s+/).filter(Boolean).length;
+  return sum + wc;
+}, 0);
+const avgWords = Math.round(totalWords / articles.length / 100) * 100;
+const newestDate = articles[0]?.data.updated;
+
 const pageTitle = "Blog: aktuální obsah o AI SEO";
 const pageDescription =
   "Tutoriály, analýzy a defenzivní průvodce AI vyhledáváním pro český trh. SEO, GEO, AEO i AIO — nový článek pravidelně.";
+
+/** FAQ — 6 reálných otázek o blogu (zdroje pro AI scrapery + lidské čtenáře). */
+const faq = [
+  {
+    q: "Co na blogu najdu?",
+    a: "Praktické tutoriály (postupy krok za krokem), analýzy (rozbor trendů a změn) a defenzivní průvodce (jak se vypořádat s problémy typu zero-click éra Google AI Overviews). Každý článek má 1 700–3 000 slov, schema markup (Article + FAQPage + případně HowTo) a fact-density 3+ konkrétní fakta na 100 slov. Cíleno na provozovatele webů, e-shopů a marketéry.",
+  },
+  {
+    q: "Jak často vychází nový článek?",
+    a: "Aktuálně přibývá průměrně 1 článek týdně. Plánujeme přejít na automatizovanou denní kadenci přes AI skill. Datum poslední aktualizace každého článku je viditelně zobrazené v hlavičce; všechny články se 1× ročně přepisují, aby data zůstávala aktuální (datový refresh, fix broken linků, screenshot updaty).",
+  },
+  {
+    q: "Pro koho je obsah určený?",
+    a: "Pro tři typy čtenářů: (1) provozovatelé webů a e-shopů, kteří chtějí, aby je AI engine citoval místo přeskočil; (2) marketéři a SEO specialisté hledající aktuální postupy pro AI éru; (3) developery a content stratégy, kteří implementují schema markup, FAQPage a HowTo strukturu. Texty jsou v češtině, s důrazem na CZ trh (Seznam, GBP, ceny v Kč).",
+  },
+  {
+    q: "Jaký je rozdíl mezi blogem a hlavním průvodcem na webu?",
+    a: "Hlavní průvodce (/seo-vs-geo-vs-aeo-vs-aio/) je pillar content ~3 000 slov, který drží přehled napříč 4 disciplínami SEO/GEO/AEO/AIO. Sekce /seo/, /geo/, /aeo/ a /aio/ jsou hub-and-spoke clusters s konceptuálním rozborem každé disciplíny. Blog je sbírka samostatných tutoriálů a analýz, které jdou do hloubky konkrétních problémů (audit, nástroje, local SEO, měření, strukturování pillar contentu).",
+  },
+  {
+    q: "Mohu se přihlásit k odběru nových článků?",
+    a: "Aktuálně nemá web RSS feed ani newsletter — pracujeme na tom. Nejsnadnější způsob sledovat nové články: bookmark této stránky (/blog/) nebo follow GitHub repository. RSS feed přidáme současně se spuštěním automatizované denní publikace.",
+  },
+  {
+    q: "Můžu některý článek použít ve své práci, citovat nebo přeložit?",
+    a: "Ano, s atribucí. Citace v rámci 'fair use' (krátké citace s odkazem na zdroj) je vítaná a podpoří GEO/AEO scénáře, na které sami v článcích cílíme. Pro celkové překlady, embedování v komerčních produktech nebo PDF distribuci napište na kontakt přes Sniperdesign — jsme open to spolupráci.",
+  },
+];
+
+/** JSON-LD: Blog + ItemList (8× BlogPosting) + BreadcrumbList + FAQPage */
+const blogJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: pageTitle,
+  description: pageDescription,
+  url: "https://aiseo-optimalizace.cz/blog/",
+  inLanguage: "cs-CZ",
+  publisher: {
+    "@type": "Organization",
+    name: "aiseo-optimalizace.cz",
+    url: "https://aiseo-optimalizace.cz/",
+  },
+};
+
+const itemListJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListOrder: "https://schema.org/ItemListOrderDescending",
+  numberOfItems: articles.length,
+  itemListElement: articles.map((entry, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    url: `https://aiseo-optimalizace.cz/blog/${entry.data.slug}/`,
+    item: {
+      "@type": "BlogPosting",
+      headline: entry.data.title,
+      description: entry.data.description,
+      datePublished: entry.data.updated,
+      dateModified: entry.data.updated,
+      url: `https://aiseo-optimalizace.cz/blog/${entry.data.slug}/`,
+      inLanguage: "cs-CZ",
+      keywords: entry.data.keywords?.join(", "),
+    },
+  })),
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Úvod", item: "https://aiseo-optimalizace.cz/" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://aiseo-optimalizace.cz/blog/" },
+  ],
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+
+const allLd = [blogJsonLd, itemListJsonLd, breadcrumbJsonLd, faqJsonLd];
+
+/** Answer block — 40–60 slov, definice 'Blog je…' pro AI scrapery + lidské. */
+const answerText =
+  "Blog aiseo-optimalizace.cz je sbírka praktických tutoriálů, analýz a defenzivních průvodců pro AI éru vyhledávání. Každý článek je strukturovaný pro citovatelnost v ChatGPT, Perplexity i Google AI Overviews — answer block, FAQPage schema, 3+ konkrétní fakta na 100 slov. Pro provozovatele webů, e-shopů a marketéry, kteří chtějí, aby AI engine jejich obsah citoval, ne přeskočil.";
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription} image="/og/default.png">
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={allLd} image="/og/default.png">
   <div class="page">
     <!-- HERO -->
     <section class="hero">
@@ -51,13 +149,22 @@ const pageDescription =
       </h1>
 
       <p class="hero__lead">
-        Tutoriály, analýzy a defenzivní průvodce pro provozovatele webů a e&#8209;shopů, kteří chtějí být citováni v ChatGPT, Perplexity i v Google AI Overviews. <strong>Nový článek pravidelně</strong>, bez vaty.
+        Tutoriály, analýzy a defenzivní průvodce pro provozovatele webů a e&#8209;shopů, kteří chtějí být <strong>citováni v ChatGPT, Perplexity i v Google AI Overviews</strong>. Nový článek pravidelně, bez vaty.
       </p>
 
       <div class="hero__meta">
         <span>{articles.length} článků</span>
         <span>{usedCategories.length} kategorií</span>
-        <span>SEO + GEO + AEO + AIO</span>
+        <span>průměrně ~{avgWords.toLocaleString("cs-CZ")} slov / článek</span>
+        <span>nejnovější: {newestDate}</span>
+      </div>
+    </section>
+
+    <!-- ANSWER BLOCK -->
+    <section class="answer">
+      <div class="answer__inner">
+        <span class="answer__mark">Stručná odpověď</span>
+        <p class="answer__text">{answerText}</p>
       </div>
     </section>
 
@@ -109,6 +216,28 @@ const pageDescription =
           })
         }
       </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" aria-labelledby="faq-title">
+      <header class="faq__head">
+        <span class="eyebrow"><span class="eyebrow__num">FAQ</span> Časté otázky</span>
+        <h2 id="faq-title" class="faq__title">
+          Šest otázek, které k <span class="hl">blogu</span> <strong>nejčastěji padají</strong>
+        </h2>
+      </header>
+
+      <dl class="faq__list">
+        {faq.map((item, i) => (
+          <div class="faq__item">
+            <dt class="faq__q">
+              <span class="faq__q-num">{i + 1}</span>
+              <span>{item.q}</span>
+            </dt>
+            <dd class="faq__a">{item.a}</dd>
+          </div>
+        ))}
+      </dl>
     </section>
   </div>
 </BaseLayout>
@@ -366,5 +495,109 @@ const pageDescription =
     margin-left: auto;
     color: var(--d);
     font-weight: 600;
+  }
+
+  /* ===== ANSWER BLOCK (sjednocený s article pages) ===== */
+  .answer {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: 0 var(--space-section-x) clamp(2.5rem, 5vw, 4rem);
+  }
+  .answer__inner {
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--d);
+    border-radius: 8px;
+    padding: clamp(1.75rem, 2.5vw, 2.25rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 60rem;
+  }
+  .answer__mark {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--d);
+  }
+  .answer__text {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  /* ===== FAQ (sjednocený s article pages) ===== */
+  .faq {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(2rem, 4vw, 3rem) var(--space-section-x) clamp(4rem, 8vw, 6rem);
+  }
+  .faq__head {
+    max-width: 50rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--color-ink-muted);
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .eyebrow__num {
+    color: var(--d);
+    font-weight: 600;
+  }
+  .faq__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 250;
+    letter-spacing: -0.025em;
+    margin: 0.75rem 0 0;
+    color: var(--color-ink);
+    line-height: 1.1;
+  }
+  .faq__list {
+    max-width: 60rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .faq__item {
+    border-top: 1px solid var(--color-rule);
+    padding-top: 1.5rem;
+  }
+  .faq__q {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: 0.625rem;
+    display: flex;
+    gap: 0.875rem;
+    align-items: baseline;
+    line-height: 1.35;
+  }
+  .faq__q-num {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--d);
+    flex-shrink: 0;
+  }
+  .faq__a {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin: 0 0 0 1.875rem;
   }
 </style>
