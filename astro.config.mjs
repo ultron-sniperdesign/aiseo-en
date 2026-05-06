@@ -51,7 +51,13 @@ export default defineConfig({
     "/jak-strukturovat-pillar-content": "/blog/jak-strukturovat-pillar-content",
     "/mereni-seo-vykonu-2026": "/blog/mereni-seo-vykonu-2026",
     "/seo-pro-eshopy-ai-era-2026": "/blog/seo-pro-eshopy-ai-era-2026",
-    "/caste-chyby-v-seo-2026": "/blog/caste-chyby-v-seo-2026",
+    // 2026-05-06: konsolidace 3 paralelních verzí "Časté chyby v SEO 2026"
+    // → ponechán pouze /blog/caste-chyby-v-seo-2026-update/ (osmdesátiprocentní rewrite).
+    // Původní /blog/caste-chyby-v-seo-2026/ a /blog/caste-chyby-v-seo-2026-rewrite/
+    // 301 → -update, ať SEO equity + případné externí linky neztratí cíl.
+    "/caste-chyby-v-seo-2026": "/blog/caste-chyby-v-seo-2026-update",
+    "/blog/caste-chyby-v-seo-2026": "/blog/caste-chyby-v-seo-2026-update",
+    "/blog/caste-chyby-v-seo-2026-rewrite": "/blog/caste-chyby-v-seo-2026-update",
   },
   markdown: {
     rehypePlugins: [rehypeTaskListA11y],
