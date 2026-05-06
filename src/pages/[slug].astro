@@ -754,10 +754,13 @@ const ogImage = `/og/${entry.data.slug}.png`;
     counter-increment: praxe-step;
     position: relative;
     padding-left: 4.5rem;
+    padding-top: 0.5rem;
     margin-top: 4rem;
     min-height: 3.5rem;
-    display: flex;
-    align-items: center;
+    /* NE display: flex — rozbíjí inline text s <strong> a <span class="hl">
+     * (každý text node mezi child elementy se stane samostatným anonymous
+     * flex item, výsledek vypadá rozházeně). Block layout + padding-top
+     * vyrovná vertikální alignment s kruhovým badge .::before. */
   }
   .page[data-abbr="PRAXE"] .article__prose {
     counter-reset: praxe-step;
