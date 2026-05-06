@@ -1533,9 +1533,11 @@ const quartet: Quartet[] = [
     padding: var(--space-section-y) var(--space-section-x);
   }
   /* Full-bleed paper-deep variant — pro vizuální oddělení sekcí.
-   * Section sám zachovává max-width, padding-x se rozšiřuje na viewport
-   * okraj přes max(token, calc(50vw - 40rem)) tak, že obsah zůstává
-   * vycentrovaný do 80rem, ale background pokrývá celou šířku okna. */
+   * Section sám zabírá celé okno (full-width background), ale vnitřní
+   * obsah má STEJNOU šířku jako ostatní sekce v webu (header, hero, atd.):
+   * 80rem mínus 2× horizontal padding token. Bez '+ var(--space-section-x)'
+   * v calc() by obsah byl plných 80rem široký, což by ho udělalo o 2× token
+   * širší než header content → karty by trčely za hranice kontejneru. */
   .section--deep {
     background: var(--color-paper-deep);
     border-top: 1px solid var(--color-rule);
@@ -1543,8 +1545,8 @@ const quartet: Quartet[] = [
     max-width: none;
     width: 100%;
     margin: 0;
-    padding-left: max(var(--space-section-x), calc(50vw - 40rem));
-    padding-right: max(var(--space-section-x), calc(50vw - 40rem));
+    padding-left: max(var(--space-section-x), calc(50vw - 40rem + var(--space-section-x)));
+    padding-right: max(var(--space-section-x), calc(50vw - 40rem + var(--space-section-x)));
   }
   .section__head {
     margin-bottom: clamp(2.5rem, 4vw, 4rem);
