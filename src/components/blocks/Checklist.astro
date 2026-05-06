@@ -1,17 +1,20 @@
 ---
 /**
- * Checklist — audit-style karta s checkbox icon + bold key + popis.
- * Items je pole { title, desc } objektů. Title se zobrazí tučně, desc za pomlčkou.
+ * Checklist — audit-style karta s checkbox icon. Items mohou být buď:
+ * - **string** (jednoduchá tvrzení): "Core Web Vitals v zelené (LCP pod 2,5 s)"
+ * - **{ title, desc }** (klíč + popis): bold title + muted desc
+ *
  * Použití:
+ *   <Checklist tone="seo" items={[
+ *     "Core Web Vitals v zelené (LCP pod 2,5 s)",
+ *     "Sitemap.xml submitted v Google Search Console"
+ *   ]} />
+ *
  *   <Checklist title="Technická vrstva" items={[
- *     { title: "Crawl & indexovatelnost", desc: "sitemap.xml v rootu, advertised v robots.txt…" },
- *     { title: "Core Web Vitals", desc: "LCP < 2.5 s, INP < 200 ms…" },
+ *     { title: "Crawl & indexovatelnost", desc: "sitemap.xml v rootu, advertised v robots.txt…" }
  *   ]} tone="seo" />
  */
-interface ChecklistItem {
-  title: string;
-  desc: string;
-}
+type ChecklistItem = string | { title: string; desc?: string };
 
 interface Props {
   title?: string;
@@ -26,15 +29,22 @@ const { title, items, tone = "accent" } = Astro.props;
   {title && <h3 class="chk__title">{title}</h3>}
   <ul class="chk__list">
     {
-      items.map((item) => (
-        <li class="chk__item">
-          <span class="chk__icon" aria-hidden="true">✓</span>
-          <div class="chk__body">
-            <strong class="chk__key">{item.title}</strong>
-            <span class="chk__desc">{item.desc}</span>
-          </div>
-        </li>
-      ))
+      items.map((item) =>
+        typeof item === "string" ? (
+          <li class="chk__item">
+            <span class="chk__icon" aria-hidden="true">✓</span>
+            <div class="chk__body chk__body--plain">{item}</div>
+          </li>
+        ) : (
+          <li class="chk__item">
+            <span class="chk__icon" aria-hidden="true">✓</span>
+            <div class="chk__body">
+              <strong class="chk__key">{item.title}</strong>
+              {item.desc && <span class="chk__desc">{item.desc}</span>}
+            </div>
+          </li>
+        )
+      )
     }
   </ul>
 </section>
@@ -97,6 +107,8 @@ const { title, items, tone = "accent" } = Astro.props;
     line-height: 1.55;
     color: var(--color-ink);
   }
+  /* Plain string items — celý text v ink color (žádné title/desc rozdělení) */
+  .chk__body--plain { color: var(--color-ink); }
   .chk__key {
     font-weight: 600;
     color: var(--color-ink);
