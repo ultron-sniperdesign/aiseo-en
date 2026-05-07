@@ -1,20 +1,27 @@
 ---
 /**
- * RichLayout — enhanced article layout pro `layout: rich` články.
+ * RichLayout — enhanced article layout (preview).
  *
- * Rozdíl proti classic:
- * - Reading progress bar (fixed top)
- * - Hero stat tiles (z frontmatter `stats`)
- * - Sticky TOC v levém sloupci (desktop ≥1080px)
- * - H2 sekce mají chapter divider s velkým číslem
- * - H3 nadpisy se vykreslí jako numbered cards
- * - Subtle paper-deep banding mezi sekcemi
- * - Decorative rail vpravo s discipline color
- * - Auto-generated heading IDs + scrollspy (client JS)
+ * Filozofie iterace 2:
+ * - Přidat **užitečné** vrstvy (sticky TOC, reading progress, smooth anchors,
+ *   collapsible FAQ) bez aggressive override existujících element-level stylů.
+ * - Nepřepisovat H2/H3 design — base typography zůstává konzistentní napříč
+ *   webem; rich layout přidává jen rámec, ne nadpisy.
+ * - Nezasahovat do nested komponent (Insight, Compare, DoDont, Checklist)
+ *   přes prose-level `:global()` selektory.
  *
- * Component přijímá `entry` (articles collection) a `Content` (rendered MDX).
+ * Opt-in přes frontmatter `variant: rich`.
  */
 import type { CollectionEntry } from "astro:content";
+
+import Insight from "~/components/blocks/Insight.astro";
+import Compare from "~/components/blocks/Compare.astro";
+import CompareCol from "~/components/blocks/CompareCol.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
 
 interface Props {
   entry: CollectionEntry<"articles">;
@@ -29,8 +36,11 @@ const { entry, Content, crumbLabel, wordCountRounded, readingMinutes, faqCount }
   Astro.props as Props;
 
 /**
- * Build heading list z raw entry.body — jen H2 a H3.
- * Stripped HTML/markdown markers + slugify. Použito pro sticky TOC + assign IDs na klientu.
+ * Build heading list z raw entry.body — H2 a H3.
+ * Pozor: v body jsou i komponentové bloky (Compare, Insight) které mají
+ * vlastní `<h3>` v rendrovaném HTML — ty NEjsou v markdown jako `### `,
+ * takže parser je správně přeskočí. TOC a scrollspy pracuje jen
+ * s markdown headingy.
  */
 const rawBody = entry.body ?? "";
 const headings = rawBody
@@ -58,7 +68,22 @@ const headings = rawBody
   })
   .filter(Boolean) as { level: 2 | 3; text: string; id: string }[];
 
-const stats = entry.data.stats ?? [];
+/**
+ * Sentinel reference — Astro CSS bundler vidí, že tyhle komponenty se
+ * mohou v MDX vykreslit, a CSS pro ně bundluje do stránky. Bez explicitního
+ * importu zde Astro CSS pro některé bloky (Insight) vynechá — uvnitř
+ * `<Content />` rendrovaného přes RichLayout neumí dependency vystopovat.
+ */
+const _bundlerHints = [
+  Insight,
+  Compare,
+  CompareCol,
+  DoDont,
+  Do,
+  Dont,
+  Checklist,
+  Stepper,
+];
 ---
 
 <!-- READING PROGRESS BAR -->
@@ -67,66 +92,38 @@ const stats = entry.data.stats ?? [];
 </div>
 
 <div class="rich-page">
-  <!-- HERO -->
+  <!-- HERO — clean, no stat tiles, žádný rail (chytřeji přidáme později) -->
   <section class="rhero">
-    <div class="rhero__inner">
-      <nav class="rhero__crumbs" aria-label="Drobečková navigace">
-        <a href="/">Úvod</a>
-        <span class="crumb-sep">›</span>
-        <a href="/blog/">Blog</a>
-        <span class="crumb-sep">›</span>
-        <span class="rhero__crumb-pill">{crumbLabel}</span>
-      </nav>
+    <nav class="rhero__crumbs" aria-label="Drobečková navigace">
+      <a href="/">Úvod</a>
+      <span class="crumb-sep">›</span>
+      <a href="/blog/">Blog</a>
+      <span class="crumb-sep">›</span>
+      <span class="rhero__crumb-pill">{crumbLabel}</span>
+    </nav>
 
-      <h1 class="rhero__title">{entry.data.title}</h1>
+    <h1 class="rhero__title">{entry.data.title}</h1>
 
-      <p class="rhero__sub">{entry.data.description}</p>
+    <p class="rhero__sub">{entry.data.description}</p>
 
-      <div class="rhero__meta">
-        <span>~{wordCountRounded.toLocaleString("cs-CZ")} slov</span>
-        <span>{faqCount} častých otázek</span>
-        <span>~{readingMinutes} minut čtení</span>
-        <span>Aktualizováno: {entry.data.updated}</span>
-      </div>
-
-      {
-        stats.length > 0 && (
-          <div class="rhero__stats" role="list">
-            {stats.map((s) => (
-              <div class="stat-tile" role="listitem">
-                <span class="stat-tile__value">{s.value}</span>
-                <span class="stat-tile__label">{s.label}</span>
-              </div>
-            ))}
-          </div>
-        )
-      }
+    <div class="rhero__meta">
+      <span>~{wordCountRounded.toLocaleString("cs-CZ")} slov</span>
+      <span>{faqCount} častých otázek</span>
+      <span>~{readingMinutes} minut čtení</span>
+      <span>Aktualizováno: {entry.data.updated}</span>
     </div>
-
-    <!-- decorative rail -->
-    <div class="rhero__rail" aria-hidden="true"></div>
   </section>
 
   <!-- ANSWER BLOCK -->
   <section class="ranswer">
     <div class="ranswer__inner">
-      <div class="ranswer__icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-          <line x1="12" y1="17" x2="12.01" y2="17"></line>
-        </svg>
-      </div>
-      <div>
-        <span class="ranswer__mark">Stručná odpověď</span>
-        <p class="ranswer__text">{entry.data.answer}</p>
-      </div>
+      <span class="ranswer__mark">Stručná odpověď</span>
+      <p class="ranswer__text">{entry.data.answer}</p>
     </div>
   </section>
 
-  <!-- ARTICLE GRID — sticky TOC + content + decoration -->
+  <!-- ARTICLE GRID — sticky TOC (≥1080px) + content -->
   <div class="rgrid">
-    <!-- Sticky TOC (desktop) -->
     {
       headings.length > 0 && (
         <aside class="rtoc" aria-label="Obsah článku">
@@ -148,7 +145,6 @@ const stats = entry.data.stats ?? [];
       )
     }
 
-    <!-- ARTICLE BODY -->
     <article class="rarticle">
       <div class="rarticle__prose" id="rich-article-prose" data-headings={JSON.stringify(headings)}>
         <Content />
@@ -156,7 +152,7 @@ const stats = entry.data.stats ?? [];
     </article>
   </div>
 
-  <!-- FAQ -->
+  <!-- FAQ — collapsible <details> -->
   {
     entry.data.faq && entry.data.faq.length > 0 && (
       <section class="rfaq" aria-labelledby="rfaq-title">
@@ -183,7 +179,6 @@ const stats = entry.data.stats ?? [];
     )
   }
 
-  <!-- BACK CTA -->
   <section class="rback">
     <a href="/blog/" class="rback__primary">
       <span aria-hidden="true">←</span>
@@ -203,10 +198,21 @@ const stats = entry.data.stats ?? [];
       headingsData = JSON.parse(prose.getAttribute("data-headings") || "[]");
     } catch (e) {}
 
-    /* Map heading text → ID. Walk DOM h2/h3 in order, assign IDs from data sequentially. */
+    /**
+     * Walk DOM h2/h3 in order, assign IDs from data sequentially.
+     * Pozor: některé komponenty (Compare/CompareCol) renderují své vlastní h3 — ty
+     * jsou v DOMu jako `.cmp__heading`. Skipujeme je, abychom IDs přiřadili
+     * jen markdown headingům, které jsou v `headingsData`.
+     */
     var domHeadings = prose.querySelectorAll("h2, h3");
     var idIdx = 0;
     domHeadings.forEach(function (h) {
+      /* Skip h3 inside Compare/DoDont/Stepper components */
+      if (h.classList.contains("cmp__heading")) return;
+      if (h.closest("[class^='cmp']")) return;
+      if (h.closest("[class^='dd-']")) return;
+      if (h.closest(".stepper")) return;
+
       var level = h.tagName === "H2" ? 2 : 3;
       while (idIdx < headingsData.length && headingsData[idIdx].level !== level) idIdx++;
       if (idIdx < headingsData.length && headingsData[idIdx].level === level) {
@@ -218,15 +224,22 @@ const stats = entry.data.stats ?? [];
     /* Scrollspy — highlight TOC link of nearest heading above scroll position. */
     var tocLinks = document.querySelectorAll("[data-toc-target]");
     var idToLink = {};
-    tocLinks.forEach(function (a) { idToLink[a.getAttribute("data-toc-target")] = a; });
+    tocLinks.forEach(function (a) {
+      idToLink[a.getAttribute("data-toc-target")] = a;
+    });
+    var trackedHeadings = Array.prototype.filter.call(domHeadings, function (h) {
+      return !!h.id;
+    });
 
     function updateSpy() {
       var pos = window.scrollY + 140;
       var current = null;
-      domHeadings.forEach(function (h) {
-        if (h.id && h.offsetTop <= pos) current = h.id;
+      trackedHeadings.forEach(function (h) {
+        if (h.offsetTop <= pos) current = h.id;
       });
-      tocLinks.forEach(function (a) { a.classList.remove("is-active"); });
+      tocLinks.forEach(function (a) {
+        a.classList.remove("is-active");
+      });
       if (current && idToLink[current]) idToLink[current].classList.add("is-active");
     }
 
@@ -257,12 +270,11 @@ const stats = entry.data.stats ?? [];
 </script>
 
 <style>
-  /* ===== DESIGN TOKENS — discipline color (default SEO indigo for analysis category) ===== */
+  /* ===== DESIGN TOKENS — discipline color (analysis category default = SEO indigo) ===== */
   .rich-page {
     --d: var(--color-seo);
     --d-tint: var(--color-seo-tint);
     --d-soft: var(--color-seo-soft);
-    --d-deep: oklch(from var(--color-seo) calc(l - 0.08) c h);
   }
 
   /* ===== READING PROGRESS BAR ===== */
@@ -285,33 +297,10 @@ const stats = entry.data.stats ?? [];
 
   /* ===== HERO ===== */
   .rhero {
-    position: relative;
     max-width: var(--max-section);
     margin: 0 auto;
     padding: clamp(3rem, 8vh, 5.5rem) var(--space-section-x) clamp(2rem, 4vw, 3rem);
   }
-  .rhero__inner {
-    position: relative;
-    z-index: 1;
-    max-width: 60rem;
-  }
-  .rhero__rail {
-    position: absolute;
-    top: 0;
-    right: var(--space-section-x);
-    width: 280px;
-    height: 100%;
-    background:
-      radial-gradient(circle at 80% 20%, color-mix(in oklch, var(--d) 12%, transparent), transparent 60%),
-      linear-gradient(135deg, var(--d-tint) 0%, transparent 70%);
-    pointer-events: none;
-    border-radius: 16px;
-    opacity: 0.5;
-  }
-  @media (max-width: 900px) {
-    .rhero__rail { display: none; }
-  }
-
   .rhero__crumbs {
     display: flex;
     align-items: center;
@@ -374,7 +363,6 @@ const stats = entry.data.stats ?? [];
     display: flex;
     flex-wrap: wrap;
     gap: 1rem 1.5rem;
-    margin-bottom: 2.5rem;
   }
   .rhero__meta span {
     display: inline-flex;
@@ -389,43 +377,6 @@ const stats = entry.data.stats ?? [];
     border-radius: 50%;
   }
 
-  /* ===== STAT TILES ===== */
-  .rhero__stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-    gap: 0.875rem;
-    max-width: 60rem;
-  }
-  .stat-tile {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    padding: 1.125rem 1.25rem;
-    background: var(--color-paper);
-    border: 1px solid var(--color-rule);
-    border-left: 3px solid var(--d);
-    border-radius: 10px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .stat-tile:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px -8px color-mix(in oklch, var(--d) 25%, transparent);
-  }
-  .stat-tile__value {
-    font-family: var(--font-sans);
-    font-size: clamp(1.5rem, 2.4vw, 1.875rem);
-    font-weight: 250;
-    letter-spacing: -0.02em;
-    color: var(--d);
-    line-height: 1;
-  }
-  .stat-tile__label {
-    font-family: var(--font-sans);
-    font-size: 0.825rem;
-    color: var(--color-ink-muted);
-    line-height: 1.35;
-  }
-
   /* ===== ANSWER BLOCK ===== */
   .ranswer {
     max-width: var(--max-section);
@@ -438,22 +389,7 @@ const stats = entry.data.stats ?? [];
     border-left: 3px solid var(--d);
     border-radius: 10px;
     padding: clamp(1.5rem, 2.4vw, 2rem);
-    display: flex;
-    align-items: flex-start;
-    gap: 1.125rem;
     max-width: 60rem;
-  }
-  .ranswer__icon {
-    flex-shrink: 0;
-    width: 2.25rem;
-    height: 2.25rem;
-    background: var(--d-tint);
-    color: var(--d);
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 0.1rem;
   }
   .ranswer__mark {
     display: block;
@@ -463,7 +399,7 @@ const stats = entry.data.stats ?? [];
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--d);
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
   }
   .ranswer__text {
     font-family: var(--font-sans);
@@ -484,18 +420,12 @@ const stats = entry.data.stats ?? [];
     gap: clamp(1.5rem, 3vw, 3rem);
   }
   @media (min-width: 1080px) {
-    .rgrid {
-      grid-template-columns: 220px minmax(0, 1fr);
-    }
+    .rgrid { grid-template-columns: 220px minmax(0, 1fr); }
   }
 
   /* ===== STICKY TOC ===== */
-  .rtoc {
-    display: none;
-  }
-  @media (min-width: 1080px) {
-    .rtoc { display: block; }
-  }
+  .rtoc { display: none; }
+  @media (min-width: 1080px) { .rtoc { display: block; } }
   .rtoc__sticky {
     position: sticky;
     top: 1.5rem;
@@ -519,12 +449,8 @@ const stats = entry.data.stats ?? [];
     margin: 0;
     border-left: 1px solid var(--color-rule);
   }
-  .rtoc__item {
-    margin: 0;
-  }
-  .rtoc__item--h3 {
-    padding-left: 1rem;
-  }
+  .rtoc__item { margin: 0; }
+  .rtoc__item--h3 { padding-left: 1rem; }
   .rtoc__link {
     display: block;
     padding: 0.4rem 0.875rem;
@@ -551,85 +477,38 @@ const stats = entry.data.stats ?? [];
     color: var(--color-ink);
   }
 
-  /* ===== ARTICLE BODY ===== */
-  .rarticle {
-    min-width: 0; /* prevent grid blowout */
-  }
+  /* ===== ARTICLE BODY — minimální override; žádný H2/H3 redesign, žádný counter ===== */
+  .rarticle { min-width: 0; }
   .rarticle__prose {
     max-width: 50rem;
     font-family: var(--font-sans);
     font-size: 1.0625rem;
     line-height: 1.7;
     color: var(--color-ink);
-    counter-reset: h2-counter h3-counter;
   }
-
-  /* H2 — Chapter divider with big number */
+  /* H2 — base typography z [slug] classic, jen větší top margin pro vizuální gap mezi sekcemi */
   .rarticle__prose :global(h2) {
-    counter-increment: h2-counter;
-    counter-reset: h3-counter; /* reset H3 counter under each H2 */
-    position: relative;
     font-family: var(--font-sans);
     font-size: clamp(1.5rem, 2.5vw, 2rem);
     font-weight: 600;
     letter-spacing: -0.022em;
     line-height: 1.18;
-    margin: clamp(3rem, 6vw, 4.5rem) 0 1.25rem;
-    padding-top: clamp(2rem, 4vw, 3rem);
+    margin: clamp(3rem, 5vw, 4rem) 0 1rem;
     color: var(--color-ink);
-    border-top: 1px solid var(--color-rule);
-  }
-  .rarticle__prose :global(h2)::before {
-    content: "Část " counter(h2-counter, decimal-leading-zero);
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--d);
-    margin-bottom: 0.625rem;
   }
   .rarticle__prose :global(h2:first-child) {
-    border-top: none;
-    padding-top: 0;
     margin-top: 0;
   }
-
-  /* H3 — Numbered card with big number, left rail */
+  /* H3 — bold, větší, žádný counter, žádný card. Jednoduché. */
   .rarticle__prose :global(h3) {
-    counter-increment: h3-counter;
-    position: relative;
     font-family: var(--font-sans);
-    font-size: clamp(1.125rem, 1.7vw, 1.3rem);
+    font-size: clamp(1.125rem, 1.6vw, 1.25rem);
     font-weight: 600;
-    letter-spacing: -0.012em;
+    letter-spacing: -0.01em;
     line-height: 1.3;
-    margin: 2.5rem 0 1rem;
-    padding: 1rem 1.25rem 1rem 4.5rem;
+    margin: 2rem 0 0.75rem;
     color: var(--color-ink);
-    background: linear-gradient(
-      90deg,
-      var(--d-tint) 0%,
-      var(--color-paper) 70%
-    );
-    border-left: 3px solid var(--d);
-    border-radius: 8px;
   }
-  .rarticle__prose :global(h3)::before {
-    content: counter(h3-counter, decimal-leading-zero);
-    position: absolute;
-    left: 1.25rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: var(--font-sans);
-    font-size: 1.625rem;
-    font-weight: 250;
-    letter-spacing: -0.03em;
-    color: var(--d);
-    line-height: 1;
-  }
-
   .rarticle__prose :global(p) { margin: 0 0 1.25rem; }
   .rarticle__prose :global(ul),
   .rarticle__prose :global(ol) { margin: 0 0 1.5rem; padding-left: 1.5rem; }
@@ -646,33 +525,28 @@ const stats = entry.data.stats ?? [];
   .rarticle__prose :global(table) {
     width: 100%;
     border-collapse: collapse;
-    margin: 1.75rem 0 2rem;
+    margin: 1.5rem 0 2rem;
     font-family: var(--font-sans);
     font-size: 0.95rem;
-    border: 1px solid var(--color-rule);
-    border-radius: 8px;
-    overflow: hidden;
   }
   .rarticle__prose :global(th),
   .rarticle__prose :global(td) {
     text-align: left;
-    padding: 0.75rem 1rem;
+    padding: 0.625rem 0.875rem;
     border-bottom: 1px solid var(--color-rule);
   }
-  .rarticle__prose :global(tr:last-child td) { border-bottom: none; }
   .rarticle__prose :global(th) {
     font-weight: 600;
     color: var(--color-ink);
     background: var(--color-paper-deep);
-    border-bottom: 2px solid var(--d-soft);
   }
   .rarticle__prose :global(blockquote) {
     border-left: 3px solid var(--d);
     background: var(--d-tint);
     padding: 1rem 1.25rem;
-    margin: 1.75rem 0;
+    margin: 1.5rem 0;
     color: var(--color-ink);
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 6px 6px 0;
   }
   .rarticle__prose :global(code) {
     font-family: var(--font-mono);
@@ -687,7 +561,7 @@ const stats = entry.data.stats ?? [];
     padding: 0 0.15em;
   }
 
-  /* ===== FAQ ===== */
+  /* ===== FAQ — collapsible <details> ===== */
   .rfaq {
     max-width: var(--max-section);
     margin: 0 auto;
@@ -721,7 +595,6 @@ const stats = entry.data.stats ?? [];
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0;
   }
   .rfaq__item {
     border-top: 1px solid var(--color-rule);
@@ -756,9 +629,7 @@ const stats = entry.data.stats ?? [];
     font-weight: 500;
     color: var(--d);
   }
-  .rfaq__q-text {
-    min-width: 0;
-  }
+  .rfaq__q-text { min-width: 0; }
   .rfaq__q-chevron {
     font-family: var(--font-sans);
     font-size: 1.5rem;
@@ -814,7 +685,5 @@ const stats = entry.data.stats ?? [];
   }
   @media (prefers-reduced-motion: reduce) {
     :global(html) { scroll-behavior: auto; }
-    .stat-tile { transition: none; }
-    .stat-tile:hover { transform: none; }
   }
 </style>
