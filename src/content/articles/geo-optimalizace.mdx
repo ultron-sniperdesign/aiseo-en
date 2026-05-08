@@ -1,0 +1,314 @@
+---
+title: "GEO optimalizace: jak připravit web pro ChatGPT, Perplexity a Google AI Overviews"
+description: "Praktický průvodce GEO optimalizací v 7 krocích — audit, answer block, fact-density, schema, AI crawlery, brand mentions a měření. Pro CZ trh."
+answer: "GEO optimalizace upravuje obsah a technickou stránku webu tak, aby ho AI nástroje (ChatGPT, Perplexity, Claude, Gemini, Google AI Overviews) používaly jako citovaný zdroj odpovědí. Jádro postupu: jasné definice, krátké odpovědi 40–60 slov nahoře, datově hutný obsah, FAQPage a HowTo schema, povolení AI crawlerů v robots.txt a brand mentions v autoritních zdrojích. Princeton paper z roku 2023 ukázal, že strukturovaný obsah s konkrétními fakty může citation rate u testovaného vzorku zvýšit v řádu desítek procent."
+slug: "geo-optimalizace"
+category: "tutorial"
+updated: "2026-05-08"
+variant: "rich"
+keywords:
+  - "geo optimalizace"
+  - "optimalizace webu pro geo"
+  - "jak optimalizovat web pro geo"
+  - "generative engine optimization"
+  - "geo seo"
+  - "optimalizace pro chatgpt"
+  - "optimalizace pro perplexity"
+  - "ai citation optimization"
+  - "ai search optimization"
+  - "geo praktický postup"
+faq:
+  - q: 'Kolik GEO optimalizace stojí?'
+    a: 'GEO optimalizace není samostatná položka v rozpočtu — je to způsob, jakým píšete obsah a strukturujete web. Pokud už platíte za SEO obsah, GEO playbook (krátké odpovědi, definice, FAQ, schema, brand mentions) vás u nového obsahu nestojí nic navíc — jen mění to, jak ho píšete. Konkrétní investice začíná u jednorázových úprav existujícího obsahu (audit + přepis top 20 stránek typicky 15–40 tisíc Kč) a u placených tracking nástrojů (Otterly, Profound, Marketing Miner Brand Radar — $29–500/měs), které mají smysl s 20+ článků v top 10.'
+  - q: 'Za jak dlouho budou výsledky?'
+    a: 'Citace v AI nástrojích se obvykle objevují rychleji než klasické pozice v Googlu — typicky 1–3 měsíce od publikace nového GEO-friendly obsahu u stránek, které už mají dobré SEO základy. ChatGPT obvykle pracuje s několikatýdenním zpožděním crawlu, Perplexity je blíž real-time, Claude a Gemini mají vlastní cykly. Realistický horizont: první vlastní citace ve specifických oborových dotazech 1–3 měsíce, systematicky měřitelný citation share 4–6 měsíců, vliv na brand awareness 6–12 měsíců.'
+  - q: 'Dává GEO optimalizace smysl pro malou firmu?'
+    a: 'Záleží na typu byznysu. Pro malou B2B firmu, konzultanta, advokáta, agenturu nebo specializovaného dodavatele může mít GEO velký dopad — když se zákazník zeptá ChatGPT „doporuč mi účetního v Praze" nebo „jaký nejlepší CRM pro malou firmu", citace vás dostane do shortlistu, na který by jste se z 10. pozice v Googlu nikdy nedostali. Pro malý lokální retail nebo službu bez online research fáze je dopad marginální — investujte primárně do lokálního SEO a Google Business Profile.'
+  - q: 'Funguje GEO optimalizace pro e-shop?'
+    a: 'Ano, ale dopad závisí na typu sortimentu. Největší smysl dává u kategorií s research fází — elektronika, sport, hobby, prémiové produkty, edukativní obsah typu jak vybrat X. AI nástroje aktivně doporučují konkrétní produkty a značky. Marginální dopad u čistě transakčních a impulzivních nákupů (běžná drogerie, spotřební zboží), kde lidé nehledají rady před nákupem. Strategie pro e-shop: GEO playbook na kategoriích s research fází (FAQ, definice, srovnání), ne plošně na všech produktovkách.'
+  - q: 'Není GEO optimalizace jen rebranding SEO nebo scam?'
+    a: 'Není rebranding ani prázdný buzzword. Princeton paper z roku 2023 (Aggarwal et al., publikovaný na KDD 2024) ukázal, že úprava obsahu (definice, fakta, struktura, citace) měřitelně zvyšuje šanci na citaci v generativních modelech — to je validní akademická základna, ne marketingový nápad. Rozdíl proti SEO: cíl (být citován v AI odpovědi vs. být na první pozici Googlu), platformy (ChatGPT/Perplexity/Claude/Gemini místo Googlu), signály (citovatelnost obsahu místo pozic). Pozor ale na agentury, které GEO prodávají jako novou éru s tajnými triky — drtivá většina playbooku stojí na běžné kvalitní práci s obsahem.'
+  - q: 'Stačí mi klasické SEO?'
+    a: 'SEO zůstává nezbytný základ — bez dobrého SEO vás vyhledávače ani AI nástroje nenajdou (ChatGPT search, Perplexity a Gemini čerpají z indexovaného obsahu). GEO buduje na SEO základech a přidává navrch citovatelnost v generativních AI. Pokud vaše cílovka aktivně používá ChatGPT, Perplexity nebo Gemini při rozhodování (B2B, prémiové B2C, konzultační služby, edukativní obsah), GEO má reálný dopad. U čistě transakčních produktů a lokálních služeb bez research fáze je primární investice klasické SEO.'
+  - q: 'Musím kvůli GEO optimalizaci přepisovat celý web?'
+    a: 'Ne. Drtivou část GEO playbooku můžete aplikovat postupně na existující obsah při běžných aktualizacích — přidat answer block 40–60 slov k článku, FAQ sekci pod text, doplnit konkrétní čísla, povolit AI crawlery v robots.txt. Kompletní přepis je nutný jen u stránek, kde plně chybí struktura (žádné podnadpisy, jen narativní text bez fakt) — ale ty obvykle nepřinášejí ani SEO traffic. Doporučený postup: začněte s top 20 stránkami podle organic trafficu.'
+  - q: 'Funguje GEO optimalizace pro CZ trh a Seznam?'
+    a: 'Hlavní principy GEO playbooku (jasné definice, fakta, FAQ, schema, brand mentions) fungují univerzálně. Pro CZ trh stojí za pozornost: Seznam má vlastní AI vyhledávač Asistent, ale jeho rozšíření je zatím marginální oproti Google AIO a ChatGPT. Marketing Miner přidal tracking AIO presence pro CZ keywords. Reddit má v ČR menší dosah než v US — pro brand mentions zvažte české alternativy: oborové diskuze (lupa.cz, marketingjournal.cz), podcasty, guest posty na autoritních CZ blogách, a profil na Wikipedia.cz pokud váš brand splňuje notability criteria.'
+howto:
+  name: "Jak optimalizovat web pro GEO ve 7 krocích"
+  steps:
+    - name: "Audit AI viditelnosti — baseline"
+      text: "Vezměte 20–30 nejdůležitějších dotazů ve vašem oboru a manuálně je projeďte v ChatGPT (search mód), Perplexity, Claude (s search) a Google s AI Overview panelem. Zaznamenejte do tabulky: zobrazil se panel, jste v citacích, je vaše doména zmíněna, jaké jiné domény jsou citovány. Tohle je váš baseline — bez něj nelze měřit progress. Časový odhad: 1–2 hodiny."
+    - name: "Restrukturujte úvod článků"
+      text: "Každá důležitá stránka začíná answer blockem 40–60 slov hned po H1 nebo H2. Definice ve formátu X je..., jeden konkrétní fakt s číslem, praktický důsledek pro čtenáře. Tučné zvýraznění klíčového termínu. Druhý odstavec rozvíjí kontext. Pyramidová struktura: nejdůležitější věci nahoru, detail pod tím."
+    - name: "Zvyšte fact-density obsahu"
+      text: "Cíl: 3+ konkrétní fakta na 100 slov textu. Konkrétní = číslo, procento, datum, jméno nástroje, citace zdroje, název studie. Nahraďte obecné formulace konkrétními (ne výkon je lepší, ale výkon o 30 procent vyšší). Datum tvrzení (k 5/2026, Q1 2026 data). Inline atribuce zdrojů (Princeton paper 2023, GSC data za H1 2026). Žádné marketingové vatové formulace bez fakt."
+    - name: "Implementace strukturovaných dat"
+      text: "Tři typy schema markup do hlavičky stránky: Article (headline, description, datePublished, dateModified, author), FAQPage (mainEntity array s otázkami a odpověďmi), HowTo (step array pro postupy). Validujte přes Google Rich Results Test a Schema.org Validator. FAQ otázky v HTML musejí přesně odpovídat otázkám v JSON-LD. Schema neovlivňuje ranking přímo, ale pomáhá strojové čitelnosti."
+    - name: "Povolte AI crawlerům přístup k webu"
+      text: "Default robots.txt mnoha CMS bývá restriktivní — zkontrolujte a explicitně povolte AI crawlery. Standardní set: GPTBot a OAI-SearchBot (OpenAI/ChatGPT), PerplexityBot a Perplexity-User (Perplexity), ClaudeBot a anthropic-ai (Anthropic/Claude), Google-Extended (Gemini training). Pro každého User-agent řádek + Allow: /. Bez explicitního povolení mohou některé AI nástroje váš web ignorovat."
+    - name: "Budujte brand mentions v autoritních zdrojích"
+      text: "AI nástroje váží zmínky v autoritních komunitách jako signál důvěryhodnosti. Pět cest: oborové diskuze (Reddit, Quora pro EN, lupa.cz, marketingjournal.cz pro CZ), guest posty na autoritních blogách, podcasty (transcripty se indexují), press releases s vlastními daty, Wikipedia entry pokud splňujete notability criteria. Klíč: budujte autoritní mentions souběžně s obsahovým marketingem, ne jako oddělený link building."
+    - name: "Měřte citation share — manuálně i přes nástroje"
+      text: "Free baseline: jednou měsíčně manuální audit top 10 KW v ChatGPT, Perplexity, Claude a Gemini. Tabulka v Excelu nebo Google Sheets. Co měřit: citation rate (kolik dotazů obsahuje vaši citaci), source share vs konkurence, kontext zmínky. Profesionální tracking: Otterly AI ($29 Lite, $99 Pro), Profound (enterprise $500+), Marketing Miner Brand Radar pro CZ trh ($99/měs Machine plan). Investice do nástrojů má smysl s 20+ článků v top 10 — předtím stačí manuální audit."
+---
+
+import Insight from "../../components/blocks/Insight.astro";
+
+## Co je <span class="hl">GEO optimalizace</span> a proč ji <strong>řešit teď</strong>
+
+GEO (Generative Engine Optimization) je optimalizace webu a obsahu tak, aby AI nástroje jako **ChatGPT, Perplexity, Claude, Gemini** a **Google AI Overviews** používaly váš web jako citovaný zdroj svých odpovědí. Když se dnes zákazník zeptá AI nástroje „jaký nejlepší CRM pro malou firmu" nebo „doporuč mi konzultanta na X", AI vybere jen několik zdrojů. Pokud mezi nimi nejste, zákazník vás při tomto typu rešerše nemusí vůbec uvidět.
+
+Klasické SEO řeší **pozice** ve výsledcích vyhledávání. GEO optimalizace řeší **citace v generovaných odpovědích** — tedy zda váš web pomáhá AI nástroji odpovědět a zda v té odpovědi zazní vaše značka. Pojem zavedli akademici z Princetonu v roce 2023, dnes se prosazuje jako standardní vrstva nad klasickým SEO. Detailněji o vztahu disciplín pojednává pillar [SEO vs. GEO vs. AEO vs. AIO](/seo-vs-geo-vs-aeo-vs-aio/) a o samotné disciplíně sekce [GEO — Generative Engine Optimization](/geo/).
+
+## Co řekl <strong>Princeton paper</strong> — primary source
+
+Pojem GEO zavedli akademici z Princetonu v paperu [„GEO: Generative Engine Optimization" (Aggarwal et al. 2023)](https://arxiv.org/abs/2311.09735), publikovaném na konferenci KDD 2024. Na akademickém testovacím setu (GEO-bench, tisíce dotazů napříč doménami) zkoumali, jak různé úpravy obsahu mění pravděpodobnost citace v generativních odpovědích.
+
+**Klíčová zjištění** (kvalitativně, bez over-claim):
+
+- **Strukturovaný obsah s konkrétními fakty** zvyšuje citation rate v generativních enginech v řádu **desítek procent** oproti volně psanému textu.
+- **Nejúčinnější úpravy** podle paperu: explicitní citace zdrojů, konkrétní statistiky, doplnění relevantních quotation z autorit.
+- **Domény se chovají různě** — efektivita strategií se liší napříč obory („Law & Government", „Opinion" otázky atd.). Univerzální optimalizace neexistuje, je potřeba testovat.
+
+Reálná čísla pro **váš obor** se ale liší od Princeton vzorku — mechanismy výběru citací jsou u každé AI platformy jiné a často neveřejné. Princeton paper berte jako **akademický důkaz, že GEO funguje**, ne jako tržní benchmark s garantovaným výsledkem.
+
+## Pro koho má <span class="hl">GEO optimalizace</span> <strong>největší smysl</strong>
+
+GEO není relevantní pro každý byznys stejně. Největší dopad má tam, kde se **zákazník před nákupem aktivně informuje** a používá AI nástroje jako součást rešerše:
+
+- **B2B firmy a SaaS produkty** — kde se nákupní proces táhne týdny, zákazník čte recenze, srovnává a ptá se ChatGPT „jaký nejlepší X pro malou firmu". AI doporučení může výrazně ovlivnit shortlist.
+- **Prémiové B2C značky a sortiment s research fází** — elektronika, sport a hobby vybavení, finanční produkty, vzdělávání, zdraví. Zákazník před nákupem chce porozumět, ne jen kliknout na první výsledek.
+- **Konzultační a profesionální služby** — advokát, účetní, konzultant, agentura. Lidé se ChatGPT ptají „doporuč mi účetní v Praze" nebo „jaký nejlepší advokát na pracovní právo". Citace vás dostane do shortlistu, na který by jste se z 10. pozice v Googlu nikdy nedostali.
+- **Edukativní a mediální projekty** — kdo dnes vysvětluje téma jasně a citovatelně, ten se v AI odpovědích objevuje jako zdroj. Citation share je pak proxy pro brand awareness.
+- **Značky s ambicí být thought leadery** v daném oboru — pokud chcete být „ten, kdo rozumí X", GEO playbook (definice, fakta, brand mentions, autorské profily) přesně podporuje toto pozicování.
+
+GEO **má marginální dopad** u čistě transakčních impulsních produktů, u lokálního retailu bez online research fáze a u značek bez brand search popularity. Tam se primární investice vyplatí jinde — klasické SEO, [lokální SEO](/blog/local-seo-cesko-2026/), PPC. Pokud váháte, kterou disciplínu řešit jako první, pomůže [Rozhodovací matice](/rozhodovaci-matice/).
+
+## <strong>Step-by-step:</strong> 7 kroků <span class="hl">GEO optimalizace webu</span>
+
+Tohle je sekvence, kterou v praxi opakovaně používáme u klientů. Některé kroky lze dělat paralelně, ale **pořadí důležitosti** je dáno: bez auditu (krok 1) nevíte, kde investice dává smysl, a bez restrukturalizace úvodu článků (krok 2) má i nejlepší schema malý dopad.
+
+### Krok 1 — Audit AI viditelnosti (baseline)
+
+**Cíl:** zjistit, kde stojíte, než začnete měnit web. Bez baseline nelze měřit progress.
+
+**Postup:**
+
+1. Vezměte **20–30 nejdůležitějších dotazů** ve vašem oboru. Mix: dotazy na obecné téma („co je X"), srovnávací („X vs Y"), doporučovací („nejlepší X", „doporuč mi X"), problémové („jak řešit Y").
+2. Manuálně je projeďte v **ChatGPT** (search mód), **Perplexity**, **Claude** (s search), a **Google** s AI Overview panelem.
+3. Zaznamenejte do tabulky: **zobrazil se panel**, **jste v citacích**, **je vaše doména zmíněna**, **jaké jiné domény jsou citovány** (= kdo jsou vaši reální AI konkurenti).
+
+Časový odhad: **1–2 hodiny**. Po měsíci opakovat — tabulka pak ukazuje progress.
+
+Detail metodiky v [praktickém postupu pro AI viditelnost](/prakticky-postup/).
+
+### Krok 2 — Restrukturujte úvod článků
+
+**Cíl:** udělat z prvních 60 slov stránky jasný **citation hook** pro AI nástroje.
+
+**Princip:** AI nástroje obvykle vytahují krátké, definitivní pasáže ze začátku stránky. Pokud je první odstavec marketingový úvod plný přídavných jmen, AI vás přeskočí. Pokud první odstavec přesně odpoví na hlavní otázku stránky, máte výrazně vyšší šanci na citaci.
+
+**Struktura answer blocku** (40–60 slov, hned po H1 nebo H2):
+
+- **Definice ve formátu „X je…"** — jednoznačná, bez podmínek, jeden tučně zvýrazněný termín
+- **Jeden konkrétní fakt nebo číslo** — datum, procento, mechanismus
+- **Praktický důsledek** pro čtenáře — co to pro něj znamená
+
+Detailní anatomie answer blocku v článku [Jak strukturovat pillar content](/blog/jak-strukturovat-pillar-content/).
+
+### Krok 3 — Zvyšte fact-density obsahu
+
+**Cíl:** 3+ konkrétní fakta na 100 slov textu. Volně psaný marketingový text má fact-density typicky pod 1 %.
+
+**Co se počítá jako fakt:**
+
+- Číslo nebo procento s kontextem („organic traffic vzrostl o 240 % za 9 měsíců")
+- Datum, období, ročník („Princeton paper z roku 2023", „GSC data za Q1 2026")
+- Jméno konkrétního nástroje, studie, autora („Otterly AI", „Aggarwal et al.")
+- Citace zdroje s atribucí („podle SparkToro 2024…")
+- Konkrétní příklad s identifikací (anonymizovaný klient, ale popis konkrétní situace)
+
+**Anti-patterns** (co fact-density snižuje):
+
+- „výkon je výrazně lepší" → **bez čísla nemá pro AI hodnotu**
+- „nedávno proběhlo testování" → **bez data je to vatový prostor**
+- „v dnešní digitální éře" → **prázdný marketingový jazyk**, AI ignoruje
+
+Princeton paper explicitně ukázal, že **statistiky a citace patří mezi nejúčinnější GEO úpravy** napříč doménami.
+
+### Krok 4 — Implementace strukturovaných dat
+
+**Cíl:** poskytnout AI nástrojům i vyhledávačům **strojově čitelný popis** vaší stránky.
+
+**Tři typy schema, které stojí za to mít:**
+
+| Typ | Kde použít | Přínos |
+|---|---|---|
+| **Article** | Každý článek | Headline, autor, datum publikace a aktualizace, image |
+| **FAQPage** | FAQ sekce | Q&A do AI Overviews, Featured Snippets |
+| **HowTo** | Návody, step-by-step | Strukturované postupy do AIO i AI nástrojů |
+
+**Klíčové pravidlo:** FAQ otázky a odpovědi v HTML musejí **přesně odpovídat** otázkám v JSON-LD. Google to porovnává, neshoda = schema ignorováno.
+
+**Validace** před deployem:
+
+- Google Rich Results Test
+- Schema.org Validator
+
+Schema markup neovlivňuje ranking přímo, ale pomáhá strojové čitelnosti — a u FAQ rich snippets dává Google jednoznačný strojový vstup, který AI nástroje čtou bez nutnosti parsovat HTML.
+
+### Krok 5 — Povolte AI crawlerům přístup k webu
+
+**Cíl:** zajistit, že webové prohledávače AI nástrojů se k vašemu webu vůbec dostanou.
+
+Default `robots.txt` mnoha CMS (WordPress, Shopify) **bývá restriktivní**. Pokud cílíte na GEO, explicitně povolte AI crawlery:
+
+```
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+```
+
+**Pro koho jsou crawlery:**
+
+- **GPTBot, OAI-SearchBot, ChatGPT-User** — OpenAI / ChatGPT
+- **PerplexityBot, Perplexity-User** — Perplexity
+- **ClaudeBot, anthropic-ai** — Anthropic / Claude
+- **Google-Extended** — Google Gemini training
+
+Bez explicitního povolení mohou některé AI nástroje váš web ignorovat. Tohle je technické nastavení **pro vašeho vývojáře nebo agenturu**, není to obsahový úkol.
+
+### Krok 6 — Budujte brand mentions v autoritních zdrojích
+
+**Cíl:** posilovat signály důvěryhodnosti, které AI nástroje váží jako brand authority.
+
+**Pět cest, které opakovaně dávají smysl:**
+
+1. **Oborové diskuze** — Reddit a Quora pro globální dosah, [lupa.cz](https://www.lupa.cz/), [marketingjournal.cz](https://www.marketingjournal.cz/) a [marketingsalesmedia.cz](https://www.marketingsalesmedia.cz/) pro CZ trh. Odpovídejte věcně, linkujte na vlastní obsah jen tam, kde má smysl.
+2. **Guest posty** na autoritních blogách v oboru — kontextové odkazy + autorský bio.
+3. **Podcasty** jako host i jako guest — transcripty se indexují a AI nástroje z nich čerpají citace stejně jako z článků.
+4. **Press releases s vlastními daty** — vlastní studie, analýzy trhu, srovnávací benchmark.
+5. **Wikipedia entry** — pokud váš brand splňuje [notability criteria](https://en.wikipedia.org/wiki/Wikipedia:Notability), je to dlouhodobě silný signál pro celý AI ekosystém. Wikipedia je v ChatGPT priority source.
+
+**Princeton paper poznámka:** Strategie zmínek v autoritních komunitách funguje různě podle oboru a platformy. Mechanismus, jak různé AI nástroje brand mentions váží, není veřejně publikovaný — berte to jako pracovní hypotézu s validní akademickou základnou, ne jako garantovaný vztah.
+
+### Krok 7 — Měřte citation share — manuálně i přes nástroje
+
+**Cíl:** vidět, jestli GEO úpravy **fungují** — kde citace přibývají, kde stagnují.
+
+**Free baseline** (stačí pro většinu malých webů):
+
+1. **Manuální audit** jednou měsíčně. Top 10 dotazů ve vašem oboru, projet v ChatGPT, Perplexity, Claude (search), Gemini, Google AIO. Tabulka v Google Sheets nebo Excelu.
+2. **Co měřit:**
+   - **Citation rate** — kolik z X dotazů obsahuje vaši citaci (X/30 → 5/30 = 16,7 %)
+   - **Source share vs konkurence** — kolikrát jste citováni vs. konkurenti
+   - **Kontext zmínky** — pozitivní, neutrální, negativní, jako primární zdroj nebo doplněk
+
+**Profesionální tracking** (s 20+ článků v top 10):
+
+- **Otterly AI** — $29 Lite, $99 Pro. Sleduje 50+ promptů, vrací citation share, sentiment, sources.
+- **Profound** — enterprise $500+, hlubší tracking, integrace s reportingem.
+- **Marketing Miner Brand Radar** — $99/měs Machine plan, **CZ trh first**, AIO presence pro české keywords.
+- **Ahrefs Brand Radar** — součást Ahrefs předplatného, brand mentions napříč klasickým webem i AI.
+
+Investice do placených nástrojů má smysl **až s reálnou content base** — předtím manuální audit stačí. Detailní průvodce v článku [Měření SEO výkonu 2026](/blog/mereni-seo-vykonu-2026/).
+
+## <span class="hl">Platform-specific</span> rozdíly — <strong>ChatGPT, Perplexity, Claude, Gemini</strong>
+
+Drtivá většina GEO playbooku funguje napříč všemi AI nástroji, ale každá platforma má **vlastní mechanismus výběru zdrojů** a vlastní specifika:
+
+| Platforma | Jak vybírá zdroje | Co preferuje | CZ specifika |
+|---|---|---|---|
+| **ChatGPT (search)** | Bing index + vlastní crawl (GPTBot) + training data | Komprehenzivní, dobře strukturovaný obsah s autoritou. Méně transparent než Perplexity | Bing CZ market share < 5 %, ale roste díky Windows Copilot |
+| **Perplexity** | Real-time web search + vlastní index | **Recentní obsah** (typicky < 6–18 měsíců), citation-friendly struktura, transparentní citace | Funguje plně v češtině, real-time |
+| **Claude (search)** | Vlastní Brave search backend + indexovaný obsah | Strukturovaný obsah s jasnými fakty, méně marketingu | Brave search nemá CZ-first index, výsledky obecnější |
+| **Gemini** | Google index (Google-Extended) + Google AI Overviews | Stejné signály jako Google SERP — dobrý SEO obsah typicky funguje pro AIO | Plný CZ Google index |
+| **Bing Copilot** | Bing index + GPT-4 | Strukturovaný obsah, FAQ schema, IndexNow protokol | Pro CZ trh marginální |
+
+**Praktický důsledek:** pokud cílíte na **Perplexity**, dbejte na **recentnost obsahu** (datace, freshness signály). Pokud cílíte na **ChatGPT**, soustřeďte se na **autoritu a brand mentions**. Pokud cílíte na **Gemini a Google AI Overviews**, **klasické SEO** je foundationální — viz [AEO playbook](/aeo/).
+
+## <strong>Časový horizont</strong> — kdy čekat <span class="hl">výsledky</span>
+
+Realistická očekávání podle fáze:
+
+- **První AI citace** ve specifických oborových dotazech: **1–3 měsíce** od publikace nového GEO-friendly obsahu, pokud máte SEO základy
+- **Měřitelný citation share** napříč ranou: **4–6 měsíců** po systematické GEO práci
+- **Vliv na brand awareness** a lead-gen pipeline: **6–12 měsíců**
+
+Tempo závisí na:
+
+- **Výchozím SEO základu** — bez indexovatelného webu se AI nástroje k obsahu nedostanou
+- **Konkurenci v oboru** — niche s nízkou konkurencí = rychlejší citace
+- **Kvalitě implementace** — answer block + fact-density + brand mentions současně, ne sekvenčně
+
+GEO citace se obvykle objevují **rychleji než klasické pozice v Googlu** (3–6 měsíců). Důvod: AI nástroje nemají retargeting cyklus jako Google a citace se aktualizují průběžně s novým crawlem.
+
+## <strong>Časté chyby</strong> v <span class="hl">GEO optimalizaci</span>
+
+1. **GEO bez SEO základu** — pokud Google web neumí indexovat, AI nástroje (ChatGPT search, Perplexity) ho většinou vůbec neuvidí. Pořadí je SEO → GEO, ne paralelně.
+2. **AI-generovaný obsah bez fact-checku** — hallucinated čísla a citace AI nástroje detekují a snižují citation váhu. Lepší méně obsahu s ověřenými fakty.
+3. **Plošné kopírování AI promptů do textu** — některé weby explicitně píšou „při psaní jsme použili tento prompt: …". To je signál nízké přidané hodnoty.
+4. **Žádné brand mentions v autoritních zdrojích** — i obsah s ideální strukturou a fakty může mít bez signálů důvěryhodnosti nízkou citation rate.
+5. **Žádné měření** — bez manuálního auditu nebo placeného nástroje slepá víra, že to funguje. Měření přijde už od 1. týdne, ne až po roce.
+6. **Záměna GEO a AEO** — GEO pokrývá citace v jakémkoli generativním AI (ChatGPT, Perplexity, Claude, Gemini). [AEO](/aeo/) je užší, cílí na answer engines napojené na vyhledávač (Google AIO, Bing Copilot, Featured Snippets). Většina GEO technik ale pomáhá i AEO — viz [AEO playbook](/aeo/).
+
+## Reálné <strong>výsledky</strong> v <span class="hl">praxi</span>
+
+GEO optimalizace má největší dopad jako součást **kombinovaného playbooku** — SEO základ + AEO struktura + GEO citovatelnost současně.
+
+<Insight tone="seo" icon="✦" label="Reálné výsledky kombinovaného SEO + GEO playbooku">
+  **Čtyři e‑shopy na Upgates platformě — třínásobný nárůst organické návštěvnosti za 6 měsíců.** Granulebardog (psí granule), Vapecig (e‑cigarety), Sperky‑image (šperky), Galsari. Práce: obsah, technická optimalizace, FAQ + Product schema, brand mentions a linkbuilding. U nejúspěšnějšího klienta téměř pětinásobek za stejné období. [Detail v případové studii →](https://www.sniperdesign.cz/a/seo-pro-e-shopy-na-upgates-trojnasobna-navstevnost-za-pul-roku-realita-nasich-klientu)
+</Insight>
+
+<Insight tone="seo" icon="✦" label="Tento web jako živý příklad GEO playbooku">
+  Stránka, kterou právě čtete, je sama implementací 7 kroků: **answer block 40–60 slov nahoře**, **definice „X je…" v každé sekci**, **FAQ s reálnými dotazy a FAQPage schema**, **HowTo schema na 7 kroků**, **fact-density** (Princeton paper, konkrétní čísla, datace), **`robots.txt` s povolením AI crawlerů**. Můžete si **vyzkoušet sami** — zeptejte se ChatGPT nebo Perplexity „jak optimalizovat web pro GEO" nebo „GEO optimalizace v praxi" a sledujte, jestli vás na něj odkážou.
+</Insight>
+
+## Co dělat <strong>tento týden, měsíc, kvartál</strong>
+
+Pokud jste dočetli až sem, máte přehled. Konkrétní plán:
+
+**Tento týden:**
+
+1. **Audit AI viditelnosti** — vzít 20 KW z vašeho oboru, projet v ChatGPT, Perplexity, Claude, Gemini, Google AIO. Tabulka kde stojíte.
+2. **Validace `robots.txt`** — povolit GPTBot, PerplexityBot, ClaudeBot, Google-Extended.
+3. **Identifikovat top 5 stránek** podle organic trafficu — ty budou kandidáti na GEO úpravu.
+
+**Tento měsíc:**
+
+1. **Restrukturujte úvod** top 10–20 stránek — answer block 40–60 slov + definice „X je…".
+2. **Implementujte FAQPage a HowTo schema** na všech relevantních stránkách.
+3. **Zvyšte fact-density** — projít top 20 stránek a doplnit konkrétní čísla, datace, citace zdrojů.
+
+**Tento kvartál:**
+
+1. **Začít budovat brand mentions** — Reddit/Quora odpovědi v oboru, oslovit 2–3 oborové podcasty, publikovat 1 vlastní studii nebo analýzu.
+2. **Měsíční audit citation share** — sledovat, kde se progress objevuje, kde stagnuje.
+3. **Po 90 dnech** vyhodnocení trendu — kde rostou citace, jaké KW přibyly v top 10, kde se objevuje vaše doména v AI odpovědích.
+
+Pokud nevíte, kterou strategii řešit jako první, [Rozhodovací matice](/rozhodovaci-matice/) podle typu byznysu pomůže prioritizovat.
+
+## Kde si nechat <strong>poradit</strong> nebo <span class="hl">implementaci</span>
+
+GEO optimalizace dává největší smysl jako součást širší AI viditelnostní strategie. Pokud nevíte, kde leží mezery na vašem konkrétním webu, nebo nemáte kapacitu na manuální audit a přepis top 20 stránek, [Sniperdesign nabízí audit AI viditelnosti](https://www.sniperdesign.cz/audity) — projdeme všech 7 kroků GEO playbooku, vyhodnotíme baseline citation share a doporučíme prioritní kroky podle typu byznysu. První [konzultace](https://www.sniperdesign.cz/konzultace) nezávazná.
