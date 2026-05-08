@@ -49,6 +49,11 @@ V Google Trends jsou u CZ v období 1/2025 → 4/2026 mezi rising queries u seed
 
 Tento návod pokrývá **hlavní dnes používané metody**, jak AIO omezit nebo obejít — od nastavení v účtu po web-only vyhledávání a alternativní search enginy. Jako bonus: jak omezit použití obsahu v AIO pro vlastní web (pro publishers, kteří vidí pokles organické CTR u informačních non-brand dotazů).
 
+> **Krátká odpověď** _(stav k 5/2026)_:
+> - **Globální vypnutí AI Overviews Google nenabízí.**
+> - **Reálně fungují 3 cesty pro uživatele:** Search Labs experiment (závislé na účtu), `&udm=14` URL parametr (web-only režim), nebo přepnutí na Brave Search / DuckDuckGo.
+> - **Pro vlastní web** lze jen omezovat použitelnost obsahu (`data-nosnippet`, `nosnippet`, `max-snippet:0`) — ne „vypnout AIO crawler". Nasazujte selektivně po segmentaci dotazů, ne plošně.
+
 ## Metoda 1 — <strong>Search Labs</strong> <span class="hl">(experiment v Google účtu)</span>
 
 Nejjednodušší metoda pro přihlášené uživatele:
@@ -64,7 +69,7 @@ Nejjednodušší metoda pro přihlášené uživatele:
 
 ## Metoda 2 — <strong>`&udm=14` web filter</strong> <span class="hl">(URL parametr)</span>
 
-Tento parametr aktuálně přepíná Google search do **webového režimu**, který typicky potlačuje AIO panel a většinu rozšířených SERP prvků (People Also Ask, featured snippets) a vrací klasické modré odkazy. V podstatě stará verze Googlu z roku 2010.
+Tento parametr přepíná výsledky do **webového režimu**, kde se typicky nezobrazují AI Overviews ani část dalších rozšířených SERP prvků (People Also Ask, featured snippets) — vrací jen klasické modré odkazy.
 
 ⚠️ **Důležité:** `&udm=14` **není oficiální dlouhodobá direktiva**. Jde o web filter, jehož chování může Google kdykoli změnit. Některé prvky SERPu se mohou lišit podle země a dotazu. Není to garantovaný permanentní vypínač.
 
@@ -154,7 +159,7 @@ Použít primárně na **úvodní answer block** dlouhých how-to průvodců, kd
 
 Standardní zápis je `<meta name="robots" content="nosnippet">` (nebo Google-specific `<meta name="googlebot" content="nosnippet">`). **Omezí použití textového obsahu** ve snippetech a AI Overviews na celé stránce. **Není to odstranění stránky z výsledků ani kontrola všech AI funkcí.**
 
-⚠️ **Vedlejší dopad:** ztratíte také klasické featured snippets (pozice 0), které u některých dotazů přivádějí traffic. **A/B test před plošnou implementací je povinný.**
+⚠️ **Vedlejší dopad:** ztratíte také klasické featured snippets (pozice 0), které u některých dotazů přivádějí traffic. **Před plošným nasazením je minimum pilot na vybraném segmentu URL** a vyhodnocení dopadu v GSC; ideálně test na úrovni skupin stránek a dotazů (ne celého webu).
 
 ### Maximální omezení — `max-snippet:0`
 
@@ -162,7 +167,7 @@ Standardní zápis je `<meta name="robots" content="nosnippet">` (nebo Google-sp
 <meta name="robots" content="max-snippet:0">
 ```
 
-Hard limit na 0 znaků snippet. Efektivně skrývá stránku z AIO i klasických snippets.
+Hard limit na 0 znaků snippet. Nastavení `max-snippet:0` výrazně omezuje možnost použít text stránky ve snippetech a může omezit i využití obsahu v AI Overviews. **Neznamená ale odstranění stránky z indexu** ani garanci nulové přítomnosti ve všech AI formátech.
 
 ### Rozhodovací rámec pro snippet direktivy
 
@@ -182,7 +187,7 @@ V CZ marketingových diskusích kolují příklady „AIO snížila návštěvno
 - **Kontrola jiných změn** (core update, redesign, technické změny, linkbuilding)
 - **Dotazová úroveň v GSC** — pokles na úrovni domény může pocházet z jiných důvodů než AIO; segmentace na non-brand vs brand a na úrovni intent (informační vs transakční) je nezbytná
 
-**Korelace mezi AIO a poklesem traffic není automaticky kauzalita.** Senior rozhodnutí o snippet politice vyžaduje data z GSC na úrovni dotazů, ne agregovaná čísla z external tools.
+**Korelace mezi AIO a poklesem traffic není automaticky kauzalita.** Rozhodnutí o snippet restrikcích by mělo vycházet z dat v GSC na úrovni dotazů a typů landing pages, ne z agregovaných odhadů třetích stran.
 
 ## Které metody <span class="hl">fungují</span> a <strong>kdy</strong>
 
@@ -217,8 +222,47 @@ V CZ marketingových diskusích kolují příklady „AIO snížila návštěvno
 4. **Brave Search nebo DuckDuckGo** jako výchozí vyhledávač = nejspolehlivější cesta bez Google AIO.
 5. **Pro vlastní web** snippet direktivy **selektivně po segmentaci dotazů**, ne plošně. Před implementací A/B test, segmentace brand vs non-brand, kontrola dopadu na featured snippets.
 
+## Publisher mini-metodika — <strong>jak rozhodnout</strong> o snippet politice
+
+Pokud řešíte AIO jako web owner, ne jako uživatel, doporučujeme proces v 5 krocích, ne plošné nasazení:
+
+1. **Vybrat cluster URL** — typicky 10–30 informačních non-brand stránek se srovnatelným typem dotazu (how-to průvodce, definiční články, srovnání). Nemíchejte s brand a transakčními URL.
+2. **Vyfiltrovat dotazy v GSC** — Performance → Queries, filter brand vs non-brand. Pokud vidíte pokles CTR u non-brand informačních dotazů s impressions stabilními nebo rostoucími, máte indikator.
+3. **Baseline metriky** — clicks, impressions, avg position, CTR za 4–8 týdnů před testem (zachytí sezónnost).
+4. **Nasadit jen na segment** — `data-nosnippet` na úvodní answer block 5–10 vybraných URL, ne plošně. Sledovat 30–60 dní.
+5. **Vyhodnotit po X týdnech** — porovnání baseline vs po-test, kontrolovat brand query mix (brand snippet je často výhoda, ne ztráta), vyhodnotit, jestli pokles CTR se zlepšil bez vedlejších škod.
+
+**Co NEDĚLAT jako publisher:**
+
+- ❌ Nasadit `nosnippet` plošně na celý blog bez segmentace
+- ❌ Vyhodnocovat dopad jen na úrovni sessions (smíchá brand a non-brand)
+- ❌ Brát Similarweb / Ahrefs odhady jako důkaz dopadu AIO (jsou to aproximace, ne přesná data)
+- ❌ Ignorovat brand query mix — chybějící brand snippet může poslat uživatele jinam, ne přivést
+
+## Pro koho je <strong>tento článek</strong>
+
+- **Uživatel, který chce dál používat Google bez AIO** → Search Labs + `udm=14` web filter
+- **Uživatel, který chce minimum AI prvků bez řešení Google účtu** → Brave Search nebo DuckDuckGo
+- **SEO / content tým, který řeší pokles CTR po nástupu AIO** → snippet direktivy selektivně + GSC query-level audit
+- **Publisher / magazín / obsahový web** → mini-metodika výše + segmentace brand/non-brand
+- **E-commerce a leadgen weby** → ověřit, jestli je AIO reálný problém (typicky transakční intent ≠ AIO panel)
+- **Regulované obory (YMYL)** → opatrnější přístup, dopad na důvěru ve značku, individuální posouzení
+
+## Kde si nechat <strong>poradit</strong>
+
+Tento web provozuje agentura **[Sniperdesign](https://www.sniperdesign.cz/)** — pokud řešíte AIO jako business problém, ne jen jako uživatelské nastavení, [nabízíme 3 typy auditu](https://www.sniperdesign.cz/audity):
+
+- **Pro publishery a obsahové weby** — query-level audit v GSC, segmentace brand/non-brand, návrh obranné snippet politiky podle typu obsahu
+- **Pro e-commerce** — ověření, jestli je AIO reálný problém, nebo jen šum v agregovaných datech (často transakční intent AIO panel negeneruje)
+- **Pro SEO/content týmy** — pokud řešíte pokles CTR po nástupu AIO, navrhneme test-first přístup pro snippet restrikce na vybraných URL a vyhodnotíme dopad
+
+Tuhle problematiku řešíme u publisherů, content webů a leadgen projektů. **U klientů v informačním segmentu jsme po segmentaci typicky zjistili, že pokles CTR se týkal jen části non-brand how-to dotazů, ne celého webu** — což zásadně mění prioritu obrany.
+
+První [konzultace](https://www.sniperdesign.cz/konzultace) nezávazná.
+
 ## <strong>Související</strong>
 
-- [AIO — AI Optimization / AI Overviews](/aio/) — co AIO je a jak funguje
-- [Rozhodovací matice](/rozhodovaci-matice/) — kdy AIO presence pomáhá vs. kdy škodí
-- [Praktický postup](/prakticky-postup/) — implementace pro publishers
+- [AIO — AI Optimization / AI Overviews](/aio/) — co AIO je a jak funguje, proč je pro SEO důležité
+- [Rozhodovací matice](/rozhodovaci-matice/) — kdy AIO presence pomáhá (citation share) vs. kdy škodí (zero-click)
+- [Praktický postup](/prakticky-postup/) — implementační rámec pro publishers a obsahové weby
+- [AI search trendy Česko 2026](/blog/ai-search-trendy-cesko-2026/) — co je měřitelné a co je proxy v AIO datech
