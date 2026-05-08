@@ -44,3 +44,7 @@ _research/
 # Local design experimenty (mimo TS/build scope)
 _design/
 public/og/_drafts/
+
+# Research output (lokální data, ne součást webu)
+Research interbetu AI SEO/
+_research/
