@@ -1,0 +1,426 @@
+---
+title: "AEO optimalizace v praxi: jak se dostat do Featured Snippets a Google AI Overviews"
+description: "Praktický průvodce AEO — anatomie answer blocku, 5 typů otázek se šablonami, schema cookbook, AEO Coverage Score framework a měření přes GSC."
+answer: "AEO (Answer Engine Optimization) upravuje obsah tak, aby byl rychlou a přesnou odpovědí pro Google AI Overviews, Featured Snippets a Bing Copilot. Jádro postupu: krátká odpověď 40–60 slov hned po nadpisu, FAQ s reálnými dotazy, validní FAQPage a HowTo schema, fact-density a měření přes Search Console. AEO má pro většinu CZ webů přímější dopad na traffic než GEO, protože Google AIO čte v Česku víc lidí než ChatGPT a Perplexity dohromady."
+slug: "aeo-optimalizace-v-praxi"
+category: "tutorial"
+updated: "2026-05-08"
+variant: "rich"
+keywords:
+  - "aeo optimalizace"
+  - "answer engine optimization"
+  - "optimalizace pro answer engines"
+  - "featured snippets 2026"
+  - "google ai overviews optimalizace"
+  - "faqpage schema"
+  - "howto schema"
+  - "aeo praktický postup"
+  - "aeo coverage score"
+  - "aeo vs seo"
+stats:
+  - value: "40–60"
+    label: "slov ideálního answer blocku"
+  - value: "5"
+    label: "typů otázek = 5 šablon"
+  - value: "25,1 %"
+    label: "Google SERPs s AI Overview"
+  - value: "2–8 týdnů"
+    label: "od implementace k Featured Snippet"
+faq:
+  - q: 'Jaký je rozdíl mezi AEO a SEO?'
+    a: 'SEO chce dostat web na první pozice v klasickém SERPu. AEO chce dostat krátkou odpověď přímo do Featured Snippet nebo Google AI Overview panelu. Sdílí společný technický základ (indexovatelnost, struktura, schema), ale způsob psaní je jiný — AEO vyžaduje krátké, definitivní odpovědi 40–60 slov hned po nadpisu, FAQ s reálnými dotazy a fact-density místo marketingové omáčky. SEO dostane uživatele na web, AEO ho promění v citovaný zdroj.'
+  - q: 'Jaký je rozdíl mezi AEO a GEO?'
+    a: 'AEO cílí specificky na answer engines napojené na vyhledávač — Google AI Overviews, Featured Snippets, Bing Copilot. GEO pokrývá širší pole generativní AI včetně ChatGPT, Perplexity a Claude, které vyhledávač nepoužívají v klasickém slova smyslu. Většina playbooku se ale překrývá: krátké odpovědi, fact-density, FAQ schema, brand mentions. Pro CZ trh má AEO obvykle přímější dopad na traffic, GEO buduje brand awareness a citation share v dlouhodobém horizontu.'
+  - q: 'Za jak dlouho budou výsledky AEO viditelné?'
+    a: 'Featured Snippets typicky 2–8 týdnů po implementaci FAQPage schema a krátkých odpovědí, pokud už ranknete v top 10. AI Overviews je méně předvídatelný — záleží, jestli Google pro daný dotaz AIO panel vůbec generuje a jak často. Realistický horizont: první AIO citace 1–3 měsíce po implementaci u stránek s dobrými pozicemi, systematická AIO presence napříč ranou 4–6 měsíců. Bez SEO základů (top 10 pozic) AEO playbook efekt nevyvolá — Featured Snippets čerpá Google primárně z top 10 výsledků.'
+  - q: 'Funguje AEO pro malé firmy a B2B?'
+    a: 'Ano, často s lepším poměrem cena/výkon než u velkých webů. Malá firma nebo B2B specialista se může v niche oboru s nízkou až střední konkurencí dostat do Featured Snippet rychleji než velký hráč — Google preferuje stránky, které odpovídají přímo a strukturovaně. Konkrétně dává smysl: oborové průvodce, jak vybrat X, srovnání X vs Y, definice odborných pojmů, časté dotazy klientů. Pro čistě transakční nebo lokální služby bez informační vrstvy je dopad menší.'
+  - q: 'Co je AEO Coverage Score?'
+    a: 'Vlastní framework, který hodnotí AEO připravenost stránky napříč 5 dimenzemi: Answer block coverage, Schema density, Snippet eligibility, Citation-readiness a Voice-friendly. Každá dimenze 0–20 bodů, celkem 0–100. Skóre nad 80 znamená launch-ready — stránka má vysokou šanci na Featured Snippet i AIO citaci. Skóre 50–80 vyžaduje cílené úpravy, pod 50 je třeba kompletní přepis úvodu a FAQ. Detail metodiky v sekci AEO Coverage Score níže.'
+  - q: 'Stačí mi přidat FAQ sekci a FAQPage schema?'
+    a: 'Pomáhá to, ale samo o sobě nestačí. Bez krátké odpovědi 40–60 slov hned po H1, bez fact-density v textu a bez správné struktury H2/H3 nadpisů Google FAQPage schema často ignoruje. Rich snippety u FAQ se zobrazují jen tam, kde Google vyhodnotí celou stránku jako kvalitní odpověď na konkrétní dotaz. FAQPage schema je nezbytná, ne ale dostatečná podmínka. Plný playbook v 7 krocích níže.'
+  - q: 'Můžu měřit AEO bez placených nástrojů?'
+    a: 'Ano, free baseline stačí pro většinu malých webů. Google Search Console: Performance → Search Appearance (FAQ rich snippets, HowTo), Performance → Queries (Featured Snippets impressions), Coverage (indexovatelnost). Plus jednou měsíčně manuální audit — top 10 vašich klíčových slov v Googlu, do tabulky zapsat, jestli se objevil AI Overview a jestli z něj vede odkaz na váš web. Profesionální tracking (Otterly, Profound, Marketing Miner Brand Radar) má smysl s 20+ článků v top 10.'
+howto:
+  name: "Jak optimalizovat web pro AEO v 7 krocích"
+  steps:
+    - name: "AEO audit existujícího obsahu"
+      text: "Pro top 20 stránek webu (podle organic trafficu) zkontrolujte 5 bodů: (1) je odpověď na hlavní dotaz v prvních 60 slovech, (2) má stránka FAQ sekci s reálnými dotazy uživatelů, (3) je v HTML hlavičce FAQPage schema, (4) jsou H2/H3 strukturované jako otázky a sub-odpovědi, (5) je v textu 3+ konkrétní fakta na 100 slov. Stránky které selžou ≥ 2 kontroly přepište answer block a doplňte FAQ."
+    - name: "Anatomie ideálního answer blocku"
+      text: "Hned po H1 nebo H2 napište odpověď ve 40–60 slovech. Struktura: definice ve formátu X je…, jednoznačná bez podmínek, jeden konkrétní fakt nebo číslo, praktický důsledek pro čtenáře. Tučně zvýrazněný klíčový termín na začátku. Druhý odstavec rozvíjí kontext. Pyramidové uspořádání — nejdůležitější informace nahoru, detail pod tím. Před publikací zkontrolujte délku — pod 40 slov AI nemá co citovat, nad 60 už začne ořezávat."
+    - name: "Šablony pro 5 typů otázek"
+      text: "Napište answer block podle typu dotazu: (1) What-is = definice + mechanismus + důsledek, (2) How-to = výsledek + počet kroků + časový odhad, (3) Comparison = X funguje takto, Y takto, hlavní rozdíl je Z, (4) Listicle = počet položek + nejdůležitější + kdy které použít, (5) Definitional = pojem + synonyma + obvyklý kontext. Každý typ má jinou ideální strukturu — viz sekce 5 typů otázek níže."
+    - name: "Implementace FAQPage a HowTo schema"
+      text: "Do hlavičky stránky přidejte JSON-LD schema. FAQPage pro každou FAQ sekci s reálnými dotazy. HowTo pro každý návodový článek se step-by-step strukturou. QAPage pro stránky s jednou hlavní otázkou (typicky podpora). Article pro blog. Schema musí přesně odpovídat HTML — Google to porovnává, neshoda znamená ignorování. Validace přes Google Rich Results Test a Schema.org Validator je povinný krok před deployem."
+    - name: "People Also Ask extension"
+      text: "V Google Search Console → Performance → Queries vyfiltrujte dotazy s impressions ale CTR pod 5 % — to jsou kandidáti na AEO úpravu. Doplňte tyto dotazy jako FAQ otázky na cílových stránkách. Pro reálné formulace dotazů kombinujte: GSC queries, Reddit a Quora vlákna v oboru, oborové diskuze (lupa.cz, marketingjournal.cz pro CZ), záznamy zákaznické podpory. Cíl: 5–10 reálných otázek na stránku v FAQ sekci."
+    - name: "Měření přes GSC + manuální AIO audit"
+      text: "GSC Search Appearance sleduje FAQ rich snippets a HowTo zobrazení. GSC Performance → Queries ukazuje Featured Snippets impressions (filtr search appearance). Pro AI Overviews zatím GSC nemá dedikovanou metriku — sleduje se manuálně: jednou měsíčně otestovat top 10 KW v Googlu a do tabulky zapsat AIO presence. Profesionální tracking Otterly, Profound nebo Marketing Miner Brand Radar má smysl s 20+ článků v top 10."
+    - name: "Iterace podle dat — co optimalizovat dál"
+      text: "Po 60–90 dnech vyhodnoťte: které stránky získaly Featured Snippet, kde se objevil AIO panel s vaší citací, kde stagnujeme. Pro každou stagnující stránku zkontrolujte AEO Coverage Score (sekce níže) a doplňte chybějící dimenze. Iterujte ne plošnými změnami, ale cílenými úpravami jednotlivých stránek. Featured Snippets jsou pohyblivý cíl — Google průběžně mění, koho vybírá; měsíční audit pomáhá zachytit ztráty i nové příležitosti."
+---
+
+import Insight from "../../components/blocks/Insight.astro";
+
+## Co je <span class="hl">AEO optimalizace</span> a proč ji <strong>řešit teď</strong>
+
+AEO (Answer Engine Optimization) **upravuje obsah tak**, aby dokázal rychle a jednoznačně odpovědět na konkrétní dotazy uživatelů — a aby Google AI Overviews, Featured Snippets a Bing Copilot tuto odpověď použili a citovali váš web jako zdroj. Když uživatel napíše do Googlu otázku „jak vybrat CRM pro malou firmu" nebo „rozdíl mezi SEO a GEO", obvykle se nad výsledky zobrazí panel s krátkou odpovědí. Pokud v něm nejste, ztrácíte traffic i přes pozici v top 10.
+
+Klasické SEO řeší pozice ve výsledcích vyhledávání — bez něj AEO nefunguje, protože Google čerpá Featured Snippets a AIO citace **primárně z top 10**. AEO je nadstavba, která rozhoduje, jestli **z těch top 10 pozic** Google vybere právě váš obsah jako přímou odpověď. Detailněji o vztahu disciplín pojednává pillar [SEO vs. GEO vs. AEO vs. AIO](/seo-vs-geo-vs-aeo-vs-aio/) a o samotné disciplíně sekce [AEO — Answer Engine Optimization](/aeo/).
+
+### AEO vs SEO vs GEO — kde je hranice
+
+Tři disciplíny řeší různé vrstvy a sdílí společný technický základ:
+
+| Disciplína | Co řeší | Hlavní výstup |
+|---|---|---|
+| **[SEO](/seo/)** | Být na první stránce klasického vyhledávání | Pozice 1–10 v Googlu nebo Seznamu |
+| **AEO** | Dostat krátkou odpověď přímo do panelu nad výsledky | Citace v Google AI Overviews, Featured Snippets, Bing Copilot |
+| **[GEO](/geo/)** | Být citovaným zdrojem v generativní AI | Zmínka v odpovědi ChatGPT, Perplexity, Claude, Gemini |
+
+**Praktický důsledek:** SEO + AEO + GEO se navzájem posilují. Stejný obsah, který je strukturovaný pro AIO (krátká odpověď, FAQ schema), je obvykle dobře citovatelný i v ChatGPT nebo Perplexity. Co AEO odlišuje od GEO: AEO cílí na **answer engines napojené na vyhledávač** (Google, Bing) — má **přímější dopad na CZ traffic**, protože Google AI Overviews čte v Česku víc lidí než ChatGPT a Perplexity dohromady. GEO je doplňková disciplína, která buduje brand awareness v generativní AI — viz [GEO playbook](/blog/geo-optimalizace/).
+
+## Co dnes <strong>víme</strong> o <span class="hl">Featured Snippets a AIO</span>
+
+Featured Snippets existují jako Google funkce už od roku 2014 (původně „answer box"). AI Overviews je nová generace — místo jednoho zdroje agreguje fakta z více stránek a generuje vlastní text odpovědi. Obě platformy sdílí stejné signály: krátká strukturovaná odpověď, FAQ schema, autoritní obsah.
+
+**Klíčová čísla** (k 5/2026):
+
+- **25,1 % Google SERPs** v US trhu obsahuje AI Overview panel ([Semrush, 2025](https://www.semrush.com/blog/ai-overviews-study/)) — nárůst z 13,1 % v březnu 2025.
+- **Featured Snippet CTR** drží **35,6 %** v top pozici ([Backlinko CTR study, 2025](https://backlinko.com/google-ctr-stats)).
+- **CZ trh:** AI Overviews dostupné od léta 2025, generuje je Gemini model. Featured Snippets běží v plné šíři.
+- **CTR pokles** s AIO panelem nad výsledky: studie ukazují **20–60 % drop** organic CTR podle typu dotazu ([Ahrefs, 2024](https://ahrefs.com/blog/ai-overviews-reduce-clicks/)).
+
+**Praktický důsledek:** Featured Snippet a AIO citace **kompenzují CTR pokles** — když jste citovaní, ztrácíte sice část kliků, ale získáváte brand exposure i u uživatelů, kteří dál nekliknou. Pokud nejste citovaní, ztrácíte oboje. AEO playbook rozhoduje, na které straně skončíte.
+
+## Pro koho má <span class="hl">AEO</span> <strong>největší smysl</strong>
+
+AEO je nejvíc relevantní tam, kde **se zákazník na něco ptá** a obsah na webu by mohl být odpovědí:
+
+- **Publishers, blogy a edukativní obsahové weby** — žijete z organic trafficu na informační dotazy. AIO panel vám může vzít kliky, ale i vás citovat. Bez AEO playbooku ztrácíte přímý vliv na obě strany rovnice.
+- **B2B firmy a SaaS produkty s research fází** — zákazník před nákupem aktivně studuje, srovnává a hledá odpovědi typu „jak vybrat CRM", „rozdíl mezi X a Y", „jak nastavit Z". Featured Snippets a AIO panel mu odpovídají — a vy chcete být v citaci.
+- **E-shopy s research-driven sortimentem** — kategorie a edukativní obsah ohrožené zero-click search, ale zároveň výhra brand exposure. Detail v [SEO pro eshopy v AI éře](/blog/seo-pro-eshopy-ai-era-2026/).
+- **Odborné a poradenské služby** — advokát, účetní, konzultant, agentura. Lidé hledají odpovědi typu „jak řešit X", „kdy potřebuji Y". AEO playbook umisťuje vaše krátké odpovědi do první vlny SERPu.
+- **Lokální služby s informační vrstvou** — autoservis, kosmetika s blogem o oboru. Featured Snippets + lokální výsledky se nepřebíjejí, kombinace funguje dobře. Detail v [Local SEO Česko 2026](/blog/local-seo-cesko-2026/).
+
+**Marginální dopad** má AEO u čistě transakčních dotazů a impulsivních produktů — tam jsou priority v klasickém SEO + lokálním SEO + PPC. Pokud váháte, kterou disciplínu řešit jako první, pomůže [Rozhodovací matice](/rozhodovaci-matice/).
+
+## Anatomie ideálního <span class="hl">answer blocku</span>
+
+Answer block je **krátká strukturovaná odpověď** hned po H1 nebo H2, kterou Google extrahuje do Featured Snippet nebo AIO panel. Pokud je první odstavec marketingový úvod plný přídavných jmen, AI vás přeskočí. Pokud první odstavec přesně odpoví na hlavní otázku stránky, máte výrazně vyšší šanci na citaci.
+
+### Tři pravidla, která musí answer block splnit
+
+**1. Délka 40–60 slov.** Pod 40 slov AI nemá co citovat, nad 60 už začne ořezávat a může vystřihnout klíčovou část. Sweet spot je 45–55 slov.
+
+**2. Struktura ve třech krocích:**
+
+- **Definice ve formátu „X je…"** — jednoznačná, bez podmínek, jeden tučně zvýrazněný termín
+- **Jeden konkrétní fakt nebo číslo** — datum, procento, mechanismus
+- **Praktický důsledek** pro čtenáře — co to pro něj znamená
+
+**3. Citation-friendly formulace.** Pokud lze odpověď číst samostatně bez kontextu zbytku stránky, je extrahovatelná. Pokud začíná „jak jsme již zmínili" nebo „v této sekci si ukážeme", AI ji vynechá.
+
+### Před a po — konkrétní ukázka
+
+```
+❌ ŠPATNĚ (marketingový úvod, není citation-friendly):
+
+V dnešní digitální éře je důležité umět optimalizovat web pro
+moderní vyhledávače. Naše agentura má bohaté zkušenosti s pomocí
+firmám zlepšit jejich online viditelnost. V tomto článku se
+podíváme na nejlepší postupy pro AEO.
+
+→ AI to přeskočí. Žádný fakt, žádná definice, žádné citation hooks.
+
+
+✅ DOBŘE (answer block 48 slov, ready k citaci):
+
+AEO (Answer Engine Optimization) upravuje obsah tak, aby ho
+Google AI Overviews, Featured Snippets a Bing Copilot použili
+jako přímou odpověď a citovali váš web jako zdroj. Klíčem je
+krátká odpověď 40–60 slov hned po nadpisu, FAQ s reálnými
+dotazy a validní FAQPage schema. Featured Snippet CTR drží
+35,6 % v top pozici (Backlinko 2025).
+
+→ AI extrahuje. Definice + fakt + zdroj + délka v rozmezí.
+```
+
+<Insight tone="aeo" icon="✦" label="Anti-pattern: kombinace nadpisu a answer blocku">
+**Time-to-answer rule:** Mezi začátkem stránky a první definitivní odpovědí by mělo být **maximálně 60 slov textu** (mimo navigaci a hero blok). Pokud uživatel musí scrollovat přes intro, AI jeho čas pravděpodobně neinvestuje. Schované odpovědi v sekci „Detailní popis" pod H3 se do AIO citace dostanou výrazně méně než odpovědi pod H1 nebo prvním H2.
+</Insight>
+
+## <span class="hl">5 typů otázek</span> a šablony pro <strong>každou z nich</strong>
+
+Univerzální answer block neexistuje — každý typ otázky má jinou ideální strukturu. Tohle je 5 archetypů, které pokrývají drtivou většinu Featured Snippet a AIO dotazů:
+
+### Typ 1 — What-is otázky (definice)
+
+**Příklady dotazů:** „Co je AEO", „Co je Generative Engine Optimization", „Co znamená zero-click search"
+
+**Šablona answer blocku:**
+
+```
+[Pojem] je [stručná definice — co to dělá nebo co to znamená].
+[Jeden mechanismus, jak to funguje]. [Konkrétní fakt nebo číslo
+s atribucí]. [Praktický důsledek pro čtenáře].
+```
+
+**Příklad pro AEO:** „AEO (Answer Engine Optimization) **upravuje obsah** tak, aby Google AI Overviews a Featured Snippets použili odpověď z vašeho webu. Mechanismus: krátká odpověď 40–60 slov hned po nadpisu, FAQPage schema, fact-density. 25,1 % Google SERPs obsahuje AIO panel (Semrush 2025). Bez AEO ztrácíte traffic i přes pozici v top 10."
+
+### Typ 2 — How-to otázky (postupy)
+
+**Příklady dotazů:** „Jak optimalizovat web pro AEO", „Jak přidat FAQ schema", „Jak měřit Featured Snippets"
+
+**Šablona answer blocku:**
+
+```
+[Výsledek, kterého se má dosáhnout] dosáhnete v [N krocích / čase].
+Klíčové kroky: [krok 1], [krok 2], [krok 3]. [Časový odhad].
+[Co je předpoklad — co musí být splněno před začátkem].
+```
+
+Tahle šablona je ideální pro doplnění **HowTo schema** se step-by-step strukturou — Google preferuje strukturované postupy nad volnou prózou.
+
+### Typ 3 — Comparison otázky (X vs Y)
+
+**Příklady dotazů:** „SEO vs AEO", „FAQPage schema vs HowTo schema", „Otterly vs Profound"
+
+**Šablona answer blocku:**
+
+```
+[X] [primární funkce X]. [Y] [primární funkce Y]. Hlavní rozdíl
+je [klíčový distinguisher]. [X] použijte když [scenár A], [Y]
+použijte když [scenár B]. Společný základ: [co sdílí].
+```
+
+**Příklad:** „SEO chce dostat web na první pozice v SERPu. AEO chce dostat krátkou odpověď do Featured Snippet. Hlavní rozdíl: SEO se měří pozicemi, AEO citacemi v panelu. SEO řešte první, AEO jako nadstavbu. Společný základ: indexovatelnost, FAQ schema, fact-density."
+
+### Typ 4 — Listicle otázky (seznamy)
+
+**Příklady dotazů:** „Nejlepší SEO nástroje 2026", „5 chyb v SEO auditu", „Top 10 schema typů"
+
+**Šablona answer blocku:**
+
+```
+[N] [kategorie]: [item 1], [item 2], [item 3]… Nejdůležitější je
+[item s největším dopadem] — [důvod]. Druhá priorita [item 2] —
+[důvod]. [Item N] [kdy ne].
+```
+
+Klíč: **explicitní pořadí** podle priority, ne abecedně. Google pro Featured Snippet typu listicle vybírá nadpisy s číslovanými body — H2/H3 strukturované jako „1. X", „2. Y", nikoliv prózou.
+
+### Typ 5 — Definitional / vs / when otázky (terminologie)
+
+**Příklady dotazů:** „Kdy potřebuji advokáta", „Kdy stačí lokální SEO", „Co znamená pozice 0"
+
+**Šablona answer blocku:**
+
+```
+[Termín] znamená [jedna stručná definice]. Synonyma: [alternativní
+zápisy]. Obvyklý kontext: [kdy se s tím setkáte]. Časté chyby:
+[co lidé pletou]. Praktická hranice: [kdy to platí, kdy ne].
+```
+
+**Klíč pro tento typ:** vyřešit **disambiguace** — pokud má termín více významů (jako AIO = AI Overviews i AI Optimization), vysvětlit oba a uvést, který se v daném kontextu používá.
+
+## Schema cookbook pro <span class="hl">AEO</span>
+
+Strukturovaná data jsou pro AEO **základní hygiena** — bez schema markup mohou Google a AI nástroje vaši odpověď ignorovat, i když je dobře napsaná. Tady je 4 typů schema, které stojí za to mít, plus konkrétní JSON-LD bloky ke kopírování.
+
+### FAQPage schema
+
+Pro každou stránku s FAQ sekcí. Klíčové pravidlo: **otázky a odpovědi v JSON-LD musí přesně odpovídat HTML** — Google to porovnává, neshoda = schema ignorováno.
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Jaký je rozdíl mezi AEO a SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SEO chce dostat web na první pozice v klasickém SERPu. AEO chce dostat krátkou odpověď přímo do Featured Snippet nebo AIO panelu. Sdílí technický základ, ale způsob psaní je jiný."
+      }
+    }
+  ]
+}
+```
+
+### HowTo schema
+
+Pro návodové články se step-by-step strukturou. Google preferuje strukturované postupy nad volnou prózou.
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Jak optimalizovat web pro AEO v 7 krocích",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "AEO audit existujícího obsahu",
+      "text": "Pro top 20 stránek zkontrolujte 5 bodů..."
+    }
+  ]
+}
+```
+
+### QAPage schema
+
+Pro stránky s **jednou hlavní otázkou** (typicky podpora, fórum, knowledge base). Liší se od FAQPage tím, že má hlavní otázku a více odpovědí (best answer + alternativy).
+
+### Article schema
+
+Pro každý blog článek. Headline, description, datePublished, dateModified, author, image. Bez Article schema je obsah Googlu i AI nástrojům cizí jako informační typ.
+
+**Validace** před deployem (povinný krok):
+
+- [Google Rich Results Test](https://search.google.com/test/rich-results)
+- [Schema.org Validator](https://validator.schema.org/)
+
+Detailní průvodce schema implementací v článku [Časté chyby v SEO 2026](/blog/caste-chyby-v-seo-2026-update/).
+
+## <span class="hl">AEO Coverage Score™</span> — <strong>5 dimenzí, jak hodnotíme stránku</strong>
+
+Tohle je vlastní framework, který používáme jako kontrolní průchod u klientů — **5 dimenzí, každá 0–20 bodů, celkem 0–100**. Pomáhá rychle identifikovat, kde má stránka rezervu.
+
+### Dimenze 1 — Answer block coverage (0–20)
+
+- **20 bodů:** Answer block 40–60 slov hned po H1, definice „X je…", konkrétní fakt s atribucí, praktický důsledek
+- **10–15 bodů:** Answer block existuje, ale chybí jeden z prvků (typicky atribuce nebo důsledek)
+- **0–5 bodů:** Žádný answer block, nebo marketingový úvod místo definitivní odpovědi
+
+### Dimenze 2 — Schema density (0–20)
+
+- **20 bodů:** Article + FAQPage + HowTo (kde relevant) v `<head>`, validní JSON-LD, přesné mapování na HTML
+- **10–15 bodů:** FAQPage schema chybí nebo neodpovídá HTML přesně
+- **0–5 bodů:** Žádné schema markup, nebo invalid JSON-LD
+
+### Dimenze 3 — Snippet eligibility (0–20)
+
+- **20 bodů:** Stránka je v top 10 pro hlavní KW, struktura H2/H3 jako otázky, FAQ s reálnými dotazy, listicle pro seznamy číslovaný
+- **10–15 bodů:** Top 10 ano, ale struktura nadpisů marketingová, ne otázková
+- **0–5 bodů:** Stránka není v top 10, snippet eligibility je nulová
+
+### Dimenze 4 — Citation-readiness (0–20)
+
+- **20 bodů:** Fact-density 3+ na 100 slov, inline atribuce zdrojů, datace tvrzení, autorský profil u YMYL témat
+- **10–15 bodů:** Fakta jsou, ale chybí atribuce nebo datace
+- **0–5 bodů:** Marketingová próza bez čísel a citací
+
+### Dimenze 5 — Voice-friendly (0–20)
+
+- **20 bodů:** Odpověď je čitelná nahlas v 5–8 sekundách, neobsahuje vizuální odkazy („viz tabulka výše"), používá běžné formulace
+- **10–15 bodů:** Odpověď je textově OK, ale obsahuje zkratky nebo komplikované konstrukce
+- **0–5 bodů:** Odpověď je nahlas nečitelná — odkazy na tabulky, dlouhé větné konstrukce, žargon bez vysvětlení
+
+**Interpretace celkového skóre:**
+
+- **80–100:** Launch-ready. Stránka má vysokou šanci na Featured Snippet i AIO citaci.
+- **50–80:** Cílené úpravy. Doplnit chybějící dimenze, ne plošný přepis.
+- **0–50:** Kompletní přepis úvodu a FAQ. Stránka v aktuálním stavu citation potential nemá.
+
+**Jak skóre použít:** projdete 5 stránek měsíčně, ohodnotíte, zaznamenáte do Google Sheetu, sledujete trend. Po 90 dnech máte přehled, kde investice do AEO úprav přinesla měřitelné posuny.
+
+## <strong>Měření AEO výkonu</strong> přes <span class="hl">Search Console a manuální audit</span>
+
+Free baseline pro většinu malých webů stačí — placené nástroje mají smysl až s 20+ článků v top 10.
+
+### Co měřit v GSC
+
+**Performance → Search Appearance:**
+
+- **FAQ rich snippets** — kolik impressions a kliků dostávají
+- **HowTo** — kolik impressions a kliků
+- **Featured Snippets** — pokud máte (zobrazuje se jako web result, hledejte v Queries s vysokým CTR)
+
+**Performance → Queries:**
+
+- Filtr **CTR pod 5 %** s alespoň 100 impressions = kandidáti na AEO úpravu (vidí vás, ale neklikají = pravděpodobně berou odpověď z AIO/snippetu jiného webu)
+- Filtr **position 1–3** s nízkým CTR = potenciálně ztrácíte na AIO panel nad výsledky
+
+**Coverage:**
+
+- Indexovatelnost stránek (předpoklad pro vše)
+- Mobile usability (Google preferuje mobile-friendly stránky pro AIO citace)
+
+### Manuální AIO audit (jednou měsíčně)
+
+1. Top 10 vašich klíčových slov v Googlu (nebo top 20 pro detailnější obrázek)
+2. Pro každý dotaz zapsat: **AIO panel zobrazen (Y/N), vaše doména citována (Y/N), kdo jiný citován**
+3. Tabulka v Google Sheets s historií — po 6 měsících máte trend
+
+### Profesionální tracking — kdy má smysl
+
+Investice 99–500 $/měsíc do trackingu **se vyplatí s reálnou content base** — minimálně 20+ článků v top 10 a aktivní content tým, který data využije pro iterace.
+
+| Nástroj | Cena | Kdy zvážit |
+|---|---|---|
+| **Otterly AI** | $29 Lite, $99 Pro | Sleduje 50+ promptů, citation share, sentiment, sources. Free tier pro vyzkoušení. |
+| **Profound** | $500+/měs | Enterprise. Hlubší tracking, integrace s reportingem, dashboard pro management. |
+| **Marketing Miner Brand Radar** | $99/měs | **CZ trh first**, AIO presence pro české keywords, integrace s ostatními moduly platformy. |
+| **Ahrefs Brand Radar** | součást Ahrefs | Pokud už Ahrefs platíte, Brand Radar je nadstavba bez příplatku. |
+
+Detailní průvodce nástroji v článku [SEO nástroje 2026](/blog/seo-nastroje-2026/) a metodikou v [Měření SEO výkonu 2026](/blog/mereni-seo-vykonu-2026/).
+
+## <strong>3 časté chyby</strong>, které <span class="hl">zabíjejí AEO</span>
+
+### Chyba 1 — Over-optimization answer blocku
+
+Některé weby nacpou do prvních 60 slov **5 KW variant**, snaží se pokrýt všechny dotazy najednou. Výsledek: text vypadá strojově, Google ho vyhodnotí jako keyword stuffing a snippet ignoruje.
+
+**Pravidlo:** jeden answer block = jeden hlavní dotaz. Pokud chcete pokrýt 5 různých dotazů, mějte 5 stránek (nebo 5 H2 sekcí) s každý vlastním answer blockem.
+
+### Chyba 2 — FAQ schema bez korespondence s HTML
+
+Nejčastější issue v praxi: **FAQ otázky v JSON-LD se liší od textu na stránce**. Někdo přidá schema přes plugin, který vytahuje data z databáze, ale text na stránce je editovaný copywriterem manuálně. Důsledek: schema ignorováno.
+
+**Pravidlo:** otázky a odpovědi v HTML a JSON-LD se musí **přesně shodovat slovo od slova**. Validace v každém deploy cyklu.
+
+### Chyba 3 — Missing entity context
+
+Answer block bez **brand a entity kontextu** Google často nevyužije pro AIO. Když napíšete „SEO je proces, který…" bez jakékoliv autoritativní reference, AI nemá, čím verifikovat. Když napíšete „Princeton paper z roku 2023 ukázal, že strukturovaný obsah zvyšuje citation rate v řádu desítek %", máte **fakt + zdroj + datum** — citation-friendly.
+
+**Pravidlo:** každá důležitá tvrzení v answer blocku má atribuci. „Podle X" nebo „X studie z roku Y ukázala, že Z".
+
+## Co dělat <strong>tento týden, měsíc, kvartál</strong>
+
+**Tento týden:**
+
+1. **AEO audit top 5 stránek** — projeďte AEO Coverage Score (5 dimenzí, 0–100)
+2. **Identifikujte stránky pod 50** — kandidáti na přepis answer blocku
+3. **Validace FAQPage schema** — Google Rich Results Test pro top 10 stránek
+
+**Tento měsíc:**
+
+1. **Přepis answer blocků** top 10 stránek — 40–60 slov, definice + fakt + důsledek
+2. **Implementace FAQPage a HowTo schema** kde chybí
+3. **PAA extension** — z GSC vyfiltrovat low-CTR queries, doplnit do FAQ sekcí
+
+**Tento kvartál:**
+
+1. **Měsíční manuální AIO audit** — sledovat citation trend
+2. **Iterace podle dat** — co získalo Featured Snippet, kde stagnujeme
+3. **Po 90 dnech** vyhodnocení AEO Coverage Score posunů — kde investice přinesla měřitelné výsledky
+
+Pokud váháte, kterou strategii řešit jako první, [Rozhodovací matice](/rozhodovaci-matice/) pomůže prioritizovat. Pro vztah disciplín a širší kontext doporučujeme [pillar SEO vs GEO vs AEO vs AIO](/seo-vs-geo-vs-aeo-vs-aio/).
+
+## Reálné <strong>výsledky</strong> v <span class="hl">praxi</span>
+
+AEO playbook má největší dopad jako součást **kombinovaného workflow** — SEO základ + AEO struktura + GEO citovatelnost současně.
+
+<Insight tone="aeo" icon="✦" label="Tato stránka jako živý příklad AEO playbooku">
+Článek, který právě čtete, je sám implementací 7 kroků: **answer block 40–60 slov nahoře**, **FAQ s reálnými dotazy a FAQPage schema**, **HowTo schema na 7 kroků**, **fact-density** (Princeton paper, Semrush data, Backlinko CTR), **AEO Coverage Score** jako vlastní framework, **strukturované H2/H3 jako otázky**. Zkuste si to ověřit — zeptejte se Googlu „jak optimalizovat web pro AEO" nebo „AEO Coverage Score" a sledujte, jestli se objeví v AIO panelu.
+</Insight>
+
+<Insight tone="aeo" icon="✦" label="Typický posun po 90 dnech AEO playbooku">
+U klientů s **20+ stránek v top 10** vidíme po systematické AEO úpravě (answer blocky + FAQ + schema + fact-density) typicky **30–50 % nárůst Featured Snippet impressions** v GSC za 90 dní. AIO presence je méně předvídatelná, ale u edukativních článků s dobrou strukturou se objevují **první AIO citace 1–3 měsíce** po implementaci. Klíč: nejde o plošné úpravy, ale o cílené přepisy úvodu top 20 stránek.
+</Insight>
+
+## Kde si nechat <strong>poradit</strong> nebo <span class="hl">implementaci</span>
+
+AEO optimalizace dává největší smysl jako součást širší AI viditelnostní strategie. Pokud nevíte, kde leží mezery na vašem konkrétním webu, nebo nemáte kapacitu na audit a přepis top 20 stránek, [Sniperdesign nabízí audit AI viditelnosti](https://www.sniperdesign.cz/audity) — projdeme všech 7 kroků AEO playbooku, vyhodnotíme AEO Coverage Score a doporučíme prioritní kroky podle typu byznysu. První [konzultace](https://www.sniperdesign.cz/konzultace) nezávazná.
