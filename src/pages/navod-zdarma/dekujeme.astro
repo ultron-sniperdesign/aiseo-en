@@ -1,0 +1,388 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+
+const pageTitle = "Děkujeme — návod je na cestě";
+const pageDescription =
+  "E-mail s odkazem ke stažení PDF jsme právě odeslali. Zatím se mrkněte, co dalšího máme.";
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  noindex={true}
+>
+  <main class="ty">
+    <section class="ty-hero">
+      <div class="ty-hero__icon" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none" width="64" height="64">
+          <circle cx="32" cy="32" r="30" fill="oklch(0.96 0.04 155)" />
+          <path
+            d="M20 33L28 41L44 25"
+            stroke="oklch(0.5 0.13 155)"
+            stroke-width="3.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </div>
+
+      <span class="ty-hero__eyebrow">E-mail úspěšně přijat</span>
+      <h1 class="ty-hero__title">
+        Hotovo — <strong>návod je na cestě</strong>
+      </h1>
+      <p class="ty-hero__lead">
+        Do několika sekund vám dorazí e-mail s odkazem ke stažení PDF.
+        Pokud zprávu nevidíte, mrkněte do složky <em>Hromadné</em> nebo
+        <em>Promo akce</em>.
+      </p>
+
+      <p class="ty-hero__fallback">
+        Nechce se vám čekat? <a
+          href="/download/homepage-pro-AI-vyhledavani.pdf"
+          download
+          class="ty-hero__download"
+        >Stáhněte si PDF přímo →</a>
+      </p>
+    </section>
+
+    <!-- Co dál — soft cross-sell -->
+    <section class="ty-section">
+      <header class="ty-section__head">
+        <span class="ty-section__eyebrow">Co dělat dál</span>
+        <h2 class="ty-section__title">
+          Než si návod přečtete, <strong>tady jsou dvě věci</strong> ke zvážení
+        </h2>
+      </header>
+
+      <div class="ty-cards">
+        <article class="ty-card">
+          <span class="ty-card__num">Pack · pro celý web</span>
+          <h3 class="ty-card__title">Kompletní AI SEO Wireframe Pack</h3>
+          <div class="ty-card__price">
+            1 990 Kč <small>jednorázově, bez DPH</small>
+          </div>
+          <p class="ty-card__body">
+            Sedm typů stránek, šablony textů, strukturovaná data, Figma jako
+            bonus. Framework, podle kterého má strukturu celý web — ne jen homepage.
+          </p>
+          <a href="#" class="ty-card__cta">Připravujeme — informujeme e-mailem</a>
+        </article>
+
+        <article class="ty-card ty-card--audit">
+          <span class="ty-card__num">Audit · uděláme to za vás</span>
+          <h3 class="ty-card__title">AI SEO audit od Sniperdesign</h3>
+          <div class="ty-card__price">
+            9 990 Kč <small>jednorázově, bez DPH</small>
+          </div>
+          <p class="ty-card__body">
+            Projdeme váš konkrétní web. Diagnostika ve třech vrstvách,
+            prioritní seznam úprav, 30stránkový report a 60min hovor.
+            Výstup do 5 pracovních dní.
+          </p>
+          <a
+            href="https://www.sniperdesign.cz/audity"
+            target="_blank"
+            rel="noopener"
+            class="ty-card__cta">Objednat audit →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Suggested reading -->
+    <section class="ty-section ty-section--alt">
+      <header class="ty-section__head">
+        <span class="ty-section__eyebrow">Mezitím se mrkněte</span>
+        <h2 class="ty-section__title">
+          Související obsah na webu
+        </h2>
+      </header>
+
+      <ul class="ty-links">
+        <li>
+          <a href="/seo-vs-geo-vs-aeo-vs-aio/">
+            <span class="ty-link__title">SEO vs. GEO vs. AEO vs. AIO</span>
+            <span class="ty-link__desc">Hlavní průvodce čtyřmi disciplínami AI éry vyhledávání. Pochopte rozdíl, abyste věděli, kterou cestou jít.</span>
+          </a>
+        </li>
+        <li>
+          <a href="/blog/aeo-optimalizace-v-praxi/">
+            <span class="ty-link__title">AEO optimalizace v praxi</span>
+            <span class="ty-link__desc">Detailní průvodce, jak dostat web do Google AI Overviews a Featured Snippets — praktický postup ve 12 krocích.</span>
+          </a>
+        </li>
+        <li>
+          <a href="/blog/geo-optimalizace/">
+            <span class="ty-link__title">GEO optimalizace</span>
+            <span class="ty-link__desc">Jak připravit obsah, aby ho citovaly ChatGPT, Perplexity a Claude. Citation hooks, fact density, brand mentions.</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Back -->
+    <section class="ty-back">
+      <a href="/" class="ty-back__link">
+        <span aria-hidden="true">←</span>
+        Zpět na úvod aiseo-optimalizace.cz
+      </a>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .ty {
+    --ty-violet: oklch(0.55 0.25 305);
+    --ty-magenta: oklch(0.62 0.27 335);
+    --ty-green: oklch(0.5 0.13 155);
+  }
+
+  /* ===== HERO ===== */
+  .ty-hero {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: clamp(4rem, 8vw, 6rem) var(--space-section-x) clamp(3rem, 5vw, 4rem);
+    text-align: center;
+  }
+  .ty-hero__icon {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  .ty-hero__eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ty-green);
+    background: oklch(0.96 0.04 155);
+    padding: 0.4rem 0.875rem;
+    border-radius: 999px;
+    margin-bottom: 1.5rem;
+  }
+  .ty-hero__title {
+    font-family: var(--font-sans);
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 250;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--color-ink);
+    margin: 0 0 1rem;
+  }
+  .ty-hero__title strong {
+    font-weight: 600;
+    color: var(--ty-violet);
+  }
+  .ty-hero__lead {
+    font-family: var(--font-sans);
+    font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+    font-weight: 350;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0 auto 1.75rem;
+    max-width: 40rem;
+  }
+  .ty-hero__lead em {
+    font-style: normal;
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+  .ty-hero__fallback {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    color: var(--color-ink-muted);
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-radius: 999px;
+    display: inline-block;
+  }
+  .ty-hero__download {
+    color: var(--ty-violet);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid currentColor;
+    margin-left: 0.375rem;
+  }
+
+  /* ===== Sections ===== */
+  .ty-section {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(3rem, 6vw, 5rem) var(--space-section-x);
+  }
+  .ty-section--alt {
+    background: var(--color-paper-deep);
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .ty-section--alt > * {
+    max-width: var(--max-section);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-section-x);
+    padding-right: var(--space-section-x);
+  }
+  .ty-section__head {
+    max-width: 50rem;
+    margin-bottom: clamp(2rem, 3.5vw, 2.5rem);
+  }
+  .ty-section__eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    margin-bottom: 0.75rem;
+  }
+  .ty-section__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.5rem, 2.8vw, 2rem);
+    font-weight: 250;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .ty-section__title strong {
+    font-weight: 600;
+    color: var(--ty-violet);
+  }
+
+  /* ===== Cross-sell cards ===== */
+  .ty-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 720px) {
+    .ty-cards { grid-template-columns: 1fr 1fr; }
+  }
+  .ty-card {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 14px;
+    padding: 1.75rem 1.625rem;
+    border-left: 3px solid var(--ty-violet);
+  }
+  .ty-card--audit { border-left-color: var(--ty-magenta); }
+  .ty-card__num {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ty-violet);
+    margin-bottom: 0.875rem;
+  }
+  .ty-card--audit .ty-card__num { color: var(--ty-magenta); }
+  .ty-card__title {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+  }
+  .ty-card__price {
+    font-family: var(--font-sans);
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: 1rem;
+  }
+  .ty-card__price small {
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: var(--color-ink-muted);
+    margin-left: 0.5rem;
+  }
+  .ty-card__body {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0 0 1.25rem;
+  }
+  .ty-card__cta {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--ty-violet);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+  }
+  .ty-card--audit .ty-card__cta { color: var(--ty-magenta); }
+
+  /* ===== Suggested links ===== */
+  .ty-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    max-width: 60rem;
+  }
+  .ty-links li a {
+    display: block;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .ty-links li a:hover {
+    border-color: var(--ty-violet);
+    transform: translateX(2px);
+  }
+  .ty-link__title {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: 0.375rem;
+    letter-spacing: -0.01em;
+  }
+  .ty-link__desc {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+  }
+
+  /* ===== Back ===== */
+  .ty-back {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: 0 var(--space-section-x) clamp(4rem, 6vw, 5rem);
+    text-align: center;
+  }
+  .ty-back__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-ink-muted);
+    text-decoration: none;
+    padding: 0.625rem 1.125rem;
+    border-radius: 8px;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .ty-back__link:hover {
+    background: var(--color-paper-deep);
+    color: var(--color-ink);
+  }
+</style>
