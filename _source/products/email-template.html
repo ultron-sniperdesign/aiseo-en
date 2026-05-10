@@ -6,6 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="x-apple-disable-message-reformatting" />
 <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
+<meta name="color-scheme" content="light only" />
+<meta name="supported-color-schemes" content="light only" />
 <title>Tady je váš návod — homepage pro AI vyhledávání</title>
 <!--[if mso]>
 <style type="text/css">
@@ -29,12 +31,13 @@
     .btn-mobile { width: 100% !important; }
   }
 
-  /* Dark mode */
-  @media (prefers-color-scheme: dark) {
-    .dark-bg { background-color: #1a1a1a !important; }
-    .dark-text { color: #f0f0f0 !important; }
-    .dark-card { background-color: #252525 !important; border-color: #3a3a3a !important; }
-  }
+  /* Dark mode disabled — meta color-scheme + supported-color-schemes
+     v <head> říká klientům "tento e-mail je light-only, neinvertuj barvy".
+     Pokud klient auto-invertuje navzdory tomu (některé Gmail apps), tahle
+     fallback rule resetuje barvy zpět:
+  */
+  [data-ogsc] body, [data-ogsb] body { background-color: #f1f4f7 !important; }
+  [data-ogsc] .force-light, [data-ogsb] .force-light { color: #2D3038 !important; background-color: #ffffff !important; }
 </style>
 </head>
 <body style="margin: 0; padding: 0; background-color: #f1f4f7; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
@@ -49,7 +52,7 @@
 <!-- ============================================================ -->
 <!-- WRAPPER                                                      -->
 <!-- ============================================================ -->
-<table role="presentation" border="0" cellspacing="0" cellpadding="0" width="100%" style="background-color: #f1f4f7;" class="dark-bg">
+<table role="presentation" border="0" cellspacing="0" cellpadding="0" width="100%" style="background-color: #f1f4f7;">
   <tr>
     <td align="center" style="padding: 32px 16px;">
 
@@ -85,7 +88,7 @@
         <!-- ============================================================ -->
         <tr>
           <td>
-            <table role="presentation" border="0" cellspacing="0" cellpadding="0" width="100%" style="background-color: #ffffff; border-radius: 14px; border: 1px solid #DBDFE5;" class="dark-card">
+            <table role="presentation" border="0" cellspacing="0" cellpadding="0" width="100%" style="background-color: #ffffff; border-radius: 14px; border: 1px solid #DBDFE5;">
 
               <!-- Hero greeting -->
               <tr>
@@ -98,7 +101,7 @@
 
               <tr>
                 <td align="left" style="padding: 16px 32px 16px 32px;" class="px-mobile">
-                  <h1 class="h1-mobile dark-text" style="margin: 0; font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 30px; font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; color: #2D3038;">
+                  <h1 class="h1-mobile" style="margin: 0; font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 30px; font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; color: #2D3038;">
                     Tady je váš návod —<br />
                     <span style="color: #7E3F94;">jak upravit homepage pro AI vyhledávání</span>
                   </h1>
@@ -107,7 +110,7 @@
 
               <tr>
                 <td align="left" style="padding: 0 32px 28px 32px;" class="px-mobile">
-                  <p class="dark-text" style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 16px; line-height: 1.55; color: #5A5F69;">
+                  <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 16px; line-height: 1.55; color: #5A5F69;">
                     Vaši zákazníci se dnes ptají ChatGPT a Perplexity.
                     Otázka je, jestli jste v odpovědích vy — nebo místo
                     vás konkurence. Uvnitř najdete přesný návod, jak homepage
