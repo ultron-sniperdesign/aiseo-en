@@ -18,9 +18,12 @@ interface Props {
   pageNumber: number;
   pageTitle: string;
   tone?: "primary" | "accent" | "neutral";
+  /** Celkový počet stránek pro paginaci. /navod-zdarma/ má 6 (PDF), /pack/ má 7. */
+  totalPages?: number;
 }
-const { pageNumber, pageTitle, tone = "primary" } = Astro.props as Props;
+const { pageNumber, pageTitle, tone = "primary", totalPages = 6 } = Astro.props as Props;
 const pageNumPadded = String(pageNumber).padStart(2, "0");
+const totalPadded = String(totalPages).padStart(2, "0");
 ---
 
 <div class={`mock-page mock-page--${tone}`} aria-hidden="true">
@@ -58,7 +61,7 @@ const pageNumPadded = String(pageNumber).padStart(2, "0");
 
   <!-- Footer pagination -->
   <div class="mock-page__footer">
-    <span class="mock-page__pagination">{pageNumPadded} / 06</span>
+    <span class="mock-page__pagination">{pageNumPadded} / {totalPadded}</span>
   </div>
 </div>
 

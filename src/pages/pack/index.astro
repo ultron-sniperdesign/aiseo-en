@@ -50,6 +50,22 @@ const faqJsonLd = {
         text: "Pack obsahuje krok-za-krokem návod psaný pro provozovatele webů, ne pro vývojáře. Většinu úprav (text, schema markup, struktura) zvládnete sami za odpoledne. Pokud preferujete, abychom to udělali za vás, podívejte se na AI SEO audit od Sniperdesign za 9 990 Kč — projdeme váš web a předáme prioritní seznam úprav.",
       },
     },
+    {
+      "@type": "Question",
+      name: "Dostanu aktualizace Packu, pokud se AI SEO změní?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ano. AI vyhledávání se vyvíjí, Pack udržujeme aktuální. Drobné aktualizace (nová schema markup pravidla, změny v ChatGPT/Perplexity citation systémech) dostanete zdarma e-mailem. Pokud bude potřeba zásadní revize struktury (např. nový typ AI engine), oznámíme to dopředu — typicky 1× ročně.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Je Pack vhodný i pro web bez blogu nebo bez e-shopu?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ano. Pack obsahuje sedm typů stránek, ale nemusíte aplikovat všechny. Pokud máte jen služby (žádný e-shop), využijete homepage, prodejní landing, kontakt — případně blog článek. Pokud máte e-shop bez blogu, naopak produkt, kategorii a kontakt. Pack je modulární, vezmete si jen typy, které váš web obsahuje.",
+      },
+    },
   ],
 };
 
@@ -92,7 +108,7 @@ const pageTypes = [
   {
     num: 6,
     title: "Prodejní landing",
-    desc: "Pro službu nebo produkt. CTA, form pro sběr leadů, social proof, FAQ — kompletní template přímo aplikovatelný (stejný typ stránky, jakou právě čtete).",
+    desc: "Pro službu nebo produkt. Varianta pro lead generation (form pro sběr e-mailů) i pro direct-purchase (CTA s odkazem na checkout). Social proof, FAQ, risk reduction — vše ready.",
     pageTitle: "Prodejní landing",
     tone: "accent" as const,
   },
@@ -118,8 +134,8 @@ const pageTypes = [
             <strong>celý, ne jen homepage</strong>
           </h1>
           <p class="pack-hero__urgency">
-            Free PDF řeší jednu stránku. Konkurence připravuje produkty, kategorie i blog.
-            <strong>Bez nich vás AI nedoporučí</strong>.
+            Bez struktury mimo homepage budete v AI odpovědích snadno přehlédnutí.
+            <strong>Čím déle čekáte, tím víc obsahu pak budete předělávat.</strong>
           </p>
           <p class="pack-hero__lead">
             Wireframe Pack obsahuje sedm typů stránek se šablonami textů, schema markupem
@@ -139,7 +155,7 @@ const pageTypes = [
               class="pack-buy-btn"
               aria-label="Koupit AI SEO Wireframe Pack za 1 490 Kč"
             >
-              Koupit Pack
+              Koupit Pack za 1&nbsp;490&nbsp;Kč
               <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path
                   d="M1 7H13M13 7L7 1M13 7L7 13"
@@ -151,31 +167,37 @@ const pageTypes = [
               </svg>
             </a>
             <p class="pack-hero__trust-line">
-              Platba kartou (Stripe) · faktura na firmu · okamžitý přístup po platbě
+              Platba kartou (Stripe) · faktura na firmu · bez předplatného
             </p>
           </div>
 
-          <ul class="pack-hero__bullets" aria-label="Co je v Packu">
-            <li>✓ 7 typů stránek (wireframe + anotace + šablony textů)</li>
-            <li>✓ Schema markup příklady (Product, FAQPage, Article, LocalBusiness)</li>
-            <li>✓ Figma soubor + krok-za-krokem návod aplikace</li>
-          </ul>
+          <!-- "Po zaplacení dostanete" mini box — snižuje nejistotu před klikem -->
+          <aside class="pack-delivery" aria-label="Co dostanete po zaplacení">
+            <p class="pack-delivery__label">Po zaplacení dostanete</p>
+            <ul class="pack-delivery__list">
+              <li>Figma soubor se 7 wireframy</li>
+              <li>PDF návod aplikace</li>
+              <li>Textové šablony a schema příklady</li>
+              <li>Fakturu na firmu</li>
+            </ul>
+            <p class="pack-delivery__note">Vše okamžitě na e-mail po platbě.</p>
+          </aside>
         </div>
 
         <!-- 7-page mockup focus -->
         <div class="pack-hero__mockup" aria-hidden="true">
           <div class="hero-focus">
             <div class="hero-focus__back hero-focus__back--1">
-              <MockupPage pageNumber={2} pageTitle="Produkt" tone="primary" />
+              <MockupPage pageNumber={2} pageTitle="Produkt" tone="primary" totalPages={7} />
             </div>
             <div class="hero-focus__back hero-focus__back--2">
-              <MockupPage pageNumber={5} pageTitle="Blog výpis" tone="accent" />
+              <MockupPage pageNumber={5} pageTitle="Blog výpis" tone="accent" totalPages={7} />
             </div>
             <div class="hero-focus__back hero-focus__back--3">
-              <MockupPage pageNumber={6} pageTitle="Prodejní landing" tone="accent" />
+              <MockupPage pageNumber={6} pageTitle="Prodejní landing" tone="accent" totalPages={7} />
             </div>
             <div class="hero-focus__hero">
-              <MockupPage pageNumber={1} pageTitle="Homepage" tone="primary" />
+              <MockupPage pageNumber={1} pageTitle="Homepage" tone="primary" totalPages={7} />
             </div>
           </div>
         </div>
@@ -245,11 +267,12 @@ const pageTypes = [
       <header class="lp-section__head">
         <span class="eyebrow"><span class="eyebrow__num">03</span> Komu se Pack hodí</span>
         <h2 class="lp-section__title">
-          <strong>Univerzální balík</strong> — od osobního webu po enterprise e-shop
+          Pack <strong>nejvíc využijí ti, kdo mají co prodávat</strong>
         </h2>
         <p class="lp-section__lead">
-          Stejně jako se SEO hodí každému webu, AI SEO se hodí každému webu.
-          Pack je framework, ne specifický pro typ byznysu.
+          Pack je framework — stránka po stránce. Hodí se webům, které
+          chtějí být vidět v AI odpovědích a získat z nich konkrétní
+          akce: nákupy, leady, kontakty.
         </p>
       </header>
 
@@ -299,6 +322,33 @@ const pageTypes = [
         ))}
       </dl>
     </section>
+
+    <!-- ===== Mobile sticky CTA bar — viditelný po opuštění hero =====
+         Snižuje friction na dlouhých scrollech, drží Buy akci na dosah palce. -->
+    <aside class="pack-sticky-cta" id="pack-sticky-cta" aria-hidden="true">
+      <div class="pack-sticky-cta__inner">
+        <div class="pack-sticky-cta__price">
+          <strong>1&nbsp;490&nbsp;Kč</strong>
+          <span>jednorázově</span>
+        </div>
+        <a
+          href={STRIPE_CHECKOUT_URL}
+          class="pack-sticky-cta__btn"
+          aria-label="Koupit Pack za 1 490 Kč"
+        >
+          Koupit Pack
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path
+              d="M1 7H13M13 7L7 1M13 7L7 13"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </aside>
 
     <!-- ===== FINAL CTA ===== -->
     <section class="pack-final">
@@ -533,19 +583,58 @@ const pageTypes = [
     font-size: 1.125rem;
     padding: 1.125rem 2.25rem;
   }
-  .pack-hero__bullets {
+  /* "Po zaplacení dostanete" mini box — vizuální slib digital delivery */
+  .pack-delivery {
+    background: oklch(0.97 0.02 305);
+    border: 1px solid oklch(0.88 0.04 305);
+    border-radius: 12px;
+    padding: 1.25rem 1.375rem;
+    max-width: 36rem;
+  }
+  .pack-delivery__label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--lp-violet);
+    margin: 0 0 0.75rem;
+  }
+  .pack-delivery__list {
     list-style: none;
-    margin: 0;
+    margin: 0 0 0.75rem;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.625rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
     font-family: var(--font-sans);
     font-size: 0.9375rem;
-    color: var(--color-ink-muted);
+    color: var(--color-ink);
   }
-  .pack-hero__bullets li {
+  @media (min-width: 540px) {
+    .pack-delivery__list { grid-template-columns: 1fr 1fr; }
+  }
+  .pack-delivery__list li {
+    position: relative;
+    padding-left: 1.375rem;
+    line-height: 1.4;
+  }
+  .pack-delivery__list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: oklch(0.6 0.18 145);
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .pack-delivery__note {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
     line-height: 1.5;
+    color: var(--color-ink-muted);
+    margin: 0;
+    font-style: italic;
   }
 
   /* ===== Hero focus mockup (sdílený s /navod-zdarma/) ===== */
@@ -784,10 +873,102 @@ const pageTypes = [
     color: var(--color-ink-faint);
     margin: 1rem 0 0;
   }
+
+  /* ===== Mobile sticky CTA bar =====
+     Visible on mobile only, fixed bottom. Hidden by default; .is-active když
+     hero opustí viewport (controlled via IntersectionObserver). */
+  .pack-sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    background: oklch(0.99 0.005 270);
+    border-top: 1px solid var(--color-rule);
+    box-shadow: 0 -4px 16px -4px oklch(0 0 0 / 0.08);
+    padding: 0.625rem 1rem;
+    transform: translateY(110%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .pack-sticky-cta.is-active {
+    transform: translateY(0);
+  }
+  @media (max-width: 720px) {
+    .pack-sticky-cta { display: block; }
+  }
+  .pack-sticky-cta__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    max-width: 30rem;
+    margin: 0 auto;
+  }
+  .pack-sticky-cta__price {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    font-family: var(--font-sans);
+    line-height: 1;
+  }
+  .pack-sticky-cta__price strong {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-ink);
+    letter-spacing: -0.015em;
+  }
+  .pack-sticky-cta__price span {
+    font-size: 0.75rem;
+    color: var(--color-ink-faint);
+  }
+  .pack-sticky-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #ffffff !important;
+    text-decoration: none;
+    background: linear-gradient(135deg, oklch(0.72 0.2 145) 0%, oklch(0.6 0.18 145) 100%);
+    padding: 0.75rem 1.25rem;
+    border-radius: 999px;
+    letter-spacing: -0.005em;
+    box-shadow: 0 4px 12px -4px oklch(0.72 0.2 145 / 0.5);
+  }
 </style>
 
-<!-- Hero focus parallax — sdílený script s /navod-zdarma/ -->
+<!-- Hero focus parallax + mobile sticky CTA -->
 <script is:inline>
+  // === Mobile sticky CTA bar ===
+  // Activate když hero buy section opustí viewport (cca po prvním scrollu).
+  (function () {
+    if (typeof window === "undefined") return;
+    var hero = document.querySelector(".pack-hero__buy");
+    var sticky = document.getElementById("pack-sticky-cta");
+    if (!hero || !sticky) return;
+    if (!("IntersectionObserver" in window)) return;
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          // Když hero CTA NENÍ ve viewportu, ukaž sticky
+          if (entry.isIntersecting) {
+            sticky.classList.remove("is-active");
+            sticky.setAttribute("aria-hidden", "true");
+          } else {
+            sticky.classList.add("is-active");
+            sticky.setAttribute("aria-hidden", "false");
+          }
+        });
+      },
+      { threshold: 0, rootMargin: "0px 0px -100px 0px" },
+    );
+    observer.observe(hero);
+  })();
+
+  // === Hero focus parallax — sdílený script s /navod-zdarma/ ===
   (function () {
     if (typeof window === "undefined") return;
     var container = document.querySelector(".hero-focus");
