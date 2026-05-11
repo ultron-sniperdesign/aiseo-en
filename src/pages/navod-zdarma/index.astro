@@ -226,41 +226,53 @@ const faqJsonLd = {
     </section>
 
     <!-- ===== UPSELL TEASER ===== -->
-    <section class="lp-section">
+    <section class="lp-section" id="pack">
       <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">07</span> Co přijde po PDF</span>
+        <span class="eyebrow"><span class="eyebrow__num">07</span> Co dál — pokud chcete víc</span>
+        <span class="lp-section__proof">600+ e‑shopů · specialisté na Upgates a Shoptet</span>
         <h2 class="lp-section__title">
-          Pokud chcete <strong>jít dál</strong>, máme dvě navazující možnosti
+          Tohle PDF řeší jednu stránku. <strong>AI vyhledávání ale hodnotí celý web.</strong>
         </h2>
         <p class="lp-section__lead">
-          Návod zdarma vás naučí strukturu jedné stránky. Pokud chcete kompletní
-          web nebo si nechat web zauditovat od nás, tady jsou dvě cesty.
+          Pokud má konkurence připravené i produktové stránky, kategorie a blog,
+          dohoníte je těžko. Tady jsou dva způsoby, jak se vyrovnat.
         </p>
       </header>
 
       <div class="lp-tiers">
         <article class="lp-tier">
           <span class="lp-tier__num">Pack · pro celý web</span>
-          <h3 class="lp-tier__title">Kompletní AI SEO Wireframe Pack</h3>
-          <div class="lp-tier__price">1 490 Kč <small>jednorázově, bez DPH</small></div>
+          <h3 class="lp-tier__title">Kompletní AI&nbsp;SEO Wireframe Pack</h3>
           <p class="lp-tier__body">
-            Sedm typů stránek včetně produktu, kategorie a článku. Šablony textů,
-            strukturovaná data, Figma soubor jako bonus. Framework pro celý web.
+            Návod pokryl homepage. Pack pokryje celý e‑shop — sedm typů stránek
+            s hotovými texty, kterým AI rozumí. Otevřete, dosaďte vlastní obsah,
+            máte hotovo. Bez konzultantů.
           </p>
-          <a href="#" class="lp-tier__link">Připravujeme — dostanete e‑mail, jakmile bude k dispozici</a>
+          <div class="lp-tier__footer">
+            <div class="lp-tier__price">1&nbsp;490&nbsp;Kč <small>jednorázově, bez DPH</small></div>
+            <a href="/pack/" class="lp-tier__cta">Koupit Pack&nbsp;→</a>
+          </div>
         </article>
 
-        <article class="lp-tier lp-tier--audit">
-          <span class="lp-tier__num">Audit · uděláme to za vás</span>
-          <h3 class="lp-tier__title">AI SEO audit od Sniperdesign</h3>
-          <div class="lp-tier__price">9 990 Kč <small>jednorázově, bez DPH</small></div>
+        <article class="lp-tier lp-tier--audit lp-tier--featured">
+          <div class="lp-tier__head">
+            <span class="lp-tier__num">Audit · uděláme to za vás</span>
+            <span class="lp-tier__pill">★&nbsp;To nejlepší</span>
+          </div>
+          <h3 class="lp-tier__title">AI&nbsp;SEO audit od Sniperdesign</h3>
           <p class="lp-tier__body">
-            Projdeme váš konkrétní web. Tři vrstvy diagnostiky, prioritní seznam
-            úprav, 30stránkový report a 60min hovor. Výstup do 5 pracovních dní.
+            Získáte přesný plán, co změnit na každé stránce, aby vás AI začala
+            doporučovat zákazníkům. Víte, co AI hledá u vašeho oboru, kde má
+            konkurence díry a jak ji předběhnout. Plus 60min konzultace.
+            Výstup do 5 pracovních dní.
           </p>
-          <a href="https://www.sniperdesign.cz/audity" target="_blank" rel="noopener" class="lp-tier__link">
-            Více o auditu →
-          </a>
+          <span class="lp-tier__chip">✓ Postavili jsme 600+ e‑shopů na Upgates a Shoptet</span>
+          <div class="lp-tier__footer">
+            <div class="lp-tier__price">9&nbsp;990&nbsp;Kč <small>jednorázově, bez DPH</small></div>
+            <a href="https://www.sniperdesign.cz/audity" target="_blank" rel="noopener" class="lp-tier__cta">
+              Objednat&nbsp;→
+            </a>
+          </div>
         </article>
       </div>
     </section>
@@ -678,6 +690,34 @@ const faqJsonLd = {
     border-left: 3px solid var(--lp-violet);
   }
   .lp-tier--audit { border-left-color: var(--lp-magenta); }
+  /* Featured tier (Audit) — sytější magenta plocha, tlustší border, větší padding */
+  .lp-tier--featured {
+    background: oklch(0.96 0.04 335);
+    border: 2px solid oklch(0.85 0.1 335);
+    border-left: 5px solid var(--lp-magenta);
+    padding: 2rem 1.875rem;
+  }
+  .lp-tier__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.875rem;
+    flex-wrap: wrap;
+  }
+  .lp-tier__pill {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: var(--lp-magenta);
+    padding: 5px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
   .lp-tier__num {
     display: inline-block;
     font-family: var(--font-mono);
@@ -688,22 +728,49 @@ const faqJsonLd = {
     color: var(--lp-violet);
     margin-bottom: 0.875rem;
   }
+  .lp-tier__head .lp-tier__num { margin-bottom: 0; }
   .lp-tier--audit .lp-tier__num { color: var(--lp-magenta); }
   .lp-tier__title {
     font-family: var(--font-sans);
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--color-ink);
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.625rem;
     letter-spacing: -0.015em;
     line-height: 1.2;
+  }
+  .lp-tier__body {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0 0 1rem;
+  }
+  .lp-tier__chip {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--color-ink-muted);
+    background-color: oklch(1 0 0 / 0.7);
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid oklch(0.85 0.1 335);
+    margin-bottom: 1.125rem;
+  }
+  .lp-tier__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
   .lp-tier__price {
     font-family: var(--font-sans);
     font-size: 1.375rem;
     font-weight: 600;
     color: var(--color-ink);
-    margin-bottom: 1rem;
     letter-spacing: -0.015em;
   }
   .lp-tier__price small {
@@ -712,23 +779,35 @@ const faqJsonLd = {
     color: var(--color-ink-muted);
     margin-left: 0.5rem;
   }
-  .lp-tier__body {
+  .lp-tier__cta {
+    display: inline-block;
     font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    line-height: 1.55;
-    color: var(--color-ink-muted);
-    margin: 0 0 1.25rem;
-  }
-  .lp-tier__link {
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     font-weight: 600;
-    color: var(--lp-violet);
+    color: #ffffff;
     text-decoration: none;
-    border-bottom: 1px solid currentColor;
-    padding-bottom: 1px;
+    background-color: var(--lp-violet);
+    padding: 0.625rem 1.125rem;
+    border-radius: 999px;
+    letter-spacing: -0.005em;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
   }
-  .lp-tier--audit .lp-tier__link { color: var(--lp-magenta); }
+  .lp-tier__cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px -4px oklch(0 0 0 / 0.25);
+  }
+  .lp-tier--audit .lp-tier__cta { background-color: var(--lp-magenta); }
+  /* Eyebrow proof line — pod hlavním eyebrow, drobná autorita */
+  .lp-section__proof {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--lp-violet);
+    margin-top: 0.625rem;
+  }
 
   /* ===== FAQ ===== */
   .lp-faq {
