@@ -229,10 +229,69 @@ const pageTypes = [
       </div>
     </section>
 
-    <!-- ===== 02 CO DOSTANETE ===== -->
+    <!-- ===== 02 UKÁZKA STRUKTURY — drill-down jednoho typu stránky ===== -->
     <section class="lp-section lp-section--alt">
       <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">02</span> Co dostanete po koupi</span>
+        <span class="eyebrow"><span class="eyebrow__num">02</span> Co je uvnitř jedné stránky</span>
+        <h2 class="lp-section__title">
+          Ukázka struktury — <strong>produktová stránka v Packu</strong>
+        </h2>
+        <p class="lp-section__lead">
+          Každý ze 7 typů stránek obsahuje wireframe, anotace, šablonu
+          textů a schema markup. Tady je, jak se to skládá u produktové
+          stránky:
+        </p>
+      </header>
+
+      <article class="pack-sample">
+        <ol class="pack-sample__list">
+          <li>
+            <span class="pack-sample__num">01</span>
+            <div class="pack-sample__body">
+              <strong>Hero s názvem produktu a hlavním benefitem</strong>
+              <p>Title pattern pro AI citaci. Krátká anotace (40–60 slov) hned pod titulem — AI nástroje ji vytahují jako přímou odpověď.</p>
+            </div>
+          </li>
+          <li>
+            <span class="pack-sample__num">02</span>
+            <div class="pack-sample__body">
+              <strong>Blok dostupnosti a parametrů</strong>
+              <p>Strukturovaná specifikace, kterou AI rozpozná jako produktová data (cena, stav skladu, varianty).</p>
+            </div>
+          </li>
+          <li>
+            <span class="pack-sample__num">03</span>
+            <div class="pack-sample__body">
+              <strong>FAQ pro nákupní námitky</strong>
+              <p>Otázky a odpovědi s FAQPage schema — ChatGPT a Perplexity vytahují přímé citace, Google AI Overviews je zobrazuje.</p>
+            </div>
+          </li>
+          <li>
+            <span class="pack-sample__num">04</span>
+            <div class="pack-sample__body">
+              <strong>Product schema JSON-LD</strong>
+              <p>Strukturovaná data o produktu, ceně, dostupnosti — připravené pro Google Rich Results i AI nástroje.</p>
+            </div>
+          </li>
+          <li>
+            <span class="pack-sample__num">05</span>
+            <div class="pack-sample__body">
+              <strong>Related products + interní prolinkování</strong>
+              <p>Hub-and-spoke pattern, aby AI rozpoznala kategorii a propojila váš sortiment do tematických clusterů.</p>
+            </div>
+          </li>
+        </ol>
+        <p class="pack-sample__note">
+          Stejný princip drží pro všech 7 typů stránek — homepage, produkt, kategorii,
+          blog článek, blog výpis, prodejní landing i kontakt.
+        </p>
+      </article>
+    </section>
+
+    <!-- ===== 03 CO DOSTANETE ===== -->
+    <section class="lp-section">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">03</span> Co dostanete po koupi</span>
         <h2 class="lp-section__title">
           Sedm stránek, šablony, schema a Figma <strong>jako jeden balík</strong>
         </h2>
@@ -265,7 +324,7 @@ const pageTypes = [
     <!-- ===== 03 KOMU SE PACK HODÍ ===== -->
     <section class="lp-section">
       <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">03</span> Komu se Pack hodí</span>
+        <span class="eyebrow"><span class="eyebrow__num">04</span> Komu se Pack hodí</span>
         <h2 class="lp-section__title">
           Pack <strong>nejvíc využijí ti, kdo mají co prodávat</strong>
         </h2>
@@ -321,6 +380,13 @@ const pageTypes = [
           </div>
         ))}
       </dl>
+
+      <!-- Mikrotransparentnost k digitálnímu produktu — místo refundu -->
+      <p class="pack-transparency">
+        Jde o digitální produkt s okamžitým přístupem po platbě.
+        Před nákupem proto na stránce uvádíme přesný obsah Packu —
+        sedm typů stránek, ukázku struktury, deliverables i FAQ.
+      </p>
     </section>
 
     <!-- ===== Mobile sticky CTA bar — viditelný po opuštění hero =====
@@ -756,6 +822,70 @@ const pageTypes = [
     margin: 0;
   }
 
+  /* ===== Ukázka struktury — produktová stránka drill-down ===== */
+  .pack-sample {
+    max-width: 50rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 14px;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border-left: 4px solid var(--lp-violet);
+  }
+  .pack-sample__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+  }
+  .pack-sample__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .pack-sample__num {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.875rem;
+    height: 1.875rem;
+    border-radius: 999px;
+    background: oklch(0.95 0.04 305);
+    color: var(--lp-violet);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+  .pack-sample__body {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+  }
+  .pack-sample__body strong {
+    display: block;
+    color: var(--color-ink);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.01em;
+  }
+  .pack-sample__body p {
+    margin: 0;
+  }
+  .pack-sample__note {
+    margin: 1.5rem 0 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-rule);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--color-ink-faint);
+    font-style: italic;
+  }
+
   /* ===== Deliverables / Audience lists ===== */
   .pack-deliverables,
   .pack-audience {
@@ -874,6 +1004,21 @@ const pageTypes = [
     margin: 1rem 0 0;
   }
 
+  /* Microtransparentnost — drobná věta pod FAQ */
+  .pack-transparency {
+    max-width: 50rem;
+    margin: 2.5rem 0 0;
+    padding: 1rem 1.125rem;
+    background: oklch(0.97 0.005 270);
+    border-left: 3px solid oklch(0.78 0.01 270);
+    border-radius: 8px;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    font-style: italic;
+  }
+
   /* ===== Mobile sticky CTA bar =====
      Visible on mobile only, fixed bottom. Hidden by default; .is-active když
      hero opustí viewport (controlled via IntersectionObserver). */
@@ -942,30 +1087,42 @@ const pageTypes = [
 <!-- Hero focus parallax + mobile sticky CTA -->
 <script is:inline>
   // === Mobile sticky CTA bar ===
-  // Activate když hero buy section opustí viewport (cca po prvním scrollu).
+  // Visible je TYP "mezi hero a final CTA" — když je hero nebo final CTA
+  // ve viewportu, sticky se skrývá (uživatel už má CTA na obrazovce).
   (function () {
     if (typeof window === "undefined") return;
     var hero = document.querySelector(".pack-hero__buy");
+    var final = document.querySelector(".pack-final");
     var sticky = document.getElementById("pack-sticky-cta");
-    if (!hero || !sticky) return;
+    if (!hero || !final || !sticky) return;
     if (!("IntersectionObserver" in window)) return;
 
-    var observer = new IntersectionObserver(
+    var heroInView = true;
+    var finalInView = false;
+
+    function update() {
+      var show = !heroInView && !finalInView;
+      sticky.classList.toggle("is-active", show);
+      sticky.setAttribute("aria-hidden", show ? "false" : "true");
+    }
+
+    var heroObserver = new IntersectionObserver(
       function (entries) {
-        entries.forEach(function (entry) {
-          // Když hero CTA NENÍ ve viewportu, ukaž sticky
-          if (entry.isIntersecting) {
-            sticky.classList.remove("is-active");
-            sticky.setAttribute("aria-hidden", "true");
-          } else {
-            sticky.classList.add("is-active");
-            sticky.setAttribute("aria-hidden", "false");
-          }
-        });
+        heroInView = entries[0].isIntersecting;
+        update();
       },
       { threshold: 0, rootMargin: "0px 0px -100px 0px" },
     );
-    observer.observe(hero);
+    heroObserver.observe(hero);
+
+    var finalObserver = new IntersectionObserver(
+      function (entries) {
+        finalInView = entries[0].isIntersecting;
+        update();
+      },
+      { threshold: 0.1 },
+    );
+    finalObserver.observe(final);
   })();
 
   // === Hero focus parallax — sdílený script s /navod-zdarma/ ===
