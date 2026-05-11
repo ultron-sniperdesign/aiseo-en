@@ -2,6 +2,7 @@
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import EmailCapture from "~/components/EmailCapture.astro";
 import MockupPage from "~/components/MockupPage.astro";
+import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 
 const pageTitle = "Návod zdarma — Jak má vypadat homepage pro AI vyhledávání";
 const pageDescription =
@@ -197,70 +198,17 @@ const faqJsonLd = {
       </ul>
     </section>
 
-    <!-- ===== AUTHORITY ===== -->
-    <section class="lp-section">
-      <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">03</span> Kdo za návodem stojí</span>
-        <h2 class="lp-section__title">
-          AI SEO je nové. <strong>Webová řemeslnost ne.</strong>
-        </h2>
-      </header>
+    <!-- ===== AUTHORITY — Sniperdesign medallion =====
+         Shared component, stejný brand styl jako na homepage (BigContact).
+         Self-contained, vlastní H2 + lead + 3 trust signály + 2 CTA.
+    -->
+    <SniperDesignSmallContact />
 
-      <div class="lp-authority">
-        <a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener" class="lp-authority__brand">
-          <img src="/sniperdesign/logo-brand.svg" alt="Sniperdesign" />
-        </a>
-        <div class="lp-authority__body">
-          <p class="lp-authority__lead">
-            Sniperdesign je e-shopová agentura, která 8+ let staví a optimalizuje
-            weby na Upgates a Shoptetu. AI vyhledávání je nová vrstva, kterou
-            klientům přidáváme — a tohle PDF je první veřejný framework, který
-            z toho vznikl.
-          </p>
-          <div class="lp-authority__stats">
-            <div class="lp-stat">
-              <span class="lp-stat__num">600+</span>
-              <span class="lp-stat__label">e‑shopů, které jsme za roky postavili</span>
-            </div>
-            <div class="lp-stat">
-              <span class="lp-stat__num">60</span>
-              <span class="lp-stat__label">klientů aktivně spravujeme</span>
-            </div>
-            <div class="lp-stat">
-              <span class="lp-stat__num">20</span>
-              <span class="lp-stat__label">top klientů updatujeme<br /> na denní bázi</span>
-            </div>
-          </div>
-          <div class="lp-authority__platforms">
-            <span>Specialisté na <strong>Upgates</strong> a <strong>Shoptet</strong></span>
-            <a href="https://www.sniperdesign.cz/reference" target="_blank" rel="noopener" class="lp-authority__refs">
-              sniperdesign.cz/reference →
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Pioneer disclosure box — honest framing místo testimonialu, který zatím nemáme -->
-      <aside class="lp-pioneer">
-        <div class="lp-pioneer__label">
-          <span class="lp-pioneer__dot" aria-hidden="true"></span>
-          Poctivá rovnice
-        </div>
-        <p class="lp-pioneer__text">
-          AI SEO v ČR řeší zatím málokdo soustavně. Nedostanete od nás testimonial
-          klienta, který si přečetl ChatGPT, řekl „díky, Sniperdesign" a koupil
-          si u nás 10 produktů — taková data zatím nikdo nemá.
-          Dostanete framework od lidí, <strong>kteří weby staví a vědí, co AI
-          potřebuje, aby pochopila, kdo jste.</strong> Stejnou logiku aplikujeme
-          na téhle stránce, kterou právě čtete.
-        </p>
-      </aside>
-    </section>
 
     <!-- ===== UPSELL TEASER ===== -->
     <section class="lp-section" id="pack">
       <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">04</span> Co dál — pokud chcete víc</span>
+        <span class="eyebrow"><span class="eyebrow__num">03</span> Co dál — pokud chcete víc</span>
         <span class="lp-section__proof">600+ e‑shopů · specialisté na Upgates a Shoptet</span>
         <h2 class="lp-section__title">
           Tohle PDF řeší jednu stránku. <strong>AI vyhledávání ale hodnotí celý web.</strong>
@@ -623,130 +571,8 @@ const faqJsonLd = {
     font-weight: 600;
   }
 
-  /* ===== Authority box ===== */
-  .lp-authority {
-    background: var(--color-paper);
-    border: 1px solid var(--color-rule);
-    border-radius: 16px;
-    padding: clamp(2rem, 4vw, 3rem);
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    border-left: 4px solid var(--lp-violet);
-  }
-  @media (min-width: 760px) {
-    .lp-authority { grid-template-columns: auto 1fr; gap: 2.5rem; align-items: center; }
-  }
-  .lp-authority__brand img {
-    height: 38px;
-    width: auto;
-    display: block;
-  }
-  .lp-authority__title {
-    font-family: var(--font-sans);
-    font-size: clamp(1.375rem, 2.2vw, 1.625rem);
-    font-weight: 600;
-    color: var(--color-ink);
-    margin: 0 0 0.75rem;
-    letter-spacing: -0.018em;
-  }
-  .lp-authority__lead {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    line-height: 1.55;
-    color: var(--color-ink-muted);
-    margin: 0 0 1.5rem;
-    max-width: 42rem;
-  }
-  .lp-authority__stats {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.25rem 2rem;
-    margin-bottom: 1.25rem;
-    padding: 1rem 0;
-    border-top: 1px solid var(--color-rule);
-    border-bottom: 1px solid var(--color-rule);
-  }
-  @media (min-width: 540px) {
-    .lp-authority__stats { grid-template-columns: repeat(3, 1fr); }
-  }
-  .lp-stat__num {
-    display: block;
-    font-family: var(--font-sans);
-    font-size: clamp(1.75rem, 2.8vw, 2.25rem);
-    font-weight: 700;
-    color: var(--lp-violet);
-    line-height: 1;
-    letter-spacing: -0.025em;
-    margin-bottom: 0.375rem;
-  }
-  .lp-stat__label {
-    font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    line-height: 1.4;
-    color: var(--color-ink-muted);
-  }
-  .lp-authority__platforms {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.875rem 1.5rem;
-    align-items: baseline;
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    color: var(--color-ink-muted);
-  }
-  .lp-authority__platforms strong {
-    color: var(--color-ink);
-    font-weight: 600;
-  }
-  .lp-authority__refs {
-    color: var(--lp-violet);
-    text-decoration: none;
-    font-weight: 600;
-    border-bottom: 1px solid currentColor;
-  }
-
-  /* ===== Pioneer disclosure box — pod authority ===== */
-  .lp-pioneer {
-    margin-top: 2.5rem;
-    max-width: 50rem;
-    background: oklch(0.97 0.01 305);
-    border: 1px solid oklch(0.88 0.04 305);
-    border-left: 3px solid var(--lp-violet);
-    border-radius: 12px;
-    padding: 1.5rem 1.625rem;
-  }
-  .lp-pioneer__label {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--lp-violet);
-    margin-bottom: 0.875rem;
-  }
-  .lp-pioneer__dot {
-    display: inline-block;
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    background: var(--lp-violet);
-    box-shadow: 0 0 0 3px oklch(0.55 0.25 305 / 0.18);
-  }
-  .lp-pioneer__text {
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    line-height: 1.65;
-    color: var(--color-ink);
-    margin: 0;
-  }
-  .lp-pioneer__text strong {
-    color: var(--color-ink);
-    font-weight: 600;
-  }
+  /* Authority section replaced with <SniperDesignSmallContact /> shared
+     component — own scoped styles, no .lp-authority* needed here. */
 
   /* ===== Tiers (upsell) ===== */
   .lp-tiers {
