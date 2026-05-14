@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8" />
+<title>AI SEO Wireframe Pack — master dokument</title>
+<style>
+  /* ============================================================ */
+  /*  BRAND FONTS                                                 */
+  /* ============================================================ */
+  @font-face {
+    font-family: "Geist";
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: block;
+    src: url("file:///Users/ultroncloudehome/Desktop/Ultron%20DISK/SNIPER%20DESIGN%20ULTRON/SNIPER%20DESIGN/aiseo-optimalizace.cz/public/fonts/geist-200-900-latin-ext.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "JetBrains Mono";
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+    src: url("file:///Users/ultroncloudehome/Desktop/Ultron%20DISK/SNIPER%20DESIGN%20ULTRON/SNIPER%20DESIGN/aiseo-optimalizace.cz/public/fonts/jetbrains-mono-400-latin-ext.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Kumbh Sans";
+    font-weight: 300;
+    font-style: normal;
+    font-display: block;
+    src: url("file:///Users/ultroncloudehome/Desktop/Ultron%20DISK/SNIPER%20DESIGN%20ULTRON/SNIPER%20DESIGN/aiseo-optimalizace.cz/public/sniperdesign/fonts/KumbhSans-Light.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Kumbh Sans";
+    font-weight: 700;
+    font-style: normal;
+    font-display: block;
+    src: url("file:///Users/ultroncloudehome/Desktop/Ultron%20DISK/SNIPER%20DESIGN%20ULTRON/SNIPER%20DESIGN/aiseo-optimalizace.cz/public/sniperdesign/fonts/KumbhSans-Bold.woff2") format("woff2");
+  }
+
+  /* ============================================================ */
+  /*  PAGE LAYOUT — A4 portrait, 0 margin                         */
+  /* ============================================================ */
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 210mm;
+    background: #FAFBFC;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body {
+    font-family: "Geist", -apple-system, "Segoe UI", "Roboto", sans-serif;
+    color: #2D3038;
+    font-size: 10.5pt;
+    line-height: 1.55;
+  }
+  .page {
+    width: 210mm;
+    height: 297mm;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  :root {
+    --paper: #FAFBFC;
+    --paper-deep: #F1F4F7;
+    --ink: #2D3038;
+    --ink-muted: #5A5F69;
+    --ink-faint: #7C8189;
+    --rule: #DBDFE5;
+    --sd-violet: #7E3F94;
+    --sd-magenta: #C44A82;
+    --sd-deep: #3B1A47;
+  }
+
+  /* ============================================================ */
+  /*  COVER PAGE                                                  */
+  /* ============================================================ */
+  .cover {
+    background:
+      radial-gradient(ellipse 70% 60% at 80% 10%, rgba(196, 74, 130, 0.32), transparent 60%),
+      radial-gradient(ellipse 80% 70% at 10% 90%, rgba(126, 63, 148, 0.42), transparent 65%),
+      linear-gradient(135deg, #3B1A47 0%, #1F0B2C 100%);
+    color: #FAFBFC;
+    padding: 22mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .cover__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cover__brand {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 8.5pt;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(250, 251, 252, 0.7);
+  }
+  .cover__brand strong { color: #FAFBFC; font-weight: 700; }
+  .cover__edition {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 7.5pt;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(250, 251, 252, 0.55);
+    padding: 4pt 10pt;
+    border: 1px solid rgba(250, 251, 252, 0.18);
+    border-radius: 99pt;
+  }
+  .cover__middle { display: flex; flex-direction: column; gap: 6mm; }
+  .cover__eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9pt;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sd-magenta);
+  }
+  .cover__title {
+    font-family: "Kumbh Sans", "Geist", sans-serif;
+    font-weight: 300;
+    font-size: 56pt;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    color: #FAFBFC;
+    max-width: 165mm;
+  }
+  .cover__title strong {
+    font-weight: 700;
+    /* Solid color místo gradient text — macOS Preview fix (Free PDF precedent). */
+    color: #d585ff;
+  }
+  .cover__subtitle {
+    font-family: "Geist", sans-serif;
+    font-weight: 350;
+    font-size: 14pt;
+    line-height: 1.4;
+    color: rgba(250, 251, 252, 0.78);
+    max-width: 130mm;
+  }
+  .cover__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid rgba(250, 251, 252, 0.18);
+    padding-top: 8mm;
+  }
+  .cover__meta {
+    display: flex;
+    gap: 18mm;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 7.5pt;
+    color: rgba(250, 251, 252, 0.55);
+    letter-spacing: 0.06em;
+  }
+  .cover__meta-item strong {
+    display: block;
+    color: #FAFBFC;
+    font-weight: 700;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5mm;
+  }
+  .cover__credit {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 7.5pt;
+    letter-spacing: 0.06em;
+    color: rgba(250, 251, 252, 0.55);
+    text-align: right;
+  }
+  .cover__credit strong { color: #FAFBFC; font-weight: 700; }
+
+  /* ============================================================ */
+  /*  CONTENT PAGE PRIMITIVES                                     */
+  /* ============================================================ */
+  .content {
+    padding: 22mm 22mm 18mm 22mm;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .content__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 5mm;
+    margin-bottom: 8mm;
+  }
+  .chapter-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sd-violet);
+  }
+  .chapter-label__num { color: var(--ink); margin-right: 2pt; }
+  .content__breadcrumb {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 7.5pt;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .content__body { flex: 1; }
+  .content__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--rule);
+    padding-top: 5mm;
+    margin-top: 8mm;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 7.5pt;
+    color: var(--ink-faint);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .content__footer-brand strong { color: var(--ink); font-weight: 700; }
+
+  /* Typography */
+  h1.section-title {
+    font-family: "Geist", sans-serif;
+    font-weight: 600;
+    font-size: 26pt;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 6mm;
+    max-width: 150mm;
+  }
+  h1.section-title strong {
+    font-weight: 700;
+    color: var(--sd-violet);
+  }
+  h2.subsection-title {
+    font-family: "Geist", sans-serif;
+    font-weight: 600;
+    font-size: 14pt;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 3mm;
+    margin-top: 6mm;
+  }
+  h2.subsection-title:first-child { margin-top: 0; }
+  p.lead {
+    font-size: 11.5pt;
+    line-height: 1.55;
+    color: var(--ink-muted);
+    margin-bottom: 5mm;
+    max-width: 155mm;
+  }
+  p.body {
+    font-size: 10.5pt;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin-bottom: 4mm;
+    max-width: 155mm;
+  }
+  p.body strong, p.lead strong { color: var(--ink); font-weight: 600; }
+
+  /* TOC */
+  .toc-list { list-style: none; }
+  .toc-list li {
+    display: flex;
+    align-items: baseline;
+    padding: 4.5mm 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .toc-list li:last-child { border-bottom: none; }
+  .toc-num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9pt;
+    font-weight: 700;
+    color: var(--sd-violet);
+    width: 12mm;
+    flex: none;
+    letter-spacing: 0.06em;
+  }
+  .toc-title {
+    flex: 1;
+    font-family: "Geist", sans-serif;
+    font-size: 12pt;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .toc-title-meta {
+    display: block;
+    font-size: 9pt;
+    font-weight: 400;
+    color: var(--ink-faint);
+    margin-top: 1mm;
+    letter-spacing: 0;
+  }
+  .toc-page {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 8.5pt;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+  }
+
+  /* Workflow steps */
+  .workflow {
+    display: flex;
+    flex-direction: column;
+    gap: 4mm;
+    margin-top: 4mm;
+  }
+  .workflow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 5mm;
+    padding: 4mm 5mm;
+    background: var(--paper-deep);
+    border-left: 1mm solid var(--sd-violet);
+    border-radius: 1mm;
+  }
+  .workflow-step__num {
+    flex: none;
+    width: 7mm;
+    height: 7mm;
+    border-radius: 99mm;
+    background: var(--sd-violet);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9pt;
+    font-weight: 700;
+  }
+  .workflow-step__body { flex: 1; }
+  .workflow-step__title {
+    font-family: "Geist", sans-serif;
+    font-weight: 600;
+    font-size: 10.5pt;
+    color: var(--ink);
+    margin-bottom: 1.5mm;
+    letter-spacing: -0.01em;
+  }
+  .workflow-step__desc {
+    font-size: 9.5pt;
+    line-height: 1.5;
+    color: var(--ink-muted);
+  }
+  .workflow-step__time {
+    display: inline-block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 7.5pt;
+    color: var(--sd-magenta);
+    margin-left: 2mm;
+    letter-spacing: 0.06em;
+  }
+
+  /* Glossary */
+  .glossary {
+    column-count: 2;
+    column-gap: 10mm;
+    column-rule: 1px solid var(--rule);
+  }
+  .glossary-item {
+    break-inside: avoid;
+    margin-bottom: 5mm;
+  }
+  .glossary-term {
+    font-family: "Geist", sans-serif;
+    font-weight: 700;
+    font-size: 10pt;
+    color: var(--ink);
+    margin-bottom: 1mm;
+    letter-spacing: -0.01em;
+  }
+  .glossary-term-abbr {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 7.5pt;
+    color: var(--sd-violet);
+    font-weight: 600;
+    margin-left: 2mm;
+    letter-spacing: 0.06em;
+  }
+  .glossary-def {
+    font-size: 9pt;
+    line-height: 1.5;
+    color: var(--ink-muted);
+  }
+
+  /* Info box */
+  .info-box {
+    background: var(--paper-deep);
+    border: 1px solid var(--rule);
+    border-left: 1mm solid var(--sd-magenta);
+    border-radius: 2mm;
+    padding: 5mm 6mm;
+    margin: 5mm 0;
+  }
+  .info-box__label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 8pt;
+    font-weight: 700;
+    color: var(--sd-magenta);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2mm;
+  }
+  .info-box__text {
+    font-size: 10pt;
+    line-height: 1.55;
+    color: var(--ink-muted);
+  }
+  .info-box__text strong { color: var(--ink); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- PAGE 1 — COVER                                              -->
+<!-- ============================================================ -->
+<section class="page cover">
+  <div class="cover__top">
+    <div class="cover__brand">
+      <strong>aiseo</strong>-optimalizace<span style="opacity: 0.6">.cz</span>
+    </div>
+    <div class="cover__edition">Edition 1 · 2026</div>
+  </div>
+
+  <div class="cover__middle">
+    <span class="cover__eyebrow">AI SEO Wireframe Pack</span>
+    <h1 class="cover__title">
+      Postavte web,<br />
+      kterému <strong>AI rozumí</strong>
+    </h1>
+    <p class="cover__subtitle">
+      Master dokument — sedm typů stránek se šablonami textů,
+      ukázkami strukturovaných dat pro vývojáře a krok-za-krokem návodem aplikace.
+    </p>
+  </div>
+
+  <div class="cover__bottom">
+    <div class="cover__meta">
+      <div class="cover__meta-item">
+        <strong>50 stran</strong>
+        Master PDF
+      </div>
+      <div class="cover__meta-item">
+        <strong>8 kapitol</strong>
+        Pokrytí celého webu
+      </div>
+      <div class="cover__meta-item">
+        <strong>1 490 Kč</strong>
+        Jednorázová licence
+      </div>
+    </div>
+    <div class="cover__credit">
+      Vyrobil <strong>Sniperdesign</strong><br />
+      sniperdesign.cz
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 2 — TABLE OF CONTENTS                                  -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="content">
+    <header class="content__header">
+      <span class="chapter-label">
+        <span class="chapter-label__num">00</span> · Obsah
+      </span>
+      <span class="content__breadcrumb">Master dokument · 2026</span>
+    </header>
+
+    <div class="content__body">
+      <h1 class="section-title">
+        Co je <strong>uvnitř Packu</strong>
+      </h1>
+      <p class="lead">
+        Pack obsahuje úvodní část a osm obsahových kapitol. Každá
+        kapitola má svůj typ stránky webu — wireframe s anotacemi, šablony
+        textů a ukázku strukturovaných dat. Závěrečná kapitola shrnuje
+        aplikaci na váš web.
+      </p>
+
+      <ol class="toc-list">
+        <li>
+          <span class="toc-num">00</span>
+          <span class="toc-title">
+            Úvod a glosář
+            <span class="toc-title-meta">Co Pack je, jak jej použít, slovník termínů</span>
+          </span>
+          <span class="toc-page">Str. 3</span>
+        </li>
+        <li>
+          <span class="toc-num">01</span>
+          <span class="toc-title">
+            Homepage
+            <span class="toc-title-meta">Wireframe s 10 anotacemi · varianty pro e-shop, služby, agenturu</span>
+          </span>
+          <span class="toc-page">Str. 6</span>
+        </li>
+        <li>
+          <span class="toc-num">02</span>
+          <span class="toc-title">
+            Produktová stránka
+            <span class="toc-title-meta">Vzor titulku · strukturovaná data pro produkt · časté dotazy · související produkty</span>
+          </span>
+          <span class="toc-page">Str. 12</span>
+        </li>
+        <li>
+          <span class="toc-num">03</span>
+          <span class="toc-title">
+            Kategoriální stránka
+            <span class="toc-title-meta">Struktura výpisu · strukturovaná data pro kategorii · přehledná hierarchie</span>
+          </span>
+          <span class="toc-page">Str. 18</span>
+        </li>
+        <li>
+          <span class="toc-num">04</span>
+          <span class="toc-title">
+            Blog článek
+            <span class="toc-title-meta">Krátká odpověď 40–60 slov · strukturovaná data pro článek · informace o autorovi</span>
+          </span>
+          <span class="toc-page">Str. 24</span>
+        </li>
+        <li>
+          <span class="toc-num">05</span>
+          <span class="toc-title">
+            Blog výpis článků
+            <span class="toc-title-meta">Výpis s filtry · stránkování · prolinkování mezi hlavními a podpůrnými články</span>
+          </span>
+          <span class="toc-page">Str. 30</span>
+        </li>
+        <li>
+          <span class="toc-num">06</span>
+          <span class="toc-title">
+            Prodejní landing page
+            <span class="toc-title-meta">Varianta pro poptávku i přímý prodej · reference a důkazy · časté dotazy · snížení obav</span>
+          </span>
+          <span class="toc-page">Str. 35</span>
+        </li>
+        <li>
+          <span class="toc-num">07</span>
+          <span class="toc-title">
+            Kontaktní stránka
+            <span class="toc-title-meta">Kontaktní údaje (NAP) · mapa · strukturovaná data pro místní firmu · konzistentní identita</span>
+          </span>
+          <span class="toc-page">Str. 41</span>
+        </li>
+        <li>
+          <span class="toc-num">08</span>
+          <span class="toc-title">
+            Aplikace na váš web
+            <span class="toc-title-meta">Krok-za-krokem postup · kontrola nasazení · měření v Google Search Console · checklist</span>
+          </span>
+          <span class="toc-page">Str. 45</span>
+        </li>
+      </ol>
+    </div>
+
+    <footer class="content__footer">
+      <span class="content__footer-brand">AI SEO Wireframe Pack · Edition 1</span>
+      <span>Str. 2</span>
+    </footer>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 3 — ÚVOD                                                -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="content">
+    <header class="content__header">
+      <span class="chapter-label">
+        <span class="chapter-label__num">00</span> · Úvod
+      </span>
+      <span class="content__breadcrumb">Co Pack je</span>
+    </header>
+
+    <div class="content__body">
+      <h1 class="section-title">
+        Tohle <strong>není ebook</strong>
+      </h1>
+      <p class="lead">
+        AI SEO Wireframe Pack je <strong>framework, podle kterého
+        postavíte web srozumitelný pro AI vyhledávání</strong> — ChatGPT,
+        Perplexity, Google AI Overviews i klasický Google Search.
+      </p>
+
+      <h2 class="subsection-title">Co tady najdete</h2>
+      <p class="body">
+        Sedm wireframů pro sedm typů stránek, které tvoří kostru jakéhokoli
+        webu nebo e-shopu. Pro každý wireframe: anotace u každého prvku
+        (proč tam je a jaký signál pro AI generuje), šablony textů
+        ke kopírování a ukázku strukturovaných dat (JSON-LD blok) jako
+        podklad pro vývojáře.
+      </p>
+      <p class="body">
+        Plus krok-za-krokem návod, jak Pack aplikovat na váš stávající
+        web — bez ohledu na to, zda běží na Upgates, Shoptetu, WordPressu
+        nebo na webu postaveném na míru.
+      </p>
+
+      <h2 class="subsection-title">Pro koho je Pack</h2>
+      <p class="body">
+        Pro provozovatele webů a e-shopů, kteří chtějí zvýšit šanci, že je
+        AI nástroje budou citovat a doporučovat zákazníkům. Pro marketing a SEO
+        specialisty, kteří potřebují framework předat klientovi nebo
+        internímu týmu. Pro copywritery, designéry a vývojáře, kteří chtějí
+        šablonu, podle které pracovat na klientských webech.
+      </p>
+
+      <h2 class="subsection-title">Co Pack není</h2>
+      <p class="body">
+        Není to teoretická příručka o AI vyhledávání. Není to seznam
+        SEO tipů. Není to návod, jak hacknout algoritmy. Je to praktický
+        framework s konkrétními wireframy, texty a ukázkami strukturovaných
+        dat, který aplikujete přímo na svůj web.
+      </p>
+
+      <div class="info-box">
+        <div class="info-box__label">Edition 1 · 2026</div>
+        <p class="info-box__text">
+          AI vyhledávání se vyvíjí. Pack udržujeme aktuální. Drobné
+          aktualizace (nová pravidla pro strukturovaná data, změny v tom,
+          jak ChatGPT a Perplexity uvádějí zdroje) dostanete
+          <strong>zdarma e-mailem</strong>.
+          Pokud bude potřeba zásadní revize struktury, oznámíme to dopředu.
+        </p>
+      </div>
+    </div>
+
+    <footer class="content__footer">
+      <span class="content__footer-brand">AI SEO Wireframe Pack · Edition 1</span>
+      <span>Str. 3</span>
+    </footer>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 4 — JAK PACK POUŽÍT                                    -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="content">
+    <header class="content__header">
+      <span class="chapter-label">
+        <span class="chapter-label__num">00</span> · Úvod
+      </span>
+      <span class="content__breadcrumb">Jak Pack použít</span>
+    </header>
+
+    <div class="content__body">
+      <h1 class="section-title">
+        Doporučený <strong>postup aplikace</strong>
+      </h1>
+      <p class="lead">
+        Pack nemusíte aplikovat na všech sedm typů stránek najednou.
+        Doporučujeme postupovat podle priorit — nejvyšší dopad mají
+        homepage a top kategorie / produkty.
+      </p>
+
+      <div class="workflow">
+        <div class="workflow-step">
+          <div class="workflow-step__num">1</div>
+          <div class="workflow-step__body">
+            <div class="workflow-step__title">
+              Projděte Pack od začátku do konce
+              </div>
+            <div class="workflow-step__desc">
+              Než začnete cokoli upravovat, projděte všech 8 kapitol.
+              Najděte typy stránek, které váš web obsahuje, a označte si
+              priority. U každé kapitoly si zapamatujte klíčové signály
+              pro AI — anotované přímo u wireframů.
+            </div>
+          </div>
+        </div>
+        <div class="workflow-step">
+          <div class="workflow-step__num">2</div>
+          <div class="workflow-step__body">
+            <div class="workflow-step__title">
+              Začněte s homepage (Kapitola 01)
+              </div>
+            <div class="workflow-step__desc">
+              Homepage má nejvyšší dopad — vidí ji nejvíc návštěvníků
+              a AI ji často bere jako hlavní zdroj informací o vašem
+              byznysu. Aplikujte wireframe a šablonu textů; podklady pro
+              strukturovaná data předejte vývojáři. Nasazení ověřte
+              v Google Rich Results Test. V ChatGPT si orientačně vyzkoušejte
+              dotaz „Co dělá [vaše firma]?" — je to orientační kontrola,
+              ne důkaz.
+            </div>
+          </div>
+        </div>
+        <div class="workflow-step">
+          <div class="workflow-step__num">3</div>
+          <div class="workflow-step__body">
+            <div class="workflow-step__title">
+              Pokračujte podle priority pro váš byznys
+              </div>
+            <div class="workflow-step__desc">
+              E-shop: produktová a kategoriální (kapitoly 02, 03). Služby:
+              prodejní landing a kontakt (kapitoly 06, 07). Blog: článek
+              a výpis článků (kapitoly 04, 05).
+            </div>
+          </div>
+        </div>
+        <div class="workflow-step">
+          <div class="workflow-step__num">4</div>
+          <div class="workflow-step__body">
+            <div class="workflow-step__title">
+              Kontrola a měření (Kapitola 08)
+              </div>
+            <div class="workflow-step__desc">
+              Po každé úpravě ověřte strukturovaná data v Google Rich
+              Results Test, indexaci v Google Search Console a zmínky
+              v ChatGPT / Perplexity ručním dotazem.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="content__footer">
+      <span class="content__footer-brand">AI SEO Wireframe Pack · Edition 1</span>
+      <span>Str. 4</span>
+    </footer>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAGE 5 — GLOSÁŘ                                              -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="content">
+    <header class="content__header">
+      <span class="chapter-label">
+        <span class="chapter-label__num">00</span> · Úvod
+      </span>
+      <span class="content__breadcrumb">Glosář termínů</span>
+    </header>
+
+    <div class="content__body">
+      <h1 class="section-title">
+        Slovník <strong>termínů Packu</strong>
+      </h1>
+      <p class="lead">
+        Termíny použité napříč Packem. Pokud něčemu nerozumíte, vraťte
+        se sem — definice jsou krátké a praktické.
+      </p>
+
+      <div class="glossary">
+        <div class="glossary-item">
+          <div class="glossary-term">SEO <span class="glossary-term-abbr">Search Engine Optimization</span></div>
+          <div class="glossary-def">Optimalizace pro klasické vyhledávače (Google, Seznam). Pokrývá technické zdraví webu, content kvalitu a backlink profil.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">GEO <span class="glossary-term-abbr">Generative Engine Optimization</span></div>
+          <div class="glossary-def">Optimalizace pro generativní AI nástroje (ChatGPT, Perplexity, Claude). Cíl: být citován v generovaných odpovědích.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">AEO <span class="glossary-term-abbr">Answer Engine Optimization</span></div>
+          <div class="glossary-def">Optimalizace pro answer engines — Google Featured Snippets, AI Overviews, voice search. Cíl: poskytnout odpověď ve formátu, který engine vytáhne.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">AIO <span class="glossary-term-abbr">AI Overviews / AI Optimization</span></div>
+          <div class="glossary-def">Buď konkrétní Google funkce (AI Overviews — generované shrnutí nad výsledky), nebo deštníkový termín pro celkovou AI optimalizaci.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Krátká odpověď <span class="glossary-term-abbr">answer block</span></div>
+          <div class="glossary-def">Krátká definice 40–60 slov hned po hlavním nadpisu. Začíná „X je…" — vyhledávač nebo AI ji může vytáhnout jako přímou odpověď nebo citaci.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Strukturovaná data <span class="glossary-term-abbr">schema markup</span></div>
+          <div class="glossary-def">Strojově čitelný popis obsahu stránky v JSON-LD formátu. Pomáhá vyhledávačům i AI rozpoznat typ obsahu. Připravuje je vývojář — Pack k nim dává ukázku jako podklad.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Vzor titulku <span class="glossary-term-abbr">title pattern</span></div>
+          <div class="glossary-def">Struktura titulku stránky napříč stránkami stejného typu. Např. produkty: „[Název] — [klíčový benefit] | [Značka]".</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Strukturovaná data pro časté dotazy <span class="glossary-term-abbr">FAQPage</span></div>
+          <div class="glossary-def">Strukturovaná data, která obsahují otázky a odpovědi ze stránky. Vyhledávače i AI je mohou použít jako přímou citaci.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Prolinkování mezi stránkami <span class="glossary-term-abbr">hub-and-spoke</span></div>
+          <div class="glossary-def">Obsahová struktura: jeden hlavní rozcestníkový článek + skupina podpůrných detailních článků, navzájem propojené odkazy. Ukazuje AI hloubku tématu.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Kontaktní údaje (NAP) <span class="glossary-term-abbr">Name · Address · Phone</span></div>
+          <div class="glossary-def">Trojice klíčových údajů kontaktu firmy — název, adresa, telefon. Konzistence napříč webem a externími katalogy = silnější signál pro vyhledávače i mapy.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">E-E-A-T <span class="glossary-term-abbr">Experience · Expertise · Authoritativeness · Trustworthiness</span></div>
+          <div class="glossary-def">Google kvalitativní framework. AI nástroje hodnotí podobně — autorství, ověřitelnost, reputace zdroje.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Podíl citací <span class="glossary-term-abbr">citation share</span></div>
+          <div class="glossary-def">% případů, kdy AI nástroj cituje váš web v odpovědi na relevantní dotaz. Hlavní ukazatel úspěchu GEO.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Hustota faktů <span class="glossary-term-abbr">fact density</span></div>
+          <div class="glossary-def">Počet konkrétních faktů (čísla, jména, data) na 100 slov textu. Vyšší = vyšší šance na citaci v AI odpovědi.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Načitatelná stránka <span class="glossary-term-abbr">crawlable</span></div>
+          <div class="glossary-def">Stránka, kterou si vyhledávací robot nebo AI bot dokáže načíst a přečíst. Weby silně závislé na JavaScriptu bývají hůř načitatelné.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">JSON-LD</div>
+          <div class="glossary-def">Formát strukturovaných dat (JSON Linked Data). Vkládá se do &lt;script type="application/ld+json"&gt; v head nebo body stránky.</div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="content__footer">
+      <span class="content__footer-brand">AI SEO Wireframe Pack · Edition 1</span>
+      <span>Str. 5</span>
+    </footer>
+  </div>
+</section>
+
+</body>
+</html>
