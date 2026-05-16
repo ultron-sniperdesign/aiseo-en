@@ -31,6 +31,7 @@ Doporučené pořadí čtení pro nový marketer:
 | **6.** | [`06-discipliny-vyhledavani.md`](06-discipliny-vyhledavani.md) | SEO/GEO/AEO/AIO — 4 disciplíny, které prodáváme. Edukace pro marketery |
 | **7.** | [`07-trust-signaly-sniperdesign.md`](07-trust-signaly-sniperdesign.md) | Důvěryhodnost — Sniperdesign credentials, MEGA DETAIL, partnership |
 | **8.** | [`08-marketingove-aktivity.md`](08-marketingove-aktivity.md) | Konkrétní kampaně, kanály, co dělat teď a co později |
+| **9.** | [`09-domain-seeding-research.md`](09-domain-seeding-research.md) | Akční checklist — kam doménu submitnout/sdílet pro rychlou indexaci a ranking (Week 1 quick wins + editorial pitches + anti-list) |
 
 ## 🎯 TL;DR projektu
 
