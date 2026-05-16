@@ -1,0 +1,16 @@
+name = "aiseo-pack-webhook"
+main = "src/index.ts"
+compatibility_date = "2026-05-01"
+
+# Tento worker přijímá Stripe webhooky a předává customer e-mail
+# do Ecomail listu, který má automation pro odeslání PDF download e-mailu.
+#
+# Secrets (nastavit přes `wrangler secret put <NAME>`, NIKDY do vars/git):
+#   STRIPE_WEBHOOK_SECRET — Stripe webhook signing secret (whsec_...)
+#   ECOMAIL_API_KEY       — Ecomail API klíč
+#
+# Public env vars (OK v gitu):
+[vars]
+ECOMAIL_LIST_ID = "PLACEHOLDER_LIST_ID"
+# Volitelný filter: pokud nastaveno, worker zpracuje webhook jen pro tento Stripe Product ID
+EXPECTED_PRODUCT_ID = ""
