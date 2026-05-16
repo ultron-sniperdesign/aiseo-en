@@ -229,7 +229,62 @@ const pageTypes = [
       </div>
     </section>
 
-    <!-- ===== 02 UKÁZKA STRUKTURY — drill-down jednoho typu stránky ===== -->
+    <!-- ===== 02 PODÍVEJTE SE DOVNITŘ — vizuální look-inside ===== -->
+    <section class="lp-section">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">02</span> Podívejte se dovnitř</span>
+        <h2 class="lp-section__title">
+          Takhle vypadají <strong>stránky uvnitř Packu</strong>
+        </h2>
+        <p class="lp-section__lead">
+          Čtyři ukázkové stránky z různých kapitol — wireframe s anotacemi,
+          tři principy SEO/GEO/AEO color-coded, šablony textů ke kopírování
+          a druhý typ wireframu (produktová stránka). Master PDF má 85 stran
+          ve stejné kvalitě.
+        </p>
+      </header>
+
+      <div class="pack-preview-grid">
+        <figure class="pack-preview">
+          <img src="/pack/preview/hero-wireframe-homepage.png"
+               alt="Ukázka strany 7 master PDF — wireframe homepage s 10 anotacemi"
+               loading="lazy" width="1240" height="1754" />
+          <figcaption>
+            <span class="pack-preview__chapter">Kap. 01 · str. 7</span>
+            <span class="pack-preview__title">Wireframe homepage s 10 anotacemi</span>
+          </figcaption>
+        </figure>
+        <figure class="pack-preview">
+          <img src="/pack/preview/hero-tri-principy.png"
+               alt="Ukázka strany 8 master PDF — tři principy SEO/GEO/AEO color-coded"
+               loading="lazy" width="1240" height="1754" />
+          <figcaption>
+            <span class="pack-preview__chapter">Kap. 01 · str. 8</span>
+            <span class="pack-preview__title">Tři principy SEO / GEO / AEO</span>
+          </figcaption>
+        </figure>
+        <figure class="pack-preview">
+          <img src="/pack/preview/hero-sablony-textu.png"
+               alt="Ukázka strany 11 master PDF — šablony textů ke kopírování"
+               loading="lazy" width="1240" height="1754" />
+          <figcaption>
+            <span class="pack-preview__chapter">Kap. 01 · str. 11</span>
+            <span class="pack-preview__title">Šablony textů ke kopírování</span>
+          </figcaption>
+        </figure>
+        <figure class="pack-preview">
+          <img src="/pack/preview/hero-wireframe-produkt.png"
+               alt="Ukázka strany 17 master PDF — wireframe produktové stránky"
+               loading="lazy" width="1240" height="1754" />
+          <figcaption>
+            <span class="pack-preview__chapter">Kap. 02 · str. 17</span>
+            <span class="pack-preview__title">Wireframe produktové stránky</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===== 03 UKÁZKA STRUKTURY — drill-down jednoho typu stránky ===== -->
     <section class="lp-section lp-section--alt">
       <header class="lp-section__head">
         <span class="eyebrow"><span class="eyebrow__num">02</span> Co je uvnitř jedné stránky</span>
@@ -797,6 +852,64 @@ const pageTypes = [
   }
   @media (min-width: 1080px) {
     .page-types { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ===== Pack preview grid ("look inside") ===== */
+  .pack-preview-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+  }
+  @media (min-width: 640px) {
+    .pack-preview-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1080px) {
+    .pack-preview-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  .pack-preview {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .pack-preview img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid var(--color-rule);
+    background: #fafbfc;
+    box-shadow:
+      0 4px 14px -8px oklch(0 0 0 / 0.18),
+      0 1px 3px -1px oklch(0 0 0 / 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .pack-preview:hover img {
+    transform: translateY(-2px);
+    box-shadow:
+      0 8px 22px -8px oklch(0 0 0 / 0.22),
+      0 2px 5px -1px oklch(0 0 0 / 0.1);
+  }
+  .pack-preview figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0 0.125rem;
+  }
+  .pack-preview__chapter {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--lp-violet);
+  }
+  .pack-preview__title {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--color-ink);
+    font-weight: 500;
   }
   .page-type {
     background: var(--color-paper);
