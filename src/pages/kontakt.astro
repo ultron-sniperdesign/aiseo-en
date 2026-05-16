@@ -1,0 +1,409 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
+
+const pageTitle = "Kontakt — kdo provozuje aiseo-optimalizace.cz";
+const pageDescription =
+  "aiseo-optimalizace.cz provozuje CPU s.r.o. (Sniperdesign) — pražská agentura specializovaná na AI SEO, e-commerce a Upgates/Shoptet. Kontakt na obecné dotazy, pomoc s Packem i AI SEO audit.";
+
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "CPU s.r.o.",
+  alternateName: "Sniperdesign",
+  url: "https://aiseo-optimalizace.cz/",
+  email: "info@sniperdesign.cz",
+  legalName: "CPU s.r.o.",
+  vatID: "CZ08125163",
+  taxID: "08125163",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Akademická 663/5",
+    addressLocality: "Praha 10 — Malešice",
+    postalCode: "10800",
+    addressCountry: "CZ",
+  },
+  sameAs: ["https://www.sniperdesign.cz/", "https://www.megadetail.cz/"],
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={orgJsonLd}>
+  <main class="kontakt">
+    <!-- ===== HERO ===== -->
+    <section class="kontakt-hero">
+      <div class="kontakt-hero__inner">
+        <span class="eyebrow"><span class="eyebrow__num">00</span> Kontakt</span>
+        <h1 class="kontakt-hero__title">
+          Kdo provozuje <strong>aiseo-optimalizace.cz</strong>
+        </h1>
+        <p class="kontakt-hero__lead">
+          Tento web provozuje <a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener"><strong>Sniperdesign</strong></a> &mdash;
+          pražská agentura specializovaná na AI SEO a e-commerce. Právním
+          subjektem je <strong>CPU s.r.o.</strong>; faktury za AI SEO Wireframe
+          Pack i další služby chodí pod tímto názvem. Zlatý Upgates partner
+          od&nbsp;2016, přes 600 e&#8209;shopů na&nbsp;CZ trhu.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== 01 NA CO SE OZVAT ===== -->
+    <section class="lp-section">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">01</span> Na co se ozvat</span>
+        <h2 class="lp-section__title">
+          Vyberte, s čím <strong>potřebujete pomoct</strong>
+        </h2>
+      </header>
+
+      <div class="kontakt-paths">
+        <article class="kontakt-path">
+          <span class="kontakt-path__pill">Obecný dotaz</span>
+          <h3>Spolupráce, dotaz k&nbsp;obsahu webu nebo cokoli jiného</h3>
+          <p>
+            Nezávazná konzultace, dotaz na obsah průvodce, spolupráce s agenturou
+            nebo cokoli, co se nehodí do následujících kategorií. Odpovídáme do
+            24 hodin v pracovní dny.
+          </p>
+          <a
+            href="https://www.sniperdesign.cz/kontakt"
+            target="_blank"
+            rel="noopener"
+            class="kontakt-path__cta"
+          >
+            sniperdesign.cz/kontakt&nbsp;&rarr;
+          </a>
+        </article>
+
+        <article class="kontakt-path">
+          <span class="kontakt-path__pill kontakt-path__pill--pack">Pack — pomoc</span>
+          <h3>Pomoc s&nbsp;<a href="/pack/">AI&nbsp;SEO Wireframe Packem</a></h3>
+          <p>
+            PDF se neotevírá, nedorazila vám faktura, nevíte, jak začít, nebo
+            potřebujete poradit s aplikací konkrétní kapitoly na váš web —
+            napište přímo. Odpovídáme do 24 hodin v pracovní dny.
+          </p>
+          <a
+            href="mailto:info@sniperdesign.cz?subject=AI%20SEO%20Wireframe%20Pack%20%E2%80%94%20dotaz"
+            class="kontakt-path__cta"
+          >
+            info@sniperdesign.cz&nbsp;&rarr;
+          </a>
+        </article>
+
+        <article class="kontakt-path kontakt-path--accent">
+          <span class="kontakt-path__pill kontakt-path__pill--audit">Audit</span>
+          <h3>AI&nbsp;SEO audit &mdash; přesný plán pro váš web</h3>
+          <p>
+            Projdeme váš konkrétní web, najdeme problémy v technice, obsahu
+            a&nbsp;důvěryhodnosti. Předáme prioritní seznam úprav s odhadem
+            dopadu + 60min konzultaci. Výstup do 5 pracovních dní. <strong>9&nbsp;990&nbsp;Kč</strong> jednorázově.
+          </p>
+          <a
+            href="https://www.sniperdesign.cz/audity"
+            target="_blank"
+            rel="noopener"
+            class="kontakt-path__cta kontakt-path__cta--accent"
+          >
+            Objednat audit&nbsp;&rarr;
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== 02 PROVOZOVATEL (NAP / fakturace) ===== -->
+    <section class="lp-section lp-section--alt">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">02</span> Provozovatel webu</span>
+        <h2 class="lp-section__title">
+          Fakturační údaje a&nbsp;<strong>právní subjekt</strong>
+        </h2>
+        <p class="lp-section__lead">
+          Faktury za AI SEO Wireframe Pack a další služby vystavuje
+          <strong>CPU s.r.o.</strong> (Sniperdesign). Plátce DPH.
+        </p>
+      </header>
+
+      <dl class="kontakt-nap">
+        <div class="kontakt-nap__row">
+          <dt>Název</dt>
+          <dd>CPU s.r.o.</dd>
+        </div>
+        <div class="kontakt-nap__row">
+          <dt>Sídlo</dt>
+          <dd>Akademická 663/5, Malešice, 108&nbsp;00 Praha&nbsp;10</dd>
+        </div>
+        <div class="kontakt-nap__row">
+          <dt>IČO</dt>
+          <dd>08125163</dd>
+        </div>
+        <div class="kontakt-nap__row">
+          <dt>DIČ</dt>
+          <dd>CZ08125163 <span class="kontakt-nap__note">(plátce DPH)</span></dd>
+        </div>
+        <div class="kontakt-nap__row">
+          <dt>E-mail</dt>
+          <dd><a href="mailto:info@sniperdesign.cz">info@sniperdesign.cz</a></dd>
+        </div>
+        <div class="kontakt-nap__row">
+          <dt>Web agentury</dt>
+          <dd>
+            <a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener">
+              sniperdesign.cz
+            </a>
+          </dd>
+        </div>
+        <div class="kontakt-nap__row">
+          <dt>Zápis</dt>
+          <dd>
+            Obchodní rejstřík vedený Městským soudem v Praze
+            <span class="kontakt-nap__note">(ARES: 08125163)</span>
+          </dd>
+        </div>
+      </dl>
+
+      <p class="kontakt-nap__legal">
+        Informace o zpracování osobních údajů (GDPR) najdete na
+        <a href="https://www.sniperdesign.cz/zpracovani-osobnich-udaju" target="_blank" rel="noopener">
+          sniperdesign.cz/zpracovani-osobnich-udaju
+        </a>.
+      </p>
+    </section>
+
+    <!-- ===== 03 SNIPERDESIGN MEDAILONEK ===== -->
+    <SniperDesignSmallContact />
+  </main>
+</BaseLayout>
+
+<style>
+  .kontakt {
+    --lp-violet: oklch(0.55 0.25 305);
+    --lp-magenta: oklch(0.62 0.27 335);
+  }
+
+  /* ===== Hero ===== */
+  .kontakt-hero {
+    background: linear-gradient(180deg, var(--color-paper) 0%, transparent 100%);
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(2rem, 4vw, 3rem);
+  }
+  .kontakt-hero__inner {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 0 var(--space-section-x);
+  }
+  .kontakt-hero__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.875rem, 4.5vw, 3rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--color-ink);
+    margin: 0.75rem 0 1.25rem;
+  }
+  .kontakt-hero__title strong {
+    color: var(--lp-violet);
+    font-weight: 700;
+  }
+  .kontakt-hero__lead {
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+  .kontakt-hero__lead strong { color: var(--color-ink); font-weight: 600; }
+
+  /* ===== Section primitives (sdíleno s /pack/) ===== */
+  .lp-section {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(3rem, 6vw, 5rem) var(--space-section-x);
+  }
+  .lp-section--alt {
+    background: var(--color-paper-deep);
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .lp-section--alt > * {
+    max-width: var(--max-section);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-section-x);
+    padding-right: var(--space-section-x);
+  }
+  .lp-section__head {
+    max-width: 50rem;
+    margin-bottom: clamp(2rem, 3.5vw, 3rem);
+  }
+  .lp-section__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    margin: 0 0 1rem;
+  }
+  .lp-section__title strong {
+    color: var(--lp-violet);
+    font-weight: 700;
+  }
+  .lp-section__lead {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin: 0;
+    max-width: 40rem;
+  }
+  .lp-section__lead strong { color: var(--color-ink); font-weight: 600; }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    margin-bottom: 1rem;
+  }
+  .eyebrow__num {
+    color: var(--lp-violet);
+    font-weight: 700;
+  }
+
+  /* ===== Kontakt paths (3 cards) ===== */
+  .kontakt-paths {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  @media (min-width: 768px) {
+    .kontakt-paths { grid-template-columns: repeat(3, 1fr); }
+  }
+  .kontakt-path {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 12px;
+    padding: 1.5rem 1.375rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+  .kontakt-path--accent {
+    border-color: var(--lp-magenta);
+    background: oklch(0.97 0.04 335 / 0.4);
+  }
+  .kontakt-path__pill {
+    display: inline-block;
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    background: var(--color-paper-deep);
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+  }
+  .kontakt-path__pill--pack {
+    color: var(--lp-violet);
+    background: oklch(0.96 0.05 305 / 0.6);
+  }
+  .kontakt-path__pill--audit {
+    color: #fff;
+    background: var(--lp-magenta);
+  }
+  .kontakt-path h3 {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .kontakt-path h3 a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: oklch(from var(--lp-violet) l c h / 0.4);
+    text-underline-offset: 3px;
+  }
+  .kontakt-path p {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0;
+    flex: 1;
+  }
+  .kontakt-path__cta {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--lp-violet);
+    text-decoration: none;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--color-rule);
+    transition: color 0.15s ease;
+  }
+  .kontakt-path__cta:hover { color: var(--color-ink); }
+  .kontakt-path__cta--accent { color: var(--lp-magenta); }
+  .kontakt-path__cta--accent:hover { color: oklch(0.45 0.27 335); }
+
+  /* ===== NAP / fakturační údaje ===== */
+  .kontakt-nap {
+    max-width: 36rem;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+  .kontakt-nap__row {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 1.25rem;
+    padding: 0.625rem 0;
+    border-bottom: 1px solid var(--color-rule);
+    align-items: baseline;
+  }
+  .kontakt-nap__row:last-of-type { border-bottom: none; }
+  .kontakt-nap__row dt {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+  .kontakt-nap__row dd {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .kontakt-nap__row dd a {
+    color: var(--lp-violet);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .kontakt-nap__note {
+    font-size: 0.8125rem;
+    color: var(--color-ink-faint);
+    font-weight: 400;
+    margin-left: 0.25rem;
+  }
+  .kontakt-nap__legal {
+    max-width: 36rem;
+    margin: 1.5rem 0 0;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--color-ink-faint);
+  }
+  .kontakt-nap__legal a {
+    color: var(--color-ink-muted);
+    text-decoration: underline;
+  }
+</style>
