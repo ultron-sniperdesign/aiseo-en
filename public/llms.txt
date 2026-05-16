@@ -1,0 +1,46 @@
+# AI SEO Optimalizace
+
+> Český edukativní web o AI éře vyhledávání: SEO, GEO (Generative Engine Optimization), AEO (Answer Engine Optimization) a AIO (AI Overviews / Optimization). Praktické postupy pro e-shopy a firemní weby, jak být citovaný v ChatGPT, Perplexity, Google AI Overviews a Bing Copilot.
+
+Web `aiseo-optimalizace.cz` provozuje agentura Sniperdesign (CPU s.r.o., Praha) — Zlatý partner Upgates od 2016, Gold partner Shoptet. Obsah kombinuje edukativní průvodce zdarma s komerčními produkty: free PDF lead magnet, placený AI SEO Wireframe Pack (1 490 Kč) a Audit (9 990 Kč).
+
+## Hlavní průvodce (pillar)
+
+- [SEO, GEO, AEO, AIO — kompletní průvodce](https://aiseo-optimalizace.cz/seo-vs-geo-vs-aeo-vs-aio/): Hlavní pillar (~3000 slov) — co jsou 4 disciplíny AI vyhledávání, jak se překrývají, kdy kterou používat. FAQ + strukturovaná data.
+
+## Disciplíny (sekce)
+
+- [SEO — klasické vyhledávání](https://aiseo-optimalizace.cz/seo/): SEO pomáhá vašemu webu získávat návštěvníky zdarma z Googlu a Seznamu — když lidé hledají vaše služby, být mezi prvními výsledky.
+- [GEO — Generative Engine Optimization](https://aiseo-optimalizace.cz/geo/): GEO je optimalizace obsahu tak, aby ho ChatGPT, Perplexity, Claude a Gemini používaly jako zdroj odpovědí. Místo modrého odkazu cílíte na to být v odpovědi AI.
+- [AEO — Answer Engine Optimization](https://aiseo-optimalizace.cz/aeo/): AEO upravuje obsah tak, aby ho Google AI Overviews, Featured Snippets a Bing Copilot použili jako přímou odpověď a citovali váš web jako zdroj.
+- [AIO — AI Optimization / AI Overviews](https://aiseo-optimalizace.cz/aio/): AIO řeší, jak zajistit, aby AI systémy dokázaly váš obsah najít, pochopit a používat v odpovědích i doporučeních. Plus konkrétní funkce Google AI Overviews.
+
+## Aplikace v praxi
+
+- [Praktický postup ve 4 krocích](https://aiseo-optimalizace.cz/prakticky-postup/): Implementační průvodce pro lepší viditelnost v ChatGPT, AI Overviews a Perplexity. AI Visibility Readiness Framework — audit, schema, struktura, měření.
+- [Rozhodovací matice — která strategie pro koho](https://aiseo-optimalizace.cz/rozhodovaci-matice/): Rozhodovací matice pro AI vyhledávání podle typu firmy a fáze projektu. AI Search Readiness Matrix + varování, kdy AIO může i škodit.
+
+## Hluboké průvodce (blog)
+
+- [AI search trendy 2026](https://aiseo-optimalizace.cz/blog/ai-search-trendy-cesko-2026/): Datový průvodce AI vyhledáváním 2026 — ChatGPT 810M DAU, AI Overviews 25 % SERPs, citation benchmarks per platform a 5 trendů, které definují rok.
+- [GEO optimalizace v 7 krocích](https://aiseo-optimalizace.cz/blog/geo-optimalizace/): Praktický průvodce GEO optimalizací — audit, answer block, fact-density, schema, AI crawlery, brand mentions a měření. Pro CZ trh.
+- [AEO optimalizace v praxi](https://aiseo-optimalizace.cz/blog/aeo-optimalizace-v-praxi/): Anatomie answer blocku, 5 typů otázek se šablonami, schema cookbook, AEO Coverage Score framework a měření přes Google Search Console.
+- [AIO jako strategie](https://aiseo-optimalizace.cz/blog/aio-strategie/): Maturity Model 5 levelů, 90-day plán, RACI org chart, KPI a OKR šablony, stack nástrojů a 3 archetypy firem.
+- [SEO pro e-shopy v AI éře 2026](https://aiseo-optimalizace.cz/blog/seo-pro-eshopy-ai-era-2026/): Praktický průvodce SEO pro e-shopy v AI éře. Co se mění s AI Overviews, na co zacílit v kategoriích a produktovkách, kolik to stojí a kdy si najmout agenturu.
+- [Jak omezit AI Overviews v Googlu](https://aiseo-optimalizace.cz/blog/jak-vypnout-ai-overview/): Krok-za-krokem návod, jak omezit Google AI Overviews v prohlížeči, na účtu i na vlastním webu. Funkční metody pro Chrome, Edge, Firefox, Brave i mobil.
+- [Časté chyby v SEO 2026 (update)](https://aiseo-optimalizace.cz/blog/caste-chyby-v-seo-2026-update/): 12 omylů, které tiše brzdí výsledky — keyword stuffing, intent mismatch, technický dluh, ignorování brandu. S prioritizací.
+- [Local SEO Česko 2026](https://aiseo-optimalizace.cz/blog/local-seo-cesko-2026/): Jak v ČR optimalizovat Google Business Profile a Seznam Firmy, na čem stojí lokální viditelnost a co s ní dělá AI éra. Prioritizace podle typu firmy.
+- [SEO audit — co kontrolovat 1× ročně](https://aiseo-optimalizace.cz/blog/seo-audit-co-kontrolovat/): Strukturovaný SEO audit ve třech vrstvách. Co projít, jak prioritizovat podle typu webu a kdy audit dělat sami nebo s agenturou.
+- [SEO nástroje 2026](https://aiseo-optimalizace.cz/blog/seo-nastroje-2026/): Sedm kategorií SEO nástrojů v roce 2026 — free baseline, klasika i AI citation tracking. Ceny ověřené, doporučené stacky podle situace.
+- [Měření SEO výkonu 2026](https://aiseo-optimalizace.cz/blog/mereni-seo-vykonu-2026/): Co opravdu měřit u SEO v 2026 — pozice, traffic, CTR, Core Web Vitals i AI citation share. KPI hierarchie podle příjemce reportu a podle typu byznysu.
+- [Jak strukturovat pillar content](https://aiseo-optimalizace.cz/blog/jak-strukturovat-pillar-content/): Anatomie pillar contentu — answer block, kontext, FAQ, schema. Kdy pillar dává smysl a kdy je vhodnější jiný formát.
+
+## Produkty
+
+- [AI SEO Wireframe Pack (1 490 Kč)](https://aiseo-optimalizace.cz/pack/): Kompletní framework pro 7 typů stránek webu — homepage, produktová stránka, kategorie, blog článek, blog výpis, prodejní landing, kontakt + aplikační návod. 9 PDFs + master 85 stran, jednorázový digitální nákup přes Stripe.
+- [Návod zdarma (homepage)](https://aiseo-optimalizace.cz/navod-zdarma/): Free PDF 6 stran — jak upravit homepage pro AI vyhledávání. Výměnou za e-mail (lead magnet).
+
+## Optional
+
+- [Kontakt — Sniperdesign](https://aiseo-optimalizace.cz/kontakt/): Tři cesty spolupráce: DIY (Pack 1 490 Kč), AI SEO audit (9 990 Kč) nebo dlouhodobá spolupráce s agenturou.
+- [Blog](https://aiseo-optimalizace.cz/blog/): Index všech 12 článků o SEO/GEO/AEO/AIO pro CZ trh.

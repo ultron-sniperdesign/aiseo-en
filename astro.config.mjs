@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import indexnow from "astro-indexnow";
 import tailwindcss from "@tailwindcss/vite";
 import { visit } from "unist-util-visit";
 import rehypeExternalLinks from "rehype-external-links";
@@ -114,6 +115,15 @@ export default defineConfig({
       // Build-time datum jako lastmod pro všechny stránky.
       // Google `lastmod` používá, pokud je konzistentně přesné — přesně to děláme.
       lastmod: new Date(),
+    }),
+    // IndexNow — push změněných URL při buildu na Bing, Yandex, Seznam, Naver, Yep.
+    // Key je VEŘEJNÝ (k ověření vlastnictví je v `public/<key>.txt`), takže fallback
+    // přímo v configu není leak. Env var dovoluje rotaci klíče bez code change.
+    // Cache `.astro-indexnow-cache.json` MUSÍ být commitnutá (CI build = ephemeral,
+    // bez cache by se každý build chápal jako první a re-submitoval všechny URL).
+    indexnow({
+      key:
+        process.env.INDEXNOW_KEY || "929226a175c657aac3ba73a765ee364d",
     }),
   ],
   vite: {

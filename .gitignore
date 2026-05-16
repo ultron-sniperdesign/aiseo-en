@@ -52,3 +52,7 @@ _research/
 # Hotové PDF produkty pro prodej (lokální, ne součást webu)
 PDF na prodej/
 _source/products/pack/output/
+
+# IndexNow cache MUSÍ být commitnutá (CI build je ephemeral — bez cache by se
+# každý build chápal jako první a re-submitoval všechny URL na IndexNow).
+!.astro-indexnow-cache.json

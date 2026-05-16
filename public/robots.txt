@@ -52,4 +52,24 @@ Allow: /
 Disallow: /_review/
 Disallow: /download/
 
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /_review/
+Disallow: /download/
+
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /_review/
+Disallow: /download/
+
+User-agent: CCBot
+Allow: /
+Disallow: /_review/
+Disallow: /download/
+
+User-agent: Diffbot
+Allow: /
+Disallow: /_review/
+Disallow: /download/
+
 Sitemap: https://aiseo-optimalizace.cz/sitemap-index.xml

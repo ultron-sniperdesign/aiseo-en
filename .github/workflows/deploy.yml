@@ -31,6 +31,9 @@ jobs:
           # prázdný a BaseLayout meta/script se nevykreslí (default fallback).
           PUBLIC_GSC_VERIFICATION: ${{ secrets.PUBLIC_GSC_VERIFICATION }}
           PUBLIC_GA4_MEASUREMENT_ID: ${{ secrets.PUBLIC_GA4_MEASUREMENT_ID }}
+          # IndexNow klíč je veřejný (k ověření vlastnictví v public/<key>.txt),
+          # ale Secret nech ho dovoluje rotaci bez code change. Fallback je v astro.config.mjs.
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
         run: npm run build
 
       - name: Setup SSH key
