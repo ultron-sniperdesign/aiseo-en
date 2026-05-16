@@ -1,0 +1,1162 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+
+const pageTitle = "AI SEO audit od Sniperdesign — přesný plán pro váš web, 9 990 Kč";
+const pageDescription =
+  "AI SEO audit od Sniperdesign za 9 990 Kč bez DPH. Projdeme váš konkrétní web v technice, obsahu a důvěryhodnosti. Prioritní seznam úprav s odhadem dopadu + 60min konzultace. Výstup do 5 pracovních dní. Zlatý Upgates partner od 2016, 600+ e-shopů.";
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "AI SEO audit",
+  provider: {
+    "@type": "Organization",
+    name: "CPU s.r.o.",
+    alternateName: "Sniperdesign",
+    url: "https://www.sniperdesign.cz/",
+    email: "info@sniperdesign.cz",
+    telephone: "+420 775 181 634",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Akademická 663/5",
+      addressLocality: "Praha 10 — Malešice",
+      postalCode: "10800",
+      addressCountry: "CZ",
+    },
+  },
+  areaServed: { "@type": "Country", name: "Czech Republic" },
+  description:
+    "Komplexní audit webu pro AI éru vyhledávání. Technický audit (Core Web Vitals, schema markup), obsahový audit (pillar coverage, on-page) a důvěryhodnost (E-E-A-T, NAP). Prioritní seznam úprav s odhadem dopadu + 60min konzultace s týmem. Výstup do 5 pracovních dní.",
+  offers: {
+    "@type": "Offer",
+    price: "9990",
+    priceCurrency: "CZK",
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      price: "9990",
+      priceCurrency: "CZK",
+      valueAddedTaxIncluded: false,
+    },
+    availability: "https://schema.org/InStock",
+    url: "https://aiseo-optimalizace.cz/audit/",
+  },
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Pro koho je audit určený?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Audit je pro provozovatele e-shopů (Upgates, Shoptet, WooCommerce) a firemních webů, kteří chtějí konkrétní plán, co změnit pro AI éru vyhledávání. Hodí se pro weby s ročním obratem 1+ mil. Kč a s ambicí být citovaný v ChatGPT, Perplexity a Google AI Overviews.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Co když nemám AI SEO Wireframe Pack?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Pack i audit jsou samostatné produkty. Pack je framework pro DIY úpravy (1 490 Kč), audit je hands-on analýza vašeho webu se 60min konzultací (9 990 Kč). Audit můžete objednat samostatně — nepotřebujete předem Pack. Pokud máte Pack, audit se vám hodí jako navazující krok pro implementaci na váš konkrétní sortiment.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Jak dlouho audit trvá?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Výstup audit dokumentu do 5 pracovních dní od potvrzení objednávky. Po vyplnění formuláře vás kontaktujeme do 24 hodin (v pracovní dny) s upřesněním a fakturou. Po platbě začneme auditovat. 60min online konzultaci si domluvíme po dodání auditu.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Co konkrétně dostanu jako výstup?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Audit dokument (PDF nebo Notion / Google Doc, dle preference) obsahující: 1) technický audit (Core Web Vitals, schema markup, indexace, mobile UX), 2) obsahový audit (pillar coverage, on-page optimalizace, content gaps proti konkurenci), 3) E-E-A-T a důvěryhodnost (NAP konzistence, brand mentions, backlink profil). Plus prioritní seznam úprav s odhadem dopadu a effortu, a 60min online konzultaci s naším týmem.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Komu platím a dostanu fakturu?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Platíte CPU s.r.o. (IČO 08125163, plátce DPH). Faktura je vystavena samostatně po potvrzení objednávky. Cena 9 990 Kč je bez DPH (s DPH = 12 088 Kč).",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Můžu se na něco zeptat předem?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Samozřejmě. Napište nám na info@sniperdesign.cz nebo zavolejte +420 775 181 634 (Po-Pá 9-17). Pokud chcete spíš nezávaznou konzultaci než audit, máme i tuto možnost na sniperdesign.cz/konzultace.",
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={[serviceJsonLd, faqJsonLd]}>
+  <main class="audit">
+    <!-- ===== HERO — Sniperdesign brand box ===== -->
+    <section class="audit-hero" aria-labelledby="audit-hero-title">
+      <div class="audit-hero__inner">
+        <a
+          href="https://www.sniperdesign.cz/"
+          target="_blank"
+          rel="noopener"
+          class="audit-hero__brand"
+          aria-label="Sniperdesign — domovská stránka agentury"
+        >
+          <img
+            src="/sniperdesign/logo-wh.svg"
+            alt="Sniperdesign"
+            width="200"
+            height="40"
+            loading="eager"
+          />
+        </a>
+
+        <span class="audit-hero__eyebrow">AI SEO audit od Sniperdesign</span>
+
+        <h1 id="audit-hero-title" class="audit-hero__title">
+          Přesný plán pro váš web &mdash; <strong>co změnit, proč a&nbsp;jaký to bude mít dopad</strong>
+        </h1>
+
+        <p class="audit-hero__lead">
+          Projdeme váš konkrétní web v <strong>technice, obsahu a&nbsp;důvěryhodnosti</strong>.
+          Dostanete prioritní seznam úprav s&nbsp;odhadem dopadu, ke&nbsp;všemu
+          plus <strong>60 minutovou konzultaci s&nbsp;naším týmem</strong>.
+          Výstup do&nbsp;<strong>5&nbsp;pracovních dní</strong>.
+        </p>
+
+        <div class="audit-hero__price-block">
+          <div class="audit-hero__price">
+            <strong>9&nbsp;990&nbsp;Kč</strong>
+            <span>bez DPH &middot; jednorázově</span>
+          </div>
+          <div class="audit-hero__price-meta">
+            <span>s&nbsp;DPH 12&nbsp;088&nbsp;Kč</span>
+            <span>výstup do&nbsp;5&nbsp;pracovních dní</span>
+            <span>+ 60min konzultace</span>
+          </div>
+        </div>
+
+        <div class="audit-hero__actions">
+          <a href="#objednat" class="audit-btn audit-btn--solid">
+            Objednat audit
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+          <a
+            href="https://www.sniperdesign.cz/konzultace"
+            target="_blank"
+            rel="noopener"
+            class="audit-btn audit-btn--ghost"
+          >
+            Nejdřív nezávazná konzultace
+          </a>
+        </div>
+
+        <p class="audit-hero__legal">
+          Provozovatel: <strong>CPU s.r.o.</strong> &middot; IČO 08125163 &middot; plátce DPH
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== 01 CO JE V AUDITU (3 vrstvy + bonusy) ===== -->
+    <section class="lp-section">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">01</span> Co je v auditu</span>
+        <h2 class="lp-section__title">
+          Audit ve <strong>třech vrstvách</strong>, ke&nbsp;všemu konzultace
+        </h2>
+        <p class="lp-section__lead">
+          Projdeme váš web stejnou metodikou, kterou používáme u&nbsp;klientů
+          se&nbsp;6&minus;7 cifernými ročními obraty. Žádné generické checklisty
+          ze&nbsp;šablon &mdash; vždy přizpůsobené vašemu sortimentu a&nbsp;platformě.
+        </p>
+      </header>
+
+      <div class="audit-layers">
+        <article class="audit-layer">
+          <span class="audit-layer__num" data-tone="seo">01</span>
+          <h3>Technika</h3>
+          <ul>
+            <li>Core Web Vitals (rychlost, stabilita, interaktivita)</li>
+            <li>Mobile UX a&nbsp;čitelnost na&nbsp;telefonu</li>
+            <li>Indexace v&nbsp;Google &mdash; co Google vidí, co ne</li>
+            <li>Strukturovaná data (Product, FAQPage, Article, BreadcrumbList)</li>
+            <li>robots.txt včetně přístupu pro AI crawlery (GPTBot, ClaudeBot, PerplexityBot)</li>
+            <li>Sitemap, canonical, noindex &mdash; technické pokyny pro vyhledávače</li>
+          </ul>
+        </article>
+
+        <article class="audit-layer">
+          <span class="audit-layer__num" data-tone="geo">02</span>
+          <h3>Obsah</h3>
+          <ul>
+            <li>Pillar coverage &mdash; pokrývá web hlavní témata vašeho oboru?</li>
+            <li>On-page optimalizace klíčových stránek (homepage, top kategorie, top produkty)</li>
+            <li>Krátké odpovědi 40&minus;60 slov hned pod nadpisy (pro AI citace)</li>
+            <li>Časté dotazy se&nbsp;strukturovanými daty (FAQPage)</li>
+            <li>Content gaps proti konkurenci &mdash; co konkurence pokrývá a&nbsp;vy ne</li>
+            <li>Prolinkování mezi stránkami (hub-and-spoke)</li>
+          </ul>
+        </article>
+
+        <article class="audit-layer">
+          <span class="audit-layer__num" data-tone="aeo">03</span>
+          <h3>Důvěryhodnost</h3>
+          <ul>
+            <li>E-E-A-T signály &mdash; autorství, ověřitelnost, reputace zdroje</li>
+            <li>Kontaktní údaje (NAP) konzistence napříč webem a&nbsp;katalogy</li>
+            <li>Backlink profil &mdash; odkazy z&nbsp;jiných webů, které na&nbsp;vás vedou</li>
+            <li>Brand mentions v&nbsp;Googlu, ChatGPT a&nbsp;Perplexity</li>
+            <li>Schema Organization a&nbsp;strukturovaná data pro místní firmu</li>
+            <li>Reputace v&nbsp;Heuréce, Zboží, Google reviews</li>
+          </ul>
+        </article>
+
+        <article class="audit-layer audit-layer--bonus">
+          <span class="audit-layer__num audit-layer__num--bonus">✦</span>
+          <h3>Plus k&nbsp;tomu</h3>
+          <ul>
+            <li><strong>Prioritní seznam úprav</strong> s&nbsp;odhadem dopadu a&nbsp;effortu (co změnit jako první)</li>
+            <li><strong>60min online konzultace</strong> s&nbsp;naším týmem &mdash; projdeme audit, odpovíme na&nbsp;otázky</li>
+            <li><strong>Konkrétní postupy pro vaši platformu</strong> (Upgates, Shoptet, WordPress, custom)</li>
+            <li><strong>Výstup formát:</strong> PDF dokument nebo sdílený Notion / Google Doc &mdash; podle preference</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== 02 PROČ NÁM MŮŽETE DŮVĚŘOVAT ===== -->
+    <section class="lp-section lp-section--alt">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">02</span> Proč nám můžete důvěřovat</span>
+        <h2 class="lp-section__title">
+          Reálná zkušenost <strong>z&nbsp;denodenní praxe</strong>
+        </h2>
+      </header>
+
+      <div class="audit-trust">
+        <article class="audit-trust__item">
+          <h3>Zlatý partner Upgates od&nbsp;2016</h3>
+          <p>
+            10&nbsp;let na&nbsp;Upgates platformě, oficiální Zlatý partner.
+            Pro Shoptet máme Gold partner status. Audit pro váš e-shop
+            tedy nedělají univerzální konzultanti, ale lidé, kteří platformu
+            znají do&nbsp;hloubky.
+          </p>
+        </article>
+
+        <article class="audit-trust__item">
+          <h3>Provozujeme vlastní e-shop MEGA&nbsp;DETAIL</h3>
+          <p>
+            Když vám něco doporučíme, není to z&nbsp;teorie. Vyzkoušeli jsme
+            to nejdřív na&nbsp;<a href="https://www.megadetail.cz/" target="_blank" rel="noopener"><strong>MEGA&nbsp;DETAIL</strong></a> &mdash;
+            našem vlastním e-shopu pro autokosmetiku. Řešíme stejné
+            problémy jako vy.
+          </p>
+        </article>
+
+        <article class="audit-trust__item">
+          <h3>Přes 600 e-shopů na&nbsp;CZ trhu</h3>
+          <p>
+            Za 10&nbsp;let jsme prošli stovkami e-shopů různých velikostí
+            a&nbsp;oborů. <a href="https://www.sniperdesign.cz/reference" target="_blank" rel="noopener">43&nbsp;klientských realizací</a>
+            je veřejně dohledatelných na&nbsp;webu agentury &mdash; nekupujete
+            audit od&nbsp;anonymního dodavatele.
+          </p>
+        </article>
+
+        <article class="audit-trust__item">
+          <h3>Vlastní nástroje pro e-commerce</h3>
+          <p>
+            <strong>SYNKRO</strong> pro automatizaci e-shopových procesů
+            a&nbsp;<strong>GPTfeed</strong> pro práci s&nbsp;produktovým obsahem.
+            Audit se&nbsp;zaměřuje i&nbsp;na&nbsp;to, jak vám tyto procesy
+            ulehčit, ne&nbsp;jen co vidí Google.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== 03 PACK VS AUDIT ===== -->
+    <section class="lp-section">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">03</span> Pack vs. audit</span>
+        <h2 class="lp-section__title">
+          Co je pro vás <strong>vhodnější</strong>?
+        </h2>
+        <p class="lp-section__lead">
+          <a href="/pack/">AI&nbsp;SEO Wireframe Pack</a> a&nbsp;audit nejsou
+          konkurenti &mdash; řeší dvě různé situace. Často je nejlepší
+          mít obojí: Pack jako framework, audit jako přesný plán pro váš
+          konkrétní web.
+        </p>
+      </header>
+
+      <div class="audit-compare">
+        <article class="audit-compare__col">
+          <header>
+            <span class="audit-compare__pill audit-compare__pill--pack">Pack</span>
+            <h3>Když chcete <strong>řešit věci sami</strong></h3>
+            <p class="audit-compare__price">1&nbsp;490&nbsp;Kč &middot; jednorázově</p>
+          </header>
+          <ul>
+            <li>Máte čas a&nbsp;chuť aplikovat framework vlastní silou</li>
+            <li>Chcete obecný recept pro 7&nbsp;typů stránek webu (homepage, produkt, kategorie, blog, prodejní landing, kontakt)</li>
+            <li>Hodí se i&nbsp;agenturám / copywriterům pro klientské weby</li>
+            <li>Aplikace na&nbsp;váš web během odpoledne</li>
+            <li>Master PDF 85&nbsp;stran + 9&nbsp;jednotlivých kapitol</li>
+          </ul>
+          <a href="/pack/" class="audit-compare__cta">
+            Zobrazit Pack&nbsp;&rarr;
+          </a>
+        </article>
+
+        <article class="audit-compare__col audit-compare__col--featured">
+          <header>
+            <span class="audit-compare__pill audit-compare__pill--audit">Audit</span>
+            <h3>Když chcete <strong>plán pro váš konkrétní web</strong></h3>
+            <p class="audit-compare__price">9&nbsp;990&nbsp;Kč bez DPH &middot; jednorázově</p>
+          </header>
+          <ul>
+            <li>Chcete <strong>přesnou analýzu vašeho webu</strong>, ne&nbsp;obecný framework</li>
+            <li>Potřebujete <strong>prioritní seznam úprav</strong> &mdash; co změnit jako první, proč a&nbsp;jaký to bude mít dopad</li>
+            <li>Chcete <strong>konzultaci s&nbsp;týmem</strong>, kde si projdete závěry osobně</li>
+            <li>Nemáte čas / chuť projít Pack vlastní silou a&nbsp;preferujete hotový plán</li>
+            <li>Výstup do&nbsp;5&nbsp;pracovních dní + 60min konzultace</li>
+          </ul>
+          <a href="#objednat" class="audit-compare__cta audit-compare__cta--accent">
+            Objednat audit&nbsp;&rarr;
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== 04 FAQ ===== -->
+    <section class="lp-section lp-section--alt">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">04</span> Časté otázky</span>
+        <h2 class="lp-section__title">
+          Než si <strong>objednáte audit</strong>
+        </h2>
+      </header>
+
+      <dl class="audit-faq">
+        <div>
+          <dt>Pro koho je audit určený?</dt>
+          <dd>
+            Pro provozovatele e-shopů (Upgates, Shoptet, WooCommerce) a&nbsp;firemních
+            webů, kteří chtějí <strong>konkrétní plán</strong>, co změnit pro AI éru
+            vyhledávání. Hodí se pro weby s&nbsp;ročním obratem 1+&nbsp;mil.&nbsp;Kč
+            a&nbsp;s&nbsp;ambicí být citovaný v&nbsp;ChatGPT, Perplexity
+            a&nbsp;Google AI Overviews.
+          </dd>
+        </div>
+        <div>
+          <dt>Co když nemám AI SEO Wireframe Pack?</dt>
+          <dd>
+            Pack i&nbsp;audit jsou samostatné produkty. Pack je framework pro DIY
+            úpravy (1&nbsp;490&nbsp;Kč), audit je hands-on analýza vašeho webu
+            se&nbsp;60min konzultací. <strong>Audit můžete objednat samostatně</strong>
+            &mdash; nepotřebujete předem Pack.
+          </dd>
+        </div>
+        <div>
+          <dt>Jak dlouho audit trvá?</dt>
+          <dd>
+            Výstup audit dokumentu <strong>do&nbsp;5&nbsp;pracovních dní</strong>
+            od&nbsp;potvrzení objednávky. Po&nbsp;vyplnění formuláře vás
+            kontaktujeme do&nbsp;24&nbsp;hodin v&nbsp;pracovní dny s&nbsp;upřesněním
+            a&nbsp;fakturou. Po&nbsp;platbě začneme auditovat.
+          </dd>
+        </div>
+        <div>
+          <dt>Co konkrétně dostanu jako výstup?</dt>
+          <dd>
+            Audit dokument (PDF nebo Notion / Google Doc, dle preference) se&nbsp;třemi
+            vrstvami analýzy + <strong>prioritní seznam úprav</strong> s&nbsp;odhadem
+            dopadu a&nbsp;effortu + <strong>60min online konzultaci</strong>
+            s&nbsp;naším týmem.
+          </dd>
+        </div>
+        <div>
+          <dt>Komu platím a&nbsp;dostanu fakturu?</dt>
+          <dd>
+            Platíte <strong>CPU s.r.o.</strong> (IČO 08125163, plátce DPH). Faktura
+            je vystavena samostatně po&nbsp;potvrzení objednávky. Cena <strong>9&nbsp;990&nbsp;Kč
+            bez DPH</strong> (s&nbsp;DPH = 12&nbsp;088&nbsp;Kč).
+          </dd>
+        </div>
+        <div>
+          <dt>Můžu se na&nbsp;něco zeptat předem?</dt>
+          <dd>
+            Samozřejmě. Napište na&nbsp;<a href="mailto:info@sniperdesign.cz">info@sniperdesign.cz</a>
+            nebo zavolejte <a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a>
+            (Po&minus;Pá 9&minus;17). Pokud preferujete nezávaznou konzultaci, máme
+            i&nbsp;tuto možnost na&nbsp;<a href="https://www.sniperdesign.cz/konzultace" target="_blank" rel="noopener">sniperdesign.cz/konzultace</a>.
+          </dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- ===== 05 OBJEDNAT FORM ===== -->
+    <section class="lp-section" id="objednat">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">05</span> Objednat audit</span>
+        <h2 class="lp-section__title">
+          Vyplňte formulář, <strong>ozveme se do&nbsp;24&nbsp;hodin</strong>
+        </h2>
+        <p class="lp-section__lead">
+          Po odeslání vás kontaktujeme s&nbsp;upřesněním rozsahu, fakturou
+          a&nbsp;termínem startu auditu. Faktura je vystavena <strong>CPU s.r.o.</strong>
+          na <strong>9&nbsp;990&nbsp;Kč bez DPH</strong>. Po&nbsp;platbě začneme
+          auditovat, výstup do&nbsp;5&nbsp;pracovních dní.
+        </p>
+      </header>
+
+      <form
+        class="audit-form"
+        method="post"
+        action="https://sniperdesign.ecomailapp.cz/public/subscribe/12/04d9c95424b2f28aaece6f953bb0e4aa"
+        novalidate
+      >
+        <input type="hidden" name="name" id="audit-form-name" value="Audit poptávka" />
+        <input type="hidden" name="updateExisting" value="1" />
+
+        <div class="audit-form__grid">
+          <div class="audit-form__field">
+            <label for="audit-jmeno">
+              Vaše jméno <span aria-hidden="true">*</span>
+            </label>
+            <input
+              type="text"
+              id="audit-jmeno"
+              required
+              autocomplete="name"
+              placeholder="Honza Novák"
+            />
+          </div>
+
+          <div class="audit-form__field">
+            <label for="audit-email">
+              E-mail <span aria-hidden="true">*</span>
+            </label>
+            <input
+              type="email"
+              id="audit-email"
+              name="email"
+              required
+              autocomplete="email"
+              placeholder="honza@vas-eshop.cz"
+            />
+          </div>
+
+          <div class="audit-form__field audit-form__field--full">
+            <label for="audit-url">
+              URL webu, který chcete auditovat <span aria-hidden="true">*</span>
+            </label>
+            <input
+              type="url"
+              id="audit-url"
+              required
+              placeholder="https://vas-eshop.cz"
+              autocomplete="url"
+            />
+          </div>
+
+          <div class="audit-form__field audit-form__field--full">
+            <label for="audit-platforma">Platforma webu</label>
+            <select id="audit-platforma">
+              <option value="">— vyberte —</option>
+              <option value="Upgates">Upgates</option>
+              <option value="Shoptet">Shoptet</option>
+              <option value="WooCommerce">WooCommerce</option>
+              <option value="WordPress">WordPress</option>
+              <option value="Webflow">Webflow</option>
+              <option value="Shopify">Shopify</option>
+              <option value="Custom / vlastní">Custom / vlastní řešení</option>
+              <option value="Nevím">Nevím / poradíte</option>
+            </select>
+          </div>
+
+          <div class="audit-form__field audit-form__field--full">
+            <label for="audit-cil">
+              Hlavní cíl auditu <span class="audit-form__hint">(volitelně, ale pomůže nám)</span>
+            </label>
+            <textarea
+              id="audit-cil"
+              rows="3"
+              placeholder="Např.: chci zvýšit organický traffic, vidím pokles z Googlu po update, připravuji web na rebrand, chci být víc citovaný v AI nástrojích…"
+            ></textarea>
+          </div>
+
+          <div class="audit-form__field audit-form__field--full audit-form__gdpr">
+            <label>
+              <input type="checkbox" id="audit-gdpr" required />
+              <span>
+                Souhlasím se&nbsp;<a href="https://www.sniperdesign.cz/zpracovani-osobnich-udaju" target="_blank" rel="noopener">zpracováním osobních údajů</a>
+                za&nbsp;účelem zpracování této poptávky. <span aria-hidden="true">*</span>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="audit-form__submit">
+          Odeslat poptávku auditu
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+
+        <p class="audit-form__legal">
+          <strong>Žádný spam.</strong> Vaše údaje použijeme jen pro tuto poptávku.
+          Po dokončení auditu vás můžeme s&nbsp;vaším svolením přidat
+          do&nbsp;e-mailových aktualit, ale standardně ne.
+        </p>
+      </form>
+    </section>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+  /**
+   * Audit form — sloučí URL + cíl + platformu do name fieldu, aby
+   * to Sniperdesign viděl v Ecomail dashboardu vedle e-mailu.
+   * Ecomail subscribe endpoint nepodporuje custom fields, takže
+   * data sbalíme do "name".
+   */
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector(".audit-form");
+    if (!form) return;
+    form.addEventListener("submit", (e) => {
+      const jmeno = (document.getElementById("audit-jmeno"))?.value?.trim() || "";
+      const url = (document.getElementById("audit-url"))?.value?.trim() || "";
+      const platforma = (document.getElementById("audit-platforma"))?.value?.trim() || "";
+      const cil = (document.getElementById("audit-cil"))?.value?.trim() || "";
+      const nameInput = document.getElementById("audit-form-name");
+      if (!nameInput) return;
+      // Sloučený "name" — Sniperdesign uvidí v Ecomail dashboardu
+      const parts = ["Audit poptávka", jmeno, url, platforma, cil ? cil.slice(0, 200) : ""].filter(Boolean);
+      nameInput.value = parts.join(" · ");
+    });
+  });
+</script>
+
+<style>
+  .audit {
+    --font-agency: "Kumbh Sans", var(--font-sans);
+    --lp-violet: oklch(0.55 0.25 305);
+    --lp-magenta: oklch(0.62 0.27 335);
+    --sd-deep: oklch(0.22 0.13 305);
+    --sd-deeper: oklch(0.16 0.11 305);
+    --sd-violet: oklch(0.55 0.25 305);
+    --sd-magenta: oklch(0.62 0.27 335);
+    --sd-gold: oklch(0.82 0.16 80);
+    --sd-paper: oklch(0.985 0.004 250);
+    --tone-seo: oklch(0.6 0.18 240);
+    --tone-geo: oklch(0.6 0.18 145);
+    --tone-aeo: oklch(0.72 0.13 80);
+  }
+
+  /* ===== HERO ===== */
+  .audit-hero {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(1.5rem, 3vw, 2.5rem) var(--space-section-x) clamp(2rem, 4vw, 3.5rem);
+  }
+  .audit-hero__inner {
+    background:
+      radial-gradient(ellipse 70% 60% at 110% 0%, color-mix(in oklch, var(--sd-magenta) 30%, transparent), transparent 60%),
+      radial-gradient(ellipse 80% 70% at -10% 100%, color-mix(in oklch, var(--sd-violet) 32%, transparent), transparent 60%),
+      linear-gradient(135deg, var(--sd-deep) 0%, var(--sd-deeper) 100%);
+    color: var(--sd-paper);
+    border-radius: 14px;
+    padding: clamp(2rem, 4vw, 3.5rem) clamp(1.75rem, 4vw, 3.5rem);
+    position: relative;
+    overflow: hidden;
+  }
+  .audit-hero__inner::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
+  }
+  .audit-hero__brand {
+    display: inline-block;
+    margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+  }
+  .audit-hero__brand img {
+    width: 200px;
+    height: auto;
+  }
+  .audit-hero__eyebrow {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: oklch(from var(--sd-gold) l c h / 0.85);
+    margin-bottom: 0.875rem;
+  }
+  .audit-hero__title {
+    font-family: var(--font-agency);
+    font-weight: 300;
+    font-size: clamp(1.875rem, 4.5vw, 3.25rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--sd-paper);
+    margin: 0 0 1.25rem;
+    max-width: 42rem;
+  }
+  .audit-hero__title strong {
+    font-weight: 700;
+    color: color-mix(in oklch, var(--sd-magenta) 60%, white);
+  }
+  .audit-hero__lead {
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    line-height: 1.6;
+    color: oklch(from var(--sd-paper) l c h / 0.85);
+    margin: 0 0 1.75rem;
+    max-width: 38rem;
+  }
+  .audit-hero__lead strong { color: var(--sd-paper); font-weight: 600; }
+
+  /* Price block */
+  .audit-hero__price-block {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 1rem 1.5rem;
+    padding: 1.25rem 0;
+    margin: 0 0 1.75rem;
+    border-top: 1px solid oklch(from var(--sd-paper) l c h / 0.15);
+    border-bottom: 1px solid oklch(from var(--sd-paper) l c h / 0.15);
+  }
+  .audit-hero__price {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+  .audit-hero__price strong {
+    font-family: var(--font-agency);
+    font-weight: 700;
+    font-size: clamp(1.625rem, 3vw, 2.25rem);
+    color: var(--sd-paper);
+    letter-spacing: -0.02em;
+  }
+  .audit-hero__price span {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: oklch(from var(--sd-paper) l c h / 0.7);
+  }
+  .audit-hero__price-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: oklch(from var(--sd-paper) l c h / 0.6);
+    letter-spacing: 0.02em;
+  }
+
+  /* CTA buttons */
+  .audit-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .audit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.875rem 1.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+  }
+  .audit-btn--solid {
+    background: var(--sd-gold);
+    color: var(--sd-deep);
+  }
+  .audit-btn--solid:hover {
+    background: color-mix(in oklch, var(--sd-gold) 85%, white);
+    transform: translateY(-1px);
+  }
+  .audit-btn--ghost {
+    background: transparent;
+    color: var(--sd-paper);
+    border: 1px solid oklch(from var(--sd-paper) l c h / 0.25);
+  }
+  .audit-btn--ghost:hover {
+    background: oklch(from var(--sd-paper) l c h / 0.08);
+    border-color: oklch(from var(--sd-paper) l c h / 0.4);
+  }
+
+  .audit-hero__legal {
+    margin: 1.25rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: oklch(from var(--sd-paper) l c h / 0.55);
+  }
+  .audit-hero__legal strong {
+    color: oklch(from var(--sd-paper) l c h / 0.85);
+    font-weight: 700;
+  }
+
+  /* ===== Sdílené primitivy z /pack/ ===== */
+  .lp-section {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(3rem, 6vw, 5rem) var(--space-section-x);
+  }
+  .lp-section--alt {
+    background: var(--color-paper-deep);
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .lp-section--alt > * {
+    max-width: var(--max-section);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-section-x);
+    padding-right: var(--space-section-x);
+  }
+  .lp-section__head {
+    max-width: 50rem;
+    margin-bottom: clamp(2rem, 3.5vw, 3rem);
+  }
+  .lp-section__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    margin: 0 0 1rem;
+  }
+  .lp-section__title strong {
+    color: var(--lp-violet);
+    font-weight: 700;
+  }
+  .lp-section__lead {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin: 0;
+    max-width: 40rem;
+  }
+  .lp-section__lead a { color: var(--lp-violet); text-decoration: underline; text-underline-offset: 2px; }
+  .lp-section__lead strong { color: var(--color-ink); font-weight: 600; }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    margin-bottom: 1rem;
+  }
+  .eyebrow__num {
+    color: var(--lp-violet);
+    font-weight: 700;
+  }
+
+  /* ===== Audit layers (3 + bonus card) ===== */
+  .audit-layers {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  @media (min-width: 768px) {
+    .audit-layers { grid-template-columns: repeat(2, 1fr); }
+  }
+  .audit-layer {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 12px;
+    padding: 1.5rem 1.5rem 1.375rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+  .audit-layer--bonus {
+    background: oklch(0.97 0.04 305 / 0.4);
+    border-color: var(--lp-violet);
+  }
+  .audit-layer__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background: var(--color-paper-deep);
+    color: var(--color-ink-muted);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  .audit-layer__num[data-tone="seo"] { background: oklch(from var(--tone-seo) l c h / 0.15); color: var(--tone-seo); }
+  .audit-layer__num[data-tone="geo"] { background: oklch(from var(--tone-geo) l c h / 0.15); color: var(--tone-geo); }
+  .audit-layer__num[data-tone="aeo"] { background: oklch(from var(--tone-aeo) l c h / 0.18); color: oklch(from var(--tone-aeo) calc(l - 0.15) c h); }
+  .audit-layer__num--bonus {
+    background: var(--lp-violet);
+    color: #fff;
+    font-size: 1rem;
+  }
+  .audit-layer h3 {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    color: var(--color-ink);
+    margin: 0.25rem 0 0.5rem;
+  }
+  .audit-layer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .audit-layer li {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    padding-left: 1.125rem;
+    position: relative;
+  }
+  .audit-layer li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--lp-violet);
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .audit-layer li strong { color: var(--color-ink); font-weight: 600; }
+
+  /* ===== Trust block (reused from /kontakt/ style) ===== */
+  .audit-trust {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.25rem, 2.5vw, 1.75rem);
+  }
+  @media (min-width: 768px) {
+    .audit-trust { grid-template-columns: repeat(2, 1fr); }
+  }
+  .audit-trust__item {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--lp-violet);
+    border-radius: 10px;
+    padding: 1.5rem 1.5rem 1.375rem;
+  }
+  .audit-trust__item h3 {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-ink);
+    margin: 0 0 0.625rem;
+  }
+  .audit-trust__item p {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+  .audit-trust__item p a {
+    color: var(--lp-violet);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .audit-trust__item p strong { color: var(--color-ink); }
+
+  /* ===== Pack vs Audit comparison ===== */
+  .audit-compare {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+  }
+  @media (min-width: 768px) {
+    .audit-compare { grid-template-columns: repeat(2, 1fr); }
+  }
+  .audit-compare__col {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 12px;
+    padding: 1.75rem 1.625rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .audit-compare__col--featured {
+    border-color: var(--lp-magenta);
+    border-width: 2px;
+    background: oklch(0.97 0.04 335 / 0.4);
+    box-shadow: 0 8px 22px -10px oklch(from var(--lp-magenta) l c h / 0.3);
+  }
+  .audit-compare__col header {
+    border-bottom: 1px solid var(--color-rule);
+    padding-bottom: 1rem;
+  }
+  .audit-compare__pill {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    margin-bottom: 0.75rem;
+  }
+  .audit-compare__pill--pack {
+    color: var(--lp-violet);
+    background: oklch(0.96 0.05 305 / 0.6);
+  }
+  .audit-compare__pill--audit {
+    color: #fff;
+    background: var(--lp-magenta);
+  }
+  .audit-compare__col h3 {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-ink);
+    margin: 0 0 0.5rem;
+  }
+  .audit-compare__col h3 strong { color: var(--lp-violet); font-weight: 700; }
+  .audit-compare__col--featured h3 strong { color: var(--lp-magenta); }
+  .audit-compare__price {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .audit-compare__col ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    flex: 1;
+  }
+  .audit-compare__col li {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+  .audit-compare__col li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--lp-violet);
+    font-weight: 700;
+  }
+  .audit-compare__col--featured li::before { color: var(--lp-magenta); }
+  .audit-compare__col li strong { color: var(--color-ink); font-weight: 600; }
+  .audit-compare__cta {
+    align-self: flex-start;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.625rem 1.125rem;
+    border-radius: 999px;
+    text-decoration: none;
+    color: #fff;
+    background: var(--lp-violet);
+    transition: background 0.15s ease, transform 0.15s ease;
+    margin-top: 0.5rem;
+  }
+  .audit-compare__cta:hover {
+    background: color-mix(in oklch, var(--lp-violet) 85%, black);
+    transform: translateY(-1px);
+  }
+  .audit-compare__cta--accent { background: var(--lp-magenta); }
+  .audit-compare__cta--accent:hover { background: color-mix(in oklch, var(--lp-magenta) 85%, black); }
+
+  /* ===== FAQ ===== */
+  .audit-faq {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 48rem;
+    margin: 0;
+  }
+  @media (min-width: 768px) {
+    .audit-faq { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  }
+  .audit-faq > div {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 10px;
+    padding: 1.25rem 1.375rem 1.125rem;
+  }
+  .audit-faq dt {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin: 0 0 0.5rem;
+    line-height: 1.35;
+  }
+  .audit-faq dd {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+  .audit-faq dd a {
+    color: var(--lp-violet);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .audit-faq dd strong { color: var(--color-ink); font-weight: 600; }
+
+  /* ===== ORDER FORM ===== */
+  .audit-form {
+    max-width: 42rem;
+    margin: 0 auto;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 12px;
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+  }
+  .audit-form__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.125rem;
+  }
+  @media (min-width: 640px) {
+    .audit-form__grid { grid-template-columns: repeat(2, 1fr); }
+    .audit-form__field--full { grid-column: 1 / -1; }
+  }
+  .audit-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .audit-form__field label {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .audit-form__field label span[aria-hidden] {
+    color: var(--lp-magenta);
+    margin-left: 0.125rem;
+  }
+  .audit-form__hint {
+    font-weight: 400;
+    color: var(--color-ink-faint);
+    font-size: 0.8125rem;
+    margin-left: 0.25rem;
+  }
+  .audit-form__field input[type="text"],
+  .audit-form__field input[type="email"],
+  .audit-form__field input[type="url"],
+  .audit-form__field select,
+  .audit-form__field textarea {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    padding: 0.75rem 0.875rem;
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+    color: var(--color-ink);
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .audit-form__field input:focus,
+  .audit-form__field select:focus,
+  .audit-form__field textarea:focus {
+    outline: none;
+    border-color: var(--lp-violet);
+    background: #fff;
+  }
+  .audit-form__field textarea {
+    resize: vertical;
+    min-height: 4rem;
+    line-height: 1.5;
+  }
+  .audit-form__gdpr label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    cursor: pointer;
+  }
+  .audit-form__gdpr input[type="checkbox"] {
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+    width: 1.125rem;
+    height: 1.125rem;
+    accent-color: var(--lp-violet);
+    cursor: pointer;
+  }
+  .audit-form__gdpr a {
+    color: var(--lp-violet);
+    text-decoration: underline;
+  }
+  .audit-form__submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 1rem 1.75rem;
+    border: none;
+    border-radius: 999px;
+    background: var(--lp-magenta);
+    color: #fff;
+    cursor: pointer;
+    margin-top: 1.75rem;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .audit-form__submit:hover {
+    background: color-mix(in oklch, var(--lp-magenta) 85%, black);
+    transform: translateY(-1px);
+  }
+  .audit-form__legal {
+    margin: 1rem 0 0;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--color-ink-faint);
+  }
+  .audit-form__legal strong { color: var(--color-ink-muted); font-weight: 600; }
+</style>

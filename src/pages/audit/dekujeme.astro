@@ -1,0 +1,353 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
+
+const pageTitle = "Děkujeme za poptávku auditu — ozveme se do 24 hodin";
+const pageDescription =
+  "Poptávka AI SEO auditu odeslána. Sniperdesign tým vás bude kontaktovat do 24 hodin v pracovní dny s upřesněním rozsahu, fakturou a termínem startu.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} noindex={true}>
+  <main class="audit-ty">
+    <!-- ===== HERO ===== -->
+    <section class="audit-ty-hero">
+      <div class="audit-ty-hero__inner">
+        <span class="audit-ty-hero__badge" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2" />
+            <path
+              d="M10 16.5L14 20.5L22 12.5"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+        <h1 class="audit-ty-hero__title">
+          Děkujeme za poptávku &mdash;<br />
+          <strong>ozveme se do&nbsp;24&nbsp;hodin</strong>
+        </h1>
+        <p class="audit-ty-hero__lead">
+          Vaše poptávka <strong>AI&nbsp;SEO auditu</strong> dorazila. Tým
+          Sniperdesignu vás bude kontaktovat do&nbsp;<strong>24&nbsp;hodin
+          v&nbsp;pracovní dny</strong> s&nbsp;upřesněním rozsahu, fakturou
+          a&nbsp;termínem startu auditu.
+        </p>
+        <p class="audit-ty-hero__meta">
+          Pokud máte dotaz, který nemůže čekat, napište nám přímo na
+          <a href="mailto:info@sniperdesign.cz">info@sniperdesign.cz</a>
+          nebo zavolejte <a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a>
+          (Po&minus;Pá&nbsp;9&minus;17).
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== 01 CO BUDE NÁSLEDOVAT ===== -->
+    <section class="lp-section">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">01</span> Co bude následovat</span>
+        <h2 class="lp-section__title">
+          Pět kroků od&nbsp;poptávky k&nbsp;<strong>finálnímu auditu</strong>
+        </h2>
+      </header>
+
+      <ol class="audit-ty-steps">
+        <li>
+          <span class="audit-ty-step__num">1</span>
+          <div>
+            <strong>Ozveme se vám do&nbsp;24&nbsp;hodin</strong> (v&nbsp;pracovní
+            dny) e-mailem nebo telefonicky s&nbsp;upřesněním rozsahu a&nbsp;termínem
+            startu auditu.
+          </div>
+        </li>
+        <li>
+          <span class="audit-ty-step__num">2</span>
+          <div>
+            <strong>Vystavíme fakturu</strong> na 9&nbsp;990&nbsp;Kč bez DPH
+            (12&nbsp;088&nbsp;Kč s&nbsp;DPH) splatnou do&nbsp;14&nbsp;dnů. Po&nbsp;připsání
+            platby začneme auditovat.
+          </div>
+        </li>
+        <li>
+          <span class="audit-ty-step__num">3</span>
+          <div>
+            <strong>Audit probíhá 5&nbsp;pracovních dnů</strong> &mdash; analyzujeme váš
+            web ve&nbsp;3&nbsp;vrstvách (technika, obsah, důvěryhodnost) a&nbsp;sestavujeme
+            prioritní seznam úprav s&nbsp;odhadem dopadu.
+          </div>
+        </li>
+        <li>
+          <span class="audit-ty-step__num">4</span>
+          <div>
+            <strong>Dostanete audit dokument</strong> (PDF nebo Notion / Google Doc, dle vaší
+            preference) přes e-mail. Můžete si&nbsp;ho v&nbsp;klidu projít a&nbsp;připravit otázky.
+          </div>
+        </li>
+        <li>
+          <span class="audit-ty-step__num">5</span>
+          <div>
+            <strong>60&nbsp;minutová online konzultace</strong> s&nbsp;naším týmem &mdash; projdeme
+            audit, odpovíme na&nbsp;otázky a&nbsp;poradíme s&nbsp;implementací.
+            Termín si&nbsp;domluvíme po&nbsp;dodání auditu.
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===== 02 MEZITÍM: PACK (pokud ho zákazník nemá) ===== -->
+    <section class="lp-section lp-section--alt">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">02</span> Mezitím</span>
+        <h2 class="lp-section__title">
+          Než dokončíme audit, <strong>můžete začít s&nbsp;Packem</strong>
+        </h2>
+        <p class="lp-section__lead">
+          <a href="/pack/">AI&nbsp;SEO Wireframe Pack</a> je framework pro
+          7&nbsp;typů stránek webu &mdash; můžete si&nbsp;ho zakoupit
+          a&nbsp;začít aplikovat hned, paralelně s&nbsp;naším auditem.
+          Audit pak v&nbsp;Packu rozšíříme o&nbsp;konkrétní postupy pro váš
+          web a&nbsp;sortiment.
+        </p>
+      </header>
+
+      <article class="audit-ty-pack">
+        <span class="audit-ty-pack__pill">Pack &middot; 1 490 Kč jednorázově</span>
+        <h3>AI&nbsp;SEO Wireframe Pack &mdash; 85&nbsp;stran kompletního frameworku</h3>
+        <p>
+          Sedm typů stránek (homepage, produkt, kategorie, blog článek + výpis,
+          prodejní landing, kontakt), šablony textů ke&nbsp;kopírování, ukázky
+          strukturovaných dat a&nbsp;krok-za-krokem návod aplikace. Aplikujete
+          na&nbsp;svůj web během odpoledne.
+        </p>
+        <a href="/pack/" class="audit-ty-pack__cta">
+          Zobrazit Pack &rarr;
+        </a>
+      </article>
+    </section>
+
+    <!-- ===== 03 SNIPERDESIGN MEDAILONEK ===== -->
+    <SniperDesignSmallContact eyebrow="Než vám odpovíme" />
+  </main>
+</BaseLayout>
+
+<style>
+  .audit-ty {
+    --lp-violet: oklch(0.55 0.25 305);
+    --lp-magenta: oklch(0.62 0.27 335);
+  }
+
+  /* ===== Hero ===== */
+  .audit-ty-hero {
+    background: linear-gradient(180deg, var(--color-paper) 0%, transparent 100%);
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(2rem, 4vw, 3rem);
+  }
+  .audit-ty-hero__inner {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 0 var(--space-section-x);
+    text-align: center;
+  }
+  .audit-ty-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: oklch(from var(--lp-violet) l c h / 0.1);
+    color: var(--lp-violet);
+    margin-bottom: 1.25rem;
+  }
+  .audit-ty-hero__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.875rem, 4.5vw, 3rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--color-ink);
+    margin: 0 0 1.25rem;
+  }
+  .audit-ty-hero__title strong {
+    color: var(--lp-violet);
+    font-weight: 700;
+  }
+  .audit-ty-hero__lead {
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin: 0 0 1rem;
+  }
+  .audit-ty-hero__lead strong { color: var(--color-ink); font-weight: 600; }
+  .audit-ty-hero__meta {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--color-ink-faint);
+    margin: 0;
+  }
+  .audit-ty-hero__meta a {
+    color: var(--lp-violet);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ===== Sdílené primitivy ===== */
+  .lp-section {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(3rem, 6vw, 5rem) var(--space-section-x);
+  }
+  .lp-section--alt {
+    background: var(--color-paper-deep);
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .lp-section--alt > * {
+    max-width: var(--max-section);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-section-x);
+    padding-right: var(--space-section-x);
+  }
+  .lp-section__head {
+    max-width: 50rem;
+    margin-bottom: clamp(2rem, 3.5vw, 3rem);
+  }
+  .lp-section__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    margin: 0 0 1rem;
+  }
+  .lp-section__title strong {
+    color: var(--lp-violet);
+    font-weight: 700;
+  }
+  .lp-section__lead {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin: 0;
+    max-width: 40rem;
+  }
+  .lp-section__lead a { color: var(--lp-violet); text-decoration: underline; text-underline-offset: 2px; }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    margin-bottom: 1rem;
+  }
+  .eyebrow__num {
+    color: var(--lp-violet);
+    font-weight: 700;
+  }
+
+  /* ===== Steps (1-5) ===== */
+  .audit-ty-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+    counter-reset: none;
+  }
+  .audit-ty-steps li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.25rem 1.375rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 10px;
+  }
+  .audit-ty-step__num {
+    flex-shrink: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--lp-violet);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .audit-ty-steps li div {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    padding-top: 0.3rem;
+  }
+  .audit-ty-steps li strong { color: var(--color-ink); font-weight: 600; }
+
+  /* ===== Pack mezitím card ===== */
+  .audit-ty-pack {
+    background: var(--color-paper);
+    border: 2px solid var(--lp-violet);
+    border-radius: 12px;
+    padding: 1.75rem 1.75rem 1.5rem;
+    max-width: 36rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: left;
+  }
+  .audit-ty-pack__pill {
+    display: inline-block;
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--lp-violet);
+    background: oklch(0.96 0.05 305 / 0.6);
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+  }
+  .audit-ty-pack h3 {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .audit-ty-pack p {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+  .audit-ty-pack__cta {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.625rem 1.125rem;
+    border-radius: 999px;
+    text-decoration: none;
+    color: #fff;
+    background: var(--lp-violet);
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .audit-ty-pack__cta:hover {
+    background: color-mix(in oklch, var(--lp-violet) 85%, black);
+    transform: translateY(-1px);
+  }
+</style>
