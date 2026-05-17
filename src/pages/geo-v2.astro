@@ -1,0 +1,1431 @@
+---
+/**
+ * /geo-v2/ — design preview pro redesign /geo/ stránky.
+ *
+ * Důvod: /geo/ byl „wall of text" — 9 sekcí v plain prose. Tady testujeme
+ * vizuální zpracování per sekci, originál /geo/ zůstává beze změny.
+ *
+ * Stav: WORK IN PROGRESS — noindex, vyloučeno ze sitemap.
+ * Po review se pattern přesune do produkční /geo/ a rozšíří na další sekce.
+ *
+ * Research: _research/geo-redesign-proposal.md
+ */
+
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+import Do from "~/components/blocks/Do.astro";
+import Dont from "~/components/blocks/Dont.astro";
+import ArticleCard from "~/components/blocks/ArticleCard.astro";
+import ArticleGrid from "~/components/blocks/ArticleGrid.astro";
+import RelatedSections from "~/components/blocks/RelatedSections.astro";
+import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
+
+const pageTitle = "GEO — design preview (v2)";
+const pageDescription = "Design preview pro redesign /geo/ stránky. Noindex.";
+const answerText = "GEO (Generative Engine Optimization) je optimalizace webu a obsahu tak, aby ho AI nástroje jako ChatGPT, Perplexity, Claude nebo Gemini používaly jako důvěryhodný zdroj svých odpovědí. Když se dnes lidé ptají AI na doporučení, AI vybírá jen několik zdrojů. Cílem GEO je zvýšit šanci, že mezi nimi bude i vaše značka.";
+
+const playbookSteps = [
+  {
+    title: "Audit obsahu na fact-density",
+    desc: "Pro každý článek spočítejte fakta na 100 slov. Cíl: 3+ konkrétní fakta (číslo, procento, datum, studie) per 100 slov. Volně psaný marketingový text má density typicky pod 1 %, GEO-friendly obsah 3–5 %.",
+  },
+  {
+    title: "Restrukturujte úvod článku",
+    desc: 'Prvních 60 slov je kritických — AI scraper z nich vytváří citaci. Pyramidová struktura: definice „X je …" jako tučný odstavec, 1–2 klíčová fakta s čísly, zbytek dlouhého kontextu pod tím.',
+  },
+  {
+    title: "Přidejte FAQ s autoritativními odpověďmi",
+    desc: "FAQ není jen pro AEO — je to ChatGPT/Perplexity citation goldmine. Otázky jsou reálné dotazy uživatelů (z GSC nebo PAA), odpovědi jsou krátké a faktické (50–120 slov).",
+  },
+  {
+    title: "Budujte brand mentions v autoritních zdrojích",
+    desc: "Reddit/Quora, guest posts (Marketing Journal, Lupa.cz), podcasty, press releases s vlastními daty. Bez brand authority necitujete v ChatGPT, ani kdybyste byli na 1. pozici v Googlu.",
+  },
+  {
+    title: "Povolte AI crawlerům přístup (robots.txt)",
+    desc: "Explicitně povolte: GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, Perplexity-User, ClaudeBot, anthropic-ai, Google-Extended. Default CMS bývají restriktivní. Technická úloha pro vývojáře.",
+  },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  noindex={true}
+>
+  <div class="page" style="--d: var(--color-geo); --d-tint: var(--color-geo-tint); --d-soft: var(--color-geo-soft);">
+
+    <!-- Banner: preview mode -->
+    <aside class="preview-banner" aria-label="Preview režim">
+      <strong>Design preview — /geo-v2/</strong>
+      <span>Originál <a href="/geo/">/geo/</a> beze změny. Research: <code>_research/geo-redesign-proposal.md</code>.</span>
+    </aside>
+
+    <!-- HERO -->
+    <section class="d-hero">
+      <nav class="d-hero__crumbs" aria-label="Drobečková navigace">
+        <a href="/">Úvod</a>
+        <span class="crumb-sep">›</span>
+        <span class="d-hero__crumb-pill">Druhá disciplína · GEO</span>
+      </nav>
+
+      <h1 class="display d-hero__title">
+        <span class="d-hero__abbr">GEO</span>
+        <span class="d-hero__subtitle">Generative Engine Optimization</span>
+      </h1>
+
+      <p class="d-hero__lead">
+        Jak vás zacitují AI nástroje. Místo modrého odkazu cílíte na to být v odpovědi, kterou ChatGPT, Perplexity, Claude nebo Gemini vygenerují.
+      </p>
+    </section>
+
+    <!-- ANSWER BLOCK -->
+    <section class="answer">
+      <div class="answer__inner">
+        <span class="answer__mark">Stručná definice</span>
+        <p class="answer__text">{answerText}</p>
+      </div>
+    </section>
+
+    <!-- ARTICLE BODY -->
+    <article class="article">
+      <div class="article__prose">
+
+        <!-- ============================================================ -->
+        <!-- SEKCE 1 — Jak GEO funguje v praxi (MECHANISM DIAGRAM) -->
+        <!-- ============================================================ -->
+        <h2>Jak <span class="hl">GEO</span> funguje <strong>v praxi</strong></h2>
+
+        <p>Když se uživatel zeptá ChatGPT „jaké jsou nejlepší AI nástroje pro SEO 2026" nebo „doporuč mi CRM pro malou firmu", model nevytahuje top&nbsp;10 modrých odkazů jako Google. Vygeneruje odpověď v přirozené řeči a u některých platforem k ní přidá citace zdrojů. AI vybere jen několik firem, produktů nebo článků. Pokud mezi nimi nejste, zákazník vás při tomto typu rešerše nemusí vůbec uvidět.</p>
+
+        <!-- Mechanism diagram: Google vs AI -->
+        <div class="mech">
+          <div class="mech__col mech__col--google">
+            <header class="mech__head">
+              <span class="mech__brand">Klasický Google</span>
+              <span class="mech__tagline">10 modrých odkazů</span>
+            </header>
+            <ol class="mech__list">
+              <li class="mech__link">domain1.cz/article-1</li>
+              <li class="mech__link">domain2.cz/article-2</li>
+              <li class="mech__link mech__link--highlight">vasweb.cz <span class="mech__pos">pozice 3</span></li>
+              <li class="mech__link">domain4.cz/article-4</li>
+              <li class="mech__link">domain5.cz/article-5</li>
+            </ol>
+            <p class="mech__note">Uživatel <strong>klikne</strong> na výsledek a přijde na váš web.</p>
+          </div>
+
+          <div class="mech__arrow" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path d="M8 20H32M32 20L24 12M32 20L24 28" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <div class="mech__col mech__col--ai">
+            <header class="mech__head">
+              <span class="mech__brand">ChatGPT / Perplexity</span>
+              <span class="mech__tagline">Generated answer s citacemi</span>
+            </header>
+            <div class="mech__bubble">
+              <p>Nejlepší AI nástroje pro SEO 2026 jsou <strong>Ahrefs</strong><sup class="mech__cite">[1]</sup>, <strong>Semrush</strong><sup class="mech__cite">[2]</sup> a <strong>Marketing Miner</strong><sup class="mech__cite mech__cite--you">[3]</sup>…</p>
+              <ul class="mech__sources">
+                <li>[1] ahrefs.com</li>
+                <li>[2] semrush.com</li>
+                <li class="mech__sources-you">[3] <strong>vasweb.cz</strong></li>
+              </ul>
+            </div>
+            <p class="mech__note">Uživatel dostane odpověď <strong>bez kliku</strong>. Vaše značka je v odpovědi.</p>
+          </div>
+        </div>
+
+        <!-- Source card -->
+        <aside class="source-card">
+          <div class="source-card__badge">Akademický zdroj</div>
+          <div class="source-card__body">
+            <strong>Princeton paper „GEO: Generative Engine Optimization"</strong> (Aggarwal et&nbsp;al., 2023) jako první kvantifikoval, jak různé úpravy obsahu mění pravděpodobnost citace. Naměřili zlepšení v řádu desítek procent. Reálná čísla pro váš obor se liší.
+          </div>
+          <a href="https://arxiv.org/abs/2311.09735" target="_blank" rel="noopener" class="source-card__link">
+            Otevřít paper na arXiv
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M5 9L9 5M9 5H5M9 5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </a>
+        </aside>
+
+        <!-- ============================================================ -->
+        <!-- SEKCE 2 — Pro koho má GEO největší smysl (PERSONA GRID) -->
+        <!-- ============================================================ -->
+        <h2>Pro koho má <span class="hl">GEO</span> <strong>největší smysl</strong></h2>
+
+        <p>Největší dopad má tam, kde se zákazník před nákupem aktivně informuje a používá AI nástroje jako součást rešerše:</p>
+
+        <div class="personas">
+          <article class="persona">
+            <span class="persona__icon" aria-hidden="true">🏢</span>
+            <h3 class="persona__title">B2B firmy a SaaS</h3>
+            <p class="persona__desc">Nákupní proces se táhne týdny, zákazník čte recenze a ptá se ChatGPT „jaký nejlepší X". AI doporučení ovlivní shortlist.</p>
+            <span class="persona__chip persona__chip--yes">✅ Vysoký dopad</span>
+          </article>
+
+          <article class="persona">
+            <span class="persona__icon" aria-hidden="true">🛒</span>
+            <h3 class="persona__title">Prémiové B2C s research fází</h3>
+            <p class="persona__desc">Elektronika, sport, finance, vzdělávání, zdraví. Zákazník chce porozumět, ne jen kliknout na první výsledek.</p>
+            <span class="persona__chip persona__chip--yes">✅ Vysoký dopad</span>
+          </article>
+
+          <article class="persona">
+            <span class="persona__icon" aria-hidden="true">⚖️</span>
+            <h3 class="persona__title">Konzultační a profesionální služby</h3>
+            <p class="persona__desc">Advokát, účetní, konzultant, agentura. Lidé se ptají „doporuč mi účetní v Praze". Bez citace nejste v shortlistu.</p>
+            <span class="persona__chip persona__chip--yes">✅ Vysoký dopad</span>
+          </article>
+
+          <article class="persona">
+            <span class="persona__icon" aria-hidden="true">📚</span>
+            <h3 class="persona__title">Edukativní a mediální projekty</h3>
+            <p class="persona__desc">Kdo dnes vysvětluje téma jasně a citovatelně, ten se v AI odpovědích objevuje jako zdroj. Citation share = proxy pro brand awareness.</p>
+            <span class="persona__chip persona__chip--yes">✅ Vysoký dopad</span>
+          </article>
+
+          <article class="persona">
+            <span class="persona__icon" aria-hidden="true">🎯</span>
+            <h3 class="persona__title">Thought leadership ambice</h3>
+            <p class="persona__desc">Chcete být „ten, kdo rozumí téma X"? GEO playbook (definice, fakta, brand mentions, autorské profily) přesně podporuje toto pozicování.</p>
+            <span class="persona__chip persona__chip--yes">✅ Vysoký dopad</span>
+          </article>
+        </div>
+
+        <!-- Anti-persona -->
+        <aside class="anti-persona">
+          <header class="anti-persona__head">
+            <span class="anti-persona__icon">❌</span>
+            <h3 class="anti-persona__title">Kdy GEO <em>nedává</em> smysl</h3>
+          </header>
+          <ul class="anti-persona__list">
+            <li><strong>Čistě transakční impulsní produkty</strong> — lidé se neptají AI, kde koupit běžné spotřebáky.</li>
+            <li><strong>Lokální retail bez online research fáze</strong> — investice se vyplatí jinde (lokální SEO, GBP).</li>
+            <li><strong>Značky bez brand search popularity</strong> — chybí brand authority, citaci nedostanete tak jako tak.</li>
+          </ul>
+        </aside>
+
+        <!-- ============================================================ -->
+        <!-- SEKCE 3 — GEO vs SEO (ENHANCED TABLE) -->
+        <!-- ============================================================ -->
+        <h2><span class="hl">GEO</span> vs. <span class="hl">SEO</span> — <strong>klíčový rozdíl</strong></h2>
+
+        <div class="compare-table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th class="compare-table__seo">SEO</th>
+                <th class="compare-table__geo">GEO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><span class="compare-table__icon">🎯</span> Cíl</th>
+                <td>Být na první stránce Googlu</td>
+                <td>Být v odpovědi, kterou AI vygeneruje</td>
+              </tr>
+              <tr>
+                <th scope="row"><span class="compare-table__icon">📊</span> Co se měří</th>
+                <td>Pozice, návštěvnost, CTR</td>
+                <td>Citation share, brand mentions, AI visibility</td>
+              </tr>
+              <tr>
+                <th scope="row"><span class="compare-table__icon">🌐</span> Hlavní platformy</th>
+                <td>Google, Seznam, Bing</td>
+                <td>ChatGPT, Perplexity, Claude, Gemini</td>
+              </tr>
+              <tr>
+                <th scope="row"><span class="compare-table__icon">⭐</span> Co je důležité</th>
+                <td>Zpětné odkazy, struktura webu, autorita</td>
+                <td>Fakta, jasné definice, brand zmínky v autoritních zdrojích</td>
+              </tr>
+              <tr>
+                <th scope="row"><span class="compare-table__icon">⏱️</span> Časový horizont</th>
+                <td>3–6 měsíců</td>
+                <td>Často 1–3 měsíce (závisí na platformě)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--color-ink-muted);">Detailní srovnání všech 4 disciplín v <a href="/seo-vs-geo-vs-aeo-vs-aio/">pillar průvodci</a>.</p>
+
+        <!-- ============================================================ -->
+        <!-- SEKCE 4 — Co AI hledá (DoDont STACK) ⭐ NEJVĚTŠÍ ZMĚNA -->
+        <!-- ============================================================ -->
+        <h2>Co <span class="hl">AI hledá</span> v <strong>obsahu</strong></h2>
+
+        <p>5 vlastností, které AI engines preferují u obsahu. Každá vlastnost se dá ukázat na páru „takhle ano / takhle ne":</p>
+
+        <article class="dd-section">
+          <header class="dd-section__head">
+            <h3 class="dd-section__title">1. Fact-density — datově hutný obsah</h3>
+            <p class="dd-section__sub">3+ konkrétní fakta per 100 slov = AI-friendly. Pod 1 fakt = AI to přeskočí.</p>
+          </header>
+          <DoDont>
+            <Do>**„Google AI Overview se v ČR zobrazuje pro ~30 % informačních dotazů a snižuje organic CTR o 35–60 %."**</Do>
+            <Dont>„Hledanost se zvyšuje rychle."</Dont>
+          </DoDont>
+        </article>
+
+        <article class="dd-section">
+          <header class="dd-section__head">
+            <h3 class="dd-section__title">2. Krátké, věcné definice</h3>
+            <p class="dd-section__sub">Formát „X je …" je přímý signál pro AI scrapery, kde najdou definici pojmu.</p>
+          </header>
+          <DoDont>
+            <Do>**„GEO je optimalizace pro citace v generativní AI."**</Do>
+            <Dont>„GEO se zaměřuje na to, jak v dnešní digitální době dostat firmu do AI…"</Dont>
+          </DoDont>
+        </article>
+
+        <article class="dd-section">
+          <header class="dd-section__head">
+            <h3 class="dd-section__title">3. Strukturované odstavce</h3>
+            <p class="dd-section__sub">Jeden nápad na odstavec. AI scrapery dělají sliding window přes text.</p>
+          </header>
+          <DoDont>
+            <Do>**Krátký odstavec s jednou tezí**, ne dlouhý odstavec s 5 myšlenkami. AI vezme jen tu první nebo poslední.</Do>
+            <Dont>Dlouhý lineární odstavec s 5 myšlenkami pomíchanými dohromady, kde AI nedokáže vystihnout pointu.</Dont>
+          </DoDont>
+        </article>
+
+        <article class="dd-section">
+          <header class="dd-section__head">
+            <h3 class="dd-section__title">4. Citace a primární zdroje</h3>
+            <p class="dd-section__sub">Explicitní atribuce + linky na primární zdroje + datace tvrzení.</p>
+          </header>
+          <DoDont>
+            <Do>**„Podle GSC dat za Q1 2026 vzrostly impressions o 47 %."** (atribuce + datum + číslo)</Do>
+            <Dont>„Hodně lidí to vidělo." (bez zdroje, bez čísla, bez data)</Dont>
+          </DoDont>
+        </article>
+
+        <article class="dd-section">
+          <header class="dd-section__head">
+            <h3 class="dd-section__title">5. Brand authority</h3>
+            <p class="dd-section__sub">Citované zdroje mívají brand mentions v autoritních komunitách (Reddit, Quora, oborová média).</p>
+          </header>
+          <DoDont>
+            <Do>**Aktivní brand budovaný v komunitách** — vlastní zmínky na Redditu, podcastech, Marketing Journal, Lupa.cz.</Do>
+            <Dont>Stránka existuje na 1. pozici v Googlu, ale **žádné brand mentions** mimo vlastní doménu.</Dont>
+          </DoDont>
+        </article>
+
+        <!-- ============================================================ -->
+        <!-- SEKCE 5 — Praktický playbook (STEPPER) -->
+        <!-- ============================================================ -->
+        <h2>Praktický <span class="hl">GEO</span> <strong>playbook</strong></h2>
+
+        <p>5 kroků, kterými projde každá GEO implementace. Pořadí má smysl — bez kroku 1 nemá smysl řešit krok 4.</p>
+
+        <Stepper tone="geo" steps={playbookSteps} />
+
+        <!-- robots.txt collapsible — keep simple as code block -->
+        <details class="robots-detail">
+          <summary>Ukázka <code>robots.txt</code> konfigurace</summary>
+
+```
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+```
+
+          <p style="font-size: 0.9rem; color: var(--color-ink-muted);">Tento web (<code>aiseo-optimalizace.cz/robots.txt</code>) je živý příklad této konfigurace.</p>
+        </details>
+
+        <Insight tone="geo" icon="✦" label="Zjistěte, jestli vás dnes AI doporučují">
+          Většina webů, na které se podíváme, **chybí v citacích AI nástrojů u relevantních dotazů ve svém oboru** — i když mají dobré pozice v Googlu. Pokud chcete vědět, jak na tom váš web stojí, [Sniperdesign nabízí audit AI viditelnosti](https://www.sniperdesign.cz/audity). První [konzultace](https://www.sniperdesign.cz/konzultace) nezávazná.
+        </Insight>
+
+        <!-- ============================================================ -->
+        <!-- SEKCE 6 — Tento web jako živý příklad (COPY PROMPTS) -->
+        <!-- ============================================================ -->
+        <h2><span class="hl">GEO</span> v praxi — <strong>tento web jako živý příklad</strong></h2>
+
+        <Insight tone="geo" icon="✦" label="Reálné výsledky kombinovaného playbooku (SEO + GEO)">
+          **Čtyři e‑shopy na Upgates platformě — třínásobný nárůst organické návštěvnosti za 6 měsíců.** Granulebardog, Vapecig, Sperky‑image, Galsari. Práce: obsah, technická optimalizace, brand mentions a linkbuilding. [Detail v případové studii →](https://www.sniperdesign.cz/a/seo-pro-e-shopy-na-upgates-trojnasobna-navstevnost-za-pul-roku-realita-nasich-klientu)
+        </Insight>
+
+        <p><strong>Tento web</strong> je sám aplikací GEO playbooku — answer bloky 40–60 slov, FAQ u každé stránky, fact-density, schema, robots.txt povolující AI crawlery. <strong>Vyzkoušejte sami</strong> — zkopírujte některý z těchto promptů do ChatGPT nebo Perplexity:</p>
+
+        <div class="prompts">
+          <div class="prompt">
+            <code class="prompt__text">co je GEO Generative Engine Optimization</code>
+            <button type="button" class="prompt__copy" data-copy-target>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <rect x="4" y="3" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M2 9V2C2 1.45 2.45 1 3 1H9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+              Kopírovat
+            </button>
+          </div>
+          <div class="prompt">
+            <code class="prompt__text">rozdíl mezi SEO a GEO v roce 2026</code>
+            <button type="button" class="prompt__copy" data-copy-target>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <rect x="4" y="3" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M2 9V2C2 1.45 2.45 1 3 1H9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+              Kopírovat
+            </button>
+          </div>
+          <div class="prompt">
+            <code class="prompt__text">jak optimalizovat web pro citace v ChatGPT</code>
+            <button type="button" class="prompt__copy" data-copy-target>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <rect x="4" y="3" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M2 9V2C2 1.45 2.45 1 3 1H9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+              Kopírovat
+            </button>
+          </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SEKCE 7 — Měření GEO (ENHANCED TABLE) -->
+        <!-- ============================================================ -->
+        <h2><strong>Měření</strong> <span class="hl">GEO</span> výkonu</h2>
+
+        <div class="metrics-table-wrap">
+          <table class="metrics-table">
+            <thead>
+              <tr>
+                <th>Metrika</th>
+                <th>Zdroj</th>
+                <th>Frekvence</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Citation share</strong> v ChatGPT/Perplexity</td>
+                <td>Otterly, Profound, Brand Radar (Ahrefs)</td>
+                <td><span class="freq-chip freq-chip--month">měsíčně</span></td>
+              </tr>
+              <tr>
+                <td><strong>Brand mentions</strong> napříč webem</td>
+                <td>Brand24, Mention.com, Google Alerts</td>
+                <td><span class="freq-chip freq-chip--week">týdně</span></td>
+              </tr>
+              <tr>
+                <td><strong>AI crawler hits</strong> v access logu</td>
+                <td>Caddy/Nginx access log filter</td>
+                <td><span class="freq-chip freq-chip--day">denně</span></td>
+              </tr>
+              <tr>
+                <td><strong>Manuální audit</strong></td>
+                <td>ChatGPT/Perplexity dotaz na top 10 KW</td>
+                <td><span class="freq-chip freq-chip--month">měsíčně</span></td>
+              </tr>
+              <tr>
+                <td><strong>Backlinks</strong> z autoritních zdrojů</td>
+                <td>Ahrefs / Semrush</td>
+                <td><span class="freq-chip freq-chip--month">měsíčně</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SEKCE 8 — GEO je způsob psaní (MINDSET SWITCH + CHECKLIST) -->
+        <!-- ============================================================ -->
+        <h2><span class="hl">GEO</span> je <strong>způsob psaní obsahu</strong>, ne projekt po milníku</h2>
+
+        <div class="mindset">
+          <div class="mindset__bad">
+            <span class="mindset__chip mindset__chip--bad">❌ Špatný mindset</span>
+            <p class="mindset__quote">„Nejdřív dosáhneme dobrého SEO, pak začneme řešit GEO."</p>
+            <p class="mindset__why">Vytvoříte si dluh. Za rok budete mít desítky článků, které je nutné přepsat.</p>
+          </div>
+          <div class="mindset__good">
+            <span class="mindset__chip mindset__chip--good">✅ Správný mindset</span>
+            <p class="mindset__quote">„GEO je standard psaní od článku #1. Stojí 0 Kč navíc."</p>
+            <p class="mindset__why">SEO a GEO se posilují — strukturovaný obsah s fakty a FAQ má lepší pozice v Googlu i vyšší šanci na citaci.</p>
+          </div>
+        </div>
+
+        <h3>Standard psaní od článku #1</h3>
+
+        <div class="standards">
+          <div class="standard">
+            <span class="standard__icon">📝</span>
+            <strong>Answer block 40–60 slov</strong> nahoře každého článku
+          </div>
+          <div class="standard">
+            <span class="standard__icon">🎯</span>
+            <strong>Definice „X je …"</strong> v prvním odstavci každé sekce
+          </div>
+          <div class="standard">
+            <span class="standard__icon">📊</span>
+            <strong>Konkrétní čísla</strong> místo „výkonný" / „rychlý" / „lepší"
+          </div>
+          <div class="standard">
+            <span class="standard__icon">❓</span>
+            <strong>FAQ 6–10 otázek</strong> u každého většího článku
+          </div>
+          <div class="standard">
+            <span class="standard__icon">🏷️</span>
+            <strong>Brand mentions</strong> jako součást content marketingu
+          </div>
+          <div class="standard">
+            <span class="standard__icon">🤖</span>
+            <strong>AI crawlers povolení</strong> v robots.txt od první verze
+          </div>
+        </div>
+
+        <h3>Kdy si pořídit nástroje na měření</h3>
+
+        <aside class="decision-card">
+          <header class="decision-card__head">
+            <span class="decision-card__icon">🛠️</span>
+            <h4>Otterly / Profound / Brand Radar — $29–500/měs</h4>
+          </header>
+          <div class="decision-card__body">
+            <p><strong>Mají smysl ve chvíli, kdy:</strong></p>
+            <ul>
+              <li>máte alespoň <strong>20+ článků</strong> s GEO-friendly strukturou</li>
+              <li>vaše cílovka aktivně používá <strong>ChatGPT/Perplexity/Gemini</strong> pro research</li>
+              <li>chcete systematicky <strong>reportovat citation share</strong></li>
+            </ul>
+            <p><strong>Pro malou firmu na startu:</strong> stačí ruční audit jednou měsíčně. Psát GEO-friendly má smysl už od prvního článku.</p>
+          </div>
+        </aside>
+
+        <!-- ============================================================ -->
+        <!-- SEKCE 9 — Časté chyby (MISTAKE GRID) -->
+        <!-- ============================================================ -->
+        <h2><strong>Časté chyby</strong> v <span class="hl">GEO</span></h2>
+
+        <div class="mistakes">
+          <article class="mistake">
+            <span class="mistake__num">01</span>
+            <h3 class="mistake__title">Optimalizace bez SEO baseline</h3>
+            <p class="mistake__desc">Bez Google indexace vás AI engine vůbec nezacituje. SEO je nutný základ.</p>
+            <p class="mistake__fix"><strong>Fix:</strong> nejdřív technické SEO, pak GEO playbook.</p>
+          </article>
+          <article class="mistake">
+            <span class="mistake__num">02</span>
+            <h3 class="mistake__title">AI-generated obsah bez fact-checku</h3>
+            <p class="mistake__desc">AI engines penalizují halucinace. ChatGPT nezacituje weby, které samy halucinují.</p>
+            <p class="mistake__fix"><strong>Fix:</strong> každý fakt ověřit primárním zdrojem, citovat.</p>
+          </article>
+          <article class="mistake">
+            <span class="mistake__num">03</span>
+            <h3 class="mistake__title">Žádné brand mentions</h3>
+            <p class="mistake__desc">Citace bez authority nezafunguje. ChatGPT preferuje weby, o kterých mluví autoritní komunity.</p>
+            <p class="mistake__fix"><strong>Fix:</strong> Reddit, Quora, guest posts, podcasty, PR.</p>
+          </article>
+          <article class="mistake">
+            <span class="mistake__num">04</span>
+            <h3 class="mistake__title">Žádné měření</h3>
+            <p class="mistake__desc">Bez Otterly/Profound/manuálního auditu nevíte, jestli GEO funguje nebo ne.</p>
+            <p class="mistake__fix"><strong>Fix:</strong> minimálně manuální audit ChatGPT/Perplexity 1× měsíčně.</p>
+          </article>
+          <article class="mistake">
+            <span class="mistake__num">05</span>
+            <h3 class="mistake__title">Ignorování <code>llms.txt</code></h3>
+            <p class="mistake__desc">Emerging standard pro AI-readable site description (analog robots.txt pro LLM).</p>
+            <p class="mistake__fix"><strong>Fix:</strong> nasadit minimální <code>llms.txt</code> v rootu webu.</p>
+          </article>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- INLINE RelatedSections + SmallContact (placement TBD) -->
+        <!-- ============================================================ -->
+        <RelatedSections currentAbbr="GEO" />
+
+        <SniperDesignSmallContact />
+
+        <!-- ============================================================ -->
+        <!-- SEKCE 10 — Hlubší témata (ARTICLE CARD GRID) -->
+        <!-- ============================================================ -->
+        <h2><strong>Hlubší témata</strong> k <span class="hl">GEO</span></h2>
+
+        <p>Tato pillar sekce drží strategický přehled. Praktický step-by-step návod s časovými odhady, příklady a CZ specifiky najdete v samostatném tutoriálu:</p>
+
+        <ArticleGrid>
+          <ArticleCard
+            tone="geo"
+            href="/blog/geo-optimalizace/"
+            tag="Tutorial"
+            time="15 min"
+            words="~3 800 slov"
+            title="GEO optimalizace v praxi: 7 kroků pro citace v AI"
+          >
+            Step-by-step průvodce optimalizací webu pro ChatGPT, Perplexity, Claude, Gemini a Google AI Overviews. 7 konkrétních kroků s časovými odhady, platform-specific tabulka, časté chyby, reálné výsledky a CZ trh. Plus Princeton paper jako primary source.
+          </ArticleCard>
+        </ArticleGrid>
+
+      </div>
+    </article>
+
+  </div>
+</BaseLayout>
+
+<script>
+  // Copy-to-clipboard pro prompt boxy
+  document.querySelectorAll<HTMLButtonElement>("[data-copy-target]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const text = btn.parentElement?.querySelector(".prompt__text")?.textContent;
+      if (!text) return;
+      try {
+        await navigator.clipboard.writeText(text);
+        const original = btn.innerHTML;
+        btn.innerHTML = "<span>✓ Zkopírováno</span>";
+        btn.classList.add("prompt__copy--done");
+        setTimeout(() => {
+          btn.innerHTML = original;
+          btn.classList.remove("prompt__copy--done");
+        }, 1500);
+      } catch (e) {
+        console.error("Clipboard write failed", e);
+      }
+    });
+  });
+</script>
+
+<style>
+  /* ===== PREVIEW BANNER ===== */
+  .preview-banner {
+    background: oklch(0.93 0.06 75);
+    border-bottom: 1px solid oklch(0.85 0.1 70);
+    padding: 0.625rem var(--space-section-x);
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: oklch(0.3 0.1 60);
+  }
+  .preview-banner strong { font-weight: 700; margin-right: 0.5rem; }
+  .preview-banner a { color: inherit; text-decoration: underline; }
+  .preview-banner code {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    background: oklch(1 0 0 / 0.5);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+  }
+
+  /* ===== HERO ===== */
+  .d-hero {
+    padding: clamp(2.5rem, 7vh, 5rem) var(--space-section-x) clamp(2rem, 4vh, 3rem);
+    max-width: var(--max-section);
+    margin: 0 auto;
+  }
+  .d-hero__crumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    margin-bottom: 1.5rem;
+  }
+  .d-hero__crumbs a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .d-hero__crumb-pill {
+    background: var(--d-tint);
+    color: var(--d);
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  .crumb-sep { color: var(--color-ink-faint); }
+  .display {
+    font-family: var(--font-sans);
+    font-weight: 250;
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+  }
+  .d-hero__title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .d-hero__abbr {
+    font-size: clamp(3rem, 8vw, 5rem);
+    color: var(--d);
+    font-weight: 700;
+  }
+  .d-hero__subtitle {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    color: var(--color-ink);
+  }
+  .d-hero__lead {
+    font-family: var(--font-sans);
+    font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    max-width: 42rem;
+    margin: 1.25rem 0 0;
+  }
+
+  /* ===== ANSWER BLOCK ===== */
+  .answer {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: 0 var(--space-section-x) clamp(2rem, 4vh, 3rem);
+  }
+  .answer__inner {
+    background: var(--d-tint);
+    border-left: 3px solid var(--d);
+    padding: 1.5rem 1.75rem;
+    border-radius: 8px;
+  }
+  .answer__mark {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--d);
+    margin-bottom: 0.5rem;
+  }
+  .answer__text {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  /* ===== ARTICLE BODY ===== */
+  .article {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(1rem, 3vw, 2rem) var(--space-section-x) clamp(3rem, 5vw, 5rem);
+  }
+  .article__prose {
+    max-width: 44rem;
+    font-family: var(--font-sans);
+  }
+
+  /* PROSE TYPOGRAPHY V @layer (stejně jako [slug].astro) */
+  @layer prose {
+    .article__prose :global(h2) {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin: 3rem 0 1rem;
+      color: var(--color-ink);
+    }
+    .article__prose :global(h3) {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 1.1875rem;
+      letter-spacing: -0.018em;
+      margin: 2rem 0 0.75rem;
+      color: var(--color-ink);
+    }
+    .article__prose :global(p) {
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--color-ink);
+      margin: 0 0 1.125rem;
+    }
+    .article__prose :global(a) {
+      color: var(--d);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+    }
+    .article__prose :global(ul) {
+      margin: 1rem 0;
+      padding-left: 1.25rem;
+    }
+    .article__prose :global(li) {
+      margin-bottom: 0.4rem;
+      line-height: 1.6;
+    }
+    .article__prose :global(code) {
+      font-family: var(--font-mono);
+      font-size: 0.875em;
+      background: var(--color-paper-deep);
+      padding: 0.15em 0.4em;
+      border-radius: 4px;
+    }
+  }
+
+  /* Wide blocks breakout */
+  .article__prose :global(.related),
+  .article__prose :global(.acards-grid),
+  .article__prose .mech,
+  .article__prose .personas,
+  .article__prose .dd-section,
+  .article__prose .prompts,
+  .article__prose .mindset,
+  .article__prose .standards,
+  .article__prose .mistakes,
+  .article__prose .compare-table-wrap,
+  .article__prose .metrics-table-wrap {
+    width: min(68rem, calc(100vw - 2 * var(--space-section-x)));
+    max-width: none;
+  }
+  .article__prose :global(.sd-small) {
+    width: min(var(--max-section), 100vw);
+    max-width: min(var(--max-section), 100vw);
+    margin-left: calc(-1 * var(--space-section-x));
+    margin-right: 0;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .article__prose :global(.related) { padding: 0; margin-bottom: 2rem; }
+
+  /* ============================================================ */
+  /* SEKCE 1 — Mechanism diagram                                  */
+  /* ============================================================ */
+  .mech {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1.75rem 0;
+    align-items: center;
+  }
+  @media (min-width: 760px) {
+    .mech { grid-template-columns: 1fr auto 1fr; gap: 1.25rem; }
+  }
+  .mech__col {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule-strong);
+    border-radius: 12px;
+    padding: 1.25rem 1.375rem;
+  }
+  .mech__col--google { border-top: 3px solid oklch(0.55 0.18 240); }
+  .mech__col--ai { border-top: 3px solid var(--color-geo); }
+  .mech__head { margin-bottom: 1rem; }
+  .mech__brand {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+  .mech__tagline {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+  .mech__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+  }
+  .mech__link {
+    padding: 0.4rem 0.625rem;
+    background: var(--color-paper-deep);
+    border-radius: 4px;
+    color: var(--color-ink-muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mech__link--highlight {
+    background: oklch(from var(--color-geo) l c h / 0.12);
+    color: var(--color-geo);
+    font-weight: 600;
+  }
+  .mech__pos {
+    font-size: 0.7rem;
+    background: var(--color-geo);
+    color: white;
+    padding: 0.1rem 0.4rem;
+    border-radius: 999px;
+  }
+  .mech__arrow {
+    color: var(--color-ink-faint);
+    text-align: center;
+    transform: rotate(90deg);
+  }
+  @media (min-width: 760px) {
+    .mech__arrow { transform: none; }
+  }
+  .mech__bubble {
+    background: oklch(from var(--color-geo) l c h / 0.05);
+    border: 1px solid oklch(from var(--color-geo) l c h / 0.2);
+    border-radius: 8px;
+    padding: 0.875rem 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .mech__bubble p {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin: 0 0 0.75rem;
+    color: var(--color-ink);
+  }
+  .mech__cite {
+    color: var(--color-ink-faint);
+    font-size: 0.7em;
+    font-weight: 700;
+  }
+  .mech__cite--you { color: var(--color-geo); }
+  .mech__sources {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-ink-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .mech__sources-you {
+    color: var(--color-geo);
+    font-weight: 700;
+  }
+  .mech__note {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: var(--color-ink-muted);
+    margin: 0;
+    font-style: italic;
+  }
+  .mech__note strong { color: var(--color-ink); font-style: normal; }
+
+  /* Source card (Princeton paper) */
+  .source-card {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule-strong);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 640px) {
+    .source-card { grid-template-columns: 1fr; }
+  }
+  .source-card__badge {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: oklch(0.45 0.15 280);
+    background: oklch(0.95 0.05 280);
+    border-radius: 4px;
+    padding: 0.35rem 0.625rem;
+    white-space: nowrap;
+  }
+  .source-card__body {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--color-ink);
+  }
+  .source-card__body strong { font-weight: 700; }
+  .source-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-geo);
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 0.5rem 0.875rem;
+    background: oklch(from var(--color-geo) l c h / 0.08);
+    border-radius: 6px;
+  }
+
+  /* ============================================================ */
+  /* SEKCE 2 — Personas                                            */
+  /* ============================================================ */
+  .personas {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+    margin: 1.5rem 0;
+  }
+  @media (min-width: 640px) {
+    .personas { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 960px) {
+    .personas { grid-template-columns: repeat(3, 1fr); }
+  }
+  .persona {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 10px;
+    padding: 1.125rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .persona:hover {
+    border-color: var(--color-geo);
+    transform: translateY(-1px);
+  }
+  .persona__icon {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+  .persona__title {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-ink);
+  }
+  .persona__desc {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    margin: 0;
+    flex: 1;
+  }
+  .persona__chip {
+    display: inline-flex;
+    align-self: flex-start;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    margin-top: 0.25rem;
+  }
+  .persona__chip--yes {
+    color: oklch(0.4 0.12 145);
+    background: oklch(0.95 0.05 145);
+  }
+
+  .anti-persona {
+    margin: 1.25rem 0 0;
+    background: oklch(0.97 0.02 25);
+    border: 1px solid oklch(0.85 0.06 25);
+    border-radius: 10px;
+    padding: 1.125rem 1.25rem 1rem;
+  }
+  .anti-persona__head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.625rem;
+  }
+  .anti-persona__icon { font-size: 1.125rem; line-height: 1; }
+  .anti-persona__title {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    color: oklch(0.4 0.1 25);
+  }
+  .anti-persona__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-ink);
+  }
+  .anti-persona__list strong { color: oklch(0.35 0.1 25); }
+
+  /* ============================================================ */
+  /* SEKCE 3 — Compare table                                       */
+  /* ============================================================ */
+  .compare-table-wrap, .metrics-table-wrap {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+  }
+  .compare-table, .metrics-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    background: var(--color-paper);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--color-rule);
+  }
+  .compare-table th, .compare-table td,
+  .metrics-table th, .metrics-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-rule);
+    vertical-align: top;
+  }
+  .compare-table tbody tr:last-child td,
+  .compare-table tbody tr:last-child th,
+  .metrics-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .compare-table th {
+    font-weight: 600;
+    color: var(--color-ink);
+    background: var(--color-paper-deep);
+  }
+  .compare-table__seo {
+    color: oklch(0.45 0.18 240);
+    background: oklch(0.96 0.04 240) !important;
+  }
+  .compare-table__geo {
+    color: var(--color-geo);
+    background: oklch(from var(--color-geo) l c h / 0.08) !important;
+  }
+  .compare-table__icon {
+    font-size: 1rem;
+    margin-right: 0.4rem;
+  }
+  .compare-table tbody tr:hover {
+    background: var(--color-paper-deep);
+  }
+
+  .metrics-table th {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-ink-muted);
+    background: var(--color-paper-deep);
+  }
+  .freq-chip {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .freq-chip--day {
+    color: oklch(0.45 0.18 25);
+    background: oklch(0.97 0.05 25);
+  }
+  .freq-chip--week {
+    color: oklch(0.45 0.15 60);
+    background: oklch(0.97 0.05 60);
+  }
+  .freq-chip--month {
+    color: oklch(0.4 0.12 145);
+    background: oklch(0.95 0.05 145);
+  }
+
+  /* ============================================================ */
+  /* SEKCE 4 — DoDont section wrapper                              */
+  /* ============================================================ */
+  .dd-section {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 12px;
+    padding: 1.25rem 1.375rem 1.5rem;
+    margin: 1.25rem 0;
+  }
+  .dd-section__head {
+    margin-bottom: 1rem;
+  }
+  .dd-section__title {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin: 0 0 0.25rem;
+  }
+  .dd-section__sub {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+
+  /* Robots.txt detail */
+  .robots-detail {
+    margin: 1.5rem 0;
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+    padding: 0.875rem 1rem;
+    background: var(--color-paper);
+  }
+  .robots-detail summary {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--color-geo);
+  }
+  .robots-detail :global(pre) {
+    background: oklch(0.18 0.012 260);
+    color: oklch(0.92 0.012 80);
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 0.75rem 0;
+    font-family: var(--font-mono);
+    font-size: 0.825rem;
+    line-height: 1.55;
+  }
+
+  /* ============================================================ */
+  /* SEKCE 6 — Copy prompts                                        */
+  /* ============================================================ */
+  .prompts {
+    display: grid;
+    gap: 0.625rem;
+    margin: 1.5rem 0;
+  }
+  .prompt {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+    padding: 0.625rem 0.875rem;
+  }
+  .prompt__text {
+    flex: 1;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-ink);
+    background: none;
+    padding: 0;
+  }
+  .prompt__copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-geo);
+    background: oklch(from var(--color-geo) l c h / 0.08);
+    border: 1px solid oklch(from var(--color-geo) l c h / 0.25);
+    border-radius: 6px;
+    padding: 0.4rem 0.75rem;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .prompt__copy:hover {
+    background: oklch(from var(--color-geo) l c h / 0.15);
+  }
+  .prompt__copy--done {
+    background: oklch(0.4 0.12 145);
+    color: white;
+    border-color: oklch(0.4 0.12 145);
+  }
+
+  /* ============================================================ */
+  /* SEKCE 8 — Mindset switch + standards                          */
+  /* ============================================================ */
+  .mindset {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+    margin: 1.5rem 0;
+  }
+  @media (min-width: 640px) {
+    .mindset { grid-template-columns: 1fr 1fr; }
+  }
+  .mindset__bad, .mindset__good {
+    padding: 1.125rem 1.25rem;
+    border-radius: 10px;
+  }
+  .mindset__bad {
+    background: oklch(0.97 0.025 25);
+    border: 1px solid oklch(0.85 0.06 25);
+  }
+  .mindset__good {
+    background: oklch(0.96 0.04 145);
+    border: 1px solid oklch(0.78 0.08 145);
+  }
+  .mindset__chip {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    margin-bottom: 0.75rem;
+  }
+  .mindset__chip--bad {
+    color: oklch(0.4 0.12 25);
+    background: oklch(1 0 0 / 0.6);
+  }
+  .mindset__chip--good {
+    color: oklch(0.35 0.1 145);
+    background: oklch(1 0 0 / 0.6);
+  }
+  .mindset__quote {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin: 0 0 0.625rem;
+    line-height: 1.4;
+  }
+  .mindset__why {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+
+  .standards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.625rem;
+    margin: 1rem 0 1.75rem;
+  }
+  @media (min-width: 640px) {
+    .standards { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 960px) {
+    .standards { grid-template-columns: 1fr 1fr 1fr; }
+  }
+  .standard {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+    padding: 0.75rem 0.875rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink);
+    line-height: 1.4;
+  }
+  .standard__icon { font-size: 1.125rem; line-height: 1; }
+  .standard strong { font-weight: 600; }
+
+  .decision-card {
+    margin: 1.25rem 0;
+    background: oklch(0.97 0.015 250);
+    border: 1px solid var(--color-rule-strong);
+    border-radius: 12px;
+    padding: 1.125rem 1.25rem 1rem;
+  }
+  .decision-card__head {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin-bottom: 0.625rem;
+  }
+  .decision-card__icon { font-size: 1.25rem; }
+  .decision-card__head h4 {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-ink);
+  }
+  .decision-card__body p {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--color-ink);
+    margin: 0 0 0.5rem;
+  }
+  .decision-card__body ul {
+    margin: 0 0 0.75rem;
+    padding-left: 1.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+  .decision-card__body li {
+    margin-bottom: 0.25rem;
+  }
+
+  /* ============================================================ */
+  /* SEKCE 9 — Mistakes grid                                       */
+  /* ============================================================ */
+  .mistakes {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+    margin: 1.5rem 0;
+  }
+  @media (min-width: 640px) {
+    .mistakes { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1080px) {
+    .mistakes { grid-template-columns: repeat(3, 1fr); }
+  }
+  .mistake {
+    position: relative;
+    background: var(--color-paper);
+    border: 1px solid oklch(0.85 0.06 25);
+    border-left: 4px solid oklch(0.6 0.18 25);
+    border-radius: 8px;
+    padding: 1rem 1.125rem 1.125rem;
+  }
+  .mistake__num {
+    position: absolute;
+    top: 0.625rem;
+    right: 0.875rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: oklch(0.6 0.18 25);
+    opacity: 0.6;
+  }
+  .mistake__title {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    color: oklch(0.35 0.12 25);
+    margin: 0 0 0.5rem;
+    padding-right: 2rem;
+  }
+  .mistake__desc {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    margin: 0 0 0.625rem;
+  }
+  .mistake__fix {
+    font-family: var(--font-sans);
+    font-size: 0.825rem;
+    line-height: 1.5;
+    color: var(--color-ink);
+    margin: 0;
+    padding-top: 0.5rem;
+    border-top: 1px dashed oklch(0.85 0.06 25);
+  }
+  .mistake__fix strong { color: oklch(0.35 0.12 25); }
+</style>
