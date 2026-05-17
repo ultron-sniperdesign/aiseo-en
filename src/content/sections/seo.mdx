@@ -45,6 +45,8 @@ import Insight from "../../components/blocks/Insight.astro";
 import Stepper from "../../components/blocks/Stepper.astro";
 import SignalGrid from "../../components/blocks/SignalGrid.astro";
 import TopicCard from "../../components/blocks/TopicCard.astro";
+import ArticleCard from "../../components/blocks/ArticleCard.astro";
+import ArticleGrid from "../../components/blocks/ArticleGrid.astro";
 import RelatedSections from "../../components/blocks/RelatedSections.astro";
 import SniperDesignSmallContact from "../../components/sniperdesign/SmallContact.astro";
 
@@ -176,56 +178,70 @@ Konkrétní výsledky se pochopitelně liší podle výchozího stavu webu, konk
 
 Tato pillar sekce drží přehled. Šest oblastí, které stojí za vlastní hlubší ponor, jsme separovali do samostatných tutoriálů — najdete tam reálné checklisty, ceny, postupy krok za krokem, vizuální blueprinty, benchmarky a CZ-specifická data.
 
-<TopicCard
-  tone="seo"
-  href="/blog/jak-strukturovat-pillar-content/"
-  eyebrow="Tutorial · 15 min · ~3 000 slov"
-  title="Jak strukturovat pillar content"
->
-  Anatomie 3 000slovního průvodce v AI éře — vizuální blueprint pěti vrstev (hero, answer block, 6–10 H2 sekcí, FAQ, schema), checklist před publikací a srovnání pillar vs tenký obsah.
-</TopicCard>
+<ArticleGrid>
+  <ArticleCard
+    tone="seo"
+    href="/blog/jak-strukturovat-pillar-content/"
+    tag="Tutorial"
+    time="15 min"
+    words="~3 000 slov"
+    title="Jak strukturovat pillar content"
+  >
+    Anatomie 3 000slovního průvodce v AI éře — vizuální blueprint pěti vrstev (hero, answer block, 6–10 H2 sekcí, FAQ, schema), checklist před publikací a srovnání pillar vs tenký obsah.
+  </ArticleCard>
 
-<TopicCard
-  tone="seo"
-  href="/blog/local-seo-cesko-2026/"
-  eyebrow="Tutorial · 11 min · ~2 100 slov"
-  title="Local SEO Česko 2026"
->
-  Optimalizace pro lokální dotazy ("kavárna praha 7", "autoservis brno") — šest pilířů (Google Business Profile, NAP konzistence, Seznam Firmy, lokální linky, recenze, lokalizovaný obsah), praktický postup pro novou firmu a proč je to v ČR jedna z nejrychleji rostoucích kategorií.
-</TopicCard>
+  <ArticleCard
+    tone="seo"
+    href="/blog/local-seo-cesko-2026/"
+    tag="Tutorial"
+    time="11 min"
+    words="~2 100 slov"
+    title="Local SEO Česko 2026"
+  >
+    Optimalizace pro lokální dotazy ("kavárna praha 7", "autoservis brno") — šest pilířů (Google Business Profile, NAP konzistence, Seznam Firmy, lokální linky, recenze, lokalizovaný obsah), praktický postup pro novou firmu a proč je to v ČR jedna z nejrychleji rostoucích kategorií.
+  </ArticleCard>
 
-<TopicCard
-  tone="seo"
-  href="/blog/seo-nastroje-2026/"
-  eyebrow="Tutorial · 12 min · ~2 200 slov"
-  title="SEO nástroje 2026: kompletní průvodce"
->
-  Sedm kategorií SEO nástrojů s reálnými cenami v roce 2026 (Ahrefs, Semrush, SE Ranking, Marketing Miner, Otterly, Profound) a 4 doporučené stacky podle situace — od malé firmy po enterprise.
-</TopicCard>
+  <ArticleCard
+    tone="seo"
+    href="/blog/seo-nastroje-2026/"
+    tag="Tutorial"
+    time="12 min"
+    words="~2 200 slov"
+    title="SEO nástroje 2026: kompletní průvodce"
+  >
+    Sedm kategorií SEO nástrojů s reálnými cenami v roce 2026 (Ahrefs, Semrush, SE Ranking, Marketing Miner, Otterly, Profound) a 4 doporučené stacky podle situace — od malé firmy po enterprise.
+  </ArticleCard>
 
-<TopicCard
-  tone="seo"
-  href="/blog/seo-audit-co-kontrolovat/"
-  eyebrow="Tutorial · 9 min · ~1 700 slov"
-  title="SEO audit — co kontrolovat 1× ročně"
->
-  Kompletní checklist auditu ve třech vrstvách (technická / on‑page / off‑page), jak prioritizovat nálezy P0/P1/P2 a kdy svépomocí, kdy s agenturou.
-</TopicCard>
+  <ArticleCard
+    tone="seo"
+    href="/blog/seo-audit-co-kontrolovat/"
+    tag="Tutorial"
+    time="9 min"
+    words="~1 700 slov"
+    title="SEO audit — co kontrolovat 1× ročně"
+  >
+    Kompletní checklist auditu ve třech vrstvách (technická / on‑page / off‑page), jak prioritizovat nálezy P0/P1/P2 a kdy svépomocí, kdy s agenturou.
+  </ArticleCard>
 
-<TopicCard
-  tone="seo"
-  href="/blog/mereni-seo-vykonu-2026/"
-  eyebrow="Tutorial · 13 min · ~2 600 slov"
-  title="Měření SEO výkonu 2026"
->
-  Osm klíčových metrik ve čtyřech vrstvách (visibility, traffic, health, AI presence), benchmarky CTR podle pozice, nástrojový stack od free GSC po enterprise a KPI hierarchie podle příjemce reportu.
-</TopicCard>
+  <ArticleCard
+    tone="seo"
+    href="/blog/mereni-seo-vykonu-2026/"
+    tag="Tutorial"
+    time="13 min"
+    words="~2 600 slov"
+    title="Měření SEO výkonu 2026"
+  >
+    Osm klíčových metrik ve čtyřech vrstvách (visibility, traffic, health, AI presence), benchmarky CTR podle pozice, nástrojový stack od free GSC po enterprise a KPI hierarchie podle příjemce reportu.
+  </ArticleCard>
 
-<TopicCard
-  tone="seo"
-  href="/blog/caste-chyby-v-seo-2026-update/"
-  eyebrow="Tutorial · 14 min · ~2 800 slov"
-  title="Časté chyby v SEO 2026 (update)"
->
-  12 omylů, které brzdí výsledky — keyword stuffing, tenký obsah, technický dluh, ignorování brandu jako ranking faktoru, „dělejte všechno" mentalita bez prioritizace. Aktualizovaná verze s nuance a mírnějšími formulacemi.
-</TopicCard>
+  <ArticleCard
+    tone="seo"
+    href="/blog/caste-chyby-v-seo-2026-update/"
+    tag="Tutorial"
+    time="14 min"
+    words="~2 800 slov"
+    title="Časté chyby v SEO 2026 (update)"
+  >
+    12 omylů, které brzdí výsledky — keyword stuffing, tenký obsah, technický dluh, ignorování brandu jako ranking faktoru, „dělejte všechno" mentalita bez prioritizace. Aktualizovaná verze s nuance a mírnějšími formulacemi.
+  </ArticleCard>
+</ArticleGrid>

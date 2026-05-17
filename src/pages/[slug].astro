@@ -361,10 +361,11 @@ const ogImage = `/og/${entry.data.slug}.png`;
     font-family: var(--font-sans);
   }
 
-  /* Wide blocks — SignalGrid + inline RelatedSections potřebují víc
-     šířky než 40rem prose. Breakout do article-container width. */
+  /* Wide blocks — SignalGrid, inline RelatedSections, ArticleGrid potřebují
+     víc šířky než 40rem prose. Breakout do article-container width. */
   .article__prose :global(.sg),
-  .article__prose :global(.related) {
+  .article__prose :global(.related),
+  .article__prose :global(.acards-grid) {
     width: min(68rem, calc(100vw - 2 * var(--space-section-x)));
     max-width: none;
   }

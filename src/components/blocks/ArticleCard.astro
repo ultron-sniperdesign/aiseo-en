@@ -1,0 +1,156 @@
+---
+/**
+ * ArticleCard — karta na článek/sekci, design sjednocený s homepage
+ * "Vybrané články" gridem (.scard) a blog listingem (.acard).
+ *
+ * Použití v MDX uvnitř <ArticleGrid>:
+ *   <ArticleGrid>
+ *     <ArticleCard
+ *       href="/blog/jak-strukturovat-pillar-content/"
+ *       tag="Tutorial"
+ *       time="15 min"
+ *       words="~3 000 slov"
+ *       tone="seo"
+ *       title="Jak strukturovat pillar content"
+ *     >
+ *       Anotace článku v 1–2 větách. Markdown OK (strong, em, code, ...).
+ *     </ArticleCard>
+ *   </ArticleGrid>
+ *
+ * Tone: accent (default) | seo | geo | aeo | aio
+ */
+
+interface Props {
+  href: string;
+  tag: string;
+  time: string;
+  words?: string;
+  title: string;
+  tone?: "accent" | "seo" | "geo" | "aeo" | "aio";
+}
+
+const { href, tag, time, words, title, tone = "accent" } = Astro.props;
+const isExternal = href.startsWith("http");
+---
+
+<a
+  class={`acard acard--${tone}`}
+  href={href}
+  {...(isExternal ? { target: "_blank", rel: "noopener" } : {})}
+>
+  <div class="acard__header">
+    <span class="acard__tag">{tag}</span>
+    <span class="acard__time">{time}</span>
+  </div>
+  <h3 class="acard__title">{title}</h3>
+  <div class="acard__desc"><slot /></div>
+  <div class="acard__meta">
+    {words && <span>{words}</span>}
+    <span class="acard__cta">
+      Číst <span aria-hidden="true">→</span>
+    </span>
+  </div>
+</a>
+
+<style>
+  .acard {
+    --acard-color: var(--color-accent);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.75rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+  }
+  .acard::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--acard-color);
+    transform: scaleY(0.3);
+    transform-origin: top;
+    transition: transform 0.35s cubic-bezier(0.5, 0, 0, 1);
+  }
+  .acard:hover {
+    background: var(--color-paper-deep);
+    border-color: var(--acard-color);
+  }
+  .acard:hover::before { transform: scaleY(1); }
+  .acard--seo { --acard-color: var(--color-seo); }
+  .acard--geo { --acard-color: var(--color-geo); }
+  .acard--aeo { --acard-color: var(--color-aeo); }
+  .acard--aio { --acard-color: var(--color-aio); }
+
+  .acard__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+  }
+  .acard__tag {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--acard-color);
+    background: oklch(from var(--acard-color) l c h / 0.08);
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+  }
+  .acard__time {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: var(--color-ink-faint);
+  }
+  .acard__title {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1.1875rem;
+    line-height: 1.25;
+    letter-spacing: -0.018em;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .acard__desc {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+  }
+  .acard__desc :global(p) {
+    margin: 0;
+  }
+  .acard__desc :global(strong) {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .acard__meta {
+    margin-top: auto;
+    padding-top: 0.875rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--color-rule);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-faint);
+  }
+  .acard__cta {
+    color: var(--acard-color);
+    transition: gap 0.25s ease;
+    display: flex;
+    gap: 0.4rem;
+    font-weight: 500;
+  }
+  .acard:hover .acard__cta { gap: 0.7rem; }
+</style>

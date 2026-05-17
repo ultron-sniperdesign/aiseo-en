@@ -1,0 +1,25 @@
+---
+/**
+ * ArticleGrid — grid wrapper pro ArticleCard, sjednocený s homepage
+ * "Vybrané články" section-grid (auto-fit, minmax(280px, 1fr)).
+ *
+ * Použití v MDX:
+ *   <ArticleGrid>
+ *     <ArticleCard ... />
+ *     <ArticleCard ... />
+ *   </ArticleGrid>
+ */
+---
+
+<div class="acards-grid">
+  <slot />
+</div>
+
+<style>
+  .acards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin: 1.75rem 0;
+  }
+</style>
