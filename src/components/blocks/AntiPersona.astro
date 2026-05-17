@@ -66,7 +66,17 @@ const { title, icon = "❌" } = Astro.props;
     line-height: 1.5;
     color: var(--color-ink);
   }
-  .anti-persona__body :global(ul li) { padding: 0; }
+  .anti-persona__body :global(ul li) {
+    padding: 0;
+    margin: 0;
+  }
+  /* Override prose's :global(ul li::before) horizontal dash bullet, který
+     by jinak prosvítal přes začátek tučného textu. Komponenta má vlastní
+     vizuál (orange-tinted box), bullet markery nepotřebuje. */
+  .anti-persona__body :global(ul li::before) {
+    content: none;
+    display: none;
+  }
   .anti-persona__body :global(strong) {
     color: oklch(0.35 0.1 25);
     font-weight: 600;
