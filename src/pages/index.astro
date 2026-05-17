@@ -137,6 +137,11 @@ const quartet: Quartet[] = [
       Praktický průvodce čtyřmi disciplínami, které rozhodují o tom, jestli vás Google ukáže, jestli vás zacitují ChatGPT, Perplexity nebo Claude, jestli vás Gemini zařadí do AI přehledu, a jestli vás v roce 2026 najde někdo jiný než vy sami.
     </p>
 
+    <p class="hero__pills-hint">
+      <span class="hero__pills-hint-arrow" aria-hidden="true">↓</span>
+      Klikněte na disciplínu pro krátkou definici a odkaz na detail
+    </p>
+
     <div class="hero__pills" role="tablist" aria-label="Rychlé seznámení s disciplínami">
       {pillDefs.map((p) => (
         <button
@@ -145,7 +150,7 @@ const quartet: Quartet[] = [
           data-d={p.d}
           data-pill-trigger={p.d}
           aria-controls={`pill-panel-${p.d}`}
-          aria-expanded="false"
+          aria-expanded={p.d === "geo" ? "true" : "false"}
           role="tab"
         >
           <span>{p.label}</span>
@@ -165,7 +170,7 @@ const quartet: Quartet[] = [
           data-d={p.d}
           data-pill-panel={p.d}
           role="tabpanel"
-          hidden
+          hidden={p.d !== "geo"}
         >
           <header class="pill-panel__head">
             <span class="pill-panel__abbr">{p.d.toUpperCase()}</span>
@@ -892,6 +897,24 @@ const quartet: Quartet[] = [
     max-width: 38rem;
     margin-bottom: 3rem;
   }
+  .hero__pills-hint {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: var(--color-ink-muted);
+    margin: 0 0 0.625rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .hero__pills-hint-arrow {
+    font-size: 0.875rem;
+    color: var(--color-geo);
+    animation: hintBob 1.6s ease-in-out infinite;
+  }
+  @keyframes hintBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(3px); }
+  }
   .hero__pills {
     display: flex;
     flex-wrap: wrap;
@@ -915,7 +938,9 @@ const quartet: Quartet[] = [
   .hero > *:nth-child(1) { animation-delay: 0.04s; }
   .hero > *:nth-child(2) { animation-delay: 0.14s; }
   .hero > *:nth-child(3) { animation-delay: 0.26s; }
-  .hero > *:nth-child(4) { animation-delay: 0.38s; }
+  .hero > *:nth-child(4) { animation-delay: 0.34s; }
+  .hero > *:nth-child(5) { animation-delay: 0.42s; }
+  .hero > *:nth-child(6) { animation-delay: 0.5s; }
 
   .pill {
     font-family: var(--font-sans);
@@ -972,10 +997,12 @@ const quartet: Quartet[] = [
     font-weight: 500;
     transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     position: relative;
+    box-shadow: 0 1px 2px -1px rgba(15, 23, 42, 0.08), 0 1px 0 rgba(15, 23, 42, 0.04);
   }
   .pill--btn:hover {
     transform: translateY(-1px);
-    box-shadow: 0 2px 8px -3px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 12px -4px rgba(15, 23, 42, 0.18);
+    border-color: currentColor;
   }
   .pill--btn:focus-visible {
     outline: 2px solid currentColor;
