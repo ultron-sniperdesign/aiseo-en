@@ -16,6 +16,23 @@ const { Content, headings } = await render(entry);
 const tocItems = headings.filter((h) => h.depth === 2);
 
 /**
+ * Mini markdown → HTML pro FAQ answer stringy (bold, code, link).
+ * Sjednoceno s [slug].astro template.
+ */
+function renderFaqMarkdown(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(
+      /\[([^\]]+)\]\(([^)]+)\)/g,
+      (_, label, href) => `<a href="${href}">${label}</a>`,
+    )
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+}
+
+/**
  * JSON-LD — Article + FAQPage (preserve schema).
  */
 const articleJsonLd = {
@@ -150,7 +167,7 @@ const faqCount = entry.data.faq?.length ?? 0;
                   <span class="faq__q-num">{i + 1}</span>
                   <span>{item.q}</span>
                 </dt>
-                <dd class="faq__a">{item.a}</dd>
+                <dd class="faq__a" set:html={renderFaqMarkdown(item.a)} />
               </div>
             ))}
           </dl>
