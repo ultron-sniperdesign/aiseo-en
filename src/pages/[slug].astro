@@ -399,6 +399,13 @@ const ogImage = `/og/${entry.data.slug}.png`;
     font-family: var(--font-sans);
   }
 
+  /* Wide blocks — SignalGrid potřebuje 4 sloupce vedle sebe,
+     40rem prose constraint mu nestačí. Breakout do article-container šířky. */
+  .article__prose :global(.sg) {
+    width: min(68rem, calc(100vw - 2 * var(--space-section-x)));
+    max-width: none;
+  }
+
   /* Markdown rendered body — sans typography, friendly hierarchy */
   .article__prose :global(h2) {
     font-family: var(--font-sans);
