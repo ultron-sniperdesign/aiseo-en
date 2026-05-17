@@ -375,20 +375,14 @@ const ogImage = `/og/${entry.data.slug}.png`;
     padding: 0;
     margin-bottom: 2rem;
   }
-  /* Inline SniperDesignSmallContact — full-bleed approach pro vizuální paritu
-     s auto-rendrovanou verzí. Komponenta se nachází uvnitř prose (40rem,
-     left-aligned uvnitř centrovaného článku); aby vypadala stejně jako když
-     je rendrovaná jako sibling článku, dáváme jí 100vw šířku s max-width =
-     max-section, plus transform-translateX který ji vizuálně přesune
-     z prose-left zpět doleva tak, aby výsledná pozice odpovídala
-     auto-renderu (centrovanému v max-section). Transform neovlivňuje
-     layout box — následující obsah pozicujet správně. */
+  /* Inline SniperDesignSmallContact — breakout z 40rem prose constraintu
+     na šířku odpovídající ostatním in-article wide blokům (např. .related
+     karty 68rem). Stejný left-edge jako prose-content, rozšířený doprava
+     do article-container width. Komponenta drží vlastní inner padding
+     (clamp), takže visible block uvnitř má stejný design. */
   .article__prose :global(.sd-small) {
-    width: 100vw;
-    max-width: var(--max-section);
-    transform: translateX(calc(
-      -1 * (max(0px, (100vw - var(--max-section)) / 2) + var(--space-section-x))
-    ));
+    width: min(68rem, calc(100vw - 2 * var(--space-section-x)));
+    max-width: none;
     margin-top: 2.5rem;
     margin-bottom: 1.5rem;
   }
