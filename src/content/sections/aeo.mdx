@@ -5,7 +5,7 @@ answer: "AEO (Answer Engine Optimization) upravuje obsah tak, aby dokázal rychl
 slug: "aeo"
 order: 3
 abbr: "AEO"
-updated: "2026-05-08"
+updated: "2026-05-18"
 faq:
   - q: "Kolik AEO stojí?"
     a: "AEO není samostatná položka v rozpočtu — je to způsob psaní obsahu a technická hygiena, kterou se zavádí jako součást SEO/content marketingu. Pokud už platíte za obsah, AEO playbook (krátké odpovědi, FAQ sekce, FAQPage/HowTo schema, fact-density) vás u nového obsahu nestojí nic navíc. Náklad začíná u jednorázových úprav existujícího obsahu (audit + přepis top 20 stránek typicky 15–40 tisíc Kč) a u placených tracking nástrojů (Otterly, Profound, Marketing Miner Brand Radar — $29–500/měs), které mají smysl až s 20+ články v top 10."
@@ -38,9 +38,23 @@ howto:
       text: "Google Search Console → Performance → Queries. Vyfiltrujte dotazy s impressions ale CTR pod 5 % — to jsou kandidáti na AEO optimalizaci. Přidejte tyto dotazy jako FAQ otázky na cílových stránkách. Doplňte z Reddit/Quora vláken a oborových diskuzí pro reálné dotazy."
     - name: "Měření přes GSC a manuální AIO check"
       text: "V Google Search Console sledujte Search Appearance (FAQ rich snippets, HowTo), Performance (Featured Snippets impressions) a Coverage (indexovatelnost). Pro AIO presence stačí jednou měsíčně manuálně otestovat top 10 klíčových slov v Googlu a zapsat do tabulky, kde se objevil AI Overview a jestli z něj vede odkaz na váš web. Pro profesionální tracking nástroje Otterly, Profound nebo Marketing Miner Brand Radar."
+inlineRelated: true
+inlineSmallContact: true
 ---
 
 import Insight from "../../components/blocks/Insight.astro";
+import Stepper from "../../components/blocks/Stepper.astro";
+import DoDont from "../../components/blocks/DoDont.astro";
+import Do from "../../components/blocks/Do.astro";
+import Dont from "../../components/blocks/Dont.astro";
+import Persona from "../../components/blocks/Persona.astro";
+import PersonaGrid from "../../components/blocks/PersonaGrid.astro";
+import AntiPersona from "../../components/blocks/AntiPersona.astro";
+import Mistake from "../../components/blocks/Mistake.astro";
+import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
+import Mindset from "../../components/blocks/Mindset.astro";
+import RelatedSections from "../../components/blocks/RelatedSections.astro";
+import SniperDesignSmallContact from "../../components/sniperdesign/SmallContact.astro";
 
 ## <span class="hl">AEO</span> vs. <span class="hl">GEO</span> — <strong>kde je hranice</strong>
 
@@ -54,23 +68,55 @@ Pro většinu CZ webů má AEO **typicky větší přímý dopad na traffic** ne
 
 AEO je nejvíc relevantní tam, kde **se zákazník na něco ptá** a obsah na webu by mohl být odpovědí. Konkrétně:
 
-- **Publishers, blogy a edukativní obsahové weby** — žijete z organic trafficu na informační dotazy, AIO panel vám může vzít kliky, ale i vás citovat. Bez AEO playbooku ztrácíte přímý vliv na obě strany rovnice.
-- **B2B firmy a SaaS produkty s research fází** — zákazník před nákupem aktivně studuje, srovnává a hledá odpovědi typu „jak vybrat CRM", „rozdíl mezi X a Y", „jak nastavit Z". Featured Snippets a AIO panel mu odpovídají — a vy chcete být v citaci.
-- **E-shopy s research-driven sortimentem** (elektronika, sport, hobby, prémiové produkty) — kategorie a edukativní obsah ohrožené zero-click search, ale zároveň výhra brand exposure.
-- **Odborné a poradenské služby** (advokát, účetní, konzultant, agentura) — lidé hledají odpovědi typu „jak řešit X", „kdy potřebuji Y", „jaké jsou možnosti Z". AEO playbook + Featured Snippet umisťuje vaše krátké odpovědi do první vlny SERPu.
-- **Lokální služby s informační vrstvou** — autoservis, kosmetika, restaurace s blogem o oboru. Featured Snippets + lokální výsledky se nepřebíjejí, kombinace funguje dobře.
+<PersonaGrid>
+  <Persona icon="📰" title="Publishers, blogy a edukativní weby" chip="Vysoký dopad" tone="aeo">
+    Žijete z organic trafficu na informační dotazy. AIO panel vám může vzít kliky, ale i vás citovat. Bez AEO playbooku ztrácíte přímý vliv na obě strany rovnice.
+  </Persona>
+  <Persona icon="🏢" title="B2B firmy a SaaS s research fází" chip="Vysoký dopad" tone="aeo">
+    Zákazník před nákupem aktivně studuje, srovnává a hledá odpovědi typu „jak vybrat CRM", „rozdíl mezi X a Y". Featured Snippets a AIO panel mu odpovídají — a vy chcete být v citaci.
+  </Persona>
+  <Persona icon="🛒" title="E-shopy s research-driven sortimentem" chip="Vysoký dopad" tone="aeo">
+    Elektronika, sport, hobby, prémiové produkty. Kategorie a edukativní obsah ohrožené zero-click search, ale zároveň výhra brand exposure.
+  </Persona>
+  <Persona icon="⚖️" title="Odborné a poradenské služby" chip="Vysoký dopad" tone="aeo">
+    Advokát, účetní, konzultant, agentura. Lidé hledají odpovědi typu „jak řešit X", „kdy potřebuji Y". AEO playbook + Featured Snippet umisťuje vaše krátké odpovědi do první vlny SERPu.
+  </Persona>
+  <Persona icon="📍" title="Lokální služby s informační vrstvou" chip="Vysoký dopad" tone="aeo">
+    Autoservis, kosmetika, restaurace s blogem o oboru. Featured Snippets + lokální výsledky se nepřebíjejí, kombinace funguje dobře.
+  </Persona>
+</PersonaGrid>
 
-**Marginální dopad** má AEO u čistě transakčních dotazů a impulsivních produktů, kde se nikdo nezeptá Googlu „jak X" před nákupem — tam jdou priority do klasického SEO + lokálního SEO + PPC.
+<AntiPersona title="Kdy AEO nedává smysl">
+  - **Čistě transakční dotazy** — nikdo se neptá Googlu „jak X" před nákupem běžného spotřebního zboží.
+  - **Impulsivní produkty bez research fáze** — priority jdou do klasického SEO + lokálního SEO + PPC.
+</AntiPersona>
 
 ## <span class="hl">AEO playbook</span> — <strong>5 pilířů, které řešíme</strong>
 
 Tohle je rámec, který opakovaně aplikujeme u klientů — pět oblastí, ve kterých u většiny webů najdeme rezervu:
 
-1. **Architektura odpovědi** — krátká odpověď 40–60 slov hned po H1/H2, struktura H2/H3 jako otázky a sub-odpovědi, pyramidové uspořádání obsahu (nejdůležitější informace nahoru).
-2. **Strukturovaná data** — `FAQPage` schema u FAQ sekcí, `HowTo` schema u návodů, `Article` na blogových článcích. Validní JSON-LD v `<head>`, přesné mapování mezi HTML a schema, ověření přes Google Rich Results Test.
-3. **Důvěryhodnost obsahu** — fact-density (čísla, procenta, konkrétní příklady místo obecných tvrzení), inline citace zdrojů, autorské profily u YMYL témat (zdraví, finance, právo), datace tvrzení (kdy bylo měření, kdy aktualizováno).
-4. **Konzistence entit** — jednotný brand zápis napříč webem, schema.org `Organization` a `Person` markup, propojené identifikátory (Wikidata, Crunchbase, oborové katalogy). Pomáhá Googlu i AI nástrojům jednoznačně identifikovat značku.
-5. **Měření AI citací** — sledování Featured Snippets a AI Overviews v GSC (Search Appearance), manuální audit top 10 KW v Googlu, případně specializované AIO/GEO trackery (Otterly, Profound, Marketing Miner Brand Radar).
+<Stepper tone="aeo" steps={[
+  {
+    title: "Architektura odpovědi",
+    desc: "Krátká odpověď 40–60 slov hned po H1/H2, struktura H2/H3 jako otázky a sub-odpovědi, pyramidové uspořádání obsahu (nejdůležitější informace nahoru).",
+  },
+  {
+    title: "Strukturovaná data",
+    desc: "FAQPage schema u FAQ sekcí, HowTo schema u návodů, Article na blogových článcích. Validní JSON-LD v <head>, přesné mapování mezi HTML a schema, ověření přes Google Rich Results Test.",
+  },
+  {
+    title: "Důvěryhodnost obsahu",
+    desc: "Fact-density (čísla, procenta, konkrétní příklady místo obecných tvrzení), inline citace zdrojů, autorské profily u YMYL témat (zdraví, finance, právo), datace tvrzení (kdy bylo měření, kdy aktualizováno).",
+  },
+  {
+    title: "Konzistence entit",
+    desc: "Jednotný brand zápis napříč webem, schema.org Organization a Person markup, propojené identifikátory (Wikidata, Crunchbase, oborové katalogy). Pomáhá Googlu i AI nástrojům jednoznačně identifikovat značku.",
+  },
+  {
+    title: "Měření AI citací",
+    desc: "Sledování Featured Snippets a AI Overviews v GSC (Search Appearance), manuální audit top 10 KW v Googlu, případně specializované AIO/GEO trackery (Otterly, Profound, Marketing Miner Brand Radar).",
+  },
+]} />
 
 Ne všech 5 pilířů má pro každý web stejnou prioritu — pořadí závisí na typu byznysu, výchozím stavu webu a konkurenci v oboru. Konkrétní rozhodovací rámec v sekci [Rozhodovací matice](/rozhodovaci-matice/).
 
@@ -146,8 +192,10 @@ Tento web má v každé sekci **answer block** (tučný 40–60 slov rámeček n
 
 ### 4. Datově hutný obsah
 
-- ✅ „U informačních dotazů se Google AI Overviews objevují výrazně častěji než u průměru všech vyhledávání. Příkladem fact-density je tato věta — má v sobě kontext, kvalifikátor a zdrojuvatelný směr."
-- ❌ „AIO je čím dál důležitější."
+<DoDont>
+  <Do>**„U informačních dotazů se Google AI Overviews objevují výrazně častěji než u průměru všech vyhledávání. Příkladem fact-density je tato věta — má v sobě kontext, kvalifikátor a zdrojuvatelný směr."**</Do>
+  <Dont>„AIO je čím dál důležitější."</Dont>
+</DoDont>
 
 První věta je AI-friendly (konkrétní pozorování s kvalifikátorem). Druhá je marketingová vata bez informační hodnoty.
 
@@ -179,72 +227,81 @@ Orientačně podle typu obsahu (rozdíly se ale výrazně liší podle vertikál
 
 ## <strong>Praktický postup</strong> <span class="hl">AEO</span>
 
-### Krok 1 — Audit existujícího obsahu
-
-Pro top 20 stránek webu (podle organic trafficu):
-
-1. ✅ Je odpověď na hlavní dotaz v prvních 60 slovech?
-2. ✅ Má stránka FAQ sekci s reálnými dotazy uživatelů?
-3. ✅ Je tam FAQPage schema markup?
-4. ✅ Jsou H2/H3 strukturované jako otázky/sub-odpovědi?
-
-Stránky které selžou ≥ 2 kontroly → **přepsat answer block + přidat FAQ**.
-
-### Krok 2 — Implementace FAQPage schema
-
-Na CMS (WordPress, Webflow, Astro) přidejte automatický generator FAQPage JSON-LD z FAQ sekce. Příklad implementace v Astro Content Collections — viz `src/content.config.ts` tohoto projektu.
-
-### Krok 3 — HowTo schema pro návody
-
-Pro každý návodový článek (kategorie „jak udělat X") přidejte `HowTo` schema s explicit kroky. AI Overviews preferuje strukturované postupy nad volnou prózou.
-
-### Krok 4 — People Also Ask (PAA) extension
-
-Google Search Console → Performance → Queries. Vyfiltrujte dotazy s impressions ale CTR < 5 % — to jsou kandidáti na AEO optimalizaci. Přidejte tyto dotazy jako FAQ otázky na cílových stránkách.
-
-### Krok 5 — Měření přes GSC + manuální AIO check
-
-V GSC sledujte:
-
-- **Search Appearance** → FAQ rich snippets, HowTo
-- **Performance** → Featured Snippets impressions
-- **Coverage** → indexovatelnost
-
-Pro AIO presence stačí jednou měsíčně manuálně otestovat top 10 vašich klíčových slov v Googlu a zapsat do tabulky, kde se objevil AI Overview a jestli z něj vede odkaz na váš web. Pokud chcete profesionální tracking, dají se použít specializované AIO/GEO nástroje (Otterly, Profound a další), ale pro většinu webů ze začátku stačí ta tabulka.
+<Stepper tone="aeo" steps={[
+  {
+    title: "Audit existujícího obsahu",
+    desc: "Pro top 20 stránek webu (podle organic trafficu) zkontrolujte: (1) je odpověď na hlavní dotaz v prvních 60 slovech, (2) má stránka FAQ sekci s reálnými dotazy, (3) je tam FAQPage schema, (4) jsou H2/H3 strukturované jako otázky/sub-odpovědi. Stránky které selžou ≥ 2 kontroly → přepsat answer block + přidat FAQ.",
+  },
+  {
+    title: "Implementace FAQPage schema",
+    desc: "Na CMS (WordPress, Webflow, Astro) přidejte automatický generator FAQPage JSON-LD z FAQ sekce. Příklad implementace v Astro Content Collections — viz src/content.config.ts tohoto projektu.",
+  },
+  {
+    title: "HowTo schema pro návody",
+    desc: 'Pro každý návodový článek (kategorie „jak udělat X") přidejte HowTo schema s explicit kroky. AI Overviews preferuje strukturované postupy nad volnou prózou.',
+  },
+  {
+    title: "People Also Ask (PAA) extension",
+    desc: "Google Search Console → Performance → Queries. Vyfiltrujte dotazy s impressions ale CTR < 5 % — to jsou kandidáti na AEO optimalizaci. Přidejte tyto dotazy jako FAQ otázky na cílových stránkách.",
+  },
+  {
+    title: "Měření přes GSC + manuální AIO check",
+    desc: "V GSC sledujte Search Appearance (FAQ rich snippets, HowTo), Performance (Featured Snippets impressions), Coverage (indexovatelnost). Pro AIO presence stačí jednou měsíčně manuálně otestovat top 10 KW v Googlu. Pokročilejší tracking: Otterly, Profound.",
+  },
+]} />
 
 ## <strong>Časté chyby</strong> v <span class="hl">AEO</span>
 
-1. **Nucení FAQ kde nepatří** — vymyšlené otázky („Proč je naše agentura nejlepší?") nemají citation value
-2. **Příliš dlouhé answer blocks** — > 60 slov, AI scraper najde jen prvních 60
-3. **Žádné GSC tracking** — bez metrik nevíte, jestli to funguje
-4. **Schema bez `mainEntity`** — neplatný JSON-LD, Google ignoruje
-5. **Optimalizace pouze pro AIO bez pohledu na CTR** — viz „win/loss" insight výše
+<MistakeGrid>
+  <Mistake num="01" title="Nucení FAQ kde nepatří" fix="Otázky brát z GSC Queries nebo People Also Ask, ne vymýšlet.">
+    Vymyšlené otázky („Proč je naše agentura nejlepší?") nemají citation value.
+  </Mistake>
+  <Mistake num="02" title="Příliš dlouhé answer blocks" fix="Striktně 40–60 slov, ne víc.">
+    Nad 60 slov AI scraper najde jen prvních 60 — zbytek je vyhozená práce.
+  </Mistake>
+  <Mistake num="03" title="Žádné GSC tracking" fix="Search Appearance + Performance → Queries minimálně 1× měsíčně.">
+    Bez metrik nevíte, jestli to funguje. AEO bez měření = optimalizace naslepo.
+  </Mistake>
+  <Mistake num="04" title="Schema bez mainEntity" fix="Validovat přes Google Rich Results Test před deploy.">
+    Neplatný JSON-LD. Google ho ignoruje a vaše FAQ se nepojeví jako rich snippet.
+  </Mistake>
+  <Mistake num="05" title="Optimalizace pouze pro AIO bez pohledu na CTR" fix="U dlouhých průvodců vážit, jestli AIO presence stojí za případnou ztrátu kliků.">
+    Zero-click search je reálné riziko. AIO presence není automaticky výhra — viz tabulka výše.
+  </Mistake>
+</MistakeGrid>
 
 ## <span class="hl">AEO</span> není projekt po milníku — je to <strong>standard psaní</strong>
 
-Klasická chyba: "AEO přidáme, až budeme mít 20+ článků v top 10." Tohle uvažování **nefunguje** ze stejného důvodu, jako u GEO — AEO struktura je věc, kterou píšete od prvního článku, ne až po milníku.
+<Mindset
+  badQuote="AEO přidáme, až budeme mít 20+ článků v top 10."
+  badWhy="Vytvoříte si dluh — za rok desítky článků k přepisu. AEO struktura je věc, kterou píšete od prvního článku."
+  goodQuote="AEO struktura jde dovnitř hned. Reporting přijde po několika měsících provozu."
+  goodWhy="FAQPage schema, answer block, fact-density — žádná z těch věcí nestojí extra. Měření a tracking přijde po sběru dat."
+/>
 
-Co AEO konkrétně znamená v praxi:
+### Co AEO konkrétně znamená v praxi (standard od článku #1)
 
-- **FAQPage schema** na každý článek s FAQ sekcí — `<script type="application/ld+json">` blok v `<head>`. Cena: 0 Kč, jen kus MDX/HTML.
-- **HowTo schema** na návody (krok-za-krokem postupy). Stejné jako FAQPage, jiný `@type`.
-- **Answer block 40–60 slov** v úvodu článku — věcný odstavec, ze kterého AI scrapery čerpají citaci. Cena: 0 Kč, je to první odstavec, který stejně píšete.
-- **Datově hutný obsah** — čísla, procenta, konkrétní příklady místo obecných tvrzení. Cena: 0 Kč, jen styl psaní.
-- **Strukturované odstavce** — krátké, jeden topic per odstavec, jasná H2/H3 hierarchie. Cena: 0 Kč.
+<div class="standards">
+  <div class="standard"><span class="standard__icon">🏷️</span><strong>FAQPage schema</strong> na každý článek s FAQ sekcí</div>
+  <div class="standard"><span class="standard__icon">📋</span><strong>HowTo schema</strong> na návody (krok-za-krokem postupy)</div>
+  <div class="standard"><span class="standard__icon">📝</span><strong>Answer block 40–60 slov</strong> v úvodu článku</div>
+  <div class="standard"><span class="standard__icon">📊</span><strong>Datově hutný obsah</strong> — čísla, procenta, příklady</div>
+  <div class="standard"><span class="standard__icon">🧱</span><strong>Strukturované odstavce</strong> — jeden topic per odstavec</div>
+</div>
 
-Žádná z těchto věcí **nestojí extra náklad**. Pokud je odložíte na "až budeme mít 20+ článků", za rok budete mít desítky článků k přepisu — to je drahé.
+Žádná z těchto věcí **nestojí extra náklad**. Pokud je odložíte na „až budeme mít 20+ článků", za rok budete mít desítky článků k přepisu — to je drahé.
 
-### Co skutečně dává smysl odložit
+<AntiPersona title="Co skutečně dává smysl odložit" icon="⏳">
+  - **Pokročilá interpretace GSC** — sekce „Search appearance: AI Overview" (od 2025). Bez 3–6 měsíců provozu nemá data k vyhodnocení.
+  - **A/B testování `data-nosnippet`** — selektivní blokace AIO panelu na dlouhých how-to průvodcích. Vyžaduje měřitelnou baseline (před/po).
+  - **Profesionální AIO tracking nástroje** — Otterly, Profound. Mají smysl až s 20+ články v top 10.
+  - **Strategická diskuse „chci/nechci AIO presence"** — vyžaduje reálná data o tom, kde AIO panel zvyšuje vs. snižuje CTR.
+</AntiPersona>
 
-Tyhle položky vyžadují **historická data** nebo **kapacitu pro reporting**, takže mají smysl až později:
-
-- **Pokročilá interpretace GSC** — sekce "Search appearance: AI Overview" (od 2025) vám řekne, na kterých KW je váš obsah v AIO panelu. Bez 3–6 měsíců provozu nemá data k vyhodnocení.
-- **A/B testování `data-nosnippet`** — selektivní blokace AIO panelu na dlouhých how-to průvodcích. Vyžaduje měřitelnou baseline (před/po).
-- **Profesionální AIO tracking nástroje** — pro většinu webů stačí ze začátku manuální kontrola top 10 KW v Googlu jednou měsíčně. Placené nástroje (Otterly, Profound) dávají smysl až s 20+ články v top 10.
-- **Strategická diskuse "chci/nechci AIO presence"** — vyžaduje reálná data o tom, kde AIO panel zvyšuje vs. snižuje CTR.
-
-### Praktické pravidlo
-
-**Píšete článek?** AEO struktura (FAQPage + HowTo + answer block + fact-density) jde dovnitř hned. **Reportujete a optimalizujete?** To přijde po několika měsících provozu, až budete mít data.
+**Praktické pravidlo:** Píšete článek? AEO struktura jde dovnitř hned. Reportujete a optimalizujete? To přijde po několika měsících provozu, až budete mít data.
 
 → Detailní rozhodovací rámec podle typu businessu v sekci [Rozhodovací matice](/rozhodovaci-matice/).
+
+<RelatedSections currentAbbr="AEO" />
+
+<SniperDesignSmallContact />
