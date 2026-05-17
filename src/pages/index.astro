@@ -783,7 +783,8 @@ const quartet: Quartet[] = [
           <span class="offer__tag">AI&nbsp;SEO Wireframe Pack</span>
           <span class="offer__price offer__price--pack">
             <strong>1&nbsp;490&nbsp;Kč</strong>
-            <small>jednorázově</small>
+            <small>bez DPH &middot; jednorázově</small>
+            <small class="offer__price-vat">1&nbsp;803&nbsp;Kč s&nbsp;DPH</small>
           </span>
         </header>
         <h3 class="offer__title">Kompletní framework pro 7&nbsp;typů stránek</h3>
@@ -812,6 +813,7 @@ const quartet: Quartet[] = [
           <span class="offer__price offer__price--audit">
             <strong>9&nbsp;990&nbsp;Kč</strong>
             <small>bez DPH &middot; jednorázově</small>
+            <small class="offer__price-vat">12&nbsp;088&nbsp;Kč s&nbsp;DPH</small>
           </span>
         </header>
         <h3 class="offer__title">Přesný plán pro váš konkrétní web</h3>
@@ -2450,6 +2452,10 @@ const quartet: Quartet[] = [
     font-weight: 500;
     letter-spacing: 0.04em;
     color: var(--color-ink-faint);
+  }
+  .offer__price-vat {
+    margin-top: 0.125rem;
+    opacity: 0.75;
   }
   .offer__price--free strong { color: oklch(0.45 0.14 145); }
   .offer__price--pack strong { color: oklch(0.45 0.22 305); }
