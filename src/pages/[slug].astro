@@ -567,12 +567,15 @@ function renderFaqMarkdown(text: string): string {
     background: oklch(0.95 0.05 145);
   }
 
-  /* Standards icon checklist — vertikální stack karet (1 column, full width) */
+  /* Standards icon checklist — 1 col mobile, 2 col desktop */
   .article__prose :global(.standards) {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 0.625rem;
     margin: 1rem 0 1.75rem;
+  }
+  @media (min-width: 640px) {
+    .article__prose :global(.standards) { grid-template-columns: 1fr 1fr; }
   }
   .article__prose :global(.standard) {
     display: flex;
