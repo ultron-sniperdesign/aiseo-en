@@ -376,9 +376,16 @@ function renderFaqMarkdown(text: string): string {
   .article__prose :global(.mech),
   .article__prose :global(.metrics-table-wrap),
   .article__prose :global(.standards),
-  .article__prose :global(.tree) {
+  .article__prose :global(.tree),
+  .article__prose :global(.free-strip) {
     width: min(68rem, calc(100vw - 2 * var(--space-section-x)));
     max-width: none;
+  }
+  /* FreeStrip uvnitř article__prose: breakout calc už řeší horizontal spacing,
+     vlastní padding aside by se zdvojil. */
+  .article__prose :global(.free-strip) {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   /* ===== Inline patterns používané přes raw HTML v MDX sekcích ===== */
