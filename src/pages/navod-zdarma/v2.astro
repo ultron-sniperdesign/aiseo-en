@@ -66,27 +66,34 @@ const faqJsonLd = {
 <BaseLayout title={pageTitle} description={pageDescription} jsonLd={faqJsonLd} noindex={true}>
   <main class="lp">
     <!-- ===== HERO (v2 — fold-fit pro Full HD) =====
-         Změny vs v1:
-         - Tighter top padding (3rem max místo 5rem)
-         - H1 zkrácen na 1-2 řádky
-         - DROP urgency line (overlap s leadem)
-         - Lead zkrácen na 1-2 řádky
-         - CTA card tighter interní padding
-         - Eyebrow před CTA odstraněn (přesunut do title flow)
-         Cíl: CTA card bottom ≤ 900px na Full HD (1920×1080 viewport,
-         realisticky vh ~940 v Chrome s default chrome). -->
+         Text 1:1 jako v1, jediný strukturální zásah:
+         - CTA card přesunuta do PRAVÉHO sloupce nahoře (vždy nad foldem)
+         - Image SUB-stack pod CTA kartou, zmenšená
+         - Levý sloupec: jen copy (eyebrow, h1, urgency, lead)
+         - Tighter padding/margins přes CSS
+         Cíl: CTA card bottom ≤ 768 px na Full HD i MacBook viewportech. -->
     <section class="lp-hero lp-hero--compact">
       <div class="lp-hero__inner">
         <div class="lp-hero__copy">
           <span class="lp-hero__eyebrow">Návod zdarma · pro AI vyhledávání</span>
           <h1 class="lp-hero__title">
-            Cituje umělá inteligence <strong>váš obsah?</strong>
+            Vaši zákazníci se dnes ptají ChatGPT.<br />
+            <strong>Cituje umělá inteligence váš obsah?</strong>
           </h1>
-          <p class="lp-hero__lead">
-            Návod, podle kterého homepage začne fungovat v AI vyhledávání —
-            wireframe s anotacemi, tři principy, mikro‑case před / po.
+          <p class="lp-hero__urgency">
+            Firmy už dnes optimalizují obsah pro AI odpovědi. Pokud AI nerozumí
+            vašemu homepage, <strong>doporučí konkurenci</strong>.
           </p>
+          <p class="lp-hero__lead">
+            Návod, podle kterého homepage začne fungovat v AI vyhledávání.
+            Wireframe s anotacemi, tři principy a mikro‑case před/po.
+            Aplikujete na svůj web během odpoledne — a začnete dostávat
+            přístupy z AI, které byste jinak neviděli.
+          </p>
+        </div>
 
+        <!-- RIGHT column: CTA card on top + image below (smaller) -->
+        <aside class="lp-hero__side">
           <div class="lp-hero__cta-card" role="region" aria-labelledby="cta-card-eyebrow">
             <span id="cta-card-eyebrow" class="lp-hero__cta-eyebrow">
               <span class="lp-hero__cta-eyebrow-pill">Zdarma</span>
@@ -105,20 +112,20 @@ const faqJsonLd = {
               leadSourceTag="Lead — Návod zdarma (homepage v2)"
             />
           </div>
-        </div>
 
-        <div class="lp-hero__mockup" aria-hidden="true">
-          <figure class="hero-illustration">
-            <img
-              src="/navod-zdarma/hero-illustration.png"
-              alt=""
-              width="1024"
-              height="1536"
-              loading="eager"
-              decoding="async"
-            />
-          </figure>
-        </div>
+          <div class="lp-hero__mockup" aria-hidden="true">
+            <figure class="hero-illustration">
+              <img
+                src="/navod-zdarma/hero-illustration.png"
+                alt=""
+                width="1024"
+                height="1536"
+                loading="eager"
+                decoding="async"
+              />
+            </figure>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -829,46 +836,72 @@ const faqJsonLd = {
     font-weight: 700;
   }
 
-  /* ===== HERO v2 COMPACT — fold-fit overrides =====
-     Strategie: tighter top padding, menší H1, lead 1-2 řádky, CTA card
-     internal padding tighter. Cíl: CTA card bottom ≤ 900px na Full HD
-     (1920×1080 viewport, realisticky vh ~940 v Chrome). */
+  /* ===== HERO v2 COMPACT — fold-fit pro Full HD =====
+     Strategie: text 1:1 z v1, ale CTA card přesunuta do RIGHT column
+     nahoře (vždy viditelná nad foldem), image SUB-stack pod CTA, menší.
+     Tighter padding/margins. */
   .lp-hero--compact {
-    padding-top: clamp(1.5rem, 3vw, 2.5rem);
-    padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    padding-top: clamp(1.25rem, 2.5vw, 2rem);
+    padding-bottom: clamp(1.25rem, 2.5vw, 2rem);
+  }
+  .lp-hero--compact .lp-hero__inner {
+    align-items: start;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  @media (min-width: 960px) {
+    .lp-hero--compact .lp-hero__inner {
+      /* Right column o něco užší, vleže než copy — drží CTA kartu kompaktní */
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+    }
   }
   .lp-hero--compact .lp-hero__eyebrow {
-    margin-bottom: 0.875rem;
+    margin-bottom: 1rem;
   }
   .lp-hero--compact .lp-hero__title {
-    font-size: clamp(1.875rem, 3.5vw, 2.75rem);
-    margin: 0 0 0.875rem;
+    margin: 0 0 1rem;
+  }
+  .lp-hero--compact .lp-hero__urgency {
+    margin: 0.75rem 0 1rem;
   }
   .lp-hero--compact .lp-hero__lead {
-    font-size: clamp(1rem, 1.3vw, 1.0625rem);
-    margin: 0 0 1.25rem;
+    margin: 0;
   }
+  /* RIGHT COLUMN container: CTA card on TOP, image below */
+  .lp-hero__side {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    min-width: 0;
+  }
+  /* CTA card override — žádný margin-top (sedí na vrcholu right col) */
   .lp-hero--compact .lp-hero__cta-card {
-    margin-top: 1.5rem;
-    padding: clamp(1.125rem, 1.8vw, 1.5rem) clamp(1rem, 1.8vw, 1.5rem);
+    margin-top: 0;
+    max-width: none;
+    padding: clamp(1.25rem, 1.8vw, 1.625rem);
   }
   .lp-hero--compact .lp-hero__cta-eyebrow {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.875rem;
   }
   .lp-hero--compact .lp-hero__bullets {
-    margin-bottom: 1.125rem;
-    font-size: 0.9375rem;
+    margin-bottom: 1.25rem;
   }
   .lp-hero--compact .lp-hero__bullets li {
-    padding: 0;
+    padding: 0 0 0 1.5rem;
   }
-  /* Image right column constrained to match shorter copy column on Full HD */
+  /* Image SUB-stacked, menší, aby right col nepřesahoval levou copy */
   .lp-hero--compact .lp-hero__mockup {
     min-height: auto;
-    align-self: stretch;
+    justify-content: flex-start;
+    align-items: stretch;
   }
   .lp-hero--compact .hero-illustration {
-    max-width: min(380px, 100%);
+    max-width: 100%;
+  }
+  /* Mobile: stack natural (copy → CTA card → image) */
+  @media (max-width: 959px) {
+    .lp-hero--compact .lp-hero__side {
+      gap: 1.5rem;
+    }
   }
 </style>
 
