@@ -375,7 +375,8 @@ function renderFaqMarkdown(text: string): string {
   .article__prose :global(.prmt-list),
   .article__prose :global(.mech),
   .article__prose :global(.metrics-table-wrap),
-  .article__prose :global(.standards) {
+  .article__prose :global(.standards),
+  .article__prose :global(.tree) {
     width: min(68rem, calc(100vw - 2 * var(--space-section-x)));
     max-width: none;
   }
@@ -641,6 +642,94 @@ function renderFaqMarkdown(text: string): string {
   .article__prose :global(.card-h3 .acards-grid) {
     width: auto;
     max-width: 100%;
+  }
+
+  /* Decision tree (rozhodovaci-matice) — 5 kroků s 2 větvemi
+     Visual: numbered step + question + 2 branch cards side-by-side */
+  .article__prose :global(.tree) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .article__prose :global(.tree__step) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.875rem;
+    align-items: start;
+  }
+  .article__prose :global(.tree__num) {
+    width: 2rem;
+    height: 2rem;
+    background: var(--d);
+    color: white;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .article__prose :global(.tree__body) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    min-width: 0;
+  }
+  .article__prose :global(.tree__q) {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--color-ink);
+    margin: 0.25rem 0 0;
+  }
+  .article__prose :global(.tree__branches) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  @media (min-width: 640px) {
+    .article__prose :global(.tree__branches) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .article__prose :global(.tree__branch) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.75rem 0.875rem;
+    border-radius: 6px;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid;
+  }
+  .article__prose :global(.tree__branch--a) {
+    border-left-color: oklch(0.55 0.14 145);
+  }
+  .article__prose :global(.tree__branch--b) {
+    border-left-color: oklch(0.55 0.18 240);
+  }
+  .article__prose :global(.tree__label) {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .article__prose :global(.tree__branch--a .tree__label) {
+    color: oklch(0.4 0.12 145);
+  }
+  .article__prose :global(.tree__branch--b .tree__label) {
+    color: oklch(0.4 0.16 240);
+  }
+  .article__prose :global(.tree__outcome) {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.45;
+    color: var(--color-ink);
   }
 
   /* Robots.txt detail */
