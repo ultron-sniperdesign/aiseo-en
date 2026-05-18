@@ -98,9 +98,8 @@ const faqJsonLd = {
           </ul>
         </div>
 
-        <!-- Hero illustration — AI gen Tech C portrait (light theme).
-             Pill ovaly v PNG jsou prázdné, labely SEO/GEO/AEO overlay přes <span>
-             pro perfektní typografii a žádný leak indexovaného textu. -->
+        <!-- Hero illustration — AI gen Tech C portrait s baked-in SEO/GEO/AEO
+             pily (PIL post-processing). Transparent bg, jeden <img>, žádný overlay. -->
         <div class="lp-hero__mockup" aria-hidden="true">
           <figure class="hero-illustration">
             <img
@@ -111,9 +110,6 @@ const faqJsonLd = {
               loading="eager"
               decoding="async"
             />
-            <span class="hero-illustration__tag hero-illustration__tag--seo">SEO</span>
-            <span class="hero-illustration__tag hero-illustration__tag--geo">GEO</span>
-            <span class="hero-illustration__tag hero-illustration__tag--aeo">AEO</span>
           </figure>
         </div>
       </div>
@@ -442,9 +438,8 @@ const faqJsonLd = {
     min-height: 420px;
   }
 
-  /* ===== Hero illustration (AI gen + overlay tags) ===== */
+  /* ===== Hero illustration (AI gen + baked-in SEO/GEO/AEO pills) ===== */
   .hero-illustration {
-    position: relative;
     width: 100%;
     max-width: 420px;
     margin: 0;
@@ -453,47 +448,6 @@ const faqJsonLd = {
     display: block;
     width: 100%;
     height: auto;
-    border-radius: 12px;
-  }
-  .hero-illustration__tag {
-    position: absolute;
-    font-family: var(--font-sans);
-    font-size: clamp(0.5rem, 0.95cqw, 0.78rem);
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    color: #fff;
-    background: var(--tag-bg);
-    padding: 0.18em 0.55em;
-    border-radius: 999px;
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-    /* container query units pro stabilní velikost vůči obrázku */
-  }
-  .hero-illustration {
-    container-type: inline-size;
-  }
-  .hero-illustration__tag {
-    font-size: clamp(0.5rem, 2.4cqw, 0.95rem);
-  }
-  .hero-illustration__tag {
-    /* center label on pill via translate, top/left = pill center % */
-    transform: translate(-50%, -50%);
-  }
-  .hero-illustration__tag--seo {
-    --tag-bg: oklch(0.55 0.18 255); /* royal blue */
-    top: 17%;
-    left: 74.1%;
-  }
-  .hero-illustration__tag--geo {
-    --tag-bg: oklch(0.6 0.16 155); /* emerald */
-    top: 43.6%;
-    left: 74.1%;
-  }
-  .hero-illustration__tag--aeo {
-    --tag-bg: oklch(0.7 0.15 75); /* amber-gold */
-    top: 69.8%;
-    left: 75.5%;
   }
 
   /* ===== Features ===== */
