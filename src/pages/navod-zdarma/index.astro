@@ -85,17 +85,24 @@ const faqJsonLd = {
             přístupy z AI, které byste jinak neviděli.
           </p>
 
-          <EmailCapture
-            variant="hero"
-            buttonLabel="Stáhnout AI SEO návod zdarma"
-            leadSourceTag="Lead — Návod zdarma (homepage)"
-          />
+          <div class="lp-hero__cta-card" role="region" aria-labelledby="cta-card-eyebrow">
+            <span id="cta-card-eyebrow" class="lp-hero__cta-eyebrow">
+              <span class="lp-hero__cta-eyebrow-pill">Zdarma</span>
+              <span>Doručíme e-mailem do 30 vteřin</span>
+            </span>
 
-          <ul class="lp-hero__bullets" aria-label="Co dostanete">
-            <li>✓ Wireframe homepage s 10 anotacemi (SEO / GEO / AEO)</li>
-            <li>✓ Tři klíčové principy a mikro‑case před / po</li>
-            <li>✓ 5 nejčastějších chyb, které vidíme u klientských webů</li>
-          </ul>
+            <ul class="lp-hero__bullets" aria-label="Co dostanete">
+              <li>Wireframe homepage s 10 anotacemi (SEO / GEO / AEO)</li>
+              <li>Tři klíčové principy a mikro‑case před / po</li>
+              <li>5 nejčastějších chyb, které vidíme u klientských webů</li>
+            </ul>
+
+            <EmailCapture
+              variant="hero"
+              buttonLabel="Stáhnout AI SEO návod zdarma"
+              leadSourceTag="Lead — Návod zdarma (homepage)"
+            />
+          </div>
         </div>
 
         <!-- Hero illustration — AI gen Tech C portrait s baked-in SEO/GEO/AEO
@@ -417,17 +424,70 @@ const faqJsonLd = {
     margin: 0 0 2rem;
     max-width: 36rem;
   }
+  /* ===== Hero CTA card — primární akce (email + button) ===== */
+  /* Vizuálně oddělené od ostatních hero prvků, aby uživatel nepřehlédl,
+     že tohle je TO, co se má stát. Padding-safe-zone, soft shadow, accent
+     border, světlá violet membrána pozadí. */
+  .lp-hero__cta-card {
+    margin: 2.25rem 0 0;
+    padding: clamp(1.5rem, 2.5vw, 2rem) clamp(1.25rem, 2.5vw, 1.875rem);
+    background:
+      linear-gradient(180deg, color-mix(in oklch, var(--lp-violet) 6%, var(--color-paper)) 0%, var(--color-paper) 60%);
+    border: 1px solid color-mix(in oklch, var(--lp-violet) 22%, var(--color-rule));
+    border-radius: 18px;
+    box-shadow:
+      0 14px 40px -16px color-mix(in oklch, var(--lp-violet) 38%, transparent),
+      0 2px 6px -2px color-mix(in oklch, var(--lp-violet) 15%, transparent),
+      inset 0 1px 0 color-mix(in oklch, white 60%, transparent);
+    max-width: 36rem;
+  }
+  .lp-hero__cta-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin: 0 0 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-ink-muted);
+  }
+  .lp-hero__cta-eyebrow-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.625rem;
+    background: var(--lp-violet);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-radius: 999px;
+  }
   .lp-hero__bullets {
-    margin: 1.5rem 0 0;
+    margin: 0 0 1.5rem;
     padding: 0;
     list-style: none;
     font-family: var(--font-sans);
     font-size: 0.9375rem;
-    color: var(--color-ink-muted);
+    color: var(--color-ink);
+    display: grid;
+    gap: 0.4rem;
   }
   .lp-hero__bullets li {
-    padding: 0.3125rem 0;
-    color: var(--color-ink);
+    position: relative;
+    padding: 0 0 0 1.5rem;
+  }
+  .lp-hero__bullets li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.45em;
+    width: 14px;
+    height: 14px;
+    background: no-repeat center / contain;
+    /* checkmark v lp-violet barvě, sjednoceno s eyebrow pillem */
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 7L6 11L12 3' stroke='%237b3fc7' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   }
 
   /* ===== Mockup (6-page composite) ===== */
