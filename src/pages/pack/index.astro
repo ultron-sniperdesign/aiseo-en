@@ -1110,6 +1110,10 @@ const pageTypes = [
       radial-gradient(ellipse 70% 60% at 0% 100%, color-mix(in oklch, var(--lp-violet) 24%, transparent), transparent 60%),
       linear-gradient(180deg, var(--color-paper) 0%, var(--color-paper-deep) 100%);
     padding: clamp(3rem, 6vw, 5rem) var(--space-section-x);
+    /* Gradient končí na color-paper-deep, stejně jako footer bg. Bez tohoto
+       margin-bottom by site-footer margin-top: 3rem vytvořil prázdný bílý
+       strip mezi sekcemi se stejným bg. */
+    margin-bottom: -3rem;
   }
   .pack-final__inner {
     max-width: 46rem;
