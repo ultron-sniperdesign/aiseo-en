@@ -781,6 +781,13 @@ const faqJsonLd = {
     padding: clamp(3.5rem, 6vw, 5rem) var(--space-section-x);
     border-top: 1px solid var(--color-rule);
   }
+  /* lp-final má stejný bg jako footer (color-paper-deep) — kompenzuj
+     site-footer margin-top: 3rem negativní marginem, jinak vznikne prázdný
+     bílý strip mezi nimi. (.lp není sibling footeru, je vnořený v outer main
+     z BaseLayoutu, takže adjacent selector nepomůže.) */
+  .lp-final {
+    margin-bottom: -3rem;
+  }
   .lp-final__inner {
     max-width: 56rem;
     margin: 0 auto;
