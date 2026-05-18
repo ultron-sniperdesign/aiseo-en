@@ -495,6 +495,52 @@ const faqCount = entry.data.faq?.length ?? 0;
     }
   }
 
+  /* Standards icon checklist (raw HTML pattern v MDX, ne komponenta) —
+     2-col grid s discipline-colored left border na kartách */
+  .article__prose :global(.standards) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.625rem;
+    margin: 1rem 0 1.75rem;
+  }
+  @media (min-width: 640px) {
+    .article__prose :global(.standards) { grid-template-columns: 1fr 1fr; }
+  }
+  .article__prose :global(.standard) {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 8px;
+    padding: 0.875rem 1.125rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    color: var(--color-ink);
+    line-height: 1.45;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .article__prose :global(.standard):hover {
+    background: var(--color-paper-deep);
+  }
+  .article__prose :global(.standard__icon) {
+    font-size: 1.5rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .article__prose :global(.standard) strong {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .article__prose :global(.standard) code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    background: var(--color-paper-deep);
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+  }
+
   /* PROSE TYPOGRAPHY V @layer — layered styly mají vždy nižší prioritu
      než unlayered, takže komponentní styly automaticky vyhrávají */
   @layer prose {

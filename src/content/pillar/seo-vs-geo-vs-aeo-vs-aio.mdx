@@ -45,6 +45,7 @@ import Insight from "../../components/blocks/Insight.astro";
 import Stepper from "../../components/blocks/Stepper.astro";
 import Persona from "../../components/blocks/Persona.astro";
 import PersonaGrid from "../../components/blocks/PersonaGrid.astro";
+import AntiPersona from "../../components/blocks/AntiPersona.astro";
 import Mistake from "../../components/blocks/Mistake.astro";
 import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
 import Mindset from "../../components/blocks/Mindset.astro";
@@ -117,18 +118,22 @@ AEO je **užší pojem než GEO**. Zatímco GEO řeší citace v jakémkoli gene
 
 ### Klíčové platformy pro AEO
 
-- **Google AI Overviews** — souhrn nahoře nad organickými výsledky, generovaný Geminim
-- **Bing Chat / Copilot** — AI odpověď v Edge browseru a na Bing.com
-- **Google Featured Snippets** — klasické „pozice 0", které AEO zdědí
-- **Knowledge Panel a Knowledge Graph** — entitní data o brandu
+<div class="standards">
+  <div class="standard"><span class="standard__icon">🔮</span><strong>Google AI Overviews</strong> — souhrn nahoře nad organickými výsledky, generovaný Geminim</div>
+  <div class="standard"><span class="standard__icon">💬</span><strong>Bing Chat / Copilot</strong> — AI odpověď v Edge browseru a na Bing.com</div>
+  <div class="standard"><span class="standard__icon">📌</span><strong>Google Featured Snippets</strong> — klasické „pozice 0", které AEO zdědí</div>
+  <div class="standard"><span class="standard__icon">🗂️</span><strong>Knowledge Panel a Knowledge Graph</strong> — entitní data o brandu</div>
+</div>
 
 ### Co AEO vyžaduje
 
-1. **FAQ sekce s schema.org/FAQPage markupem** — AI engines z toho přímo táhnou Q&A do odpovědí
-2. **HowTo schema** pro návody — AI Overviews často citují strukturované postupy
-3. **Krátké, věcné odpovědi nahoře v článku** — typicky 40–60 slov hned po H2
-4. **Datově hutný obsah** — čísla, procenta, konkrétní hodnoty (AI miluje fakta)
-5. **Strukturované odstavce** — jeden nápad na odstavec, žádné „omáčky"
+<div class="standards">
+  <div class="standard"><span class="standard__icon">🏷️</span><strong>FAQ sekce s FAQPage markupem</strong> — AI engines z toho přímo táhnou Q&A do odpovědí</div>
+  <div class="standard"><span class="standard__icon">📋</span><strong>HowTo schema</strong> pro návody — AI Overviews často citují strukturované postupy</div>
+  <div class="standard"><span class="standard__icon">📝</span><strong>Krátké, věcné odpovědi nahoře</strong> — typicky 40–60 slov hned po H2</div>
+  <div class="standard"><span class="standard__icon">📊</span><strong>Datově hutný obsah</strong> — čísla, procenta, konkrétní hodnoty (AI miluje fakta)</div>
+  <div class="standard"><span class="standard__icon">🧱</span><strong>Strukturované odstavce</strong> — jeden nápad na odstavec, žádné „omáčky"</div>
+</div>
 
 Pro většinu webů a e-shopů znamená dobrý AEO **měřitelný posun během tří měsíců**: vaše FAQ se začnou objevovat ve výsledcích, vaše krátké definice citují AI engines a brand se zmiňuje v odpovědích, kde dřív nezazněl. Není to magie — je to disciplína, kterou jde aplikovat na každý web s reálnými zákaznickými otázkami.
 
@@ -196,18 +201,22 @@ Toto je přehledná tabulka, která sumarizuje rozdíly. Použijte ji jako rychl
 
 Tohle všechno se dělá **paralelně**, ne v pořadí — jsou to různé aspekty stejné práce nad obsahem:
 
-- **SEO základy** — keyword research, on-page optimalizace (title, meta, H1–H6), technické zdraví (Core Web Vitals, indexovatelnost), interní prolinkování. Bez SEO nezafunguje nic dalšího — Google a AI engines indexují stejný web.
-- **AEO struktura** — FAQPage schema na každý článek s FAQ sekcí, HowTo schema na návody, answer block 40–60 slov nahoře. Cena: 0 Kč navíc, jen kus extra MDX.
-- **GEO-friendly psaní** — definice "X je…" v každé sekci, fact-density 3+ fakta na 100 slov, citovatelná struktura, brand mentions v komunitách (Reddit, Quora, oborové weby). Cena: 0 Kč navíc, jen styl psaní.
-- **AI crawlers v `robots.txt`** — explicitní `Allow: /` pro GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai, Google-Extended. Jednorázový setup.
+<div class="standards">
+  <div class="standard"><span class="standard__icon">🔍</span><strong>SEO základy</strong> — keyword research, on-page optimalizace, technické zdraví, interní prolinkování</div>
+  <div class="standard"><span class="standard__icon">📐</span><strong>AEO struktura</strong> — FAQPage schema, HowTo schema, answer block 40–60 slov nahoře</div>
+  <div class="standard"><span class="standard__icon">✍️</span><strong>GEO-friendly psaní</strong> — definice „X je…", fact-density 3+ fakta na 100 slov, brand mentions</div>
+  <div class="standard"><span class="standard__icon">🤖</span><strong>AI crawlers v <code>robots.txt</code></strong> — GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, Google-Extended</div>
+</div>
 
 ### Co odložit (skutečné investice po milníku)
 
-Tyhle věci dávají smysl **až máte něco k měření a reportování** — typicky 20+ článků v top 10 organicky:
-
-- **Placené citation tracking nástroje** — Otterly ($29/měs Lite, $99/měs Pro), Profound (enterprise $500+), Marketing Miner Brand Radar ($99/měs). Měří citation share v ChatGPT/Perplexity/Gemini napříč desítkami promptů. Bez 20+ článků nemají co měřit.
-- **Pokročilý AIO presence monitoring v Google Search Console** — funguje až s historickými daty (typicky 3–6 měsíců provozu).
-- **AIO jako zastřešující strategický rámec** — když potřebujete reporting pro C-level nebo marketingový tým chce jednu metriku místo tří. Strategický deštník nad SEO+AEO+GEO, dává smysl po zralém SEO programu.
+<AntiPersona title="Tyhle věci dávají smysl až s 20+ články v top 10" icon="⏳">
+  <ul>
+    <li><strong>Placené citation tracking nástroje</strong> — Otterly ($29/měs Lite, $99/měs Pro), Profound (enterprise $500+), Marketing Miner Brand Radar ($99/měs). Bez 20+ článků nemají co měřit.</li>
+    <li><strong>Pokročilý AIO presence monitoring v Google Search Console</strong> — funguje až s historickými daty (typicky 3–6 měsíců provozu).</li>
+    <li><strong>AIO jako zastřešující strategický rámec</strong> — když potřebujete reporting pro C-level nebo marketingový tým chce jednu metriku místo tří. Dává smysl po zralém SEO programu.</li>
+  </ul>
+</AntiPersona>
 
 ### Praktický harmonogram pro malou firmu
 
