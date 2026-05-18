@@ -135,16 +135,31 @@ const pageTypes = [
             bez konzultantů, bez měsíců práce.
           </p>
 
-          <div class="pack-hero__pricing">
-            <span class="pack-price">1&nbsp;490&nbsp;Kč</span>
-            <span class="pack-price__detail">jednorázově, bez DPH</span>
-          </div>
+          <!-- ===== PRIMARY CTA card — cena + delivery + buy button ===== -->
+          <!-- Vizuálně oddělené z hero copy, aby uživatel nepřehlédl, že tohle
+               je TO, co se má stát (koupit Pack za 1 490 Kč). Green-tinted card
+               sjednocený s color tématem buy button gradientu. -->
+          <div class="pack-hero__cta-card" id="koupit-pack" role="region" aria-labelledby="cta-card-eyebrow">
+            <span id="cta-card-eyebrow" class="pack-hero__cta-eyebrow">
+              <span class="pack-hero__cta-eyebrow-pill">Po zaplacení</span>
+              <span>vše okamžitě na e-mail</span>
+            </span>
 
-          <!-- PRIMARY CTA — Stripe checkout -->
-          <div class="pack-hero__buy" id="koupit-pack">
+            <div class="pack-hero__pricing">
+              <span class="pack-price">1&nbsp;490&nbsp;Kč</span>
+              <span class="pack-price__detail">jednorázově, bez DPH</span>
+            </div>
+
+            <ul class="pack-delivery__list" aria-label="Co dostanete po zaplacení">
+              <li>Master PDF (85 stran)</li>
+              <li>7 anotovaných wireframů</li>
+              <li>Textové šablony a ukázky strukturovaných dat</li>
+              <li>Fakturu na firmu</li>
+            </ul>
+
             <a
               href={STRIPE_CHECKOUT_URL}
-              class="pack-buy-btn"
+              class="pack-buy-btn pack-buy-btn--large"
               aria-label="Koupit AI SEO Wireframe Pack za 1 490 Kč"
             >
               Koupit Pack za 1&nbsp;490&nbsp;Kč
@@ -158,22 +173,11 @@ const pageTypes = [
                 ></path>
               </svg>
             </a>
+
             <p class="pack-hero__trust-line">
               Platba kartou (Stripe) · faktura na firmu · bez předplatného
             </p>
           </div>
-
-          <!-- "Po zaplacení dostanete" mini box — snižuje nejistotu před klikem -->
-          <aside class="pack-delivery" aria-label="Co dostanete po zaplacení">
-            <p class="pack-delivery__label">Po zaplacení dostanete</p>
-            <ul class="pack-delivery__list">
-              <li>Master PDF (85 stran)</li>
-              <li>7 anotovaných wireframů</li>
-              <li>Textové šablony a ukázky strukturovaných dat</li>
-              <li>Fakturu na firmu</li>
-            </ul>
-            <p class="pack-delivery__note">Vše okamžitě na e-mail po platbě.</p>
-          </aside>
         </div>
 
         <!-- Hero mockup — 4 stránky z FREE PDF (cover, wireframe, principy,
@@ -645,21 +649,59 @@ const pageTypes = [
     margin: 0 0 1.75rem;
     max-width: 36rem;
   }
+  /* ===== Hero CTA card — cena + delivery + Stripe buy button =====
+     Green-tinted card sjednocený s color tématem buy button gradientu.
+     Vizuálně se odpíchne od bílého hero kontextu — uživatel ho nepřehlédne. */
+  .pack-hero__cta-card {
+    margin: 1.75rem 0 0;
+    padding: clamp(1.5rem, 2.5vw, 2rem) clamp(1.25rem, 2.5vw, 1.875rem);
+    background:
+      linear-gradient(180deg,
+        color-mix(in oklch, oklch(0.72 0.2 145) 7%, var(--color-paper)) 0%,
+        var(--color-paper) 65%);
+    border: 1px solid color-mix(in oklch, oklch(0.6 0.18 145) 25%, var(--color-rule));
+    border-radius: 18px;
+    box-shadow:
+      0 14px 40px -16px color-mix(in oklch, oklch(0.6 0.18 145) 38%, transparent),
+      0 2px 6px -2px color-mix(in oklch, oklch(0.6 0.18 145) 15%, transparent),
+      inset 0 1px 0 color-mix(in oklch, white 60%, transparent);
+    max-width: 38rem;
+  }
+  .pack-hero__cta-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin: 0 0 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-ink-muted);
+  }
+  .pack-hero__cta-eyebrow-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.625rem;
+    background: oklch(0.6 0.18 145);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-radius: 999px;
+  }
   .pack-hero__pricing {
     display: flex;
     align-items: baseline;
     gap: 0.75rem;
-    margin-bottom: 1.25rem;
-    padding: 1rem 0;
-    border-top: 1px solid var(--color-rule);
-    border-bottom: 1px solid var(--color-rule);
+    margin: 0 0 1.25rem;
   }
   .pack-price {
     font-family: var(--font-sans);
-    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-size: clamp(2.25rem, 3.5vw, 2.875rem);
     font-weight: 700;
     color: var(--color-ink);
-    letter-spacing: -0.025em;
+    letter-spacing: -0.03em;
     line-height: 1;
   }
   .pack-price__detail {
@@ -667,15 +709,18 @@ const pageTypes = [
     font-size: 0.9375rem;
     color: var(--color-ink-muted);
   }
-  .pack-hero__buy {
-    margin-bottom: 1.75rem;
-  }
   .pack-hero__trust-line {
     font-family: var(--font-sans);
     font-size: 0.8125rem;
     line-height: 1.5;
     color: var(--color-ink-faint);
     margin: 0.875rem 0 0;
+  }
+  /* Buy button uvnitř CTA card — full-width na všech viewportech (víc presence) */
+  .pack-hero__cta-card .pack-buy-btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 
   /* ===== Primary Buy Button — Stripe checkout CTA =====
@@ -707,26 +752,10 @@ const pageTypes = [
     font-size: 1.125rem;
     padding: 1.125rem 2.25rem;
   }
-  /* "Po zaplacení dostanete" mini box — vizuální slib digital delivery */
-  .pack-delivery {
-    background: oklch(0.97 0.02 305);
-    border: 1px solid oklch(0.88 0.04 305);
-    border-radius: 12px;
-    padding: 1.25rem 1.375rem;
-    max-width: 36rem;
-  }
-  .pack-delivery__label {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--lp-violet);
-    margin: 0 0 0.75rem;
-  }
+  /* Delivery list — uvnitř CTA card (bullets above button). Bez vlastního bg. */
   .pack-delivery__list {
     list-style: none;
-    margin: 0 0 0.75rem;
+    margin: 0 0 1.25rem;
     padding: 0;
     display: grid;
     grid-template-columns: 1fr;
@@ -740,25 +769,19 @@ const pageTypes = [
   }
   .pack-delivery__list li {
     position: relative;
-    padding-left: 1.375rem;
+    padding-left: 1.5rem;
     line-height: 1.4;
   }
   .pack-delivery__list li::before {
-    content: "✓";
+    content: "";
     position: absolute;
     left: 0;
-    top: 0;
-    color: oklch(0.6 0.18 145);
-    font-weight: 700;
-    font-size: 0.95rem;
-  }
-  .pack-delivery__note {
-    font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    line-height: 1.5;
-    color: var(--color-ink-muted);
-    margin: 0;
-    font-style: italic;
+    top: 0.45em;
+    width: 14px;
+    height: 14px;
+    background: no-repeat center / contain;
+    /* checkmark v green (matchuje buy button) */
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 7L6 11L12 3' stroke='%2316a34a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   }
 
   /* ===== Hero focus mockup (sdílený s /navod-zdarma/) ===== */
