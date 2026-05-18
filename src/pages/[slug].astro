@@ -1097,12 +1097,8 @@ function renderFaqMarkdown(text: string): string {
     text-transform: uppercase;
     letter-spacing: 0.04em;
   }
-  /* H3 persona „cards" — left border + slight indent */
-  .page[data-abbr="MATICE"] .article__prose :global(h3) {
-    padding: 0.625rem 0 0.625rem 1.25rem;
-    border-left: 3px solid var(--d);
-    background: linear-gradient(to right, var(--d-tint), transparent 40%);
-    border-radius: 0 4px 4px 0;
-    margin-top: 2.75rem;
-  }
+  /* MATICE H3 custom styling odstraněno — po refactoru na card-h3 wrappery
+     + MistakeGrid (kde mistake__title je H3) prosakovalo na všechny H3
+     uvnitř komponent (teal gradient highlight přes title text).
+     Komponenty mají vlastní H3 styling, prose H3 zůstává default. */
 </style>
