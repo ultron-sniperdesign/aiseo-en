@@ -605,6 +605,28 @@ function renderFaqMarkdown(text: string): string {
     color: var(--color-ink);
   }
 
+  /* Generic .card-h3 wrapper — visually kontejnerizuje H3 + obsah pod ním.
+     Pro sekce typu „4 platformy" / „5 požadavků" / „3 způsoby blokace",
+     kde má smysl každou položku vizuálně oddělit. */
+  .article__prose :global(.card-h3) {
+    margin: 1rem 0;
+    padding: 1.125rem 1.375rem 1.25rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--d);
+    border-radius: 8px;
+  }
+  .article__prose :global(.card-h3 > h3:first-child) {
+    margin-top: 0;
+    margin-bottom: 0.625rem;
+    font-size: 1.0625rem;
+  }
+  .article__prose :global(.card-h3 > p:last-child),
+  .article__prose :global(.card-h3 > pre:last-child),
+  .article__prose :global(.card-h3 > ul:last-child) {
+    margin-bottom: 0;
+  }
+
   /* Robots.txt detail */
   .article__prose :global(.robots-detail) {
     margin: 1.5rem 0;
