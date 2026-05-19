@@ -100,82 +100,173 @@ const faqJsonLd = {
 
 <BaseLayout title={pageTitle} description={pageDescription} jsonLd={[serviceJsonLd, faqJsonLd]}>
   <main class="audit">
-    <!-- ===== HERO — Sniperdesign brand box ===== -->
+    <!-- ===== HERO — 2-col split: copy + form card ===== -->
+    <!-- Form přesunutý do hero RIGHT col (dříve byl až sekce 05 pod FAQ).
+         Vysoký-intent návštěvník nemusí scrollovat 7 obrazovek pro objednávku. -->
     <section class="audit-hero" aria-labelledby="audit-hero-title">
-      <div class="audit-hero__inner">
-        <a
-          href="https://www.sniperdesign.cz/"
-          target="_blank"
-          rel="noopener"
-          class="audit-hero__brand"
-          aria-label="Sniperdesign — domovská stránka agentury"
-        >
-          <img
-            src="/sniperdesign/logo-wh.svg"
-            alt="Sniperdesign"
-            width="200"
-            height="40"
-            loading="eager"
-          />
-        </a>
+      <div class="audit-hero__inner audit-hero__inner--split">
 
-        <span class="audit-hero__eyebrow">AI SEO audit od Sniperdesign</span>
-
-        <h1 id="audit-hero-title" class="audit-hero__title">
-          Přesný plán pro váš web &mdash; <strong>co změnit, proč a&nbsp;jaký to bude mít dopad</strong>
-        </h1>
-
-        <p class="audit-hero__lead">
-          Projdeme váš konkrétní web v <strong>technice, obsahu a&nbsp;důvěryhodnosti</strong>.
-          Dostanete prioritní seznam úprav s&nbsp;odhadem dopadu, ke&nbsp;všemu
-          plus <strong>60 minutovou konzultaci s&nbsp;naším týmem</strong>.
-          Výstup do&nbsp;<strong>5&nbsp;pracovních dní</strong>.
-        </p>
-
-        <div class="audit-hero__price-block">
-          <div class="audit-hero__price">
-            <strong>9&nbsp;990&nbsp;Kč bez DPH</strong>
-            <span>včetně prioritizace úprav + 60min konzultace</span>
-          </div>
-          <div class="audit-hero__price-meta">
-            <span>s&nbsp;DPH 12&nbsp;088&nbsp;Kč</span>
-            <span>výstup do&nbsp;5&nbsp;pracovních dní</span>
-            <span>PDF / Notion / Google Doc</span>
-          </div>
-        </div>
-
-        <ul class="audit-hero__outcomes" role="list">
-          <li>
-            <strong>Prioritní seznam úprav</strong>, ne obecný audit bez pořadí
-          </li>
-          <li>
-            U&nbsp;každého bodu uvidíte <strong>dopad × náročnost</strong>, abyste věděli, co řešit jako první
-          </li>
-          <li>
-            Výstup přizpůsobíme vaší <strong>platformě a&nbsp;sortimentu</strong> a&nbsp;projdeme ho s&nbsp;vámi na&nbsp;60min konzultaci
-          </li>
-        </ul>
-
-        <div class="audit-hero__actions">
-          <a href="#objednat" class="audit-btn audit-btn--solid">
-            Chci AI&nbsp;SEO audit
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </a>
+        <div class="audit-hero__copy">
           <a
-            href="https://www.sniperdesign.cz/kontakt"
+            href="https://www.sniperdesign.cz/"
             target="_blank"
             rel="noopener"
-            class="audit-btn audit-btn--ghost"
+            class="audit-hero__brand"
+            aria-label="Sniperdesign — domovská stránka agentury"
           >
-            Máte před objednáním otázku? Napište nám
+            <img
+              src="/sniperdesign/logo-wh.svg"
+              alt="Sniperdesign"
+              width="200"
+              height="40"
+              loading="eager"
+            />
           </a>
+
+          <span class="audit-hero__eyebrow">AI SEO audit od Sniperdesign</span>
+
+          <h1 id="audit-hero-title" class="audit-hero__title">
+            Přesný plán pro váš web &mdash; <strong>co změnit, proč a&nbsp;jaký to bude mít dopad</strong>
+          </h1>
+
+          <p class="audit-hero__lead">
+            Projdeme váš konkrétní web v <strong>technice, obsahu a&nbsp;důvěryhodnosti</strong>.
+            Dostanete prioritní seznam úprav s&nbsp;odhadem dopadu, ke&nbsp;všemu
+            plus <strong>60 minutovou konzultaci s&nbsp;naším týmem</strong>.
+            Výstup do&nbsp;<strong>5&nbsp;pracovních dní</strong>.
+          </p>
+
+          <ul class="audit-hero__outcomes" role="list">
+            <li>
+              <strong>Prioritní seznam úprav</strong>, ne obecný audit bez pořadí
+            </li>
+            <li>
+              U&nbsp;každého bodu uvidíte <strong>dopad × náročnost</strong>, abyste věděli, co řešit jako první
+            </li>
+            <li>
+              Výstup přizpůsobíme vaší <strong>platformě a&nbsp;sortimentu</strong> a&nbsp;projdeme ho s&nbsp;vámi na&nbsp;60min konzultaci
+            </li>
+          </ul>
+
+          <p class="audit-hero__legal">
+            Provozovatel: <strong>CPU s.r.o.</strong> &middot; IČO 08125163 &middot; plátce DPH
+          </p>
         </div>
 
-        <p class="audit-hero__legal">
-          Provozovatel: <strong>CPU s.r.o.</strong> &middot; IČO 08125163 &middot; plátce DPH
-        </p>
+        <aside class="audit-hero__form-card" id="objednat" aria-labelledby="audit-hero-form-title">
+          <header class="audit-hero__form-head">
+            <span class="audit-hero__form-eyebrow">
+              <span class="audit-hero__form-eyebrow-pill">Objednávka</span>
+              <span>výstup do 5 pracovních dní</span>
+            </span>
+            <p id="audit-hero-form-title" class="audit-hero__form-price">
+              <strong>9&nbsp;990&nbsp;Kč</strong>
+              <span class="audit-hero__form-price-detail">bez DPH (s&nbsp;DPH 12&nbsp;088&nbsp;Kč)</span>
+            </p>
+          </header>
+
+          <form
+            class="audit-form audit-form--inline"
+            method="post"
+            action="https://sniperdesign.ecomailapp.cz/public/subscribe/12/04d9c95424b2f28aaece6f953bb0e4aa"
+            novalidate
+          >
+            <input type="hidden" name="name" id="audit-form-name" value="Audit poptávka" />
+            <input type="hidden" name="updateExisting" value="1" />
+
+            <div class="audit-form__grid">
+              <div class="audit-form__field">
+                <label for="audit-jmeno">
+                  Vaše jméno <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="audit-jmeno"
+                  required
+                  autocomplete="name"
+                  placeholder="Honza Novák"
+                />
+              </div>
+
+              <div class="audit-form__field">
+                <label for="audit-email">
+                  E-mail <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="audit-email"
+                  name="email"
+                  required
+                  autocomplete="email"
+                  placeholder="honza@vas-eshop.cz"
+                />
+              </div>
+
+              <div class="audit-form__field audit-form__field--full">
+                <label for="audit-url">
+                  URL webu, který chcete auditovat <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="url"
+                  id="audit-url"
+                  required
+                  placeholder="https://vas-eshop.cz"
+                  autocomplete="url"
+                />
+              </div>
+
+              <div class="audit-form__field audit-form__field--full">
+                <label for="audit-platforma">Platforma webu</label>
+                <select id="audit-platforma">
+                  <option value="">— vyberte —</option>
+                  <option value="Upgates">Upgates</option>
+                  <option value="Shoptet">Shoptet</option>
+                  <option value="WooCommerce">WooCommerce</option>
+                  <option value="WordPress">WordPress</option>
+                  <option value="Webflow">Webflow</option>
+                  <option value="Shopify">Shopify</option>
+                  <option value="Custom / vlastní">Custom / vlastní řešení</option>
+                  <option value="Nevím">Nevím / poradíte</option>
+                </select>
+              </div>
+
+              <div class="audit-form__field audit-form__field--full">
+                <label for="audit-cil">
+                  Hlavní cíl auditu <span class="audit-form__hint">(volitelně, ale pomůže nám)</span>
+                </label>
+                <textarea
+                  id="audit-cil"
+                  rows="3"
+                  placeholder="např. pokles z Googlu, slabá viditelnost, příprava na rebrand, lepší citace v AI nástrojích…"
+                ></textarea>
+              </div>
+
+              <div class="audit-form__field audit-form__field--full audit-form__gdpr">
+                <label>
+                  <input type="checkbox" id="audit-gdpr" required />
+                  <span>
+                    Souhlasím se&nbsp;<a href="/gdpr/">zpracováním osobních údajů</a>
+                    za&nbsp;účelem zpracování této poptávky. <span aria-hidden="true">*</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" class="audit-form__submit">
+              Objednat audit za 9&nbsp;990&nbsp;Kč
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+
+            <p class="audit-form__legal">
+              Údaje použijeme pro vyřízení této poptávky a&nbsp;komunikaci k&nbsp;auditu.
+              <strong>Bez samostatného souhlasu vás nezařadíme do&nbsp;marketingových
+              e-mailů.</strong>
+            </p>
+          </form>
+        </aside>
+
       </div>
     </section>
 
@@ -444,122 +535,29 @@ const faqJsonLd = {
       </dl>
     </section>
 
-    <!-- ===== 05 OBJEDNAT FORM ===== -->
-    <section class="lp-section" id="objednat">
-      <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">05</span> Objednat audit</span>
-        <h2 class="lp-section__title">
-          Vyplňte formulář, <strong>ozveme se do&nbsp;24&nbsp;hodin</strong>
+    <!-- ===== FINAL CTA — opakování pro návštěvníky co projeli celou stránku ===== -->
+    <!-- Plný form je nahoře v hero. Tady už jen poslední „klikni nahoru"
+         banner pro ty, kdo prošli celou stránku a chtějí objednat. -->
+    <section class="audit-cta-final" aria-labelledby="audit-cta-final-title">
+      <div class="audit-cta-final__inner">
+        <h2 id="audit-cta-final-title" class="audit-cta-final__title">
+          Připraveni na audit? <strong>Začneme do&nbsp;24&nbsp;hodin.</strong>
         </h2>
-        <p class="lp-section__lead">
-          Po odeslání vás kontaktujeme s&nbsp;upřesněním rozsahu, fakturou
-          a&nbsp;termínem startu auditu. Faktura je vystavena <strong>CPU s.r.o.</strong>
-          na <strong>9&nbsp;990&nbsp;Kč bez DPH</strong>. Po&nbsp;platbě začneme
-          auditovat, výstup do&nbsp;5&nbsp;pracovních dní.
+        <p class="audit-cta-final__lead">
+          9&nbsp;990&nbsp;Kč bez DPH · prioritní seznam úprav · 60min konzultace ·
+          výstup do&nbsp;5&nbsp;pracovních dní.
         </p>
-      </header>
-
-      <form
-        class="audit-form"
-        method="post"
-        action="https://sniperdesign.ecomailapp.cz/public/subscribe/12/04d9c95424b2f28aaece6f953bb0e4aa"
-        novalidate
-      >
-        <input type="hidden" name="name" id="audit-form-name" value="Audit poptávka" />
-        <input type="hidden" name="updateExisting" value="1" />
-
-        <div class="audit-form__grid">
-          <div class="audit-form__field">
-            <label for="audit-jmeno">
-              Vaše jméno <span aria-hidden="true">*</span>
-            </label>
-            <input
-              type="text"
-              id="audit-jmeno"
-              required
-              autocomplete="name"
-              placeholder="Honza Novák"
-            />
-          </div>
-
-          <div class="audit-form__field">
-            <label for="audit-email">
-              E-mail <span aria-hidden="true">*</span>
-            </label>
-            <input
-              type="email"
-              id="audit-email"
-              name="email"
-              required
-              autocomplete="email"
-              placeholder="honza@vas-eshop.cz"
-            />
-          </div>
-
-          <div class="audit-form__field audit-form__field--full">
-            <label for="audit-url">
-              URL webu, který chcete auditovat <span aria-hidden="true">*</span>
-            </label>
-            <input
-              type="url"
-              id="audit-url"
-              required
-              placeholder="https://vas-eshop.cz"
-              autocomplete="url"
-            />
-          </div>
-
-          <div class="audit-form__field audit-form__field--full">
-            <label for="audit-platforma">Platforma webu</label>
-            <select id="audit-platforma">
-              <option value="">— vyberte —</option>
-              <option value="Upgates">Upgates</option>
-              <option value="Shoptet">Shoptet</option>
-              <option value="WooCommerce">WooCommerce</option>
-              <option value="WordPress">WordPress</option>
-              <option value="Webflow">Webflow</option>
-              <option value="Shopify">Shopify</option>
-              <option value="Custom / vlastní">Custom / vlastní řešení</option>
-              <option value="Nevím">Nevím / poradíte</option>
-            </select>
-          </div>
-
-          <div class="audit-form__field audit-form__field--full">
-            <label for="audit-cil">
-              Hlavní cíl auditu <span class="audit-form__hint">(volitelně, ale pomůže nám)</span>
-            </label>
-            <textarea
-              id="audit-cil"
-              rows="3"
-              placeholder="např. pokles z Googlu, slabá viditelnost, příprava na rebrand, lepší citace v AI nástrojích…"
-            ></textarea>
-          </div>
-
-          <div class="audit-form__field audit-form__field--full audit-form__gdpr">
-            <label>
-              <input type="checkbox" id="audit-gdpr" required />
-              <span>
-                Souhlasím se&nbsp;<a href="/gdpr/">zpracováním osobních údajů</a>
-                za&nbsp;účelem zpracování této poptávky. <span aria-hidden="true">*</span>
-              </span>
-            </label>
-          </div>
-        </div>
-
-        <button type="submit" class="audit-form__submit">
-          Chci AI&nbsp;SEO audit
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <a href="#objednat" class="audit-cta-final__btn">
+          Objednat audit za 9&nbsp;990&nbsp;Kč
+          <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
-        </button>
-
-        <p class="audit-form__legal">
-          Údaje použijeme pro vyřízení této poptávky a&nbsp;komunikaci k&nbsp;auditu.
-          <strong>Bez samostatného souhlasu vás nezařadíme do&nbsp;marketingových
-          e-mailů.</strong> Ozveme se z&nbsp;<a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a>
+        </a>
+        <p class="audit-cta-final__trust">
+          Ozveme se z&nbsp;<a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a>
           nebo z&nbsp;<a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a>.
         </p>
-      </form>
+      </div>
     </section>
   </main>
 </BaseLayout>
@@ -784,6 +782,157 @@ const faqJsonLd = {
   .audit-hero__legal strong {
     color: oklch(from var(--sd-paper) l c h / 0.85);
     font-weight: 700;
+  }
+
+  /* ===== Hero 2-col split (form do hero) ===== */
+  /* Mobile: stack natural (copy → form-card). Desktop: 2-col grid. */
+  .audit-hero__inner--split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.75rem, 3vw, 2.5rem);
+    align-items: start;
+  }
+  @media (min-width: 1000px) {
+    .audit-hero__inner--split {
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+    }
+  }
+  .audit-hero__copy {
+    min-width: 0;
+  }
+  .audit-hero__copy .audit-hero__lead {
+    margin-bottom: 1.5rem;
+  }
+  .audit-hero__copy .audit-hero__outcomes {
+    margin-bottom: 0;
+  }
+
+  /* Form card uvnitř hero — paper bg na dark hero gradientu, vyniká */
+  .audit-hero__form-card {
+    background: var(--sd-paper);
+    color: var(--color-ink);
+    border-radius: 14px;
+    padding: clamp(1.25rem, 2vw, 1.75rem);
+    box-shadow:
+      0 20px 50px -20px oklch(0 0 0 / 0.45),
+      0 8px 20px -10px oklch(0 0 0 / 0.3),
+      inset 0 1px 0 oklch(1 0 0 / 0.4);
+  }
+  .audit-hero__form-head {
+    margin: 0 0 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .audit-hero__form-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: var(--color-ink-muted);
+  }
+  .audit-hero__form-eyebrow-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.625rem;
+    background: var(--sd-magenta);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 999px;
+  }
+  .audit-hero__form-price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 0.75rem;
+    margin: 0;
+  }
+  .audit-hero__form-price strong {
+    font-family: var(--font-agency);
+    font-size: clamp(1.75rem, 2.5vw, 2.125rem);
+    font-weight: 700;
+    color: var(--color-ink);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .audit-hero__form-price-detail {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+  }
+
+  /* ===== Final CTA banner — opakování CTA pod stránkou ===== */
+  .audit-cta-final {
+    background:
+      radial-gradient(ellipse 60% 50% at 100% 0%, color-mix(in oklch, var(--sd-magenta) 28%, transparent), transparent 60%),
+      radial-gradient(ellipse 70% 60% at 0% 100%, color-mix(in oklch, var(--sd-violet) 28%, transparent), transparent 60%),
+      linear-gradient(135deg, var(--sd-deep) 0%, var(--sd-deeper) 100%);
+    color: var(--sd-paper);
+    padding: clamp(3rem, 6vw, 5rem) var(--space-section-x);
+    text-align: center;
+    /* Bottom flush k footeru (footer má margin-top 3rem) */
+    margin-bottom: -3rem;
+  }
+  .audit-cta-final__inner {
+    max-width: 46rem;
+    margin: 0 auto;
+  }
+  .audit-cta-final__title {
+    font-family: var(--font-agency);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--sd-paper);
+    margin: 0 0 1rem;
+  }
+  .audit-cta-final__title strong {
+    font-weight: 700;
+    color: color-mix(in oklch, var(--sd-magenta) 60%, white);
+  }
+  .audit-cta-final__lead {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.55;
+    color: oklch(from var(--sd-paper) l c h / 0.85);
+    margin: 0 0 1.75rem;
+  }
+  .audit-cta-final__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    padding: 1rem 1.875rem;
+    background: var(--sd-gold);
+    color: var(--sd-deep);
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+    box-shadow: 0 8px 24px -8px oklch(from var(--sd-gold) l c h / 0.55);
+  }
+  .audit-cta-final__btn:hover {
+    background: color-mix(in oklch, var(--sd-gold) 85%, white);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px -8px oklch(from var(--sd-gold) l c h / 0.7);
+  }
+  .audit-cta-final__trust {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: oklch(from var(--sd-paper) l c h / 0.7);
+    margin: 1.25rem 0 0;
+  }
+  .audit-cta-final__trust a {
+    color: oklch(from var(--sd-paper) l c h / 0.9);
+    text-decoration: underline;
+    text-decoration-color: oklch(from var(--sd-paper) l c h / 0.3);
+    text-underline-offset: 2px;
   }
 
   /* ===== Sdílené primitivy z /pack/ ===== */
@@ -1135,6 +1284,16 @@ const faqJsonLd = {
     border: 1px solid var(--color-rule);
     border-radius: 12px;
     padding: clamp(1.75rem, 3vw, 2.5rem);
+  }
+  /* Inline varianta — form je uvnitř audit-hero__form-card, který má vlastní
+     bg/border/padding. Odstraň duplikované card styling. */
+  .audit-form--inline {
+    max-width: none;
+    margin: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
   }
   .audit-form__grid {
     display: grid;
