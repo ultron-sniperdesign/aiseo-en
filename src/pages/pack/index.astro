@@ -125,14 +125,18 @@ const pageTypes = [
             <strong>celý, ne jen homepage</strong>
           </h1>
           <p class="pack-hero__urgency">
-            Bez struktury mimo homepage budete v AI odpovědích snadno přehlédnutí.
-            <strong>Čím déle čekáte, tím víc obsahu pak budete předělávat.</strong>
+            AI nástroje si dnes vybírají zdroje, které umí jednoznačně přečíst &mdash;
+            produkty, kategorie, odpovědi, ceny, kontakty. Pokud máte připravenou
+            jen homepage, zbytek webu zůstává pro AI roztříštěný.
+            <strong>Každý nový článek, produkt nebo landing bez struktury pak
+            budete později opravovat znovu.</strong>
           </p>
           <p class="pack-hero__lead">
             Wireframe Pack obsahuje sedm typů stránek se šablonami textů, ukázkami
             strukturovaných dat pro vývojáře a krok-za-krokem návodem aplikace. Vše
-            v jednom master PDF (85 stran). Aplikujete na svůj web během odpoledne —
-            bez konzultantů, bez měsíců práce.
+            v jednom master PDF (85 stran). <strong>První šablonu podle Packu
+            nastavíte během odpoledne</strong> &mdash; na větší web pak stejný
+            rámec rozšíříte postupně, bez vymýšlení struktury od&nbsp;nuly.
           </p>
 
           <!-- ===== PRIMARY CTA card — cena + delivery + buy button ===== -->
@@ -233,6 +237,23 @@ const pageTypes = [
           </article>
         ))}
       </div>
+
+      <!-- Transformation block — co bude mít web PO aplikaci Packu (audit #6) -->
+      <aside class="pack-transformation" aria-labelledby="pack-transformation-title">
+        <header class="pack-transformation__head">
+          <span class="pack-transformation__pill">Po aplikaci Packu</span>
+          <h3 id="pack-transformation-title" class="pack-transformation__title">
+            ...bude váš web mít <strong>jednotnou logiku</strong> napříč všemi typy stránek
+          </h3>
+        </header>
+        <ul class="pack-transformation__list">
+          <li>Homepage, produkty, kategorie i&nbsp;články poskládané <strong>podle stejné logiky</strong></li>
+          <li><strong>Krátké odpovědi</strong> připravené pro AI citace u&nbsp;klíčových témat</li>
+          <li><strong>FAQ bloky</strong> pro nákupní námitky se&nbsp;strukturovanými daty</li>
+          <li><strong>JSON-LD podklady</strong> připravené k&nbsp;předání vývojáři nebo správci webu</li>
+          <li>Jasné <strong>interní prolinkování</strong> mezi hlavními a&nbsp;podpůrnými stránkami</li>
+        </ul>
+      </aside>
     </section>
 
     <!-- ===== 02 PODÍVEJTE SE DOVNITŘ — vizuální look-inside ===== -->
@@ -373,7 +394,7 @@ const pageTypes = [
       </ul>
     </section>
 
-    <!-- ===== 03 KOMU SE PACK HODÍ ===== -->
+    <!-- ===== 04 KOMU SE PACK HODÍ (audit #12 — zúžit cílovku, #13 přidat „pro koho ne") ===== -->
     <section class="lp-section">
       <header class="lp-section__head">
         <span class="eyebrow"><span class="eyebrow__num">04</span> Komu se Pack hodí</span>
@@ -381,34 +402,104 @@ const pageTypes = [
           Pack <strong>nejvíc využijí ti, kdo mají co prodávat</strong>
         </h2>
         <p class="lp-section__lead">
-          Pack je praktický pracovní rámec — stránka po stránce. Hodí se webům, které
-          chtějí být vidět v AI odpovědích a získat z nich konkrétní
-          akce: nákupy, leady, kontakty.
+          Pack je praktický pracovní rámec &mdash; stránka po stránce. Hodí se webům,
+          které chtějí být vidět v&nbsp;AI odpovědích a&nbsp;získat z&nbsp;nich
+          konkrétní akce: nákupy, leady, kontakty.
         </p>
       </header>
 
-      <ul class="pack-audience">
-        <li>
-          <strong>Provozovatelé e-shopů</strong> — Upgates, Shoptet, WooCommerce, Shopify
-          a další. AI musí rozpoznat produkty, kategorie a recenze.
-        </li>
-        <li>
-          <strong>Firemní weby s katalogem služeb</strong> — služby, produkty, kontakt.
-          AI musí pochopit, co děláte a jak vás kontaktovat.
-        </li>
-        <li>
-          <strong>Marketing agentury</strong> — chcete framework, který nabídnete klientům
-          jako součást vašich služeb. White-label rozšíření je možné domluvit.
-        </li>
-        <li>
-          <strong>Copywriteři, designéři, vývojáři</strong> — chcete šablonu, podle které
-          pracovat na klientských webech bez vymýšlení od nuly.
-        </li>
-        <li>
-          <strong>Osobní weby, portfolia, blogy</strong> — i osobní brand těží z toho,
-          když ho AI cituje a doporučuje.
-        </li>
-      </ul>
+      <div class="pack-audience-split">
+        <div class="pack-audience-block pack-audience-block--primary">
+          <h3 class="pack-audience-block__title">
+            <span class="pack-audience-block__tag pack-audience-block__tag--yes">Primárně</span>
+            Pack je pro vás
+          </h3>
+          <ul class="pack-audience-block__list">
+            <li>
+              <strong>E-shopy</strong> &mdash; Upgates, Shoptet, WooCommerce, Shopify
+              a&nbsp;další. Chcete připravit produkty a&nbsp;kategorie pro AI vyhledávání.
+            </li>
+            <li>
+              <strong>Firemní weby</strong> &mdash; chcete, aby AI správně pochopila vaše
+              služby, kontakty a&nbsp;odborný obsah.
+            </li>
+            <li>
+              <strong>Týmy s&nbsp;copywriterem, správcem webu nebo vývojářem</strong> &mdash;
+              potřebujete jim dát <strong>hotové zadání</strong>, ne hledat strukturu sami.
+            </li>
+          </ul>
+          <p class="pack-audience-block__note">
+            Sekundárně využijí Pack i&nbsp;agentury, copywriteři a&nbsp;designéři jako
+            pracovní šablonu pro klientské weby.
+          </p>
+        </div>
+
+        <div class="pack-audience-block pack-audience-block--negative">
+          <h3 class="pack-audience-block__title">
+            <span class="pack-audience-block__tag pack-audience-block__tag--no">Pack NENÍ pro vás, pokud</span>
+          </h3>
+          <ul class="pack-audience-block__list">
+            <li>čekáte, že někdo upraví web <strong>za vás</strong></li>
+            <li>nemáte přístup do CMS ani člověka, který web spravuje</li>
+            <li>hledáte <strong>garantované pozice</strong> v&nbsp;Google nebo ChatGPT</li>
+            <li>chcete <strong>custom analýzu</strong> svého webu &mdash; k&nbsp;tomu slouží <a href="/audit/">AI&nbsp;SEO audit</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 05 ROZHODOVACÍ TABULKA — Pack vs Návod zdarma vs Audit (audit #10) ===== -->
+    <section class="lp-section lp-section--alt">
+      <header class="lp-section__head">
+        <span class="eyebrow"><span class="eyebrow__num">05</span> Pack vs Návod zdarma vs Audit</span>
+        <h2 class="lp-section__title">
+          Co si vybrat &mdash; <strong>rozhodněte se v&nbsp;30 sekundách</strong>
+        </h2>
+        <p class="lp-section__lead">
+          Nabízíme tři vstupní body do&nbsp;AI&nbsp;SEO &mdash; lišící se hloubkou
+          a&nbsp;tím, kdo dělá práci. Tahle tabulka vám pomůže rozhodnout, kam
+          patříte&nbsp;vy.
+        </p>
+      </header>
+
+      <div class="pack-decision">
+        <table class="pack-decision__table">
+          <thead>
+            <tr>
+              <th>Potřebuji&hellip;</th>
+              <th>Vhodná volba</th>
+              <th>Cena</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Pochopit princip AI&nbsp;SEO na&nbsp;jednom konkrétním příkladu (homepage)</td>
+              <td><a href="/navod-zdarma/" class="pack-decision__link">Návod zdarma</a></td>
+              <td><strong>0&nbsp;Kč</strong></td>
+            </tr>
+            <tr class="pack-decision__row--featured">
+              <td>Aplikovat rámec na&nbsp;<strong>celý web</strong> sám nebo s&nbsp;týmem</td>
+              <td><strong>AI&nbsp;SEO Wireframe Pack</strong> &mdash; 7 typů stránek, 85 stran PDF</td>
+              <td><strong>1&nbsp;490&nbsp;Kč</strong></td>
+            </tr>
+            <tr>
+              <td>Konkrétní doporučení pro&nbsp;<strong>můj web</strong> od&nbsp;specialisty</td>
+              <td><a href="/audit/" class="pack-decision__link">AI&nbsp;SEO audit</a> &mdash; prioritní seznam + 60min konzultace</td>
+              <td><strong>9&nbsp;990&nbsp;Kč</strong></td>
+            </tr>
+            <tr>
+              <td>Implementaci nechat <strong>na&nbsp;agentuře</strong></td>
+              <td><a href="https://www.sniperdesign.cz/seo-pro-ai" target="_blank" rel="noopener" class="pack-decision__link">Sniperdesign &mdash; konzultace</a></td>
+              <td>individuálně</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="pack-decision__note">
+          <strong>Pack je nejlepší volba, pokud už máte tým nebo správce webu</strong>
+          a&nbsp;chcete jim dát hotové zadání. Implementaci si&nbsp;udělá interně,
+          nebo ji&nbsp;na&nbsp;základě Packu předá kterémukoli vývojáři.
+        </p>
+      </div>
     </section>
 
     <!-- ===== 04 SNIPERDESIGN MEDAILONEK ===== -->
@@ -461,24 +552,25 @@ const pageTypes = [
       </div>
     </aside>
 
-    <!-- ===== FINAL CTA ===== -->
+    <!-- ===== FINAL CTA (audit #19 — nový argument místo opakování hero) ===== -->
     <section class="pack-final">
       <div class="pack-final__inner">
         <h2 class="pack-final__title">
-          Postavte web, kterému AI rozumí —<br />
-          <strong>celý, ne jen homepage</strong>
+          Nečekejte, až budete AI&nbsp;SEO řešit při&nbsp;redesignu
+          <strong>za&nbsp;desítky tisíc</strong>
         </h2>
         <p class="pack-final__lead">
-          Sedm typů stránek, šablony textů, strukturovaná data a krok-za-krokem návod.
-          <strong>1&nbsp;490&nbsp;Kč jednorázově.</strong> Žádné předplatné,
-          žádné skryté poplatky.
+          Začněte strukturou, kterou můžete <strong>dát copywriterovi, správci
+          webu nebo vývojáři ještě dnes</strong>. Pack obsahuje 7&nbsp;typů
+          stránek, textové šablony, JSON-LD ukázky a&nbsp;checklist aplikace.
+          Jednorázově 1&nbsp;490&nbsp;Kč. PDF dorazí na&nbsp;e-mail po&nbsp;platbě.
         </p>
         <a
           href={STRIPE_CHECKOUT_URL}
           class="pack-buy-btn pack-buy-btn--large"
           aria-label="Koupit AI SEO Wireframe Pack za 1 490 Kč"
         >
-          Koupit Pack za 1&nbsp;490&nbsp;Kč
+          Koupit Pack a&nbsp;začít dnes
           <svg width="18" height="18" viewBox="0 0 14 14" fill="none" aria-hidden="true">
             <path
               d="M1 7H13M13 7L7 1M13 7L7 13"
@@ -490,7 +582,10 @@ const pageTypes = [
           </svg>
         </a>
         <p class="pack-final__trust">
-          Platba kartou (Stripe) · faktura na firmu · okamžitý přístup po platbě
+          Platba kartou (Stripe) · faktura na&nbsp;firmu · okamžitý přístup po&nbsp;platbě.
+          <br />
+          Chcete místo šablon custom doporučení pro&nbsp;svůj web?
+          <a href="/audit/">Zvolte AI&nbsp;SEO audit za&nbsp;9&nbsp;990&nbsp;Kč</a>.
         </p>
       </div>
     </section>
@@ -1063,6 +1158,251 @@ const pageTypes = [
     font-weight: 600;
   }
 
+  /* ===== Transformation block — co bude mít web po aplikaci (audit #6) ===== */
+  .pack-transformation {
+    margin: clamp(2rem, 3vw, 2.5rem) 0 0;
+    padding: clamp(1.5rem, 2.5vw, 2rem);
+    background: linear-gradient(135deg,
+      color-mix(in oklch, oklch(0.72 0.2 145) 7%, var(--color-paper)) 0%,
+      color-mix(in oklch, var(--lp-violet) 5%, var(--color-paper)) 100%);
+    border: 1px solid color-mix(in oklch, oklch(0.6 0.18 145) 22%, var(--color-rule));
+    border-left: 4px solid oklch(0.6 0.18 145);
+    border-radius: 14px;
+  }
+  .pack-transformation__head {
+    margin: 0 0 1.25rem;
+  }
+  .pack-transformation__pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.75rem;
+    background: oklch(0.6 0.18 145);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    margin-bottom: 0.875rem;
+  }
+  .pack-transformation__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.25rem, 2.2vw, 1.625rem);
+    font-weight: 250;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .pack-transformation__title strong {
+    font-weight: 600;
+    color: oklch(0.5 0.18 145);
+  }
+  .pack-transformation__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.625rem;
+  }
+  @media (min-width: 720px) {
+    .pack-transformation__list { grid-template-columns: repeat(2, 1fr); }
+  }
+  .pack-transformation__list li {
+    position: relative;
+    padding: 0 0 0 1.625rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+  }
+  .pack-transformation__list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.4em;
+    width: 16px;
+    height: 16px;
+    background: no-repeat center / contain;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='8' fill='%2316a34a'/%3E%3Cpath d='M4 8L7 11L12 5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  }
+  .pack-transformation__list li strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+
+  /* ===== Pack audience split (audit #12 + #13) — primary + negative ===== */
+  .pack-audience-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 880px) {
+    .pack-audience-split { grid-template-columns: 1.3fr 1fr; }
+  }
+  .pack-audience-block {
+    padding: clamp(1.25rem, 2.5vw, 1.75rem);
+    border-radius: 14px;
+  }
+  .pack-audience-block--primary {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-left: 4px solid var(--lp-violet);
+  }
+  .pack-audience-block--negative {
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-left: 4px solid oklch(0.6 0.22 25);
+  }
+  .pack-audience-block__title {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin: 0 0 1rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    letter-spacing: -0.015em;
+  }
+  .pack-audience-block__tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.625rem;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    color: #fff;
+  }
+  .pack-audience-block__tag--yes { background: var(--lp-violet); }
+  .pack-audience-block__tag--no { background: oklch(0.6 0.22 25); }
+  .pack-audience-block__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+  .pack-audience-block__list li {
+    position: relative;
+    padding: 0 0 0 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+  }
+  .pack-audience-block--primary .pack-audience-block__list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--lp-violet);
+    font-weight: 700;
+  }
+  .pack-audience-block--negative .pack-audience-block__list li::before {
+    content: "×";
+    position: absolute;
+    left: 0;
+    color: oklch(0.6 0.22 25);
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.2;
+  }
+  .pack-audience-block__list strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+  .pack-audience-block__list a {
+    color: var(--lp-violet);
+    text-decoration: underline;
+  }
+  .pack-audience-block__note {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-ink-faint);
+    margin: 1rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--color-rule);
+    font-style: italic;
+  }
+
+  /* ===== Pack decision table (audit #10) — Pack vs Návod vs Audit =====
+     Parent selector pro Astro specificity bump nad .lp-section--alt > * */
+  .lp-section--alt .pack-decision {
+    max-width: calc(var(--max-section) - 2 * var(--space-section-x));
+    width: calc(100% - 2 * var(--space-section-x));
+    margin: 0 auto;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-left: 4px solid var(--lp-violet);
+    border-radius: 14px;
+    padding: clamp(1.5rem, 2.5vw, 2rem);
+    overflow-x: auto;
+  }
+  .pack-decision__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+  .pack-decision__table th {
+    text-align: left;
+    padding: 0.75rem 0.875rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    border-bottom: 2px solid var(--color-rule);
+  }
+  .pack-decision__table td {
+    padding: 0.875rem;
+    vertical-align: top;
+    color: var(--color-ink-muted);
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .pack-decision__table td:last-child {
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-ink);
+  }
+  .pack-decision__table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .pack-decision__row--featured td {
+    background: color-mix(in oklch, var(--lp-violet) 7%, var(--color-paper-deep));
+    color: var(--color-ink);
+  }
+  .pack-decision__row--featured td strong { color: var(--lp-violet); }
+  .pack-decision__link {
+    color: var(--lp-violet);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in oklch, var(--lp-violet) 30%, transparent);
+    text-underline-offset: 2px;
+  }
+  .pack-decision__note {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 1.25rem 0 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-rule);
+  }
+  .pack-decision__note strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
   /* ===== FAQ (sdílený s /navod-zdarma/) ===== */
   .lp-faq {
     max-width: 60rem;
