@@ -126,14 +126,14 @@ const faqJsonLd = {
           <span class="audit-hero__eyebrow">AI SEO audit od Sniperdesign</span>
 
           <h1 id="audit-hero-title" class="audit-hero__title">
-            Přesný plán pro váš web &mdash; <strong>co změnit, proč a&nbsp;jaký to bude mít dopad</strong>
+            AI už cituje něčí web. <strong>Audit ukáže, proč ne&nbsp;ten&nbsp;váš.</strong>
           </h1>
 
           <p class="audit-hero__lead">
-            Projdeme váš konkrétní web v <strong>technice, obsahu a&nbsp;důvěryhodnosti</strong>.
-            Dostanete prioritní seznam úprav s&nbsp;odhadem dopadu, ke&nbsp;všemu
-            plus <strong>60 minutovou konzultaci s&nbsp;naším týmem</strong>.
-            Výstup do&nbsp;<strong>5&nbsp;pracovních dní</strong>.
+            Projdeme váš konkrétní web v <strong>technice, obsahu a&nbsp;důvěryhodnosti</strong>
+            a&nbsp;dáme vám prioritní seznam úprav s&nbsp;odhadem dopadu plus
+            <strong>60 minutovou konzultaci</strong>. Výstup
+            do&nbsp;<strong>5&nbsp;pracovních dní</strong>.
           </p>
 
           <ul class="audit-hero__outcomes" role="list">
@@ -267,6 +267,52 @@ const faqJsonLd = {
           </form>
         </aside>
 
+      </div>
+    </section>
+
+    <!-- ===== URGENCY / FOMO „proč to řešit teď" — hned za hero ===== -->
+    <!-- Po hero (kde uživatel vidí formulář vpravo) přichází 3-card urgency
+         blok — silný FOMO argument PRED tím, než pokračuje k „Co je v auditu". -->
+    <section class="audit-urgency" aria-labelledby="audit-urgency-title">
+      <div class="audit-urgency__inner">
+        <header class="audit-urgency__head">
+          <span class="audit-urgency__pill">Proč to řešit teď</span>
+          <h2 id="audit-urgency-title" class="audit-urgency__title">
+            <strong>Každý měsíc čekání</strong> obsazuje konkurence místo, které mohlo patřit&nbsp;vám
+          </h2>
+        </header>
+
+        <div class="audit-urgency__grid">
+          <article class="audit-urgency-card">
+            <span class="audit-urgency-card__num">01</span>
+            <h3 class="audit-urgency-card__title">AI už odpovídá za vyhledávač</h3>
+            <p class="audit-urgency-card__desc">
+              ChatGPT, Perplexity i&nbsp;Google AI&nbsp;Overviews dnes odpovídají
+              zákazníkům přímo &mdash; místo klasického seznamu odkazů. Klikne se
+              jen na&nbsp;to, co AI vybere jako zdroj.
+            </p>
+          </article>
+
+          <article class="audit-urgency-card">
+            <span class="audit-urgency-card__num">02</span>
+            <h3 class="audit-urgency-card__title">Bez signálů AI vybírá někoho jiného</h3>
+            <p class="audit-urgency-card__desc">
+              Pokud váš web nemá jasné krátké odpovědi, strukturovaná data
+              a&nbsp;signály důvěryhodnosti, AI sáhne pro&nbsp;zdroj, který je
+              má. Často konkurence, která to&nbsp;začala řešit dřív.
+            </p>
+          </article>
+
+          <article class="audit-urgency-card">
+            <span class="audit-urgency-card__num">03</span>
+            <h3 class="audit-urgency-card__title">Každý měsíc čekání = ztracené pozice</h3>
+            <p class="audit-urgency-card__desc">
+              Témata a&nbsp;dotazy, na&nbsp;které AI dnes odpovídá, někdo
+              obsadí. Pozdější příchod znamená přepisovat víc obsahu,
+              dohánět autoritu, soutěžit o&nbsp;už zacementované citace.
+            </p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -864,6 +910,92 @@ const faqJsonLd = {
     font-family: var(--font-sans);
     font-size: 0.875rem;
     color: var(--color-ink-muted);
+  }
+
+  /* ===== Urgency / FOMO sekce „proč to řešit teď" =====
+     Hned za hero. Subtle magenta tint bg, 3-card grid s urgency framing. */
+  .audit-urgency {
+    background:
+      radial-gradient(ellipse 50% 60% at 100% 0%, color-mix(in oklch, var(--sd-magenta) 8%, transparent), transparent 60%),
+      var(--color-paper);
+    border-top: 1px solid color-mix(in oklch, var(--sd-magenta) 18%, var(--color-rule));
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .audit-urgency__inner {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(2.5rem, 5vw, 4rem) var(--space-section-x);
+  }
+  .audit-urgency__head {
+    max-width: 56rem;
+    margin: 0 0 clamp(2rem, 3.5vw, 2.75rem);
+  }
+  .audit-urgency__pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.75rem;
+    background: var(--sd-magenta);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+  .audit-urgency__title {
+    font-family: var(--font-agency, var(--font-sans));
+    font-weight: 300;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .audit-urgency__title strong {
+    font-weight: 700;
+    color: var(--sd-magenta);
+  }
+  .audit-urgency__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  @media (min-width: 760px) {
+    .audit-urgency__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .audit-urgency-card {
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--sd-magenta);
+    border-radius: 12px;
+    padding: clamp(1.25rem, 2vw, 1.625rem);
+  }
+  .audit-urgency-card__num {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--sd-magenta);
+    margin: 0 0 0.5rem;
+    letter-spacing: 0.04em;
+  }
+  .audit-urgency-card__title {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+    margin: 0 0 0.625rem;
+  }
+  .audit-urgency-card__desc {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0;
   }
 
   /* ===== Final CTA banner — opakování CTA pod stránkou ===== */
