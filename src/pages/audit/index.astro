@@ -164,6 +164,12 @@ const faqJsonLd = {
             </li>
           </ul>
 
+          <p class="audit-hero__audience">
+            <strong>Pro koho</strong>: e-shopy a firemní weby, kde organická
+            viditelnost přímo ovlivňuje poptávky nebo&nbsp;tržby. Největší smysl
+            dává u&nbsp;webů s&nbsp;obratem 1+&nbsp;mil.&nbsp;Kč ročně.
+          </p>
+
           <p class="audit-hero__legal">
             Provozovatel: <strong>CPU s.r.o.</strong> &middot; IČO 08125163 &middot; plátce DPH
           </p>
@@ -281,9 +287,13 @@ const faqJsonLd = {
             </button>
 
             <p class="audit-form__legal">
-              Údaje použijeme pro vyřízení této poptávky a&nbsp;komunikaci k&nbsp;auditu.
-              <strong>Bez samostatného souhlasu vás nezařadíme do&nbsp;marketingových
-              e-mailů.</strong>
+              Odesláním si&nbsp;<strong>závazně rezervujete zpracování auditu
+              za&nbsp;9&nbsp;990&nbsp;Kč bez DPH</strong>. Do&nbsp;24&nbsp;hodin
+              potvrdíme rozsah, vystavíme fakturu a&nbsp;po&nbsp;úhradě začínáme.
+              Výstup do&nbsp;5&nbsp;pracovních dní od&nbsp;platby. Údaje použijeme
+              pro vyřízení této objednávky a&nbsp;komunikaci k&nbsp;auditu &mdash;
+              bez&nbsp;samostatného souhlasu vás nezařadíme do&nbsp;marketingových
+              e&#8209;mailů.
             </p>
           </form>
         </aside>
@@ -523,6 +533,32 @@ const faqJsonLd = {
           </p>
         </article>
       </div>
+
+      <!-- Examples z praxe — konkrétní AI SEO proof points (audit #7) -->
+      <aside class="audit-examples" aria-labelledby="audit-examples-title">
+        <h3 id="audit-examples-title" class="audit-examples__title">
+          Co typicky nacházíme v&nbsp;reálných auditech
+        </h3>
+        <ul class="audit-examples__list">
+          <li>
+            <strong>Upgates e-shop:</strong> chybějící strukturovaná data
+            u&nbsp;klíčových kategorií + nejasné krátké odpovědi na&nbsp;nákupní
+            dotazy &mdash; konkurence je obsadila v&nbsp;AI Overviews dřív.
+          </li>
+          <li>
+            <strong>Shoptet e-shop:</strong> obsahové mezery proti konkurenci
+            v&nbsp;top kategoriích, žádná FAQ se&nbsp;strukturou pro AI
+            citace, chybí E&#8209;E&#8209;A&#8209;T signály u&nbsp;autorů
+            obsahu.
+          </li>
+          <li>
+            <strong>Firemní web (služby):</strong> NAP nekonzistence napříč
+            katalogy, žádný schema Organization, brand mentions jen
+            na&nbsp;vlastní doméně &mdash; ChatGPT a&nbsp;Perplexity
+            o&nbsp;značce „nevědí".
+          </li>
+        </ul>
+      </aside>
     </section>
 
     <!-- ===== 03 PACK VS AUDIT ===== -->
@@ -639,10 +675,11 @@ const faqJsonLd = {
         <div>
           <dt>Co audit nezahrnuje?</dt>
           <dd>
-            Audit zahrnuje <strong>analýzu, prioritizaci a&nbsp;konzultaci</strong>.
-            Samotná <strong>implementace úprav, copywriting, vývoj nebo dlouhodobá
-            správa</strong> nejsou součástí ceny, ale můžeme je případně nacenit
-            zvlášť po&nbsp;dodání auditu.
+            Audit je <strong>samostatný akční plán</strong> &mdash; obsahuje
+            analýzu, prioritizaci a&nbsp;konzultaci. <strong>Implementaci
+            si&nbsp;můžete udělat interně, předat ji&nbsp;své agentuře nebo
+            vývojáři, nebo si&nbsp;od&nbsp;nás nechat nacenit navazující
+            úpravy.</strong> Nejste vázaní na&nbsp;naši realizaci.
           </dd>
         </div>
         <div>
@@ -923,8 +960,25 @@ const faqJsonLd = {
     border-color: oklch(from var(--sd-paper) l c h / 0.4);
   }
 
-  .audit-hero__legal {
+  .audit-hero__audience {
     margin: 1.25rem 0 0;
+    padding: 0.75rem 0.875rem;
+    background: oklch(from var(--sd-paper) l c h / 0.08);
+    border-left: 3px solid var(--sd-gold);
+    border-radius: 0 6px 6px 0;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: oklch(from var(--sd-paper) l c h / 0.8);
+    max-width: 38rem;
+  }
+  .audit-hero__audience strong {
+    color: var(--sd-gold);
+    font-weight: 700;
+  }
+
+  .audit-hero__legal {
+    margin: 1rem 0 0;
     font-family: var(--font-mono);
     font-size: 0.75rem;
     letter-spacing: 0.04em;
@@ -1015,6 +1069,46 @@ const faqJsonLd = {
     font-family: var(--font-sans);
     font-size: 0.875rem;
     color: var(--color-ink-muted);
+  }
+
+  /* ===== AI SEO proof examples — pod trust cards (audit #7) ===== */
+  .audit-examples {
+    margin: clamp(2rem, 3vw, 2.75rem) 0 0;
+    padding: clamp(1.5rem, 2.5vw, 2rem);
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-left: 4px solid var(--sd-magenta);
+    border-radius: 14px;
+    max-width: 56rem;
+  }
+  .audit-examples__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.0625rem, 1.8vw, 1.25rem);
+    font-weight: 600;
+    color: var(--color-ink);
+    margin: 0 0 1rem;
+    letter-spacing: -0.015em;
+  }
+  .audit-examples__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .audit-examples__list li {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    padding: 0.625rem 0.875rem;
+    background: var(--color-paper-deep);
+    border-radius: 8px;
+  }
+  .audit-examples__list strong {
+    color: var(--sd-magenta);
+    font-weight: 700;
   }
 
   /* ===== Impact framework — interpretační rámec nálezů (audit #15) ===== */
