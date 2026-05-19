@@ -46,7 +46,7 @@ const faqJsonLd = {
       name: "Dostanu aktualizace Packu, pokud se AI SEO změní?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ano. AI vyhledávání se vyvíjí, Pack udržujeme aktuální. Pokud vydáme drobnou aktualizaci této edice (nová pravidla pro strukturovaná data, změny v tom, jak ChatGPT a Perplexity uvádějí zdroje), pošleme ji držitelům licence zdarma e-mailem. Pokud bude potřeba zásadní revize struktury, oznámíme to dopředu.",
+        text: "Ano. Koupí nezískáte statické PDF, které za měsíc zastará. Drobné aktualizace této edice (nová pravidla pro strukturovaná data, změny v tom, jak ChatGPT a Perplexity uvádějí zdroje) posíláme držitelům licence zdarma e-mailem. Můžete začít aplikovat Pack teď a nečekat, až se trh ustálí — pokud bude potřeba zásadní revize struktury, oznámíme to dopředu.",
       },
     },
     {
@@ -71,7 +71,7 @@ const pageTypes = [
   {
     num: 2,
     title: "Produktová stránka",
-    desc: "Detail produktu — vzor titulku, strukturovaná data pro produkt (Product), časté dotazy se strukturovanými daty, související produkty. AI ji rozpozná jako nakupovatelnou stránku.",
+    desc: "Detail produktu — vzor titulku, strukturovaná data pro produkt (Product), časté dotazy se strukturovanými daty, související produkty. Díky Product datům, FAQ a internímu prolinkování dáváte AI jasný signál, že jde o produktovou stránku připravenou k nákupu.",
     pageTitle: "Produkt",
     tone: "primary" as const,
   },
@@ -106,7 +106,7 @@ const pageTypes = [
   {
     num: 7,
     title: "Kontaktní stránka",
-    desc: "Kontaktní formulář, mapa, kontaktní údaje — název, adresa, telefon (NAP), strukturovaná data pro místní firmu (LocalBusiness). AI ji rozpozná jako oficiální kontakt firmy.",
+    desc: "Kontaktní formulář, mapa, kontaktní údaje — název, adresa, telefon (NAP), strukturovaná data pro místní firmu (LocalBusiness). NAP údaje a LocalBusiness data pomáhají AI ověřit, že jde o oficiální kontakt firmy.",
     pageTitle: "Kontakt",
     tone: "neutral" as const,
   },
@@ -155,7 +155,7 @@ const pageTypes = [
             </div>
 
             <ul class="pack-delivery__list" aria-label="Co Pack přinese vašemu webu">
-              <li>Vidíte se v ChatGPT, Perplexity i AI Overviews</li>
+              <li>Připravíte web na citace v ChatGPT, Perplexity i AI Overviews</li>
               <li>Předběhnete konkurenci, která o AI SEO zatím neví</li>
               <li>Aplikujete za odpoledne, ne za týdny zkoumání</li>
               <li>Vlastní framework — bez konzultantů, bez měsíců</li>
@@ -388,10 +388,23 @@ const pageTypes = [
           na váš stávající web, podle CMS (Upgates, Shoptet, WordPress, custom)
         </li>
         <li>
-          <strong>Anti-pattern checklist</strong> — čemu se vyhnout u každého
-          typu stránky. Z analýzy stovek e-shopů, kde stejné chyby brzdí AI viditelnost.
+          <strong>Anti-pattern checklist</strong> — čemu se vyhnout u&nbsp;každého
+          typu stránky. Vychází z&nbsp;praxe Sniperdesign na&nbsp;600+&nbsp;českých
+          e-shopech, kde se&nbsp;opakovaně objevují stejné chyby: chybějící
+          odpovědi, nejasné kategorie, slabé interní prolinkování, nevyužitá
+          strukturovaná data.
         </li>
       </ul>
+
+      <!-- Trust → Pack propojení (audit #17) -->
+      <p class="pack-trust-tieIn">
+        Pack vznikl jako <strong>zjednodušená pracovní verze postupů</strong>,
+        které používáme při&nbsp;návrzích a&nbsp;auditech klientských webů.
+        Nejde o&nbsp;teoretický e-book, ale o&nbsp;strukturu odvozenou
+        z&nbsp;reálných e-shopů a&nbsp;firemních webů &mdash;
+        <strong>Zlatý partner Upgates od&nbsp;2016, 600+&nbsp;e-shopů
+        na&nbsp;CZ trhu</strong>.
+      </p>
     </section>
 
     <!-- ===== 04 KOMU SE PACK HODÍ (audit #12 — zúžit cílovku, #13 přidat „pro koho ne") ===== -->
@@ -1154,6 +1167,25 @@ const pageTypes = [
   }
   .pack-deliverables li strong,
   .pack-audience li strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+
+  /* ===== Trust tie-in pod „Co dostanete" — propojení s Sniperdesign praxí (audit #17) ===== */
+  .pack-trust-tieIn {
+    margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
+    padding: clamp(1rem, 2vw, 1.375rem) clamp(1.125rem, 2vw, 1.5rem);
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--lp-violet);
+    border-radius: 10px;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    max-width: 60rem;
+  }
+  .pack-trust-tieIn strong {
     color: var(--color-ink);
     font-weight: 600;
   }
