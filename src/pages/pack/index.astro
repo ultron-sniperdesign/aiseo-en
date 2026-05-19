@@ -57,6 +57,14 @@ const faqJsonLd = {
         text: "Ano. Pack obsahuje sedm typů stránek, ale nemusíte aplikovat všechny. Pokud máte jen služby (žádný e-shop), využijete homepage, prodejní landing, kontakt — případně blog článek. Pokud máte e-shop bez blogu, naopak produkt, kategorii a kontakt. Pack je modulární, vezmete si jen typy, které váš web obsahuje.",
       },
     },
+    {
+      "@type": "Question",
+      name: "Jak je to s vrácením peněz?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Pack je digitální produkt s okamžitým přístupem po platbě. Po doručení PDF na e-mail jej nelze standardně vracet. Proto na této stránce ukazujeme náhled tří stran z první kapitoly, ukázku struktury produktové stránky a vzor šablony textu — abyste se mohli rozhodnout přesně podle obsahu, který v Packu skutečně dostanete.",
+      },
+    },
   ],
 };
 
@@ -154,6 +162,11 @@ const pageTypes = [
               <span class="pack-price__detail">jednorázově, bez DPH</span>
             </div>
 
+            <p class="pack-hero__price-frame">
+              Méně než hodina senior konzultanta. Místo týdnů rešerší dostanete
+              <strong>hotovou strukturu pro 7&nbsp;typů stránek</strong>.
+            </p>
+
             <ul class="pack-delivery__list" aria-label="Co Pack přinese vašemu webu">
               <li>Připravíte web na citace v ChatGPT, Perplexity i AI Overviews</li>
               <li>Předběhnete konkurenci, která o AI SEO zatím neví</li>
@@ -178,6 +191,11 @@ const pageTypes = [
               </svg>
             </a>
 
+            <p class="pack-hero__cta-microcopy">
+              <strong>Kupte dnes, předejte týmu ještě dnes.</strong> První
+              šablonu upravíte během odpoledne. PDF dorazí na&nbsp;e-mail
+              do&nbsp;několika sekund po&nbsp;platbě.
+            </p>
             <p class="pack-hero__trust-line">
               Platba kartou (Stripe) · faktura na firmu · bez předplatného
             </p>
@@ -299,6 +317,29 @@ const pageTypes = [
           </figcaption>
         </figure>
       </div>
+
+      <!-- Reálná ukázka šablony textu (audit #7) -->
+      <aside class="pack-template-sample" aria-labelledby="pack-template-sample-title">
+        <header class="pack-template-sample__head">
+          <span class="pack-template-sample__pill">Ukázka šablony</span>
+          <h3 id="pack-template-sample-title" class="pack-template-sample__title">
+            Vzor <strong>krátké odpovědi pro produktovou stránku</strong>
+          </h3>
+          <p class="pack-template-sample__desc">
+            Jedna z&nbsp;desítek šablon, které dostanete v&nbsp;Packu &mdash;
+            připravená k&nbsp;dosazení vašich konkrétních hodnot:
+          </p>
+        </header>
+        <pre class="pack-template-sample__code"><code>[Produkt] je [typ produktu] pro [cílová skupina],
+který řeší [problém]. Hodí se pro [situace použití]
+a oproti [alternativa] nabízí [hlavní rozdíl].</code></pre>
+        <p class="pack-template-sample__note">
+          Master PDF obsahuje <strong>analogické šablony pro homepage, kategorie,
+          blog článek, blog výpis, prodejní landing a&nbsp;kontakt</strong> &mdash;
+          každá vyladěná pro AI citovatelnost a&nbsp;strukturovaná data dané
+          stránky.
+        </p>
+      </aside>
     </section>
 
     <!-- ===== 03 UKÁZKA STRUKTURY — drill-down jednoho typu stránky ===== -->
@@ -1343,6 +1384,105 @@ const pageTypes = [
     background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='8' fill='%2316a34a'/%3E%3Cpath d='M4 8L7 11L12 5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   }
   .pack-transformation__list li strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+
+  /* ===== Hero CTA micropro (audit #3 cena framing, #4 CTA microcopy) ===== */
+  .pack-hero__price-frame {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    margin: 0.5rem 0 1rem;
+    padding: 0.625rem 0.75rem;
+    background: color-mix(in oklch, var(--lp-violet) 5%, transparent);
+    border-left: 2px solid color-mix(in oklch, var(--lp-violet) 50%, transparent);
+    border-radius: 0 6px 6px 0;
+  }
+  .pack-hero__price-frame strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+  .pack-hero__cta-microcopy {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: var(--color-ink-muted);
+    margin: 0.875rem 0 0.5rem;
+  }
+  .pack-hero__cta-microcopy strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+
+  /* ===== Reálná ukázka šablony textu (audit #7) ===== */
+  .pack-template-sample {
+    max-width: 56rem;
+    margin: clamp(2rem, 3vw, 2.5rem) 0 0;
+    padding: clamp(1.5rem, 2.5vw, 2rem);
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-left: 4px solid var(--lp-magenta);
+    border-radius: 14px;
+  }
+  .pack-template-sample__head {
+    margin: 0 0 1rem;
+  }
+  .pack-template-sample__pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.75rem;
+    background: var(--lp-magenta);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    margin-bottom: 0.625rem;
+  }
+  .pack-template-sample__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    font-weight: 250;
+    line-height: 1.2;
+    letter-spacing: -0.018em;
+    color: var(--color-ink);
+    margin: 0 0 0.625rem;
+  }
+  .pack-template-sample__title strong {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .pack-template-sample__desc {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+  .pack-template-sample__code {
+    margin: 0;
+    padding: clamp(1rem, 2vw, 1.25rem);
+    background: oklch(0.16 0.02 270);
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: oklch(0.95 0.005 270);
+    overflow-x: auto;
+    white-space: pre-wrap;
+  }
+  .pack-template-sample__note {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 1rem 0 0;
+  }
+  .pack-template-sample__note strong {
     color: var(--color-ink);
     font-weight: 600;
   }
