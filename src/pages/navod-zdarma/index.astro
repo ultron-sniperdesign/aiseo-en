@@ -56,7 +56,7 @@ const faqJsonLd = {
       name: "Můžu se kdykoli odhlásit z e-mailů?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ano. V každém e-mailu je odhlašovací odkaz, jedním kliknutím vás odstraníme z databáze. Žádné spamování, žádný důraz na neustálé prodávání.",
+        text: "Ano. Neposíláme denní newsletter. Po PDF dostanete několik navazujících e-mailů s praktickými tipy k AI SEO a občasnou nabídkou našich produktů / služeb. V každém e-mailu je odhlašovací odkaz — jedním kliknutím vás odstraníme z databáze.",
       },
     },
   ],
@@ -102,6 +102,13 @@ const faqJsonLd = {
               buttonLabel="Stáhnout AI SEO návod zdarma"
               leadSourceTag="Lead — Návod zdarma (homepage)"
             />
+
+            <!-- Trust signal pod formulářem (audit #7) -->
+            <p class="lp-hero__cta-trust">
+              Připravilo <strong><a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener">Sniperdesign.cz</a></strong>
+              &mdash; Zlatý partner Upgates od&nbsp;2016, 600+&nbsp;e-shopů
+              na&nbsp;CZ&nbsp;trhu.
+            </p>
           </div>
         </div>
 
@@ -496,6 +503,27 @@ const faqJsonLd = {
     align-items: center;
     justify-content: center;
     min-height: 420px;
+  }
+
+  /* Trust signal pod formulářem (audit #7) */
+  .lp-hero__cta-trust {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--color-ink-faint);
+    margin: 1rem 0 0;
+    padding-top: 0.875rem;
+    border-top: 1px dashed var(--color-rule);
+  }
+  .lp-hero__cta-trust strong {
+    color: var(--color-ink-muted);
+    font-weight: 600;
+  }
+  .lp-hero__cta-trust a {
+    color: var(--lp-violet);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in oklch, var(--lp-violet) 30%, transparent);
+    text-underline-offset: 2px;
   }
 
   /* ===== Hero illustration (AI gen + baked-in SEO/GEO/AEO pills) ===== */
