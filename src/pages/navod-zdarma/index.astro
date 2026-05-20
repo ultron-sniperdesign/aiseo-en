@@ -40,7 +40,7 @@ const faqJsonLd = {
       name: "Funguje to i pro e-shop?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Tento návod cílí konkrétně na homepage firemního webu nebo služby. Pro e-shop platí stejné principy, ale jiná struktura sekcí — to pokrývá rozšířený Wireframe Pack za 1 490 Kč, kde je sedm typů stránek včetně produktové a kategoriální.",
+        text: "PDF je primárně pro homepage. E-shopaři ho využijí pro hlavní stránku a základní principy AI vyhledávání. Produktové a kategoriální stránky řeší až rozšířený Wireframe Pack za 1 490 Kč, kde je sedm typů stránek včetně produktové a kategoriální.",
       },
     },
     {
@@ -174,39 +174,67 @@ const faqJsonLd = {
           <h3 class="lp-feature__title">Pět typických chyb</h3>
           <p class="lp-feature__desc">
             Pět chyb, kvůli kterým AI špatně chápe váš homepage — i&nbsp;když máte
-            dobrý produkt. Z analýzy stovek e‑shopů: opakují se pořád stejné.
+            dobrý produkt. Vychází z&nbsp;praxe Sniperdesign při&nbsp;návrzích
+            a&nbsp;auditech klientských webů (Zlatý partner Upgates od&nbsp;2016,
+            600+ e-shopů na&nbsp;CZ trhu).
           </p>
         </article>
       </div>
     </section>
 
-    <!-- ===== PRO KOHO ===== -->
+    <!-- ===== PRO KOHO (audit #8 — sjednotit s FAQ, #9 — přidat „pro koho NE") ===== -->
     <section class="lp-section lp-section--alt">
       <header class="lp-section__head">
         <span class="eyebrow"><span class="eyebrow__num">02</span> Pro koho je to</span>
         <h2 class="lp-section__title">
-          <strong>Univerzální postup</strong> — funguje na e-shopu, webu služeb i firemní prezentaci
+          PDF cílí na&nbsp;<strong>homepage</strong> firemního webu, služby
+          nebo&nbsp;obsahově řízeného e-shopu
         </h2>
+        <p class="lp-section__lead">
+          Pro produktové a&nbsp;kategoriální stránky e-shopu budete potřebovat
+          <strong>rozšířený framework</strong> &mdash; to&nbsp;řeší
+          <a href="/pack/">AI&nbsp;SEO Wireframe Pack</a>.
+        </p>
       </header>
 
-      <ul class="lp-audience">
-        <li>
-          <strong>Provozovatelé webů a e-shopů</strong> — víte, že je třeba něco
-          změnit, ale nevíte, kde začít.
-        </li>
-        <li>
-          <strong>SEO a marketing specialisté</strong> — potřebujete framework,
-          který předáte klientovi nebo internímu týmu.
-        </li>
-        <li>
-          <strong>Copywriteři, designéři, vývojáři</strong> — chcete navrhovat
-          homepage, které AI chápe stejně dobře jako člověk.
-        </li>
-        <li>
-          <strong>B2B agentury</strong> — hledáte vlastní pracovní rámec
-          pro klientské weby v AI éře.
-        </li>
-      </ul>
+      <div class="lp-audience-split">
+        <div class="lp-audience-block lp-audience-block--primary">
+          <h3 class="lp-audience-block__title">
+            <span class="lp-audience-block__tag lp-audience-block__tag--yes">Primárně</span>
+            PDF je pro vás
+          </h3>
+          <ul class="lp-audience-block__list">
+            <li>
+              <strong>Provozovatelé webů a&nbsp;e-shopů</strong> &mdash; víte,
+              že je&nbsp;třeba něco změnit, ale nevíte, kde začít.
+            </li>
+            <li>
+              <strong>SEO a&nbsp;marketing specialisté</strong> &mdash; potřebujete
+              framework, který předáte klientovi nebo internímu&nbsp;týmu.
+            </li>
+            <li>
+              <strong>Copywriteři, designéři, vývojáři</strong> &mdash; chcete
+              navrhovat homepage, které AI chápe stejně dobře jako člověk.
+            </li>
+            <li>
+              <strong>B2B agentury</strong> &mdash; hledáte vlastní pracovní
+              rámec pro klientské weby v&nbsp;AI&nbsp;éře.
+            </li>
+          </ul>
+        </div>
+
+        <div class="lp-audience-block lp-audience-block--negative">
+          <h3 class="lp-audience-block__title">
+            <span class="lp-audience-block__tag lp-audience-block__tag--no">PDF NENÍ pro vás, pokud</span>
+          </h3>
+          <ul class="lp-audience-block__list">
+            <li>čekáte <strong>kompletní audit celého webu</strong> &mdash; k&nbsp;tomu slouží <a href="/audit/">AI&nbsp;SEO audit</a></li>
+            <li>chcete <strong>hotové texty</strong> pro produktové / kategoriální stránky &mdash; rozšířený <a href="/pack/">Pack</a></li>
+            <li>řešíte <strong>čistě technické SEO</strong> bez úprav obsahu</li>
+            <li>nechcete po&nbsp;stažení dostat <strong>žádné navazující e-maily</strong></li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <!-- ===== AUTHORITY — Sniperdesign medallion =====
@@ -591,40 +619,98 @@ const faqJsonLd = {
     margin: 0;
   }
 
-  /* ===== Audience ===== */
-  .lp-audience {
+  /* ===== Audience split (audit #8 + #9) — primary + negative ===== */
+  /* .lp-section--alt parent selector pro specificity bump (Astro scope) */
+  .lp-section--alt .lp-audience-split {
+    max-width: calc(var(--max-section) - 2 * var(--space-section-x));
+    width: calc(100% - 2 * var(--space-section-x));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 880px) {
+    .lp-section--alt .lp-audience-split { grid-template-columns: 1.3fr 1fr; }
+  }
+  .lp-audience-block {
+    padding: clamp(1.25rem, 2.5vw, 1.75rem);
+    border-radius: 14px;
+  }
+  .lp-audience-block--primary {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-left: 4px solid var(--lp-violet);
+  }
+  .lp-audience-block--negative {
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-left: 4px solid oklch(0.6 0.22 25);
+  }
+  .lp-audience-block__title {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin: 0 0 1rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    letter-spacing: -0.015em;
+  }
+  .lp-audience-block__tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.625rem;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    color: #fff;
+  }
+  .lp-audience-block__tag--yes { background: var(--lp-violet); }
+  .lp-audience-block__tag--no { background: oklch(0.6 0.22 25); }
+  .lp-audience-block__list {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem 2rem;
-    font-family: var(--font-sans);
-    font-size: 1.0625rem;
-    line-height: 1.55;
-    color: var(--color-ink-muted);
-    max-width: 60rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
   }
-  @media (min-width: 720px) {
-    .lp-audience { grid-template-columns: 1fr 1fr; }
-  }
-  .lp-audience li {
-    padding: 0.625rem 0 0.625rem 1.625rem;
+  .lp-audience-block__list li {
     position: relative;
+    padding: 0 0 0 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
   }
-  .lp-audience li::before {
-    content: "";
+  .lp-audience-block--primary .lp-audience-block__list li::before {
+    content: "✓";
     position: absolute;
     left: 0;
-    top: 1.05rem;
-    width: 8px;
-    height: 8px;
-    background: var(--lp-violet);
-    border-radius: 50%;
+    color: var(--lp-violet);
+    font-weight: 700;
   }
-  .lp-audience strong {
+  .lp-audience-block--negative .lp-audience-block__list li::before {
+    content: "×";
+    position: absolute;
+    left: 0;
+    color: oklch(0.6 0.22 25);
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.2;
+  }
+  .lp-audience-block__list strong {
     color: var(--color-ink);
     font-weight: 600;
+  }
+  .lp-audience-block__list a {
+    color: var(--lp-violet);
+    text-decoration: underline;
   }
 
   /* Authority section replaced with <SniperDesignSmallContact /> shared
