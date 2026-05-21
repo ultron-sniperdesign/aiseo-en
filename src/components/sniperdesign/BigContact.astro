@@ -1,14 +1,14 @@
 ---
 /**
- * SniperDesignBigContact — plný propagační blok pro Sniperdesign agenturu.
+ * SniperDesignBigContact — plný propagační blok pro Sniper Design agenturu.
  *
  * Single source of truth pro „velkou" verzi CTA. Obsahuje:
- * - logo Sniperdesign
+ * - logo Sniper Design
  * - eyebrow + nadpis + lead s trust signály
  * - „Vše jako jeden balík" banner
  * - 4 benefit cards (Strategie / Audit / Implementace / Obsah)
  * - 9 oblastí konkrétního záběru (checklist)
- * - 2 CTA tlačítka (Otevřít Sniperdesign.cz / Nezávazná konzultace)
+ * - 2 CTA tlačítka (Otevřít Sniper Design / Nezávazná konzultace)
  *
  * Použití:
  *   import BigContact from "~/components/sniperdesign/BigContact.astro";
@@ -39,11 +39,11 @@ const { eyebrowNum = "06" } = Astro.props as Props;
       target="_blank"
       rel="noopener"
       class="sd-big__brand"
-      aria-label="Sniperdesign — domovská stránka agentury"
+      aria-label="Sniper Design — domovská stránka agentury"
     >
       <img
         src="/sniperdesign/logo-wh.svg"
-        alt="Sniperdesign"
+        alt="Sniper Design"
         width="180"
         height="36"
         loading="lazy"
@@ -61,7 +61,7 @@ const { eyebrowNum = "06" } = Astro.props as Props;
         Tento průvodce vám dá přehled. Co s ním reálně udělá web nebo e‑shop, je druhá věc — a obvykle to chce někoho, kdo už tím prošel. V <a
           href="https://www.sniperdesign.cz/"
           target="_blank"
-          rel="noopener">Sniperdesign.cz</a> děláme <strong>kompletní AI&nbsp;SEO</strong>: od strategie přes audit a implementaci až po finální obsah. Zlatý Upgates partner od&nbsp;2016, přes 600 e‑shopů na CZ trhu, vlastní e‑shop <a
+          rel="noopener">Sniper Design</a> děláme <strong>kompletní AI&nbsp;SEO</strong>: od strategie přes audit a implementaci až po finální obsah. Zlatý Upgates partner od&nbsp;2016, přes 600 e‑shopů na CZ trhu, vlastní e‑shop <a
           href="https://www.megadetail.cz/"
           target="_blank"
           rel="noopener">MEGA&nbsp;DETAIL</a>.
@@ -168,7 +168,7 @@ const { eyebrowNum = "06" } = Astro.props as Props;
         rel="noopener"
         class="sd-big__btn sd-big__btn--solid"
       >
-        Otevřít Sniperdesign.cz
+        Otevřít Sniper Design
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
           <path
             d="M1 7H13M13 7L7 1M13 7L7 13"
@@ -192,7 +192,7 @@ const { eyebrowNum = "06" } = Astro.props as Props;
 
 <style>
   /* ===== SniperDesign Big Contact =====
-   * Sniperdesign brand palette — deep violet, magenta highlights, gold CTA.
+   * Sniper Design brand palette — deep violet, magenta highlights, gold CTA.
    * Self-contained — všechny styly scopované přes .sd-big prefix,
    * neovlivní nadřazený layout. Kumbh Sans přichází z global.css. */
   .sd-big {

@@ -35,7 +35,7 @@ export interface Env {
   // Adresa, kam chodí notifikace o nové poptávce auditu.
   // Verified domain v Resend musí matchovat odesílací doménu (AUDIT_FROM).
   AUDIT_NOTIFY_TO: string;
-  AUDIT_FROM: string; // "Sniperdesign <aiseo-optimalizace@sniperdesign.cz>"
+  AUDIT_FROM: string; // "Sniper Design <aiseo-optimalizace@sniperdesign.cz>"
 }
 
 /** CORS origin allowlist. Other origins jsou rejected (žádné public form proxy). */
@@ -136,7 +136,7 @@ async function handleAuditInquiry(req: Request, env: Env): Promise<Response> {
   const platforma = (body.platforma || "").trim() || "neuvedeno";
   const cil = (body.cil || "").trim() || "neuvedeno";
 
-  // E-mail 1: notifikace pro Sniperdesign tým.
+  // E-mail 1: notifikace pro Sniper Design tým.
   const notifyRes = await sendResend(env, {
     from: env.AUDIT_FROM,
     to: env.AUDIT_NOTIFY_TO,

@@ -42,7 +42,7 @@ const ogImageURL = new URL(image, Astro.site).toString();
 const siteOrigin = new URL("/", Astro.site).toString().replace(/\/$/, "");
 
 /**
- * Organization schema — publisher = Sniperdesign (CPU s.r.o.), provozovatel
+ * Organization schema — publisher = Sniper Design (CPU s.r.o.), provozovatel
  * webu aiseo-optimalizace.cz. logo + sameAs umožňují Google Knowledge Graph
  * + AI engines (Perplexity, ChatGPT) attribution na konkrétní subjekt.
  *
@@ -52,10 +52,10 @@ const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": `${siteOrigin}/#publisher`,
-  name: "Sniperdesign",
+  name: "Sniper Design",
   alternateName: "CPU s.r.o.",
   url: siteOrigin,
-  description: "Edukativní průvodce AI érou vyhledávání: SEO, GEO, AEO, AIO. Provozuje agentura Sniperdesign (CPU s.r.o.).",
+  description: "Edukativní průvodce AI érou vyhledávání: SEO, GEO, AEO, AIO. Provozuje agentura Sniper Design (CPU s.r.o.).",
   logo: {
     "@type": "ImageObject",
     url: `${siteOrigin}/apple-touch-icon.png`,

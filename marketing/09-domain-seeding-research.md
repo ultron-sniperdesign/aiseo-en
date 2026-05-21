@@ -68,30 +68,22 @@
   - Kontaktní osoba: Veronika Pavelcová (CEO)
   - Schvalovací proces: až 3 pracovní dny (admini katalogu mohou upravit znění)
 
-- [ ] **(uživatel/Sniperdesign)** sniperdesign.cz cross-promo
-  - Footer link na aiseo-optimalizace.cz
-  - „Naše projekty" / portfolio sekce listing
-  - Krátký launch blog post („Spustili jsme edukativní portál o AI SEO")
-  - Dofollow, kontextuální, nulový friction
-  - Čas: 1 h
+- [ ] **(odloženo)** sniperdesign.cz cross-promo — 2026-05-21 čekáme na nový web
+  - Sniperdesign.cz prochází redesignem; cross-promo (footer / portfolio / launch blog) doplníme až bude nový web live
+  - Texty k publikaci připravíme až bude jasná struktura nového webu
 
-- [ ] **(uživatel)** Upgates Marketplace profil — edit
-  - URL: https://marketplace.upgates.cz/agencies/sniper-design/
-  - Sniperdesign už má profil (Zlatý partner od 2016) — jen do bio přidat aiseo-optimalizace.cz jako vlastní edukativní zdroj
-  - DR Upgates ~60, vysoce relevantní traffic
-  - Čas: 15 min
+- [x] **(uživatel)** Upgates Marketplace profil — 2026-05-21 ✅
+  - Medailonek kompletně přepsán (audit GPT-5.4) — silnější USP, trust block, závěrečné CTA, nová sekce DLOUHODOBÝ ROZVOJ
+  - **AI SEO PRO UPGATES** sekce přidaná s odkazem na aiseo-optimalizace.cz (dofollow z DR Upgates ~60)
+  - Pokrytí: Web design / Implementace / Konfigurátory / Moduly / Migrace / SYNKRO / SEO / AI SEO / Rozvoj / Konzultace
 
-- [ ] **(uživatel)** Shoptet Partneři profil — edit
-  - URL: https://partneri.shoptet.cz
-  - Gold partner perks — přidat Pack landing jako edukativní materiál (pokud profil dovoluje URL)
-  - DR Shoptet ~70
-  - Čas: 15 min
+- [ ] **(blokované)** Shoptet Partneři profil — 2026-05-21 přístup nedostupný
+  - Edit profilu vyžaduje přístup do Shoptet partner portálu, který momentálně není k dispozici
+  - Až bude přístup, pattern stejný jako Upgates Marketplace (reuse medailonek + Shoptet-specific úpravy)
 
-- [ ] **(uživatel)** LinkedIn Company Page pro aiseo-optimalizace.cz
-  - URL: https://www.linkedin.com (Pages → Create)
-  - Logo + popis + cover image, link na pillar a /pack/
-  - Hub pro pillar excerpts, baseline pro budoucí Sponsored Content
-  - Čas: 30 min
+- [ ] **(delegováno)** LinkedIn Company Page — 2026-05-21 řeší kolegyně
+  - Setup Company Page + bio + launch posty zpracovává kolegyně ze Sniperdesign týmu
+  - Při dokončení doplníme link sem
 
 **Týdenní deliverable:** ~5 h práce uživatele + ~2 h dev. Po týdnu = ~8 search engines/AI engines indexuje, 5+ kvalitních CZ katalogů, 3 partner pages s linkem, LinkedIn page connected.
 

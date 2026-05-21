@@ -28,7 +28,7 @@ const sections = defineCollection({
      */
     inlineRelated: z.boolean().optional().default(false),
     /**
-     * Když je true, [slug].astro NEVYKRESLÍ auto Sniperdesign SmallContact
+     * Když je true, [slug].astro NEVYKRESLÍ auto Sniper Design SmallContact
      * pod článkem. Použij, když chceš blok vložit INLINE do MDX na jiné pozici.
      */
     inlineSmallContact: z.boolean().optional().default(false),
