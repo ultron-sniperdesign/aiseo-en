@@ -640,10 +640,9 @@ const pageDescription =
     font-weight: 600;
   }
 
-  /* BLOK 4: Trust block — kompaktní řádek.
-     margin-left:0 + margin-right:auto → levo-zarovnání s obsahem výše
-     (base .lp-section--alt > * dává margin auto = centered, což rozbíjí
-     vizuální linii vůči full-width blokům nad ním). */
+  /* BLOK 4: Trust block — plná šířka obsahu (lícuje s gridy výše na obou
+     hranách). margin = section padding (vlastní `padding` přebíjí base
+     padding-left/right, takže content margin nutno přes margin). */
   .lp-section--alt .ty-upsell__trust {
     font-family: var(--font-sans);
     font-size: 0.9375rem;
@@ -653,9 +652,8 @@ const pageDescription =
     border: 1px solid var(--color-rule);
     border-radius: 10px;
     padding: 1rem 1.25rem;
-    max-width: 50rem;
     margin-left: var(--space-section-x);
-    margin-right: auto;
+    margin-right: var(--space-section-x);
   }
   .lp-section--alt .ty-upsell__trust strong {
     color: var(--color-ink);
@@ -665,14 +663,14 @@ const pageDescription =
   /* Big CTA card — rozšíření existující .ty-audit-card s --big modifier.
      Parent selector boost — bez něho přebíjí .lp-section--alt > *
      (Astro scoping race, totéž jako trust block). */
+  /* Big CTA card — plná šířka obsahu (lícuje s gridy i trust blokem).
+     max-width: none přebíjí base .ty-audit-card max-width: 50rem
+     (vyšší specificity 0,2,0 vs 0,1,0). */
   .lp-section--alt .ty-audit-card--big {
     padding: clamp(1.75rem, 3.5vw, 2.5rem);
-    max-width: 50rem;
+    max-width: none;
     margin-left: var(--space-section-x);
-    margin-right: auto;
-  }
-  .lp-section--alt .ty-audit-card {
-    max-width: 50rem;
+    margin-right: var(--space-section-x);
   }
   .ty-audit-card--big .ty-audit-card__pill {
     background-color: var(--lp-violet);
