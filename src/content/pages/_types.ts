@@ -66,6 +66,43 @@ export interface EmailCaptureConfig {
   leadSourceTag: string;
 }
 
+/** Thank-you hero (varianty napříč /dekujeme stránkami). Pole volitelná podle stránky. */
+export interface ThankYouHero {
+  /** Pill eyebrow nad nadpisem (navod-zdarma "E-mail úspěšně přijat"). */
+  eyebrow?: string;
+  /** Nadpis. Smí obsahovat <br> + <strong>. */
+  title: string;
+  /** Lead odstavec. Smí obsahovat HTML (<strong>, <em>). */
+  lead: string;
+  /** Kontaktní / meta řádek pod leadem (pack, audit). Smí obsahovat HTML. */
+  meta?: string;
+  /** Fallback download řádek (navod-zdarma). Smí obsahovat HTML. */
+  fallback?: string;
+}
+
+/** Číslovaný krok (thank-you "co bude následovat" / "co teď"). Jedna HTML věta s úvodním <strong>. */
+export interface NumberedStep {
+  num: number;
+  /** Smí obsahovat inline HTML (vede <strong> intro). */
+  html: string;
+}
+
+/** Jednoduchý odkaz s nadpisem a popiskem (suggested reading). */
+export interface LinkItem {
+  href: string;
+  title: string;
+  desc: string;
+}
+
+/** Obsahová dlaždice (agency showcase / deliverable). */
+export interface TileItem {
+  /** Volitelné číslo (deliverable 1/2/3). */
+  num?: number;
+  title: string;
+  /** Smí obsahovat HTML. */
+  body: string;
+}
+
 /** Cenová tier karta (upsell: Pack / Audit). */
 export interface PricingTier {
   /** Eyebrow label, např. "Pack · pro celý web". */

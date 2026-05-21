@@ -1,15 +1,12 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
-
-const pageTitle = "Děkujeme za nákup — AI SEO Wireframe Pack";
-const pageDescription =
-  "Děkujeme za nákup AI SEO Wireframe Pack. Přístupový e-mail s odkazem ke stažení dorazí během několika minut.";
+import * as p from "~/content/pages/pack-dekujeme";
 ---
 
 <BaseLayout
-  title={pageTitle}
-  description={pageDescription}
+  title={p.meta.title}
+  description={p.meta.description}
   noindex={true}
 >
   <div class="ty">
@@ -28,83 +25,27 @@ const pageDescription =
             />
           </svg>
         </span>
-        <h1 class="ty-hero__title">
-          Děkujeme za nákup —<br />
-          <strong>kompletní sada pro AI SEO je vaše</strong>
-        </h1>
-        <p class="ty-hero__lead">
-          Právě jste si pořídili <strong>AI SEO Wireframe Pack</strong>.
-          Během několika minut vám na e-mail dorazí odkaz na stažení
-          master PDF (85 stran) i jednotlivých kapitol — s anotovanými
-          wireframy, šablonami textů, ukázkami strukturovaných dat
-          a krok-za-krokem návodem aplikace.
-        </p>
-        <p class="ty-hero__meta">
-          Pokud e-mail nevidíte do 10 minut, zkontrolujte složku Hromadné
-          nebo Promo akce. V&nbsp;potížích nás kontaktujte přes
-          <a href="https://www.sniperdesign.cz/kontakt" target="_blank" rel="noopener">
-            sniperdesign.cz/kontakt
-          </a> — odpovíme do 24 hodin v pracovní dny.
-        </p>
+        <h1 class="ty-hero__title" set:html={p.hero.title}></h1>
+        <p class="ty-hero__lead" set:html={p.hero.lead}></p>
+        <p class="ty-hero__meta" set:html={p.hero.meta}></p>
       </div>
     </section>
 
     <!-- ===== CO TEĎ ===== -->
     <section class="lp-section">
       <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">01</span> Co teď s Packem</span>
-        <h2 class="lp-section__title">
-          Aplikujte Pack na svůj web <strong>během odpoledne</strong>
-        </h2>
-        <p class="lp-section__lead">
-          Pack obsahuje krok-za-krokem návod aplikace pro různé CMS
-          (Upgates, Shoptet, WordPress, custom). Doporučený postup je
-          v níže uvedeném pořadí.
-        </p>
+        <span class="eyebrow"><span class="eyebrow__num">{p.stepsHead.eyebrowNum}</span> {p.stepsHead.eyebrow}</span>
+        <h2 class="lp-section__title" set:html={p.stepsHead.title}></h2>
+        <p class="lp-section__lead" set:html={p.stepsHead.lead}></p>
       </header>
 
       <ol class="ty-steps">
-        <li>
-          <span class="ty-step__num">1</span>
-          <div>
-            <strong>Otevřete master PDF</strong> a projděte si úvod + glosář
-            (kapitola 00). Najděte typy stránek, které váš web obsahuje
-            (homepage máte vždy, ostatní podle byznysu).
-          </div>
-        </li>
-        <li>
-          <span class="ty-step__num">2</span>
-          <div>
-            <strong>Začněte s homepage</strong> (kapitola 01) — nejvyšší dopad.
-            Použijte šablonu textů, ukázku strukturovaných dat a wireframe jako
-            referenci pro úpravu svého webu. Textové šablony upravíte sami,
-            strukturovaná data předejte vývojáři nebo správci webu.
-          </div>
-        </li>
-        <li>
-          <span class="ty-step__num">3</span>
-          <div>
-            <strong>Pokračujte podle priority pro váš byznys</strong> — e-shop:
-            produktová a kategoriální. Služby: prodejní landing a kontakt.
-            Blog: článek a výpis článků.
-          </div>
-        </li>
-        <li>
-          <span class="ty-step__num">4</span>
-          <div>
-            <strong>Ověřte nasazení strukturovaných dat</strong> v nástrojích od
-            Googlu — Google Search Console a test rozšířených výsledků
-            (Rich Results Test). Návod uvnitř Packu má přesné odkazy a postup.
-          </div>
-        </li>
-        <li>
-          <span class="ty-step__num">5</span>
-          <div>
-            <strong>Sledujte výsledky</strong> v Google Search Console a manuálně
-            testujte v ChatGPT a Perplexity (návod uvnitř Packu). Dotaz, datum
-            a odpověď si průběžně logujte pro porovnání v čase.
-          </div>
-        </li>
+        {p.steps.map((s) => (
+          <li>
+            <span class="ty-step__num">{s.num}</span>
+            <div set:html={s.html}></div>
+          </li>
+        ))}
       </ol>
     </section>
 
@@ -114,94 +55,49 @@ const pageDescription =
          laciné pillsy nebo fixní termíny. ===== -->
     <section class="lp-section lp-section--alt ty-upsell">
       <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">02</span> Doporučený další krok po Packu</span>
-        <h2 class="lp-section__title">
-          Pack vám ukázal principy. <strong>Audit ukáže priority pro váš web.</strong>
-        </h2>
-        <p class="lp-section__lead">
-          V&nbsp;Packu máte struktury, wireframy a&nbsp;principy pro AI&nbsp;SEO
-          stránky. Audit jde o&nbsp;úroveň konkrétněji: projdeme váš web,
-          najdeme mezery v&nbsp;technice, obsahu a&nbsp;důvěryhodnosti
-          a&nbsp;připravíme prioritní plán úprav.
-        </p>
-        <p class="lp-section__lead">
-          Výsledkem není další teorie. Dostanete jasné pořadí, <strong>co
-          řešit jako první, co může počkat a&nbsp;komu úpravy předat</strong>.
-        </p>
+        <span class="eyebrow"><span class="eyebrow__num">{p.upsellHead.eyebrowNum}</span> {p.upsellHead.eyebrow}</span>
+        <h2 class="lp-section__title" set:html={p.upsellHead.title}></h2>
+        {p.upsellLeads.map((lead) => (
+          <p class="lp-section__lead" set:html={lead}></p>
+        ))}
       </header>
 
       <!-- BLOK 1: Pack → Audit progression -->
       <div class="ty-upsell__progression">
-        <h3 class="ty-upsell__sub">Jak na sebe Pack a&nbsp;audit navazují</h3>
+        <h3 class="ty-upsell__sub" set:html={p.progressionSub}></h3>
         <div class="ty-progression">
-          <article class="ty-progression__card">
-            <span class="ty-progression__label">Pack vám dal rámec</span>
-            <p>
-              Wireframy, šablony textů a&nbsp;principy pro stránky, které mají
-              být srozumitelné pro AI vyhledávače. Pack použijete jako návod
-              pro vlastní implementaci.
-            </p>
-          </article>
-          <article class="ty-progression__card ty-progression__card--audit">
-            <span class="ty-progression__label">Audit určí konkrétní priority</span>
-            <p>
-              Podíváme se na váš web, vybereme nejdůležitější problémy
-              a&nbsp;seřadíme je podle priority. Víte, kde začít, co má největší
-              smysl řešit a&nbsp;co nechat na později.
-            </p>
-          </article>
+          {p.progression.map((card) => (
+            <article class={`ty-progression__card${card.audit ? " ty-progression__card--audit" : ""}`}>
+              <span class="ty-progression__label">{card.label}</span>
+              <p set:html={card.body}></p>
+            </article>
+          ))}
         </div>
       </div>
 
       <!-- BLOK 2: Co konkrétně získáte -->
       <div class="ty-upsell__deliverables">
-        <h3 class="ty-upsell__sub">Co konkrétně získáte</h3>
+        <h3 class="ty-upsell__sub">{p.deliverablesSub}</h3>
         <div class="ty-deliverables">
-          <article class="ty-deliverable">
-            <span class="ty-deliverable__num">1</span>
-            <h4 class="ty-deliverable__title">Diagnostiku webu ve&nbsp;třech vrstvách</h4>
-            <p>
-              Projdeme techniku, obsah a&nbsp;důvěryhodnost webu. Cílem je
-              zjistit, jestli AI systémy stránkám rozumí, mají z&nbsp;čeho
-              citovat a&nbsp;mají důvod brát váš web jako relevantní zdroj.
-            </p>
-          </article>
-          <article class="ty-deliverable">
-            <span class="ty-deliverable__num">2</span>
-            <h4 class="ty-deliverable__title">Prioritní plán úprav</h4>
-            <p>
-              Dostanete seznam doporučení rozdělený podle priority. U&nbsp;každé
-              položky bude jasné, proč je důležitá, co je potřeba upravit
-              a&nbsp;kdo ji může převzít &mdash; copywriter, vývojář nebo
-              interní tým.
-            </p>
-          </article>
-          <article class="ty-deliverable">
-            <span class="ty-deliverable__num">3</span>
-            <h4 class="ty-deliverable__title">60min konzultaci 1:1</h4>
-            <p>
-              Nálezy s&nbsp;vámi projdeme na&nbsp;online konzultaci. Vysvětlíme
-              priority, odpovíme na&nbsp;otázky a&nbsp;pomůžeme vám rozhodnout,
-              co řešit jako první.
-            </p>
-          </article>
+          {p.deliverables.map((d) => (
+            <article class="ty-deliverable">
+              <span class="ty-deliverable__num">{d.num}</span>
+              <h4 class="ty-deliverable__title" set:html={d.title}></h4>
+              <p set:html={d.body}></p>
+            </article>
+          ))}
         </div>
       </div>
 
       <!-- BLOK 3: Kdy audit dává smysl -->
       <div class="ty-upsell__qualify">
-        <h3 class="ty-upsell__sub">Audit dává smysl, pokud chcete rozhodnout:</h3>
+        <h3 class="ty-upsell__sub">{p.qualifySub}</h3>
         <ul class="ty-qualify-list">
-          <li>které stránky mají největší prioritu,</li>
-          <li>kde má web největší mezery pro AI&nbsp;SEO,</li>
-          <li>co zvládnete upravit sami a&nbsp;co předat specialistům,</li>
-          <li>jaké úpravy mají nejvyšší odhadovaný dopad,</li>
-          <li>kde zaostáváte proti relevantní konkurenci.</li>
+          {p.qualifyList.map((item) => (
+            <li set:html={item}></li>
+          ))}
         </ul>
-        <p class="ty-qualify-close">
-          Pack vám dá dobrý základ. <strong>Audit z&nbsp;něj udělá konkrétní
-          plán pro váš web.</strong>
-        </p>
+        <p class="ty-qualify-close" set:html={p.qualifyClose}></p>
       </div>
 
       <!-- BLOK 4: Trust block (kompaktní řádek).
@@ -210,45 +106,26 @@ const pageDescription =
            identickým mechanismem, na všech viewportech (žádný calc/scrollbar
            edge case). -->
       <div class="ty-upsell__row">
-        <p class="ty-upsell__trust">
-          <strong>Audit vede stejný tým, který vytvořil Pack.</strong> Sniper
-          Design je Zlatý Upgates partner od&nbsp;roku 2016, má zkušenost
-          s&nbsp;více než 600 e-shopy na&nbsp;českém trhu a&nbsp;vyvíjí vlastní
-          AI nástroje GPTfeed a&nbsp;SYNKRO.
-        </p>
+        <p class="ty-upsell__trust" set:html={p.trust}></p>
       </div>
 
       <!-- BIG CTA card -->
       <div class="ty-upsell__row">
       <article class="ty-audit-card ty-audit-card--big">
-        <span class="ty-audit-card__pill">Doporučený další krok po Packu</span>
-        <h3 class="ty-audit-card__title">AI&nbsp;SEO audit od Sniper Design</h3>
-        <p class="ty-audit-card__body">
-          Projdeme váš konkrétní web a&nbsp;připravíme prioritní plán úprav
-          pro AI&nbsp;SEO. Zaměříme se na&nbsp;techniku, obsah
-          a&nbsp;důvěryhodnost &mdash; tedy na&nbsp;oblasti, které rozhodují,
-          jestli AI systémy stránkám rozumí, mají z&nbsp;čeho citovat
-          a&nbsp;mají důvod váš web doporučit.
-        </p>
-        <p class="ty-audit-card__body">
-          Součástí je <strong>60min konzultace 1:1</strong>, kde projdeme
-          hlavní nálezy, vysvětlíme priority a&nbsp;doporučíme další postup
-          pro váš tým, copywritera nebo vývojáře.
-        </p>
-        <span class="ty-audit-card__chip">✓ Stejný tým, který vytvořil Pack &mdash; Sniper Design</span>
+        <span class="ty-audit-card__pill" set:html={p.auditCard.pill}></span>
+        <h3 class="ty-audit-card__title" set:html={p.auditCard.title}></h3>
+        {p.auditCard.bodies.map((body) => (
+          <p class="ty-audit-card__body" set:html={body}></p>
+        ))}
+        <span class="ty-audit-card__chip" set:html={p.auditCard.chip}></span>
         <div class="ty-audit-card__footer">
           <div class="ty-audit-card__price">
-            <strong>9&nbsp;990&nbsp;Kč</strong>
-            <span>bez DPH (12&nbsp;088&nbsp;Kč s&nbsp;DPH)</span>
+            <strong set:html={p.auditCard.priceMain}></strong>
+            <span set:html={p.auditCard.priceNote}></span>
           </div>
-          <a href="/audit/" class="ty-audit-card__cta">
-            Objednat AI&nbsp;SEO audit&nbsp;→
-          </a>
+          <a href={p.auditCard.ctaHref} class="ty-audit-card__cta" set:html={p.auditCard.ctaLabel}></a>
         </div>
-        <p class="ty-audit-card__secondary">
-          Chcete nejdřív projít Pack? V&nbsp;pořádku. K&nbsp;auditu se můžete
-          vrátit, až budete chtít konkrétní review vašeho webu.
-        </p>
+        <p class="ty-audit-card__secondary" set:html={p.auditCard.secondary}></p>
       </article>
       </div>
     </section>

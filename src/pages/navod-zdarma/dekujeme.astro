@@ -1,14 +1,11 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
-
-const pageTitle = "Děkujeme — návod je na cestě";
-const pageDescription =
-  "E-mail s odkazem ke stažení PDF jsme právě odeslali. Zatím se mrkněte, co dalšího máme.";
+import * as p from "~/content/pages/navod-zdarma-dekujeme";
 ---
 
 <BaseLayout
-  title={pageTitle}
-  description={pageDescription}
+  title={p.meta.title}
+  description={p.meta.description}
   noindex={true}
 >
   <div class="ty">
@@ -25,74 +22,42 @@ const pageDescription =
         </svg>
       </div>
 
-      <span class="ty-hero__eyebrow">E-mail úspěšně přijat</span>
-      <h1 class="ty-hero__title">
-        Hotovo — <strong>návod je na cestě</strong>
-      </h1>
-      <p class="ty-hero__lead">
-        Do několika sekund vám dorazí e-mail s odkazem ke stažení PDF.
-        Pokud zprávu nevidíte, mrkněte do složky <em>Hromadné</em> nebo
-        <em>Promo akce</em>.
-      </p>
+      <span class="ty-hero__eyebrow">{p.hero.eyebrow}</span>
+      <h1 class="ty-hero__title" set:html={p.hero.title}></h1>
+      <p class="ty-hero__lead" set:html={p.hero.lead}></p>
 
-      <p class="ty-hero__fallback">
-        Nechce se vám čekat? <a
-          href="/download/homepage-pro-AI-vyhledavani.pdf"
-          download
-          class="ty-hero__download"
-        >Stáhněte si PDF přímo →</a>
-      </p>
+      <p class="ty-hero__fallback" set:html={p.hero.fallback}></p>
     </section>
 
     <!-- Co dál — cross-sell (sjednoceno s /navod-zdarma/ lp-tier vzorem) -->
     <section class="ty-section">
       <header class="ty-section__head">
-        <span class="ty-section__eyebrow">Co dělat dál</span>
-        <span class="ty-section__proof">600+ e‑shopů · specialisté na Upgates a Shoptet</span>
-        <h2 class="ty-section__title">
-          Návod řeší homepage. <strong>AI vyhledávání ale hodnotí celý web.</strong>
-        </h2>
-        <p class="ty-section__lead">
-          Návod vám pomůže začít na&nbsp;homepage. Pokud později budete chtít
-          rozšířit stejný princip na&nbsp;produktové stránky, kategorie
-          a&nbsp;blog, existují <strong>dvě cesty</strong> &mdash; podle toho,
-          kolik chcete dělat sami.
-        </p>
+        <span class="ty-section__eyebrow">{p.crossSellHead.eyebrow}</span>
+        <span class="ty-section__proof">{p.crossSellHead.proof}</span>
+        <h2 class="ty-section__title" set:html={p.crossSellHead.title}></h2>
+        <p class="ty-section__lead" set:html={p.crossSellHead.lead}></p>
       </header>
 
       <div class="lp-tiers">
-        <article class="lp-tier">
-          <span class="lp-tier__num">Pack · pro celý web</span>
-          <h3 class="lp-tier__title">Kompletní AI&nbsp;SEO Wireframe Pack</h3>
-          <p class="lp-tier__body">
-            Návod pokryl homepage. Pack pokryje celý e‑shop — sedm typů stránek
-            s&nbsp;hotovými texty, kterým AI rozumí. Otevřete, dosaďte vlastní
-            obsah, máte hotovo. Bez konzultantů.
-          </p>
-          <div class="lp-tier__footer">
-            <div class="lp-tier__price">1&nbsp;490&nbsp;Kč <small>jednorázově, bez DPH</small></div>
-            <a href="/pack/" class="lp-tier__cta">Koupit Pack&nbsp;→</a>
-          </div>
-        </article>
-
-        <article class="lp-tier lp-tier--audit lp-tier--featured">
-          <div class="lp-tier__head">
-            <span class="lp-tier__num">Audit · uděláme to za vás</span>
-            <span class="lp-tier__pill">★&nbsp;To nejlepší</span>
-          </div>
-          <h3 class="lp-tier__title">AI&nbsp;SEO audit od Sniper Design</h3>
-          <p class="lp-tier__body">
-            Získáte přesný plán, co změnit na&nbsp;každé stránce, aby vás AI
-            začala doporučovat zákazníkům. Víte, co AI hledá u&nbsp;vašeho
-            oboru, kde má konkurence díry a&nbsp;jak ji předběhnout. Plus
-            60min konzultace.
-          </p>
-          <span class="lp-tier__chip">✓ Postavili jsme 600+ e‑shopů na Upgates a Shoptet</span>
-          <div class="lp-tier__footer">
-            <div class="lp-tier__price">9&nbsp;990&nbsp;Kč <small>jednorázově, bez DPH</small></div>
-            <a href="/audit/" class="lp-tier__cta">Objednat&nbsp;→</a>
-          </div>
-        </article>
+        {p.tiers.map((t) => (
+          <article class={`lp-tier${t.featured ? " lp-tier--audit lp-tier--featured" : ""}`}>
+            {t.featured ? (
+              <div class="lp-tier__head">
+                <span class="lp-tier__num" set:html={t.num}></span>
+                <span class="lp-tier__pill" set:html={t.pill ?? ""}></span>
+              </div>
+            ) : (
+              <span class="lp-tier__num" set:html={t.num}></span>
+            )}
+            <h3 class="lp-tier__title" set:html={t.title}></h3>
+            <p class="lp-tier__body" set:html={t.body}></p>
+            {t.chip && <span class="lp-tier__chip" set:html={t.chip}></span>}
+            <div class="lp-tier__footer">
+              <div class="lp-tier__price" set:html={`${t.price} <small>${t.priceNote}</small>`}></div>
+              <a href={t.ctaHref} class="lp-tier__cta" set:html={t.ctaLabel}></a>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
 
@@ -102,70 +67,28 @@ const pageDescription =
     <section class="ty-agency">
       <div class="ty-agency__inner">
         <header class="ty-agency__head">
-          <span class="ty-agency__eyebrow">Za návodem stojí</span>
-          <h2 class="ty-agency__title">
-            <strong>E-commerce praxe Sniper Design</strong>, ne obecný SEO checklist
-          </h2>
-          <p class="ty-agency__lead">
-            AI&nbsp;SEO návod nevznikl jako univerzální šablona pro všechny weby.
-            Připravili ho lidé ze&nbsp;Sniper Design, kteří se dlouhodobě
-            specializují na e-shopy, produktová data, obsah a&nbsp;automatizaci.
-            Díky vlastnímu e-shopu i&nbsp;vlastním nástrojům řešíme AI&nbsp;SEO
-            v&nbsp;kontextu reálného provozu, ne jen jako teorii.
-          </p>
+          <span class="ty-agency__eyebrow">{p.agency.eyebrow}</span>
+          <h2 class="ty-agency__title" set:html={p.agency.title}></h2>
+          <p class="ty-agency__lead" set:html={p.agency.lead}></p>
         </header>
 
         <div class="ty-agency__tiles">
-          <article class="ty-agency-tile">
-            <h3 class="ty-agency-tile__title">Upgates od&nbsp;roku 2016</h3>
-            <p class="ty-agency-tile__body">
-              Sniper Design je <strong>Zlatý Upgates partner od&nbsp;roku 2016</strong>
-              a&nbsp;zároveň <strong>Gold partner Shoptet</strong>. Dlouhodobě
-              pracujeme s&nbsp;platformami, na&nbsp;kterých běží české e-shopy
-              každý den.
-            </p>
-          </article>
-
-          <article class="ty-agency-tile">
-            <h3 class="ty-agency-tile__title">Zhruba 600&nbsp;e-shopů</h3>
-            <p class="ty-agency-tile__body">
-              Na&nbsp;českém trhu máme za&nbsp;sebou přibližně <strong>600
-              e-shopových projektů</strong>. Na&nbsp;webu najdete <strong>43
-              vybraných referencí</strong> napříč různými obory a&nbsp;velikostmi
-              obchodů.
-            </p>
-          </article>
-
-          <article class="ty-agency-tile">
-            <h3 class="ty-agency-tile__title">Jsme také e-shopaři</h3>
-            <p class="ty-agency-tile__body">
-              Provozujeme vlastní e-shop <strong>MEGA&nbsp;DETAIL</strong>.
-              Díky tomu řešíme obsah, produkty, objednávky, sklad
-              i&nbsp;zákaznickou zkušenost také z&nbsp;pohledu provozovatele.
-            </p>
-          </article>
-
-          <article class="ty-agency-tile">
-            <h3 class="ty-agency-tile__title">Vlastní e-commerce nástroje</h3>
-            <p class="ty-agency-tile__body">
-              Vyvíjíme <strong>GPTfeed</strong> pro AI tvorbu produktových
-              a&nbsp;kategoriových textů a&nbsp;<strong>SYNKRO</strong>
-              pro automatizaci e-shopových procesů. Nezůstáváme jen
-              u&nbsp;doporučení &mdash; stavíme nástroje pro konkrétní
-              provozní problémy e-shopů.
-            </p>
-          </article>
+          {p.agency.tiles.map((tile) => (
+            <article class="ty-agency-tile">
+              <h3 class="ty-agency-tile__title" set:html={tile.title}></h3>
+              <p class="ty-agency-tile__body" set:html={tile.body}></p>
+            </article>
+          ))}
         </div>
 
         <p class="ty-agency__cta-row">
           <a
-            href="https://www.sniperdesign.cz/reference/"
+            href={p.agency.ctaHref}
             target="_blank"
             rel="noopener"
             class="ty-agency__cta"
-          >
-            Podívat se na vybrané reference&nbsp;→
-          </a>
+            set:html={p.agency.ctaLabel}
+          ></a>
         </p>
       </div>
     </section>
@@ -173,31 +96,21 @@ const pageDescription =
     <!-- Suggested reading -->
     <section class="ty-section ty-section--alt">
       <header class="ty-section__head">
-        <span class="ty-section__eyebrow">Mezitím se mrkněte</span>
+        <span class="ty-section__eyebrow">{p.suggestedHead.eyebrow}</span>
         <h2 class="ty-section__title">
-          Související obsah na webu
+          {p.suggestedHead.title}
         </h2>
       </header>
 
       <ul class="ty-links">
-        <li>
-          <a href="/seo-vs-geo-vs-aeo-vs-aio/">
-            <span class="ty-link__title">SEO vs. GEO vs. AEO vs. AIO</span>
-            <span class="ty-link__desc">Hlavní průvodce čtyřmi disciplínami AI éry vyhledávání. Pochopte rozdíl, abyste věděli, kterou cestou jít.</span>
-          </a>
-        </li>
-        <li>
-          <a href="/blog/aeo-optimalizace-v-praxi/">
-            <span class="ty-link__title">AEO optimalizace v praxi</span>
-            <span class="ty-link__desc">Detailní průvodce, jak dostat web do Google AI Overviews a Featured Snippets — praktický postup ve 12 krocích.</span>
-          </a>
-        </li>
-        <li>
-          <a href="/blog/geo-optimalizace/">
-            <span class="ty-link__title">GEO optimalizace</span>
-            <span class="ty-link__desc">Jak připravit obsah, aby ho citovaly ChatGPT, Perplexity a Claude. Citation hooks, fact density, brand mentions.</span>
-          </a>
-        </li>
+        {p.suggestedLinks.map((link) => (
+          <li>
+            <a href={link.href}>
+              <span class="ty-link__title">{link.title}</span>
+              <span class="ty-link__desc">{link.desc}</span>
+            </a>
+          </li>
+        ))}
       </ul>
     </section>
 
@@ -205,7 +118,7 @@ const pageDescription =
     <section class="ty-back">
       <a href="/" class="ty-back__link">
         <span aria-hidden="true">←</span>
-        Zpět na úvod aiseo-optimalizace.cz
+        {p.backLabel}
       </a>
     </section>
   </div>
