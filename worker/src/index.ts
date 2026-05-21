@@ -157,7 +157,7 @@ async function handleAuditInquiry(req: Request, env: Env): Promise<Response> {
     from: env.AUDIT_FROM,
     to: email,
     reply_to: env.AUDIT_NOTIFY_TO,
-    subject: "Dostali jsme vaši poptávku AI SEO auditu",
+    subject: `Potvrzení poptávky AI SEO auditu pro ${auditUrl}`,
     html: renderReplyEmail({ jmeno, url: auditUrl }),
   });
 
@@ -229,18 +229,38 @@ function renderReplyEmail(data: { jmeno: string; url: string }): string {
   const e = escapeHtml;
   return `<!DOCTYPE html>
 <html><body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; color: #18181b; line-height: 1.55;">
-  <h1 style="font-size: 22px; margin: 0 0 16px;">Děkujeme za poptávku auditu</h1>
-  <p>Ahoj ${e(data.jmeno)},</p>
-  <p>dorazila nám vaše poptávka <strong>AI&nbsp;SEO auditu</strong> pro <a href="${e(data.url)}" target="_blank">${e(data.url)}</a>. Tým Sniperdesignu vás bude kontaktovat <strong>do 24 hodin v pracovní dny</strong> s upřesněním rozsahu, fakturou a termínem startu auditu.</p>
-  <h2 style="font-size: 16px; margin-top: 24px;">Co bude následovat</h2>
-  <ol style="padding-left: 20px;">
-    <li><strong>Ozveme se vám do 24 hodin</strong> e-mailem nebo telefonicky.</li>
-    <li><strong>Vystavíme fakturu</strong> na 9&nbsp;990&nbsp;Kč bez DPH (12&nbsp;088&nbsp;Kč s&nbsp;DPH), splatnost 14&nbsp;dnů.</li>
-    <li><strong>Po připsání platby zahájíme audit.</strong> Výstup do&nbsp;5&nbsp;pracovních dní.</li>
-    <li><strong>60min konzultace</strong> projdeme audit a&nbsp;poradíme s&nbsp;implementací.</li>
+  <p>Dobrý den,</p>
+  <p>děkuji za poptávku <strong>AI&nbsp;SEO auditu</strong> pro <a href="${e(data.url)}" target="_blank">${e(data.url)}</a>. Poptávka dorazila v&nbsp;pořádku.</p>
+  <p>Cílem auditu není obecný checklist, ale <strong>konkrétní plán úprav pro váš web</strong>: co řešit jako první, proč to má prioritu a jaký dopad to může mít na viditelnost ve&nbsp;vyhledávání a&nbsp;AI&nbsp;odpovědích.</p>
+
+  <h2 style="font-size: 16px; margin: 24px 0 8px;">Co z&nbsp;auditu získáte</h2>
+  <ul style="padding-left: 20px; margin: 0;">
+    <li>prioritní seznam úprav rozdělený podle dopadu: P0&nbsp;/ P1&nbsp;/ P2,</li>
+    <li>report s&nbsp;vysvětlením problému, doporučením řešení a&nbsp;odhadem dopadu,</li>
+    <li>60min konzultaci, kde projdeme hlavní zjištění a&nbsp;domluvíme další kroky implementace.</li>
+  </ul>
+
+  <h2 style="font-size: 16px; margin: 24px 0 8px;">Další postup</h2>
+  <ol style="padding-left: 20px; margin: 0;">
+    <li style="margin-bottom: 10px;"><strong>Ozvu se vám e-mailem nebo telefonicky.</strong><br />Upřesníme rozsah auditu, případné priority a&nbsp;termín zahájení.</li>
+    <li style="margin-bottom: 10px;"><strong>Pošlu fakturu na&nbsp;9&nbsp;990&nbsp;Kč bez&nbsp;DPH.</strong><br />Cena s&nbsp;DPH je 12&nbsp;088&nbsp;Kč. Splatnost faktury je 14&nbsp;dnů.</li>
+    <li style="margin-bottom: 10px;"><strong>Audit zahájím po&nbsp;uhrazení faktury / v&nbsp;domluveném termínu.</strong><br />Po dokončení auditu vám výstup pošlu na&nbsp;e-mail.</li>
+    <li><strong>Následně projdeme audit na&nbsp;60min konzultaci.</strong><br />Zaměříme se hlavně na&nbsp;priority a&nbsp;praktickou implementaci.</li>
   </ol>
-  <p style="margin-top: 24px;">Pokud máte dotaz, který nemůže čekat, odpovězte přímo na tento e-mail nebo zavolejte <a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a>.</p>
-  <p style="margin-top: 24px;">Hezký den,<br /><strong>Kamil ze Sniper Design</strong><br /><a href="https://aiseo-optimalizace.cz">aiseo-optimalizace.cz</a></p>
+
+  <p style="margin-top: 24px;">Pokud chcete <strong>urychlit start</strong>, můžete mi rovnou poslat:</p>
+  <ul style="padding-left: 20px; margin: 0;">
+    <li>přístup do&nbsp;Google Search Console pro <a href="${e(data.url)}" target="_blank">${e(data.url)}</a>,</li>
+    <li>URL hlavních konkurentů,</li>
+    <li>stránky nebo kategorie, na&nbsp;které se chcete zaměřit přednostně.</li>
+  </ul>
+  <p>Není to ale nutné &mdash; případně to projdeme při prvním kontaktu.</p>
+
+  <p style="margin-top: 24px;">Pokud máte cokoli urgentního, odpovězte na&nbsp;tento e-mail nebo zavolejte na&nbsp;<a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a>.</p>
+
+  <p style="margin-top: 24px; font-size: 13px; color: #71717a;">Tento e-mail je pouze potvrzením o&nbsp;přijetí poptávky, nejde o&nbsp;uzavření smlouvy.</p>
+
+  <p style="margin-top: 24px;">Hezký den,<br /><strong>Kamil</strong><br />Sniper Design / CPU&nbsp;s.r.o.<br /><a href="https://aiseo-optimalizace.cz">aiseo-optimalizace.cz</a></p>
 </body></html>`;
 }
 
