@@ -61,7 +61,23 @@ const heroSubtitle = parenMatch ? parenMatch[1] : afterDash;
 const heroTagline = parenMatch ? parenMatch[2] : null;
 
 /**
- * JSON-LD schema — preserve existing.
+ * Word count + reading time z entry.body (raw markdown) — stejná logika
+ * jako blog/[slug].astro pro konzistenci Article schema.
+ */
+const rawBody = entry.body ?? "";
+const wordCount = rawBody
+  .replace(/<[^>]+>/g, " ")
+  .replace(/[#*_`>~]/g, " ")
+  .split(/\s+/)
+  .filter(Boolean).length;
+const readingMinutes = Math.max(1, Math.round(wordCount / 200));
+
+const SITE_ORIGIN = "https://aiseo-optimalizace.cz";
+const articleURL = `${SITE_ORIGIN}/${entry.data.slug}/`;
+const articleImageURL = `${SITE_ORIGIN}/og/${entry.data.slug}.png`;
+
+/**
+ * JSON-LD schema — Article s completným polem pro Google Article Rich Results.
  */
 const faqJsonLd =
   entry.data.faq && entry.data.faq.length > 0
@@ -84,10 +100,22 @@ const articleJsonLd = {
   "@type": "Article",
   headline: entry.data.title,
   description: entry.data.description,
-  dateModified: entry.data.updated,
+  image: [articleImageURL],
   datePublished: entry.data.updated,
+  dateModified: entry.data.updated,
   inLanguage: "cs-CZ",
   about: entry.data.abbr,
+  articleSection: entry.data.abbr,
+  wordCount,
+  timeRequired: `PT${readingMinutes}M`,
+  mainEntityOfPage: { "@type": "WebPage", "@id": articleURL },
+  author: {
+    "@type": "Person",
+    name: "Kamil ze Sniper Design",
+    url: "https://www.sniperdesign.cz/",
+    worksFor: { "@id": `${SITE_ORIGIN}/#publisher` },
+  },
+  publisher: { "@id": `${SITE_ORIGIN}/#publisher` },
 };
 
 /** HowTo JSON-LD — vykreslí se jen pokud má sekce `howto` field ve frontmatteru.
@@ -139,7 +167,14 @@ function renderFaqMarkdown(text: string): string {
 }
 ---
 
-<BaseLayout title={entry.data.title} description={entry.data.description} jsonLd={allLd} image={ogImage}>
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  jsonLd={allLd}
+  image={ogImage}
+  ogType="article"
+  breadcrumb={[{ label: entry.data.abbr, href: `/${entry.data.slug}/` }]}
+>
   <div class="page" data-abbr={entry.data.abbr} style={heroStyle}>
     <!-- HERO -->
     <section class="d-hero">

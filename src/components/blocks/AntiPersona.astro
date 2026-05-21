@@ -19,7 +19,7 @@ interface Props {
 const { title, icon = "❌" } = Astro.props;
 ---
 
-<aside class="anti-persona">
+<div class="anti-persona">
   <header class="anti-persona__head">
     <span class="anti-persona__icon">{icon}</span>
     <h3 class="anti-persona__title">{title}</h3>
@@ -27,7 +27,7 @@ const { title, icon = "❌" } = Astro.props;
   <div class="anti-persona__body">
     <slot />
   </div>
-</aside>
+</div>
 
 <style>
   .anti-persona {

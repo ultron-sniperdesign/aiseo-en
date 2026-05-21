@@ -40,18 +40,39 @@ const wordCount = rawBody
 const readingMinutes = Math.max(1, Math.round(wordCount / 200));
 const wordCountRounded = Math.round(wordCount / 100) * 100;
 
+const SITE_ORIGIN = "https://aiseo-optimalizace.cz";
+const articleURL = `${SITE_ORIGIN}/blog/${entry.data.slug}/`;
+const articleImageURL = `${SITE_ORIGIN}/og/${entry.data.slug}.png`;
+
 /**
  * JSON-LD — Article + FAQPage + HowTo (pokud má článek `howto` field).
+ *
+ * Article schema dokončené pro Google Article Rich Results:
+ * - headline, description, image, author, publisher, dates: required
+ * - mainEntityOfPage: cíl rich snippet linku
+ * - wordCount, articleSection, timeRequired: signal pro Discover / kategorizaci
  */
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: entry.data.title,
   description: entry.data.description,
-  dateModified: entry.data.updated,
+  image: [articleImageURL],
   datePublished: entry.data.updated,
+  dateModified: entry.data.updated,
   inLanguage: "cs-CZ",
   keywords: entry.data.keywords.join(", "),
+  wordCount,
+  articleSection: crumbLabel,
+  timeRequired: `PT${readingMinutes}M`,
+  mainEntityOfPage: { "@type": "WebPage", "@id": articleURL },
+  author: {
+    "@type": "Person",
+    name: "Kamil ze Sniper Design",
+    url: "https://www.sniperdesign.cz/",
+    worksFor: { "@id": `${SITE_ORIGIN}/#publisher` },
+  },
+  publisher: { "@id": `${SITE_ORIGIN}/#publisher` },
 };
 
 const faqJsonLd =
@@ -99,6 +120,11 @@ const ogImage = `/og/${entry.data.slug}.png`;
   description={entry.data.description}
   jsonLd={allLd}
   image={ogImage}
+  ogType="article"
+  breadcrumb={[
+    { label: "Blog", href: "/blog/" },
+    { label: entry.data.title, href: `/blog/${entry.data.slug}/` },
+  ]}
 >
   {useRich ? (
     <RichLayout

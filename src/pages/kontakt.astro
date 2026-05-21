@@ -37,8 +37,14 @@ const orgJsonLd = {
 };
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription} jsonLd={orgJsonLd} image="/og/kontakt.png">
-  <main class="kontakt">
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  jsonLd={orgJsonLd}
+  image="/og/kontakt.png"
+  breadcrumb={[{ label: "Kontakt", href: "/kontakt/" }]}
+>
+  <div class="kontakt">
     <!-- ===== HERO — agency brand identity ===== -->
     <section class="kontakt-hero" aria-labelledby="kontakt-hero-title">
       <div class="kontakt-hero__inner">
@@ -231,7 +237,7 @@ const orgJsonLd = {
         </a>
       </div>
 
-      <aside class="kontakt-bridge">
+      <div class="kontakt-bridge">
         <p>
           Pokud nechcete rovnou službu od&nbsp;agentury, <strong>AI&nbsp;SEO
           Wireframe Pack</strong> je nejdostupnější způsob, jak si&nbsp;tenhle
@@ -244,7 +250,7 @@ const orgJsonLd = {
             <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
         </a>
-      </aside>
+      </div>
     </section>
 
     <!-- ===== 02 PROČ NÁM MŮŽETE DŮVĚŘOVAT ===== -->
@@ -485,18 +491,18 @@ const orgJsonLd = {
         </div>
       </div>
     </section>
-  </main>
+  </div>
 </BaseLayout>
 
 <style>
   .kontakt {
     --font-agency: "Kumbh Sans", var(--font-sans);
     --lp-violet: oklch(0.55 0.25 305);
-    --lp-magenta: oklch(0.62 0.27 335);
+    --lp-magenta: oklch(0.5 0.27 335);
     --sd-deep: oklch(0.22 0.13 305);
     --sd-deeper: oklch(0.16 0.11 305);
     --sd-violet: oklch(0.55 0.25 305);
-    --sd-magenta: oklch(0.62 0.27 335);
+    --sd-magenta: oklch(0.5 0.27 335);
     --sd-gold: oklch(0.82 0.16 80);
     --sd-paper: oklch(0.985 0.004 250);
   }

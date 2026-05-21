@@ -14,6 +14,16 @@ export interface Props {
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   /** noindex pro thank-you / debug pages. */
   noindex?: boolean;
+  /** OG type — default "website". Pro články "article", pro paid produkt "product". */
+  ogType?: "website" | "article" | "product";
+  /**
+   * Breadcrumb cesta bez root (Úvod se prependuje automaticky). Když je
+   * předaná, BaseLayout vygeneruje BreadcrumbList JSON-LD pro drobečkový
+   * rich snippet pod každým search result.
+   *
+   * Příklad: [{ label: "Blog", href: "/blog/" }, { label: "Článek", href: "/blog/foo/" }]
+   */
+  breadcrumb?: Array<{ label: string; href: string }>;
 }
 
 const {
@@ -23,28 +33,83 @@ const {
   canonical,
   jsonLd,
   noindex = false,
+  ogType = "website",
+  breadcrumb,
 } = Astro.props;
 
 const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
 const ogImageURL = new URL(image, Astro.site).toString();
+const siteOrigin = new URL("/", Astro.site).toString().replace(/\/$/, "");
 
+/**
+ * Organization schema — publisher = Sniperdesign (CPU s.r.o.), provozovatel
+ * webu aiseo-optimalizace.cz. logo + sameAs umožňují Google Knowledge Graph
+ * + AI engines (Perplexity, ChatGPT) attribution na konkrétní subjekt.
+ *
+ * @id stabilní URI fragment pro křížové reference z Article.publisher.
+ */
 const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "aiseo-optimalizace.cz",
-  url: "https://aiseo-optimalizace.cz",
-  description: "Edukativní průvodce AI érou vyhledávání: SEO, GEO, AEO, AIO.",
+  "@id": `${siteOrigin}/#publisher`,
+  name: "Sniperdesign",
+  alternateName: "CPU s.r.o.",
+  url: siteOrigin,
+  description: "Edukativní průvodce AI érou vyhledávání: SEO, GEO, AEO, AIO. Provozuje agentura Sniperdesign (CPU s.r.o.).",
+  logo: {
+    "@type": "ImageObject",
+    url: `${siteOrigin}/apple-touch-icon.png`,
+    width: 180,
+    height: 180,
+  },
+  sameAs: ["https://www.sniperdesign.cz/", "https://www.megadetail.cz/"],
 };
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${siteOrigin}/#website`,
   name: "aiseo-optimalizace.cz",
-  url: "https://aiseo-optimalizace.cz",
+  url: siteOrigin,
   inLanguage: "cs-CZ",
+  publisher: { "@id": `${siteOrigin}/#publisher` },
 };
 
-const allJsonLd = [orgSchema, websiteSchema, ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])];
+/**
+ * BreadcrumbList — auto-generuje se z prop `breadcrumb`. Vždy prependuje
+ * "Úvod" jako position 1. Položky musí mít absolutní href v Schema.org.
+ */
+const breadcrumbSchema = breadcrumb && breadcrumb.length > 0
+  ? {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Úvod", item: `${siteOrigin}/` },
+        ...breadcrumb.map((b, i) => ({
+          "@type": "ListItem",
+          position: i + 2,
+          name: b.label,
+          item: new URL(b.href, Astro.site).toString(),
+        })),
+      ],
+    }
+  : undefined;
+
+const allJsonLd = [
+  orgSchema,
+  websiteSchema,
+  ...(breadcrumbSchema ? [breadcrumbSchema] : []),
+  ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []),
+];
+
+/**
+ * Robots meta — single tag. noindex režim přebíjí všechno. V indexovaném
+ * režimu explicitní `max-image-preview:large` zlepšuje pravděpodobnost
+ * velkého náhledu v Google AI Overviews citation cards.
+ */
+const robotsContent = noindex
+  ? "noindex,nofollow"
+  : "max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 
 /**
  * Tracking & verification — build-time env vars (přes GH Secrets v CI).
@@ -82,13 +147,24 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
 
-    {noindex && <meta name="robots" content="noindex,nofollow" />}
+    {/* Author — AI engines (ChatGPT, Perplexity) berou tento tag jako attribution signal. */}
+    <meta name="author" content="Kamil ze Sniper Design" />
 
-    <meta property="og:type" content="website" />
+    {/* Robots — single tag, noindex přebíjí. max-image-preview:large povolí Google AI
+        Overviews zobrazit větší citation cards (důležité pro AI-éru SEO). */}
+    <meta name="robots" content={robotsContent} />
+
+    {/* Theme color — mobilní browser chrome (Chrome/Safari address bar background). */}
+    <meta name="theme-color" content="#ffffff" />
+
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1536" />
+    <meta property="og:image:height" content="1024" />
+    <meta property="og:image:alt" content={title} />
     <meta property="og:locale" content="cs_CZ" />
     <meta property="og:site_name" content="aiseo-optimalizace.cz" />
 
@@ -96,6 +172,7 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content={title} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -126,6 +203,28 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
         `}</script>
       </>
     )}
+
+    {/* Meta Pixel (Facebook) — pixel ID 990248333397178. Honor Sec-GPC / DNT
+        stejně jako GA4 — pokud uživatel signalizuje opt-out, pixel se nenačte
+        a žádný PageView event nepošle. <noscript> fallback se v takovém případě
+        neuplatní (browser by neměl JS, a tudíž nemůže Sec-GPC vyhodnotit). */}
+    <script is:inline>
+      if (navigator.globalPrivacyControl === true || navigator.doNotTrack === "1") {
+        console.info("[meta-pixel] respektuji Sec-GPC / DNT — pixel není aktivní");
+      } else {
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '990248333397178');
+        fbq('track', 'PageView');
+      }
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=990248333397178&ev=PageView&noscript=1" alt="" /></noscript>
 
     {allJsonLd.map((s) => <script is:inline type="application/ld+json" set:html={JSON.stringify(s)} />)}
 

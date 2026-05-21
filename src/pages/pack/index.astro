@@ -13,6 +13,43 @@ const pageDescription =
  */
 const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/4gM9AU8Km1wm6vY4Hw0VO00";
 
+const SITE_ORIGIN = "https://aiseo-optimalizace.cz";
+
+/**
+ * Product JSON-LD — placený digitální produkt (1 490 Kč CZK). Bez tohoto
+ * schématu Google nemůže produkt zařadit do Google Shopping / Merchant
+ * Listing rich results a AI engines neumí strojově detekovat cenu.
+ *
+ * priceValidUntil necháváme rok dopředu — auto refresh za rok (recomputed
+ * při buildu, aktuálně 2027-05-20). Stripe Payment Link je vždy LIVE.
+ */
+const PRICE_VALID_UNTIL = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
+  .toISOString()
+  .slice(0, 10);
+
+const productJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "AI SEO Wireframe Pack",
+  description:
+    "Sedm typů stránek pro AI vyhledávání: anotované wireframy, šablony textů, ukázky strukturovaných dat a krok-za-krokem návod aplikace. Master PDF 85 stran. Aplikujete na svůj web během odpoledne.",
+  image: [`${SITE_ORIGIN}/og/pack.png`],
+  sku: "AISEO-PACK-V1",
+  brand: { "@type": "Brand", name: "Sniperdesign" },
+  category: "Digital Product / E-book / Framework",
+  url: `${SITE_ORIGIN}/pack/`,
+  offers: {
+    "@type": "Offer",
+    url: STRIPE_CHECKOUT_URL,
+    price: "1490",
+    priceCurrency: "CZK",
+    priceValidUntil: PRICE_VALID_UNTIL,
+    availability: "https://schema.org/InStock",
+    itemCondition: "https://schema.org/NewCondition",
+    seller: { "@id": `${SITE_ORIGIN}/#publisher` },
+  },
+};
+
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -121,8 +158,15 @@ const pageTypes = [
 ];
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription} jsonLd={faqJsonLd} image="/og/pack.png">
-  <main class="pack">
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  jsonLd={[productJsonLd, faqJsonLd]}
+  image="/og/pack.png"
+  ogType="product"
+  breadcrumb={[{ label: "AI SEO Wireframe Pack", href: "/pack/" }]}
+>
+  <div class="pack">
     <!-- ===== HERO ===== -->
     <section class="pack-hero">
       <div class="pack-hero__inner">
@@ -663,7 +707,7 @@ a oproti [alternativa] nabízí [hlavní rozdíl].</code></pre>
 
     <!-- ===== Mobile sticky CTA bar — viditelný po opuštění hero =====
          Snižuje friction na dlouhých scrollech, drží Buy akci na dosah palce. -->
-    <aside class="pack-sticky-cta" id="pack-sticky-cta" aria-hidden="true">
+    <aside class="pack-sticky-cta" id="pack-sticky-cta" aria-label="Rychlá objednávka Packu">
       <div class="pack-sticky-cta__inner">
         <div class="pack-sticky-cta__price">
           <strong>1&nbsp;490&nbsp;Kč</strong>
@@ -725,14 +769,14 @@ a oproti [alternativa] nabízí [hlavní rozdíl].</code></pre>
         </p>
       </div>
     </section>
-  </main>
+  </div>
 </BaseLayout>
 
 <style>
   /* ===== Page root ===== */
   .pack {
     --lp-violet: oklch(0.55 0.25 305);
-    --lp-magenta: oklch(0.62 0.27 335);
+    --lp-magenta: oklch(0.5 0.27 335);
     --lp-gold: oklch(0.82 0.16 80);
   }
 
@@ -895,7 +939,7 @@ a oproti [alternativa] nabízí [hlavní rozdíl].</code></pre>
     display: inline-flex;
     align-items: center;
     padding: 0.25rem 0.625rem;
-    background: oklch(0.6 0.18 145);
+    background: oklch(0.48 0.18 145);
     color: #fff;
     font-family: var(--font-sans);
     font-size: 0.75rem;
@@ -1331,7 +1375,7 @@ a oproti [alternativa] nabízí [hlavní rozdíl].</code></pre>
     display: inline-flex;
     align-items: center;
     padding: 0.3rem 0.75rem;
-    background: oklch(0.6 0.18 145);
+    background: oklch(0.48 0.18 145);
     color: #fff;
     font-family: var(--font-sans);
     font-size: 0.75rem;
@@ -1684,7 +1728,7 @@ a oproti [alternativa] nabízí [hlavní rozdíl].</code></pre>
     color: #fff;
   }
   .pack-audience-block__tag--yes { background: var(--lp-violet); }
-  .pack-audience-block__tag--no { background: oklch(0.6 0.22 25); }
+  .pack-audience-block__tag--no { background: oklch(0.5 0.22 25); }
   .pack-audience-block__list {
     list-style: none;
     padding: 0;
@@ -1910,10 +1954,12 @@ a oproti [alternativa] nabízí [hlavní rozdíl].</code></pre>
     box-shadow: 0 -4px 16px -4px oklch(0 0 0 / 0.08);
     padding: 0.625rem 1rem;
     transform: translateY(110%);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    visibility: hidden;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s;
   }
   .pack-sticky-cta.is-active {
     transform: translateY(0);
+    visibility: visible;
   }
   @media (max-width: 720px) {
     .pack-sticky-cta { display: block; }

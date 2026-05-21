@@ -167,7 +167,7 @@ const _bundlerHints = [
           </h2>
         </header>
 
-        <dl class="rfaq__list">
+        <div class="rfaq__list">
           {entry.data.faq.map((item, i) => (
             <details class="rfaq__item">
               <summary class="rfaq__q">
@@ -178,7 +178,7 @@ const _bundlerHints = [
               <div class="rfaq__a">{item.a}</div>
             </details>
           ))}
-        </dl>
+        </div>
       </section>
     )
   }

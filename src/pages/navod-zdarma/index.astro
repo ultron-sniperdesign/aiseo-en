@@ -63,8 +63,14 @@ const faqJsonLd = {
 };
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription} jsonLd={faqJsonLd} image="/og/navod-zdarma.png">
-  <main class="lp">
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  jsonLd={faqJsonLd}
+  image="/og/navod-zdarma.png"
+  breadcrumb={[{ label: "Návod zdarma", href: "/navod-zdarma/" }]}
+>
+  <div class="lp">
     <!-- ===== HERO ===== -->
     <section class="lp-hero">
       <div class="lp-hero__inner">
@@ -337,14 +343,14 @@ const faqJsonLd = {
         />
       </div>
     </section>
-  </main>
+  </div>
 </BaseLayout>
 
 <style>
   /* ===== Page root ===== */
   .lp {
     --lp-violet: oklch(0.55 0.25 305);
-    --lp-magenta: oklch(0.62 0.27 335);
+    --lp-magenta: oklch(0.5 0.27 335);
     --lp-gold: oklch(0.82 0.16 80);
   }
 
@@ -671,7 +677,7 @@ const faqJsonLd = {
     color: #fff;
   }
   .lp-audience-block__tag--yes { background: var(--lp-violet); }
-  .lp-audience-block__tag--no { background: oklch(0.6 0.22 25); }
+  .lp-audience-block__tag--no { background: oklch(0.5 0.22 25); }
   .lp-audience-block__list {
     list-style: none;
     padding: 0;

@@ -114,8 +114,14 @@ const faqJsonLd = {
 };
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription} jsonLd={[serviceJsonLd, faqJsonLd]} image="/og/audit.png">
-  <main class="audit">
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  jsonLd={[serviceJsonLd, faqJsonLd]}
+  image="/og/audit.png"
+  breadcrumb={[{ label: "AI SEO audit", href: "/audit/" }]}
+>
+  <div class="audit">
     <!-- ===== HERO — 2-col split: copy + form card ===== -->
     <!-- Form přesunutý do hero RIGHT col (dříve byl až sekce 05 pod FAQ).
          Vysoký-intent návštěvník nemusí scrollovat 7 obrazovek pro objednávku. -->
@@ -175,7 +181,7 @@ const faqJsonLd = {
           </p>
         </div>
 
-        <aside class="audit-hero__form-card" id="objednat" aria-labelledby="audit-hero-form-title">
+        <section class="audit-hero__form-card" id="objednat" aria-labelledby="audit-hero-form-title">
           <header class="audit-hero__form-head">
             <span class="audit-hero__form-eyebrow">
               <span class="audit-hero__form-eyebrow-pill">Objednávka</span>
@@ -296,7 +302,7 @@ const faqJsonLd = {
               e&#8209;mailů.
             </p>
           </form>
-        </aside>
+        </section>
 
       </div>
     </section>
@@ -747,7 +753,7 @@ const faqJsonLd = {
         </p>
       </div>
     </section>
-  </main>
+  </div>
 </BaseLayout>
 
 <script is:inline>
@@ -778,11 +784,11 @@ const faqJsonLd = {
   .audit {
     --font-agency: "Kumbh Sans", var(--font-sans);
     --lp-violet: oklch(0.55 0.25 305);
-    --lp-magenta: oklch(0.62 0.27 335);
+    --lp-magenta: oklch(0.5 0.27 335);
     --sd-deep: oklch(0.22 0.13 305);
     --sd-deeper: oklch(0.16 0.11 305);
     --sd-violet: oklch(0.55 0.25 305);
-    --sd-magenta: oklch(0.62 0.27 335);
+    --sd-magenta: oklch(0.5 0.27 335);
     --sd-gold: oklch(0.82 0.16 80);
     --sd-paper: oklch(0.985 0.004 250);
     --tone-seo: oklch(0.6 0.18 240);
@@ -1585,9 +1591,9 @@ const faqJsonLd = {
     font-size: 0.85rem;
     font-weight: 700;
   }
-  .audit-layer__num[data-tone="seo"] { background: oklch(from var(--tone-seo) l c h / 0.15); color: var(--tone-seo); }
-  .audit-layer__num[data-tone="geo"] { background: oklch(from var(--tone-geo) l c h / 0.15); color: var(--tone-geo); }
-  .audit-layer__num[data-tone="aeo"] { background: oklch(from var(--tone-aeo) l c h / 0.18); color: oklch(from var(--tone-aeo) calc(l - 0.15) c h); }
+  .audit-layer__num[data-tone="seo"] { background: oklch(from var(--tone-seo) l c h / 0.15); color: oklch(from var(--tone-seo) 0.42 c h); }
+  .audit-layer__num[data-tone="geo"] { background: oklch(from var(--tone-geo) l c h / 0.15); color: oklch(from var(--tone-geo) 0.42 c h); }
+  .audit-layer__num[data-tone="aeo"] { background: oklch(from var(--tone-aeo) l c h / 0.18); color: oklch(from var(--tone-aeo) 0.45 c h); }
   .audit-layer__num--bonus {
     background: var(--lp-violet);
     color: #fff;

@@ -33,17 +33,45 @@ function renderFaqMarkdown(text: string): string {
 }
 
 /**
- * JSON-LD — Article + FAQPage (preserve schema).
+ * Word count z entry.body — pro Article schema.
+ */
+const rawBody = entry.body ?? "";
+const wordCount = rawBody
+  .replace(/<[^>]+>/g, " ")
+  .replace(/[#*_`>~]/g, " ")
+  .split(/\s+/)
+  .filter(Boolean).length;
+const readingMinutes = Math.max(1, Math.round(wordCount / 200));
+
+const SITE_ORIGIN = "https://aiseo-optimalizace.cz";
+const articleURL = `${SITE_ORIGIN}/seo-vs-geo-vs-aeo-vs-aio/`;
+const articleImageURL = `${SITE_ORIGIN}/og/pillar.png`;
+
+/**
+ * JSON-LD — Article + FAQPage. Pillar = hlavní průvodce, dostává
+ * articleSection "Hlavní průvodce" pro odlišení od běžných sekcí/blogu.
  */
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: entry.data.title,
   description: entry.data.description,
-  dateModified: entry.data.updated,
+  image: [articleImageURL],
   datePublished: entry.data.updated,
+  dateModified: entry.data.updated,
   inLanguage: "cs-CZ",
   keywords: entry.data.keywords.join(", "),
+  articleSection: "Hlavní průvodce",
+  wordCount,
+  timeRequired: `PT${readingMinutes}M`,
+  mainEntityOfPage: { "@type": "WebPage", "@id": articleURL },
+  author: {
+    "@type": "Person",
+    name: "Kamil ze Sniper Design",
+    url: "https://www.sniperdesign.cz/",
+    worksFor: { "@id": `${SITE_ORIGIN}/#publisher` },
+  },
+  publisher: { "@id": `${SITE_ORIGIN}/#publisher` },
 };
 
 const faqJsonLd =
@@ -84,7 +112,14 @@ const allLd: Record<string, unknown>[] = [articleJsonLd, faqJsonLd, howToJsonLd]
 const faqCount = entry.data.faq?.length ?? 0;
 ---
 
-<BaseLayout title={entry.data.title} description={entry.data.description} jsonLd={allLd} image="/og/pillar.png">
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  jsonLd={allLd}
+  image="/og/pillar.png"
+  ogType="article"
+  breadcrumb={[{ label: "Hlavní průvodce", href: "/seo-vs-geo-vs-aeo-vs-aio/" }]}
+>
   <!-- READING PROGRESS BAR -->
   <div class="progress" id="reading-progress" aria-hidden="true"></div>
 

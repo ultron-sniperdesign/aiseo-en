@@ -165,7 +165,7 @@ const quartet: Quartet[] = [
     <!-- Pill detail panel — shared, swaps content based on active pill -->
     <div class="pill-panels" data-pill-panels>
       {pillDefs.map((p) => (
-        <article
+        <section
           class="pill-panel"
           id={`pill-panel-${p.d}`}
           data-d={p.d}
@@ -175,7 +175,7 @@ const quartet: Quartet[] = [
         >
           <header class="pill-panel__head">
             <span class="pill-panel__abbr">{p.d.toUpperCase()}</span>
-            <h3 class="pill-panel__title">{p.fullName}</h3>
+            <h2 class="pill-panel__title">{p.fullName}</h2>
             <button type="button" class="pill-panel__close" data-pill-close aria-label="Zavřít detail">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
@@ -190,7 +190,7 @@ const quartet: Quartet[] = [
               <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </a>
-        </article>
+        </section>
       ))}
     </div>
   </section>
@@ -581,12 +581,12 @@ const quartet: Quartet[] = [
       </a>
     </div>
 
-    <aside class="pillar-promo__excerpt">
+    <div class="pillar-promo__excerpt">
       <span class="pillar-promo__excerpt-mark">Z hlavního průvodce</span>
       <p class="pillar-promo__excerpt-text">
         Když chce váš zákazník odpověď, ptá se ChatGPT, Perplexity nebo Googlu s AI Overview. Vy potřebujete, aby <strong>v té odpovědi</strong> zazněla vaše značka — a aby z ní vedla cesta zpět k vám. Průvodce ukáže, co konkrétně na webu nebo e-shopu upravit.
       </p>
-    </aside>
+    </div>
   </section>
 
   <!-- VYBRANÉ ČLÁNKY -->
@@ -2149,10 +2149,10 @@ const quartet: Quartet[] = [
     transform: translateY(-3px);
     box-shadow: 0 14px 30px -16px oklch(from var(--offer-accent) l c h / 0.35);
   }
-  .offer--free { --offer-accent: oklch(0.55 0.14 145); }
-  .offer--pack { --offer-accent: oklch(0.55 0.25 305); }
+  .offer--free { --offer-accent: oklch(0.45 0.14 145); }
+  .offer--pack { --offer-accent: oklch(0.5 0.25 305); }
   .offer--audit {
-    --offer-accent: oklch(0.62 0.27 335);
+    --offer-accent: oklch(0.5 0.27 335);
     border-width: 2px;
     border-color: oklch(from var(--offer-accent) l c h / 0.6);
     background: linear-gradient(180deg, oklch(from var(--offer-accent) l c h / 0.04) 0%, var(--color-paper) 50%);
@@ -2209,7 +2209,7 @@ const quartet: Quartet[] = [
   }
   .offer__price-vat {
     margin-top: 0.125rem;
-    opacity: 0.75;
+    color: var(--color-ink-muted);
   }
   .offer__price--free strong { color: oklch(0.45 0.14 145); }
   .offer__price--pack strong { color: oklch(0.45 0.22 305); }

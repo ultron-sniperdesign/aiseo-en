@@ -25,7 +25,7 @@ const { badge = "Zdroj", href, linkLabel = "Otevřít zdroj", tone = "geo" } = A
 const isExternal = href.startsWith("http");
 ---
 
-<aside class={`src-card src-card--${tone}`}>
+<div class={`src-card src-card--${tone}`}>
   <span class="src-card__badge">{badge}</span>
   <div class="src-card__body"><slot /></div>
   <a
@@ -38,7 +38,7 @@ const isExternal = href.startsWith("http");
       <path d="M5 9L9 5M9 5H5M9 5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
     </svg>
   </a>
-</aside>
+</div>
 
 <style>
   .src-card {

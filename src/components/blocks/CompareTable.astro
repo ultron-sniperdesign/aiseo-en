@@ -43,9 +43,9 @@ const { leftLabel, leftTone = "accent", rightLabel, rightTone = "accent", rows }
   <table class={`ctbl ctbl--left-${leftTone} ctbl--right-${rightTone}`}>
     <thead>
       <tr>
-        <th></th>
-        <th class="ctbl__left-head">{leftLabel}</th>
-        <th class="ctbl__right-head">{rightLabel}</th>
+        <th scope="col"><span class="ctbl__sr-only">Aspekt</span></th>
+        <th scope="col" class="ctbl__left-head">{leftLabel}</th>
+        <th scope="col" class="ctbl__right-head">{rightLabel}</th>
       </tr>
     </thead>
     <tbody>
@@ -115,5 +115,16 @@ const { leftLabel, leftTone = "accent", rightLabel, rightTone = "accent", rows }
   .ctbl__icon {
     font-size: 1rem;
     margin-right: 0.4rem;
+  }
+  .ctbl__sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 </style>

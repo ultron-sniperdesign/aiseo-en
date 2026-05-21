@@ -9,8 +9,12 @@ const pageDescription =
 const lastUpdated = "2026-05-18";
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
-  <main class="gdpr">
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  breadcrumb={[{ label: "Zásady zpracování osobních údajů", href: "/gdpr/" }]}
+>
+  <div class="gdpr">
     <!-- ===== HERO ===== -->
     <section class="gdpr-hero">
       <div class="gdpr-hero__inner">
@@ -303,14 +307,14 @@ const lastUpdated = "2026-05-18";
 
       </div>
     </article>
-  </main>
+  </div>
 </BaseLayout>
 
 <style>
   /* ===== Page root ===== */
   .gdpr {
     --gdpr-violet: oklch(0.55 0.25 305);
-    --gdpr-magenta: oklch(0.62 0.27 335);
+    --gdpr-magenta: oklch(0.5 0.27 335);
   }
 
   /* ===== HERO ===== */

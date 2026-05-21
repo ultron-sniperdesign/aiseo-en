@@ -28,58 +28,45 @@
 
 ### Search engines + indexation (dev/user split)
 
-- [ ] **(uživatel)** Bing Webmaster Tools — registrace přes GSC import (1 klik)
-  - URL: https://www.bing.com/webmasters
-  - Submit `/sitemap-index.xml`
+- [x] **(uživatel)** Bing Webmaster Tools — 2026-05-17 ✅
+  - Site verified + sitemap submitnutá (Zpracování)
+  - **22 URL submitnutých přes Request Indexing** (pillar, 6 sekcí, /pack/, /navod-zdarma/, homepage, 12 blog článků)
   - Pokrývá: Bing + DuckDuckGo + ChatGPT Search + Copilot
-  - Čas: 15 min
 
-- [ ] **(uživatel)** Seznam Webmaster
-  - URL: https://webmaster.seznam.cz (registrace přes login.szn.cz)
-  - Po verifikaci: ping sitemapy přes `https://search.seznam.cz/pridej-stranku?url=<sitemap>`
+- [x] **(uživatel)** Seznam Webmaster — 2026-05-17 ✅
+  - URL: https://reporter.seznam.cz/wm (přihlášení přes login.szn.cz)
+  - Site verified přes `public/seznam-wmt-VQN5bMlwljs0VrTwoM12cPLQC4CDxG63.txt` (commit `4345074`)
+  - Sitemap submitnutá přes `https://search.seznam.cz/wt/pridej-stranku`
   - Pokrývá: ~12–16 % CZ search share
-  - Čas: 20 min
 
-- [ ] **(uživatel)** Google Search Console — pokročilé akce
-  - Submit `/sitemap-index.xml` v Sitemaps sekci
-  - URL Inspection + Request Indexing pro klíčové stránky (pillar, 4 sekce, /pack/, /navod-zdarma/, oba blog články, /kontakt/) — limit ~10/den
-  - Čas: 30 min
+- [x] **(uživatel)** Google Search Console — pokročilé akce — 2026-05-18 ✅
+  - Sitemap `/sitemap-index.xml` Úspěšné, 23 stránek discovered
+  - **11 URL už indexed** (homepage, pillar, 4 sekce, 2 podpůrné, 5 blog článků)
+  - **8 URL submitnutých přes Request Indexing** (`/blog/` + 7 blog článků z "Objeveno – momentálně neindexováno")
+  - Web už generuje organic traffic: 3 kliky/dnes, pillar +149 % zobrazení
 
 ### Dev tasks (commit do repa)
 
-- [ ] **(dev)** Robots.txt audit — přidat 8 chybějících AI user-agentů
-  - Soubor: `public/robots.txt`
-  - Přidat (Allow): `Google-Extended`, `Applebot-Extended`, `Meta-ExternalAgent`, `ChatGPT-User`, `Perplexity-User`, `CCBot`, `Anthropic-AI`, `Diffbot`
-  - Pokrývá: Gemini, Apple Intelligence, Meta AI, on-demand fetches, Common Crawl multiplier
-  - Čas: 30 min
+- [x] **(dev)** Robots.txt audit — 2026-05-17 ✅ (commit `c41eb1e`)
+  - LIVE 12+ AI user-agentů: GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, Perplexity-User, Google-Extended, ClaudeBot, anthropic-ai + nové: Applebot-Extended, Meta-ExternalAgent, CCBot, Diffbot
 
-- [ ] **(dev)** Sitemap direktiva v robots.txt
-  - Soubor: `public/robots.txt`
-  - Přidat řádek: `Sitemap: https://aiseo-optimalizace.cz/sitemap-index.xml`
-  - Pokrývá: auto-discovery i pro crawlery bez webmaster portálu
-  - Čas: 5 min
+- [x] **(dev)** Sitemap direktiva v robots.txt — již LIVE před sezením ✅
 
-- [ ] **(dev)** llms.txt vytvořit
-  - Soubor: `public/llms.txt` (Markdown index)
-  - Struktura: `# AI SEO Optimalizace` (H1) → blockquote 1–3 věty co web pokrývá → `## Pilíře` → annotated linky na `/seo-vs-geo-vs-aeo-vs-aio/`, `/seo/`, `/geo/`, `/aeo/`, `/aio/`, `/prakticky-postup/`, `/rozhodovaci-matice/`, `/pack/`, `/navod-zdarma/`
-  - Spec: https://llmstxt.org
-  - Pokrývá: low-effort defensivní signál pro Anthropic/OpenAI/Cursor/dev tooling
-  - Čas: 1–2 h
+- [x] **(dev)** llms.txt vytvořen — 2026-05-17 ✅ (commit `c41eb1e`)
+  - `public/llms.txt` (50+ anotovaných linků: pillar + 6 sekcí + 12 blog článků + produkty + kontakt)
+  - Verifikováno na produkci: `curl https://aiseo-optimalizace.cz/llms.txt` vrátí HTTP 200
 
 ### CZ katalogy a partner profily
 
-- [ ] **(uživatel)** Firmy.cz zápis
-  - URL: https://www.firmy.cz
-  - Free tier dostatečný (dofollow z profilu)
-  - Ověření telefonem
+- [x] **(uživatel)** Firmy.cz zápis — 2026-05-18 ✅
+  - Profil přidán, popis dle template z marketing brief
   - DR ~85 (Seznam), milionové návštěvy
-  - Čas: 30 min
 
-- [ ] **(uživatel)** Živéfirmy.cz zápis
-  - URL: https://www.zivefirmy.cz
-  - Free, doplnit logo + popis pro vyšší hvězdičky kvality záznamu
-  - DR ~55, indexované Googlem (360k+ CZ firem)
-  - Čas: 20 min
+- [x] **(uživatel)** Živéfirmy.cz zápis — 2026-05-18 ✅
+  - Profil "aiseo-optimalizace.cz" (CPU s.r.o., IČ 08125163) submitnut přes detailní formulář `/firma-pridat`
+  - Popis: 4 disciplíny + 3 produkty + Sniperdesign trust signály (~600 znaků)
+  - Kontaktní osoba: Veronika Pavelcová (CEO)
+  - Schvalovací proces: až 3 pracovní dny (admini katalogu mohou upravit znění)
 
 - [ ] **(uživatel/Sniperdesign)** sniperdesign.cz cross-promo
   - Footer link na aiseo-optimalizace.cz
