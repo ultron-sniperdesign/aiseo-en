@@ -204,15 +204,22 @@ const pageDescription =
         </p>
       </div>
 
-      <!-- BLOK 4: Trust block (kompaktní řádek) -->
-      <p class="ty-upsell__trust">
-        <strong>Audit vede stejný tým, který vytvořil Pack.</strong> Sniper
-        Design je Zlatý Upgates partner od&nbsp;roku 2016, má zkušenost
-        s&nbsp;více než 600 e-shopy na&nbsp;českém trhu a&nbsp;vyvíjí vlastní
-        AI nástroje GPTfeed a&nbsp;SYNKRO.
-      </p>
+      <!-- BLOK 4: Trust block (kompaktní řádek).
+           Obalený v .ty-upsell__row (passthrough, gets base .lp-section--alt > *
+           padding) — karta uvnitř fills 100 % → BOX zarovnaný s grid kartami
+           identickým mechanismem, na všech viewportech (žádný calc/scrollbar
+           edge case). -->
+      <div class="ty-upsell__row">
+        <p class="ty-upsell__trust">
+          <strong>Audit vede stejný tým, který vytvořil Pack.</strong> Sniper
+          Design je Zlatý Upgates partner od&nbsp;roku 2016, má zkušenost
+          s&nbsp;více než 600 e-shopy na&nbsp;českém trhu a&nbsp;vyvíjí vlastní
+          AI nástroje GPTfeed a&nbsp;SYNKRO.
+        </p>
+      </div>
 
       <!-- BIG CTA card -->
+      <div class="ty-upsell__row">
       <article class="ty-audit-card ty-audit-card--big">
         <span class="ty-audit-card__pill">Doporučený další krok po Packu</span>
         <h3 class="ty-audit-card__title">AI&nbsp;SEO audit od Sniper Design</h3>
@@ -243,6 +250,7 @@ const pageDescription =
           vrátit, až budete chtít konkrétní review vašeho webu.
         </p>
       </article>
+      </div>
     </section>
 
     <!-- ===== SNIPERDESIGN MEDAILONEK ===== -->
@@ -640,10 +648,10 @@ const pageDescription =
     font-weight: 600;
   }
 
-  /* BLOK 4: Trust block — plná šířka obsahu (lícuje s gridy výše na obou
-     hranách). margin = section padding (vlastní `padding` přebíjí base
-     padding-left/right, takže content margin nutno přes margin). */
-  .lp-section--alt .ty-upsell__trust {
+  /* BLOK 4: Trust block — fills 100 % .ty-upsell__row (passthrough blok
+     s base section paddingem) → BOX karty zarovnaný s grid kartami
+     identickým mechanismem jako gridy. Žádné max-width/margin hacky. */
+  .ty-upsell__trust {
     font-family: var(--font-sans);
     font-size: 0.9375rem;
     line-height: 1.55;
@@ -652,8 +660,7 @@ const pageDescription =
     border: 1px solid var(--color-rule);
     border-radius: 10px;
     padding: 1rem 1.25rem;
-    margin-left: var(--space-section-x);
-    margin-right: var(--space-section-x);
+    margin: 0;
   }
   .lp-section--alt .ty-upsell__trust strong {
     color: var(--color-ink);
@@ -666,11 +673,12 @@ const pageDescription =
   /* Big CTA card — plná šířka obsahu (lícuje s gridy i trust blokem).
      max-width: none přebíjí base .ty-audit-card max-width: 50rem
      (vyšší specificity 0,2,0 vs 0,1,0). */
-  .lp-section--alt .ty-audit-card--big {
+  /* Big CTA card — fills 100 % .ty-upsell__row. max-width: none přebíjí
+     base .ty-audit-card 50rem; margin 0 (row řeší zarovnání). */
+  .ty-audit-card--big {
     padding: clamp(1.75rem, 3.5vw, 2.5rem);
     max-width: none;
-    margin-left: var(--space-section-x);
-    margin-right: var(--space-section-x);
+    margin: 0;
   }
   .ty-audit-card--big .ty-audit-card__pill {
     background-color: var(--lp-violet);
