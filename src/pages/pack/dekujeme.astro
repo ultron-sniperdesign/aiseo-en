@@ -503,11 +503,13 @@ const pageDescription =
   /* ===== V3 expanded upsell — Pack → Audit ===== */
 
   /* Section vertical rhythm — bloky pod sebou s konzistentní mezerou.
-     Specificity boost přes parent .lp-section--alt — bez něho přebíjí
-     pravidlo .lp-section--alt > * (Astro scoping race). */
-  .lp-section--alt .ty-upsell > * { margin-top: clamp(2rem, 4vw, 3rem); }
-  .lp-section--alt .ty-upsell > *:first-child { margin-top: 0; }
-  .lp-section--alt .ty-upsell > .lp-section__head { margin-bottom: 0; }
+     POZOR: .ty-upsell je TÝŽ element jako .lp-section--alt (obě třídy na
+     stejném <section>), takže descendant selektor .lp-section--alt .ty-upsell
+     nematchuje. Nutno compound selektor .ty-upsell.lp-section--alt
+     (specificity 0,2,0 > base .lp-section--alt > * 0,1,0). */
+  .ty-upsell.lp-section--alt > * { margin-top: clamp(2.5rem, 4vw, 3.25rem); }
+  .ty-upsell.lp-section--alt > *:first-child { margin-top: 0; }
+  .ty-upsell.lp-section--alt > .lp-section__head { margin-bottom: 0; }
 
   .ty-upsell__sub {
     font-family: var(--font-sans);
@@ -638,7 +640,10 @@ const pageDescription =
     font-weight: 600;
   }
 
-  /* BLOK 4: Trust block — kompaktní řádek */
+  /* BLOK 4: Trust block — kompaktní řádek.
+     margin-left:0 + margin-right:auto → levo-zarovnání s obsahem výše
+     (base .lp-section--alt > * dává margin auto = centered, což rozbíjí
+     vizuální linii vůči full-width blokům nad ním). */
   .lp-section--alt .ty-upsell__trust {
     font-family: var(--font-sans);
     font-size: 0.9375rem;
@@ -649,6 +654,8 @@ const pageDescription =
     border-radius: 10px;
     padding: 1rem 1.25rem;
     max-width: 50rem;
+    margin-left: var(--space-section-x);
+    margin-right: auto;
   }
   .lp-section--alt .ty-upsell__trust strong {
     color: var(--color-ink);
@@ -661,6 +668,8 @@ const pageDescription =
   .lp-section--alt .ty-audit-card--big {
     padding: clamp(1.75rem, 3.5vw, 2.5rem);
     max-width: 50rem;
+    margin-left: var(--space-section-x);
+    margin-right: auto;
   }
   .lp-section--alt .ty-audit-card {
     max-width: 50rem;
