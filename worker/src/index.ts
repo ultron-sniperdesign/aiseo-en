@@ -250,7 +250,6 @@ function renderReplyEmail(data: { jmeno: string; url: string }): string {
 
   <p style="margin-top: 24px;">Pokud chcete <strong>urychlit start</strong>, můžete mi rovnou poslat:</p>
   <ul style="padding-left: 20px; margin: 0;">
-    <li>přístup do&nbsp;Google Search Console pro <a href="${e(data.url)}" target="_blank">${e(data.url)}</a>,</li>
     <li>URL hlavních konkurentů,</li>
     <li>stránky nebo kategorie, na&nbsp;které se chcete zaměřit přednostně.</li>
   </ul>
