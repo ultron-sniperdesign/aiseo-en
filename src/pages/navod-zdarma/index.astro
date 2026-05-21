@@ -2,72 +2,19 @@
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import EmailCapture from "~/components/EmailCapture.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
+import * as p from "~/content/pages/navod-zdarma";
+import { buildFaqJsonLd } from "~/lib/jsonld";
 
-const pageTitle = "Návod zdarma — Jak má vypadat homepage pro AI vyhledávání";
-const pageDescription =
-  "Stáhněte si zdarma 6stránkový PDF průvodce s wireframem, anotacemi a třemi principy. Jak má homepage vypadat, aby ji našel Google, citoval ChatGPT a vytahoval Google AI Overviews. Výměnou za e-mail.";
-
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Co je v PDF a kolik to má stránek?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Šest stran: anotovaný wireframe homepage, tři principy SEO/GEO/AEO, mikro-case před/po a pět nejčastějších chyb. Praktický framework, ne teoretický ebook — pochopíte logiku za každým prvkem.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Pro koho je návod určený?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Pro provozovatele webů a e-shopů, marketing/SEO specialisty, B2B agentury, copywritery, designéry a vývojáře, kteří chtějí, aby jejich homepage byla připravená nejen na klasický Google, ale i na AI vyhledávače jako ChatGPT, Perplexity nebo Google AI Overviews.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Jak rychle dostanu PDF po vyplnění e-mailu?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Okamžitě. Do několika sekund po odeslání formuláře vám pošleme e-mail s odkazem ke stažení. Pokud zprávu nevidíte, zkontrolujte složku Hromadné nebo Promo akce.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Funguje to i pro e-shop?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "PDF je primárně pro homepage. E-shopaři ho využijí pro hlavní stránku a základní principy AI vyhledávání. Produktové a kategoriální stránky řeší až rozšířený Wireframe Pack za 1 490 Kč, kde je sedm typů stránek včetně produktové a kategoriální.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Co když chci, ať to za mě uděláte vy?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Sniper Design nabízí AI SEO audit za 9 990 Kč. Projdeme váš web, najdeme problémy ve třech vrstvách (technika, obsah, autorita), dáme vám prioritní seznam úprav a 60min konzultaci. Výstup do 5 pracovních dní.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Můžu se kdykoli odhlásit z e-mailů?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ano. Neposíláme denní newsletter. Po PDF dostanete několik navazujících e-mailů s praktickými tipy k AI SEO a občasnou nabídkou našich produktů / služeb. V každém e-mailu je odhlašovací odkaz — jedním kliknutím vás odstraníme z databáze.",
-      },
-    },
-  ],
-};
+// Obsah stránky je v datovém modulu src/content/pages/navod-zdarma.ts.
+// Tato stránka je čistý template — refaktor Fáze 0 (i18n příprava).
+const faqJsonLd = buildFaqJsonLd(p.faq);
 ---
 
 <BaseLayout
-  title={pageTitle}
-  description={pageDescription}
+  title={p.meta.title}
+  description={p.meta.description}
   jsonLd={faqJsonLd}
-  image="/og/navod-zdarma.png"
+  image={p.meta.ogImage}
   breadcrumb={[{ label: "Návod zdarma", href: "/navod-zdarma/" }]}
 >
   <div class="lp">
@@ -75,46 +22,32 @@ const faqJsonLd = {
     <section class="lp-hero">
       <div class="lp-hero__inner">
         <div class="lp-hero__copy">
-          <span class="lp-hero__eyebrow">Návod zdarma · pro AI vyhledávání</span>
+          <span class="lp-hero__eyebrow">{p.hero.eyebrow}</span>
           <h1 class="lp-hero__title">
-            Vaši zákazníci se dnes ptají ChatGPT.<br />
-            <strong>Cituje umělá inteligence váš obsah?</strong>
+            {p.hero.title}<br />
+            <strong>{p.hero.titleStrong}</strong>
           </h1>
-          <p class="lp-hero__urgency">
-            Firmy už dnes optimalizují obsah pro AI odpovědi. Pokud AI nerozumí
-            vašemu homepage, <strong>doporučí konkurenci</strong>.
-          </p>
-          <p class="lp-hero__lead">
-            Návod, podle kterého homepage začne fungovat v AI vyhledávání.
-            Wireframe s anotacemi, tři principy a mikro‑case před/po.
-            Aplikujete na svůj web během odpoledne — a začnete dostávat
-            přístupy z AI, které byste jinak neviděli.
-          </p>
+          <p class="lp-hero__urgency" set:html={p.hero.urgency}></p>
+          <p class="lp-hero__lead">{p.hero.lead}</p>
 
           <div class="lp-hero__cta-card" role="region" aria-labelledby="cta-card-eyebrow">
             <span id="cta-card-eyebrow" class="lp-hero__cta-eyebrow">
-              <span class="lp-hero__cta-eyebrow-pill">Zdarma</span>
-              <span>Doručíme e-mailem do 30 vteřin</span>
+              <span class="lp-hero__cta-eyebrow-pill">{p.hero.ctaCard.pill}</span>
+              <span>{p.hero.ctaCard.pillNote}</span>
             </span>
 
             <ul class="lp-hero__bullets" aria-label="Co dostanete">
-              <li>Wireframe homepage s 10 anotacemi (SEO / GEO / AEO)</li>
-              <li>Tři klíčové principy a mikro‑case před / po</li>
-              <li>5 nejčastějších chyb, které vidíme u klientských webů</li>
+              {p.hero.ctaCard.bullets.map((b) => <li>{b}</li>)}
             </ul>
 
             <EmailCapture
               variant="hero"
-              buttonLabel="Stáhnout AI SEO návod zdarma"
-              leadSourceTag="Lead — Návod zdarma (homepage)"
+              buttonLabel={p.hero.ctaCard.buttonLabel}
+              leadSourceTag={p.hero.ctaCard.leadSourceTag}
             />
 
             <!-- Trust signal pod formulářem (audit #7) -->
-            <p class="lp-hero__cta-trust">
-              Připravilo <strong><a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener">Sniper Design</a></strong>
-              &mdash; Zlatý partner Upgates od&nbsp;2016, 600+&nbsp;e-shopů
-              na&nbsp;CZ&nbsp;trhu.
-            </p>
+            <p class="lp-hero__cta-trust" set:html={p.hero.ctaCard.trust}></p>
           </div>
         </div>
 
@@ -123,7 +56,7 @@ const faqJsonLd = {
         <div class="lp-hero__mockup" aria-hidden="true">
           <figure class="hero-illustration">
             <img
-              src="/navod-zdarma/hero-illustration.png"
+              src={p.hero.image}
               alt=""
               width="1024"
               height="1536"
@@ -138,106 +71,46 @@ const faqJsonLd = {
     <!-- ===== CO DOSTANETE ===== -->
     <section class="lp-section">
       <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">01</span> Co najdete v PDF</span>
-        <h2 class="lp-section__title">
-          Postavte homepage tak, aby vás <strong>AI citovala, doporučovala a vytahovala do AI Overviews</strong>
-        </h2>
+        <span class="eyebrow"><span class="eyebrow__num">{p.featuresHead.eyebrowNum}</span> {p.featuresHead.eyebrow}</span>
+        <h2 class="lp-section__title" set:html={p.featuresHead.title}></h2>
       </header>
 
       <div class="lp-features">
-        <article class="lp-feature">
-          <span class="lp-feature__num">1</span>
-          <h3 class="lp-feature__title">Wireframe s 10 anotacemi</h3>
-          <p class="lp-feature__desc">
-            Homepage, podle které okamžitě poznáte slabá místa svého webu.
-            Každý prvek má vysvětlení, jaký signál pro Google, ChatGPT
-            a AI Overviews generuje a proč na něm záleží.
-          </p>
-        </article>
-
-        <article class="lp-feature">
-          <span class="lp-feature__num">2</span>
-          <h3 class="lp-feature__title">Tři klíčové principy</h3>
-          <p class="lp-feature__desc">
-            Hlavní nadpis, krátká odpověď 40–60 slov a FAQ se strukturovanými daty.
-            Tři vrstvy, díky kterým vás AI nástroje pochopí a ocitují — místo aby
-            doporučily konkurenci.
-          </p>
-        </article>
-
-        <article class="lp-feature">
-          <span class="lp-feature__num">3</span>
-          <h3 class="lp-feature__title">Mikro-case před / po</h3>
-          <p class="lp-feature__desc">
-            Konkrétní příklad transformace generického nadpisu na specifický.
-            Ukazuje, jak malá změna v hlavním nadpisu mění, jestli vás AI doporučí
-            — nebo přehlédne.
-          </p>
-        </article>
-
-        <article class="lp-feature">
-          <span class="lp-feature__num">4</span>
-          <h3 class="lp-feature__title">Pět typických chyb</h3>
-          <p class="lp-feature__desc">
-            Pět chyb, kvůli kterým AI špatně chápe váš homepage — i&nbsp;když máte
-            dobrý produkt. Vychází z&nbsp;praxe Sniper Design při&nbsp;návrzích
-            a&nbsp;auditech klientských webů (Zlatý partner Upgates od&nbsp;2016,
-            600+ e-shopů na&nbsp;CZ trhu).
-          </p>
-        </article>
+        {p.features.map((f) => (
+          <article class="lp-feature">
+            <span class="lp-feature__num">{f.num}</span>
+            <h3 class="lp-feature__title">{f.title}</h3>
+            <p class="lp-feature__desc" set:html={f.desc}></p>
+          </article>
+        ))}
       </div>
     </section>
 
     <!-- ===== PRO KOHO (audit #8 — sjednotit s FAQ, #9 — přidat „pro koho NE") ===== -->
     <section class="lp-section lp-section--alt">
       <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">02</span> Pro koho je to</span>
-        <h2 class="lp-section__title">
-          PDF cílí na&nbsp;<strong>homepage</strong> firemního webu, služby
-          nebo&nbsp;obsahově řízeného e-shopu
-        </h2>
-        <p class="lp-section__lead">
-          Pro produktové a&nbsp;kategoriální stránky e-shopu budete potřebovat
-          <strong>rozšířený framework</strong> &mdash; to&nbsp;řeší
-          <a href="/pack/">AI&nbsp;SEO Wireframe Pack</a>.
-        </p>
+        <span class="eyebrow"><span class="eyebrow__num">{p.audienceHead.eyebrowNum}</span> {p.audienceHead.eyebrow}</span>
+        <h2 class="lp-section__title" set:html={p.audienceHead.title}></h2>
+        <p class="lp-section__lead" set:html={p.audienceHead.lead}></p>
       </header>
 
       <div class="lp-audience-split">
         <div class="lp-audience-block lp-audience-block--primary">
           <h3 class="lp-audience-block__title">
-            <span class="lp-audience-block__tag lp-audience-block__tag--yes">Primárně</span>
-            PDF je pro vás
+            <span class="lp-audience-block__tag lp-audience-block__tag--yes">{p.audiencePrimary.tag}</span>
+            {p.audiencePrimary.heading}
           </h3>
           <ul class="lp-audience-block__list">
-            <li>
-              <strong>Provozovatelé webů a&nbsp;e-shopů</strong> &mdash; víte,
-              že je&nbsp;třeba něco změnit, ale nevíte, kde začít.
-            </li>
-            <li>
-              <strong>SEO a&nbsp;marketing specialisté</strong> &mdash; potřebujete
-              framework, který předáte klientovi nebo internímu&nbsp;týmu.
-            </li>
-            <li>
-              <strong>Copywriteři, designéři, vývojáři</strong> &mdash; chcete
-              navrhovat homepage, které AI chápe stejně dobře jako člověk.
-            </li>
-            <li>
-              <strong>B2B agentury</strong> &mdash; hledáte vlastní pracovní
-              rámec pro klientské weby v&nbsp;AI&nbsp;éře.
-            </li>
+            {p.audiencePrimary.items.map((it) => <li set:html={it}></li>)}
           </ul>
         </div>
 
         <div class="lp-audience-block lp-audience-block--negative">
           <h3 class="lp-audience-block__title">
-            <span class="lp-audience-block__tag lp-audience-block__tag--no">PDF NENÍ pro vás, pokud</span>
+            <span class="lp-audience-block__tag lp-audience-block__tag--no">{p.audienceNegative.tag}</span>
           </h3>
           <ul class="lp-audience-block__list">
-            <li>čekáte <strong>kompletní audit celého webu</strong> &mdash; k&nbsp;tomu slouží <a href="/audit/">AI&nbsp;SEO audit</a></li>
-            <li>chcete <strong>hotové texty</strong> pro produktové / kategoriální stránky &mdash; rozšířený <a href="/pack/">Pack</a></li>
-            <li>řešíte <strong>čistě technické SEO</strong> bez úprav obsahu</li>
-            <li>nechcete po&nbsp;stažení dostat <strong>žádné navazující e-maily</strong></li>
+            {p.audienceNegative.items.map((it) => <li set:html={it}></li>)}
           </ul>
         </div>
       </div>
@@ -253,72 +126,50 @@ const faqJsonLd = {
     <!-- ===== UPSELL TEASER ===== -->
     <section class="lp-section" id="pack">
       <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">03</span> Co dál — pokud chcete víc</span>
-        <span class="lp-section__proof">600+ e‑shopů · specialisté na Upgates a Shoptet</span>
-        <h2 class="lp-section__title">
-          Tohle PDF řeší jednu stránku. <strong>AI vyhledávání ale hodnotí celý web.</strong>
-        </h2>
-        <p class="lp-section__lead">
-          PDF vám pomůže začít na&nbsp;homepage. Pokud později budete chtít
-          rozšířit stejný princip na&nbsp;produktové stránky, kategorie
-          a&nbsp;blog, existují <strong>dvě cesty</strong> &mdash; podle toho,
-          kolik chcete dělat sami.
-        </p>
+        <span class="eyebrow"><span class="eyebrow__num">{p.upsellHead.eyebrowNum}</span> {p.upsellHead.eyebrow}</span>
+        <span class="lp-section__proof">{p.upsellHead.proof}</span>
+        <h2 class="lp-section__title" set:html={p.upsellHead.title}></h2>
+        <p class="lp-section__lead" set:html={p.upsellHead.lead}></p>
       </header>
 
       <div class="lp-tiers">
-        <article class="lp-tier">
-          <span class="lp-tier__num">Pack · pro celý web</span>
-          <h3 class="lp-tier__title">Kompletní AI&nbsp;SEO Wireframe Pack</h3>
-          <p class="lp-tier__body">
-            Návod pokryl homepage. Pack pokryje celý e‑shop — sedm typů stránek
-            s hotovými texty, kterým AI rozumí. Otevřete, dosaďte vlastní obsah,
-            máte hotovo. Bez konzultantů.
-          </p>
-          <div class="lp-tier__footer">
-            <div class="lp-tier__price">1&nbsp;490&nbsp;Kč <small>jednorázově, bez DPH</small></div>
-            <a href="/pack/" class="lp-tier__cta">Koupit Pack&nbsp;→</a>
-          </div>
-        </article>
-
-        <article class="lp-tier lp-tier--audit lp-tier--featured">
-          <div class="lp-tier__head">
-            <span class="lp-tier__num">Audit · uděláme to za vás</span>
-            <span class="lp-tier__pill">★&nbsp;To nejlepší</span>
-          </div>
-          <h3 class="lp-tier__title">AI&nbsp;SEO audit od Sniper Design</h3>
-          <p class="lp-tier__body">
-            Získáte přesný plán, co změnit na každé stránce, aby vás AI začala
-            doporučovat zákazníkům. Víte, co AI hledá u vašeho oboru, kde má
-            konkurence díry a jak ji předběhnout. Plus 60min konzultace.
-            Výstup do 5 pracovních dní.
-          </p>
-          <span class="lp-tier__chip">✓ Postavili jsme 600+ e‑shopů na Upgates a Shoptet</span>
-          <div class="lp-tier__footer">
-            <div class="lp-tier__price">9&nbsp;990&nbsp;Kč <small>jednorázově, bez DPH</small></div>
-            <a href="/audit/" class="lp-tier__cta">
-              Objednat&nbsp;→
-            </a>
-          </div>
-        </article>
+        {p.upsellTiers.map((t) => (
+          <article class={`lp-tier${t.featured ? " lp-tier--audit lp-tier--featured" : ""}`}>
+            {t.featured ? (
+              <div class="lp-tier__head">
+                <span class="lp-tier__num">{t.num}</span>
+                <span class="lp-tier__pill" set:html={t.pill}></span>
+              </div>
+            ) : (
+              <span class="lp-tier__num">{t.num}</span>
+            )}
+            <h3 class="lp-tier__title" set:html={t.title}></h3>
+            <p class="lp-tier__body">{t.body}</p>
+            {t.chip && <span class="lp-tier__chip">{t.chip}</span>}
+            <div class="lp-tier__footer">
+              <div class="lp-tier__price" set:html={`${t.price} <small>${t.priceNote}</small>`}></div>
+              <a href={t.ctaHref} class="lp-tier__cta" set:html={t.ctaLabel}></a>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
 
     <!-- ===== FAQ ===== -->
     <section class="lp-section lp-section--alt">
       <header class="lp-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">FAQ</span> Časté otázky</span>
-        <h2 class="lp-section__title">Než si stáhnete PDF, <strong>tady jsou odpovědi</strong></h2>
+        <span class="eyebrow"><span class="eyebrow__num">{p.faqHead.eyebrowNum}</span> {p.faqHead.eyebrow}</span>
+        <h2 class="lp-section__title" set:html={p.faqHead.title}></h2>
       </header>
 
       <dl class="lp-faq">
-        {faqJsonLd.mainEntity.map((q, i) => (
+        {p.faq.map((item, i) => (
           <div class="lp-faq__item">
             <dt class="lp-faq__q">
               <span class="lp-faq__q-num">{String(i + 1).padStart(2, "0")}</span>
-              <span>{q.name}</span>
+              <span>{item.q}</span>
             </dt>
-            <dd class="lp-faq__a">{q.acceptedAnswer.text}</dd>
+            <dd class="lp-faq__a">{item.a}</dd>
           </div>
         ))}
       </dl>
@@ -327,19 +178,12 @@ const faqJsonLd = {
     <!-- ===== FINAL CTA ===== -->
     <section class="lp-final">
       <div class="lp-final__inner">
-        <h2 class="lp-final__title">
-          Stáhněte si návod a <strong>postavte homepage tak, aby fungovala</strong>
-        </h2>
-        <p class="lp-final__lead">
-          Pošleme vám <strong>6stranné PDF do&nbsp;30 vteřin</strong>
-          z&nbsp;e-mailu <strong>aiseo-optimalizace@sniperdesign.cz</strong>.
-          V&nbsp;dalších dnech občas přidáme praktické tipy k&nbsp;AI&nbsp;SEO
-          &mdash; odhlásíte se kdykoli jedním kliknutím v&nbsp;každém&nbsp;e-mailu.
-        </p>
+        <h2 class="lp-final__title" set:html={p.finalCta.title}></h2>
+        <p class="lp-final__lead" set:html={p.finalCta.lead}></p>
         <EmailCapture
           variant="hero"
-          buttonLabel="Stáhnout AI SEO návod zdarma"
-          leadSourceTag="Lead — Návod zdarma (final CTA)"
+          buttonLabel={p.finalCta.emailCapture.buttonLabel}
+          leadSourceTag={p.finalCta.emailCapture.leadSourceTag}
         />
       </div>
     </section>
