@@ -65,18 +65,18 @@ const pageDescription =
           <span class="audit-ty-step__num">2</span>
           <div>
             <strong>Potvrdíme cenu a&nbsp;fakturaci.</strong> Vystavíme fakturu
-            na&nbsp;9&nbsp;990&nbsp;Kč bez&nbsp;DPH (12&nbsp;088&nbsp;Kč s&nbsp;DPH),
-            se&nbsp;splatností 14&nbsp;dnů. Cena auditu je pevná. Bez skrytých
-            poplatků za&nbsp;samotný audit.
+            na&nbsp;9&nbsp;990&nbsp;Kč bez&nbsp;DPH (12&nbsp;088&nbsp;Kč s&nbsp;DPH).
+            Cena auditu je pevná. Bez skrytých poplatků za&nbsp;samotný audit.
           </div>
         </li>
         <li>
           <span class="audit-ty-step__num">3</span>
           <div>
-            <strong>Prověříme web pohledem AI.</strong> Díváme se na to, podle
-            čeho AI systémy vybírají zdroje k&nbsp;citaci: jestli webu rozumí,
-            jestli má co citovat a&nbsp;jestli působí důvěryhodně. Hledáme
-            konkrétní mezery a&nbsp;jejich příčiny.
+            <strong>Provedeme hloubkový audit z&nbsp;pohledu AI vyhledávačů.</strong>
+            Díváme se na to, podle čeho AI systémy vybírají zdroje
+            k&nbsp;citaci: jestli webu rozumí, jestli má co citovat
+            a&nbsp;jestli působí důvěryhodně. Hledáme konkrétní mezery
+            a&nbsp;jejich příčiny.
           </div>
         </li>
         <li>
@@ -194,6 +194,10 @@ const pageDescription =
     color: var(--lp-violet);
     text-decoration: underline;
     text-underline-offset: 2px;
+    /* Email + tel se nesmí zalamovat uprostřed (default by zlomil
+       u dashe v 'aiseo-optimalizace'). Pokud overflow, browser dovolí
+       vodorovný posun nebo se rozlomí na jiné meze. */
+    white-space: nowrap;
   }
 
   /* ===== Sdílené primitivy ===== */
