@@ -78,10 +78,12 @@
   /*  COVER PAGE                                                  */
   /* ============================================================ */
   .cover {
-    background:
-      radial-gradient(ellipse 70% 60% at 80% 10%, rgba(196, 74, 130, 0.32), transparent 60%),
-      radial-gradient(ellipse 80% 70% at 10% 90%, rgba(126, 63, 148, 0.42), transparent 65%),
-      linear-gradient(135deg, #3B1A47 0%, #1F0B2C 100%);
+    /* Pre-rendered gradient (3 vrstvy radial+linear) jako 1 flat JPEG —
+       PDF readery dříve trpěly heavy SMask transparency layers a render
+       první stránky byl pomalý. Source gradient zachován v cover-bg-gen.html
+       pro pozdější regeneraci, pokud se design změní. */
+    background: url("cover-bg-master.jpg") center/cover no-repeat,
+                #3B1A47;
     color: #FAFBFC;
     padding: 22mm;
     display: flex;
