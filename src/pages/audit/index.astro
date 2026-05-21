@@ -201,11 +201,19 @@ const faqJsonLd = {
           <form
             class="audit-form audit-form--inline"
             method="post"
-            action="https://sniperdesign.ecomailapp.cz/public/subscribe/12/04d9c95424b2f28aaece6f953bb0e4aa"
+            action="https://aiseo-pack-webhook.aiseo-optimalizace.workers.dev/audit-inquiry"
             novalidate
           >
-            <input type="hidden" name="name" id="audit-form-name" value="Audit poptávka" />
-            <input type="hidden" name="updateExisting" value="1" />
+            {/* Honeypot — bots fill all fields, humans don't see this one.
+                Pokud je vyplněný, Worker tiše zahodí submission. */}
+            <input
+              type="text"
+              name="website"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+              style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;"
+            />
 
             <div class="audit-form__grid">
               <div class="audit-form__field">
@@ -215,6 +223,7 @@ const faqJsonLd = {
                 <input
                   type="text"
                   id="audit-jmeno"
+                  name="jmeno"
                   required
                   autocomplete="name"
                   placeholder="Honza Novák"
@@ -242,6 +251,7 @@ const faqJsonLd = {
                 <input
                   type="url"
                   id="audit-url"
+                  name="url"
                   required
                   placeholder="https://vas-eshop.cz"
                   autocomplete="url"
@@ -250,7 +260,7 @@ const faqJsonLd = {
 
               <div class="audit-form__field audit-form__field--full">
                 <label for="audit-platforma">Platforma webu</label>
-                <select id="audit-platforma">
+                <select id="audit-platforma" name="platforma">
                   <option value="">— vyberte —</option>
                   <option value="Upgates">Upgates</option>
                   <option value="Shoptet">Shoptet</option>
@@ -269,6 +279,7 @@ const faqJsonLd = {
                 </label>
                 <textarea
                   id="audit-cil"
+                  name="cil"
                   rows="3"
                   placeholder="např. pokles z Googlu, slabá viditelnost, příprava na rebrand, lepší citace v AI nástrojích…"
                 ></textarea>
@@ -276,7 +287,7 @@ const faqJsonLd = {
 
               <div class="audit-form__field audit-form__field--full audit-form__gdpr">
                 <label>
-                  <input type="checkbox" id="audit-gdpr" required />
+                  <input type="checkbox" id="audit-gdpr" name="gdpr" required />
                   <span>
                     Souhlasím se&nbsp;<a href="/gdpr/">zpracováním osobních údajů</a>
                     za&nbsp;účelem zpracování této poptávky. <span aria-hidden="true">*</span>
@@ -286,11 +297,14 @@ const faqJsonLd = {
             </div>
 
             <button type="submit" class="audit-form__submit">
-              Objednat audit za 9&nbsp;990&nbsp;Kč
+              <span class="audit-form__submit-label">Objednat audit za 9&nbsp;990&nbsp;Kč</span>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </button>
+
+            {/* Error placeholder, vyplní JS handler při Worker failure. */}
+            <p class="audit-form__error" role="alert" hidden></p>
 
             <p class="audit-form__legal">
               Odesláním si&nbsp;<strong>závazně rezervujete zpracování auditu
@@ -758,24 +772,62 @@ const faqJsonLd = {
 
 <script is:inline>
   /**
-   * Audit form — sloučí URL + cíl + platformu do name fieldu, aby
-   * to Sniperdesign viděl v Ecomail dashboardu vedle e-mailu.
-   * Ecomail subscribe endpoint nepodporuje custom fields, takže
-   * data sbalíme do "name".
+   * Audit form submit — fetch POST do CF Workeru (route /audit-inquiry),
+   * Worker pošle 2 e-maily přes Resend (notify pro tým + auto-reply zákazníkovi)
+   * a vrátí JSON {ok:true}. Po úspěchu redirect na /audit/dekujeme/.
+   *
+   * Honeypot field "website" — bots fill all fields, Worker tiše zahodí
+   * submission když honeypot není prázdný. Frontend ho neřeší.
    */
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector(".audit-form");
     if (!form) return;
-    form.addEventListener("submit", (e) => {
-      const jmeno = (document.getElementById("audit-jmeno"))?.value?.trim() || "";
-      const url = (document.getElementById("audit-url"))?.value?.trim() || "";
-      const platforma = (document.getElementById("audit-platforma"))?.value?.trim() || "";
-      const cil = (document.getElementById("audit-cil"))?.value?.trim() || "";
-      const nameInput = document.getElementById("audit-form-name");
-      if (!nameInput) return;
-      // Sloučený "name" — Sniperdesign uvidí v Ecomail dashboardu
-      const parts = ["Audit poptávka", jmeno, url, platforma, cil ? cil.slice(0, 200) : ""].filter(Boolean);
-      nameInput.value = parts.join(" · ");
+    const submitBtn = form.querySelector(".audit-form__submit");
+    const submitLabel = form.querySelector(".audit-form__submit-label");
+    const errorEl = form.querySelector(".audit-form__error");
+    const originalLabel = submitLabel?.textContent || "Odeslat";
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (errorEl) {
+        errorEl.hidden = true;
+        errorEl.textContent = "";
+      }
+      if (submitBtn) submitBtn.disabled = true;
+      if (submitLabel) submitLabel.textContent = "Odesílám…";
+
+      try {
+        const data = {
+          jmeno: (document.getElementById("audit-jmeno"))?.value?.trim() || "",
+          email: (document.getElementById("audit-email"))?.value?.trim() || "",
+          url: (document.getElementById("audit-url"))?.value?.trim() || "",
+          platforma: (document.getElementById("audit-platforma"))?.value || "",
+          cil: (document.getElementById("audit-cil"))?.value?.trim() || "",
+          gdpr: !!(document.getElementById("audit-gdpr"))?.checked,
+          website: (form.querySelector('input[name="website"]'))?.value || "",
+        };
+
+        const res = await fetch(form.action, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        if (!res.ok) {
+          throw new Error(`Server returned ${res.status}`);
+        }
+
+        window.location.assign("/audit/dekujeme/");
+      } catch (err) {
+        console.error("Audit form submit failed", err);
+        if (errorEl) {
+          errorEl.textContent =
+            "Něco se pokazilo při odeslání formuláře. Zkuste to prosím znovu, nebo napište přímo na aiseo-optimalizace@sniperdesign.cz.";
+          errorEl.hidden = false;
+        }
+        if (submitBtn) submitBtn.disabled = false;
+        if (submitLabel) submitLabel.textContent = originalLabel;
+      }
     });
   });
 </script>
@@ -1990,4 +2042,18 @@ const faqJsonLd = {
     color: var(--color-ink-faint);
   }
   .audit-form__legal strong { color: var(--color-ink-muted); font-weight: 600; }
+  .audit-form__error {
+    margin: 0.875rem 0 0;
+    padding: 0.75rem 1rem;
+    background: oklch(0.95 0.05 25);
+    border: 1px solid oklch(0.6 0.18 25);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: oklch(0.35 0.15 25);
+  }
+  .audit-form__submit:disabled {
+    opacity: 0.6;
+    cursor: wait;
+  }
 </style>

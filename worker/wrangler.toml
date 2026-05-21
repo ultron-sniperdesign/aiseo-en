@@ -2,12 +2,15 @@ name = "aiseo-pack-webhook"
 main = "src/index.ts"
 compatibility_date = "2026-05-01"
 
-# Tento worker přijímá Stripe webhooky a předává customer e-mail
-# do Ecomail listu, který má automation pro odeslání PDF download e-mailu.
+# Worker pro aiseo-optimalizace.cz, dvě routes:
+#
+# POST /              — Stripe webhook bridge (Pack purchase → Ecomail PDF delivery)
+# POST /audit-inquiry — audit form bridge (formulář → Resend → notify + auto-reply)
 #
 # Secrets (nastavit přes `wrangler secret put <NAME>`, NIKDY do vars/git):
 #   STRIPE_WEBHOOK_SECRET — Stripe webhook signing secret (whsec_...)
 #   ECOMAIL_API_KEY       — Ecomail API klíč
+#   RESEND_API_KEY        — Resend API klíč (re_...) pro audit-inquiry route
 #
 # Public env vars (OK v gitu):
 [vars]
@@ -20,3 +23,7 @@ ECOMAIL_LIST_ID = "12"
 ECOMAIL_PIPELINE_ID = "44112"
 # Volitelný filter: pokud nastaveno, worker zpracuje webhook jen pro tento Stripe Product ID
 EXPECTED_PRODUCT_ID = ""
+# Audit inquiry e-mail config.
+# AUDIT_FROM musí být ve verified domain v Resend dashboardu (sniperdesign.cz).
+AUDIT_FROM = "AI SEO audit <aiseo-optimalizace@sniperdesign.cz>"
+AUDIT_NOTIFY_TO = "aiseo-optimalizace@sniperdesign.cz"
