@@ -1252,13 +1252,18 @@ import * as p from "~/content/pages/index";
     color: var(--color-ink-faint);
     margin-top: 0.25rem;
     display: inline-flex;
-    align-items: center;
+    /* flex-start (ne center) — při zalomení textu na víc řádků by center
+       vycentroval tečku na střed celého bloku a vypadala jako useknutá. */
+    align-items: flex-start;
     gap: 0.4rem;
   }
   .stat__src::before {
     content: "";
+    flex: none;
     width: 4px;
     height: 4px;
+    /* opticky vystředit tečku na první řádek textu */
+    margin-top: 0.5em;
     background: var(--color-ink-faint);
     border-radius: 50%;
   }
@@ -1949,6 +1954,18 @@ import * as p from "~/content/pages/index";
     .offers {
       padding-top: clamp(2.25rem, 9vw, 3rem);
       padding-bottom: clamp(2.25rem, 9vw, 3rem);
+    }
+    /* Stat-bar: border-left dividery + first-child reset jsou navržené pro
+       1řádkový desktop. Na mobilní mřížce dělaly stray border-left + odsazení
+       u levého sloupce (např. ~60 % se nezarovnalo). Reset → vše flush-left,
+       separace přes grid gap. */
+    .stat-bar__inner {
+      gap: 1.5rem 1.25rem;
+    }
+    .stat,
+    .stat:first-child {
+      border-left: none;
+      padding: 0;
     }
   }
 </style>
