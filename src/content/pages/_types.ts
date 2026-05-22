@@ -29,6 +29,18 @@ export interface FaqItem {
   a: string;
 }
 
+/**
+ * FAQ položka pro HTML render s inline markupem v odpovědi (<strong>, <a>, &nbsp;).
+ * POZOR: NEpoužívat přímo pro JSON-LD acceptedAnswer (ten markup nesmí mít) —
+ * stránky s rich FAQ drží JSON-LD jako samostatný plain-text zdroj.
+ */
+export interface RichFaqItem {
+  /** Otázka. Smí obsahovat entity (&nbsp;). */
+  q: string;
+  /** Odpověď. Smí obsahovat inline HTML. */
+  a: string;
+}
+
 /** Číslovaná feature dlaždice (sekce "Co najdete v PDF"). */
 export interface NumberedFeature {
   num: number;
