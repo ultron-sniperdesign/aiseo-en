@@ -248,6 +248,10 @@ const ECOMAIL_ENDPOINT =
     .ec-form__input,
     .ec-form__button {
       width: 100%;
+      /* V column módu by flex-basis (240px na inputu) určoval VÝŠKU → input
+         by se nafoukl na 240px a s border-radius 999px vypadal jako kruh.
+         Reset na auto → výšku řídí min-height + padding. */
+      flex: 0 0 auto;
     }
   }
 </style>
