@@ -113,8 +113,10 @@ const {
 
   .free-strip__visual {
     position: relative;
-    aspect-ratio: 4 / 3;
-    min-height: 220px;
+    /* Portrétní/čtvercový rám — PDF náhledy jsou portrait (720/1018) a v
+       landscape rámu (4/3) přetékaly dolů a překrývaly text. */
+    aspect-ratio: 1 / 1;
+    min-height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -158,6 +160,20 @@ const {
   }
   .free-strip__inner:hover .free-strip__pdf--front {
     transform: translate(-16%, 8%) rotate(-8deg);
+  }
+  /* Mobil/tablet (<860px, 1-sloupcový layout) — menší PDF + krotší translate,
+     ať se portrait náhledy vejdou do rámu a nepřetékají do textu. Desktop
+     (≥860px) si drží base 62 % a větší rozmáchnutí. */
+  @media (max-width: 859px) {
+    .free-strip__pdf {
+      width: 54%;
+    }
+    .free-strip__pdf--back {
+      transform: translate(20%, -3%) rotate(7deg);
+    }
+    .free-strip__pdf--front {
+      transform: translate(-15%, 5%) rotate(-5deg);
+    }
   }
   .free-strip__pdf-badge {
     position: absolute;
