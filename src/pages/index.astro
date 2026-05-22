@@ -2,159 +2,35 @@
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import SniperDesignBigContact from "~/components/sniperdesign/BigContact.astro";
 import FreeStrip from "~/components/blocks/FreeStrip.astro";
-
-const pageTitle = "AI éra vyhledávání: SEO vs. GEO vs. AEO vs. AIO — průvodce 4 zkratkami";
-const pageDescription =
-  "Praktický průvodce čtyřmi disciplínami AI éry vyhledávání pro český trh. SEO pro pozice v Googlu, GEO pro citace v ChatGPT, AEO pro AI Overviews, AIO jako zastřešující rámec.";
-
-/**
- * Quartet — 4 disciplíny pro homepage hero karty.
- * Každá disciplína má vlastní barvu (--color-{d}) a vlastní /<d>/ slug.
- */
-type Discipline = "seo" | "geo" | "aeo" | "aio";
-interface Quartet {
-  d: Discipline;
-  abbr: string;
-  name: string;
-  desc: string;
-  features: string[];
-  href: string;
-}
-
-/**
- * Pill definitions — rychlé seznámení s každou disciplínou pro hero pills.
- * Klik na pill rozbalí kartu s definicí a linkem na plnou sekci.
- */
-interface PillDef {
-  d: Discipline;
-  label: string;
-  fullName: string;
-  oneLine: string;
-  quick: string;
-  href: string;
-}
-
-const pillDefs: PillDef[] = [
-  {
-    d: "seo",
-    label: "SEO — Search",
-    fullName: "Search Engine Optimization",
-    oneLine: "Pozice v Googlu a Seznamu.",
-    quick: "Klasická optimalizace pro umístění v top 10 organických výsledků. Bez indexovatelného a dobře strukturovaného webu výrazně snižujete šanci, že vás AI nástroje najdou, pochopí a použijí jako zdroj.",
-    href: "/seo/",
-  },
-  {
-    d: "geo",
-    label: "GEO — Generative",
-    fullName: "Generative Engine Optimization",
-    oneLine: "Citace v ChatGPT, Perplexity, Claude a Gemini.",
-    quick: "Cílíte na to být zdrojem, který AI nástroj cituje při generování odpovědi. Místo modrého odkazu se hraje o zmínku ve výstupu.",
-    href: "/geo/",
-  },
-  {
-    d: "aeo",
-    label: "AEO — Answer",
-    fullName: "Answer Engine Optimization",
-    oneLine: "Odpovědi v Google AI Overviews a Bing Chatu.",
-    quick: "Užší disciplína cílená na panel s krátkou odpovědí nahoře nad výsledky. Klíč je FAQ schema, krátké odpovědi po nadpisu, strukturovaný návod.",
-    href: "/aeo/",
-  },
-  {
-    d: "aio",
-    label: "AIO — Umbrella",
-    fullName: "AI Optimization (zastřešující)",
-    oneLine: "Strategický rámec nad SEO + GEO + AEO. Také funkce Google AI Overviews.",
-    quick: "Dvojí význam, který se v praxi často plete. Jako strategie zastřešuje všechny tři disciplíny. Jako funkce odkazuje na konkrétní AI Overviews panel od Googlu.",
-    href: "/aio/",
-  },
-];
-
-const quartet: Quartet[] = [
-  {
-    d: "seo",
-    abbr: "SEO",
-    name: "Search Engine Optimization",
-    desc: "Klasická optimalizace pro pozice v Googlu a Seznamu. Zůstává základem všeho ostatního — bez indexace nezafunguje GEO ani AEO.",
-    features: [
-      "Cílí na top 10 v Googlu",
-      "První výsledky za 3 až 6 měsíců",
-      "Měří se přes Google Search Console",
-      "Funguje pro Google a Seznam",
-    ],
-    href: "/seo/",
-  },
-  {
-    d: "geo",
-    abbr: "GEO",
-    name: "Generative Engine Optimization",
-    desc: "Optimalizace pro citace v ChatGPT, Perplexity, Claude a Gemini. Místo modrého odkazu cílíte na to, abyste byli zdrojem, ze kterého AI čerpá fakta.",
-    features: [
-      "Cílí na zmínky v AI odpovědích",
-      "První výsledky za 1 až 3 měsíce",
-      "Měří se počet citací napříč nástroji",
-      "Funguje pro ChatGPT a Perplexity",
-    ],
-    href: "/geo/",
-  },
-  {
-    d: "aeo",
-    abbr: "AEO",
-    name: "Answer Engine Optimization",
-    desc: "Užší disciplína cílená na Google AI Overviews a Bing Chat. FAQ sekce, návody a krátké odpovědi hned po nadpisu — to je její řemeslo.",
-    features: [
-      "Cílí na panel AI Overviews v Googlu",
-      "První výsledky za 2 až 4 měsíce",
-      "Měří se přes Google Search Console",
-      "Funguje pro Google a Bing",
-    ],
-    href: "/aeo/",
-  },
-  {
-    d: "aio",
-    abbr: "AIO",
-    name: "AI Optimization (zastřešující)",
-    desc: "Strategický deštník nad SEO, GEO a AEO. Také konkrétní funkce Google AI Overviews. Dvojí význam, který se v praxi často plete.",
-    features: [
-      "Cílí na koherentní strategii",
-      "Iteruje se po kvartálech",
-      "Měří se hybridně přes všechny kanály",
-      "Pokrývá vše dohromady",
-    ],
-    href: "/aio/",
-  },
-];
+import * as p from "~/content/pages/index";
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription} image="/og/default.png">
+<BaseLayout title={p.meta.title} description={p.meta.description} image="/og/default.png">
   <!-- HERO -->
   <section class="hero">
-    <span class="hero__intro">Průvodce AI érou vyhledávání pro český trh</span>
+    <span class="hero__intro">{p.hero.intro}</span>
 
-    <h1 class="display hero__title">
-      <strong>AI éra vyhledávání</strong> se neptá <span class="hl">na pozice</span>. Ptá se <span class="hl">na citace</span>.
-    </h1>
+    <h1 class="display hero__title" set:html={p.hero.title}></h1>
 
-    <p class="lead hero__lead">
-      Praktický průvodce čtyřmi disciplínami, které rozhodují o tom, jestli vás Google ukáže, jestli vás zacitují ChatGPT, Perplexity nebo Claude, jestli vás Gemini zařadí do AI přehledu, a jestli vás v roce 2026 najde někdo jiný než vy sami.
-    </p>
+    <p class="lead hero__lead">{p.hero.lead}</p>
 
     <p class="hero__pills-hint">
       <span class="hero__pills-hint-arrow" aria-hidden="true">↓</span>
-      Klikněte na disciplínu pro krátkou definici a odkaz na detail
+      {p.hero.pillsHint}
     </p>
 
     <div class="hero__pills" role="tablist" aria-label="Rychlé seznámení s disciplínami">
-      {pillDefs.map((p) => (
+      {p.pillDefs.map((pill) => (
         <button
           type="button"
           class="pill pill--btn"
-          data-d={p.d}
-          data-pill-trigger={p.d}
-          aria-controls={`pill-panel-${p.d}`}
-          aria-expanded={p.d === "geo" ? "true" : "false"}
+          data-d={pill.d}
+          data-pill-trigger={pill.d}
+          aria-controls={`pill-panel-${pill.d}`}
+          aria-expanded={pill.d === "geo" ? "true" : "false"}
           role="tab"
         >
-          <span>{p.label}</span>
+          <span>{pill.label}</span>
           <svg class="pill__icon" width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
             <path d="M5.5 1V10M1 5.5H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
           </svg>
@@ -164,27 +40,27 @@ const quartet: Quartet[] = [
 
     <!-- Pill detail panel — shared, swaps content based on active pill -->
     <div class="pill-panels" data-pill-panels>
-      {pillDefs.map((p) => (
+      {p.pillDefs.map((pill) => (
         <section
           class="pill-panel"
-          id={`pill-panel-${p.d}`}
-          data-d={p.d}
-          data-pill-panel={p.d}
+          id={`pill-panel-${pill.d}`}
+          data-d={pill.d}
+          data-pill-panel={pill.d}
           role="tabpanel"
-          hidden={p.d !== "geo"}
+          hidden={pill.d !== "geo"}
         >
           <header class="pill-panel__head">
-            <span class="pill-panel__abbr">{p.d.toUpperCase()}</span>
-            <h2 class="pill-panel__title">{p.fullName}</h2>
+            <span class="pill-panel__abbr">{pill.d.toUpperCase()}</span>
+            <h2 class="pill-panel__title">{pill.fullName}</h2>
             <button type="button" class="pill-panel__close" data-pill-close aria-label="Zavřít detail">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
               </svg>
             </button>
           </header>
-          <p class="pill-panel__one">{p.oneLine}</p>
-          <p class="pill-panel__quick">{p.quick}</p>
-          <a href={p.href} class="pill-panel__link">
+          <p class="pill-panel__one">{pill.oneLine}</p>
+          <p class="pill-panel__quick">{pill.quick}</p>
+          <a href={pill.href} class="pill-panel__link">
             Otevřít detail disciplíny
             <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -198,19 +74,17 @@ const quartet: Quartet[] = [
   <!-- HERO TRIO — stejný dotaz, tři rozhraní. Reálné HTML mockupy místo dekorativního obrázku. -->
   <section class="trio" aria-labelledby="trio-title">
     <header class="section__head">
-      <span class="eyebrow"><span class="eyebrow__num">01</span> Stejný dotaz, tři rozhraní</span>
-      <h2 id="trio-title" class="section__title">
-        Co dostane uživatel, když se dnes ptá na <span class="hl">AI vyhledávání</span>? Tři rozhraní, <strong>jedna otázka</strong>.
-      </h2>
+      <span class="eyebrow"><span class="eyebrow__num">{p.trioHead.eyebrowNum}</span> {p.trioHead.eyebrow}</span>
+      <h2 id="trio-title" class="section__title" set:html={p.trioHead.title}></h2>
     </header>
 
     <div class="trio__grid">
       <!-- Cell 1: Klasický Google -->
       <div class="trio__cell" data-tone="google">
         <aside class="verdict" data-tone="google" role="note" aria-label="Co uživatel dostane z klasického Googlu">
-          <h3 class="verdict__type">Klasický Google SERP</h3>
-          <span class="verdict__key">Co uživatel dostane</span>
-          <p class="verdict__val">Seznam odkazů. Klikne, čte, rozhodne se.</p>
+          <h3 class="verdict__type">{p.trioVerdicts[0].type}</h3>
+          <span class="verdict__key">{p.trioVerdicts[0].key}</span>
+          <p class="verdict__val">{p.trioVerdicts[0].val}</p>
         </aside>
         <article class="tpanel" data-tone="google" aria-label="Klasické Google vyhledávání">
           <header class="tpanel__chrome">
@@ -246,9 +120,9 @@ const quartet: Quartet[] = [
       <!-- Cell 2: Google s AI Overview -->
       <div class="trio__cell" data-tone="aio">
         <aside class="verdict" data-tone="aio" role="note" aria-label="Co uživatel dostane z AI Overview">
-          <h3 class="verdict__type">Google s AI Overview</h3>
-          <span class="verdict__key">Co uživatel dostane</span>
-          <p class="verdict__val">Hotová odpověď s citacemi. Často neklikne.</p>
+          <h3 class="verdict__type">{p.trioVerdicts[1].type}</h3>
+          <span class="verdict__key">{p.trioVerdicts[1].key}</span>
+          <p class="verdict__val">{p.trioVerdicts[1].val}</p>
         </aside>
         <article class="tpanel tpanel--featured" data-tone="aio" aria-label="Google s AI Overview panelem">
           <header class="tpanel__chrome">
@@ -287,9 +161,9 @@ const quartet: Quartet[] = [
       <!-- Cell 3: ChatGPT -->
       <div class="trio__cell" data-tone="chat">
         <aside class="verdict" data-tone="chat" role="note" aria-label="Co uživatel dostane z AI chatbota">
-          <h3 class="verdict__type">AI chatbot (ChatGPT, Perplexity, Gemini)</h3>
-          <span class="verdict__key">Co uživatel dostane</span>
-          <p class="verdict__val">Konverzační odpověď. Klik k vám už není v plánu.</p>
+          <h3 class="verdict__type">{p.trioVerdicts[2].type}</h3>
+          <span class="verdict__key">{p.trioVerdicts[2].key}</span>
+          <p class="verdict__val">{p.trioVerdicts[2].val}</p>
         </aside>
         <article class="tpanel" data-tone="chat" aria-label="ChatGPT odpověď">
           <header class="tpanel__chrome">
@@ -328,8 +202,8 @@ const quartet: Quartet[] = [
     <aside class="trio__callout" role="note">
       <span class="trio__callout-mark" aria-hidden="true">!</span>
       <p class="trio__callout-text">
-        <strong>Pokud na webu nemáte obsah, který se dá <em>citovat</em>, ve dvou ze tří rozhraní jste neviditelní.</strong>
-        <span class="trio__callout-cont">Tento průvodce ukazuje, co konkrétně přidat — sekce po sekci.</span>
+        <Fragment set:html={p.trioCallout.text} />
+        <span class="trio__callout-cont">{p.trioCallout.cont}</span>
       </p>
     </aside>
   </section>
@@ -337,44 +211,27 @@ const quartet: Quartet[] = [
   <!-- STAT BAR — proč to musíte řešit (e-shop / web owner pain points) -->
   <section class="stat-bar" aria-label="Proč začít s AI SEO">
     <div class="stat-bar__inner">
-      <div class="stat">
-        <div class="stat__num"><strong>Výrazně častěji</strong></div>
-        <p class="stat__label">U informačních a problémových dotazů se AI Overviews objevují výrazně častěji než u běžného průměru všech vyhledávání</p>
-        <p class="stat__src">Zero-click hrozba pro váš organic traffic u edukativních témat</p>
-      </div>
-      <div class="stat">
-        <div class="stat__num"><strong>Roste rychle</strong></div>
-        <p class="stat__label">U mladších uživatelů rychle roste podíl rešerší mimo klasický Google — v AI nástrojích, sociálních sítích a specializovaných platformách</p>
-        <p class="stat__src">ChatGPT, Perplexity, Claude, Gemini, TikTok, Reddit</p>
-      </div>
-      <div class="stat">
-        <div class="stat__num"><strong>~60&nbsp;%</strong></div>
-        <p class="stat__label">Podle dostupných studií končí přibližně 60 % vyhledávání bez kliknutí na otevřený web (zero-click search)</p>
-        <p class="stat__src">SparkToro 2024: 59,7 % EU, 58,5 % US</p>
-      </div>
-      <div class="stat">
-        <div class="stat__num"><strong>1–3&nbsp;měs.</strong></div>
-        <p class="stat__label">Po nasazení správných postupů na webu se první citace v AI nástrojích typicky objeví už za 1 až 3 měsíce</p>
-        <p class="stat__src">Rychleji než klasické SEO</p>
-      </div>
+      {p.statBar.map((s) => (
+        <div class="stat">
+          <div class="stat__num" set:html={s.num}></div>
+          <p class="stat__label">{s.label}</p>
+          <p class="stat__src">{s.src}</p>
+        </div>
+      ))}
     </div>
   </section>
 
   <!-- QUARTET — 4 disciplíny -->
   <section class="section">
     <header class="section__head">
-      <span class="eyebrow"><span class="eyebrow__num">02</span> Čtyři disciplíny</span>
-      <h2 class="section__title">
-        Každá řeší <span class="hl">jiný kanál</span>. Společně tvoří <strong>kvartet</strong>.
-      </h2>
-      <p class="section__intro">
-        Nejde o synonyma ani o trendové štítky. Každá disciplína má vlastní platformy, vlastní signály a vlastní časový horizont. Chyba je dělat všechny najednou, bez pořadí.
-      </p>
+      <span class="eyebrow"><span class="eyebrow__num">{p.quartetHead.eyebrowNum}</span> {p.quartetHead.eyebrow}</span>
+      <h2 class="section__title" set:html={p.quartetHead.title}></h2>
+      <p class="section__intro">{p.quartetHead.lead}</p>
     </header>
 
     <div class="quartet">
       {
-        quartet.map((q) => (
+        p.quartet.map((q) => (
           <a href={q.href} class="qcard" data-d={q.d}>
             <h3 class="qcard__abbr">{q.abbr}</h3>
             <p class="qcard__name">{q.name}</p>
@@ -397,13 +254,9 @@ const quartet: Quartet[] = [
   <section class="anatomy-section">
     <div class="anatomy-section__inner">
       <header class="anatomy-section__head">
-        <span class="eyebrow"><span class="eyebrow__num">03</span> Anatomie AI-friendly stránky</span>
-        <h2 class="section__title">
-          Stránka, kterou si AI <span class="hl">snadno přečte</span> a <strong>zacituje</strong>, vypadá takto.
-        </h2>
-        <p class="section__intro">
-          Šest prvků, které z běžné stránky udělají zdroj pro Google AI Overviews, ChatGPT i Perplexity. Žádný z nich nestojí extra peníze — jen je potřeba je tam vědomě dostat.
-        </p>
+        <span class="eyebrow"><span class="eyebrow__num">{p.anatomyHead.eyebrowNum}</span> {p.anatomyHead.eyebrow}</span>
+        <h2 class="section__title" set:html={p.anatomyHead.title}></h2>
+        <p class="section__intro">{p.anatomyHead.lead}</p>
       </header>
 
       <div class="anatomy-section__layout">
@@ -490,60 +343,15 @@ const quartet: Quartet[] = [
         </svg>
 
         <ol class="anatomy-list">
-          <li class="anatomy-item">
-            <span class="anatomy-item__num" aria-hidden="true">1</span>
-            <div class="anatomy-item__body">
-              <h3 class="anatomy-item__title">H1 jako otázka nebo jasná definice</h3>
-              <p class="anatomy-item__desc">
-                Hlavní nadpis jednou větou říká, na jaký dotaz stránka odpovídá. AI engine to čte jako kontext celé stránky.
-              </p>
-            </div>
-          </li>
-          <li class="anatomy-item">
-            <span class="anatomy-item__num" aria-hidden="true">2</span>
-            <div class="anatomy-item__body">
-              <h3 class="anatomy-item__title">Krátká odpověď v prvních 40–60 slovech</h3>
-              <p class="anatomy-item__desc">
-                Hned pod H1 stojí stručná definice. Krátká odpověď v úvodu zvyšuje šanci, že AI systém rychle pochopí hlavní odpověď stránky a najde ji jako citovatelnou pasáž.
-              </p>
-            </div>
-          </li>
-          <li class="anatomy-item">
-            <span class="anatomy-item__num" aria-hidden="true">3</span>
-            <div class="anatomy-item__body">
-              <h3 class="anatomy-item__title">Hutný text s konkrétními fakty</h3>
-              <p class="anatomy-item__desc">
-                Jeden nápad na odstavec. Čísla, procenta, jména zdrojů. AI miluje doložená tvrzení, ignoruje obecné „omáčky".
-              </p>
-            </div>
-          </li>
-          <li class="anatomy-item">
-            <span class="anatomy-item__num" aria-hidden="true">4</span>
-            <div class="anatomy-item__body">
-              <h3 class="anatomy-item__title">Podnadpisy H2/H3 jako sub-otázky</h3>
-              <p class="anatomy-item__desc">
-                Každý podnadpis odpovídá na konkrétní pod-dotaz. Pomáhá AI mapovat strukturu stránky a ukotvit ji k tématu.
-              </p>
-            </div>
-          </li>
-          <li class="anatomy-item">
-            <span class="anatomy-item__num" aria-hidden="true">5</span>
-            <div class="anatomy-item__body">
-              <h3 class="anatomy-item__title">FAQ sekce s reálnými dotazy uživatelů</h3>
-              <p class="anatomy-item__desc">
-                Otázky berte z Google Search Console nebo z „People Also Ask" boxů. FAQ pomáhá pokrýt navazující dotazy, zpřehlednit obsah pro uživatele i vyhledávače a poskytnout krátké citovatelné odpovědi.
-              </p>
-            </div>
-          </li>
-          <li class="anatomy-item">
-            <span class="anatomy-item__num" aria-hidden="true">6</span>
-            <div class="anatomy-item__body">
-              <h3 class="anatomy-item__title">Schema.org markup v hlavičce stránky</h3>
-              <p class="anatomy-item__desc">
-                Strojově čitelný JSON-LD: <code>Article</code>, <code>FAQPage</code>, <code>HowTo</code>. Schema pomáhá strojům rychleji a přesněji pochopit typ obsahu, ale nenahrazuje kvalitní text, autoritu ani technické SEO.
-              </p>
-            </div>
-          </li>
+          {p.anatomyList.map((item, i) => (
+            <li class="anatomy-item">
+              <span class="anatomy-item__num" aria-hidden="true">{i + 1}</span>
+              <div class="anatomy-item__body">
+                <h3 class="anatomy-item__title">{item.title}</h3>
+                <p class="anatomy-item__desc" set:html={item.desc}></p>
+              </div>
+            </li>
+          ))}
         </ol>
       </div>
     </div>
@@ -553,28 +361,23 @@ const quartet: Quartet[] = [
        Logika: čtenář právě viděl 6 signálů AI-friendly stránky, přirozeně myslí „jak to dostat na moji homepage?" —
        PDF zdarma je hotová šablona přesně pro tento moment. -->
   <FreeStrip
-    title="Šest signálů AI-friendly stránky jako"
-    titleHighlight="hotový návod pro vaši homepage"
+    title={p.freeStrip.title}
+    titleHighlight={p.freeStrip.titleHighlight}
   />
 
   <!-- PILLAR PROMO -->
   <section class="pillar-promo">
     <div class="pillar-promo__main">
-      <span class="eyebrow"><span class="eyebrow__num">04</span> Hlavní průvodce</span>
-      <h2 class="pillar-promo__title">
-        SEO vs. GEO vs. AEO vs. AIO: <strong>kompletní průvodce</strong> <span class="hl">4 zkratkami</span> pro AI éru
-      </h2>
-      <p class="pillar-promo__lead">
-        Hlavní článek, který každou disciplínu rozebírá od definice přes srovnání až po rozhodovací matici. Doporučené čtení v jedné dávce.
-      </p>
+      <span class="eyebrow"><span class="eyebrow__num">{p.pillarPromo.eyebrowNum}</span> {p.pillarPromo.eyebrow}</span>
+      <h2 class="pillar-promo__title" set:html={p.pillarPromo.title}></h2>
+      <p class="pillar-promo__lead">{p.pillarPromo.lead}</p>
       <div class="pillar-promo__meta">
-        <span>Asi 3 000 slov</span>
-        <span>Sedm častých otázek</span>
-        <span>Srovnávací tabulka</span>
-        <span>12 minut čtení</span>
+        {p.pillarPromo.meta.map((m) => (
+          <span>{m}</span>
+        ))}
       </div>
-      <a href="/seo-vs-geo-vs-aeo-vs-aio/" class="btn">
-        Otevřít hlavní průvodce
+      <a href={p.pillarPromo.btnHref} class="btn">
+        {p.pillarPromo.btnLabel}
         <svg class="btn__arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
@@ -582,116 +385,38 @@ const quartet: Quartet[] = [
     </div>
 
     <div class="pillar-promo__excerpt">
-      <span class="pillar-promo__excerpt-mark">Z hlavního průvodce</span>
-      <p class="pillar-promo__excerpt-text">
-        Když chce váš zákazník odpověď, ptá se ChatGPT, Perplexity nebo Googlu s AI Overview. Vy potřebujete, aby <strong>v té odpovědi</strong> zazněla vaše značka — a aby z ní vedla cesta zpět k vám. Průvodce ukáže, co konkrétně na webu nebo e-shopu upravit.
-      </p>
+      <span class="pillar-promo__excerpt-mark">{p.pillarPromo.excerptMark}</span>
+      <p class="pillar-promo__excerpt-text" set:html={p.pillarPromo.excerptText}></p>
     </div>
   </section>
 
   <!-- VYBRANÉ ČLÁNKY -->
   <section class="section section--deep">
     <header class="section__head">
-      <span class="eyebrow"><span class="eyebrow__num">05</span> Vybrané články</span>
-      <h2 class="section__title">Praktická čtení <strong>pro tento týden</strong></h2>
+      <span class="eyebrow"><span class="eyebrow__num">{p.articlesHead.eyebrowNum}</span> {p.articlesHead.eyebrow}</span>
+      <h2 class="section__title" set:html={p.articlesHead.title}></h2>
     </header>
 
     <div class="section-grid">
-      <a href="/prakticky-postup/" class="scard" data-d="practice">
-        <div class="scard__header">
-          <span class="scard__tag">Praxe</span>
-          <span class="scard__time">9 minut</span>
-        </div>
-        <h3 class="scard__title">Praktický postup ve čtyřech krocích</h3>
-        <p class="scard__desc">
-          Audit obsahu, strukturovaná data, krátká odpověď nahoře a měření. Plus 90denní kalendář, jak na to.
-        </p>
-        <div class="scard__meta">
-          <span>Asi 1 400 slov</span>
-          <span class="scard__cta">Číst <span aria-hidden="true">→</span></span>
-        </div>
-      </a>
-
-      <a href="/rozhodovaci-matice/" class="scard" data-d="matrix">
-        <div class="scard__header">
-          <span class="scard__tag">Rozhodování</span>
-          <span class="scard__time">10 minut</span>
-        </div>
-        <h3 class="scard__title">Rozhodovací matice — co kdy použít</h3>
-        <p class="scard__desc">
-          Pro e-shopy, B2B služby, lokální podniky a vydavatele. Plus rozhodovací stromek, kterým si projdete vlastní situaci.
-        </p>
-        <div class="scard__meta">
-          <span>Asi 1 500 slov</span>
-          <span class="scard__cta">Číst <span aria-hidden="true">→</span></span>
-        </div>
-      </a>
-
-      <a href="/blog/jak-vypnout-ai-overview/" class="scard" data-d="defense">
-        <div class="scard__header">
-          <span class="scard__tag">Návod</span>
-          <span class="scard__time">14 minut</span>
-        </div>
-        <h3 class="scard__title">Jak vypnout AI Overviews v Googlu</h3>
-        <p class="scard__desc">
-          Pět ověřených způsobů — pro běžné uživatele i pro správce webů, kteří nechtějí, aby jim AI „kradla" odpovědi.
-        </p>
-        <div class="scard__meta">
-          <span>Asi 2 200 slov</span>
-          <span class="scard__cta">Číst <span aria-hidden="true">→</span></span>
-        </div>
-      </a>
-
-      <a href="/blog/seo-pro-eshopy-ai-era-2026/" class="scard" data-d="seo">
-        <div class="scard__header">
-          <span class="scard__tag">Pro e‑shopy</span>
-          <span class="scard__time">13 minut</span>
-        </div>
-        <h3 class="scard__title">SEO pro e‑shopy v AI éře 2026</h3>
-        <p class="scard__desc">
-          Co konkrétně změnit v kategoriích, produktovkách a obsahu. Reálné ceny v ČR a kdy se vyplatí najmout agenturu.
-        </p>
-        <div class="scard__meta">
-          <span>Asi 2 600 slov</span>
-          <span class="scard__cta">Číst <span aria-hidden="true">→</span></span>
-        </div>
-      </a>
-
-      <a href="/blog/seo-audit-co-kontrolovat/" class="scard" data-d="seo">
-        <div class="scard__header">
-          <span class="scard__tag">Tutorial</span>
-          <span class="scard__time">9 minut</span>
-        </div>
-        <h3 class="scard__title">SEO audit — co kontrolovat 1× ročně</h3>
-        <p class="scard__desc">
-          Tři vrstvy auditu (technická / on‑page / off‑page) s kompletním checklistem a postupem prioritizace nálezů.
-        </p>
-        <div class="scard__meta">
-          <span>Asi 1 700 slov</span>
-          <span class="scard__cta">Číst <span aria-hidden="true">→</span></span>
-        </div>
-      </a>
-
-      <a href="/blog/seo-nastroje-2026/" class="scard" data-d="seo">
-        <div class="scard__header">
-          <span class="scard__tag">Tutorial</span>
-          <span class="scard__time">12 minut</span>
-        </div>
-        <h3 class="scard__title">SEO nástroje 2026: kompletní průvodce</h3>
-        <p class="scard__desc">
-          Sedm kategorií nástrojů, reálné ceny v roce 2026 (Ahrefs, Semrush, SE Ranking, Marketing Miner, Otterly, Profound) a 4 doporučené stacky podle situace.
-        </p>
-        <div class="scard__meta">
-          <span>Asi 2 200 slov</span>
-          <span class="scard__cta">Číst <span aria-hidden="true">→</span></span>
-        </div>
-      </a>
-
+      {p.scards.map((card) => (
+        <a href={card.href} class="scard" data-d={card.d}>
+          <div class="scard__header">
+            <span class="scard__tag">{card.tag}</span>
+            <span class="scard__time">{card.time}</span>
+          </div>
+          <h3 class="scard__title">{card.title}</h3>
+          <p class="scard__desc">{card.desc}</p>
+          <div class="scard__meta">
+            <span>{card.words}</span>
+            <span class="scard__cta">Číst <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      ))}
     </div>
 
     <div class="section-more">
-      <a href="/blog/" class="section-more__btn">
-        Zobrazit všechny články
+      <a href={p.articlesMore.href} class="section-more__btn">
+        {p.articlesMore.label}
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
           <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -702,104 +427,42 @@ const quartet: Quartet[] = [
   <!-- NABÍDKA — 3 produkty (Free / Pack / Audit) -->
   <section class="offers" aria-labelledby="offers-title">
     <header class="section__head">
-      <span class="eyebrow"><span class="eyebrow__num">06</span> Co můžete dělat dál</span>
-      <h2 id="offers-title" class="section__title">
-        Tři způsoby, jak <strong>posunout svůj web</strong> do AI éry
-      </h2>
-      <p class="section__intro">
-        Od free návodu po komplet audit od&nbsp;specialistů. Vyberte si podle toho,
-        kolik chcete řešit sami a&nbsp;kolik nechat na&nbsp;nás.
-      </p>
+      <span class="eyebrow"><span class="eyebrow__num">{p.offersHead.eyebrowNum}</span> {p.offersHead.eyebrow}</span>
+      <h2 id="offers-title" class="section__title" set:html={p.offersHead.title}></h2>
+      <p class="section__intro" set:html={p.offersHead.lead}></p>
     </header>
 
     <div class="offers__grid">
-      <!-- Free PDF -->
-      <a href="/navod-zdarma/" class="offer offer--free">
-        <header class="offer__head">
-          <span class="offer__tag">Návod zdarma</span>
-          <span class="offer__price offer__price--free">
-            <strong>0&nbsp;Kč</strong>
-            <small>ke&nbsp;stažení hned</small>
+      {p.offers.map((o) => (
+        <a href={o.href} class={`offer offer--${o.mod}`}>
+          {o.featuredPill && <span class="offer__featured-pill">{o.featuredPill}</span>}
+          <header class="offer__head">
+            <span class="offer__tag" set:html={o.tag}></span>
+            <span class={`offer__price offer__price--${o.mod}`}>
+              <strong set:html={o.priceMain}></strong>
+              <small set:html={o.priceNote}></small>
+              {o.priceVat && <small class="offer__price-vat" set:html={o.priceVat}></small>}
+            </span>
+          </header>
+          <h3 class="offer__title" set:html={o.title}></h3>
+          <p class="offer__desc" set:html={o.desc}></p>
+          <ul class="offer__bullets">
+            {o.bullets.map((b) => (
+              <li set:html={b}></li>
+            ))}
+          </ul>
+          <span class="offer__cta">
+            {o.cta}
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
           </span>
-        </header>
-        <h3 class="offer__title">Hotový návod pro homepage v&nbsp;AI&nbsp;éře</h3>
-        <p class="offer__desc">
-          Wireframe s&nbsp;anotacemi, tři principy struktury a&nbsp;šablony textů.
-          Šest stran A4, ze&nbsp;kterých si rovnou vezmete, co potřebujete pro svou homepage.
-        </p>
-        <ul class="offer__bullets">
-          <li>6&nbsp;stran konkrétních úprav</li>
-          <li>Wireframe homepage s&nbsp;10&nbsp;anotacemi</li>
-          <li>Tři principy + 5&nbsp;typických chyb</li>
-        </ul>
-        <span class="offer__cta">
-          Stáhnout zdarma
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </span>
-      </a>
-
-      <!-- Pack -->
-      <a href="/pack/" class="offer offer--pack">
-        <header class="offer__head">
-          <span class="offer__tag">AI&nbsp;SEO Wireframe Pack</span>
-          <span class="offer__price offer__price--pack">
-            <strong>1&nbsp;490&nbsp;Kč</strong>
-            <small>bez DPH &middot; jednorázově</small>
-            <small class="offer__price-vat">1&nbsp;803&nbsp;Kč s&nbsp;DPH</small>
-          </span>
-        </header>
-        <h3 class="offer__title">Kompletní framework pro 7&nbsp;typů stránek</h3>
-        <p class="offer__desc">
-          Ucelená sada wireframů, anotací a&nbsp;šablon textů — všechno připravené
-          k&nbsp;okamžitému použití na&nbsp;vašem webu. Bez konzultantů, bez měsíců práce.
-        </p>
-        <ul class="offer__bullets">
-          <li>7&nbsp;anotovaných wireframů</li>
-          <li>Šablony textů + ukázky strukturovaných dat</li>
-          <li>Návod pro Upgates / Shoptet / WordPress</li>
-        </ul>
-        <span class="offer__cta">
-          Zobrazit Pack
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </span>
-      </a>
-
-      <!-- Audit (featured) -->
-      <a href="/audit/" class="offer offer--audit">
-        <span class="offer__featured-pill">★ Nejvyšší hodnota</span>
-        <header class="offer__head">
-          <span class="offer__tag">AI&nbsp;SEO audit od&nbsp;Sniper Design</span>
-          <span class="offer__price offer__price--audit">
-            <strong>9&nbsp;990&nbsp;Kč</strong>
-            <small>bez DPH &middot; jednorázově</small>
-            <small class="offer__price-vat">12&nbsp;088&nbsp;Kč s&nbsp;DPH</small>
-          </span>
-        </header>
-        <h3 class="offer__title">Přesný plán pro váš konkrétní web</h3>
-        <p class="offer__desc">
-          Důkladná analýza vašeho webu od&nbsp;Sniper Design týmu. Prioritní seznam
-          úprav s&nbsp;odhadem dopadu + 60min konzultace nad výsledky.
-        </p>
-        <ul class="offer__bullets">
-          <li>Audit v&nbsp;technice, obsahu a&nbsp;důvěryhodnosti</li>
-          <li>Prioritní seznam úprav s&nbsp;odhadem dopadu</li>
-          <li>60min konzultace s&nbsp;naším týmem</li>
-        </ul>
-        <span class="offer__cta">
-          Objednat audit
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </span>
-      </a>
+        </a>
+      ))}
     </div>
   </section>
 
-  <SniperDesignBigContact eyebrowNum="07" />
+  <SniperDesignBigContact eyebrowNum={p.bigContactEyebrowNum} />
 </BaseLayout>
 
 <style>
@@ -811,8 +474,8 @@ const quartet: Quartet[] = [
     line-height: 0.95;
     letter-spacing: -0.045em;
   }
-  .display strong { font-weight: 600; color: var(--color-ink); }
-  .display .hl { color: var(--color-accent); font-weight: 400; }
+  .display :global(strong) { font-weight: 600; color: var(--color-ink); }
+  .display :global(.hl) { color: var(--color-accent); font-weight: 400; }
 
   .lead {
     font-family: var(--font-sans);
@@ -1357,7 +1020,7 @@ const quartet: Quartet[] = [
     color: var(--color-ink);
     margin: 0;
   }
-  .aio-card__line strong {
+  .aio-card__line :global(strong) {
     font-weight: 600;
   }
   .aio-card__sources {
@@ -1452,7 +1115,7 @@ const quartet: Quartet[] = [
     color: var(--color-ink);
   }
   .bubble__list li { margin-bottom: 0.25rem; }
-  .bubble__list strong { font-weight: 600; }
+  .bubble__list :global(strong) { font-weight: 600; }
   .bubble__sources {
     display: flex;
     flex-wrap: wrap;
@@ -1520,13 +1183,13 @@ const quartet: Quartet[] = [
     line-height: 1.55;
     color: var(--color-ink);
   }
-  .trio__callout-text strong {
+  .trio__callout-text :global(strong) {
     font-weight: 600;
     color: var(--color-ink);
     display: block;
     margin-bottom: 0.25rem;
   }
-  .trio__callout-text em {
+  .trio__callout-text :global(em) {
     font-style: italic;
     color: var(--color-accent);
     font-weight: 600;
@@ -1572,7 +1235,7 @@ const quartet: Quartet[] = [
     font-feature-settings: "tnum", "cv11";
     font-variant-numeric: tabular-nums;
   }
-  .stat__num strong {
+  .stat__num :global(strong) {
     font-weight: 600;
     color: var(--color-accent);
   }
@@ -1637,8 +1300,8 @@ const quartet: Quartet[] = [
     max-width: 22ch;
     color: var(--color-ink);
   }
-  .section__title strong { font-weight: 600; }
-  .section__title .hl {
+  .section__title :global(strong) { font-weight: 600; }
+  .section__title :global(.hl) {
     color: var(--color-accent);
     font-weight: 500;
   }
@@ -1859,7 +1522,7 @@ const quartet: Quartet[] = [
     color: var(--color-ink-muted);
     margin: 0;
   }
-  .anatomy-item__desc code {
+  .anatomy-item__desc :global(code) {
     font-family: var(--font-mono);
     font-size: 0.85em;
     background: var(--color-paper-deep);
@@ -1897,8 +1560,8 @@ const quartet: Quartet[] = [
     color: var(--color-ink);
     margin: 0;
   }
-  .pillar-promo__title strong { font-weight: 600; }
-  .pillar-promo__title .hl {
+  .pillar-promo__title :global(strong) { font-weight: 600; }
+  .pillar-promo__title :global(.hl) {
     color: var(--color-accent);
     font-weight: 500;
   }
@@ -1983,7 +1646,7 @@ const quartet: Quartet[] = [
     letter-spacing: -0.012em;
     color: var(--color-ink);
   }
-  .pillar-promo__excerpt-text strong { font-weight: 600; }
+  .pillar-promo__excerpt-text :global(strong) { font-weight: 600; }
 
   /* ===== SECTION GRID (vybrané články) ===== */
   .section-grid {
@@ -2192,7 +1855,7 @@ const quartet: Quartet[] = [
     flex-direction: column;
     gap: 0.125rem;
   }
-  .offer__price strong {
+  .offer__price :global(strong) {
     font-family: var(--font-sans);
     font-size: 1.625rem;
     font-weight: 700;
@@ -2200,7 +1863,7 @@ const quartet: Quartet[] = [
     letter-spacing: -0.02em;
     color: var(--color-ink);
   }
-  .offer__price small {
+  .offer__price :global(small) {
     font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 500;
@@ -2211,9 +1874,9 @@ const quartet: Quartet[] = [
     margin-top: 0.125rem;
     color: var(--color-ink-muted);
   }
-  .offer__price--free strong { color: oklch(0.45 0.14 145); }
-  .offer__price--pack strong { color: oklch(0.45 0.22 305); }
-  .offer__price--audit strong { color: oklch(0.5 0.25 335); }
+  .offer__price--free :global(strong) { color: oklch(0.45 0.14 145); }
+  .offer__price--pack :global(strong) { color: oklch(0.45 0.22 305); }
+  .offer__price--audit :global(strong) { color: oklch(0.5 0.25 335); }
   .offer__title {
     font-family: var(--font-sans);
     font-weight: 600;
