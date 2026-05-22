@@ -5,10 +5,10 @@
  * Template stránku jen renderuje (styly + struktura formuláře + inline JS
  * zůstávají v .astro). Text s inline HTML i &nbsp; se renderuje přes set:html.
  *
- * POZOR — JSON-LD vs HTML FAQ nesoulad (předexistující, zachován beze změny):
- * `faqJsonLd` má 8 otázek (hand-authored plain text pro structured data),
- * HTML `faq` má 10 otázek s markupem. Jsou to dva oddělené zdroje. Sjednocení
- * = obsahová změna (mimo zero-change refaktor) → řešit samostatně.
+ * POZOR — FAQ má DVA zdroje držené v sync (10 = 10):
+ * `faqJsonLd` (plain text pro structured data — acceptedAnswer NESMÍ mít markup)
+ * a HTML `faq` (RichFaqItem[] s inline markupem). Negenerují se z jednoho zdroje
+ * (markup constraint), proto při změně FAQ uprav VŽDY OBA + drž stejné pořadí.
  *
  * Mutace: EN/DE/PL fork má vlastní kopii s překladem.
  */
@@ -59,7 +59,7 @@ export const serviceJsonLd = {
   },
 };
 
-/** FAQPage JSON-LD (8 položek, plain text — oddělené od HTML faq s 10 položkami). */
+/** FAQPage JSON-LD (10 položek, plain text — drženo v sync s HTML faq). */
 export const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -106,6 +106,22 @@ export const faqJsonLd = {
     },
     {
       "@type": "Question",
+      name: "Co audit nezahrnuje?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Audit je samostatný akční plán — obsahuje analýzu, prioritizaci a konzultaci. Implementaci si můžete udělat interně, předat ji své agentuře nebo vývojáři, nebo si od nás nechat nacenit navazující úpravy. Nejste vázaní na naši realizaci.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Mohu objednávku zrušit?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ano, do potvrzení rozsahu a vystavení faktury bez problémů. Jakmile je rozsah potvrzen a audit zahájen, jde o službu připravovanou na míru a storno řešíme individuálně podle rozpracovanosti.",
+      },
+    },
+    {
+      "@type": "Question",
       name: "Má smysl audit, když už máme SEO specialistu nebo agenturu?",
       acceptedAnswer: {
         "@type": "Answer",
@@ -125,7 +141,7 @@ export const faqJsonLd = {
       name: "Můžu se na něco zeptat předem?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Samozřejmě. Napište nám na aiseo-optimalizace@sniperdesign.cz nebo zavolejte +420 775 181 634 (Po-Pá 9-17). Pokud chcete spíš nezávaznou konzultaci než audit, máme i tuto možnost na sniperdesign.cz/konzultace.",
+        text: "Samozřejmě. Napište nám na aiseo-optimalizace@sniperdesign.cz nebo zavolejte +420 775 181 634 (Po-Pá 10-17). Pokud chcete spíš nezávaznou konzultaci než audit, máme i tuto možnost na sniperdesign.cz/konzultace.",
       },
     },
   ],
@@ -452,7 +468,7 @@ export const faq: RichFaqItem[] = [
   },
   {
     q: "Můžu se na&nbsp;něco zeptat předem?",
-    a: 'Samozřejmě. Napište na&nbsp;<a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a> nebo zavolejte <a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a> (Po&minus;Pá 9&minus;17). Pokud preferujete nezávaznou konzultaci, máme i&nbsp;tuto možnost na&nbsp;<a href="https://www.sniperdesign.cz/konzultace" target="_blank" rel="noopener">sniperdesign.cz/konzultace</a>.',
+    a: 'Samozřejmě. Napište na&nbsp;<a href="mailto:aiseo-optimalizace@sniperdesign.cz">aiseo-optimalizace@sniperdesign.cz</a> nebo zavolejte <a href="tel:+420775181634">+420&nbsp;775&nbsp;181&nbsp;634</a> (Po&minus;Pá 10&minus;17). Pokud preferujete nezávaznou konzultaci, máme i&nbsp;tuto možnost na&nbsp;<a href="https://www.sniperdesign.cz/konzultace" target="_blank" rel="noopener">sniperdesign.cz/konzultace</a>.',
   },
 ];
 
