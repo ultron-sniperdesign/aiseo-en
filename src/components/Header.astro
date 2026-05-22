@@ -1,10 +1,24 @@
 ---
-const navItems = [
-  { href: "/seo/", label: "SEO", discipline: "seo" as const },
-  { href: "/geo/", label: "GEO", discipline: "geo" as const },
-  { href: "/aeo/", label: "AEO", discipline: "aeo" as const },
-  { href: "/aio/", label: "AIO", discipline: "aio" as const },
-] as const;
+/**
+ * Sjednocený seznam nav položek — sdílený pro desktopovou navigaci i mobilní
+ * menu. `d` = disciplína (barevné zvýraznění), `variant` = stylová varianta
+ * (pillar / blog / audit / free pill).
+ */
+const navLinks: {
+  href: string;
+  label: string;
+  d?: "seo" | "geo" | "aeo" | "aio";
+  variant?: "pillar" | "blog" | "audit" | "free";
+}[] = [
+  { href: "/seo/", label: "SEO", d: "seo" },
+  { href: "/geo/", label: "GEO", d: "geo" },
+  { href: "/aeo/", label: "AEO", d: "aeo" },
+  { href: "/aio/", label: "AIO", d: "aio" },
+  { href: "/seo-vs-geo-vs-aeo-vs-aio/", label: "Průvodce", variant: "pillar" },
+  { href: "/blog/", label: "Blog", variant: "blog" },
+  { href: "/audit/", label: "Audit", variant: "audit" },
+  { href: "/navod-zdarma/", label: "Návod zdarma", variant: "free" },
+];
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) => currentPath === href || currentPath.startsWith(href);
@@ -20,51 +34,62 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
     </a>
 
     <nav class="disc-nav" aria-label="Hlavní navigace">
-      {
-        navItems.map((item) => {
-          const active = isActive(item.href);
-          return (
+      {navLinks.map((item) => {
+        const active = isActive(item.href);
+        return (
+          <a
+            href={item.href}
+            data-d={item.d}
+            class:list={[
+              "disc-nav__link",
+              item.variant && `disc-nav__link--${item.variant}`,
+              { "disc-nav__link--active": active },
+            ]}
+            aria-current={active ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        );
+      })}
+    </nav>
+
+    <button
+      type="button"
+      class="nav-toggle"
+      aria-label="Otevřít menu"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      data-nav-toggle
+    >
+      <span class="nav-toggle__bars" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+  </div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobilní navigace" data-mobile-nav>
+    <ul class="mobile-nav__list">
+      {navLinks.map((item) => {
+        const active = isActive(item.href);
+        return (
+          <li>
             <a
               href={item.href}
-              data-d={item.discipline}
-              class:list={["disc-nav__link", { "disc-nav__link--active": active }]}
+              data-d={item.d}
+              class:list={[
+                "mobile-nav__link",
+                item.variant && `mobile-nav__link--${item.variant}`,
+                { "mobile-nav__link--active": active },
+              ]}
               aria-current={active ? "page" : undefined}
             >
               {item.label}
             </a>
-          );
-        })
-      }
-      <a
-        href="/seo-vs-geo-vs-aeo-vs-aio/"
-        class:list={["disc-nav__link disc-nav__link--pillar", { "disc-nav__link--active": isActive("/seo-vs-geo-vs-aeo-vs-aio/") }]}
-        aria-current={isActive("/seo-vs-geo-vs-aeo-vs-aio/") ? "page" : undefined}
-      >
-        Průvodce
-      </a>
-      <a
-        href="/blog/"
-        class:list={["disc-nav__link disc-nav__link--blog", { "disc-nav__link--active": isActive("/blog/") }]}
-        aria-current={isActive("/blog/") ? "page" : undefined}
-      >
-        Blog
-      </a>
-      <a
-        href="/audit/"
-        class:list={["disc-nav__link disc-nav__link--audit", { "disc-nav__link--active": isActive("/audit/") }]}
-        aria-current={isActive("/audit/") ? "page" : undefined}
-      >
-        Audit
-      </a>
-      <a
-        href="/navod-zdarma/"
-        class:list={["disc-nav__link disc-nav__link--free", { "disc-nav__link--active": isActive("/navod-zdarma/") }]}
-        aria-current={isActive("/navod-zdarma/") ? "page" : undefined}
-      >
-        Návod zdarma
-      </a>
-    </nav>
-  </div>
+          </li>
+        );
+      })}
+    </ul>
+  </nav>
 </header>
 
 <style>
@@ -234,4 +259,194 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
     color: oklch(0.25 0.12 60);
   }
   .disc-nav__link--free::after { display: none !important; }
+
+  /* ===== Hamburger toggle (jen mobil) ===== */
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-right: -0.5rem;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    color: var(--color-ink);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .nav-toggle:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  @media (min-width: 768px) {
+    .nav-toggle { display: none; }
+  }
+  .nav-toggle__bars {
+    position: relative;
+    width: 22px;
+    height: 16px;
+  }
+  .nav-toggle__bars span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform 0.25s ease, opacity 0.2s ease, top 0.25s ease;
+  }
+  .nav-toggle__bars span:nth-child(1) { top: 0; }
+  .nav-toggle__bars span:nth-child(2) { top: 7px; }
+  .nav-toggle__bars span:nth-child(3) { top: 14px; }
+  .nav-toggle--open .nav-toggle__bars span:nth-child(1) {
+    top: 7px;
+    transform: rotate(45deg);
+  }
+  .nav-toggle--open .nav-toggle__bars span:nth-child(2) { opacity: 0; }
+  .nav-toggle--open .nav-toggle__bars span:nth-child(3) {
+    top: 7px;
+    transform: rotate(-45deg);
+  }
+
+  /* ===== Mobilní rozbalovací menu ===== */
+  .mobile-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-paper);
+    border-bottom: 1px solid var(--color-rule);
+    box-shadow: 0 14px 30px -14px oklch(0 0 0 / 0.2);
+    padding: 0.5rem var(--space-section-x) 1.125rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  }
+  /* Compound selektor (vyšší specificita) — vyhraje nad base .mobile-nav
+     bez ohledu na pořadí v cascade (dev/prod bundler ordering). */
+  .mobile-nav.mobile-nav--open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  @media (min-width: 768px) {
+    .mobile-nav { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-nav { transition: none; }
+    .nav-toggle__bars span { transition: none; }
+  }
+  .mobile-nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+  .mobile-nav__link {
+    display: block;
+    padding: 0.8rem 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: var(--color-ink-muted);
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .mobile-nav__link:hover,
+  .mobile-nav__link--active {
+    color: var(--color-ink);
+    background: var(--color-paper-deep);
+  }
+  .mobile-nav__link[data-d="seo"]:hover,
+  .mobile-nav__link[data-d="seo"].mobile-nav__link--active { color: var(--color-seo); }
+  .mobile-nav__link[data-d="geo"]:hover,
+  .mobile-nav__link[data-d="geo"].mobile-nav__link--active { color: var(--color-geo); }
+  .mobile-nav__link[data-d="aeo"]:hover,
+  .mobile-nav__link[data-d="aeo"].mobile-nav__link--active { color: var(--color-aeo); }
+  .mobile-nav__link[data-d="aio"]:hover,
+  .mobile-nav__link[data-d="aio"].mobile-nav__link--active { color: var(--color-aio); }
+
+  /* Audit + Návod zdarma — pill CTA řádky (sjednoceno s desktop pills) */
+  .mobile-nav__link--audit,
+  .mobile-nav__link--free {
+    text-align: center;
+    font-weight: 600;
+    border-radius: 999px;
+  }
+  .mobile-nav__link--audit {
+    margin-top: 0.625rem;
+    color: oklch(0.32 0.16 335);
+    background: linear-gradient(135deg, oklch(0.95 0.04 335) 0%, oklch(0.92 0.06 320) 100%);
+    border: 1px solid oklch(0.86 0.08 330);
+  }
+  .mobile-nav__link--audit:hover,
+  .mobile-nav__link--audit.mobile-nav__link--active {
+    color: oklch(0.25 0.18 335);
+    background: linear-gradient(135deg, oklch(0.92 0.06 330) 0%, oklch(0.86 0.1 325) 100%);
+  }
+  .mobile-nav__link--free {
+    margin-top: 0.375rem;
+    color: oklch(0.42 0.14 60);
+    background: linear-gradient(135deg, oklch(0.94 0.07 80) 0%, oklch(0.9 0.09 70) 100%);
+    border: 1px solid oklch(0.85 0.1 70);
+  }
+  .mobile-nav__link--free:hover,
+  .mobile-nav__link--free.mobile-nav__link--active {
+    color: oklch(0.32 0.14 60);
+    background: linear-gradient(135deg, oklch(0.92 0.09 70) 0%, oklch(0.86 0.11 65) 100%);
+  }
 </style>
+
+<script>
+  /**
+   * Mobilní menu — toggle hamburgeru + rozbalovacího panelu.
+   * Zavření: klik na položku, Esc, klik mimo panel, přechod na desktop breakpoint.
+   */
+  const toggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
+  const panel = document.querySelector<HTMLElement>("[data-mobile-nav]");
+
+  if (toggle && panel) {
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Zavřít menu" : "Otevřít menu");
+      toggle.classList.toggle("nav-toggle--open", open);
+      panel.classList.toggle("mobile-nav--open", open);
+    };
+
+    toggle.addEventListener("click", () => {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    // Zavřít po kliknutí na odkaz
+    panel.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setOpen(false));
+    });
+
+    // Esc zavře a vrátí focus na toggle
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    // Klik mimo panel/toggle zavře
+    document.addEventListener("click", (e) => {
+      if (toggle.getAttribute("aria-expanded") !== "true") return;
+      const target = e.target as Node;
+      if (!panel.contains(target) && !toggle.contains(target)) setOpen(false);
+    });
+
+    // Přechod na desktop breakpoint zavře (čistý stav)
+    const mq = window.matchMedia("(min-width: 768px)");
+    mq.addEventListener("change", (e) => {
+      if (e.matches) setOpen(false);
+    });
+  }
+</script>
