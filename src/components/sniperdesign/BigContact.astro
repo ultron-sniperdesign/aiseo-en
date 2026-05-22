@@ -229,6 +229,18 @@ const { eyebrowNum = "06" } = Astro.props as Props;
     background: linear-gradient(90deg, var(--sd-violet) 0%, var(--sd-magenta) 100%);
     pointer-events: none;
   }
+  /* Mobil (≤600px) — full-bleed: barevná karta až do kraje obrazovky.
+     Vynulujeme boční padding wrapperu + border-radius karty; text si nechá
+     vnitřní padding, takže získá víc šířky (méně bílého okraje z boků). */
+  @media (max-width: 600px) {
+    .sd-big {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .sd-big__inner {
+      border-radius: 0;
+    }
+  }
   .sd-big__brand {
     display: inline-block;
     margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
