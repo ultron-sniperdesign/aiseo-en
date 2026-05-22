@@ -477,7 +477,7 @@ import * as p from "~/content/pages/audit";
     margin: 0 0 1.25rem;
     max-width: 42rem;
   }
-  .audit-hero__title strong {
+  .audit-hero__title :global(strong) {
     font-weight: 700;
     color: color-mix(in oklch, var(--sd-magenta) 60%, white);
   }
@@ -489,7 +489,7 @@ import * as p from "~/content/pages/audit";
     margin: 0 0 1.75rem;
     max-width: 38rem;
   }
-  .audit-hero__lead strong { color: var(--sd-paper); font-weight: 600; }
+  .audit-hero__lead :global(strong) { color: var(--sd-paper); font-weight: 600; }
 
   /* Price block */
   .audit-hero__price-block {
@@ -507,7 +507,7 @@ import * as p from "~/content/pages/audit";
     flex-direction: column;
     gap: 0.125rem;
   }
-  .audit-hero__price strong {
+  .audit-hero__price :global(strong) {
     font-family: var(--font-agency);
     font-weight: 700;
     font-size: clamp(1.625rem, 3vw, 2.25rem);
@@ -554,7 +554,7 @@ import * as p from "~/content/pages/audit";
     color: var(--sd-gold);
     font-weight: 700;
   }
-  .audit-hero__outcomes strong {
+  .audit-hero__outcomes :global(strong) {
     color: var(--sd-paper);
     font-weight: 600;
   }
@@ -607,7 +607,7 @@ import * as p from "~/content/pages/audit";
     color: oklch(from var(--sd-paper) l c h / 0.8);
     max-width: 38rem;
   }
-  .audit-hero__audience strong {
+  .audit-hero__audience :global(strong) {
     color: var(--sd-gold);
     font-weight: 700;
   }
@@ -619,7 +619,7 @@ import * as p from "~/content/pages/audit";
     letter-spacing: 0.04em;
     color: oklch(from var(--sd-paper) l c h / 0.55);
   }
-  .audit-hero__legal strong {
+  .audit-hero__legal :global(strong) {
     color: oklch(from var(--sd-paper) l c h / 0.85);
     font-weight: 700;
   }
@@ -692,7 +692,7 @@ import * as p from "~/content/pages/audit";
     gap: 0.5rem 0.75rem;
     margin: 0;
   }
-  .audit-hero__form-price strong {
+  .audit-hero__form-price :global(strong) {
     font-family: var(--font-agency);
     font-size: clamp(1.75rem, 2.5vw, 2.125rem);
     font-weight: 700;
@@ -746,7 +746,7 @@ import * as p from "~/content/pages/audit";
     background: var(--color-paper-deep);
     border-radius: 8px;
   }
-  .audit-examples__list strong {
+  .audit-examples__list :global(strong) {
     color: var(--sd-magenta);
     font-weight: 700;
   }
@@ -786,7 +786,7 @@ import * as p from "~/content/pages/audit";
   .audit-impact-frame__item--crit { border-left-color: oklch(0.6 0.22 25); }
   .audit-impact-frame__item--quick { border-left-color: oklch(0.7 0.18 145); }
   .audit-impact-frame__item--strat { border-left-color: var(--sd-violet); }
-  .audit-impact-frame__item strong {
+  .audit-impact-frame__item :global(strong) {
     display: block;
     font-family: var(--font-sans);
     font-size: 0.9375rem;
@@ -814,7 +814,7 @@ import * as p from "~/content/pages/audit";
     border-left: 3px solid var(--sd-gold);
     border-radius: 0 6px 6px 0;
   }
-  .audit-hero__form-reframe strong {
+  .audit-hero__form-reframe :global(strong) {
     color: var(--color-ink);
     font-weight: 700;
   }
@@ -857,7 +857,7 @@ import * as p from "~/content/pages/audit";
     color: var(--color-ink);
     margin: 0 0 0.75rem;
   }
-  .audit-visibility__title strong {
+  .audit-visibility__title :global(strong) {
     font-weight: 700;
     color: var(--sd-violet);
   }
@@ -905,7 +905,7 @@ import * as p from "~/content/pages/audit";
     color: var(--color-ink);
     margin: 0 0 0.625rem;
   }
-  .audit-deliverable__title strong {
+  .audit-deliverable__title :global(strong) {
     font-weight: 700;
     color: var(--sd-deep);
   }
@@ -950,7 +950,7 @@ import * as p from "~/content/pages/audit";
     font-weight: 700;
     border-radius: 999px;
   }
-  .audit-deliverable__list strong {
+  .audit-deliverable__list :global(strong) {
     display: block;
     font-family: var(--font-sans);
     font-size: 0.9375rem;
@@ -1007,7 +1007,7 @@ import * as p from "~/content/pages/audit";
     color: var(--color-ink);
     margin: 0;
   }
-  .audit-urgency__title strong {
+  .audit-urgency__title :global(strong) {
     font-weight: 700;
     color: var(--sd-magenta);
   }
@@ -1077,7 +1077,7 @@ import * as p from "~/content/pages/audit";
     color: var(--sd-paper);
     margin: 0 0 1rem;
   }
-  .audit-cta-final__title strong {
+  .audit-cta-final__title :global(strong) {
     font-weight: 700;
     color: color-mix(in oklch, var(--sd-magenta) 60%, white);
   }
@@ -1114,7 +1114,7 @@ import * as p from "~/content/pages/audit";
     color: oklch(from var(--sd-paper) l c h / 0.7);
     margin: 1.25rem 0 0;
   }
-  .audit-cta-final__trust a {
+  .audit-cta-final__trust :global(a) {
     color: oklch(from var(--sd-paper) l c h / 0.9);
     text-decoration: underline;
     text-decoration-color: oklch(from var(--sd-paper) l c h / 0.3);
@@ -1153,7 +1153,7 @@ import * as p from "~/content/pages/audit";
     color: var(--color-ink);
     margin: 0 0 1rem;
   }
-  .lp-section__title strong {
+  .lp-section__title :global(strong) {
     color: var(--lp-violet);
     font-weight: 700;
   }
@@ -1165,8 +1165,8 @@ import * as p from "~/content/pages/audit";
     margin: 0;
     max-width: 40rem;
   }
-  .lp-section__lead a { color: var(--lp-violet); text-decoration: underline; text-underline-offset: 2px; }
-  .lp-section__lead strong { color: var(--color-ink); font-weight: 600; }
+  .lp-section__lead :global(a) { color: var(--lp-violet); text-decoration: underline; text-underline-offset: 2px; }
+  .lp-section__lead :global(strong) { color: var(--color-ink); font-weight: 600; }
 
   .eyebrow {
     display: inline-flex;
@@ -1261,7 +1261,7 @@ import * as p from "~/content/pages/audit";
     font-weight: 700;
     font-size: 0.85rem;
   }
-  .audit-layer li strong { color: var(--color-ink); font-weight: 600; }
+  .audit-layer li :global(strong) { color: var(--color-ink); font-weight: 600; }
 
   /* ===== Trust block (reused from /kontakt/ style) ===== */
   .audit-trust {
@@ -1293,12 +1293,12 @@ import * as p from "~/content/pages/audit";
     color: var(--color-ink-muted);
     margin: 0;
   }
-  .audit-trust__item p a {
+  .audit-trust__item p :global(a) {
     color: var(--lp-violet);
     text-decoration: underline;
     text-underline-offset: 2px;
   }
-  .audit-trust__item p strong { color: var(--color-ink); }
+  .audit-trust__item p :global(strong) { color: var(--color-ink); }
 
   /* Bridge text mezi lead a comparison (Pack vs Audit) */
   .audit-bridge {
@@ -1312,7 +1312,7 @@ import * as p from "~/content/pages/audit";
     line-height: 1.55;
     color: var(--color-ink);
   }
-  .audit-bridge strong { font-weight: 600; }
+  .audit-bridge :global(strong) { font-weight: 600; }
 
   /* ===== Pack vs Audit comparison ===== */
   .audit-compare {
@@ -1369,8 +1369,8 @@ import * as p from "~/content/pages/audit";
     color: var(--color-ink);
     margin: 0 0 0.5rem;
   }
-  .audit-compare__col h3 strong { color: var(--lp-violet); font-weight: 700; }
-  .audit-compare__col--featured h3 strong { color: var(--lp-magenta); }
+  .audit-compare__col h3 :global(strong) { color: var(--lp-violet); font-weight: 700; }
+  .audit-compare__col--featured h3 :global(strong) { color: var(--lp-magenta); }
   .audit-compare__price {
     font-family: var(--font-mono);
     font-size: 0.85rem;
@@ -1403,7 +1403,7 @@ import * as p from "~/content/pages/audit";
     font-weight: 700;
   }
   .audit-compare__col--featured li::before { color: var(--lp-magenta); }
-  .audit-compare__col li strong { color: var(--color-ink); font-weight: 600; }
+  .audit-compare__col li :global(strong) { color: var(--color-ink); font-weight: 600; }
   .audit-compare__cta {
     align-self: flex-start;
     font-family: var(--font-sans);
@@ -1455,12 +1455,12 @@ import * as p from "~/content/pages/audit";
     color: var(--color-ink-muted);
     margin: 0;
   }
-  .audit-faq dd a {
+  .audit-faq dd :global(a) {
     color: var(--lp-violet);
     text-decoration: underline;
     text-underline-offset: 2px;
   }
-  .audit-faq dd strong { color: var(--color-ink); font-weight: 600; }
+  .audit-faq dd :global(strong) { color: var(--color-ink); font-weight: 600; }
 
   /* ===== ORDER FORM ===== */
   .audit-form {
@@ -1588,7 +1588,7 @@ import * as p from "~/content/pages/audit";
     accent-color: var(--lp-violet);
     cursor: pointer;
   }
-  .audit-form__gdpr a {
+  .audit-form__gdpr :global(a) {
     color: var(--lp-violet);
     text-decoration: underline;
   }
@@ -1618,7 +1618,7 @@ import * as p from "~/content/pages/audit";
     line-height: 1.5;
     color: var(--color-ink-faint);
   }
-  .audit-form__legal strong { color: var(--color-ink-muted); font-weight: 600; }
+  .audit-form__legal :global(strong) { color: var(--color-ink-muted); font-weight: 600; }
   .audit-form__error {
     margin: 0.875rem 0 0;
     padding: 0.75rem 1rem;

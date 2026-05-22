@@ -419,7 +419,7 @@ import * as p from "~/content/pages/pack";
     color: var(--color-ink);
     margin: 0 0 1rem;
   }
-  .lp-section__title strong {
+  .lp-section__title :global(strong) {
     font-weight: 700;
     color: var(--lp-violet);
   }
@@ -486,7 +486,7 @@ import * as p from "~/content/pages/pack";
     color: var(--color-ink);
     margin: 0 0 1.25rem;
   }
-  .pack-hero__title strong {
+  .pack-hero__title :global(strong) {
     font-weight: 700;
     color: var(--lp-violet);
   }
@@ -501,7 +501,7 @@ import * as p from "~/content/pages/pack";
     border-left: 3px solid var(--lp-magenta);
     max-width: 36rem;
   }
-  .pack-hero__urgency strong {
+  .pack-hero__urgency :global(strong) {
     color: var(--lp-magenta);
     font-weight: 600;
   }
@@ -891,7 +891,7 @@ import * as p from "~/content/pages/pack";
     line-height: 1.55;
     color: var(--color-ink-muted);
   }
-  .pack-sample__body strong {
+  .pack-sample__body :global(strong) {
     display: block;
     color: var(--color-ink);
     font-weight: 600;
@@ -940,7 +940,7 @@ import * as p from "~/content/pages/pack";
     border-left: 3px solid var(--lp-violet);
   }
   .pack-deliverables li strong,
-  .pack-audience li strong {
+  .pack-audience li :global(strong) {
     color: var(--color-ink);
     font-weight: 600;
   }
@@ -959,7 +959,7 @@ import * as p from "~/content/pages/pack";
     color: var(--color-ink-muted);
     max-width: 60rem;
   }
-  .pack-trust-tieIn strong {
+  .pack-trust-tieIn :global(strong) {
     color: var(--color-ink);
     font-weight: 600;
   }
@@ -1001,7 +1001,7 @@ import * as p from "~/content/pages/pack";
     color: var(--color-ink);
     margin: 0;
   }
-  .pack-transformation__title strong {
+  .pack-transformation__title :global(strong) {
     font-weight: 600;
     color: oklch(0.5 0.18 145);
   }
@@ -1034,7 +1034,7 @@ import * as p from "~/content/pages/pack";
     background: no-repeat center / contain;
     background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='8' fill='%2316a34a'/%3E%3Cpath d='M4 8L7 11L12 5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   }
-  .pack-transformation__list li strong {
+  .pack-transformation__list li :global(strong) {
     color: var(--color-ink);
     font-weight: 600;
   }
@@ -1051,7 +1051,7 @@ import * as p from "~/content/pages/pack";
     border-left: 2px solid color-mix(in oklch, var(--lp-violet) 50%, transparent);
     border-radius: 0 6px 6px 0;
   }
-  .pack-hero__price-frame strong {
+  .pack-hero__price-frame :global(strong) {
     color: var(--color-ink);
     font-weight: 600;
   }
@@ -1062,7 +1062,7 @@ import * as p from "~/content/pages/pack";
     color: var(--color-ink-muted);
     margin: 0.875rem 0 0.5rem;
   }
-  .pack-hero__cta-microcopy strong {
+  .pack-hero__cta-microcopy :global(strong) {
     color: var(--color-ink);
     font-weight: 600;
   }
@@ -1103,7 +1103,7 @@ import * as p from "~/content/pages/pack";
     color: var(--color-ink);
     margin: 0 0 0.625rem;
   }
-  .pack-template-sample__title strong {
+  .pack-template-sample__title :global(strong) {
     font-weight: 600;
     color: var(--color-ink);
   }
@@ -1133,7 +1133,7 @@ import * as p from "~/content/pages/pack";
     color: var(--color-ink-muted);
     margin: 1rem 0 0;
   }
-  .pack-template-sample__note strong {
+  .pack-template-sample__note :global(strong) {
     color: var(--color-ink);
     font-weight: 600;
   }
@@ -1178,7 +1178,7 @@ import * as p from "~/content/pages/pack";
     color: var(--color-ink-muted);
     margin: 0;
   }
-  .pack-diy-role p strong {
+  .pack-diy-role p :global(strong) {
     color: var(--color-ink);
     font-weight: 600;
   }
@@ -1222,7 +1222,7 @@ import * as p from "~/content/pages/pack";
     color: var(--color-ink);
     margin: 0;
   }
-  .pack-first-afternoon__title strong {
+  .pack-first-afternoon__title :global(strong) {
     font-weight: 600;
     color: var(--color-ink);
   }
@@ -1262,7 +1262,7 @@ import * as p from "~/content/pages/pack";
     font-weight: 700;
     border-radius: 999px;
   }
-  .pack-first-afternoon__steps strong {
+  .pack-first-afternoon__steps :global(strong) {
     color: var(--color-ink);
     font-weight: 600;
   }
@@ -1276,12 +1276,12 @@ import * as p from "~/content/pages/pack";
     border-top: 1px dashed var(--color-rule);
     font-style: italic;
   }
-  .pack-first-afternoon__fallback strong {
+  .pack-first-afternoon__fallback :global(strong) {
     color: var(--color-ink-muted);
     font-weight: 600;
     font-style: normal;
   }
-  .pack-first-afternoon__fallback a {
+  .pack-first-afternoon__fallback :global(a) {
     color: var(--lp-violet);
     text-decoration: underline;
     font-style: normal;
@@ -1368,11 +1368,11 @@ import * as p from "~/content/pages/pack";
     font-size: 1.125rem;
     line-height: 1.2;
   }
-  .pack-audience-block__list strong {
+  .pack-audience-block__list :global(strong) {
     color: var(--color-ink);
     font-weight: 600;
   }
-  .pack-audience-block__list a {
+  .pack-audience-block__list :global(a) {
     color: var(--lp-violet);
     text-decoration: underline;
   }
@@ -1437,7 +1437,7 @@ import * as p from "~/content/pages/pack";
     background: color-mix(in oklch, var(--lp-violet) 7%, var(--color-paper-deep));
     color: var(--color-ink);
   }
-  .pack-decision__row--featured td strong { color: var(--lp-violet); }
+  .pack-decision__row--featured td :global(strong) { color: var(--lp-violet); }
   .pack-decision__link {
     color: var(--lp-violet);
     text-decoration: underline;
@@ -1453,7 +1453,7 @@ import * as p from "~/content/pages/pack";
     padding-top: 1.25rem;
     border-top: 1px solid var(--color-rule);
   }
-  .pack-decision__note strong {
+  .pack-decision__note :global(strong) {
     color: var(--color-ink);
     font-weight: 600;
   }
@@ -1523,7 +1523,7 @@ import * as p from "~/content/pages/pack";
     color: var(--color-ink);
     margin: 0 0 1rem;
   }
-  .pack-final__title strong {
+  .pack-final__title :global(strong) {
     color: var(--lp-violet);
     font-weight: 700;
   }
@@ -1534,7 +1534,7 @@ import * as p from "~/content/pages/pack";
     color: var(--color-ink-muted);
     margin: 0 0 1.75rem;
   }
-  .pack-final__lead strong {
+  .pack-final__lead :global(strong) {
     color: var(--color-ink);
     font-weight: 600;
   }
@@ -1586,7 +1586,7 @@ import * as p from "~/content/pages/pack";
     font-family: var(--font-sans);
     line-height: 1;
   }
-  .pack-sticky-cta__price strong {
+  .pack-sticky-cta__price :global(strong) {
     font-size: 1.125rem;
     font-weight: 700;
     color: var(--color-ink);
