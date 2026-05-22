@@ -1932,6 +1932,25 @@ import * as p from "~/content/pages/index";
   }
   .offer:hover .offer__cta { gap: 0.7rem; }
 
+  /* ===== Mobil (telefony ≤600px) — utáhnout vzdušné mezery =====
+     Hlavní rytmus sekcí řeší globálně token --space-section-y (global.css).
+     Tady jen bespoke metriky homepage, které token nepoužívají: hero má
+     vh-based padding (89px nahoře na mobilu), section-head vlastní margin.
+     Desktop (>600px) beze změny — base hodnoty zůstávají. */
+  @media (max-width: 600px) {
+    .hero {
+      padding-top: clamp(2rem, 5vh, 3.5rem);
+      padding-bottom: clamp(1.75rem, 4vh, 2.75rem);
+    }
+    .section__head {
+      margin-bottom: clamp(1.5rem, 6vw, 2.5rem);
+    }
+    /* Offers má vlastní inline clamp (48px) — srovnat do rytmu token sekcí. */
+    .offers {
+      padding-top: clamp(2.25rem, 9vw, 3rem);
+      padding-bottom: clamp(2.25rem, 9vw, 3rem);
+    }
+  }
 </style>
 
 <script>

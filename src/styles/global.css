@@ -62,6 +62,18 @@
   --max-section: 80rem;
 }
 
+/* ===== Mobil (telefony ≤600px) — utáhnout vertikální rytmus =====
+ * Na telefonech byly mezery moc vzdušné: token --space-section-y dával 64px
+ * nahoře i dole → mezi sekcemi 128px. Globální páka přes token se propíše do
+ * VŠECH sekcí (.trio, .section, .anatomy, .pillar-promo, BigContact i scoped),
+ * protože custom properties nejsou scoped a dědí se přes var().
+ * Desktop/tablet (>600px) beze změny. Taper clamp → na hranici 600px žádný skok. */
+@media (max-width: 600px) {
+  :root {
+    --space-section-y: clamp(2.25rem, 10.5vw, 4rem);
+  }
+}
+
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
