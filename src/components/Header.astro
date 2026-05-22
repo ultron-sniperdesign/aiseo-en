@@ -66,8 +66,14 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
       </span>
     </button>
   </div>
+</header>
 
-  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobilní navigace" data-mobile-nav>
+<!-- Backdrop + drawer MUSÍ být mimo <header> — header má backdrop-filter,
+     což vytváří containing block pro position:fixed potomky (fixed by se pak
+     počítal relativně k headeru, ne k viewportu). -->
+<div class="mobile-nav-backdrop" data-mobile-backdrop aria-hidden="true"></div>
+
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobilní navigace" data-mobile-nav>
     <ul class="mobile-nav__list">
       {navLinks.map((item) => {
         const active = isActive(item.href);
@@ -90,7 +96,6 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
       })}
     </ul>
   </nav>
-</header>
 
 <style>
   .site-header {
@@ -310,34 +315,59 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
     transform: rotate(-45deg);
   }
 
-  /* ===== Mobilní rozbalovací menu ===== */
-  .mobile-nav {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--color-paper);
-    border-bottom: 1px solid var(--color-rule);
-    box-shadow: 0 14px 30px -14px oklch(0 0 0 / 0.2);
-    padding: 0.5rem var(--space-section-x) 1.125rem;
+  /* ===== Mobilní menu — backdrop (ztmavení plochy pod menu) ===== */
+  .mobile-nav-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background: oklch(0.2 0.01 260 / 0.45);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
-    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
   }
-  /* Compound selektor (vyšší specificita) — vyhraje nad base .mobile-nav
-     bez ohledu na pořadí v cascade (dev/prod bundler ordering). */
-  .mobile-nav.mobile-nav--open {
+  .mobile-nav-backdrop.mobile-nav-backdrop--open {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+  }
+  @media (min-width: 768px) {
+    .mobile-nav-backdrop { display: none; }
+  }
+
+  /* ===== Mobilní menu — boční drawer (vyjede zprava, ~80 % šířky) ===== */
+  .mobile-nav {
+    position: fixed;
+    top: var(--header-h, 60px);
+    right: 0;
+    bottom: 0;
+    width: min(80%, 360px);
+    z-index: 45;
+    background: var(--color-paper);
+    border-left: 1px solid var(--color-rule);
+    box-shadow: -18px 0 44px -20px oklch(0 0 0 / 0.3);
+    padding: 1rem var(--space-section-x) 1.5rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.28s;
+  }
+  /* Compound selektor (vyšší specificita) — vyhraje nad base bez ohledu na
+     pořadí v cascade (dev/prod bundler ordering). */
+  .mobile-nav.mobile-nav--open {
+    transform: translateX(0);
+    visibility: visible;
   }
   @media (min-width: 768px) {
     .mobile-nav { display: none; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .mobile-nav { transition: none; }
+    .mobile-nav,
+    .mobile-nav-backdrop { transition: none; }
     .nav-toggle__bars span { transition: none; }
+  }
+  /* Zámek scrollu plochy pod otevřeným menu */
+  :global(body.nav-locked) {
+    overflow: hidden;
   }
   .mobile-nav__list {
     list-style: none;
@@ -405,11 +435,23 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
 
 <script>
   /**
-   * Mobilní menu — toggle hamburgeru + rozbalovacího panelu.
-   * Zavření: klik na položku, Esc, klik mimo panel, přechod na desktop breakpoint.
+   * Mobilní menu — boční drawer + backdrop.
+   * Zavření: klik na položku, klik na backdrop, Esc, přechod na desktop.
    */
   const toggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
   const panel = document.querySelector<HTMLElement>("[data-mobile-nav]");
+  const backdrop = document.querySelector<HTMLElement>("[data-mobile-backdrop]");
+  const header = document.querySelector<HTMLElement>(".site-header");
+
+  // Výška sticky headeru → CSS var (drawer i backdrop začínají pod ním).
+  const setHeaderHeight = () => {
+    if (header) {
+      const h = Math.ceil(header.getBoundingClientRect().height);
+      document.documentElement.style.setProperty("--header-h", `${h}px`);
+    }
+  };
+  setHeaderHeight();
+  window.addEventListener("resize", setHeaderHeight);
 
   if (toggle && panel) {
     const setOpen = (open: boolean) => {
@@ -417,6 +459,8 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
       toggle.setAttribute("aria-label", open ? "Zavřít menu" : "Otevřít menu");
       toggle.classList.toggle("nav-toggle--open", open);
       panel.classList.toggle("mobile-nav--open", open);
+      backdrop?.classList.toggle("mobile-nav-backdrop--open", open);
+      document.body.classList.toggle("nav-locked", open);
     };
 
     toggle.addEventListener("click", () => {
@@ -428,19 +472,15 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
       link.addEventListener("click", () => setOpen(false));
     });
 
+    // Klik na backdrop (ztmavená plocha) zavře
+    backdrop?.addEventListener("click", () => setOpen(false));
+
     // Esc zavře a vrátí focus na toggle
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
         setOpen(false);
         toggle.focus();
       }
-    });
-
-    // Klik mimo panel/toggle zavře
-    document.addEventListener("click", (e) => {
-      if (toggle.getAttribute("aria-expanded") !== "true") return;
-      const target = e.target as Node;
-      if (!panel.contains(target) && !toggle.contains(target)) setOpen(false);
     });
 
     // Přechod na desktop breakpoint zavře (čistý stav)
