@@ -3,6 +3,9 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import { getCollection } from "astro:content";
+import { site } from "~/i18n/site";
+
+const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
 
 /**
  * Blog list page — všechny články z articles collection, sort by `updated` DESC.
@@ -79,12 +82,12 @@ const blogJsonLd = {
   "@type": "Blog",
   name: pageTitle,
   description: pageDescription,
-  url: "https://aiseo-optimalizace.cz/blog/",
-  inLanguage: "cs-CZ",
+  url: `${SITE_ORIGIN}/blog/`,
+  inLanguage: site.inLanguage,
   publisher: {
     "@type": "Organization",
-    name: "aiseo-optimalizace.cz",
-    url: "https://aiseo-optimalizace.cz/",
+    name: site.name,
+    url: `${SITE_ORIGIN}/`,
   },
 };
 
@@ -96,15 +99,15 @@ const itemListJsonLd = {
   itemListElement: articles.map((entry, index) => ({
     "@type": "ListItem",
     position: index + 1,
-    url: `https://aiseo-optimalizace.cz/blog/${entry.data.slug}/`,
+    url: `${SITE_ORIGIN}/blog/${entry.data.slug}/`,
     item: {
       "@type": "BlogPosting",
       headline: entry.data.title,
       description: entry.data.description,
       datePublished: entry.data.updated,
       dateModified: entry.data.updated,
-      url: `https://aiseo-optimalizace.cz/blog/${entry.data.slug}/`,
-      inLanguage: "cs-CZ",
+      url: `${SITE_ORIGIN}/blog/${entry.data.slug}/`,
+      inLanguage: site.inLanguage,
       keywords: entry.data.keywords?.join(", "),
     },
   })),
@@ -114,8 +117,8 @@ const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Úvod", item: "https://aiseo-optimalizace.cz/" },
-    { "@type": "ListItem", position: 2, name: "Blog", item: "https://aiseo-optimalizace.cz/blog/" },
+    { "@type": "ListItem", position: 1, name: site.breadcrumbRoot, item: `${SITE_ORIGIN}/` },
+    { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_ORIGIN}/blog/` },
   ],
 };
 
@@ -157,7 +160,7 @@ const answerText =
       <div class="hero__meta">
         <span>{articles.length} článků</span>
         <span>{usedCategories.length} kategorií</span>
-        <span>průměrně ~{avgWords.toLocaleString("cs-CZ")} slov / článek</span>
+        <span>průměrně ~{avgWords.toLocaleString(site.inLanguage)} slov / článek</span>
         <span>nejnovější: {newestDate}</span>
       </div>
     </section>
@@ -217,7 +220,7 @@ const answerText =
                   <p class="acard__desc">{entry.data.description}</p>
                   <div class="acard__meta">
                     <span>{entry.data.updated}</span>
-                    <span>~{reading.wordCount.toLocaleString("cs-CZ")} slov</span>
+                    <span>~{reading.wordCount.toLocaleString(site.inLanguage)} slov</span>
                     <span class="acard__cta">
                       Číst <span aria-hidden="true">→</span>
                     </span>

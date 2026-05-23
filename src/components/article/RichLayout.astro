@@ -29,6 +29,7 @@ import AntiPersona from "~/components/blocks/AntiPersona.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
+import { site } from "~/i18n/site";
 
 interface Props {
   entry: CollectionEntry<"articles">;
@@ -120,7 +121,7 @@ const _bundlerHints = [
     <p class="rhero__sub">{entry.data.description}</p>
 
     <div class="rhero__meta">
-      <span>~{wordCountRounded.toLocaleString("cs-CZ")} slov</span>
+      <span>~{wordCountRounded.toLocaleString(site.inLanguage)} slov</span>
       <span>{faqCount} častých otázek</span>
       <span>~{readingMinutes} minut čtení</span>
       <span>Aktualizováno: {entry.data.updated}</span>

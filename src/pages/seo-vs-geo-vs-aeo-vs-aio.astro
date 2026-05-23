@@ -2,6 +2,7 @@
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import { getEntry, render } from "astro:content";
+import { site } from "~/i18n/site";
 
 const entry = await getEntry("pillar", "seo-vs-geo-vs-aeo-vs-aio");
 if (!entry) {
@@ -43,7 +44,7 @@ const wordCount = rawBody
   .filter(Boolean).length;
 const readingMinutes = Math.max(1, Math.round(wordCount / 200));
 
-const SITE_ORIGIN = "https://aiseo-optimalizace.cz";
+const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
 const articleURL = `${SITE_ORIGIN}/seo-vs-geo-vs-aeo-vs-aio/`;
 const articleImageURL = `${SITE_ORIGIN}/og/pillar.png`;
 
@@ -59,7 +60,7 @@ const articleJsonLd = {
   image: [articleImageURL],
   datePublished: entry.data.updated,
   dateModified: entry.data.updated,
-  inLanguage: "cs-CZ",
+  inLanguage: site.inLanguage,
   keywords: entry.data.keywords.join(", "),
   articleSection: "Hlavní průvodce",
   wordCount,
@@ -67,7 +68,7 @@ const articleJsonLd = {
   mainEntityOfPage: { "@type": "WebPage", "@id": articleURL },
   author: {
     "@type": "Person",
-    name: "Kamil ze Sniper Design",
+    name: site.author,
     url: "https://www.sniperdesign.cz/",
     worksFor: { "@id": `${SITE_ORIGIN}/#publisher` },
   },

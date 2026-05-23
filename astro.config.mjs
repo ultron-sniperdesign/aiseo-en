@@ -30,9 +30,18 @@ function rehypeTaskListA11y() {
   };
 }
 
+/**
+ * PER-FORK: kanonická doména webu. Mutace (EN/DE/PL fork) změní JEN tuto
+ * konstantu — propisuje se do `site:` (canonical/OG/sitemap přes Astro.site)
+ * i do detekce interních odkazů v rehypeExternalLinks níže. Žádná jiná doména
+ * se v configu natvrdo nevyskytuje.
+ */
+const SITE = "https://aiseo-optimalizace.cz";
+const SITE_HOST = new URL(SITE).host;
+
 // https://astro.build/config
 export default defineConfig({
-  site: "https://aiseo-optimalizace.cz",
+  site: SITE,
   trailingSlash: "ignore",
   build: {
     format: "directory",
@@ -89,7 +98,7 @@ export default defineConfig({
             const href = node.properties?.href;
             if (typeof href !== "string") return false;
             // Skip vlastní doména — interní linky se nemají otvírat v novém tabu
-            return !href.includes("aiseo-optimalizace.cz");
+            return !href.includes(SITE_HOST);
           },
         },
       ],
