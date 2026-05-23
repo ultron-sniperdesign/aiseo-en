@@ -200,18 +200,28 @@ const answerText =
                 class="acard"
                 data-category={entry.data.category}
               >
-                <div class="acard__header">
-                  <span class="acard__tag">{categoryLabel[entry.data.category] ?? entry.data.category}</span>
-                  <span class="acard__time">{reading.minutes} min</span>
-                </div>
-                <h2 class="acard__title">{entry.data.title}</h2>
-                <p class="acard__desc">{entry.data.description}</p>
-                <div class="acard__meta">
-                  <span>{entry.data.updated}</span>
-                  <span>~{reading.wordCount.toLocaleString("cs-CZ")} slov</span>
-                  <span class="acard__cta">
-                    Číst <span aria-hidden="true">→</span>
-                  </span>
+                <img
+                  class="acard__img"
+                  src={`/og/${entry.data.slug}.png`}
+                  alt={entry.data.title}
+                  loading="lazy"
+                  width="1536"
+                  height="1024"
+                />
+                <div class="acard__body">
+                  <div class="acard__header">
+                    <span class="acard__tag">{categoryLabel[entry.data.category] ?? entry.data.category}</span>
+                    <span class="acard__time">{reading.minutes} min</span>
+                  </div>
+                  <h2 class="acard__title">{entry.data.title}</h2>
+                  <p class="acard__desc">{entry.data.description}</p>
+                  <div class="acard__meta">
+                    <span>{entry.data.updated}</span>
+                    <span>~{reading.wordCount.toLocaleString("cs-CZ")} slov</span>
+                    <span class="acard__cta">
+                      Číst <span aria-hidden="true">→</span>
+                    </span>
+                  </div>
                 </div>
               </a>
             );
@@ -417,8 +427,8 @@ const answerText =
   .acard {
     display: flex;
     flex-direction: column;
-    gap: 0.875rem;
-    padding: 1.75rem;
+    gap: 0;
+    padding: 0;
     background: var(--color-paper);
     border: 1px solid var(--color-rule);
     border-radius: 10px;
@@ -449,6 +459,23 @@ const answerText =
     box-shadow: 0 6px 18px -8px color-mix(in oklch, var(--d) 30%, transparent);
   }
   .acard:hover::before { transform: scaleY(1); }
+  /* Featured image — full-width thumbnail nahoře v kartě (3:2). */
+  .acard__img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    background: var(--color-paper-deep);
+    border-bottom: 1px solid var(--color-rule);
+  }
+  /* Obsah karty — padding + flex column (přesunuto z .acard, aby obrázek mohl být edge-to-edge). */
+  .acard__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    padding: 1.75rem;
+    flex: 1;
+  }
   .acard__header {
     display: flex;
     justify-content: space-between;

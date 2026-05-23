@@ -125,6 +125,14 @@ const _bundlerHints = [
       <span>~{readingMinutes} minut čtení</span>
       <span>Aktualizováno: {entry.data.updated}</span>
     </div>
+
+    <img
+      class="rhero__img"
+      src={`/og/${entry.data.slug}.png`}
+      alt={entry.data.title}
+      width="1536"
+      height="1024"
+    />
   </section>
 
   <!-- ANSWER BLOCK -->
@@ -391,6 +399,18 @@ const _bundlerHints = [
     height: 6px;
     background: var(--d);
     border-radius: 50%;
+  }
+  /* Featured image — 16:9 banner pod hlavičkou článku. */
+  .rhero__img {
+    display: block;
+    width: 100%;
+    max-width: 60rem;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border: 1px solid var(--color-rule);
+    border-radius: 12px;
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
+    background: var(--color-paper-deep);
   }
 
   /* ===== ANSWER BLOCK ===== */
