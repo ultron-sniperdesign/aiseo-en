@@ -61,6 +61,7 @@ howto:
 ---
 
 import Insight from "../../components/blocks/Insight.astro";
+import SignalGrid from "../../components/blocks/SignalGrid.astro";
 
 ## <span class="hl">5 čísel</span>, která <strong>musíte znát</strong>
 
@@ -285,24 +286,36 @@ Jedna z nejčastějších slabin v AI search obsahu: míchání metrik, které s
 
 Ne každá firma musí na AI search trendy reagovat se stejnou intenzitou. Rámec podle typu byznysu:
 
-### Vysoká priorita (řešit v Q2/Q3 2026)
-
-- **B2B SaaS, software a tech firmy** — research-driven nákupní cesta v týdnech, cílovka aktivně používá ChatGPT/Perplexity před demem
-- **Konzultanti, agentury, poradenské firmy** — AI doporučovací dotazy typu „nejlepší X pro Y" často určují shortlist
-- **Education-heavy weby a publishers** — AIO mění ekonomiku kliků, traffic erose začíná teď
-- **Knowledge-heavy B2C** — finance, právo, zdraví, vzdělávání s informační vrstvou
-
-### Střední priorita (plán pro 2026, implementace 2026–2027)
-
-- **E-commerce s research fází** — elektronika, sport, hobby, prémiové produkty. AEO playbook na kategoriích, ne plošně
-- **Profesionální služby** s blogem (advokát, účetní, daňař)
-- **B2C značky s thought leadership ambicí**
-
-### Nižší priorita (sledovat trend, ale neinvestovat plný rozpočet)
-
-- **Lokální služby s navigačním/transakčním intentem** — autoservis, kosmetika, restaurace bez informační vrstvy
-- **Pure transakční e-shopy** s impulsivními produkty (běžná drogerie, spotřební zboží)
-- **B2B s úzce definovanou cílovkou** mimo digitální research
+<SignalGrid tone="aeo" cards={[
+  {
+    title: "Vysoká priorita (Q2/Q3 2026)",
+    icon: "bolt",
+    items: [
+      { key: "B2B SaaS a tech firmy", desc: "research-driven nákup v týdnech, cílovka používá ChatGPT/Perplexity před demem" },
+      { key: "Konzultanti a agentury", desc: "AI doporučovací dotazy typu nejlepší X pro Y určují shortlist" },
+      { key: "Education-heavy weby a publishers", desc: "AIO mění ekonomiku kliků, traffic erose začíná teď" },
+      { key: "Knowledge-heavy B2C", desc: "finance, právo, zdraví, vzdělávání s informační vrstvou" }
+    ]
+  },
+  {
+    title: "Střední priorita (implementace 2026–2027)",
+    icon: "content",
+    items: [
+      { key: "E-commerce s research fází", desc: "elektronika, sport, hobby; AEO playbook na kategoriích, ne plošně" },
+      { key: "Profesionální služby s blogem", desc: "advokát, účetní, daňař" },
+      { key: "B2C s thought leadership ambicí", desc: "budování autority v oboru přes obsah" }
+    ]
+  },
+  {
+    title: "Nižší priorita (jen sledovat trend)",
+    icon: "page",
+    items: [
+      { key: "Lokální služby", desc: "autoservis, kosmetika, restaurace bez informační vrstvy" },
+      { key: "Pure transakční e-shopy", desc: "impulsivní produkty — drogerie, spotřební zboží" },
+      { key: "B2B s úzkou cílovkou", desc: "mimo digitální research" }
+    ]
+  }
+]} />
 
 Detail v [Rozhodovací matici](/rozhodovaci-matice/), která rozhoduje, kterou disciplínu (SEO/GEO/AEO/AIO) řešit jako první.
 
