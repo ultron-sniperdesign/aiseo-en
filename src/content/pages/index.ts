@@ -18,9 +18,9 @@ import type { SectionHead } from "~/content/pages/_types";
 
 export const meta = {
   title:
-    "AI éra vyhledávání: SEO vs. GEO vs. AEO vs. AIO — průvodce 4 zkratkami",
+    "AI SEO pro český trh: SEO, GEO, AEO a AIO v éře vyhledávání",
   description:
-    "Praktický průvodce čtyřmi disciplínami AI éry vyhledávání pro český trh. SEO pro pozice v Googlu, GEO pro citace v ChatGPT, AEO pro AI Overviews, AIO jako zastřešující rámec.",
+    "Praktický průvodce AI SEO pro český trh — SEO pro pozice v Googlu, GEO pro citace v ChatGPT, AEO pro Google AI Overviews a AIO jako zastřešující rámec.",
 };
 
 type Discipline = "seo" | "geo" | "aeo" | "aio";
