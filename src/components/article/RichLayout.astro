@@ -22,6 +22,11 @@ import Do from "~/components/blocks/Do.astro";
 import Dont from "~/components/blocks/Dont.astro";
 import Checklist from "~/components/blocks/Checklist.astro";
 import Stepper from "~/components/blocks/Stepper.astro";
+import Persona from "~/components/blocks/Persona.astro";
+import PersonaGrid from "~/components/blocks/PersonaGrid.astro";
+import AntiPersona from "~/components/blocks/AntiPersona.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 
 interface Props {
@@ -84,6 +89,11 @@ const _bundlerHints = [
   Dont,
   Checklist,
   Stepper,
+  Persona,
+  PersonaGrid,
+  AntiPersona,
+  Mistake,
+  MistakeGrid,
 ];
 ---
 
@@ -211,11 +221,11 @@ const _bundlerHints = [
     var domHeadings = prose.querySelectorAll("h2, h3");
     var idIdx = 0;
     domHeadings.forEach(function (h) {
-      /* Skip h3 inside Compare/DoDont/Stepper components */
-      if (h.classList.contains("cmp__heading")) return;
-      if (h.closest("[class^='cmp']")) return;
-      if (h.closest("[class^='dd-']")) return;
-      if (h.closest(".stepper")) return;
+      /* Skip component-rendered headings (Persona/Mistake/AntiPersona/Compare/Stepper…).
+         Markdown headings render WITHOUT a class; component headings always carry one
+         (persona__title, mistake__title, cmp__heading, stp__title, anti-persona__title…).
+         Only markdown headings belong in the TOC ID + scrollspy sequence. */
+      if (h.className && String(h.className).trim() !== "") return;
 
       var level = h.tagName === "H2" ? 2 : 3;
       while (idIdx < headingsData.length && headingsData[idIdx].level !== level) idIdx++;

@@ -61,6 +61,14 @@ howto:
 ---
 
 import Insight from "../../components/blocks/Insight.astro";
+import Persona from "../../components/blocks/Persona.astro";
+import PersonaGrid from "../../components/blocks/PersonaGrid.astro";
+import AntiPersona from "../../components/blocks/AntiPersona.astro";
+import DoDont from "../../components/blocks/DoDont.astro";
+import Do from "../../components/blocks/Do.astro";
+import Dont from "../../components/blocks/Dont.astro";
+import Mistake from "../../components/blocks/Mistake.astro";
+import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
 
 ## Co je <span class="hl">AEO optimalizace</span> a proč ji <strong>řešit teď</strong>
 
@@ -97,13 +105,27 @@ Featured Snippets existují jako Google funkce už od roku 2014 (původně „an
 
 AEO je nejvíc relevantní tam, kde **se zákazník na něco ptá** a obsah na webu by mohl být odpovědí:
 
-- **Publishers, blogy a edukativní obsahové weby** — žijete z organic trafficu na informační dotazy. AIO panel vám může vzít kliky, ale i vás citovat. Bez AEO playbooku ztrácíte přímý vliv na obě strany rovnice.
-- **B2B firmy a SaaS produkty s research fází** — zákazník před nákupem aktivně studuje, srovnává a hledá odpovědi typu „jak vybrat CRM", „rozdíl mezi X a Y", „jak nastavit Z". Featured Snippets a AIO panel mu odpovídají — a vy chcete být v citaci.
-- **E-shopy s research-driven sortimentem** — kategorie a edukativní obsah ohrožené zero-click search, ale zároveň výhra brand exposure. Detail v [SEO pro eshopy v AI éře](/blog/seo-pro-eshopy-ai-era-2026/).
-- **Odborné a poradenské služby** — advokát, účetní, konzultant, agentura. Lidé hledají odpovědi typu „jak řešit X", „kdy potřebuji Y". AEO playbook umisťuje vaše krátké odpovědi do první vlny SERPu.
-- **Lokální služby s informační vrstvou** — autoservis, kosmetika s blogem o oboru. Featured Snippets + lokální výsledky se nepřebíjejí, kombinace funguje dobře. Detail v [Local SEO Česko 2026](/blog/local-seo-cesko-2026/).
+<PersonaGrid>
+  <Persona icon="📰" title="Publishers a edukativní weby" tone="aeo">
+    Žijete z organic trafficu na informační dotazy. AIO panel vám může vzít kliky, ale i vás citovat — bez AEO playbooku ztrácíte přímý vliv na obě strany rovnice.
+  </Persona>
+  <Persona icon="🏢" title="B2B firmy a SaaS s research fází" chip="Vysoký dopad" tone="aeo">
+    Zákazník před nákupem studuje, srovnává a hledá odpovědi typu „jak vybrat CRM", „rozdíl mezi X a Y". Featured Snippets a AIO panel mu odpovídají — a vy chcete být v citaci.
+  </Persona>
+  <Persona icon="🛒" title="E-shopy s research sortimentem" tone="aeo">
+    Kategorie a edukativní obsah ohrožené zero-click search, ale zároveň výhra brand exposure. Detail v [SEO pro e-shopy v AI éře](/blog/seo-pro-eshopy-ai-era-2026/).
+  </Persona>
+  <Persona icon="⚖️" title="Odborné a poradenské služby" tone="aeo">
+    Advokát, účetní, konzultant, agentura. Lidé hledají „jak řešit X", „kdy potřebuji Y". AEO playbook umisťuje vaše krátké odpovědi do první vlny SERPu.
+  </Persona>
+  <Persona icon="📍" title="Lokální služby s informační vrstvou" tone="aeo">
+    Autoservis, kosmetika s blogem o oboru. Featured Snippets + lokální výsledky se nepřebíjejí, kombinace funguje dobře. Detail v [Local SEO Česko 2026](/blog/local-seo-cesko-2026/).
+  </Persona>
+</PersonaGrid>
 
-**Marginální dopad** má AEO u čistě transakčních dotazů a impulsivních produktů — tam jsou priority v klasickém SEO + lokálním SEO + PPC. Pokud váháte, kterou disciplínu řešit jako první, pomůže [Rozhodovací matice](/rozhodovaci-matice/).
+<AntiPersona title="Kdy má AEO jen marginální dopad">
+Čistě transakční dotazy a impulsivní produkty — tam jsou priority v klasickém SEO + lokálním SEO + PPC. Pokud váháte, kterou disciplínu řešit jako první, pomůže [Rozhodovací matice](/rozhodovaci-matice/).
+</AntiPersona>
 
 ## Anatomie ideálního <span class="hl">answer blocku</span>
 
@@ -123,28 +145,18 @@ Answer block je **krátká strukturovaná odpověď** hned po H1 nebo H2, kterou
 
 ### Před a po — konkrétní ukázka
 
-```
-❌ ŠPATNĚ (marketingový úvod, není citation-friendly):
+<DoDont>
+  <Dont>
+    „V dnešní digitální éře je důležité umět optimalizovat web pro moderní vyhledávače. Naše agentura má bohaté zkušenosti s pomocí firmám zlepšit jejich online viditelnost. V tomto článku se podíváme na nejlepší postupy pro AEO."
 
-V dnešní digitální éře je důležité umět optimalizovat web pro
-moderní vyhledávače. Naše agentura má bohaté zkušenosti s pomocí
-firmám zlepšit jejich online viditelnost. V tomto článku se
-podíváme na nejlepší postupy pro AEO.
+    Žádný fakt, žádná definice, žádné citation hooks → **AI to přeskočí.**
+  </Dont>
+  <Do>
+    „AEO (Answer Engine Optimization) upravuje obsah tak, aby ho Google AI Overviews, Featured Snippets a Bing Copilot použili jako přímou odpověď a citovali váš web jako zdroj. Klíčem je krátká odpověď 40–60 slov hned po nadpisu, FAQ s reálnými dotazy a validní FAQPage schema. Featured Snippet CTR drží 35,6 % v top pozici (Backlinko 2025)."
 
-→ AI to přeskočí. Žádný fakt, žádná definice, žádné citation hooks.
-
-
-✅ DOBŘE (answer block 48 slov, ready k citaci):
-
-AEO (Answer Engine Optimization) upravuje obsah tak, aby ho
-Google AI Overviews, Featured Snippets a Bing Copilot použili
-jako přímou odpověď a citovali váš web jako zdroj. Klíčem je
-krátká odpověď 40–60 slov hned po nadpisu, FAQ s reálnými
-dotazy a validní FAQPage schema. Featured Snippet CTR drží
-35,6 % v top pozici (Backlinko 2025).
-
-→ AI extrahuje. Definice + fakt + zdroj + délka v rozmezí.
-```
+    Definice + fakt + zdroj + délka 48 slov → **AI extrahuje.**
+  </Do>
+</DoDont>
 
 <Insight tone="aeo" icon="✦" label="Time-to-answer rule">
 **Pravidlo:** Mezi začátkem stránky a první definitivní odpovědí by mělo být **maximálně 60 slov textu** (mimo navigaci a hero blok). Pokud se hlavní odpověď objeví až hluboko v textu, snižuje se šance, že stránka bude sloužit jako rychle extrahovatelný zdroj. Heuristika: schované odpovědi v sekci „Detailní popis" pod H3 mají v praxi výrazně nižší extraction rate než odpovědi pod H1 nebo prvním H2 — Google i AI extractor preferují content blízko top stránky.
@@ -381,23 +393,17 @@ Pravidlo: **AEO playbook = 30 % výsledku, SEO základ + autorita + unikátnost 
 
 ## <strong>3 časté chyby</strong>, které <span class="hl">zabíjejí AEO</span>
 
-### Chyba 1 — Over-optimization answer blocku
-
-Některé weby nacpou do prvních 60 slov **5 KW variant**, snaží se pokrýt všechny dotazy najednou. Výsledek: text vypadá strojově, Google ho vyhodnotí jako keyword stuffing a snippet ignoruje.
-
-**Pravidlo:** jeden answer block = jeden hlavní dotaz. Pokud chcete pokrýt 5 různých dotazů, mějte 5 stránek (nebo 5 H2 sekcí) s každý vlastním answer blockem.
-
-### Chyba 2 — FAQ schema bez korespondence s HTML
-
-Nejčastější issue v praxi: **FAQ otázky v JSON-LD se liší od textu na stránce**. Někdo přidá schema přes plugin, který vytahuje data z databáze, ale text na stránce je editovaný copywriterem manuálně. Důsledek: schema ignorováno.
-
-**Pravidlo:** otázky a odpovědi v HTML a JSON-LD se musí **přesně shodovat slovo od slova**. Validace v každém deploy cyklu.
-
-### Chyba 3 — Missing entity context
-
-Answer block bez **brand a entity kontextu** Google často nevyužije pro AIO. Když napíšete „SEO je proces, který…" bez jakékoliv autoritativní reference, AI nemá, čím verifikovat. Když napíšete „Princeton paper z roku 2023 ukázal, že strukturovaný obsah zvyšuje citation rate v řádu desítek %", máte **fakt + zdroj + datum** — citation-friendly.
-
-**Pravidlo:** každá důležitá tvrzení v answer blocku má atribuci. „Podle X" nebo „X studie z roku Y ukázala, že Z".
+<MistakeGrid>
+  <Mistake num="01" title="Over-optimization answer blocku" fix="Jeden answer block = jeden hlavní dotaz. Pro 5 různých dotazů mějte 5 stránek nebo 5 H2 sekcí, každou s vlastním answer blockem.">
+    Některé weby nacpou do prvních 60 slov **5 KW variant** a snaží se pokrýt všechny dotazy najednou. Výsledek: text vypadá strojově, Google ho vyhodnotí jako keyword stuffing a snippet ignoruje.
+  </Mistake>
+  <Mistake num="02" title="FAQ schema bez korespondence s HTML" fix="Otázky a odpovědi v HTML a JSON-LD se musí přesně shodovat slovo od slova. Validace v každém deploy cyklu.">
+    Nejčastější issue v praxi: **FAQ otázky v JSON-LD se liší od textu na stránce** (typicky plugin tahá data z DB, ale text edituje copywriter ručně). Důsledek: schema ignorováno.
+  </Mistake>
+  <Mistake num="03" title="Missing entity context" fix="Každé důležité tvrzení v answer blocku doplňte atribucí zdroje — kdo to tvrdí a kdy (např. studie z roku 2023).">
+    Answer block bez **brand a entity kontextu** Google často nevyužije pro AIO. „SEO je proces, který…" bez reference AI nemá čím verifikovat; „Princeton paper z roku 2023 ukázal…" má **fakt + zdroj + datum**.
+  </Mistake>
+</MistakeGrid>
 
 ## Co dělat <strong>tento týden, měsíc, kvartál</strong>
 
