@@ -40,6 +40,12 @@ howto:
     - name: "Zvažte alternativní vyhledávač"
       text: "Brave Search a DuckDuckGo neimplementují Google AIO panel. Pozor: nestačí používat Brave jako prohlížeč — musíte změnit výchozí vyhledávač. Brave Search má vlastní AI odpovědní funkce, které je vhodné zkontrolovat v nastavení."
 ---
+import PersonaGrid from "../../components/blocks/PersonaGrid.astro";
+import Persona from "../../components/blocks/Persona.astro";
+import AntiPersona from "../../components/blocks/AntiPersona.astro";
+import Mistake from "../../components/blocks/Mistake.astro";
+import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
+import Stepper from "../../components/blocks/Stepper.astro";
 
 ## Proč hledat <strong>„jak vypnout</strong> <span class="hl">AI Overviews"</span>
 
@@ -209,10 +215,20 @@ V CZ marketingových diskusích kolují příklady „AIO snížila návštěvno
 
 ## Co se <strong>nedoporučuje</strong>
 
-1. **Browser extensions, které „blokují AIO"** — typicky AIO lokálně skrývají přes CSS/DOM úpravy. Spolehlivost se může měnit s úpravami Google SERPu, vyžadují oprávnění v prohlížeči — vhodné řešit reputaci autora, rozsah permissions a bezpečnost. `&udm=14` je transparentnější.
-2. **Hosts file modifikace** — staré rady doporučují blokovat `gemini.google.com`. Tím rozbijete celé Google features, ne jen AIO. Vedlejší dopady jsou nepředvídatelné.
-3. **Hledat „AI Off" master switch ve Google Settings** — neexistuje. Search Labs experiment je nejblíž a ani ten není garantovaný.
-4. **Žádost o vypnutí na Google supportu** — AIO je strategická feature. Account-specific vypnutí Google nedává.
+<MistakeGrid>
+  <Mistake num="01" title="Browser extensions na blokování AIO" fix="Použijte transparentnější web filter udm=14 — bez nutnosti oprávnění v prohlížeči navíc.">
+    Typicky AIO skrývají lokálně přes CSS/DOM úpravy. Spolehlivost kolísá s úpravami Google SERPu a vyžadují oprávnění v prohlížeči — řešte reputaci autora, rozsah permissions a bezpečnost.
+  </Mistake>
+  <Mistake num="02" title="Hosts file modifikace" fix="Nikdy neblokujte gemini.google.com přes hosts — rozbijete celé Google, ne jen AIO.">
+    Staré rady doporučují blokovat `gemini.google.com`. Tím rozbijete celé Google features, ne jen AIO. Vedlejší dopady jsou nepředvídatelné.
+  </Mistake>
+  <Mistake num="03" title="Hledat globální vypínač AI Off" fix="Neexistuje. Search Labs experiment je nejblíž — a ani ten není garantovaný.">
+    Ve Google Settings žádný globální vypínač AI Overviews není. Hledání master switche je ztráta času.
+  </Mistake>
+  <Mistake num="04" title="Žádost o vypnutí na Google supportu" fix="Account-specific vypnutí Google nedává — řešte přes web filter nebo jiný vyhledávač.">
+    AIO je strategická feature Google. Support pro ni individuální vypnutí neposkytuje.
+  </Mistake>
+</MistakeGrid>
 
 ## <strong>Souhrn</strong> ve <span class="hl">5 řádcích</span>
 
@@ -226,27 +242,45 @@ V CZ marketingových diskusích kolují příklady „AIO snížila návštěvno
 
 Pokud řešíte AIO jako web owner, ne jako uživatel, doporučujeme proces v 5 krocích, ne plošné nasazení:
 
-1. **Vybrat cluster URL** — typicky 10–30 informačních non-brand stránek se srovnatelným typem dotazu (how-to průvodce, definiční články, srovnání). Nemíchejte s brand a transakčními URL.
-2. **Vyfiltrovat dotazy v GSC** — Performance → Queries, filter brand vs non-brand. Pokud vidíte pokles CTR u non-brand informačních dotazů s impressions stabilními nebo rostoucími, máte indikator.
-3. **Baseline metriky** — clicks, impressions, avg position, CTR za 4–8 týdnů před testem (zachytí sezónnost).
-4. **Nasadit jen na segment** — `data-nosnippet` na úvodní answer block 5–10 vybraných URL, ne plošně. Sledovat 30–60 dní.
-5. **Vyhodnotit po X týdnech** — porovnání baseline vs po-test, kontrolovat brand query mix (brand snippet je často výhoda, ne ztráta), vyhodnotit, jestli pokles CTR se zlepšil bez vedlejších škod.
+<Stepper tone="aio" steps={[
+  { title: "Vybrat cluster URL", desc: "Typicky 10–30 informačních non-brand stránek se srovnatelným typem dotazu (how-to průvodce, definiční články, srovnání). Nemíchat s brand a transakčními URL." },
+  { title: "Vyfiltrovat dotazy v GSC", desc: "Performance → Queries, filtr brand vs non-brand. Pokles CTR u non-brand informačních dotazů se stabilními nebo rostoucími impressions = indikátor." },
+  { title: "Baseline metriky", desc: "Clicks, impressions, avg position a CTR za 4–8 týdnů před testem — zachytí sezónnost." },
+  { title: "Nasadit jen na segment", desc: "data-nosnippet na úvodní answer block 5–10 vybraných URL, ne plošně. Sledovat 30–60 dní." },
+  { title: "Vyhodnotit po týdnech", desc: "Porovnání baseline vs po-test, kontrola brand query mixu (brand snippet je často výhoda, ne ztráta), vyhodnotit, jestli se pokles CTR zlepšil bez vedlejších škod." }
+]} />
 
-**Co NEDĚLAT jako publisher:**
+<AntiPersona title="Co NEDĚLAT jako publisher">
 
-- ❌ Nasadit `nosnippet` plošně na celý blog bez segmentace
-- ❌ Vyhodnocovat dopad jen na úrovni sessions (smíchá brand a non-brand)
-- ❌ Brát Similarweb / Ahrefs odhady jako důkaz dopadu AIO (jsou to aproximace, ne přesná data)
-- ❌ Ignorovat brand query mix — chybějící brand snippet může poslat uživatele jinam, ne přivést
+- Nasadit `nosnippet` plošně na celý blog bez segmentace
+- Vyhodnocovat dopad jen na úrovni sessions (smíchá brand a non-brand)
+- Brát Similarweb / Ahrefs odhady jako důkaz dopadu AIO (jsou to aproximace, ne přesná data)
+- Ignorovat brand query mix — chybějící brand snippet může poslat uživatele jinam, ne přivést
+
+</AntiPersona>
 
 ## Pro koho je <strong>tento článek</strong>
 
-- **Uživatel, který chce dál používat Google bez AIO** → Search Labs + `udm=14` web filter
-- **Uživatel, který chce minimum AI prvků bez řešení Google účtu** → Brave Search nebo DuckDuckGo
-- **SEO / content tým, který řeší pokles CTR po nástupu AIO** → snippet direktivy selektivně + GSC query-level audit
-- **Publisher / magazín / obsahový web** → mini-metodika výše + segmentace brand/non-brand
-- **E-commerce a leadgen weby** → ověřit, jestli je AIO reálný problém (typicky transakční intent ≠ AIO panel)
-- **Regulované obory (YMYL)** → opatrnější přístup, dopad na důvěru ve značku, individuální posouzení
+<PersonaGrid>
+  <Persona icon="🔍" title="Uživatel: Google bez AIO" tone="aio">
+    Chcete dál používat Google, jen bez panelu. Cesta: Search Labs experiment + `&udm=14` web filter jako default vyhledávač.
+  </Persona>
+  <Persona icon="🛡️" title="Uživatel: minimum AI prvků" tone="aio">
+    Nechcete řešit Google účet. Přepněte výchozí vyhledávač na Brave Search nebo DuckDuckGo — Google AIO panel nemají.
+  </Persona>
+  <Persona icon="📊" title="SEO / content tým" tone="aio">
+    Řešíte pokles CTR po nástupu AIO. Snippet direktivy selektivně + GSC query-level audit (brand vs non-brand).
+  </Persona>
+  <Persona icon="📰" title="Publisher / magazín / obsahový web" tone="aio">
+    Mini-metodika výše + segmentace brand/non-brand. Obranná snippet politika podle typu obsahu, ne plošně.
+  </Persona>
+  <Persona icon="🛒" title="E-commerce a leadgen" tone="aio">
+    Nejdřív ověřte, jestli je AIO reálný problém — u transakčního intentu se panel typicky negeneruje.
+  </Persona>
+  <Persona icon="⚖️" title="Regulované obory (YMYL)" tone="aio">
+    Opatrnější přístup. Zvažte dopad na důvěru ve značku a posuzujte individuálně, ne paušálně.
+  </Persona>
+</PersonaGrid>
 
 ## Kde si nechat <strong>poradit</strong>
 
