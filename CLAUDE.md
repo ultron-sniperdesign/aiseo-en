@@ -184,8 +184,14 @@ aiseo-optimalizace.cz/
 │       └── free-homepage-final.{html,pdf}    # free PDF (Ecomail A1 link)
 ├── src/
 │   ├── components/                       # Header, Footer, EmailCapture, MockupPage, article/, blocks/, sniperdesign/
-│   ├── content/                          # pillar/, sections/, articles/
-│   ├── layouts/BaseLayout.astro              # SEO meta + JSON-LD + Header/Footer
+│   ├── content/
+│   │   ├── pillar/ sections/ articles/       # dlouhý obsah (MDX) — per-mutace přeložit
+│   │   └── pages/*.ts                        # DATOVÉ MODULY landing/thank-you/audit/pack/index (Fáze 0) — per-mutace přeložit
+│   ├── i18n/                             # I18N VRSTVA — per-mutace přeložit (viz MUTATIONS.md)
+│   │   ├── strings.ts                        # chrome: Header/Footer/EmailCapture (nav, legal, labely)
+│   │   ├── sniperdesign.ts                   # agency promo: BigContact/SmallContact
+│   │   └── site.ts                           # locale/schema/identita: lang, og:locale, název webu, Organization
+│   ├── layouts/BaseLayout.astro              # SEO meta + JSON-LD + Header/Footer (čte site.ts)
 │   ├── pages/
 │   │   ├── index.astro                       # Homepage
 │   │   ├── [slug].astro                      # Dynamic route ze sections
@@ -207,6 +213,7 @@ aiseo-optimalizace.cz/
 ├── astro.config.mjs
 ├── package.json
 ├── README.md
+├── MUTATIONS.md                          # fork guide pro jazykové mutace (co přeložit, co nesahat, server)
 └── CLAUDE.md                             # tento soubor
 ```
 
@@ -218,9 +225,13 @@ aiseo-optimalizace.cz/
 | CLAUDE.md guidelines | `cross-vps/CLAUDE_MD_GUIDELINES.md` |
 | Servisní board | `cross-session/server-admin.md` |
 | Per-projekt board | `cross-session/aiseo-optimalizace.md` |
+| Mutace — global board | `cross-session/aiseo-global.md` (koordinace globálních změn napříč jazykovými mutacemi) |
+| Fork guide (mutace) | `MUTATIONS.md` (v projektu) |
 | Memory pointers | `~/.claude/projects/-Users-ultroncloudehome-Desktop-Ultron-DISK-SNIPER-DESIGN-ULTRON-SNIPER-DESIGN-aiseo-optimalizace-cz/memory/` |
 | Schválený onboarding plán | `~/.claude/plans/lively-coalescing-lake.md` |
 | Wrangler OAuth config | `~/Library/Preferences/.wrangler/config/default.toml` (token + refresh + scopes) |
+
+> **i18n / mutace model (k 2026-05-23):** Tento CZ projekt je **kanonický, vlastník design systému (role „A")**. Jazykové mutace = **samostatné forky** na vlastních doménách, jeden jazyk uvnitř (žádné locale-keying). Veškerý překladový text/config je externalizovaný do dat: `src/content/pages/*.ts`, `src/i18n/{strings,sniperdesign,site}.ts`, `src/content/**/*.mdx`. Fork = kopie + překlad těchto dat; do `.astro`/CSS/komponent se NESAHÁ. Změny design systému dělá A a mutace je přebírají přes `cross-session/aiseo-global.md`. Plný postup: `MUTATIONS.md`.
 
 ---
 
