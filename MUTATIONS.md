@@ -67,3 +67,21 @@ Deploy: stejný mechanismus jako CZ (GitHub Actions → rsync). Lze **reusnout d
 - **Globální změny** (A mění design systém, který mají mutace přebrat) → `cross-session/aiseo-global.md`.
 - **Servisní úkony** (SSH klíč, sudo, repo create, Caddy reload) → `cross-session/server-admin.md` (sd-server-admin).
 - **Per-mutace stav** → vlastní per-projekt board mutace (např. `cross-session/aiseo-en.md`).
+- **Admin playbook** (hranice fork/sdílené, i18n mechanika, onboarding) → `cross-session/aiseo-mutace-admin.md`.
+
+---
+
+## Průběžná synchronizace obsahu (nový CZ článek → mutace)
+
+Mutace je samostatný repo — **nový CZ článek se v ní neobjeví automaticky**. Přenos
+má 2 vrstvy (plný postup: `cross-session/aiseo-mutace-admin.md` §9):
+
+1. **Design/infra** — jen když článek zavedl novou komponentu / schema pole / layout:
+   admin to udělá kanonicky + zaloguje do `aiseo-global.md`, mutace **pullne**. Jednorázově.
+2. **Obsah článku** — mutace ho **NEpřebírá 1:1**. CZ článek = podklad; mutace ho
+   re-vytvoří v jazyce trhu (lokalizace + keyword strategie trhu), s vlastním slugem,
+   `seoTitle`, FAQ a **regenerovaným featured image** (CZ obrázky mají natvrdo český
+   text). Některé CZ-specifické články se neportují vůbec.
+
+Evidence: admin zapisuje nové CZ články do **Content logu** v `aiseo-global.md`;
+session mutace vybere relevantní a označí stav portace.
