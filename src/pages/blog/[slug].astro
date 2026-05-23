@@ -116,7 +116,7 @@ const ogImage = `/og/${entry.data.slug}.png`;
 ---
 
 <BaseLayout
-  title={entry.data.title}
+  title={entry.data.seoTitle ?? entry.data.title}
   description={entry.data.description}
   jsonLd={allLd}
   image={ogImage}

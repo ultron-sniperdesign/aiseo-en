@@ -109,6 +109,8 @@ const articles = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/articles" }),
   schema: z.object({
     title: z.string(),
+    /** Volitelný SEO <title> pro SERP. Když chybí, použije se `title` (= H1 v RichLayoutu). */
+    seoTitle: z.string().optional(),
     description: z.string().min(70).max(160),
     /** 40–60 slovní answer block hned po H1 — AI scraper hook. */
     answer: z.string(),
