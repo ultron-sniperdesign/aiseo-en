@@ -2,6 +2,7 @@
 import "~/styles/global.css";
 import Header from "~/components/Header.astro";
 import Footer from "~/components/Footer.astro";
+import { site } from "~/i18n/site";
 
 export interface Props {
   title: string;
@@ -52,26 +53,26 @@ const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": `${siteOrigin}/#publisher`,
-  name: "Sniper Design",
-  alternateName: "CPU s.r.o.",
+  name: site.org.name,
+  alternateName: site.org.alternateName,
   url: siteOrigin,
-  description: "Edukativní průvodce AI érou vyhledávání: SEO, GEO, AEO, AIO. Provozuje agentura Sniper Design (CPU s.r.o.).",
+  description: site.org.description,
   logo: {
     "@type": "ImageObject",
     url: `${siteOrigin}/apple-touch-icon.png`,
     width: 180,
     height: 180,
   },
-  sameAs: ["https://www.sniperdesign.cz/", "https://www.megadetail.cz/"],
+  sameAs: site.org.sameAs,
 };
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": `${siteOrigin}/#website`,
-  name: "aiseo-optimalizace.cz",
+  name: site.name,
   url: siteOrigin,
-  inLanguage: "cs-CZ",
+  inLanguage: site.inLanguage,
   publisher: { "@id": `${siteOrigin}/#publisher` },
 };
 
@@ -84,7 +85,7 @@ const breadcrumbSchema = breadcrumb && breadcrumb.length > 0
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Úvod", item: `${siteOrigin}/` },
+        { "@type": "ListItem", position: 1, name: site.breadcrumbRoot, item: `${siteOrigin}/` },
         ...breadcrumb.map((b, i) => ({
           "@type": "ListItem",
           position: i + 2,
@@ -127,7 +128,7 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
 ---
 
 <!doctype html>
-<html lang="cs">
+<html lang={site.lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -148,7 +149,7 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
     <link rel="canonical" href={canonicalURL} />
 
     {/* Author — AI engines (ChatGPT, Perplexity) berou tento tag jako attribution signal. */}
-    <meta name="author" content="Kamil ze Sniper Design" />
+    <meta name="author" content={site.author} />
 
     {/* Robots — single tag, noindex přebíjí. max-image-preview:large povolí Google AI
         Overviews zobrazit větší citation cards (důležité pro AI-éru SEO). */}
@@ -165,8 +166,8 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
     <meta property="og:image:width" content="1536" />
     <meta property="og:image:height" content="1024" />
     <meta property="og:image:alt" content={title} />
-    <meta property="og:locale" content="cs_CZ" />
-    <meta property="og:site_name" content="aiseo-optimalizace.cz" />
+    <meta property="og:locale" content={site.locale} />
+    <meta property="og:site_name" content={site.name} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
