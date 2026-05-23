@@ -481,7 +481,11 @@ const _bundlerHints = [
     color: var(--color-ink);
   }
 
-  /* ===== ARTICLE BODY — minimální override; žádný H2/H3 redesign, žádný counter ===== */
+  /* ===== ARTICLE BODY — sjednoceno s in-body designem sekcí (`[slug].astro`).
+     Próza je v @layer prose: layered styly mají nižší prioritu než unlayered,
+     takže komponenty rendrované inline (Insight/Compare/DoDont/Checklist/Stepper)
+     automaticky vyhrávají se svými scoped styly — bez ohledu na specificitu.
+     To eliminuje "style leak" prose pravidel do komponent (10/12 článků je má). ===== */
   .rarticle { min-width: 0; }
   .rarticle__prose {
     max-width: 50rem;
@@ -490,76 +494,183 @@ const _bundlerHints = [
     line-height: 1.7;
     color: var(--color-ink);
   }
-  /* H2 — base typography z [slug] classic, jen větší top margin pro vizuální gap mezi sekcemi */
+
+  @layer prose {
+  /* Nadpisy — sans, friendly hierarchy, scroll-margin pro TOC kotvy */
   .rarticle__prose :global(h2) {
     font-family: var(--font-sans);
+    font-weight: 500;
     font-size: clamp(1.5rem, 2.5vw, 2rem);
-    font-weight: 600;
-    letter-spacing: -0.022em;
-    line-height: 1.18;
-    margin: clamp(3rem, 5vw, 4rem) 0 1rem;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin: 3rem 0 1.5rem;
     color: var(--color-ink);
+    scroll-margin-top: 5rem;
   }
-  .rarticle__prose :global(h2:first-child) {
-    margin-top: 0;
-  }
-  /* H3 — bold, větší, žádný counter, žádný card. Jednoduché. */
+  .rarticle__prose :global(h2:first-child) { margin-top: 0; }
   .rarticle__prose :global(h3) {
     font-family: var(--font-sans);
-    font-size: clamp(1.125rem, 1.6vw, 1.25rem);
-    font-weight: 600;
-    letter-spacing: -0.01em;
+    font-weight: 500;
+    font-size: 1.25rem;
     line-height: 1.3;
-    margin: 2rem 0 0.75rem;
+    letter-spacing: -0.018em;
+    margin: 2.25rem 0 0.875rem;
     color: var(--color-ink);
+    scroll-margin-top: 5rem;
   }
-  .rarticle__prose :global(p) { margin: 0 0 1.25rem; }
-  .rarticle__prose :global(ul),
-  .rarticle__prose :global(ol) { margin: 0 0 1.5rem; padding-left: 1.5rem; }
-  .rarticle__prose :global(li) { margin-bottom: 0.5rem; }
+  .rarticle__prose :global(p) {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--color-ink);
+    margin: 0 0 1.125rem;
+  }
+  .rarticle__prose :global(p strong) { font-weight: 600; }
+  .rarticle__prose :global(p em) { font-style: italic; }
+  .rarticle__prose :global(strong) { font-weight: 600; color: var(--color-ink); }
   .rarticle__prose :global(a) {
     color: var(--d);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    text-decoration-thickness: 1px;
+    border-bottom: 1px solid color-mix(in oklch, var(--d) 35%, transparent);
+    text-decoration: none;
+    transition: border-color 0.15s ease;
   }
-  .rarticle__prose :global(a:hover) { text-decoration-thickness: 2px; }
-  .rarticle__prose :global(strong) { font-weight: 600; color: var(--color-ink); }
+  .rarticle__prose :global(a:hover) { border-bottom-color: var(--d); }
 
+  /* První odstavec po H2 dostává „lead" treatment — barevný levý okraj */
+  .rarticle__prose :global(h2 + p) {
+    font-size: 1.1875rem;
+    line-height: 1.55;
+    font-weight: 400;
+    color: var(--color-ink);
+    padding-left: 1rem;
+    border-left: 2px solid var(--d);
+    margin-bottom: 1.5rem;
+  }
+
+  /* Seznamy — vlastní odrážka (pomlčka) u ul, číselné kolečko u ol */
+  .rarticle__prose :global(ul),
+  .rarticle__prose :global(ol) {
+    margin: 1.25rem 0;
+    padding-left: 0;
+    list-style: none;
+  }
+  .rarticle__prose :global(ul li) {
+    position: relative;
+    padding-left: 1.625rem;
+    margin-bottom: 0.625rem;
+    line-height: 1.65;
+    font-size: 1.0625rem;
+  }
+  .rarticle__prose :global(ul li::before) {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7rem;
+    width: 0.75rem;
+    height: 1px;
+    background: var(--d);
+  }
+  .rarticle__prose :global(ol:not(.stp)) {
+    counter-reset: ord;
+  }
+  .rarticle__prose :global(ol:not(.stp) > li) {
+    position: relative;
+    padding-left: 2.25rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.65;
+    font-size: 1.0625rem;
+    counter-increment: ord;
+  }
+  .rarticle__prose :global(ol:not(.stp) > li::before) {
+    content: counter(ord);
+    position: absolute;
+    left: 0;
+    top: 0.15em;
+    width: 1.625rem;
+    height: 1.625rem;
+    border-radius: 50%;
+    background: var(--d-tint);
+    border: 1px solid var(--d-soft);
+    color: var(--d);
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Tabulky — barevná hlavička v discipline tintu */
   .rarticle__prose :global(table) {
     width: 100%;
-    border-collapse: collapse;
-    margin: 1.5rem 0 2rem;
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
-  }
-  .rarticle__prose :global(th),
-  .rarticle__prose :global(td) {
-    text-align: left;
-    padding: 0.625rem 0.875rem;
-    border-bottom: 1px solid var(--color-rule);
-  }
-  .rarticle__prose :global(th) {
-    font-weight: 600;
-    color: var(--color-ink);
-    background: var(--color-paper-deep);
-  }
-  .rarticle__prose :global(blockquote) {
-    border-left: 3px solid var(--d);
-    background: var(--d-tint);
-    padding: 1rem 1.25rem;
     margin: 1.5rem 0;
-    color: var(--color-ink);
-    border-radius: 0 6px 6px 0;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    border: 1px solid var(--color-rule);
+    border-radius: 8px;
+    overflow: hidden;
   }
+  .rarticle__prose :global(thead) { background: var(--d-tint); }
+  .rarticle__prose :global(th) {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--d);
+    border-bottom: 1px solid var(--d-soft);
+    font-size: 0.875rem;
+  }
+  .rarticle__prose :global(td) {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-rule);
+    color: var(--color-ink);
+  }
+  .rarticle__prose :global(tr:last-child td) { border-bottom: none; }
+
+  /* Code */
   .rarticle__prose :global(code) {
     font-family: var(--font-mono);
     font-size: 0.875em;
     background: var(--color-paper-deep);
-    padding: 0.1em 0.35em;
-    border-radius: 3px;
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
     color: var(--color-ink);
   }
+  .rarticle__prose :global(pre) {
+    background: oklch(0.18 0.012 260);
+    color: oklch(0.92 0.012 80);
+    padding: 1.25rem 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border-left: 3px solid var(--d);
+  }
+  .rarticle__prose :global(pre code) {
+    background: transparent;
+    padding: 0;
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: inherit;
+  }
+
+  /* Blockquotes */
+  .rarticle__prose :global(blockquote) {
+    margin: 2rem 0;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    border-left: 3px solid var(--d);
+    font-style: normal;
+    color: var(--color-ink-muted);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  .rarticle__prose :global(blockquote p) { margin: 0 0 0.5rem; color: inherit; }
+  .rarticle__prose :global(blockquote p:last-child) { margin-bottom: 0; }
+
+  /* HR */
+  .rarticle__prose :global(hr) {
+    border: none;
+    border-top: 1px solid var(--color-rule);
+    margin: 2.5rem 0;
+  }
+  } /* end @layer prose */
+
   .rarticle__prose :global(.hl) {
     background: linear-gradient(180deg, transparent 60%, var(--d-tint) 60%);
     padding: 0 0.15em;
