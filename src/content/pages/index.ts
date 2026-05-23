@@ -5,11 +5,12 @@
  * text + karty. Ilustrativní mockupy (Google SERP / AI Overview / ChatGPT
  * bublina) a SVG wireframe ZŮSTÁVAJÍ jako značky v `index.astro` — mají
  * desítky vnořených scoped tříd, které `set:html` rozbíjí. Jejich text je
- * proto stále v šabloně (pro mutace případně doladit ve forku šablony).
+ * proto stále v šabloně.
  *
- * set:html se používá jen pro text s inline markupem (<strong>, <span class="hl">,
- * <em>, <code>, &nbsp;). Scoped pravidla pro tyto potomky jsou v .astro
- * ošetřena `:global()` (viz CLAUDE.md § VI gotcha).
+ * POZN. (EN fork): residuální český text v `index.astro` (mockupy, SVG, CTA
+ * labely, aria) zatím NENÍ externalizovaný — viz admin doc `aiseo-mutace-admin.md`
+ * §5 (next-batch). Po dodání A se finalizuje. Sekce 05 (články) / 06 (nabídka) /
+ * FreeStrip jsou later-wave (blog + komerční) — čekají na conditional render od A.
  *
  * Mutace: EN/DE/PL fork má vlastní kopii s překladem.
  */
@@ -18,9 +19,9 @@ import type { SectionHead } from "~/content/pages/_types";
 
 export const meta = {
   title:
-    "AI SEO pro český trh: SEO, GEO, AEO a AIO v éře vyhledávání",
+    "AI SEO: SEO, GEO and AEO for the AI search era",
   description:
-    "Praktický průvodce AI SEO pro český trh — SEO pro pozice v Googlu, GEO pro citace v ChatGPT, AEO pro Google AI Overviews a AIO jako zastřešující rámec.",
+    "A practical guide to AI SEO: SEO for Google rankings, GEO for citations in ChatGPT, AEO for Google AI Overviews — and how they come together. When to use each in the AI search era.",
 };
 
 type Discipline = "seo" | "geo" | "aeo" | "aio";
@@ -45,11 +46,11 @@ export interface Quartet {
 
 /** HERO. */
 export const hero = {
-  intro: "Průvodce AI érou vyhledávání pro český trh",
+  intro: "A practical guide to search in the AI era",
   title:
-    '<strong>AI éra vyhledávání</strong> se neptá <span class="hl">na pozice</span>. Ptá se <span class="hl">na citace</span>.',
-  lead: "Praktický průvodce čtyřmi disciplínami, které rozhodují o tom, jestli vás Google ukáže, jestli vás zacitují ChatGPT, Perplexity nebo Claude, jestli vás Gemini zařadí do AI přehledu, a jestli vás v roce 2026 najde někdo jiný než vy sami.",
-  pillsHint: "Klikněte na disciplínu pro krátkou definici a odkaz na detail",
+    '<strong>The AI era of search</strong> no longer asks <span class="hl">who ranks</span>. It asks <span class="hl">who gets cited</span>.',
+  lead: "A practical guide to the four disciplines that decide whether Google shows you, whether ChatGPT, Perplexity, and Claude cite you, whether Gemini puts you in its AI overview — and whether anyone but you can still find you in 2026.",
+  pillsHint: "Tap a discipline for a quick definition and a link to the details",
 };
 
 export const pillDefs: PillDef[] = [
@@ -57,38 +58,38 @@ export const pillDefs: PillDef[] = [
     d: "seo",
     label: "SEO — Search",
     fullName: "Search Engine Optimization",
-    oneLine: "Pozice v Googlu a Seznamu.",
+    oneLine: "Rankings on Google and Bing.",
     quick:
-      "Klasická optimalizace pro umístění v top 10 organických výsledků. Bez indexovatelného a dobře strukturovaného webu výrazně snižujete šanci, že vás AI nástroje najdou, pochopí a použijí jako zdroj.",
+      "Classic optimization for a place in the top 10 organic results. Without an indexable, well-structured site you sharply cut the odds that AI tools find you, understand you, and use you as a source.",
     href: "/seo/",
   },
   {
     d: "geo",
     label: "GEO — Generative",
     fullName: "Generative Engine Optimization",
-    oneLine: "Citace v ChatGPT, Perplexity, Claude a Gemini.",
+    oneLine: "Citations in ChatGPT, Perplexity, Claude, and Gemini.",
     quick:
-      "Cílíte na to být zdrojem, který AI nástroj cituje při generování odpovědi. Místo modrého odkazu se hraje o zmínku ve výstupu.",
-    href: "/geo/",
+      "You aim to be the source an AI tool cites while generating its answer. Instead of a blue link, the game is a mention in the output.",
+    href: "/generative-engine-optimization/",
   },
   {
     d: "aeo",
     label: "AEO — Answer",
     fullName: "Answer Engine Optimization",
-    oneLine: "Odpovědi v Google AI Overviews a Bing Chatu.",
+    oneLine: "Answers in Google AI Overviews and Bing Chat.",
     quick:
-      "Užší disciplína cílená na panel s krátkou odpovědí nahoře nad výsledky. Klíč je FAQ schema, krátké odpovědi po nadpisu, strukturovaný návod.",
-    href: "/aeo/",
+      "A narrower discipline aimed at the short-answer panel above the results. The keys are FAQ schema, short answers right after the heading, and structured how-tos.",
+    href: "/answer-engine-optimization/",
   },
   {
     d: "aio",
-    label: "AIO — Umbrella",
-    fullName: "AI Optimization (zastřešující)",
+    label: "AI SEO — Umbrella",
+    fullName: "AI SEO — the umbrella",
     oneLine:
-      "Strategický rámec nad SEO + GEO + AEO. Také funkce Google AI Overviews.",
+      "The strategic umbrella over SEO, GEO, and AEO.",
     quick:
-      "Dvojí význam, který se v praxi často plete. Jako strategie zastřešuje všechny tři disciplíny. Jako funkce odkazuje na konkrétní AI Overviews panel od Googlu.",
-    href: "/aio/",
+      "AI SEO is the umbrella over the other three disciplines. It's how you make sure AI systems can find, understand, and use your content — across Google rankings, generative answers, and answer panels alike. Less a fourth technique, more the plan that orders the other three.",
+    href: "/ai-seo/",
   },
 ];
 
@@ -97,12 +98,12 @@ export const quartet: Quartet[] = [
     d: "seo",
     abbr: "SEO",
     name: "Search Engine Optimization",
-    desc: "Klasická optimalizace pro pozice v Googlu a Seznamu. Zůstává základem všeho ostatního — bez indexace nezafunguje GEO ani AEO.",
+    desc: "Classic optimization for rankings on Google and Bing. It stays the foundation for everything else — without indexing, neither GEO nor AEO works.",
     features: [
-      "Cílí na top 10 v Googlu",
-      "První výsledky za 3 až 6 měsíců",
-      "Měří se přes Google Search Console",
-      "Funguje pro Google a Seznam",
+      "Targets the top 10 on Google",
+      "First results in 3 to 6 months",
+      "Measured in Google Search Console",
+      "Works for Google and Bing",
     ],
     href: "/seo/",
   },
@@ -110,296 +111,261 @@ export const quartet: Quartet[] = [
     d: "geo",
     abbr: "GEO",
     name: "Generative Engine Optimization",
-    desc: "Optimalizace pro citace v ChatGPT, Perplexity, Claude a Gemini. Místo modrého odkazu cílíte na to, abyste byli zdrojem, ze kterého AI čerpá fakta.",
+    desc: "Optimization for citations in ChatGPT, Perplexity, Claude, and Gemini. Instead of a blue link, you aim to be the source the AI draws its facts from.",
     features: [
-      "Cílí na zmínky v AI odpovědích",
-      "První výsledky za 1 až 3 měsíce",
-      "Měří se počet citací napříč nástroji",
-      "Funguje pro ChatGPT a Perplexity",
+      "Targets mentions in AI answers",
+      "First results in 1 to 3 months",
+      "Measured by citation count across tools",
+      "Works for ChatGPT and Perplexity",
     ],
-    href: "/geo/",
+    href: "/generative-engine-optimization/",
   },
   {
     d: "aeo",
     abbr: "AEO",
     name: "Answer Engine Optimization",
-    desc: "Užší disciplína cílená na Google AI Overviews a Bing Chat. FAQ sekce, návody a krátké odpovědi hned po nadpisu — to je její řemeslo.",
+    desc: "A narrower discipline aimed at Google AI Overviews and Bing Chat. FAQ sections, how-tos, and short answers right after the heading — that's its craft.",
     features: [
-      "Cílí na panel AI Overviews v Googlu",
-      "První výsledky za 2 až 4 měsíce",
-      "Měří se přes Google Search Console",
-      "Funguje pro Google a Bing",
+      "Targets the AI Overviews panel on Google",
+      "First results in 2 to 4 months",
+      "Measured in Google Search Console",
+      "Works for Google and Bing",
     ],
-    href: "/aeo/",
+    href: "/answer-engine-optimization/",
   },
   {
     d: "aio",
-    abbr: "AIO",
-    name: "AI Optimization (zastřešující)",
-    desc: "Strategický deštník nad SEO, GEO a AEO. Také konkrétní funkce Google AI Overviews. Dvojí význam, který se v praxi často plete.",
+    abbr: "AI SEO",
+    name: "AI SEO — the umbrella",
+    desc: "The strategic umbrella over SEO, GEO, and AEO. The coherent plan that ties classic rankings, generative citations, and answer panels together — so the other three pull in one direction.",
     features: [
-      "Cílí na koherentní strategii",
-      "Iteruje se po kvartálech",
-      "Měří se hybridně přes všechny kanály",
-      "Pokrývá vše dohromady",
+      "Targets a coherent strategy",
+      "Iterated quarter over quarter",
+      "Measured across all channels",
+      "Covers SEO + GEO + AEO together",
     ],
-    href: "/aio/",
+    href: "/ai-seo/",
   },
 ];
 
 /** Sekce 01 — Trio (head + verdikty + callout; mockupy zůstávají v .astro). */
 export const trioHead: SectionHead = {
   eyebrowNum: "01",
-  eyebrow: "Stejný dotaz, tři rozhraní",
+  eyebrow: "One query, three interfaces",
   title:
-    'Co dostane uživatel, když se dnes ptá na <span class="hl">AI vyhledávání</span>? Tři rozhraní, <strong>jedna otázka</strong>.',
+    'What does a user get when they ask about <span class="hl">AI search</span> today? Three interfaces, <strong>one question</strong>.',
 };
 
 export const trioVerdicts = [
   {
-    type: "Klasický Google SERP",
-    key: "Co uživatel dostane",
-    val: "Seznam odkazů. Klikne, čte, rozhodne se.",
+    type: "Classic Google SERP",
+    key: "What the user gets",
+    val: "A list of links. They click, read, and decide.",
   },
   {
-    type: "Google s AI Overview",
-    key: "Co uživatel dostane",
-    val: "Hotová odpověď s citacemi. Často neklikne.",
+    type: "Google with AI Overview",
+    key: "What the user gets",
+    val: "A ready-made answer with citations. Often no click.",
   },
   {
     type: "AI chatbot (ChatGPT, Perplexity, Gemini)",
-    key: "Co uživatel dostane",
-    val: "Konverzační odpověď. Klik k vám už není v plánu.",
+    key: "What the user gets",
+    val: "A conversational answer. A click to you isn't on the cards.",
   },
 ];
 
 export const trioCallout = {
-  text: "<strong>Pokud na webu nemáte obsah, který se dá <em>citovat</em>, ve dvou ze tří rozhraní jste neviditelní.</strong>",
-  cont: "Tento průvodce ukazuje, co konkrétně přidat — sekce po sekci.",
+  text: "<strong>If your site has no content that can be <em>cited</em>, you're invisible in two of the three interfaces.</strong>",
+  cont: "This guide shows exactly what to add — section by section.",
 };
 
 /** Stat bar (4 dlaždice). */
 export const statBar = [
   {
-    num: "<strong>Výrazně častěji</strong>",
+    num: "<strong>Far more often</strong>",
     label:
-      "U informačních a problémových dotazů se AI Overviews objevují výrazně častěji než u běžného průměru všech vyhledávání",
-    src: "Zero-click hrozba pro váš organic traffic u edukativních témat",
+      "For informational and problem-solving queries, AI Overviews show up far more often than across searches on average",
+    src: "A zero-click threat to your organic traffic on educational topics",
   },
   {
-    num: "<strong>Roste rychle</strong>",
+    num: "<strong>Growing fast</strong>",
     label:
-      "U mladších uživatelů rychle roste podíl rešerší mimo klasický Google — v AI nástrojích, sociálních sítích a specializovaných platformách",
+      "Among younger users, the share of research happening outside classic Google — in AI tools, social platforms, and niche sites — is rising fast",
     src: "ChatGPT, Perplexity, Claude, Gemini, TikTok, Reddit",
   },
   {
     num: "<strong>~60&nbsp;%</strong>",
     label:
-      "Podle dostupných studií končí přibližně 60 % vyhledávání bez kliknutí na otevřený web (zero-click search)",
-    src: "SparkToro 2024: 59,7 % EU, 58,5 % US",
+      "According to available studies, roughly 60% of searches end without a click to the open web (zero-click search)",
+    src: "SparkToro 2024: 59.7% EU, 58.5% US",
   },
   {
-    num: "<strong>1–3&nbsp;měs.</strong>",
+    num: "<strong>1–3&nbsp;mo.</strong>",
     label:
-      "Po nasazení správných postupů na webu se první citace v AI nástrojích typicky objeví už za 1 až 3 měsíce",
-    src: "Rychleji než klasické SEO",
+      "Once the right practices are live on a site, the first citations in AI tools typically appear within 1 to 3 months",
+    src: "Faster than classic SEO",
   },
 ];
 
 /** Sekce 02 — Kvartet. */
 export const quartetHead: SectionHead = {
   eyebrowNum: "02",
-  eyebrow: "Čtyři disciplíny",
+  eyebrow: "Four disciplines",
   title:
-    'Každá řeší <span class="hl">jiný kanál</span>. Společně tvoří <strong>kvartet</strong>.',
+    'Each one owns <span class="hl">a different channel</span>. Together they form <strong>a quartet</strong>.',
   lead:
-    "Nejde o synonyma ani o trendové štítky. Každá disciplína má vlastní platformy, vlastní signály a vlastní časový horizont. Chyba je dělat všechny najednou, bez pořadí.",
+    "These aren't synonyms or trend labels. Each discipline has its own platforms, its own signals, and its own time horizon. The mistake is doing all of them at once, with no order.",
 };
 
 /** Sekce 03 — Anatomie AI-friendly stránky (SVG zůstává v .astro). */
 export const anatomyHead: SectionHead = {
   eyebrowNum: "03",
-  eyebrow: "Anatomie AI-friendly stránky",
+  eyebrow: "Anatomy of an AI-friendly page",
   title:
-    'Stránka, kterou si AI <span class="hl">snadno přečte</span> a <strong>zacituje</strong>, vypadá takto.',
+    'A page that AI <span class="hl">reads easily</span> and <strong>cites</strong> looks like this.',
   lead:
-    "Šest prvků, které z běžné stránky udělají zdroj pro Google AI Overviews, ChatGPT i Perplexity. Žádný z nich nestojí extra peníze — jen je potřeba je tam vědomě dostat.",
+    "Six elements that turn an ordinary page into a source for Google AI Overviews, ChatGPT, and Perplexity. None of them cost extra money — you just have to put them there on purpose.",
 };
 
 export const anatomyList = [
   {
-    title: "H1 jako otázka nebo jasná definice",
-    desc: "Hlavní nadpis jednou větou říká, na jaký dotaz stránka odpovídá. AI engine to čte jako kontext celé stránky.",
+    title: "An H1 that's a question or a clear definition",
+    desc: "The main heading says, in one sentence, which query the page answers. An AI engine reads it as the context for the whole page.",
   },
   {
-    title: "Krátká odpověď v prvních 40–60 slovech",
-    desc: "Hned pod H1 stojí stručná definice. Krátká odpověď v úvodu zvyšuje šanci, že AI systém rychle pochopí hlavní odpověď stránky a najde ji jako citovatelnou pasáž.",
+    title: "A short answer in the first 40–60 words",
+    desc: "A concise definition sits right under the H1. A short answer up top raises the odds that an AI system quickly grasps the page's main point and finds it as a citable passage.",
   },
   {
-    title: "Hutný text s konkrétními fakty",
-    desc: "Jeden nápad na odstavec. Čísla, procenta, jména zdrojů. AI miluje doložená tvrzení, ignoruje obecné „omáčky\".",
+    title: "Dense text with concrete facts",
+    desc: "One idea per paragraph. Numbers, percentages, named sources. AI loves backed-up claims and ignores vague filler.",
   },
   {
-    title: "Podnadpisy H2/H3 jako sub-otázky",
-    desc: "Každý podnadpis odpovídá na konkrétní pod-dotaz. Pomáhá AI mapovat strukturu stránky a ukotvit ji k tématu.",
+    title: "H2/H3 subheadings as sub-questions",
+    desc: "Each subheading answers a specific sub-query. It helps AI map the page's structure and anchor it to the topic.",
   },
   {
-    title: "FAQ sekce s reálnými dotazy uživatelů",
-    desc: "Otázky berte z Google Search Console nebo z „People Also Ask\" boxů. FAQ pomáhá pokrýt navazující dotazy, zpřehlednit obsah pro uživatele i vyhledávače a poskytnout krátké citovatelné odpovědi.",
+    title: "An FAQ section with real user questions",
+    desc: "Pull the questions from Google Search Console or \"People Also Ask\" boxes. An FAQ helps cover follow-up queries, makes the content clearer for users and engines, and provides short, citable answers.",
   },
   {
-    title: "Schema.org markup v hlavičce stránky",
-    desc: "Strojově čitelný JSON-LD: <code>Article</code>, <code>FAQPage</code>, <code>HowTo</code>. Schema pomáhá strojům rychleji a přesněji pochopit typ obsahu, ale nenahrazuje kvalitní text, autoritu ani technické SEO.",
+    title: "Schema.org markup in the page head",
+    desc: "Machine-readable JSON-LD: <code>Article</code>, <code>FAQPage</code>, <code>HowTo</code>. Schema helps machines understand the content type faster and more accurately, but it doesn't replace good text, authority, or technical SEO.",
   },
 ];
 
-/** FreeStrip promo (props pro komponentu). */
+/** FreeStrip promo (props pro komponentu). LATER-WAVE (free PDF). */
 export const freeStrip = {
-  title: "Šest signálů AI-friendly stránky jako",
-  titleHighlight: "hotový návod pro vaši homepage",
+  title: "The six signals of an AI-friendly page as",
+  titleHighlight: "a ready-made guide for your homepage",
 };
 
 /** Sekce 04 — Pillar promo. */
 export const pillarPromo = {
   eyebrowNum: "04",
-  eyebrow: "Hlavní průvodce",
+  eyebrow: "Main guide",
   title:
-    'SEO vs. GEO vs. AEO vs. AIO: <strong>kompletní průvodce</strong> <span class="hl">4 zkratkami</span> pro AI éru',
-  lead: "Hlavní článek, který každou disciplínu rozebírá od definice přes srovnání až po rozhodovací matici. Doporučené čtení v jedné dávce.",
-  meta: ["Asi 3 000 slov", "Sedm častých otázek", "Srovnávací tabulka", "12 minut čtení"],
-  btnLabel: "Otevřít hlavní průvodce",
-  btnHref: "/seo-vs-geo-vs-aeo-vs-aio/",
-  excerptMark: "Z hlavního průvodce",
+    'SEO vs. GEO vs. AEO: the <strong>complete guide</strong> to <span class="hl">AI search</span>',
+  lead: "The main article that breaks down each discipline from definition through comparison to a decision matrix. Recommended reading in one sitting.",
+  meta: ["About 3,000 words", "Seven common questions", "Comparison table", "12-minute read"],
+  btnLabel: "Open the main guide",
+  btnHref: "/seo-vs-geo-vs-aeo/",
+  excerptMark: "From the main guide",
   excerptText:
-    "Když chce váš zákazník odpověď, ptá se ChatGPT, Perplexity nebo Googlu s AI Overview. Vy potřebujete, aby <strong>v té odpovědi</strong> zazněla vaše značka — a aby z ní vedla cesta zpět k vám. Průvodce ukáže, co konkrétně na webu nebo e-shopu upravit.",
+    "When your customer wants an answer, they ask ChatGPT, Perplexity, or Google with AI Overview. You need your brand <strong>in that answer</strong> — with a path that leads back to you. The guide shows exactly what to change on a website or e-shop.",
 };
 
-/** Sekce 05 — Vybrané články. */
+/** Sekce 05 — Vybrané články. LATER-WAVE (blog) — čeká na conditional render od A. */
 export const articlesHead: SectionHead = {
   eyebrowNum: "05",
-  eyebrow: "Vybrané články",
-  title: "Praktická čtení <strong>pro tento týden</strong>",
+  eyebrow: "Featured reads",
+  title: "Practical reading <strong>for this week</strong>",
 };
 
 export const scards = [
   {
-    href: "/prakticky-postup/",
+    href: "/ai-seo-playbook/",
     d: "practice",
-    tag: "Praxe",
-    time: "9 minut",
-    title: "Praktický postup ve čtyřech krocích",
-    desc: "Audit obsahu, strukturovaná data, krátká odpověď nahoře a měření. Plus 90denní kalendář, jak na to.",
-    words: "Asi 1 400 slov",
+    tag: "Playbook",
+    time: "9 min",
+    title: "The four-step AI SEO playbook",
+    desc: "Content audit, structured data, a short answer up top, and measurement. Plus a 90-day calendar for getting it done.",
+    words: "About 1,400 words",
   },
   {
-    href: "/rozhodovaci-matice/",
+    href: "/decision-matrix/",
     d: "matrix",
-    tag: "Rozhodování",
-    time: "10 minut",
-    title: "Rozhodovací matice — co kdy použít",
-    desc: "Pro e-shopy, B2B služby, lokální podniky a vydavatele. Plus rozhodovací stromek, kterým si projdete vlastní situaci.",
-    words: "Asi 1 500 slov",
-  },
-  {
-    href: "/blog/jak-vypnout-ai-overview/",
-    d: "defense",
-    tag: "Návod",
-    time: "14 minut",
-    title: "Jak vypnout AI Overviews v Googlu",
-    desc: "Pět ověřených způsobů — pro běžné uživatele i pro správce webů, kteří nechtějí, aby jim AI „kradla\" odpovědi.",
-    words: "Asi 2 200 slov",
-  },
-  {
-    href: "/blog/seo-pro-eshopy-ai-era-2026/",
-    d: "seo",
-    tag: "Pro e‑shopy",
-    time: "13 minut",
-    title: "SEO pro e‑shopy v AI éře 2026",
-    desc: "Co konkrétně změnit v kategoriích, produktovkách a obsahu. Reálné ceny v ČR a kdy se vyplatí najmout agenturu.",
-    words: "Asi 2 600 slov",
-  },
-  {
-    href: "/blog/seo-audit-co-kontrolovat/",
-    d: "seo",
-    tag: "Tutorial",
-    time: "9 minut",
-    title: "SEO audit — co kontrolovat 1× ročně",
-    desc: "Tři vrstvy auditu (technická / on‑page / off‑page) s kompletním checklistem a postupem prioritizace nálezů.",
-    words: "Asi 1 700 slov",
-  },
-  {
-    href: "/blog/seo-nastroje-2026/",
-    d: "seo",
-    tag: "Tutorial",
-    time: "12 minut",
-    title: "SEO nástroje 2026: kompletní průvodce",
-    desc: "Sedm kategorií nástrojů, reálné ceny v roce 2026 (Ahrefs, Semrush, SE Ranking, Marketing Miner, Otterly, Profound) a 4 doporučené stacky podle situace.",
-    words: "Asi 2 200 slov",
+    tag: "Decision",
+    time: "10 min",
+    title: "Decision matrix — what to use when",
+    desc: "For e-shops, B2B services, local businesses, and publishers. Plus a decision tree to walk through your own situation.",
+    words: "About 1,500 words",
   },
 ];
 
 export const articlesMore = {
-  label: "Zobrazit všechny články",
+  label: "See all articles",
   href: "/blog/",
 };
 
-/** Sekce 06 — Nabídka (3 produkty). */
+/** Sekce 06 — Nabídka (3 produkty). LATER-WAVE (komerční) — ceny + render čekají na A / commercial wave. */
 export const offersHead: SectionHead = {
   eyebrowNum: "06",
-  eyebrow: "Co můžete dělat dál",
-  title: "Tři způsoby, jak <strong>posunout svůj web</strong> do AI éry",
+  eyebrow: "What you can do next",
+  title: "Three ways to <strong>move your site</strong> into the AI era",
   lead:
-    "Od free návodu po komplet audit od&nbsp;specialistů. Vyberte si podle toho, kolik chcete řešit sami a&nbsp;kolik nechat na&nbsp;nás.",
+    "From a free guide to a full audit by specialists. Pick based on how much you want to handle yourself and&nbsp;how much to leave to&nbsp;us.",
 };
 
 export const offers = [
   {
-    href: "/navod-zdarma/",
+    href: "/free-guide/",
     mod: "free",
-    tag: "Návod zdarma",
-    priceMain: "0&nbsp;Kč",
-    priceNote: "ke&nbsp;stažení hned",
-    title: "Hotový návod pro homepage v&nbsp;AI&nbsp;éře",
-    desc: "Wireframe s&nbsp;anotacemi, tři principy struktury a&nbsp;šablony textů. Šest stran A4, ze&nbsp;kterých si rovnou vezmete, co potřebujete pro svou homepage.",
+    tag: "Free guide",
+    priceMain: "Free",
+    priceNote: "instant download",
+    priceVat: "",
+    title: "A ready-made homepage guide for the AI&nbsp;era",
+    desc: "An annotated wireframe, three structural principles, and copy templates. Six A4 pages you can take straight to your own homepage.",
     bullets: [
-      "6&nbsp;stran konkrétních úprav",
-      "Wireframe homepage s&nbsp;10&nbsp;anotacemi",
-      "Tři principy + 5&nbsp;typických chyb",
+      "6&nbsp;pages of concrete changes",
+      "Homepage wireframe with 10&nbsp;annotations",
+      "Three principles + 5&nbsp;common mistakes",
     ],
-    cta: "Stáhnout zdarma",
+    cta: "Download free",
   },
   {
     href: "/pack/",
     mod: "pack",
     tag: "AI&nbsp;SEO Wireframe Pack",
-    priceMain: "1&nbsp;490&nbsp;Kč",
-    priceNote: "bez DPH &middot; jednorázově",
-    priceVat: "1&nbsp;803&nbsp;Kč s&nbsp;DPH",
-    title: "Kompletní framework pro 7&nbsp;typů stránek",
-    desc: "Ucelená sada wireframů, anotací a&nbsp;šablon textů — všechno připravené k&nbsp;okamžitému použití na&nbsp;vašem webu. Bez konzultantů, bez měsíců práce.",
+    priceMain: "Coming soon",
+    priceNote: "one-time",
+    priceVat: "",
+    title: "A complete framework for 7&nbsp;page types",
+    desc: "A full set of wireframes, annotations, and copy templates — all ready to use on your site right away. No consultants, no months of work.",
     bullets: [
-      "7&nbsp;anotovaných wireframů",
-      "Šablony textů + ukázky strukturovaných dat",
-      "Návod pro Upgates / Shoptet / WordPress",
+      "7&nbsp;annotated wireframes",
+      "Copy templates + structured-data examples",
+      "Guidance for common CMS and e-commerce platforms",
     ],
-    cta: "Zobrazit Pack",
+    cta: "View the Pack",
   },
   {
     href: "/audit/",
     mod: "audit",
-    featuredPill: "★ Nejvyšší hodnota",
-    tag: "AI&nbsp;SEO audit od&nbsp;Sniper Design",
-    priceMain: "9&nbsp;990&nbsp;Kč",
-    priceNote: "bez DPH &middot; jednorázově",
-    priceVat: "12&nbsp;088&nbsp;Kč s&nbsp;DPH",
-    title: "Přesný plán pro váš konkrétní web",
-    desc: "Důkladná analýza vašeho webu od&nbsp;Sniper Design týmu. Prioritní seznam úprav s&nbsp;odhadem dopadu + 60min konzultace nad výsledky.",
+    featuredPill: "★ Highest value",
+    tag: "AI&nbsp;SEO audit by Sniper Design",
+    priceMain: "Get a quote",
+    priceNote: "one-time",
+    priceVat: "",
+    title: "A precise plan for your specific site",
+    desc: "A thorough analysis of your site by the Sniper Design team. A prioritized list of changes with an impact estimate, plus a 60-minute consultation over the results.",
     bullets: [
-      "Audit v&nbsp;technice, obsahu a&nbsp;důvěryhodnosti",
-      "Prioritní seznam úprav s&nbsp;odhadem dopadu",
-      "60min konzultace s&nbsp;naším týmem",
+      "An audit of technicals, content, and trust",
+      "A prioritized list of changes with impact estimates",
+      "A 60-minute consultation with our team",
     ],
-    cta: "Objednat audit",
+    cta: "Request an audit",
   },
 ];
 

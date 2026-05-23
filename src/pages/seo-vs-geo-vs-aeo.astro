@@ -5,9 +5,9 @@ import { getEntry, render } from "astro:content";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
 
-const entry = await getEntry("pillar", "seo-vs-geo-vs-aeo-vs-aio");
+const entry = await getEntry("pillar", "seo-vs-geo-vs-aeo");
 if (!entry) {
-  throw new Error("Pillar entry 'seo-vs-geo-vs-aeo-vs-aio' nenalezena v src/content/pillar/");
+  throw new Error("Pillar entry 'seo-vs-geo-vs-aeo' nenalezena v src/content/pillar/");
 }
 const { Content, headings } = await render(entry);
 
@@ -46,7 +46,7 @@ const wordCount = rawBody
 const readingMinutes = Math.max(1, Math.round(wordCount / 200));
 
 const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
-const articleURL = `${SITE_ORIGIN}/seo-vs-geo-vs-aeo-vs-aio/`;
+const articleURL = `${SITE_ORIGIN}/seo-vs-geo-vs-aeo/`;
 const articleImageURL = `${SITE_ORIGIN}/og/pillar.png`;
 
 /**
@@ -63,7 +63,7 @@ const articleJsonLd = {
   dateModified: entry.data.updated,
   inLanguage: site.inLanguage,
   keywords: entry.data.keywords.join(", "),
-  articleSection: "Hlavní průvodce",
+  articleSection: ui.pillar.eyebrow,
   wordCount,
   timeRequired: `PT${readingMinutes}M`,
   mainEntityOfPage: { "@type": "WebPage", "@id": articleURL },

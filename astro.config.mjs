@@ -36,7 +36,7 @@ function rehypeTaskListA11y() {
  * i do detekce interních odkazů v rehypeExternalLinks níže. Žádná jiná doména
  * se v configu natvrdo nevyskytuje.
  */
-const SITE = "https://aiseo-optimalizace.cz";
+const SITE = "https://seoforai.net";
 const SITE_HOST = new URL(SITE).host;
 
 // https://astro.build/config
@@ -47,29 +47,11 @@ export default defineConfig({
     format: "directory",
   },
   /**
-   * Redirects — alias slugs / přeznačené staré URL.
-   * - `/seo-a-geo/` → pillar (CZ Suggest říká „seo a geo", ne „seo vs geo")
-   * - 8× článek → blog migration (2026-05): articles z root URL přesunuty
-   *   pod /blog/<slug>/ kvůli sjednocení pod jeden dynamic route.
-   *   301 redirecty zachovávají SEO equity ze starých URL.
+   * Redirects — per-fork (admin doc §2a). CZ-historické URL (blog migrace,
+   * /seo-a-geo) nemají v EN smysl → prázdné. Až EN nabude vlastní legacy URL
+   * (přejmenování slugů po launchi), doplní se sem 301 redirecty.
    */
-  redirects: {
-    "/seo-a-geo": "/seo-vs-geo-vs-aeo-vs-aio",
-    "/seo-audit-co-kontrolovat": "/blog/seo-audit-co-kontrolovat",
-    "/seo-nastroje-2026": "/blog/seo-nastroje-2026",
-    "/jak-vypnout-ai-overview": "/blog/jak-vypnout-ai-overview",
-    "/local-seo-cesko-2026": "/blog/local-seo-cesko-2026",
-    "/jak-strukturovat-pillar-content": "/blog/jak-strukturovat-pillar-content",
-    "/mereni-seo-vykonu-2026": "/blog/mereni-seo-vykonu-2026",
-    "/seo-pro-eshopy-ai-era-2026": "/blog/seo-pro-eshopy-ai-era-2026",
-    // 2026-05-06: konsolidace 3 paralelních verzí "Časté chyby v SEO 2026"
-    // → ponechán pouze /blog/caste-chyby-v-seo-2026-update/ (osmdesátiprocentní rewrite).
-    // Původní /blog/caste-chyby-v-seo-2026/ a /blog/caste-chyby-v-seo-2026-rewrite/
-    // 301 → -update, ať SEO equity + případné externí linky neztratí cíl.
-    "/caste-chyby-v-seo-2026": "/blog/caste-chyby-v-seo-2026-update",
-    "/blog/caste-chyby-v-seo-2026": "/blog/caste-chyby-v-seo-2026-update",
-    "/blog/caste-chyby-v-seo-2026-rewrite": "/blog/caste-chyby-v-seo-2026-update",
-  },
+  redirects: {},
   markdown: {
     rehypePlugins: [
       rehypeTaskListA11y,

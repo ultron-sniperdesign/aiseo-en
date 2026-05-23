@@ -13,24 +13,24 @@
 
 export const site = {
   /** <html lang> */
-  lang: "cs",
+  lang: "en",
   /** og:locale */
-  locale: "cs_CZ",
+  locale: "en_US",
   /** WebSite schema inLanguage */
-  inLanguage: "cs-CZ",
+  inLanguage: "en-US",
   /** Název webu — WebSite schema name + og:site_name */
-  name: "aiseo-optimalizace.cz",
+  name: "seoforai.net",
   /** meta author (AI attribution signál) */
-  author: "Kamil ze Sniper Design",
+  author: "Kamil from Sniper Design",
   /** Breadcrumb root (position 1) */
-  breadcrumbRoot: "Úvod",
+  breadcrumbRoot: "Home",
 
   /** Organization (publisher) — agentura, sdílená; description přeloží fork. */
   org: {
     name: "Sniper Design",
     alternateName: "CPU s.r.o.",
     description:
-      "Edukativní průvodce AI érou vyhledávání: SEO, GEO, AEO, AIO. Provozuje agentura Sniper Design (CPU s.r.o.).",
+      "An educational guide to AI SEO — optimizing for search in the AI era: traditional SEO, Generative Engine Optimization (GEO), and Answer Engine Optimization (AEO). Run by the Sniper Design agency (CPU s.r.o.).",
     sameAs: ["https://www.sniperdesign.cz/", "https://www.megadetail.cz/"],
   },
 };

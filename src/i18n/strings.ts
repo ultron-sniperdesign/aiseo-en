@@ -28,52 +28,43 @@ export interface NavGroup {
 }
 
 export const nav = {
-  brandAria: "aiseo-optimalizace.cz — domovská stránka",
+  brandAria: "seoforai.net — homepage",
   menuLabel: "Menu",
-  openLabel: "Otevřít menu",
-  closeLabel: "Zavřít menu",
-  navAria: "Hlavní navigace",
-  mobileAria: "Mobilní navigace",
+  openLabel: "Open menu",
+  closeLabel: "Close menu",
+  navAria: "Main navigation",
+  mobileAria: "Mobile navigation",
 
-  /** DESKTOP lišta — kompaktní (kratší názvy, pills). */
+  /**
+   * DESKTOP lišta — kompaktní pills. First-wave: jen edukativní jádro
+   * (4 disciplíny + pillar). Blog / audit / pack / free-guide se doplní,
+   * až budou jejich vlny přeložené.
+   */
   desktop: [
     { href: "/seo/", label: "SEO", d: "seo" },
-    { href: "/geo/", label: "GEO", d: "geo" },
-    { href: "/aeo/", label: "AEO", d: "aeo" },
-    { href: "/aio/", label: "AIO", d: "aio" },
-    { href: "/seo-vs-geo-vs-aeo-vs-aio/", label: "Průvodce", variant: "pillar" },
-    { href: "/blog/", label: "Blog", variant: "blog" },
-    { href: "/audit/", label: "Audit", variant: "audit" },
-    { href: "/navod-zdarma/", label: "Návod zdarma", variant: "free" },
+    { href: "/generative-engine-optimization/", label: "GEO", d: "geo" },
+    { href: "/answer-engine-optimization/", label: "AEO", d: "aeo" },
+    { href: "/ai-seo/", label: "AI SEO", d: "aio" },
+    { href: "/seo-vs-geo-vs-aeo/", label: "Guide", variant: "pillar" },
   ] as NavLink[],
 
-  /** Kompletní seznam — sdílí Footer i mobilní menu (plné názvy, 3 skupiny). */
+  /** Kompletní seznam — sdílí Footer i mobilní menu. First-wave skupiny. */
   groups: [
     {
-      label: "Čtyři disciplíny",
+      label: "Search disciplines",
       links: [
         { href: "/seo/", label: "SEO", d: "seo" },
-        { href: "/geo/", label: "GEO", d: "geo" },
-        { href: "/aeo/", label: "AEO", d: "aeo" },
-        { href: "/aio/", label: "AIO", d: "aio" },
+        { href: "/generative-engine-optimization/", label: "GEO", d: "geo" },
+        { href: "/answer-engine-optimization/", label: "AEO", d: "aeo" },
+        { href: "/ai-seo/", label: "AI SEO", d: "aio" },
       ],
     },
     {
-      label: "Praxe",
+      label: "In practice",
       links: [
-        { href: "/prakticky-postup/", label: "Praktický postup" },
-        { href: "/rozhodovaci-matice/", label: "Rozhodovací matice" },
-        { href: "/seo-vs-geo-vs-aeo-vs-aio/", label: "Hlavní průvodce" },
-        { href: "/blog/", label: "Blog" },
-      ],
-    },
-    {
-      label: "Co nabízíme",
-      links: [
-        { href: "/navod-zdarma/", label: "Návod zdarma", variant: "free" },
-        { href: "/pack/", label: "AI SEO Wireframe Pack" },
-        { href: "/audit/", label: "AI SEO audit", variant: "audit" },
-        { href: "/kontakt/", label: "Kontakt" },
+        { href: "/ai-seo-playbook/", label: "AI SEO playbook" },
+        { href: "/decision-matrix/", label: "Decision matrix" },
+        { href: "/seo-vs-geo-vs-aeo/", label: "Main guide", variant: "pillar" },
       ],
     },
   ] as NavGroup[],
@@ -81,11 +72,11 @@ export const nav = {
 
 export const footer = {
   tagline:
-    "Praktický průvodce AI érou vyhledávání pro český trh. Co je rozdíl mezi SEO, GEO, AEO a AIO — a kdy kterou techniku použít na webu nebo e-shopu.",
+    "A practical guide to AI SEO — search in the age of AI. What SEO, GEO, and AEO each do, how they come together as AI SEO, and when to use which on a website or e-shop.",
   /** Skládá se jako: © {rok} {doména} · {builtNote} */
-  builtNote: "postaveno na Astru · hostováno v ČR",
+  builtNote: "built with Astro · hosted in the EU",
   sitemapLabel: "Sitemap",
-  updatedLabel: "Aktualizováno květen 2026",
+  updatedLabel: "Updated May 2026",
 };
 
 /**
@@ -101,72 +92,75 @@ export const footer = {
  */
 export const ui = {
   // Breadcrumbs (viditelné ve stránce; JSON-LD breadcrumb root řeší site.breadcrumbRoot)
-  crumbHome: "Úvod",
+  crumbHome: "Home",
   crumbBlog: "Blog",
-  crumbDisciplines: "Disciplíny",
-  ariaBreadcrumb: "Drobečková navigace",
-  ariaToc: "Obsah článku",
+  crumbDisciplines: "Disciplines",
+  ariaBreadcrumb: "Breadcrumb",
+  ariaToc: "Table of contents",
 
   // Answer block (krátká odpověď / definice nahoře)
-  answerShort: "Stručná odpověď",
-  answerDefinition: "Stručná definice",
+  answerShort: "Quick answer",
+  answerDefinition: "Quick definition",
 
   // Meta dlaždice (slov / otázek / čtení / aktualizace)
-  metaWords: "slov",
-  metaFaqs: "častých otázek",
-  metaReadingMins: "minut čtení",
-  metaUpdated: "Aktualizováno:",
+  metaWords: "words",
+  metaFaqs: "common questions",
+  metaReadingMins: "min read",
+  metaUpdated: "Updated:",
 
   // Obsah (TOC)
-  tocLabel: "Obsah",
-  tocLabelRich: "V tomto článku",
-  tocChapters: "kapitol",
+  tocLabel: "Contents",
+  tocLabelRich: "In this article",
+  tocChapters: "sections",
 
   // FAQ eyebrow
   faqEyebrowNum: "FAQ",
-  faqEyebrow: "Časté otázky",
+  faqEyebrow: "Common questions",
 
   // Back CTA
-  backToHome: "Zpět na úvod",
-  allArticles: "Všechny články v blogu",
+  backToHome: "Back to home",
+  allArticles: "All blog articles",
 
-  // Sekce [slug] — kontextový label v breadcrumb pillu (klíč = abbr)
+  // Sekce [slug] — kontextový label v breadcrumb pillu (klíč = abbr enum).
+  // Pozn.: AIO/PRAXE/MATICE jsou interní enum klíče (nemění se); EN label je tady.
   sectionContext: {
-    SEO: "První disciplína · SEO",
-    GEO: "Druhá disciplína · GEO",
-    AEO: "Třetí disciplína · AEO",
-    AIO: "Čtvrtá disciplína · AIO",
-    PRAXE: "Návod · Praktický postup",
-    MATICE: "Rozhodování · Kdy co použít",
+    SEO: "First discipline · SEO",
+    GEO: "Second discipline · GEO",
+    AEO: "Third discipline · AEO",
+    AIO: "The umbrella · AI SEO",
+    PRAXE: "Guide · AI SEO playbook",
+    MATICE: "Decision · When to use what",
   } as Record<string, string>,
 
   // Blog kategorie (crumb + filter chips + card tag); klíč = frontmatter category
   category: {
     tutorial: "Tutorial",
-    analysis: "Analýza",
-    defensive: "Defenzivní",
+    analysis: "Analysis",
+    defensive: "Defensive",
     "case-study": "Case study",
   } as Record<string, string>,
-  categoryFallback: "Článek",
+  categoryFallback: "Article",
 
   // Pillar (hlavní průvodce)
   pillar: {
-    eyebrow: "Hlavní průvodce",
-    wordsApprox: "~3 000 slov",
-    readingApprox: "~12 minut čtení",
-    compareTable: "Srovnávací tabulka",
-    faqTitleHtml: 'Sedm <span class="hl">častých otázek</span> ke <strong>4 zkratkám</strong>',
+    eyebrow: "Main guide",
+    wordsApprox: "~3,000 words",
+    readingApprox: "~12 min read",
+    compareTable: "Comparison table",
+    faqTitleHtml: 'Common <span class="hl">questions</span> about <strong>AI SEO</strong>',
   },
 
-  // Sekce [slug] — rich FAQ titulek ({abbr} nahradí šablona)
+  // Sekce [slug] — rich FAQ titulek. POZN.: EN záměrně NEpoužívá {abbr}
+  // placeholder — enum klíče (AIO/PRAXE/MATICE) nejsou EN-display-safe.
+  // Generický titulek funguje uniformně pro všech 6 sekcí.
   sectionFaqTitleHtml:
-    'Otázky, které se k <span class="hl">{abbr}</span> <strong>ptají nejčastěji</strong>',
+    'The questions people <strong>ask most</strong>',
 };
 
 export const emailCapture = {
-  label: "Váš e-mail",
-  placeholder: "vas@email.cz",
-  buttonLabel: "Stáhnout AI SEO návod zdarma",
+  label: "Your email",
+  placeholder: "you@email.com",
+  buttonLabel: "Download the free AI SEO guide",
   legalHtml:
-    'Pošleme vám <strong>odkaz na PDF</strong> z&nbsp;e-mailu <strong>aiseo-optimalizace@sniperdesign.cz</strong> (zkontrolujte i&nbsp;Hromadné&nbsp;/&nbsp;Promo). V&nbsp;dalších dnech občas přidáme <strong>praktické tipy k&nbsp;AI&nbsp;SEO a&nbsp;občasnou nabídku našich produktů / služeb</strong>. <strong>Žádný denní newsletter</strong> &mdash; odhlášení je v&nbsp;každém e-mailu jedním kliknutím. <a href="/gdpr/">Zásady zpracování osobních údajů</a>.',
+    'We&rsquo;ll send you a <strong>link to the PDF</strong> from <strong>hello@seoforai.net</strong> (check Promotions&nbsp;/&nbsp;Updates too). Over the next few days we may occasionally add <strong>practical AI&nbsp;SEO tips and the odd offer of our products / services</strong>. <strong>No daily newsletter</strong> &mdash; one-click unsubscribe in every email. <a href="/privacy/">Privacy policy</a>.',
 };
