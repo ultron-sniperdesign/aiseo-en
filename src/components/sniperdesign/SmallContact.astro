@@ -28,24 +28,26 @@
  * Props:
  *   eyebrow?: string — vlastní eyebrow text (default „Pomoc s implementací")
  */
+import { sniperDesign as sd } from "~/i18n/sniperdesign";
+
 interface Props {
   eyebrow?: string;
 }
-const { eyebrow = "Pomoc s implementací" } = Astro.props as Props;
+const { eyebrow = sd.eyebrowDefault } = Astro.props as Props;
 ---
 
 <section class="sd-small" aria-labelledby="sd-small-title">
   <div class="sd-small__inner">
     <a
-      href="https://www.sniperdesign.cz/"
+      href={sd.hrefHome}
       target="_blank"
       rel="noopener"
       class="sd-small__brand"
-      aria-label="Sniper Design — domovská stránka agentury"
+      aria-label={sd.brandAria}
     >
       <img
         src="/sniperdesign/logo-wh.svg"
-        alt="Sniper Design"
+        alt={sd.brandAlt}
         width="160"
         height="32"
         loading="lazy"
@@ -54,27 +56,21 @@ const { eyebrow = "Pomoc s implementací" } = Astro.props as Props;
 
     <div class="sd-small__body">
       <span class="sd-small__eyebrow">{eyebrow}</span>
-      <h2 id="sd-small-title" class="sd-small__title">
-        Nechcete to řešit interně? <strong>Postavíme to za vás.</strong>
-      </h2>
-      <p class="sd-small__lead">
-        V <a href="https://www.sniperdesign.cz/" target="_blank" rel="noopener">Sniper Design</a> děláme <strong>kompletní AI&nbsp;SEO</strong> — strategii, audit, implementaci i obsah. Zlatý Upgates partner od&nbsp;2016, přes 600 e‑shopů na CZ trhu. <strong>AI vyhledávání implementujeme</strong> do návrhů homepage, obsahové struktury i auditů klientských webů.
-      </p>
+      <h2 id="sd-small-title" class="sd-small__title" set:html={sd.title}></h2>
+      <p class="sd-small__lead" set:html={sd.small.lead}></p>
 
       <ul class="sd-small__trust" aria-label="Trust signals">
-        <li><strong>Zlatý Upgates partner</strong></li>
-        <li><strong>600+</strong> e‑shopů</li>
-        <li>Vlastní e‑shop <strong>MEGA&nbsp;DETAIL</strong></li>
+        {sd.small.trust.map((item) => <li set:html={item}></li>)}
       </ul>
 
       <div class="sd-small__actions">
         <a
-          href="https://www.sniperdesign.cz/konzultace"
+          href={sd.hrefConsult}
           target="_blank"
           rel="noopener"
           class="sd-small__btn sd-small__btn--solid"
         >
-          Nezávazná konzultace
+          {sd.ctaConsult}
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
             <path
               d="M1 7H13M13 7L7 1M13 7L7 13"
@@ -85,12 +81,12 @@ const { eyebrow = "Pomoc s implementací" } = Astro.props as Props;
           </svg>
         </a>
         <a
-          href="https://www.sniperdesign.cz/seo-pro-ai"
+          href={sd.hrefSeo}
           target="_blank"
           rel="noopener"
           class="sd-small__btn sd-small__btn--ghost"
         >
-          Otevřít Sniper Design
+          {sd.ctaOpen}
         </a>
       </div>
     </div>

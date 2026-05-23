@@ -26,6 +26,8 @@
  * Props:
  *   eyebrowNum?: string — vlastní pořadové číslo nahoře (default "06")
  */
+import { sniperDesign as sd } from "~/i18n/sniperdesign";
+
 interface Props {
   eyebrowNum?: string;
 }
@@ -35,15 +37,15 @@ const { eyebrowNum = "06" } = Astro.props as Props;
 <section class="sd-big" aria-labelledby="sd-big-title">
   <div class="sd-big__inner">
     <a
-      href="https://www.sniperdesign.cz/"
+      href={sd.hrefHome}
       target="_blank"
       rel="noopener"
       class="sd-big__brand"
-      aria-label="Sniper Design — domovská stránka agentury"
+      aria-label={sd.brandAria}
     >
       <img
         src="/sniperdesign/logo-wh.svg"
-        alt="Sniper Design"
+        alt={sd.brandAlt}
         width="180"
         height="36"
         loading="lazy"
@@ -52,123 +54,55 @@ const { eyebrowNum = "06" } = Astro.props as Props;
 
     <header class="sd-big__head">
       <span class="sd-big__eyebrow"
-        ><span class="sd-big__eyebrow-num">{eyebrowNum}</span> Pomoc s implementací</span
+        ><span class="sd-big__eyebrow-num">{eyebrowNum}</span> {sd.eyebrowDefault}</span
       >
-      <h2 id="sd-big-title" class="sd-big__title">
-        Nechcete to řešit interně? <strong>Postavíme to za vás.</strong>
-      </h2>
-      <p class="sd-big__lead">
-        Tento průvodce vám dá přehled. Co s ním reálně udělá web nebo e‑shop, je druhá věc — a obvykle to chce někoho, kdo už tím prošel. V <a
-          href="https://www.sniperdesign.cz/"
-          target="_blank"
-          rel="noopener">Sniper Design</a> děláme <strong>kompletní AI&nbsp;SEO</strong>: od strategie přes audit a implementaci až po finální obsah. Zlatý Upgates partner od&nbsp;2016, přes 600 e‑shopů na CZ trhu, vlastní e‑shop <a
-          href="https://www.megadetail.cz/"
-          target="_blank"
-          rel="noopener">MEGA&nbsp;DETAIL</a>.
-      </p>
+      <h2 id="sd-big-title" class="sd-big__title" set:html={sd.title}></h2>
+      <p class="sd-big__lead" set:html={sd.big.lead}></p>
 
       <ul class="sd-big__trust" aria-label="Trust signals">
-        <li><strong>Zlatý Upgates partner</strong> od 2016</li>
-        <li><strong>600+</strong> e‑shopů</li>
-        <li>Vlastní e‑shop <strong>MEGA&nbsp;DETAIL</strong></li>
+        {sd.big.trust.map((item) => <li set:html={item}></li>)}
       </ul>
     </header>
 
     <p class="sd-big__pkg">
       <span class="sd-big__pkg-mark" aria-hidden="true">✦</span>
-      <span><strong>Vše dodáváme jako jeden balík.</strong> Strategie, znalost, audity, optimalizace i obsah — pod jednou střechou, s jednou kontaktní osobou, s jedním cílem.</span>
+      <span set:html={sd.big.pkg}></span>
     </p>
 
     <div class="sd-big__benefits">
-      <div class="sd-big__benefit">
-        <span class="sd-big__benefit-num">01</span>
-        <h3 class="sd-big__benefit-title">Strategie a&nbsp;know‑how</h3>
-        <p class="sd-big__benefit-desc">
-          Projdeme s vámi web, vysvětlíme co se děje s AI vyhledáváním a poradíme, kterým směrem se vydat — co řešit hned, co odložit a kam vůbec necílit.
-        </p>
-      </div>
-
-      <div class="sd-big__benefit">
-        <span class="sd-big__benefit-num">02</span>
-        <h3 class="sd-big__benefit-title">Audit AI&nbsp;viditelnosti</h3>
-        <p class="sd-big__benefit-desc">
-          Komplexní průchod technickým SEO, on‑page strukturou, schema markupem a obsahem. Konkrétní seznam priorit s odhadem dopadu a effort.
-        </p>
-      </div>
-
-      <div class="sd-big__benefit">
-        <span class="sd-big__benefit-num">03</span>
-        <h3 class="sd-big__benefit-title">Optimalizace a&nbsp;implementace</h3>
-        <p class="sd-big__benefit-desc">
-          Nasadíme strukturovaná data, přepíšeme klíčové stránky do AI‑friendly struktury, zoptimalizujeme rychlost a Core Web Vitals. Custom moduly pro Upgates a Shoptet.
-        </p>
-      </div>
-
-      <div class="sd-big__benefit">
-        <span class="sd-big__benefit-num">04</span>
-        <h3 class="sd-big__benefit-title">Tvorba a&nbsp;aktualizace obsahu</h3>
-        <p class="sd-big__benefit-desc">
-          AI‑řízené generování produktových popisů, FAQ a článků v tonalitě vašeho brandu. Vstup do citation poolu ChatGPT, Perplexity a Google AI Overview.
-        </p>
-      </div>
+      {sd.big.benefits.map((b) => (
+        <div class="sd-big__benefit">
+          <span class="sd-big__benefit-num">{b.num}</span>
+          <h3 class="sd-big__benefit-title" set:html={b.title}></h3>
+          <p class="sd-big__benefit-desc" set:html={b.desc}></p>
+        </div>
+      ))}
     </div>
 
     <!-- Konkrétní záběr — 9 oblastí, na které sahá implementace -->
     <div class="sd-big__scope" aria-labelledby="sd-big-scope-title">
       <header class="sd-big__scope-head">
-        <span class="sd-big__scope-eyebrow">Konkrétní záběr</span>
-        <h3 id="sd-big-scope-title" class="sd-big__scope-title">
-          Co konkrétně upravíme na vašem <strong>webu nebo e‑shopu</strong>
-        </h3>
+        <span class="sd-big__scope-eyebrow">{sd.big.scopeEyebrow}</span>
+        <h3 id="sd-big-scope-title" class="sd-big__scope-title" set:html={sd.big.scopeTitle}></h3>
       </header>
       <ul class="sd-big__scope-list" role="list">
-        <li class="sd-big__scope-item">
-          <span class="sd-big__scope-check" aria-hidden="true">✓</span>
-          <span>Struktura kategorií a služeb</span>
-        </li>
-        <li class="sd-big__scope-item">
-          <span class="sd-big__scope-check" aria-hidden="true">✓</span>
-          <span>Answer bloky pod nadpisy</span>
-        </li>
-        <li class="sd-big__scope-item">
-          <span class="sd-big__scope-check" aria-hidden="true">✓</span>
-          <span>FAQ sekce s reálnými dotazy</span>
-        </li>
-        <li class="sd-big__scope-item">
-          <span class="sd-big__scope-check" aria-hidden="true">✓</span>
-          <span>Schema — Product, Article, Organization</span>
-        </li>
-        <li class="sd-big__scope-item">
-          <span class="sd-big__scope-check" aria-hidden="true">✓</span>
-          <span>Interní prolinkování</span>
-        </li>
-        <li class="sd-big__scope-item">
-          <span class="sd-big__scope-check" aria-hidden="true">✓</span>
-          <span>Technické SEO (Core Web Vitals, indexace, mobile)</span>
-        </li>
-        <li class="sd-big__scope-item">
-          <span class="sd-big__scope-check" aria-hidden="true">✓</span>
-          <span><code>robots.txt</code> pro AI crawlery</span>
-        </li>
-        <li class="sd-big__scope-item">
-          <span class="sd-big__scope-check" aria-hidden="true">✓</span>
-          <span>Obsahové mezery proti konkurenci</span>
-        </li>
-        <li class="sd-big__scope-item">
-          <span class="sd-big__scope-check" aria-hidden="true">✓</span>
-          <span>Měření AI citací a brand zmínek</span>
-        </li>
+        {sd.big.scope.map((item) => (
+          <li class="sd-big__scope-item">
+            <span class="sd-big__scope-check" aria-hidden="true">✓</span>
+            <span set:html={item}></span>
+          </li>
+        ))}
       </ul>
     </div>
 
     <div class="sd-big__actions">
       <a
-        href="https://www.sniperdesign.cz/seo-pro-ai"
+        href={sd.hrefSeo}
         target="_blank"
         rel="noopener"
         class="sd-big__btn sd-big__btn--solid"
       >
-        Otevřít Sniper Design
+        {sd.ctaOpen}
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
           <path
             d="M1 7H13M13 7L7 1M13 7L7 13"
@@ -179,12 +113,12 @@ const { eyebrowNum = "06" } = Astro.props as Props;
         </svg>
       </a>
       <a
-        href="https://www.sniperdesign.cz/konzultace"
+        href={sd.hrefConsult}
         target="_blank"
         rel="noopener"
         class="sd-big__btn sd-big__btn--ghost"
       >
-        Nezávazná konzultace
+        {sd.ctaConsult}
       </a>
     </div>
   </div>
