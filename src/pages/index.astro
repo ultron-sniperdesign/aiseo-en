@@ -3,6 +3,7 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
 import SniperDesignBigContact from "~/components/sniperdesign/BigContact.astro";
 import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import * as p from "~/content/pages/index";
+import { site } from "~/i18n/site";
 ---
 
 <BaseLayout title={p.meta.title} description={p.meta.description} image="/og/default.png">
@@ -99,17 +100,17 @@ import * as p from "~/content/pages/index";
           </div>
           <div class="tpanel__body">
             <article class="result">
-              <span class="result__url">aiseo-optimalizace.cz › seo-vs-geo-vs-aeo-vs-aio</span>
+              <span class="result__url">{site.name} › seo-vs-geo-vs-aeo-vs-aio</span>
               <h3 class="result__title">SEO vs. GEO vs. AEO vs. AIO: Kompletní průvodce 4&nbsp;zkratkami…</h3>
               <p class="result__desc">Praktický průvodce čtyřmi disciplínami, které rozhodují o tom, jestli vás Google ukáže a jestli vás zacitují AI nástroje…</p>
             </article>
             <article class="result">
-              <span class="result__url">aiseo-optimalizace.cz › prakticky-postup</span>
+              <span class="result__url">{site.name} › prakticky-postup</span>
               <h3 class="result__title">Praktický postup ve čtyřech krocích — audit, schema, měření</h3>
               <p class="result__desc">Audit obsahu, strukturovaná data, krátká odpověď nahoře a měření. Plus 90denní kalendář, jak na to.</p>
             </article>
             <article class="result">
-              <span class="result__url">aiseo-optimalizace.cz › aeo</span>
+              <span class="result__url">{site.name} › aeo</span>
               <h3 class="result__title">AEO — Answer Engine Optimization (Google AI Overviews…)</h3>
               <p class="result__desc">FAQ schema, krátké odpovědi 40–60 slov, Product schema. Jak se dostat do AI Overview citací…</p>
             </article>
@@ -145,13 +146,13 @@ import * as p from "~/content/pages/index";
               <p class="aio-card__line">Cílí to na <strong>citaci v AI odpovědi</strong>, ne jen na klasickou pozici v Googlu.</p>
               <div class="aio-card__sources">
                 <span class="aio-card__src-label">Zdroje:</span>
-                <span class="aio-card__src">aiseo-optimalizace.cz</span>
+                <span class="aio-card__src">{site.name}</span>
                 <span class="aio-card__src">marketingppc.cz</span>
                 <span class="aio-card__src">seoprakticky.cz</span>
               </div>
             </section>
             <article class="result result--demoted">
-              <span class="result__url">aiseo-optimalizace.cz › seo-vs-geo-vs-aeo-vs-aio</span>
+              <span class="result__url">{site.name} › seo-vs-geo-vs-aeo-vs-aio</span>
               <h3 class="result__title">SEO vs. GEO vs. AEO vs. AIO: Kompletní průvodce…</h3>
             </article>
           </div>
@@ -188,7 +189,7 @@ import * as p from "~/content/pages/index";
                   <li><strong>Brand mentions</strong> v autoritních zdrojích — bez nich vás necituji.</li>
                 </ul>
                 <div class="bubble__sources">
-                  <span class="bubble__src-pill">aiseo-optimalizace.cz</span>
+                  <span class="bubble__src-pill">{site.name}</span>
                   <span class="bubble__src-pill">interval.cz</span>
                   <span class="bubble__src-pill">seoprakticky.cz</span>
                 </div>

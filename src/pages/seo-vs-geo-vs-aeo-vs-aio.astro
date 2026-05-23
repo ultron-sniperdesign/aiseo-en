@@ -3,6 +3,7 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import { getEntry, render } from "astro:content";
 import { site } from "~/i18n/site";
+import { ui } from "~/i18n/strings";
 
 const entry = await getEntry("pillar", "seo-vs-geo-vs-aeo-vs-aio");
 if (!entry) {
@@ -119,7 +120,7 @@ const faqCount = entry.data.faq?.length ?? 0;
   jsonLd={allLd}
   image="/og/pillar.png"
   ogType="article"
-  breadcrumb={[{ label: "Hlavní průvodce", href: "/seo-vs-geo-vs-aeo-vs-aio/" }]}
+  breadcrumb={[{ label: ui.pillar.eyebrow, href: "/seo-vs-geo-vs-aeo-vs-aio/" }]}
 >
   <!-- READING PROGRESS BAR -->
   <div class="progress" id="reading-progress" aria-hidden="true"></div>
@@ -127,25 +128,25 @@ const faqCount = entry.data.faq?.length ?? 0;
   <div class="page">
     <!-- HERO -->
     <section class="hero">
-      <span class="eyebrow"><span class="eyebrow__num">★</span> Hlavní průvodce</span>
+      <span class="eyebrow"><span class="eyebrow__num">★</span> {ui.pillar.eyebrow}</span>
 
       <h1 class="display hero__title">{entry.data.title}</h1>
 
       <p class="hero__lead">{entry.data.description}</p>
 
       <div class="hero__meta">
-        <span>~3 000 slov</span>
-        <span>{faqCount} častých otázek</span>
-        <span>Srovnávací tabulka</span>
-        <span>~12 minut čtení</span>
-        <span>Aktualizováno: {entry.data.updated}</span>
+        <span>{ui.pillar.wordsApprox}</span>
+        <span>{faqCount} {ui.metaFaqs}</span>
+        <span>{ui.pillar.compareTable}</span>
+        <span>{ui.pillar.readingApprox}</span>
+        <span>{ui.metaUpdated} {entry.data.updated}</span>
       </div>
     </section>
 
     <!-- ANSWER BLOCK -->
     <section class="answer">
       <div class="answer__inner">
-        <span class="answer__mark">Stručná odpověď</span>
+        <span class="answer__mark">{ui.answerShort}</span>
         <p class="answer__text">{entry.data.tldr}</p>
       </div>
     </section>
@@ -153,11 +154,11 @@ const faqCount = entry.data.faq?.length ?? 0;
     <!-- TOC + ARTICLE LAYOUT -->
     <div class="layout">
       <!-- ToC sidebar (sticky desktop, accordion mobile) -->
-      <aside class="toc" aria-label="Obsah článku">
+      <aside class="toc" aria-label={ui.ariaToc}>
         <details class="toc__details" open>
           <summary class="toc__summary">
-            <span class="toc__summary-label">Obsah</span>
-            <span class="toc__summary-count">{tocItems.length} kapitol</span>
+            <span class="toc__summary-label">{ui.tocLabel}</span>
+            <span class="toc__summary-count">{tocItems.length} {ui.tocChapters}</span>
           </summary>
           <ol class="toc__list">
             {
@@ -190,10 +191,8 @@ const faqCount = entry.data.faq?.length ?? 0;
       entry.data.faq && entry.data.faq.length > 0 && (
         <section class="faq" aria-labelledby="faq-title">
           <header class="faq__head">
-            <span class="eyebrow"><span class="eyebrow__num">FAQ</span> Časté otázky</span>
-            <h2 id="faq-title" class="faq__title">
-              Sedm <span class="hl">častých otázek</span> ke <strong>4 zkratkám</strong>
-            </h2>
+            <span class="eyebrow"><span class="eyebrow__num">{ui.faqEyebrowNum}</span> {ui.faqEyebrow}</span>
+            <h2 id="faq-title" class="faq__title" set:html={ui.pillar.faqTitleHtml} />
           </header>
 
           <dl class="faq__list">
@@ -215,7 +214,7 @@ const faqCount = entry.data.faq?.length ?? 0;
     <section class="back-cta">
       <a href="/" class="back-cta__link">
         <span aria-hidden="true">←</span>
-        Zpět na úvod
+        {ui.backToHome}
       </a>
     </section>
   </div>

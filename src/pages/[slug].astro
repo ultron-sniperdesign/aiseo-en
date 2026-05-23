@@ -4,6 +4,7 @@ import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.ast
 import RelatedSections from "~/components/blocks/RelatedSections.astro";
 import { getCollection, render } from "astro:content";
 import { site } from "~/i18n/site";
+import { ui } from "~/i18n/strings";
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = (async () => {
@@ -35,16 +36,9 @@ const c = colorByAbbr[entry.data.abbr] ?? colorByAbbr.SEO;
 
 /**
  * Kontextový label v breadcrumbu — překlad abbr na čitelný kontext.
+ * Slovník je v i18n vrstvě (ui.sectionContext), aby ho fork přeložil.
  */
-const contextLabel: Record<string, string> = {
-  SEO: "První disciplína · SEO",
-  GEO: "Druhá disciplína · GEO",
-  AEO: "Třetí disciplína · AEO",
-  AIO: "Čtvrtá disciplína · AIO",
-  PRAXE: "Návod · Praktický postup",
-  MATICE: "Rozhodování · Kdy co použít",
-};
-const crumb = contextLabel[entry.data.abbr] ?? entry.data.abbr;
+const crumb = ui.sectionContext[entry.data.abbr] ?? entry.data.abbr;
 
 /**
  * Display block pro velkou abbreviation v hero.
@@ -179,10 +173,10 @@ function renderFaqMarkdown(text: string): string {
   <div class="page" data-abbr={entry.data.abbr} style={heroStyle}>
     <!-- HERO -->
     <section class="d-hero">
-      <nav class="d-hero__crumbs" aria-label="Drobečková navigace">
-        <a href="/">Úvod</a>
+      <nav class="d-hero__crumbs" aria-label={ui.ariaBreadcrumb}>
+        <a href="/">{ui.crumbHome}</a>
         <span class="crumb-sep">›</span>
-        <span>Disciplíny</span>
+        <span>{ui.crumbDisciplines}</span>
         <span class="crumb-sep">›</span>
         <span class="d-hero__crumb-pill">{crumb}</span>
       </nav>
@@ -197,7 +191,7 @@ function renderFaqMarkdown(text: string): string {
     <!-- ANSWER BLOCK -->
     <section class="answer">
       <div class="answer__inner">
-        <span class="answer__mark">Stručná definice</span>
+        <span class="answer__mark">{ui.answerDefinition}</span>
         <p class="answer__text">{entry.data.answer}</p>
       </div>
     </section>
@@ -219,12 +213,10 @@ function renderFaqMarkdown(text: string): string {
         <section class="faq" aria-labelledby="faq-title">
           <header class="faq__head">
             <span class="eyebrow">
-              <span class="eyebrow__num">FAQ</span>
-              Časté otázky
+              <span class="eyebrow__num">{ui.faqEyebrowNum}</span>
+              {ui.faqEyebrow}
             </span>
-            <h2 id="faq-title" class="faq__title">
-              Otázky, které se k <span class="hl">{entry.data.abbr}</span> <strong>ptají nejčastěji</strong>
-            </h2>
+            <h2 id="faq-title" class="faq__title" set:html={ui.sectionFaqTitleHtml.replace("{abbr}", entry.data.abbr)} />
           </header>
 
           <dl class="faq__list">

@@ -88,6 +88,81 @@ export const footer = {
   updatedLabel: "Aktualizováno květen 2026",
 };
 
+/**
+ * UI microcopy vykreslované přímo ve sdílených šablonách (pillar, sekce
+ * [slug], blog reading pages, homepage chrome) — opakující se popisky, které
+ * NEjsou ani „chrome" komponent (nav/footer/emailCapture výš), ani obsah
+ * stránek (content/pages/*.ts). Fork je přeloží.
+ *
+ * Rich tituly (`*Html`) jsou HTML stringy renderované přes `set:html`.
+ * Vložené <strong>/<span class="hl"> dostanou styl z GLOBÁLNÍCH h2 pravidel
+ * (src/styles/global.css → `h2 strong`, `h2 .hl`), takže fork je smí přeložit
+ * i se značkami a v jiném slovosledu. `{abbr}` placeholder nahradí šablona.
+ */
+export const ui = {
+  // Breadcrumbs (viditelné ve stránce; JSON-LD breadcrumb root řeší site.breadcrumbRoot)
+  crumbHome: "Úvod",
+  crumbBlog: "Blog",
+  crumbDisciplines: "Disciplíny",
+  ariaBreadcrumb: "Drobečková navigace",
+  ariaToc: "Obsah článku",
+
+  // Answer block (krátká odpověď / definice nahoře)
+  answerShort: "Stručná odpověď",
+  answerDefinition: "Stručná definice",
+
+  // Meta dlaždice (slov / otázek / čtení / aktualizace)
+  metaWords: "slov",
+  metaFaqs: "častých otázek",
+  metaReadingMins: "minut čtení",
+  metaUpdated: "Aktualizováno:",
+
+  // Obsah (TOC)
+  tocLabel: "Obsah",
+  tocLabelRich: "V tomto článku",
+  tocChapters: "kapitol",
+
+  // FAQ eyebrow
+  faqEyebrowNum: "FAQ",
+  faqEyebrow: "Časté otázky",
+
+  // Back CTA
+  backToHome: "Zpět na úvod",
+  allArticles: "Všechny články v blogu",
+
+  // Sekce [slug] — kontextový label v breadcrumb pillu (klíč = abbr)
+  sectionContext: {
+    SEO: "První disciplína · SEO",
+    GEO: "Druhá disciplína · GEO",
+    AEO: "Třetí disciplína · AEO",
+    AIO: "Čtvrtá disciplína · AIO",
+    PRAXE: "Návod · Praktický postup",
+    MATICE: "Rozhodování · Kdy co použít",
+  } as Record<string, string>,
+
+  // Blog kategorie (crumb + filter chips + card tag); klíč = frontmatter category
+  category: {
+    tutorial: "Tutorial",
+    analysis: "Analýza",
+    defensive: "Defenzivní",
+    "case-study": "Case study",
+  } as Record<string, string>,
+  categoryFallback: "Článek",
+
+  // Pillar (hlavní průvodce)
+  pillar: {
+    eyebrow: "Hlavní průvodce",
+    wordsApprox: "~3 000 slov",
+    readingApprox: "~12 minut čtení",
+    compareTable: "Srovnávací tabulka",
+    faqTitleHtml: 'Sedm <span class="hl">častých otázek</span> ke <strong>4 zkratkám</strong>',
+  },
+
+  // Sekce [slug] — rich FAQ titulek ({abbr} nahradí šablona)
+  sectionFaqTitleHtml:
+    'Otázky, které se k <span class="hl">{abbr}</span> <strong>ptají nejčastěji</strong>',
+};
+
 export const emailCapture = {
   label: "Váš e-mail",
   placeholder: "vas@email.cz",
