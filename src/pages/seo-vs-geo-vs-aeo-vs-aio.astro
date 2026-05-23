@@ -710,6 +710,18 @@ const faqCount = entry.data.faq?.length ?? 0;
   }
   .article__prose :global(tr:last-child td) { border-bottom: none; }
 
+  /* Mobil — široká 5sloupcová tabulka má min-content šířku větší než viewport,
+     takže přetékala za hranu (a html má overflow-x: clip → pravé sloupce
+     nedostupné). Na ≤600px z tabulky uděláme vlastní horizontálně scrollovatelný
+     blok → swipem se dostanete na AEO/AIO. Desktop (>600px) beze změny. */
+  @media (max-width: 600px) {
+    .article__prose :global(table) {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
   /* Code */
   .article__prose :global(code) {
     font-family: var(--font-mono);
