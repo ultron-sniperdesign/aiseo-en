@@ -1,159 +1,159 @@
 ---
-title: "Praktický postup: jak připravit web pro AI vyhledávání ve 4 krocích"
-seoTitle: "AI SEO prakticky: připravte web pro AI vyhledávání ve 4 krocích"
-description: "Implementační AI SEO průvodce pro viditelnost v ChatGPT, AI Overviews a Perplexity. AI Visibility Readiness Framework: audit, schema, struktura, měření."
-answer: "Praktický postup pro AI viditelnost má 4 kroky a vlastní rámec hodnocení (AI Visibility Readiness Framework — 5 vrstev). (1) Audit obsahu pro AI citovatelnost. (2) Schema.org markup. (3) Answer block + detailní kontext. (4) Měření přes GSC a AI citation monitoring. Největší dopad mají kroky 1 + 3 (audit a strukturované odpovědi); kroky 2 + 4 jsou nutná technická a měřicí základna."
-slug: "prakticky-postup"
+title: "The AI SEO playbook: prepare your site for AI search in 4 steps"
+seoTitle: "AI SEO playbook: prepare your site for AI search in 4 steps"
+description: "An implementation AI SEO guide for visibility in ChatGPT, AI Overviews, and Perplexity: audit, schema, structure, and measurement in four steps."
+answer: "The AI SEO playbook has 4 steps and its own scoring framework (the AI Visibility Readiness Framework — 5 layers). (1) Audit content for AI citability. (2) Schema.org markup. (3) Answer block + detailed context. (4) Measurement via GSC and AI citation monitoring. Steps 1 + 3 (the audit and structured answers) have the biggest impact; steps 2 + 4 are the necessary technical and measurement base."
+slug: "ai-seo-playbook"
 order: 5
 abbr: "PRAXE"
-updated: "2026-05-08"
+updated: "2026-05-24"
 faq:
-  - q: "Kolik času zabere první audit pro AI citovatelnost?"
-    a: "Pro top 20 stránek webu počítejte 2–4 hodiny. Pro každou stránku jen 4 otázky: je odpověď v prvních 60 slovech, jsou tam fakta a čísla, je struktura H2/H3 logická, je tam FAQPage schema."
-  - q: "Jak měřit, jestli mě AI cituje?"
-    a: "Manuální Google search top 10 KW jednou měsíčně (čekáte na AIO panel), Google Search Console (Featured Snippets, FAQ rich snippets), nástroje Otterly nebo Profound pro citation share v ChatGPT/Perplexity, případně specializované AIO/GEO trackery."
-  - q: "Které schema typy jsou nejdůležitější?"
-    a: "Pro content stránky: Article (s author, datePublished, image), FAQPage (pro Q&A sekce), HowTo (pro návody). Pro brand: Organization (logo, social profiles), WebSite (sitelinks search box). Validujte přes Google Rich Results Test."
-  - q: "Jaké nástroje doporučujete pro CZ trh?"
-    a: "Google Search Console (Featured Snippets + FAQ rich snippets, jádro měření zdarma), Ahrefs Brand Radar (citation share napříč LLM), Otterly nebo Profound (mention monitoring v ChatGPT/Perplexity), pro technický audit Screaming Frog nebo Ahrefs Site Audit. Pro AIO presence stačí ze začátku manuální tabulka top 10 KW."
-  - q: "Stačí mi udělat answer block a FAQ a budu v AI Overviews?"
-    a: "Ne, je to nutná ale nedostačující podmínka. Bez kvalitního SEO baseline (indexace, autorita) vás Google v AIO nezobrazí. Bez brand mentions vás ChatGPT necituje. Praktický postup je celý cyklus: SEO foundations → answer block + FAQ → měření → iterace."
-  - q: "V jakém pořadí mám 4 kroky dělat — paralelně nebo sekvenčně?"
-    a: "Sekvenčně, jeden po druhém. Bez auditu (krok 1) nevíte, co opravit. Bez schema markupu (krok 2) AI engines nerozumí struktuře, takže answer block jim nepomůže. Bez správné struktury obsahu (krok 3) měření nemá co reportovat — uvidíte jen 'chybí citace', ne důvod. Praktický harmonogram pro malou firmu: 1. týden audit, 2.–3. týden schema implementace na top 20 stránek, 4.–6. týden přepis answer bloků a FAQ, 7. týden setup měření v Looker Studio. Po 90 dnech první vyhodnocení."
-  - q: "Co dělat, když nemám žádné stránky v top 10 — má smysl řešit GEO/AEO?"
-    a: "Ano, dokonce naopak. Pokud začínáte s novým webem nebo s 0 článků v top 10, je nejvhodnější chvíle psát obsah hned GEO-friendly — answer block, definice, schema, fact-density. Cena 0 Kč navíc, ale za 6–12 měsíců, až se dostanete do top 10, budete připraveni pro AI citace. Klasická chyba: 'nejdřív SEO, pak GEO' = za rok 50 článků k přepisu. Praktický postup je univerzální nezávisle na startovní pozici."
+  - q: "How long does the first AI-citability audit take?"
+    a: "For your top 20 pages, budget 2–4 hours. For each page, just 4 questions: is the answer in the first 60 words, are there facts and numbers, is the H2/H3 structure logical, is there FAQPage schema."
+  - q: "How do I measure whether AI cites me?"
+    a: "A manual Google search of your top 10 keywords once a month (watching for the AIO panel), Google Search Console (Featured Snippets, FAQ rich snippets), tools like Otterly or Profound for citation share in ChatGPT/Perplexity, and optionally specialized AIO/GEO trackers."
+  - q: "Which schema types are most important?"
+    a: "For content pages: Article (with author, datePublished, image), FAQPage (for Q&A sections), HowTo (for guides). For the brand: Organization (logo, social profiles), WebSite (sitelinks search box). Validate with the Google Rich Results Test."
+  - q: "Which tools do you recommend?"
+    a: "Google Search Console (Featured Snippets + FAQ rich snippets, the free core of measurement), Otterly or Profound (mention monitoring in ChatGPT/Perplexity), and for a technical audit Screaming Frog or Ahrefs Site Audit. For AIO presence, a manual sheet of your top 10 keywords is enough to start."
+  - q: "Is an answer block and an FAQ enough to get into AI Overviews?"
+    a: "No — it's a necessary but not sufficient condition. Without a solid SEO baseline (indexing, authority), Google won't show you in AIO. Without brand mentions, ChatGPT won't cite you. The playbook is the whole cycle: SEO foundations → answer block + FAQ → measurement → iteration."
+  - q: "In what order should I do the 4 steps — in parallel or sequentially?"
+    a: "Sequentially, one after another. Without the audit (step 1) you don't know what to fix. Without schema markup (step 2) AI engines don't understand the structure, so the answer block doesn't help them. Without the right content structure (step 3) measurement has nothing to report — you'll only see 'no citation,' not the reason. A practical schedule for a small business: week 1 audit, weeks 2–3 schema implementation on your top 20 pages, weeks 4–6 rewriting answer blocks and FAQs, week 7 setting up measurement in Looker Studio. First evaluation after 90 days."
+  - q: "What if I have no pages in the top 10 — is it worth doing GEO/AEO?"
+    a: "Yes, even more so. If you're starting with a new site or 0 articles in the top 10, it's the ideal time to write content GEO-friendly right away — answer block, definitions, schema, fact density. It costs nothing extra, but in 6–12 months, once you reach the top 10, you'll be ready for AI citations. The classic mistake: 'SEO first, then GEO' = 50 articles to rewrite a year from now. The playbook is universal regardless of your starting position."
 howto:
-  name: "Praktický postup: jak začít s GEO/AEO/AIO ve 4 krocích"
+  name: "The AI SEO playbook: how to get started with GEO/AEO/AI SEO in 4 steps"
   steps:
-    - name: "Audit existujícího obsahu pro AI citovatelnost"
-      text: "Projděte top 20 stránek na svém webu (podle organic trafficu) a pro každou si položte 4 otázky: (1) je odpověď na hlavní dotaz v prvních 60 slovech, (2) má stránka FAQ sekci s reálnými dotazy uživatelů, (3) je tam FAQPage schema markup, (4) jsou H2/H3 strukturované jako otázky a sub-odpovědi. Stránky které selžou ≥ 2 kontroly přepište answer block a přidejte FAQ. Časový odhad: 2–4 hodiny pro 20 stránek."
+    - name: "Audit existing content for AI citability"
+      text: "Go through your top 20 pages (by organic traffic) and ask four questions of each: (1) is the answer to the main query in the first 60 words, (2) does the page have an FAQ section with real user questions, (3) is there FAQPage schema markup, (4) are the H2/H3 structured as questions and sub-answers. Rewrite the answer block and add an FAQ on any page that fails 2 or more checks. Time estimate: 2–4 hours for 20 pages."
     - name: "Schema.org markup (FAQPage, HowTo, Article)"
-      text: "Implementujte 3 typy strukturovaných dat: Article schema na každý článek (headline, description, datePublished, dateModified, author), FAQPage schema na každou FAQ sekci (mainEntity array s Question a Answer), HowTo schema na každý návodový článek (step array s name a text). JSON-LD blok jde do <head>, FAQ otázky v HTML musí přesně odpovídat otázkám v JSON-LD. Validate přes Google Rich Results Test."
-    - name: "Strukturované odpovědi (answer block + kontext)"
-      text: "Každý článek začíná answer blockem 40–60 slov hned po H1 — vizuálně oddělený rámeček s definicí 'X je …', klíčovým mechanismem a praktickým důsledkem. Pod ním detailní kontext s 6–10 H2 sekcemi (300–500 slov každá). Pyramidová struktura: AI engines tahají z prvních cca 1 000 znaků, takže nejdůležitější věci nahoru."
-    - name: "Měření: SERP features tracking + AI citation monitoring"
-      text: "Nastavte měření ve 4 vrstvách. (1) Google Search Console: Featured Snippets impressions, FAQ rich snippets, AIO presence. (2) Google Analytics 4: organic sessions per page, time on page, scroll depth. (3) AI citation share: ručně přes ChatGPT a Perplexity dotazy 1× měsíčně, profesionálně přes Otterly nebo Marketing Miner Brand Radar. (4) Looker Studio dashboard sjednocující všechny zdroje. Po 90 dnech první vyhodnocení."
+      text: "Implement three types of structured data: Article schema on every article (headline, description, datePublished, dateModified, author), FAQPage schema on every FAQ section (a mainEntity array of Question and Answer), HowTo schema on every how-to article (a step array with name and text). The JSON-LD block goes in the <head>, and FAQ questions in HTML must exactly match the questions in the JSON-LD. Validate with the Google Rich Results Test."
+    - name: "Structured answers (answer block + context)"
+      text: "Every article starts with a 40–60 word answer block right after the H1 — a visually separated box with an 'X is …' definition, the key mechanism, and the practical implication. Below it, detailed context with 6–10 H2 sections (300–500 words each). A pyramid structure: AI engines pull from the first ~1,000 characters, so put the most important things up top."
+    - name: "Measurement: SERP feature tracking + AI citation monitoring"
+      text: "Set up measurement in 4 layers. (1) Google Search Console: Featured Snippet impressions, FAQ rich snippets, AIO presence. (2) Google Analytics 4: organic sessions per page, time on page, scroll depth. (3) AI citation share: manually via ChatGPT and Perplexity queries once a month, professionally via Otterly or Profound. (4) A Looker Studio dashboard unifying all sources. First evaluation after 90 days."
 ---
 
 import Insight from "../../components/blocks/Insight.astro";
 import Stepper from "../../components/blocks/Stepper.astro";
 
-## <strong>Praktický postup</strong> ve <span class="hl">4 krocích</span>
+## The <strong>playbook</strong> in <span class="hl">4 steps</span>
 
-Tento postup vychází z draftu pillar průvodce a je optimalizovaný pro CZ trh v roce 2026. Cílem je minimalizovat „zatočení v slepých uličkách" a zaměřit se na **akce s nejvyšším dopadem**.
+This process is built to minimize "spinning in dead ends" and focus on the **actions with the highest impact**.
 
-## <span class="hl">AI Visibility Readiness Framework</span> — <strong>rámec, podle kterého hodnotíme</strong>
+## The <span class="hl">AI Visibility Readiness Framework</span> — <strong>the framework we score against</strong>
 
-Než půjdeme do detailu jednotlivých kroků, je užitečné vědět, **podle čeho hodnotíme připravenost webu pro AI vyhledávání**. Pět vrstev, které procházíme u každého klienta:
+Before we get into the individual steps, it helps to know **what we assess a site's AI-search readiness against**. Five layers we work through with every client:
 
 <Stepper tone="accent" steps={[
   {
     title: "Technical readiness",
-    desc: "Indexovatelnost, povolení AI crawlerů (GPTBot, PerplexityBot, ClaudeBot, Google-Extended) v robots.txt, technické zdraví (Core Web Vitals, mobile, HTTPS). Bez tohoto základu se AI systémy k webu nedostanou.",
+    desc: "Indexability, allowing AI crawlers (GPTBot, PerplexityBot, ClaudeBot, Google-Extended) in robots.txt, technical health (Core Web Vitals, mobile, HTTPS). Without this foundation, AI systems can't reach the site.",
   },
   {
     title: "Content extraction",
-    desc: 'Krátké odpovědi 40–60 slov hned po nadpisech, jasné definice ve formátu „X je…", pyramidové uspořádání obsahu (nejdůležitější věci nahoru). Tato vrstva má nejvyšší dopad na citation rate v AI nástrojích.',
+    desc: 'Short answers of 40–60 words right after the headings, clear definitions in the form "X is…", a pyramid content layout (the most important things up top). This layer has the highest impact on the citation rate in AI tools.',
   },
   {
     title: "Entity clarity",
-    desc: "Konzistentní brand zápis napříč webem, schema.org Organization a Person markup, propojené identifikátory (Wikidata, oborové katalogy). Pomáhá AI systémům jednoznačně identifikovat, kdo jste.",
+    desc: "A consistent brand spelling across the site, schema.org Organization and Person markup, linked identifiers (Wikidata, industry directories). It helps AI systems identify unambiguously who you are.",
   },
   {
     title: "AI trust signals",
-    desc: "Fact-density (čísla, procenta, data), citace zdrojů, autorské profily u YMYL témat, datace tvrzení, brand mentions v autoritních komunitách (Reddit, Quora, oborové weby).",
+    desc: "Fact density (numbers, percentages, dates), source citations, author profiles on YMYL topics, dated claims, brand mentions in authoritative communities (Reddit, Quora, industry sites).",
   },
   {
     title: "Citation optimization",
-    desc: "Měření AI citation share, A/B testy answer blocků, iterace podle dat z GSC a manuálního auditu ChatGPT/Perplexity.",
+    desc: "Measuring AI citation share, A/B testing answer blocks, iterating based on data from GSC and a manual ChatGPT/Perplexity audit.",
   },
 ]} />
 
-Čtyři kroky postupu níže **mapují na tyto vrstvy** — Krok 1 (audit) pokrývá vrstvy 1+2, Krok 2 (schema) pokrývá vrstvu 3, Krok 3 (answer block) je vrstva 2 + 4, Krok 4 (měření) je vrstva 5.
+The four steps below **map to these layers** — Step 1 (audit) covers layers 1+2, Step 2 (schema) covers layer 3, Step 3 (answer block) is layers 2 + 4, Step 4 (measurement) is layer 5.
 
-## Co má <span class="hl">největší dopad</span> — <strong>priority kroků</strong>
+## What has the <span class="hl">biggest impact</span> — <strong>step priorities</strong>
 
-Ne všechny kroky mají stejný dopad. Pokud máte omezenou kapacitu, řešte v tomto pořadí:
+Not all steps have the same impact. If your capacity is limited, work in this order:
 
-| Priorita | Co | Proč |
+| Priority | What | Why |
 |---|---|---|
-| **P0 (nejvyšší dopad)** | **Krok 3** — Answer block 40–60 slov + jasné definice „X je…" v každé sekci | Citation rate v AI nástrojích nejvíc závisí na tom, jak snadno AI extrahuje krátkou definitivní odpověď |
-| **P0 (nejvyšší dopad)** | **Krok 1** — Audit, kde leží mezery (top 20 stránek, 2–4 hodiny) | Bez auditu nevíte, kde investice dává smysl. Slepé „dělejte všechno" vede k checklist fatigue |
-| **P1 (nutná základna)** | **Krok 2** — Schema markup (FAQPage, HowTo, Article) | Strojová čitelnost. Bez schema přicházíte o rich result eligibility a o jasný strojový vstup pro AI nástroje |
-| **P1 (nutná základna)** | Povolení AI crawlerů v `robots.txt` | Pokud výchozí nastavení blokuje GPTBot/PerplexityBot, žádný optimalizovaný obsah AI nepomůže — protože ho ani nepřečte |
-| **P2 (po prvních výsledcích)** | **Krok 4** — Měření AI citation share | Manuální audit zvládne každý už od prvního týdne. Placené nástroje (Otterly, Profound) dávají smysl s 20+ článků v top 10 |
-| **P2 (pokročilé)** | Brand mentions v autoritních zdrojích | Dlouhodobá investice. Bez ní u nového webu jde rychleji nedostat citaci, i když struktura je optimální |
+| **P0 (highest impact)** | **Step 3** — a 40–60 word answer block + clear "X is…" definitions in every section | The citation rate in AI tools depends most on how easily the AI extracts a short, definitive answer |
+| **P0 (highest impact)** | **Step 1** — an audit of where the gaps are (top 20 pages, 2–4 hours) | Without the audit you don't know where investment makes sense. Blind "do everything" leads to checklist fatigue |
+| **P1 (necessary base)** | **Step 2** — schema markup (FAQPage, HowTo, Article) | Machine readability. Without schema you lose rich-result eligibility and a clear machine-readable input for AI tools |
+| **P1 (necessary base)** | Allowing AI crawlers in `robots.txt` | If the default setup blocks GPTBot/PerplexityBot, no optimized content will help — because the AI can't even read it |
+| **P2 (after first results)** | **Step 4** — measuring AI citation share | A manual audit anyone can do from week one. Paid tools (Otterly, Profound) make sense with 20+ articles in the top 10 |
+| **P2 (advanced)** | Brand mentions in authoritative sources | A long-term investment. Without it, a new site can struggle to get a citation even when the structure is optimal |
 
-**Pravidlo:** **Kroky 1 + 3 jdou nejdřív** (audit + answer block) — největší dopad, nejnižší náklad. Krok 2 (schema) přidat ve fázi 2–3 týdne po auditu. Krok 4 (měření) běží paralelně od začátku jako manuální tabulka, profesionální tracking nástroje až později.
+**The rule:** **Steps 1 + 3 go first** (audit + answer block) — the biggest impact, the lowest cost. Add Step 2 (schema) in weeks 2–3 after the audit. Step 4 (measurement) runs in parallel from the start as a manual sheet; professional tracking tools come later.
 
-## Krok 1 — <strong>Audit existujícího obsahu</strong> pro <span class="hl">AI citovatelnost</span>
+## Step 1 — <strong>Audit existing content</strong> for <span class="hl">AI citability</span>
 
-Projděte top 20 stránek na svém webu (podle organic trafficu) a pro každou si položte **4 otázky**:
+Go through your top 20 pages (by organic traffic) and ask **4 questions** of each:
 
 <div class="card-h3">
 
-### Otázka 1: Je odpověď na hlavní dotaz v prvních 60 slovech článku?
+### Question 1: Is the answer to the main query in the first 60 words of the article?
 
-AI scrapery čtou první 60 slov pod nadpisem H1/H2 a používají je jako **citation hook**. Pokud je první odstavec marketingový úvod, AI vás přeskočí.
+AI scrapers read the first 60 words under the H1/H2 and use them as the **citation hook**. If the first paragraph is a marketing intro, AI skips you.
 
-**Akce:** Pokud ne, přesuňte definici/odpověď nahoru jako tučný **answer block** (40–60 slov).
+**The fix:** if not, move the definition/answer up top as a bold **answer block** (40–60 words).
 
 </div>
 
 <div class="card-h3">
 
-### Otázka 2: Obsahuje stránka konkrétní fakta, čísla, citáty?
+### Question 2: Does the page contain concrete facts, numbers, quotes?
 
-Datově hutný obsah má **typicky vyšší šanci** na citaci v AI odpovědích než obecný marketingový text. Spočítejte „fakta na 100 slov":
+Fact-dense content has a **typically higher chance** of being cited in AI answers than general marketing copy. Count the "facts per 100 words":
 
-- ≥ 3 konkrétní fakta (číslo / procento / datum / studie) per 100 slov = ✅ AI-friendly
-- < 1 fakt per 100 slov = ❌ moc obecné
+- ≥ 3 concrete facts (number / percentage / date / study) per 100 words = ✅ AI-friendly
+- < 1 fact per 100 words = ❌ too general
 
-**Akce:** Přidejte data, citace zdrojů, konkrétní čísla. Eliminujte „omáčky".
-
-</div>
-
-<div class="card-h3">
-
-### Otázka 3: Je struktura H2/H3 logická?
-
-Každý subheading by měl odpovídat na **sub-dotaz** uživatele. Jasná hierarchie obvykle pomáhá AI systémům i lidským čtenářům rychleji identifikovat, na co stránka odpovídá.
-
-**Akce:** Přepište H2/H3 jako otázky nebo definice („Co je …", „Jak udělat …", „Kdy použít …").
+**The fix:** add data, source citations, concrete numbers. Eliminate filler.
 
 </div>
 
 <div class="card-h3">
 
-### Otázka 4: Má FAQ sekci s `schema.org/FAQPage` markupem?
+### Question 3: Is the H2/H3 structure logical?
 
-FAQPage schema je **přímý kanál** pro Google AI Overviews — Google z něj táhne Q&A do AIO panelu.
+Each subheading should answer a user's **sub-query**. A clear hierarchy usually helps AI systems and human readers identify faster what the page answers.
 
-**Akce:** Pokud ne, přidejte ji. Otázky berte z **People Also Ask** (PAA) boxů a Google Search Console (dotazy s rostoucími impressions ale klesající CTR).
+**The fix:** rewrite the H2/H3 as questions or definitions ("What is …", "How to …", "When to use …").
 
 </div>
 
-## Krok 2 — <strong>Schema.org markup</strong> <span class="hl">(FAQPage, HowTo, Article)</span>
+<div class="card-h3">
 
-Strukturovaná data pomáhají vyhledávačům a AI systémům rychleji a přesněji pochopit, o čem stránka je, jaký obsah obsahuje a které informace jsou nejdůležitější. Tři typy, které stojí za to mít na každé content stránce:
+### Question 4: Does it have an FAQ section with `schema.org/FAQPage` markup?
+
+FAQPage schema is a **direct channel** to Google AI Overviews — Google pulls Q&A from it into the AIO panel.
+
+**The fix:** if not, add it. Take the questions from **People Also Ask** (PAA) boxes and Google Search Console (queries with rising impressions but falling CTR).
+
+</div>
+
+## Step 2 — <strong>Schema.org markup</strong> <span class="hl">(FAQPage, HowTo, Article)</span>
+
+Structured data helps search engines and AI systems understand faster and more accurately what a page is about, what content it contains, and which information matters most. Three types worth having on every content page:
 
 <div class="card-h3">
 
-### `Article` schema — pro každý článek
+### `Article` schema — for every article
 
 ```json
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "SEO vs. GEO vs. AEO vs. AIO",
-  "description": "Praktický průvodce …",
+  "headline": "SEO vs. GEO vs. AEO",
+  "description": "A practical guide …",
   "author": {
     "@type": "Person",
-    "name": "Autor článku"
+    "name": "Article author"
   },
-  "datePublished": "2026-04-29",
-  "dateModified": "2026-04-29",
-  "image": "https://example.cz/og/article.png"
+  "datePublished": "2026-05-24",
+  "dateModified": "2026-05-24",
+  "image": "https://example.com/og/article.png"
 }
 ```
 
@@ -161,7 +161,7 @@ Strukturovaná data pomáhají vyhledávačům a AI systémům rychleji a přesn
 
 <div class="card-h3">
 
-### `FAQPage` schema — pro Q&A sekce
+### `FAQPage` schema — for Q&A sections
 
 ```json
 {
@@ -169,10 +169,10 @@ Strukturovaná data pomáhají vyhledávačům a AI systémům rychleji a přesn
   "@type": "FAQPage",
   "mainEntity": [{
     "@type": "Question",
-    "name": "Co je rozdíl mezi SEO a GEO?",
+    "name": "What's the difference between SEO and GEO?",
     "acceptedAnswer": {
       "@type": "Answer",
-      "text": "SEO optimalizuje stránku pro pozice v Googlu. GEO optimalizuje obsah pro citace v AI odpovědích."
+      "text": "SEO optimizes a page for rankings in Google. GEO optimizes content for citations in AI answers."
     }
   }]
 }
@@ -182,18 +182,18 @@ Strukturovaná data pomáhají vyhledávačům a AI systémům rychleji a přesn
 
 <div class="card-h3">
 
-### `HowTo` schema — pro návody
+### `HowTo` schema — for guides
 
 ```json
 {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  "name": "Jak přidat FAQPage schema",
+  "name": "How to add FAQPage schema",
   "step": [
     {
       "@type": "HowToStep",
-      "name": "Vyberte 5–7 reálných otázek z PAA",
-      "text": "Otevřete Google Search Console → Performance → Queries…"
+      "name": "Pick 5–7 real questions from PAA",
+      "text": "Open Google Search Console → Performance → Queries…"
     }
   ]
 }
@@ -203,154 +203,154 @@ Strukturovaná data pomáhají vyhledávačům a AI systémům rychleji a přesn
 
 <div class="card-h3">
 
-### Validace
+### Validation
 
-Před deployem validujte přes:
+Before deploying, validate with:
 
 - **Google Rich Results Test** — https://search.google.com/test/rich-results
 - **Schema Markup Validator** — https://validator.schema.org
 
 </div>
 
-## Krok 3 — <strong>Strukturované odpovědi</strong> <span class="hl">(answer block + kontext)</span>
+## Step 3 — <strong>Structured answers</strong> <span class="hl">(answer block + context)</span>
 
-Každý článek by měl mít **dvouvrstevnou strukturu**:
+Every article should have a **two-layer structure**:
 
 <div class="card-h3">
 
-### Vrstva 1: Answer block (40–60 slov)
+### Layer 1: The answer block (40–60 words)
 
-Hned po H1 nebo H2 — tady AI engines táhnou citaci. Formát:
+Right after the H1 or H2 — this is where AI engines pull the citation. The format:
 
 ```markdown
-**X je [definice ve formátu jedna-věta]. [Druhá věta s konkrétním
-faktem nebo kontextem]. [Třetí věta s implikací pro čtenáře].**
+**X is [a one-sentence definition]. [A second sentence with a concrete
+fact or context]. [A third sentence with an implication for the reader].**
 ```
 
-Příklad (z této stránky):
+An example (from this page):
 
-> **Začněte ve 4 krocích: (1) audit existujícího obsahu pro AI citovatelnost, (2) přidat schema.org markup (FAQPage, HowTo, Article), (3) strukturovat odpovědi do answer block + dlouhý kontext, (4) měřit přes SERP features tracking a AI citation monitoring.**
+> **Start in 4 steps: (1) audit your existing content for AI citability, (2) add schema.org markup (FAQPage, HowTo, Article), (3) structure answers into an answer block + long context, (4) measure via SERP feature tracking and AI citation monitoring.**
 
 </div>
 
 <div class="card-h3">
 
-### Vrstva 2: Dlouhý kontext
+### Layer 2: The long context
 
-Pod answer blockem — pro lidské čtenáře, kteří chtějí hlubší pochopení. Tady jsou:
+Below the answer block — for human readers who want depth. This is where you put:
 
-- Detailní vysvětlení každého kroku
-- Příklady, případové studie
-- Tabulky, vizualizace, code blocks
-- Interní linky na související obsah
+- A detailed explanation of each step
+- Examples, case studies
+- Tables, visuals, code blocks
+- Internal links to related content
 
-Tento web má v každé sekci výraznou definici tučně (**„X je…"**). Není to estetický doplněk — je to **přímý signál pro AI scrapery**, kde najdou definici daného pojmu.
+This site has a prominent bold definition in every section (**"X is…"**). It isn't an aesthetic touch — it's a **direct signal to AI scrapers** showing where the definition of a term lives.
 
 </div>
 
-## Krok 4 — <strong>Měření</strong>: <span class="hl">SERP features tracking + AI citation monitoring</span>
+## Step 4 — <strong>Measurement</strong>: <span class="hl">SERP feature tracking + AI citation monitoring</span>
 
-### Co měřit
+### What to measure
 
-| Metrika | Zdroj | Frekvence |
+| Metric | Source | Frequency |
 |---|---|---|
-| **Pozice v AI Overviews** | manuální Google search top 10 KW nebo SE Ranking | týdně |
-| **Featured Snippets impressions** | Google Search Console | denně |
-| **FAQ rich snippet zobrazení** | GSC → Performance → Search Appearance | týdně |
-| **Brand mention v ChatGPT** | Otterly, Profound | měsíčně |
-| **Citation share v Perplexity** | manuální audit nebo Profound | měsíčně |
-| **AIO presence count** | manuální tabulka top 10 KW (viz níže) | měsíčně |
-| **AI crawler hits** | Caddy/Nginx access log filter | denně |
+| **Position in AI Overviews** | a manual Google search of your top 10 keywords or a rank tracker | weekly |
+| **Featured Snippet impressions** | Google Search Console | daily |
+| **FAQ rich-snippet appearances** | GSC → Performance → Search Appearance | weekly |
+| **Brand mentions in ChatGPT** | Otterly, Profound | monthly |
+| **Citation share in Perplexity** | a manual audit or Profound | monthly |
+| **AIO presence count** | a manual sheet of your top 10 keywords (see below) | monthly |
+| **AI crawler hits** | a Caddy/Nginx access-log filter | daily |
 
 <div class="card-h3">
 
-### Manuální AIO check
+### A manual AIO check
 
-Pokud nemáte rozpočet na nástroje, dělejte **manuální check jednou měsíčně**:
+If you don't have a budget for tools, do a **manual check once a month**:
 
-1. Vezměte top 10 vašich klíčových slov (z GSC)
-2. Pro každé otevřete `https://google.cz/search?q=<keyword>`
-3. Zaznamenejte: zobrazil se AIO panel? Jste v citacích?
-4. Vede k vám klik z AIO panelu?
+1. Take your top 10 keywords (from GSC)
+2. For each, open `https://google.com/search?q=<keyword>`
+3. Note: did the AIO panel appear? Are you in the citations?
+4. Does a click come to you from the AIO panel?
 
 </div>
 
 <div class="card-h3">
 
-### Manuální ChatGPT/Perplexity audit
+### A manual ChatGPT/Perplexity audit
 
-Stejný postup pro AI engines:
+The same process for AI engines:
 
-1. ChatGPT (search mód): „`<keyword>`" → jste v citaci?
-2. Perplexity: „`<keyword>`" → jste v citacích vpravo?
-3. Claude (s search): „`<keyword>`" → cituje vás?
+1. ChatGPT (search mode): "`<keyword>`" → are you in the citation?
+2. Perplexity: "`<keyword>`" → are you in the citations on the right?
+3. Claude (with search): "`<keyword>`" → does it cite you?
 
 </div>
 
-<Insight tone="accent" icon="✦" label="Tento web jako živý příklad postupu">
-  Stránka, kterou právě čtete, je sama implementací všech 4 kroků: **answer block 40–60 slov nahoře**, **FAQ sekce s reálnými dotazy a FAQPage schema**, **HowTo schema na celý postup**, **strukturovaná H2/H3 hierarchie**, **`robots.txt` s povolením AI crawlerů**. Můžete si **vyzkoušet sami** — zeptejte se ChatGPT nebo Perplexity „jak připravit web pro AI vyhledávání" nebo „AI SEO checklist" a sledujte, jestli vás na něj odkážou.
+<Insight tone="accent" icon="✦" label="This site as a live example of the process">
+  The page you're reading is itself an implementation of all 4 steps: **a 40–60 word answer block up top**, **an FAQ section with real questions and FAQPage schema**, **HowTo schema on the whole process**, **a structured H2/H3 hierarchy**, and a **`robots.txt` that allows AI crawlers**. You can **try it yourself** — ask ChatGPT or Perplexity "how to prepare a website for AI search" or "AI SEO checklist" and see whether they point you here.
 </Insight>
 
-<Insight tone="accent" icon="✦" label="Nevíte, jestli je váš web připravený pro AI vyhledávání?">
-  Většina webů má v některém z **5 vrstev AI Visibility Readiness Framework** mezeru, kterou nevidí. Pokud chcete vědět, kde stojíte, [Sniper Design nabízí audit AI viditelnosti](https://www.sniperdesign.cz/audity) — projdeme všech 5 vrstev (technical readiness, content extraction, entity clarity, AI trust signals, citation optimization) a doporučíme prioritní kroky s největším dopadem. První [konzultace](https://www.sniperdesign.cz/konzultace) nezávazná.
+<Insight tone="accent" icon="✦" label="Not sure whether your site is ready for AI search?">
+  Most sites have a gap in one of the **5 layers of the AI Visibility Readiness Framework** that they can't see. If you want to know where you stand, [we offer an AI visibility audit](/audit/) — we walk through all 5 layers (technical readiness, content extraction, entity clarity, AI trust signals, citation optimization) and recommend the priority steps with the biggest impact.
 </Insight>
 
-<Insight tone="accent" icon="✦" label="Reálné výsledky kombinovaného playbooku">
-  **Čtyři e‑shopy na Upgates platformě — třínásobný nárůst organické návštěvnosti za 6 měsíců.** Granulebardog (psí granule), Vapecig (e‑cigarety), Sperky‑image (šperky), Galsari. Praktický postup v praxi: audit, schema, struktura obsahu, brand mentions a měření jako jeden balík. [Detail v případové studii →](https://www.sniperdesign.cz/a/seo-pro-e-shopy-na-upgates-trojnasobna-navstevnost-za-pul-roku-realita-nasich-klientu)
+<Insight tone="accent" icon="✦" label="Real results from a combined playbook">
+  **Several e-shops — roughly 3× organic traffic in 6 months.** The playbook in practice: audit, schema, content structure, brand mentions, and measurement as one package. With the best-performing client, close to 5× over the same period.
 </Insight>
 
-## <strong>Mapování fází projektu</strong> na <span class="hl">disciplíny</span>
+## <strong>Mapping project phases</strong> to <span class="hl">disciplines</span>
 
-| Fáze projektu | Doba | Doporučená disciplína |
+| Project phase | Time | Recommended discipline |
 |---|---|---|
-| **0–6 měsíců** (nový web) | indexace, base content | [SEO](/seo/) only |
-| **6–12 měsíců** | první rankingy v top 20 | SEO + Schema markup příprava |
-| **12–18 měsíců** | 20+ článků v top 10 | SEO + [AEO](/aeo/) (FAQ, HowTo schema, answer blocks) |
-| **18–24 měsíců** | autorita roste | SEO + AEO + [GEO](/geo/) (citation, brand mentions) |
-| **24+ měsíců** | zralý projekt | Plný [AIO](/aio/) rámec (SEO+GEO+AEO + selektivní `nosnippet` bypass) |
+| **0–6 months** (new site) | indexing, base content | [SEO](/seo/) only |
+| **6–12 months** | first rankings in the top 20 | SEO + schema markup prep |
+| **12–18 months** | 20+ articles in the top 10 | SEO + [AEO](/answer-engine-optimization/) (FAQ, HowTo schema, answer blocks) |
+| **18–24 months** | authority grows | SEO + AEO + [GEO](/generative-engine-optimization/) (citations, brand mentions) |
+| **24+ months** | a mature project | The full [AI SEO](/ai-seo/) framework (SEO+GEO+AEO + a selective `nosnippet` bypass) |
 
-Klíč: **NEpřeskakujte fáze.** Každá vrstva staví na předchozí. Bez SEO base nezafunguje AEO. Bez AEO + brand authority nezafunguje GEO.
+The key: **don't skip phases.** Each layer builds on the previous one. Without an SEO base, AEO won't work. Without AEO + brand authority, GEO won't work.
 
-## <strong>Praktický kalendář implementace</strong> <span class="hl">(90 dní)</span>
+## A <strong>practical 90-day implementation calendar</strong>
 
 <div class="card-h3">
 
-### Týden 1–2: Audit a strategie
+### Weeks 1–2: Audit and strategy
 
-- [ ] Audit top 20 stránek podle 4 otázek z Kroku 1
-- [ ] Klasifikace stránek (krátké/dlouhé, info/transakční)
-- [ ] Volba strategie (AIO embrace nebo bypass) — viz [Rozhodovací matice](/rozhodovaci-matice/)
+- [ ] Audit your top 20 pages against the 4 questions from Step 1
+- [ ] Classify pages (short/long, informational/transactional)
+- [ ] Choose a strategy (AIO embrace or bypass) — see the [Decision matrix](/decision-matrix/)
 
 </div>
 
 <div class="card-h3">
 
-### Týden 3–6: Implementace schema + answer blocks
+### Weeks 3–6: Implement schema + answer blocks
 
-- [ ] FAQPage schema na top 20 stránek
-- [ ] Article schema globálně (přes BaseLayout/template)
-- [ ] HowTo schema na navádové stránky
-- [ ] Answer block (40–60 slov) na top 20 stránek
-- [ ] Validate přes Google Rich Results Test
-
-</div>
-
-<div class="card-h3">
-
-### Týden 7–10: Měření a iterace
-
-- [ ] Setup tracking (GSC + manuální tabulka AIO presence)
-- [ ] Týdenní manuální AIO check pro top 10 KW
-- [ ] Měsíční AI citation audit (ChatGPT/Perplexity)
+- [ ] FAQPage schema on your top 20 pages
+- [ ] Article schema globally (via the BaseLayout/template)
+- [ ] HowTo schema on guide pages
+- [ ] An answer block (40–60 words) on your top 20 pages
+- [ ] Validate with the Google Rich Results Test
 
 </div>
 
 <div class="card-h3">
 
-### Týden 11–13: Optimalizace na základě dat
+### Weeks 7–10: Measurement and iteration
 
-- [ ] Analýza: které stránky AIO „kradnou" trafic? → zvážit `nosnippet`
-- [ ] Brand mention building (Reddit, guest posts, podcasts)
-- [ ] Iterace answer blocks na základě CTR dat
+- [ ] Set up tracking (GSC + a manual AIO presence sheet)
+- [ ] A weekly manual AIO check for your top 10 keywords
+- [ ] A monthly AI citation audit (ChatGPT/Perplexity)
+
+</div>
+
+<div class="card-h3">
+
+### Weeks 11–13: Optimize based on data
+
+- [ ] Analysis: which pages are AIO "stealing" traffic from? → consider `nosnippet`
+- [ ] Brand-mention building (Reddit, guest posts, podcasts)
+- [ ] Iterate answer blocks based on CTR data
 
 </div>
