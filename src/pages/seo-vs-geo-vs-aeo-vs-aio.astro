@@ -113,7 +113,7 @@ const faqCount = entry.data.faq?.length ?? 0;
 ---
 
 <BaseLayout
-  title={entry.data.title}
+  title={entry.data.seoTitle ?? entry.data.title}
   description={entry.data.description}
   jsonLd={allLd}
   image="/og/pillar.png"

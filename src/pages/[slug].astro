@@ -168,7 +168,7 @@ function renderFaqMarkdown(text: string): string {
 ---
 
 <BaseLayout
-  title={entry.data.title}
+  title={entry.data.seoTitle ?? entry.data.title}
   description={entry.data.description}
   jsonLd={allLd}
   image={ogImage}

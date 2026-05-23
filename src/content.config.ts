@@ -12,6 +12,9 @@ const sections = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/sections" }),
   schema: z.object({
     title: z.string(),
+    /** Volitelný SEO <title> pro SERP. Když chybí, použije se `title`. Odděluje SERP
+     *  title od hero zobrazení (hero čte `title` → abbr + podtitul + tagline). */
+    seoTitle: z.string().optional(),
     description: z.string().min(70).max(160),
     /** Krátká definice (40–60 slov) pro AI scrapery. Tučně vykreslená nahoře v článku. */
     answer: z.string(),
@@ -66,6 +69,8 @@ const pillar = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/pillar" }),
   schema: z.object({
     title: z.string(),
+    /** Volitelný SEO <title> pro SERP. Když chybí, použije se `title` (= H1 na stránce). */
+    seoTitle: z.string().optional(),
     description: z.string().min(70).max(160),
     updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     /** Klíčová slova pro meta keywords + interní reference. */
