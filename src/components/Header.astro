@@ -1,60 +1,9 @@
 ---
-type Discipline = "seo" | "geo" | "aeo" | "aio";
-type Variant = "pillar" | "blog" | "audit" | "free";
-interface NavLink {
-  href: string;
-  label: string;
-  d?: Discipline;
-  variant?: Variant;
-}
+import { nav } from "~/i18n/strings";
 
-/**
- * DESKTOP navigace — kompaktní top-bar (kratší názvy, pills). Vejde se do lišty.
- */
-const navLinks: NavLink[] = [
-  { href: "/seo/", label: "SEO", d: "seo" },
-  { href: "/geo/", label: "GEO", d: "geo" },
-  { href: "/aeo/", label: "AEO", d: "aeo" },
-  { href: "/aio/", label: "AIO", d: "aio" },
-  { href: "/seo-vs-geo-vs-aeo-vs-aio/", label: "Průvodce", variant: "pillar" },
-  { href: "/blog/", label: "Blog", variant: "blog" },
-  { href: "/audit/", label: "Audit", variant: "audit" },
-  { href: "/navod-zdarma/", label: "Návod zdarma", variant: "free" },
-];
-
-/**
- * MOBILNÍ menu — kompletní seznam s PLNÝMI názvy, seskupený jako patička
- * (Čtyři disciplíny / Praxe / Co nabízíme). Drawer má dost místa.
- */
-const mobileNavGroups: { label: string; links: NavLink[] }[] = [
-  {
-    label: "Čtyři disciplíny",
-    links: [
-      { href: "/seo/", label: "SEO", d: "seo" },
-      { href: "/geo/", label: "GEO", d: "geo" },
-      { href: "/aeo/", label: "AEO", d: "aeo" },
-      { href: "/aio/", label: "AIO", d: "aio" },
-    ],
-  },
-  {
-    label: "Praxe",
-    links: [
-      { href: "/prakticky-postup/", label: "Praktický postup" },
-      { href: "/rozhodovaci-matice/", label: "Rozhodovací matice" },
-      { href: "/seo-vs-geo-vs-aeo-vs-aio/", label: "Hlavní průvodce" },
-      { href: "/blog/", label: "Blog" },
-    ],
-  },
-  {
-    label: "Co nabízíme",
-    links: [
-      { href: "/navod-zdarma/", label: "Návod zdarma", variant: "free" },
-      { href: "/pack/", label: "AI SEO Wireframe Pack" },
-      { href: "/audit/", label: "AI SEO audit", variant: "audit" },
-      { href: "/kontakt/", label: "Kontakt" },
-    ],
-  },
-];
+// Nav data + UI labely ze sdíleného slovníku (per-mutace přeloženo).
+const navLinks = nav.desktop; // desktop lišta — kompaktní
+const mobileNavGroups = nav.groups; // mobilní menu + footer — plné názvy
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) => currentPath === href || currentPath.startsWith(href);
@@ -62,14 +11,14 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
 
 <header class="site-header">
   <div class="site-header__inner">
-    <a href="/" class="brand" aria-label="aiseo-optimalizace.cz — domovská stránka">
+    <a href="/" class="brand" aria-label={nav.brandAria}>
       <span class="brand__sigil" aria-hidden="true"></span>
       <span class="brand__name">
         <span class="brand__name-strong">aiseo</span><span class="brand__name-rest">-optimalizace</span><span class="brand__name-tld">.cz</span>
       </span>
     </a>
 
-    <nav class="disc-nav" aria-label="Hlavní navigace">
+    <nav class="disc-nav" aria-label={nav.navAria}>
       {navLinks.map((item) => {
         const active = isActive(item.href);
         return (
@@ -92,10 +41,12 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
     <button
       type="button"
       class="nav-toggle"
-      aria-label="Otevřít menu"
+      aria-label={nav.openLabel}
       aria-expanded="false"
       aria-controls="mobile-nav"
       data-nav-toggle
+      data-label-open={nav.openLabel}
+      data-label-close={nav.closeLabel}
     >
       <span class="nav-toggle__bars" aria-hidden="true">
         <span></span><span></span><span></span>
@@ -109,10 +60,10 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
      počítal relativně k headeru, ne k viewportu). -->
 <div class="mobile-nav-backdrop" data-mobile-backdrop aria-hidden="true"></div>
 
-<nav class="mobile-nav" id="mobile-nav" aria-label="Mobilní navigace" data-mobile-nav>
+<nav class="mobile-nav" id="mobile-nav" aria-label={nav.mobileAria} data-mobile-nav>
   <div class="mobile-nav__head">
-    <span class="mobile-nav__head-title">Menu</span>
-    <button type="button" class="mobile-nav__close" data-nav-close aria-label="Zavřít menu">
+    <span class="mobile-nav__head-title">{nav.menuLabel}</span>
+    <button type="button" class="mobile-nav__close" data-nav-close aria-label={nav.closeLabel}>
       <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true">
         <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
       </svg>
@@ -584,7 +535,10 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
   if (toggle && panel) {
     const setOpen = (open: boolean) => {
       toggle.setAttribute("aria-expanded", String(open));
-      toggle.setAttribute("aria-label", open ? "Zavřít menu" : "Otevřít menu");
+      toggle.setAttribute(
+        "aria-label",
+        (open ? toggle.dataset.labelClose : toggle.dataset.labelOpen) || "",
+      );
       toggle.classList.toggle("nav-toggle--open", open);
       panel.classList.toggle("mobile-nav--open", open);
       backdrop?.classList.toggle("mobile-nav-backdrop--open", open);

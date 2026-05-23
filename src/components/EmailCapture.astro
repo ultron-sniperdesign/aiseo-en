@@ -29,10 +29,12 @@ interface Props {
   placeholder?: string;
   leadSourceTag?: string;
 }
+import { emailCapture as ec } from "~/i18n/strings";
+
 const {
   variant = "hero",
-  buttonLabel = "Stáhnout AI SEO návod zdarma",
-  placeholder = "vas@email.cz",
+  buttonLabel = ec.buttonLabel,
+  placeholder = ec.placeholder,
   leadSourceTag = "Lead — Návod zdarma",
 } = Astro.props as Props;
 
@@ -53,7 +55,7 @@ const ECOMAIL_ENDPOINT =
 
   <div class="ec-form__row">
     <label class="ec-form__label" for={`ec-email-${variant}`}>
-      Váš e-mail
+      {ec.label}
     </label>
     <input
       id={`ec-email-${variant}`}
@@ -77,14 +79,7 @@ const ECOMAIL_ENDPOINT =
     </button>
   </div>
 
-  <p class="ec-form__legal">
-    Pošleme vám <strong>odkaz na PDF</strong> z&nbsp;e-mailu
-    <strong>aiseo-optimalizace@sniperdesign.cz</strong> (zkontrolujte
-    i&nbsp;Hromadné&nbsp;/&nbsp;Promo). V&nbsp;dalších dnech občas přidáme
-    <strong>praktické tipy k&nbsp;AI&nbsp;SEO a&nbsp;občasnou nabídku našich
-    produktů / služeb</strong>. <strong>Žádný denní newsletter</strong> &mdash;
-    odhlášení je v&nbsp;každém e-mailu jedním kliknutím. <a href="/gdpr/">Zásady zpracování osobních údajů</a>.
-  </p>
+  <p class="ec-form__legal" set:html={ec.legalHtml}></p>
 </form>
 
 <style>

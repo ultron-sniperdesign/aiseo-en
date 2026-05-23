@@ -1,4 +1,5 @@
 ---
+import { nav, footer } from "~/i18n/strings";
 const year = new Date().getFullYear();
 ---
 
@@ -11,48 +12,27 @@ const year = new Date().getFullYear();
           <span class="ftr-brand__name-strong">aiseo</span><span class="ftr-brand__name-rest">-optimalizace</span><span class="ftr-brand__name-tld">.cz</span>
         </span>
       </h3>
-      <p>
-        Praktický průvodce AI érou vyhledávání pro český trh. Co je rozdíl mezi SEO, GEO, AEO a AIO — a kdy kterou techniku použít na webu nebo e-shopu.
-      </p>
+      <p>{footer.tagline}</p>
     </div>
 
-    <div class="ftr-col">
-      <h4>Čtyři disciplíny</h4>
-      <ul>
-        <li><a href="/seo/" data-d="seo">SEO</a></li>
-        <li><a href="/geo/" data-d="geo">GEO</a></li>
-        <li><a href="/aeo/" data-d="aeo">AEO</a></li>
-        <li><a href="/aio/" data-d="aio">AIO</a></li>
-      </ul>
-    </div>
-
-    <div class="ftr-col">
-      <h4>Praxe</h4>
-      <ul>
-        <li><a href="/prakticky-postup/">Praktický postup</a></li>
-        <li><a href="/rozhodovaci-matice/">Rozhodovací matice</a></li>
-        <li><a href="/seo-vs-geo-vs-aeo-vs-aio/">Hlavní průvodce</a></li>
-        <li><a href="/blog/">Blog</a></li>
-      </ul>
-    </div>
-
-    <div class="ftr-col">
-      <h4>Co nabízíme</h4>
-      <ul>
-        <li><a href="/navod-zdarma/">Návod zdarma</a></li>
-        <li><a href="/pack/">AI SEO Wireframe Pack</a></li>
-        <li><a href="/audit/">AI SEO audit</a></li>
-        <li><a href="/kontakt/">Kontakt</a></li>
-      </ul>
-    </div>
+    {nav.groups.map((group) => (
+      <div class="ftr-col">
+        <h4>{group.label}</h4>
+        <ul>
+          {group.links.map((item) => (
+            <li><a href={item.href} data-d={item.d}>{item.label}</a></li>
+          ))}
+        </ul>
+      </div>
+    ))}
   </div>
 
   <div class="ftr-bottom">
-    <span>© {year} aiseo-optimalizace.cz · postaveno na Astru · hostováno v ČR</span>
+    <span>© {year} aiseo-optimalizace.cz · {footer.builtNote}</span>
     <span>
-      <a href="/sitemap-index.xml" class="ftr-bottom__sitemap">Sitemap</a>
+      <a href="/sitemap-index.xml" class="ftr-bottom__sitemap">{footer.sitemapLabel}</a>
       <span aria-hidden="true">·</span>
-      Aktualizováno květen 2026
+      {footer.updatedLabel}
     </span>
   </div>
 </footer>
