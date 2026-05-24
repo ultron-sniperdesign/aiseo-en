@@ -1,4 +1,4 @@
-name: Deploy to aiseo-optimalizace.cz
+name: Deploy to seoforai.net
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: deploy-aiseo-optimalizace
+  group: deploy-aiseo-en
   cancel-in-progress: false
 
 jobs:
@@ -56,18 +56,18 @@ jobs:
 
           # Vytvoř release dir + dist/ subdir (Caddy file_server bude číst z current/dist/)
           ssh -i ~/.ssh/id_ed25519 "$DEPLOY_USER@$DEPLOY_HOST" \
-            "mkdir -p /srv/apps/aiseo-optimalizace/releases/$REL/dist"
+            "mkdir -p /srv/apps/aiseo-en/releases/$REL/dist"
 
           # Rsync build artefaktu
           rsync -az --delete -e "ssh -i ~/.ssh/id_ed25519" \
             --exclude '.env' --exclude 'Icon' --exclude '.DS_Store' \
-            dist/ "$DEPLOY_USER@$DEPLOY_HOST:/srv/apps/aiseo-optimalizace/releases/$REL/dist/"
+            dist/ "$DEPLOY_USER@$DEPLOY_HOST:/srv/apps/aiseo-en/releases/$REL/dist/"
 
           # Atomic symlink switch + retain only last 5 releases
           # Žádný systemctl restart — Caddy file_server čte symlink v každém requestu
           ssh -i ~/.ssh/id_ed25519 "$DEPLOY_USER@$DEPLOY_HOST" bash <<EOF
             set -euo pipefail
-            cd /srv/apps/aiseo-optimalizace
+            cd /srv/apps/aiseo-en
             ln -sfn releases/$REL current.new
             mv -Tf current.new current
             ls -1t releases | tail -n +6 | xargs -r -I{} rm -rf "releases/{}"
@@ -82,7 +82,7 @@ jobs:
           # Smoke test je tolerantní pro fázi onboardingu, kdy ještě DNS nebo Caddy blok
           # nemusí být kompletní. Stačí, když vrátí 2xx/3xx z přímo VPS IP přes Host header.
           for i in 1 2 3 4 5; do
-            code=$(curl -sSk -o /dev/null -w "%{http_code}" --resolve "aiseo-optimalizace.cz:443:$DEPLOY_HOST" https://aiseo-optimalizace.cz/ || echo "000")
+            code=$(curl -sSk -o /dev/null -w "%{http_code}" --resolve "seoforai.net:443:$DEPLOY_HOST" https://seoforai.net/ || echo "000")
             echo "Attempt $i: HTTP $code"
             [[ "$code" =~ ^(200|301|302|307|308)$ ]] && exit 0
             sleep 5
