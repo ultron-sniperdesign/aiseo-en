@@ -1,4 +1,24 @@
-User-agent: *
+import type { APIRoute } from "astro";
+
+/**
+ * robots.txt jako route (místo statického public/robots.txt) — aby `Sitemap:`
+ * řádek byl doménově-aware (odvozený z `Astro.site`). Crawler pravidla jsou
+ * jazykově neutrální a sdílená napříč mutacemi; jediné per-doména je Sitemap URL.
+ * Díky tomu fork NEmusí robots.txt forkovat (řeší P6-FYI z aiseo-global.md —
+ * stejná třída jako P1: hardcoded CZ doména ve sdílené vrstvě).
+ *
+ * Statický build: Astro tento GET endpoint prerenderuje do `dist/robots.txt`.
+ * CZ výstup je byte-identický s původním public/robots.txt.
+ */
+export const prerender = true;
+
+export const GET: APIRoute = ({ site }) => {
+  const sitemap = new URL(
+    "/sitemap-index.xml",
+    site ?? "https://aiseo-optimalizace.cz",
+  ).href;
+
+  const body = `User-agent: *
 Allow: /
 Disallow: /_review/
 Disallow: /download/
@@ -72,4 +92,10 @@ Allow: /
 Disallow: /_review/
 Disallow: /download/
 
-Sitemap: https://seoforai.net/sitemap-index.xml
+Sitemap: ${sitemap}
+`;
+
+  return new Response(body, {
+    headers: { "Content-Type": "text/plain; charset=utf-8" },
+  });
+};
