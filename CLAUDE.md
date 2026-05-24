@@ -47,7 +47,7 @@
 | Org / Repo | `ultron-sniperdesign` / `ultron-sniperdesign/aiseo-en` (public) |
 | Remote `origin` | `https://github.com/ultron-sniperdesign/aiseo-en.git` |
 | Remote `cz` (upstream) | `https://github.com/ultron-sniperdesign/aiseo-optimalizace.git` — odsud se pullují i18n/design opravy od A |
-| Secrets | **zatím žádné** — `DEPLOY_HOST/USER/SSH_PRIVATE_KEY` (+ `PUBLIC_GSC_VERIFICATION`, `PUBLIC_GA4_MEASUREMENT_ID`) přidá sd-server-admin (krok L). Deploy klíč: **vlastní** `aiseo-en-deploy@github` (per doporučení sd-server-admin, ne reuse CZ). |
+| Secrets | ✅ `DEPLOY_HOST` / `DEPLOY_USER` / `DEPLOY_SSH_PRIVATE_KEY` (sd-server-admin, bootstrap) + ✅ `PUBLIC_GA4_MEASUREMENT_ID=G-BSGLXLHJNX` (EN self-service přes gh, 2026-05-24). ⏳ chybí `PUBLIC_GSC_VERIFICATION` (až uživatel dodá token), `INDEXNOW_KEY` (vlastní EN). Deploy klíč: **vlastní** `aiseo-en-deploy@github` (ne reuse CZ). Pozn.: gh auth je na stroji (org účet) — EN-scoped veřejné build-time env (GA4/GSC/INDEXNOW) lze nastavit `gh secret set` self-service; infra/SSH řeší sd-server-admin. |
 | Workflow | `.github/workflows/deploy.yml` (z CZ; spustí se při pushi, dokud nejsou Secrets/server selže — neškodné) |
 
 ### Tech stack (sdílený s CZ, vlastní A)
@@ -205,7 +205,8 @@ Linky v e-mailech/zprávách neklikat přes computer-use; ověřit URL přes Chr
 | **P6 [slug].astro raw enum** | ✅ HOTOVO (A `65b56ba` + EN `9b76b01`) — A zavedl `displayAbbr = ui.sectionBadge[abbr] ?? abbr` (hero/breadcrumb/JSON-LD); raw enum jen u CSS hooků/`colorByAbbr`/`currentAbbr`. EN pullnul `[slug].astro`. Live: `/ai-seo/` hero=„AI SEO", `/ai-seo-playbook/`=„the playbook", `/decision-matrix/`=„the decision matrix"; 0 raw enumů. |
 | **Sitemap (GSC)** | ✅ HOTOVO (`48a4d6b`) — `astro.config.mjs` sitemap filter přepsán z CZ negativního na **EN allowlist 8 first-wave stránek** (auto-sitemap jinak submitoval i later-wave CZ stránky). Live `sitemap-0.xml` = 8 URL. **GSC submit:** `https://seoforai.net/sitemap-index.xml`. |
 | **robots.txt** | ✅ HOTOVO (`b032b6b`) — `public/robots.txt` `Sitemap:` line opravena z CZ domény na `https://seoforai.net/sitemap-index.xml`. |
-| GA4 + GSC | ⏳ uživatel zakládá → pak Secrets (sitemap připravený k submitu) |
+| **GA4 analytics** | ✅ LIVE — ID `G-BSGLXLHJNX` nastaveno jako GH Secret `PUBLIC_GA4_MEASUREMENT_ID` (EN self-service přes gh) + redeploy. Sdílený `BaseLayout.astro` renderuje gtag (`anonymize_ip`, honoruje Sec-GPC/DNT). Live na `/` i `/ai-seo/`. Žádná editace šablony. |
+| GSC | ⏳ verification token (`PUBLIC_GSC_VERIFICATION`) čeká na uživatele; sitemap připravený k submitu (`https://seoforai.net/sitemap-index.xml`) |
 
 ### Backlog / later-wave (dle roadmapy: web → články → free PDF → paid PDF → audity)
 
