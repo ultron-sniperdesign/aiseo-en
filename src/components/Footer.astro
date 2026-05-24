@@ -1,5 +1,6 @@
 ---
 import { nav, footer } from "~/i18n/strings";
+import { site } from "~/i18n/site";
 const year = new Date().getFullYear();
 ---
 
@@ -9,7 +10,7 @@ const year = new Date().getFullYear();
       <h3>
         <span class="ftr-brand__sigil" aria-hidden="true"></span>
         <span class="ftr-brand__name">
-          <span class="ftr-brand__name-strong">aiseo</span><span class="ftr-brand__name-rest">-optimalizace</span><span class="ftr-brand__name-tld">.cz</span>
+          <span class="ftr-brand__name-strong">{site.brand.strong}</span><span class="ftr-brand__name-rest">{site.brand.rest}</span><span class="ftr-brand__name-tld">{site.brand.tld}</span>
         </span>
       </h3>
       <p>{footer.tagline}</p>
@@ -28,7 +29,7 @@ const year = new Date().getFullYear();
   </div>
 
   <div class="ftr-bottom">
-    <span>© {year} aiseo-optimalizace.cz · {footer.builtNote}</span>
+    <span>© {year} {site.name} · {footer.builtNote}</span>
     <span>
       <a href="/sitemap-index.xml" class="ftr-bottom__sitemap">{footer.sitemapLabel}</a>
       <span aria-hidden="true">·</span>

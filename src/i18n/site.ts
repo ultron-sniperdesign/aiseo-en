@@ -20,6 +20,11 @@ export const site = {
   inLanguage: "en-US",
   /** Název webu — WebSite schema name + og:site_name */
   name: "seoforai.net",
+  /**
+   * Brand logo split (Header/Footer) — 3 barevné spany: strong (accent) /
+   * rest (ink) / tld (faint). Per-mutace (A externalizoval 621a406).
+   */
+  brand: { strong: "seofor", rest: "ai", tld: ".net" },
   /** meta author (AI attribution signál) */
   author: "Kamil from Sniper Design",
   /** Breadcrumb root (position 1) */

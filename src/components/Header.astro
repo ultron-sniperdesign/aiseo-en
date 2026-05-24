@@ -1,5 +1,6 @@
 ---
 import { nav } from "~/i18n/strings";
+import { site } from "~/i18n/site";
 
 // Nav data + UI labely ze sdíleného slovníku (per-mutace přeloženo).
 const navLinks = nav.desktop; // desktop lišta — kompaktní
@@ -14,7 +15,7 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
     <a href="/" class="brand" aria-label={nav.brandAria}>
       <span class="brand__sigil" aria-hidden="true"></span>
       <span class="brand__name">
-        <span class="brand__name-strong">aiseo</span><span class="brand__name-rest">-optimalizace</span><span class="brand__name-tld">.cz</span>
+        <span class="brand__name-strong">{site.brand.strong}</span><span class="brand__name-rest">{site.brand.rest}</span><span class="brand__name-tld">{site.brand.tld}</span>
       </span>
     </a>
 
