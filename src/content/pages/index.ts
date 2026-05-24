@@ -319,7 +319,9 @@ export const offersHead: SectionHead = {
 
 export const offers = [
   {
-    href: "/free-guide/",
+    // Interim: /free-guide/ slug zatím neexistuje (later-wave static-route rename).
+    // Míří na existující /navod-zdarma/ (200), aby nebyl 404. A's P3 sekci stejně skryje.
+    href: "/navod-zdarma/",
     mod: "free",
     tag: "Free guide",
     priceMain: "Free",
