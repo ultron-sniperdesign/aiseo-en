@@ -29,16 +29,16 @@
 | Hostname / OS | `sd-ultron-vps` / Ubuntu 24.04 | runbook |
 | Sudo user | `ultron` | runbook |
 | Reverse proxy | Caddy, sdílený `/etc/caddy/Caddyfile` | runbook |
-| **Stav EN na VPS** | **zatím ŽÁDNÝ** — `/srv/apps/aiseo-en/`, service user, Caddy blok ještě NEexistují (čeká na server request, krok K) | — |
-| Layout (cíl) | `/srv/apps/aiseo-en/` mode 2775, Astro static, Caddy serveruje z `current/dist/` (vzor CZ) | volba projektu |
+| **Stav EN na VPS** | ✅ **LIVE** (2026-05-24, sd-server-admin) — `/srv/apps/aiseo-en/` mode 2775, service user `aiseo-en` (uid 987), Caddy blok, deploy klíč `aiseo-en-deploy@github` (authorized_keys #12). **Deploy-only přes GH Actions CI — aiseo-en NEMÁ vlastní osobní `claude@` SSH klíč** (vědomý pattern, ne sirotek). | 2026-05-24 |
+| Layout | `/srv/apps/aiseo-en/current/dist/` (Astro static, Caddy `file_server`, atomic symlink, posledních 5 releases) | runbook §5.1 |
 
 ### Doména
 
 | Položka | Hodnota |
 |---|---|
 | Apex / www | `seoforai.net` / `www.seoforai.net` (301 → apex) |
-| DNS | A-záznam na `80.211.223.175` — **zatím NEpropnuto** (dělá uživatel ve správě domény, krok K) |
-| TLS | Let's Encrypt přes Caddy (globální direktiva), až bude Caddy blok |
+| DNS | A-záznam `seoforai.net` (+ `www`) → `80.211.223.175` — ✅ propnuto |
+| TLS | Let's Encrypt přes Caddy — ✅ cert valid (HTTPS 200 ověřeno 2026-05-24) |
 
 ### GitHub
 
@@ -192,11 +192,12 @@ Linky v e-mailech/zprávách neklikat přes computer-use; ověřit URL přes Chr
 | Repo + fork + pull i18n oprav | ✅ |
 | First-wave obsah: i18n + homepage data + pillar + 6 sekcí | ✅ EN, build-green (29 stránek, 0 errors), pushnuto (`2717444`, `ed5e65b`, `9bd453d`) |
 | Vizuální QA homepage (desktop+mobile) | ✅ obsah OK; brand logo = CZ doména → A |
-| Shared-layer fixy (brand logo, homepage residual, conditional sekce, AI SEO badge) | ⏳ request na A v `aiseo-global.md` |
-| OG obrázky (EN) | ⏳ krok H |
-| Server (`/srv/apps/aiseo-en/`, Caddy, DNS) | ⏳ krok K |
-| Deploy klíč + Secrets + live | ⏳ krok L |
-| Boardy (`aiseo-en.md`, registrace v `aiseo-global.md`) + tento CLAUDE.md | ✅ krok M |
+| **`https://seoforai.net` LIVE** | ✅ 2026-05-24 — sd-server-admin bootstrap (deploy klíč #12, service user uid 987, `/srv/apps/aiseo-en/` 2775, Caddy blok = kopie CZ vč. `/download/*` X-Robots-Tag, LE cert), deploy success, DNS propnuté. Ověřeno: 8 stránek + OG + sitemap + robots = 200, lang=en, brand=seoforai.net |
+| OG obrázky (EN) | ✅ 8× gpt-image-2 light-editorial (`9b4347f`) |
+| P1 brand logo | ✅ A externalizoval (`621a406`) + EN `brand` nastaven (`29bad3a`) — header/footer = seoforai.net |
+| Boardy + CLAUDE.md (krok M) | ✅ |
+| **Follow-up → A** (neblokuje, homepage polish) | 🟠 P2 (CZ zbytky v `index.astro`: mockupy/SVG/CTA „Otevřít detail disciplíny"/„Číst sekci") · P3 (offers sekce — `/free-guide/` 404 + české `/pack//audit/`) · P4 (AI SEO badge) → `aiseo-global.md` |
+| GA4 + GSC | ⏳ uživatel zakládá → pak Secrets |
 
 ### Backlog / later-wave (dle roadmapy: web → články → free PDF → paid PDF → audity)
 
