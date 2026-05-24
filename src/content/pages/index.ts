@@ -1,18 +1,14 @@
 /**
- * Datový modul — homepage `/`.
+ * Datový modul — homepage `/` (EN mutace).
  *
- * Fáze 0 refaktor (rozsah „próza + karty"): externalizován veškerý čitelný
- * text + karty. Ilustrativní mockupy (Google SERP / AI Overview / ChatGPT
- * bublina) a SVG wireframe ZŮSTÁVAJÍ jako značky v `index.astro` — mají
- * desítky vnořených scoped tříd, které `set:html` rozbíjí. Jejich text je
- * proto stále v šabloně.
+ * Veškerý čitelný text homepage je v datech (A externalizoval i trio mockupy,
+ * SVG wireframe a aria/CTA labely — commit 0ab989a). Šablona `index.astro` je
+ * sdílená a čte odsud; fork ji NEsahá.
  *
- * POZN. (EN fork): residuální český text v `index.astro` (mockupy, SVG, CTA
- * labely, aria) zatím NENÍ externalizovaný — viz admin doc `aiseo-mutace-admin.md`
- * §5 (next-batch). Po dodání A se finalizuje. Sekce 05 (články) / 06 (nabídka) /
- * FreeStrip jsou later-wave (blog + komerční) — čekají na conditional render od A.
- *
- * Mutace: EN/DE/PL fork má vlastní kopii s překladem.
+ * First-wave (edukativní jádro): later-wave sekce skryté přes prázdné pole /
+ * null (A's conditional render P3): `scards: []`, `offers: []`, `freeStrip: null`.
+ * Vrátí se v blog / komerční vlně. Pole s inline <strong> (trio.aio.line*,
+ * trio.chat.bullets) renderuje šablona přes set:html (rodič má :global(strong)).
  */
 
 import type { SectionHead } from "~/content/pages/_types";
@@ -28,6 +24,8 @@ type Discipline = "seo" | "geo" | "aeo" | "aio";
 
 export interface PillDef {
   d: Discipline;
+  /** Krátký kód v panelu (SEO/GEO/AEO/AI SEO) — data-driven (ne d.toUpperCase()). */
+  badge: string;
   label: string;
   fullName: string;
   oneLine: string;
@@ -56,6 +54,7 @@ export const hero = {
 export const pillDefs: PillDef[] = [
   {
     d: "seo",
+    badge: "SEO",
     label: "SEO — Search",
     fullName: "Search Engine Optimization",
     oneLine: "Rankings on Google and Bing.",
@@ -65,6 +64,7 @@ export const pillDefs: PillDef[] = [
   },
   {
     d: "geo",
+    badge: "GEO",
     label: "GEO — Generative",
     fullName: "Generative Engine Optimization",
     oneLine: "Citations in ChatGPT, Perplexity, Claude, and Gemini.",
@@ -74,6 +74,7 @@ export const pillDefs: PillDef[] = [
   },
   {
     d: "aeo",
+    badge: "AEO",
     label: "AEO — Answer",
     fullName: "Answer Engine Optimization",
     oneLine: "Answers in Google AI Overviews and Bing Chat.",
@@ -83,6 +84,7 @@ export const pillDefs: PillDef[] = [
   },
   {
     d: "aio",
+    badge: "AI SEO",
     label: "AI SEO — Umbrella",
     fullName: "AI SEO — the umbrella",
     oneLine:
@@ -92,6 +94,15 @@ export const pillDefs: PillDef[] = [
     href: "/ai-seo/",
   },
 ];
+
+/** UI microcopy uvnitř homepage šablony (aria-labely + CTA, nejsou v sekčních datech). */
+export const ui = {
+  pillsAria: "A quick intro to the disciplines",
+  pillPanelLink: "Open the discipline detail",
+  pillPanelClose: "Close detail",
+  quartetCta: "Read the section",
+  scardCta: "Read",
+};
 
 export const quartet: Quartet[] = [
   {
@@ -148,7 +159,7 @@ export const quartet: Quartet[] = [
   },
 ];
 
-/** Sekce 01 — Trio (head + verdikty + callout; mockupy zůstávají v .astro). */
+/** Sekce 01 — Trio (head + verdikty + callout). */
 export const trioHead: SectionHead = {
   eyebrowNum: "01",
   eyebrow: "One query, three interfaces",
@@ -177,6 +188,62 @@ export const trioVerdicts = [
 export const trioCallout = {
   text: "<strong>If your site has no content that can be <em>cited</em>, you're invisible in two of the three interfaces.</strong>",
   cont: "This guide shows exactly what to add — section by section.",
+};
+
+/**
+ * Trio mockupy — text tří ilustrativních rozhraní (Google SERP / AI Overview /
+ * ChatGPT). `*.path` se v šabloně skládá s `site.name` (`{site.name} › {path}`).
+ * `sources` NEobsahují vlastní doménu — tu šablona prependuje jako první zdroj.
+ * aio.line*, chat.bullets jedou přes set:html (drž validní <strong>…</strong>).
+ */
+export const trio = {
+  query: "how to prepare a website for AI search",
+  google: {
+    cellAria: "What the user gets from classic Google",
+    panelAria: "Classic Google search",
+    results: [
+      {
+        path: "seo-vs-geo-vs-aeo",
+        title: "SEO vs. GEO vs. AEO: the complete guide to AI&nbsp;search…",
+        desc: "A practical guide to the disciplines that decide whether Google shows you and whether AI tools cite you…",
+      },
+      {
+        path: "ai-seo-playbook",
+        title: "The four-step AI SEO playbook — audit, schema, measurement",
+        desc: "Content audit, structured data, a short answer up top, and measurement. Plus a 90-day calendar to get it done.",
+      },
+      {
+        path: "answer-engine-optimization",
+        title: "AEO — Answer Engine Optimization (Google AI Overviews…)",
+        desc: "FAQ schema, 40–60 word short answers, Product schema. How to get into AI Overview citations…",
+      },
+    ],
+  },
+  aio: {
+    cellAria: "What the user gets from AI Overview",
+    panelAria: "Google with the AI Overview panel",
+    label: "AI Overview",
+    line1:
+      "<strong>To succeed in AI search</strong> you need: short 40–60&nbsp;word answers right after the heading, an FAQ section with FAQPage schema, fact-dense content with concrete numbers, and brand mentions from authoritative sources.",
+    line2:
+      "It targets <strong>a citation in the AI answer</strong>, not just a classic position in Google.",
+    sourcesLabel: "Sources:",
+    sources: ["searchengineland.com", "searchenginejournal.com"],
+    demotedPath: "seo-vs-geo-vs-aeo",
+    demotedTitle: "SEO vs. GEO vs. AEO: the complete guide…",
+  },
+  chat: {
+    cellAria: "What the user gets from an AI chatbot",
+    panelAria: "ChatGPT answer",
+    brand: "ChatGPT",
+    answerLead: "For AI search, three layers matter:",
+    bullets: [
+      "<strong>Classic SEO</strong> as the foundation — without it, AI won't find you.",
+      "<strong>Structured data</strong> (FAQPage, Product, HowTo) for citations.",
+      "<strong>Brand mentions</strong> in authoritative sources — without them, it won't cite you.",
+    ],
+    sources: ["searchenginejournal.com", "reddit.com"],
+  },
 };
 
 /** Stat bar (4 dlaždice). */
@@ -217,7 +284,7 @@ export const quartetHead: SectionHead = {
     "These aren't synonyms or trend labels. Each discipline has its own platforms, its own signals, and its own time horizon. The mistake is doing all of them at once, with no order.",
 };
 
-/** Sekce 03 — Anatomie AI-friendly stránky (SVG zůstává v .astro). */
+/** Sekce 03 — Anatomie AI-friendly stránky (SVG zůstává v .astro, text ve `wireframe`). */
 export const anatomyHead: SectionHead = {
   eyebrowNum: "03",
   eyebrow: "Anatomy of an AI-friendly page",
@@ -254,11 +321,24 @@ export const anatomyList = [
   },
 ];
 
-/** FreeStrip promo (props pro komponentu). LATER-WAVE (free PDF). */
-export const freeStrip = {
-  title: "The six signals of an AI-friendly page as",
-  titleHighlight: "a ready-made guide for your homepage",
+/**
+ * SVG wireframe popisky (text uvnitř `<svg>` v sekci 03). Značky/souřadnice SVG
+ * zůstávají v `index.astro` (sdílené). Ukázka JSON-LD kódu v SVG = jazykově
+ * neutrální, ponechaná v šabloně.
+ */
+export const wireframe = {
+  aria:
+    "Wireframe of an ideal AI-friendly page with six numbered elements: an H1 as a question, a short answer, dense text, subheadings, an FAQ, and schema markup.",
+  h1: "H1: What is AI SEO?",
+  answerLabel: "SHORT ANSWER",
+  h2: "H2: How to start with GEO?",
+  faqLabel: "FAQ",
+  faqQ1: "Q: How do I optimize for ChatGPT?",
+  faqQ2: "Q: What's the difference between SEO and GEO?",
 };
+
+/** FreeStrip promo. LATER-WAVE (free PDF) → null skryje sekci (A's conditional render). */
+export const freeStrip: { title: string; titleHighlight: string } | null = null;
 
 /** Sekce 04 — Pillar promo. */
 export const pillarPromo = {
@@ -275,40 +355,29 @@ export const pillarPromo = {
     "When your customer wants an answer, they ask ChatGPT, Perplexity, or Google with AI Overview. You need your brand <strong>in that answer</strong> — with a path that leads back to you. The guide shows exactly what to change on a website or e-shop.",
 };
 
-/** Sekce 05 — Vybrané články. LATER-WAVE (blog) — čeká na conditional render od A. */
+/** Sekce 05 — Vybrané články. LATER-WAVE (blog) → prázdné pole skryje sekci. */
 export const articlesHead: SectionHead = {
   eyebrowNum: "05",
   eyebrow: "Featured reads",
   title: "Practical reading <strong>for this week</strong>",
 };
 
-export const scards = [
-  {
-    href: "/ai-seo-playbook/",
-    d: "practice",
-    tag: "Playbook",
-    time: "9 min",
-    title: "The four-step AI SEO playbook",
-    desc: "Content audit, structured data, a short answer up top, and measurement. Plus a 90-day calendar for getting it done.",
-    words: "About 1,400 words",
-  },
-  {
-    href: "/decision-matrix/",
-    d: "matrix",
-    tag: "Decision",
-    time: "10 min",
-    title: "Decision matrix — what to use when",
-    desc: "For e-shops, B2B services, local businesses, and publishers. Plus a decision tree to walk through your own situation.",
-    words: "About 1,500 words",
-  },
-];
+export const scards: {
+  href: string;
+  d: string;
+  tag: string;
+  time: string;
+  title: string;
+  desc: string;
+  words: string;
+}[] = [];
 
 export const articlesMore = {
   label: "See all articles",
   href: "/blog/",
 };
 
-/** Sekce 06 — Nabídka (3 produkty). LATER-WAVE (komerční) — ceny + render čekají na A / commercial wave. */
+/** Sekce 06 — Nabídka (3 produkty). LATER-WAVE (komerční) → prázdné pole skryje sekci. */
 export const offersHead: SectionHead = {
   eyebrowNum: "06",
   eyebrow: "What you can do next",
@@ -317,59 +386,19 @@ export const offersHead: SectionHead = {
     "From a free guide to a full audit by specialists. Pick based on how much you want to handle yourself and&nbsp;how much to leave to&nbsp;us.",
 };
 
-export const offers = [
-  {
-    // Interim: /free-guide/ slug zatím neexistuje (later-wave static-route rename).
-    // Míří na existující /navod-zdarma/ (200), aby nebyl 404. A's P3 sekci stejně skryje.
-    href: "/navod-zdarma/",
-    mod: "free",
-    tag: "Free guide",
-    priceMain: "Free",
-    priceNote: "instant download",
-    priceVat: "",
-    title: "A ready-made homepage guide for the AI&nbsp;era",
-    desc: "An annotated wireframe, three structural principles, and copy templates. Six A4 pages you can take straight to your own homepage.",
-    bullets: [
-      "6&nbsp;pages of concrete changes",
-      "Homepage wireframe with 10&nbsp;annotations",
-      "Three principles + 5&nbsp;common mistakes",
-    ],
-    cta: "Download free",
-  },
-  {
-    href: "/pack/",
-    mod: "pack",
-    tag: "AI&nbsp;SEO Wireframe Pack",
-    priceMain: "Coming soon",
-    priceNote: "one-time",
-    priceVat: "",
-    title: "A complete framework for 7&nbsp;page types",
-    desc: "A full set of wireframes, annotations, and copy templates — all ready to use on your site right away. No consultants, no months of work.",
-    bullets: [
-      "7&nbsp;annotated wireframes",
-      "Copy templates + structured-data examples",
-      "Guidance for common CMS and e-commerce platforms",
-    ],
-    cta: "View the Pack",
-  },
-  {
-    href: "/audit/",
-    mod: "audit",
-    featuredPill: "★ Highest value",
-    tag: "AI&nbsp;SEO audit by Sniper Design",
-    priceMain: "Get a quote",
-    priceNote: "one-time",
-    priceVat: "",
-    title: "A precise plan for your specific site",
-    desc: "A thorough analysis of your site by the Sniper Design team. A prioritized list of changes with an impact estimate, plus a 60-minute consultation over the results.",
-    bullets: [
-      "An audit of technicals, content, and trust",
-      "A prioritized list of changes with impact estimates",
-      "A 60-minute consultation with our team",
-    ],
-    cta: "Request an audit",
-  },
-];
+export const offers: {
+  href: string;
+  mod: string;
+  tag: string;
+  priceMain: string;
+  priceNote: string;
+  priceVat: string;
+  title: string;
+  desc: string;
+  bullets: string[];
+  cta: string;
+  featuredPill?: string;
+}[] = [];
 
-/** Eyebrow num pro SniperDesignBigContact. */
-export const bigContactEyebrowNum = "07";
+/** Eyebrow num pro SniperDesignBigContact. First-wave: sekce 05/06 skryté → bigContact = 05. */
+export const bigContactEyebrowNum = "05";
