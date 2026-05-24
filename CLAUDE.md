@@ -170,7 +170,10 @@ code-review → security-review → Semgrep na `git diff --staged` (tichý výst
 ### Rizika / gotchas (EN-specifické)
 
 - **macOS `Icon\r` korupce v `.git/`** — při forku se naklonovaly 0-bytové `Icon\r` soubory do `.git/refs/**` (+ logs/objects/...) → `fatal: bad object refs/Icon?`, blokuje fetch. **Fix:** `find .git -name $'Icon\r' -delete` (smazat všech ~16). Může se vrátit (Finder custom icon). Vyřešeno 2026-05-24.
-- **i18n externalizace A byla neúplná** — sdílené šablony měly hardcoded CZ text/doménu. A dodělal first-wave (b8be195+6ce7d01), ALE zbývají gapy (→ requesty v `aiseo-global.md`): **brand logo Header.astro:17 + Footer.astro:12 + copyright Footer.astro:31** (hardcoded `aiseo-optimalizace.cz`, nečte `site.name`); homepage residual CZ text v `index.astro` (mockupy/SVG/CTA); later-wave sekce 05/06/FreeStrip nejsou conditional. **EN to NEopravuje sám** — čeká na A.
+- **Fork-owned indexing soubory (POZOR při pullu z `cz/main`)** — EN si přizpůsobil dva soubory, kde CZ verze obsahuje CZ-specifický obsah:
+  - `astro.config.mjs` `sitemap()` filter = **EN allowlist 8 first-wave stránek** (CZ má negativní filtr; pull z A → držet EN allowlist, doplnit jen nové first-wave URL při překladu later-wave).
+  - `public/robots.txt` `Sitemap:` line = `https://seoforai.net/...` (CZ má svou doménu; pull z A by ji přepsal zpět — držet EN doménu). FYI A: námět udělat robots.txt doménově-aware route (`aiseo-global.md`).
+- **i18n externalizace A — first-wave HOTOVO (historie).** Sdílené šablony měly hardcoded CZ text/doménu; vyřešeno P1–P6 (A externalizoval `621a406`/`0ab989a`/`6405982`/`65b56ba`, EN konzumoval). Detail viz § VII. Pro later-wave (blog chrome, ArticleCard CTA „Číst", EmailCapture leadSourceTag) bude potřeba další externalizace od A (admin §5).
 - **`content.config.ts` schema: `description` 70–160 znaků** — build (astro check) failne při překročení. Při překladu hlídat délku (US texty bývají delší).
 - **`set:html` + scoped CSS** — vložený obsah nedostane Astro scope atribut. Rich tituly (`ui.*Html`) fungují jen díky **globálním** `h2 strong`/`h2 .hl` pravidlům. Per-mutace v EN je `sectionFaqTitleHtml` **generický bez `{abbr}`** (enum klíče AIO/PRAXE/MATICE nejsou EN-display-safe).
 - **EmailCapture POSTuje na CZ Ecomail list 12** (hardcoded ve sdílené komponentě) — v first-wave EmailCapture/free-PDF NErenderovat; vlastní EN Ecomail je later-wave (free-PDF).
@@ -199,8 +202,10 @@ Linky v e-mailech/zprávách neklikat přes computer-use; ověřit URL přes Chr
 | **Homepage polish P2/P3/P4** | ✅ HOTOVO — A externalizoval (`0ab989a`), EN přeložil `trio`/`wireframe`/`ui` + `badge:"AI SEO"` + skryl later-wave sekce (`scards/offers:[]`, `freeStrip:null`) — commit `e512458`. Homepage 100% EN, 0 CZ zbytků. |
 | **P5 RelatedSections (sekce)** | ✅ HOTOVO (`9395ccc`) — A externalizoval (`6405982`), EN pullnul + přeložil `ui.relatedEyebrow`/`relatedTitleHtml`/`relatedCta` + `ui.sectionBadge` (`AIO="AI SEO"`). Live: `/seo/` related = EN + 0 CZ; `/ai-seo/` titulek „for AI SEO". |
 | **Obsah „AIO"→„AI Overviews"** | ✅ HOTOVO (`9395ccc`) — QA sekcí odhalilo pozůstatek; 5 first-wave souborů (pillar + aeo/aio/prakticky-postup/rozhodovaci-matice, ~99×, vše = Google AI Overviews funkce). Enum klíče `abbr:"AIO"`/`currentAbbr="AIO"` v aio.mdx zachovány. Live: 0 viditelných „AIO" kromě P6. |
-| **P6 [slug].astro raw enum** | 🟠 OTEVŘENO → A (`aiseo-global.md`) — sdílená route renderuje raw `entry.data.abbr` v hero badge (ř.48→185) + breadcrumb (ř.171) + JSON-LD (ř.102/103). Live: `/ai-seo/` hero=„AIO", `/ai-seo-playbook/`=„PRAXE", `/decision-matrix/`=„MATICE". Fix = `ui.sectionBadge[abbr] ?? abbr` (pattern P5). Kosmetika 3 stránek, neblokuje. |
-| GA4 + GSC | ⏳ uživatel zakládá → pak Secrets |
+| **P6 [slug].astro raw enum** | ✅ HOTOVO (A `65b56ba` + EN `9b76b01`) — A zavedl `displayAbbr = ui.sectionBadge[abbr] ?? abbr` (hero/breadcrumb/JSON-LD); raw enum jen u CSS hooků/`colorByAbbr`/`currentAbbr`. EN pullnul `[slug].astro`. Live: `/ai-seo/` hero=„AI SEO", `/ai-seo-playbook/`=„the playbook", `/decision-matrix/`=„the decision matrix"; 0 raw enumů. |
+| **Sitemap (GSC)** | ✅ HOTOVO (`48a4d6b`) — `astro.config.mjs` sitemap filter přepsán z CZ negativního na **EN allowlist 8 first-wave stránek** (auto-sitemap jinak submitoval i later-wave CZ stránky). Live `sitemap-0.xml` = 8 URL. **GSC submit:** `https://seoforai.net/sitemap-index.xml`. |
+| **robots.txt** | ✅ HOTOVO (`b032b6b`) — `public/robots.txt` `Sitemap:` line opravena z CZ domény na `https://seoforai.net/sitemap-index.xml`. |
+| GA4 + GSC | ⏳ uživatel zakládá → pak Secrets (sitemap připravený k submitu) |
 
 ### Backlog / later-wave (dle roadmapy: web → články → free PDF → paid PDF → audity)
 
