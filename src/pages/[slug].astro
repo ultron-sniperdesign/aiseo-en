@@ -45,7 +45,11 @@ const crumb = ui.sectionContext[entry.data.abbr] ?? entry.data.abbr;
  * Subtitle bere DESCRIPTIVE část za první pomlčkou (např. "Search Engine Optimization"),
  * aby se neopakovala se zkratkou. Pokud title pomlčku neobsahuje, použije celý title.
  */
-const heroAbbr = entry.data.abbr;
+// Display badge (CZ = abbr; EN fork přepíše AIO → "AI SEO"). Použito pro hero badge,
+// breadcrumb a Article schema (about/articleSection). Raw enum `entry.data.abbr`
+// zůstává pro CSS hooky (data-abbr), colorByAbbr lookup a currentAbbr do RelatedSections.
+const displayAbbr = ui.sectionBadge[entry.data.abbr] ?? entry.data.abbr;
+const heroAbbr = displayAbbr;
 const titleParts = entry.data.title.split(" — ");
 const afterDash = titleParts.length > 1 ? titleParts.slice(1).join(" — ") : entry.data.title;
 // Pokud descriptive část obsahuje parenthetical, oddělíme subtitle od tagline.
@@ -99,8 +103,8 @@ const articleJsonLd = {
   datePublished: entry.data.updated,
   dateModified: entry.data.updated,
   inLanguage: site.inLanguage,
-  about: entry.data.abbr,
-  articleSection: entry.data.abbr,
+  about: displayAbbr,
+  articleSection: displayAbbr,
   wordCount,
   timeRequired: `PT${readingMinutes}M`,
   mainEntityOfPage: { "@type": "WebPage", "@id": articleURL },
@@ -168,7 +172,7 @@ function renderFaqMarkdown(text: string): string {
   jsonLd={allLd}
   image={ogImage}
   ogType="article"
-  breadcrumb={[{ label: entry.data.abbr, href: `/${entry.data.slug}/` }]}
+  breadcrumb={[{ label: displayAbbr, href: `/${entry.data.slug}/` }]}
 >
   <div class="page" data-abbr={entry.data.abbr} style={heroStyle}>
     <!-- HERO -->
