@@ -11,13 +11,13 @@ faq:
   - q: "How long does the first AI-citability audit take?"
     a: "For your top 20 pages, budget 2–4 hours. For each page, just 4 questions: is the answer in the first 60 words, are there facts and numbers, is the H2/H3 structure logical, is there FAQPage schema."
   - q: "How do I measure whether AI cites me?"
-    a: "A manual Google search of your top 10 keywords once a month (watching for the AIO panel), Google Search Console (Featured Snippets, FAQ rich snippets), tools like Otterly or Profound for citation share in ChatGPT/Perplexity, and optionally specialized AIO/GEO trackers."
+    a: "A manual Google search of your top 10 keywords once a month (watching for the AI Overviews panel), Google Search Console (Featured Snippets, FAQ rich snippets), tools like Otterly or Profound for citation share in ChatGPT/Perplexity, and optionally specialized AI Overviews/GEO trackers."
   - q: "Which schema types are most important?"
     a: "For content pages: Article (with author, datePublished, image), FAQPage (for Q&A sections), HowTo (for guides). For the brand: Organization (logo, social profiles), WebSite (sitelinks search box). Validate with the Google Rich Results Test."
   - q: "Which tools do you recommend?"
-    a: "Google Search Console (Featured Snippets + FAQ rich snippets, the free core of measurement), Otterly or Profound (mention monitoring in ChatGPT/Perplexity), and for a technical audit Screaming Frog or Ahrefs Site Audit. For AIO presence, a manual sheet of your top 10 keywords is enough to start."
+    a: "Google Search Console (Featured Snippets + FAQ rich snippets, the free core of measurement), Otterly or Profound (mention monitoring in ChatGPT/Perplexity), and for a technical audit Screaming Frog or Ahrefs Site Audit. For AI Overviews presence, a manual sheet of your top 10 keywords is enough to start."
   - q: "Is an answer block and an FAQ enough to get into AI Overviews?"
-    a: "No — it's a necessary but not sufficient condition. Without a solid SEO baseline (indexing, authority), Google won't show you in AIO. Without brand mentions, ChatGPT won't cite you. The playbook is the whole cycle: SEO foundations → answer block + FAQ → measurement → iteration."
+    a: "No — it's a necessary but not sufficient condition. Without a solid SEO baseline (indexing, authority), Google won't show you in AI Overviews. Without brand mentions, ChatGPT won't cite you. The playbook is the whole cycle: SEO foundations → answer block + FAQ → measurement → iteration."
   - q: "In what order should I do the 4 steps — in parallel or sequentially?"
     a: "Sequentially, one after another. Without the audit (step 1) you don't know what to fix. Without schema markup (step 2) AI engines don't understand the structure, so the answer block doesn't help them. Without the right content structure (step 3) measurement has nothing to report — you'll only see 'no citation,' not the reason. A practical schedule for a small business: week 1 audit, weeks 2–3 schema implementation on your top 20 pages, weeks 4–6 rewriting answer blocks and FAQs, week 7 setting up measurement in Looker Studio. First evaluation after 90 days."
   - q: "What if I have no pages in the top 10 — is it worth doing GEO/AEO?"
@@ -32,7 +32,7 @@ howto:
     - name: "Structured answers (answer block + context)"
       text: "Every article starts with a 40–60 word answer block right after the H1 — a visually separated box with an 'X is …' definition, the key mechanism, and the practical implication. Below it, detailed context with 6–10 H2 sections (300–500 words each). A pyramid structure: AI engines pull from the first ~1,000 characters, so put the most important things up top."
     - name: "Measurement: SERP feature tracking + AI citation monitoring"
-      text: "Set up measurement in 4 layers. (1) Google Search Console: Featured Snippet impressions, FAQ rich snippets, AIO presence. (2) Google Analytics 4: organic sessions per page, time on page, scroll depth. (3) AI citation share: manually via ChatGPT and Perplexity queries once a month, professionally via Otterly or Profound. (4) A Looker Studio dashboard unifying all sources. First evaluation after 90 days."
+      text: "Set up measurement in 4 layers. (1) Google Search Console: Featured Snippet impressions, FAQ rich snippets, AI Overviews presence. (2) Google Analytics 4: organic sessions per page, time on page, scroll depth. (3) AI citation share: manually via ChatGPT and Perplexity queries once a month, professionally via Otterly or Profound. (4) A Looker Studio dashboard unifying all sources. First evaluation after 90 days."
 ---
 
 import Insight from "../../components/blocks/Insight.astro";
@@ -127,7 +127,7 @@ Each subheading should answer a user's **sub-query**. A clear hierarchy usually 
 
 ### Question 4: Does it have an FAQ section with `schema.org/FAQPage` markup?
 
-FAQPage schema is a **direct channel** to Google AI Overviews — Google pulls Q&A from it into the AIO panel.
+FAQPage schema is a **direct channel** to Google AI Overviews — Google pulls Q&A from it into the AI Overviews panel.
 
 **The fix:** if not, add it. Take the questions from **People Also Ask** (PAA) boxes and Google Search Console (queries with rising impressions but falling CTR).
 
@@ -259,19 +259,19 @@ This site has a prominent bold definition in every section (**"X is…"**). It i
 | **FAQ rich-snippet appearances** | GSC → Performance → Search Appearance | weekly |
 | **Brand mentions in ChatGPT** | Otterly, Profound | monthly |
 | **Citation share in Perplexity** | a manual audit or Profound | monthly |
-| **AIO presence count** | a manual sheet of your top 10 keywords (see below) | monthly |
+| **AI Overviews presence count** | a manual sheet of your top 10 keywords (see below) | monthly |
 | **AI crawler hits** | a Caddy/Nginx access-log filter | daily |
 
 <div class="card-h3">
 
-### A manual AIO check
+### A manual AI Overviews check
 
 If you don't have a budget for tools, do a **manual check once a month**:
 
 1. Take your top 10 keywords (from GSC)
 2. For each, open `https://google.com/search?q=<keyword>`
-3. Note: did the AIO panel appear? Are you in the citations?
-4. Does a click come to you from the AIO panel?
+3. Note: did the AI Overviews panel appear? Are you in the citations?
+4. Does a click come to you from the AI Overviews panel?
 
 </div>
 
@@ -319,7 +319,7 @@ The key: **don't skip phases.** Each layer builds on the previous one. Without a
 
 - [ ] Audit your top 20 pages against the 4 questions from Step 1
 - [ ] Classify pages (short/long, informational/transactional)
-- [ ] Choose a strategy (AIO embrace or bypass) — see the [Decision matrix](/decision-matrix/)
+- [ ] Choose a strategy (AI Overviews embrace or bypass) — see the [Decision matrix](/decision-matrix/)
 
 </div>
 
@@ -339,8 +339,8 @@ The key: **don't skip phases.** Each layer builds on the previous one. Without a
 
 ### Weeks 7–10: Measurement and iteration
 
-- [ ] Set up tracking (GSC + a manual AIO presence sheet)
-- [ ] A weekly manual AIO check for your top 10 keywords
+- [ ] Set up tracking (GSC + a manual AI Overviews presence sheet)
+- [ ] A weekly manual AI Overviews check for your top 10 keywords
 - [ ] A monthly AI citation audit (ChatGPT/Perplexity)
 
 </div>
@@ -349,7 +349,7 @@ The key: **don't skip phases.** Each layer builds on the previous one. Without a
 
 ### Weeks 11–13: Optimize based on data
 
-- [ ] Analysis: which pages are AIO "stealing" traffic from? → consider `nosnippet`
+- [ ] Analysis: which pages are AI Overviews "stealing" traffic from? → consider `nosnippet`
 - [ ] Brand-mention building (Reddit, guest posts, podcasts)
 - [ ] Iterate answer blocks based on CTR data
 

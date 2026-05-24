@@ -15,12 +15,17 @@
  */
 
 import { getCollection } from "astro:content";
+import { ui } from "~/i18n/strings";
 
 interface Props {
   currentAbbr: string;
 }
 
 const { currentAbbr } = Astro.props;
+
+// Display badge aktuální sekce (CZ = abbr; EN přepíše AIO → "AI SEO"). Vloží se do titulku.
+const currentBadge = ui.sectionBadge[currentAbbr] ?? currentAbbr;
+const relatedTitleHtml = ui.relatedTitleHtml.replace("{abbr}", currentBadge);
 
 type ColorTriple = { d: string; tint: string };
 const colorByAbbr: Record<string, ColorTriple> = {
@@ -30,15 +35,6 @@ const colorByAbbr: Record<string, ColorTriple> = {
   AIO: { d: "var(--color-aio)", tint: "var(--color-aio-tint)" },
   PRAXE: { d: "var(--color-praxe)", tint: "var(--color-praxe-tint)" },
   MATICE: { d: "var(--color-matice)", tint: "var(--color-matice-tint)" },
-};
-
-const contextLabel: Record<string, string> = {
-  SEO: "První disciplína · SEO",
-  GEO: "Druhá disciplína · GEO",
-  AEO: "Třetí disciplína · AEO",
-  AIO: "Čtvrtá disciplína · AIO",
-  PRAXE: "Návod · Praktický postup",
-  MATICE: "Rozhodování · Kdy co použít",
 };
 
 const allSections = await getCollection("sections");
@@ -52,10 +48,8 @@ const related = allSections
   related.length > 0 && (
     <section class="related">
       <header class="related__head">
-        <span class="eyebrow">Související</span>
-        <h2 class="related__title">
-          Tři sekce, které <strong>jdou dohromady s {currentAbbr}</strong>
-        </h2>
+        <span class="eyebrow">{ui.relatedEyebrow}</span>
+        <h2 class="related__title" set:html={relatedTitleHtml} />
       </header>
 
       <div class="related__grid">
@@ -65,13 +59,13 @@ const related = allSections
           return (
             <a href={`/${r.data.slug}/`} class="rcard" style={rStyle}>
               <div class="rcard__row">
-                <div class="rcard__abbr">{r.data.abbr}</div>
-                <span class="rcard__index">{contextLabel[r.data.abbr] ?? r.data.abbr}</span>
+                <div class="rcard__abbr">{ui.sectionBadge[r.data.abbr] ?? r.data.abbr}</div>
+                <span class="rcard__index">{ui.sectionContext[r.data.abbr] ?? r.data.abbr}</span>
               </div>
               <h3 class="rcard__title">{r.data.title.split(" — ")[0] ?? r.data.title}</h3>
               <p class="rcard__desc">{r.data.description}</p>
               <span class="rcard__cta">
-                Číst sekci <span aria-hidden="true">→</span>
+                {ui.relatedCta} <span aria-hidden="true">→</span>
               </span>
             </a>
           );
@@ -102,7 +96,7 @@ const related = allSections
     color: var(--color-ink);
     margin: 0;
   }
-  .related__title strong { font-weight: 600; }
+  .related__title :global(strong) { font-weight: 600; }
 
   .related__grid {
     display: grid;

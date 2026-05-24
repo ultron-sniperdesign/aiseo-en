@@ -132,6 +132,21 @@ export const ui = {
     MATICE: "Decision · When to use what",
   } as Record<string, string>,
 
+  // RelatedSections blok (konec sekcí) — eyebrow / titulek ({abbr} = sectionBadge[current]) / CTA
+  relatedEyebrow: "Related",
+  relatedTitleHtml: 'Three related sections <strong>for {abbr}</strong>',
+  relatedCta: "Read the section",
+
+  // Velký abbr badge sekcí (RelatedSections karty + titulek). AIO→"AI SEO" (AIO je v EN mrtvý).
+  sectionBadge: {
+    SEO: "SEO",
+    GEO: "GEO",
+    AEO: "AEO",
+    AIO: "AI SEO",
+    PRAXE: "the playbook",
+    MATICE: "the decision matrix",
+  } as Record<string, string>,
+
   // Blog kategorie (crumb + filter chips + card tag); klíč = frontmatter category
   category: {
     tutorial: "Tutorial",
