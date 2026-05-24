@@ -98,14 +98,27 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      // Vyloučit ze sitemap:
-      // - /seo-a-geo — není kanonická URL (redirect na pillar)
-      // - /*/dekujeme/ — thank-you stránky mají noindex
-      // - /geo-v2 — design preview / work-in-progress, ne pro Google
-      filter: (page) =>
-        !page.includes("/seo-a-geo") &&
-        !page.includes("/dekujeme") &&
-        !page.includes("/geo-v2"),
+      // EN first-wave ALLOWLIST — do sitemap jdou JEN přeložené EN stránky.
+      // Web zděděný z CZ obsahuje i later-wave stránky (blog + 12 článků,
+      // /pack/, /audit/, /navod-zdarma/, /kontakt/, /gdpr/), které jsou ZATÍM
+      // české a do Google indexu EN domény nepatří. Allowlist (ne blocklist),
+      // aby žádná nepřeložená/nepřipravená stránka nemohla prosáknout do indexu.
+      // Při přidání later-wave vlny se sem URL doplní. (Fork-owned indexing
+      // policy — stejná kategorie jako `redirects`; CZ má vlastní negativní filtr.)
+      filter: (page) => {
+        const path = new URL(page).pathname;
+        const firstWave = new Set([
+          "/",
+          "/seo/",
+          "/generative-engine-optimization/",
+          "/answer-engine-optimization/",
+          "/ai-seo/",
+          "/ai-seo-playbook/",
+          "/decision-matrix/",
+          "/seo-vs-geo-vs-aeo/",
+        ]);
+        return firstWave.has(path);
+      },
       // Build-time datum jako lastmod pro všechny stránky.
       // Google `lastmod` používá, pokud je konzistentně přesné — přesně to děláme.
       lastmod: new Date(),
