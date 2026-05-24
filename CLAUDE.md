@@ -196,7 +196,8 @@ Linky v e-mailech/zprávách neklikat přes computer-use; ověřit URL přes Chr
 | OG obrázky (EN) | ✅ 8× gpt-image-2 light-editorial (`9b4347f`) |
 | P1 brand logo | ✅ A externalizoval (`621a406`) + EN `brand` nastaven (`29bad3a`) — header/footer = seoforai.net |
 | Boardy + CLAUDE.md (krok M) | ✅ |
-| **Homepage polish P2/P3/P4** | ✅ HOTOVO — A externalizoval (`0ab989a`), EN přeložil `trio`/`wireframe`/`ui` + `badge:"AI SEO"` + skryl later-wave sekce (`scards/offers:[]`, `freeStrip:null`) — commit `e512458`. Homepage 100% EN, 0 CZ zbytků (ověřeno v built HTML). |
+| **Homepage polish P2/P3/P4** | ✅ HOTOVO — A externalizoval (`0ab989a`), EN přeložil `trio`/`wireframe`/`ui` + `badge:"AI SEO"` + skryl later-wave sekce (`scards/offers:[]`, `freeStrip:null`) — commit `e512458`. Homepage 100% EN, 0 CZ zbytků. |
+| **P5 RelatedSections (sekce)** | 🟠 OTEVŘENO — sdílená `RelatedSections.astro` (blok „Související" na konci 6 sekcí) hardcoded CZ + ukazuje „AIO" (enum). EN nemá data-páku → request P5 v `aiseo-global.md`, čeká na A. Po fixu pullnout + přeložit. (QA pozn.: uniklo — vizuální QA jen homepage, ne sekce.) |
 | GA4 + GSC | ⏳ uživatel zakládá → pak Secrets |
 
 ### Backlog / later-wave (dle roadmapy: web → články → free PDF → paid PDF → audity)
