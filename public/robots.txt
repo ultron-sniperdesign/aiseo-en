@@ -72,4 +72,4 @@ Allow: /
 Disallow: /_review/
 Disallow: /download/
 
-Sitemap: https://aiseo-optimalizace.cz/sitemap-index.xml
+Sitemap: https://seoforai.net/sitemap-index.xml
