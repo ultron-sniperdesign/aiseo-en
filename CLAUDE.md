@@ -196,7 +196,7 @@ Linky v e-mailech/zprávách neklikat přes computer-use; ověřit URL přes Chr
 | OG obrázky (EN) | ✅ 8× gpt-image-2 light-editorial (`9b4347f`) |
 | P1 brand logo | ✅ A externalizoval (`621a406`) + EN `brand` nastaven (`29bad3a`) — header/footer = seoforai.net |
 | Boardy + CLAUDE.md (krok M) | ✅ |
-| **Homepage polish P2/P3/P4** | ✅ A dořešil sdílenou vrstvu (`0ab989a`): trio/wireframe/aria-CTA → `index.ts` (`trio`/`wireframe`/`ui`), sekce conditional, badge data-driven. **EN follow-up (odloženo — pauza):** pullnout `0ab989a` → přeložit `trio`/`wireframe`/`ui` v EN `index.ts` + `badge:"AI SEO"` (aio) + skrýt later-wave sekce (`scards/offers:[]`, `freeStrip:null`). `/free-guide/` 404 interim-fixnuto (`c9c9e27`). |
+| **Homepage polish P2/P3/P4** | ✅ HOTOVO — A externalizoval (`0ab989a`), EN přeložil `trio`/`wireframe`/`ui` + `badge:"AI SEO"` + skryl later-wave sekce (`scards/offers:[]`, `freeStrip:null`) — commit `e512458`. Homepage 100% EN, 0 CZ zbytků (ověřeno v built HTML). |
 | GA4 + GSC | ⏳ uživatel zakládá → pak Secrets |
 
 ### Backlog / later-wave (dle roadmapy: web → články → free PDF → paid PDF → audity)
