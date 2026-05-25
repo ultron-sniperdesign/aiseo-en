@@ -207,13 +207,19 @@ Linky v e-mailech/zprávách neklikat přes computer-use; ověřit URL přes Chr
 | **robots.txt** | ✅ HOTOVO — interim fix (`b032b6b`, lokální override) → **A převedl na route** `src/pages/robots.txt.ts` (`1cb3dfb`, `Sitemap:` z `Astro.site`), EN smazal override + pullnul route (`e566330`). Built `dist/robots.txt` → `Sitemap: https://seoforai.net/sitemap-index.xml` automaticky, fork už robots.txt neforkuje. |
 | **GA4 analytics** | ✅ LIVE — ID `G-BSGLXLHJNX` nastaveno jako GH Secret `PUBLIC_GA4_MEASUREMENT_ID` (EN self-service přes gh) + redeploy. Sdílený `BaseLayout.astro` renderuje gtag (`anonymize_ip`, honoruje Sec-GPC/DNT). Live na `/` i `/ai-seo/`. Žádná editace šablony. |
 | GSC | ⏳ verification token (`PUBLIC_GSC_VERIFICATION`) čeká na uživatele; sitemap připravený k submitu (`https://seoforai.net/sitemap-index.xml`) |
+| **Authenticity audit (nativnost AJ)** | ✅ HOTOVO — všech 8 first-wave stránek (homepage+pillar+6 sekcí) prošlo 2-průchodovým GPT-5.5 auditem (kalky/slovosled/kolokace; ne obsah) přes skill `open-ai-api-core`. Live: 0 „e-shop", 0 reziduálních kalků. **DB: `docs/en-translation-style.md` (26 pravidel TR-1…TR-26)** — aplikovat proaktivně na later-wave překlady. Commity: `f93b455`/`a31a243`/`5ac3994`/`615801d`/`7bd301b`/`43edb14`/`cc7ac82` (+ homepage `935a9d3`). |
 
 ### Backlog / later-wave (dle roadmapy: web → články → free PDF → paid PDF → audity)
 
-- Blog wave: 12 článků (přepsat/vynechat CZ-only) + blog/index + blog chrome (A dodělá externalizaci na vyžádání, admin §5).
-- Komerční: free PDF (`/free-guide/`), paid Pack (`/pack/`), audit (`/audit/`) — vlastní EN Stripe/Worker/Ecomail/PDFs.
+> **Recon 2026-05-26 (odloženo uživatelem — čeká na jasný EN business model):** žádná later-wave stránka NEjde „jen přeložit". Aplikuj na ně DB `docs/en-translation-style.md` proaktivně, až dojde na řadu.
+
+- **Blog wave:** 12 článků (5 je CZ-trh-specifických → přepsat/vynechat/nahradit EN-cílenými, ne 1:1) + blog/index. **Blokuje A:** blog chrome (ArticleCard CTA „Číst", blog/index jako datový modul, EmailCapture `leadSourceTag`) — externalizace §5.
+- **`/audit/`** (`audit.ts` = datový modul, přeložitelný), ALE business rozhodnutí: EN cena (CZ `9 990 Kč`/Pack `1 490 Kč`→?), DPH/fakturace pro mezinárodní, kontakt (`hello@seoforai.net`?), platformy formuláře (Upgates/Shoptet→WooCommerce/Shopify), proof („600+ CZ e-shopů"→?), endpoint objednávky.
+- **`/kontakt/`→`/contact/`** a **`/gdpr/`→`/privacy/`**: obsah **inline ve sdílených `.astro`** (žádný datový modul) → potřebuje **A externalizovat** (jako homepage/audit) NEBO fork-decision; + business identita (data controller) / právní jurisdikce. **Bug:** EmailCapture legal odkazuje `/privacy/`, ale stránka je `/gdpr/` (na EN rozbitý odkaz; neblokuje — EmailCapture se ve first-wave nerenderuje).
+- **Free PDF** (`/navod-zdarma/`→`/free-guide/`): vlastní EN PDF + EN Ecomail list + A externalizovat `EmailCapture.astro` (natvrdo CZ `…ecomailapp.cz/.../12/…` + tag „Lead — Návod zdarma").
+- **Paid Pack** (`/pack/`): vlastní EN Stripe/Worker/PDF produkt.
 - Static-route rename na EN URL (`kontakt`→`contact`, `navod-zdarma`→`free-guide`, `gdpr`→`privacy`) — fork-owned, dle potřeby.
-- GA4 + GSC: uživatel zakládá; napojit přes Secrets.
+- GSC verification token: uživatel dodá → `PUBLIC_GSC_VERIFICATION` Secret (GA4 už live).
 
 ---
 
