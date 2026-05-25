@@ -11,13 +11,13 @@ faq:
   - q: "How much does AEO cost?"
     a: "AEO isn't a separate line in the budget — it's a way of writing content and a layer of technical hygiene introduced as part of SEO/content marketing. If you already pay for content, the AEO playbook (short answers, FAQ sections, FAQPage/HowTo schema, fact density) costs nothing extra on new content. The cost begins with one-off changes to existing content (an audit + rewrite of your top 20 pages) and with paid tracking tools (Otterly, Profound — $29–500/mo), which make sense only with 20+ articles in the top 10."
   - q: "How long until results?"
-    a: "Featured Snippets (the classic 'position 0') you can capture typically within 2–8 weeks of implementing FAQPage schema and short answers — if you already rank in the top 10. AI Overviews activation is less predictable; it depends on whether Google generates an AI Overviews panel for the query at all and how often. A realistic horizon: first AI Overviews citations 1–3 months after implementation for well-ranking pages, systematic AI Overviews presence across a topic in 4–6 months."
-  - q: "Does AEO make sense for a small business or e-shop?"
-    a: "For a small business with educational content, a B2B/SaaS, or a specialized service — yes. The AEO playbook (short answers, FAQ, schema) raises the chance of a Featured Snippet and an AI Overviews citation, which can have a meaningful impact at low-to-medium competition in a local or niche segment. For an e-shop it depends on the catalog — categories with a research phase (electronics, sports, hobby) yes, purely transactional and impulse products marginally. For a local service with no informational layer, prioritize local SEO."
+    a: "You can typically capture Featured Snippets (the classic 'position 0') within 2–8 weeks of implementing FAQPage schema and short answers — if you already rank in the top 10. AI Overviews are less predictable; it depends on whether Google generates an AI Overviews panel for the query at all and how often. A realistic timeline: first AI Overviews citations 1–3 months after implementation for well-ranking pages, consistent AI Overviews visibility across a topic in 4–6 months."
+  - q: "Does AEO make sense for a small business or e-commerce site?"
+    a: "For a small business with educational content, a B2B/SaaS, or a specialized service — yes. The AEO playbook (short answers, FAQ, schema) raises the chance of a Featured Snippet and an AI Overviews citation, which can have a meaningful impact in a low-to-medium-competition local or niche segment. For an e-commerce site, it depends on the catalog: categories with a research phase (electronics, sports, hobby products), yes; purely transactional and impulse products, only marginally. For a local service with no informational layer, prioritize local SEO."
   - q: "Do I have to rewrite my site for AEO?"
     a: "You can apply the vast majority of changes to existing content gradually — add a 40–60 word answer block to an article, an FAQ section with real questions, FAQPage schema in the head. No redesign is needed. A full rewrite is only required for pages that completely lack structure (no subheadings, just narrative text). Start with your top 20 pages by organic traffic — see the practical process below."
   - q: "Is SEO enough, or do I have to do AEO too?"
-    a: "SEO is the essential foundation — without good Google rankings, Featured Snippets and AI Overviews often don't appear, because Google draws its candidates from the top 10. AEO is the layer that raises the chance Google picks *your* content from those top 10 as the direct answer. For many sites, AEO has a **more direct impact on traffic** than GEO (citations in ChatGPT/Perplexity), because Google AI Overviews reach more people. A realistic priority: SEO basics → AEO playbook → GEO for the advanced stage."
+    a: "SEO is the essential foundation — without good Google rankings, Featured Snippets and AI Overviews often don't appear, because Google draws its candidates from the top 10. AEO is the layer that raises the chance Google picks *your* content from those top 10 as the direct answer. For many sites, AEO has a **more direct impact on traffic** than GEO (citations in ChatGPT/Perplexity), because Google AI Overviews reach more people. A realistic priority: SEO basics → AEO playbook → GEO once you're more advanced."
   - q: "How do I measure AEO performance?"
     a: "A free baseline: Google Search Console → Performance → Search Appearance (FAQ rich snippets, HowTo) + Performance → Queries (Featured Snippet impressions) + Coverage (indexability). For AI Overviews, GSC doesn't yet have a dedicated metric — track it manually: once a month, test your top 10 keywords in Google and note where an AI Overviews panel appeared and whether it links to your site. More advanced tracking: Otterly or Profound — worth it with 20+ articles in the top 10."
   - q: "Isn't AEO just a rebrand of SEO?"
@@ -32,7 +32,7 @@ howto:
     - name: "Audit existing content"
       text: "For your top 20 pages (by organic traffic), check four points: (1) is the answer to the main query in the first 60 words, (2) does the page have an FAQ section with real user questions, (3) is there FAQPage schema markup, (4) are the H2/H3 structured as questions and sub-answers. Rewrite the answer block and add an FAQ on any page that fails 2 or more checks."
     - name: "Implement FAQPage schema"
-      text: "On your CMS (WordPress, Webflow, Astro) add an automatic FAQPage JSON-LD generator from the FAQ section. The schema must be in the <head>, the JSON must validate against schema.org/FAQPage, and the FAQ questions in HTML must exactly match the questions in the JSON-LD. Validate with the Google Rich Results Test."
+      text: "In your CMS (WordPress, Webflow, Astro), add an automatic FAQPage JSON-LD generator based on the FAQ section. The schema must be in the <head>, the JSON must validate against schema.org/FAQPage, and the FAQ questions in HTML must exactly match the questions in the JSON-LD. Validate with the Google Rich Results Test."
     - name: "HowTo schema for guides"
       text: "For every how-to article (the 'how to do X' category) add HowTo schema with explicit steps. AI Overviews prefer structured procedures over loose prose. Each step has @type HowToStep, position, name, and text."
     - name: "People Also Ask (PAA) extension"
@@ -72,16 +72,16 @@ AEO is most relevant where **the customer is asking something** and content on y
 
 <PersonaGrid>
   <Persona icon="📰" title="Publishers, blogs, and educational sites" chip="High impact" tone="aeo">
-    You live on organic traffic for informational queries. The AI Overviews panel can take your clicks but also cite you. Without the AEO playbook, you lose direct influence on both sides of the equation.
+    You depend on organic traffic for informational queries. The AI Overviews panel can take your clicks but also cite you. Without the AEO playbook, you lose direct influence on both sides of the equation.
   </Persona>
   <Persona icon="🏢" title="B2B companies and SaaS with a research phase" chip="High impact" tone="aeo">
-    The customer actively studies, compares, and looks for answers like "how to choose a CRM" or "the difference between X and Y." Featured Snippets and the AI Overviews panel answer them — and you want to be in the citation.
+    The customer actively studies, compares, and looks for answers like "how to choose a CRM" or "the difference between X and Y." Featured Snippets and the AI Overviews panel answer them — and you want to be cited.
   </Persona>
-  <Persona icon="🛒" title="E-shops with a research-driven catalog" chip="High impact" tone="aeo">
-    Electronics, sports, hobby, premium products. Categories and educational content threatened by zero-click search, but also a win for brand exposure.
+  <Persona icon="🛒" title="Online stores with a research-driven catalog" chip="High impact" tone="aeo">
+    Electronics, sports, hobby, premium products. Categories and educational content are threatened by zero-click search, but they can also drive brand exposure.
   </Persona>
   <Persona icon="⚖️" title="Professional and advisory services" chip="High impact" tone="aeo">
-    Lawyer, accountant, consultant, agency. People search for answers like "how to handle X" or "when do I need Y." The AEO playbook + a Featured Snippet places your short answers in the first wave of the SERP.
+    Lawyer, accountant, consultant, agency. People search for answers like "how to handle X" or "when do I need Y." The AEO playbook + a Featured Snippet puts your short answers near the top of the SERP.
   </Persona>
   <Persona icon="📍" title="Local services with an informational layer" chip="High impact" tone="aeo">
     An auto shop, salon, or restaurant with a blog about its field. Featured Snippets and local results don't compete — the combination works well.
@@ -91,7 +91,7 @@ AEO is most relevant where **the customer is asking something** and content on y
 <AntiPersona title="When AEO doesn't make sense">
   <ul>
     <li><strong>Purely transactional queries</strong> — nobody asks Google "how to X" before buying ordinary consumer goods.</li>
-    <li><strong>Impulse products with no research phase</strong> — priorities go to classic SEO + local SEO + PPC.</li>
+    <li><strong>Impulse products with no research phase</strong> — prioritize classic SEO + local SEO + PPC.</li>
   </ul>
 </AntiPersona>
 
@@ -122,7 +122,7 @@ This is the framework we apply repeatedly with clients — five areas where most
   },
 ]} />
 
-Not all 5 pillars have the same priority for every site — the order depends on your business type, the starting state of the site, and competition in your field. A concrete decision framework is in the [Decision matrix](/decision-matrix/) section.
+Not all 5 pillars have the same priority for every site — the order depends on your business type, the site's starting point, and competition in your field. A specific decision framework is in the [Decision matrix](/decision-matrix/) section.
 
 ## Key <strong>platforms</strong> for <span class="hl">AEO</span>
 
@@ -132,7 +132,7 @@ Not all 5 pillars have the same priority for every site — the order depends on
 
 A summary above the organic results, generated by the **Gemini** model. It triggers selectively — Google decides based on:
 
-- **Query type** — informational "what is X", "how to Y" → AI Overviews appears; transactional "buy X", navigational "acme login" → AI Overviews doesn't appear
+- **Query type** — informational "what is X", "how to Y" → the AI Overviews panel appears; transactional "buy X", navigational "acme login" → the AI Overviews panel doesn't appear
 - **Availability of trustworthy sources** — Google needs 3–5 authoritative pages that agree on the facts
 - **Geography** — rolled out widely across English-language markets through 2024–2025
 
@@ -152,7 +152,7 @@ An AI answer in the Edge browser and on Bing.com, built on **GPT-4** with real-t
 
 ### Google Featured Snippets
 
-The classic "position 0" — a short extract from one source above the organic results. It's existed since 2014, and AEO practices (FAQs, short answers after the H2) inherit it 1:1.
+The classic "position 0" — a short extract from one source above the organic results. It's existed since 2014, and AEO practices (FAQs, short answers after the H2) carry over from it directly.
 
 </div>
 
@@ -160,7 +160,7 @@ The classic "position 0" — a short extract from one source above the organic r
 
 ### Knowledge Panel and Knowledge Graph
 
-Entity data about a brand on the right of the SERP. It's not classic AEO, but a **brand entity** in the Knowledge Graph strengthens the chance of being cited in AI Overviews.
+Entity data about a brand on the right side of the SERP. It's not classic AEO, but a **brand entity** in the Knowledge Graph strengthens the chance of being cited in AI Overviews.
 
 </div>
 
@@ -255,14 +255,14 @@ As a rough guide by content type (the differences vary widely by vertical and sp
 | **Long how-to guides** | high | mixed / negative (users often make do with the extract) |
 | **Transactional / product pages** | low | minimal |
 
-**The rule for AEO that follows:** optimize short educational content and FAQs for the AI Overviews citation; for long guides, consider it selectively — sometimes it's strategically better to **exclude** part of the content from AI Overviews. Detail in the [Decision matrix](/decision-matrix/) section.
+**The resulting AEO rule:** optimize short educational content and FAQs for the AI Overviews citation; for long guides, consider it selectively — sometimes it's strategically better to **exclude** part of the content from AI Overviews. More details are in the [Decision matrix](/decision-matrix/) section.
 
 <Insight tone="aeo" icon="✦" label="Find out whether Google AI Overviews cite you today">
   Most sites we look at are **missing from the AI Overviews panel on relevant informational queries in their field** — even when they rank well in classic Google. If you want to know where your site stands in AI Overviews, Featured Snippets, and Bing Copilot, [we offer an AI visibility audit](/audit/) that shows where answer engines ignore you and what has the biggest impact.
 </Insight>
 
 <Insight tone="aeo" icon="✦" label="Real results from a combined playbook (SEO + AEO)">
-  **Several e-shops — roughly 3× organic traffic in 6 months.** The work: content, technical optimization, FAQ + Product schema, brand mentions, and link building. With the best-performing client, close to 5× over the same period. Results vary with the starting state, competition, and implementation capacity.
+  **Several e-commerce sites — roughly 3× organic traffic in 6 months.** The work: content, technical optimization, FAQ + Product schema, brand mentions, and link building. With the best-performing client, close to 5× over the same period. Results vary with the site's starting point, competition, and implementation capacity.
 </Insight>
 
 ## A <strong>practical process</strong> for <span class="hl">AEO</span>
@@ -274,7 +274,7 @@ As a rough guide by content type (the differences vary widely by vertical and sp
   },
   {
     title: "Implement FAQPage schema",
-    desc: "On your CMS (WordPress, Webflow, Astro) add an automatic FAQPage JSON-LD generator from the FAQ section. For an example in Astro Content Collections, see src/content.config.ts in this project.",
+    desc: "In your CMS (WordPress, Webflow, Astro), add an automatic FAQPage JSON-LD generator based on the FAQ section. For an example in Astro Content Collections, see src/content.config.ts in this project.",
   },
   {
     title: "HowTo schema for guides",
@@ -319,7 +319,7 @@ As a rough guide by content type (the differences vary widely by vertical and sp
   goodWhy="FAQPage schema, an answer block, fact density — none of it costs extra. Measurement and tracking come after you've collected data."
 />
 
-### What AEO concretely means in practice (the standard from article #1)
+### What AEO means in practice (the standard from the first article)
 
 <div class="standards">
   <div class="standard"><span class="standard__icon">🏷️</span><strong>FAQPage schema</strong> on every article with an FAQ section</div>
@@ -336,7 +336,7 @@ None of these things **cost extra**. If you put them off "until we have 20+ arti
     <li><strong>Advanced GSC interpretation</strong> — the "Search appearance: AI Overview" section (from 2025). Without 3–6 months of activity there's no data to evaluate.</li>
     <li><strong>A/B testing <code>data-nosnippet</code></strong> — selectively blocking the AI Overviews panel on long how-to guides. Requires a measurable baseline (before/after).</li>
     <li><strong>Professional AI Overviews tracking tools</strong> — Otterly, Profound. Worth it only with 20+ articles in the top 10.</li>
-    <li><strong>The strategic "do I want AI Overviews presence" discussion</strong> — requires real data on where the AI Overviews panel raises vs. lowers CTR.</li>
+    <li><strong>The strategic "do I want to appear in AI Overviews" discussion</strong> — requires real data on when the AI Overviews panel raises vs. lowers CTR.</li>
   </ul>
 </AntiPersona>
 
