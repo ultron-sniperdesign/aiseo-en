@@ -30,6 +30,11 @@
 | **TR-9** | `Google with AI Overview` (kalk „s funkcí") | `Google and see an AI Overview` / `Google's AI Overview` | kalk (předložka) | Nepřekládat „X s funkcí Y" doslovně přes „with"; přeformulovat, ať sloveso sedí. |
 | **TR-10** | sekvence `from definition through comparison to a decision matrix` | rozepsat slovesy: `breaks down each discipline, compares them, and ends with a decision matrix` | kalk (sekvence) | Vazba „od X přes Y k Z" je čitelná, ale překladově densní; nativní US copy radši přímá slovesa nebo prostý seznam. |
 | **TR-11** | `How to get started with GEO?` (otazník u „How to…") | bez „?" (`How to get started with GEO`) **nebo** skutečná otázka (`How do I get started with GEO?`) | slovosled / interpunkce | „How to…" je instruktážní fráze, ne otázka → otazník zní nenativně. Má-li to být otázka (FAQ/wireframe), použij `How do I…?` (konzistentní se zbytkem). |
+| **TR-12** | `reading comfort` | `readability` | kalk | České „čtivost / pohodlí čtení" → idiomatický US termín je `readability`. |
+| **TR-13** | `researches in AI`, `[sloveso] in ChatGPT` | `researches with AI tools`, `using ChatGPT`, `on ChatGPT` | předložka (kalk „v AI") | České „dělá něco v AI/v ChatGPT" → AJ `with AI tools` / `using X` / `on X`, ne `in X`. |
+| **TR-14** | `after a mature SEO program` (událostní rámec) | `once your SEO program is mature` (podmínka) | předložka / word-order | Zralost je stav/podmínka, ne událost, po které „jsi". Přeformuluj na `once … is mature`. |
+| **TR-15** | `competing for effort` | `competing for resources` (/ `attention` / `budget`) | kolokace | V AJ se soupeří O zdroje/pozornost/rozpočet, ne „o effort". |
+| **TR-16** | `X as a bold paragraph is a direct signal … showing where …` | `A bold paragraph … directly signals … where …` | word-order / nominalizace | Vyhni se naskládanému „is a signal … showing"; podmět dej dopředu a použij přímé sloveso (`signals`). |
 
 ### Obecné US konvence (preventivně — i když je audit zatím neoznačil)
 - **Pravopis:** `-ize` ne `-ise` (`optimize`, `organize`), `-or` ne `-our` (`color`, `favor`, `behavior`), `-er` ne `-re` (`center`), `analyze` ne `analyse`, `catalog` ne `catalogue`.
@@ -59,6 +64,9 @@
 |---------|-------|-------|--------|-----------|-------|
 | **Homepage `/`** (`index.ts` + footer.tagline) | 2026-05-24 | gpt-5.5 | 9 | 7 celé + 2 částečně | TR-1…TR-9 vzešly odtud. Verdikt auditora: „mostly natural and confident, only a handful of translation traces." |
 | **Homepage `/` — 2. průchod** | 2026-05-24 | gpt-5.5 | 5 | 3 | Žádná ze 7 oprav 1. průchodu znovu neoznačena (drží ✅). Aplikováno: #1→TR-10, #2→TR-11, #3 (`with no order`→`with no clear order`). Zahozeno: #4 (`orders the other three`) + #5 (`when to use which`) = variance/flip-flop. Verdikt: „largely native and idiomatic". **Klesající výnosy = konvergence → homepage uzavřena.** |
+| **Pillar `/seo-vs-geo-vs-aeo/`** | 2026-05-24 | gpt-5.5 | 6 (P1) + 7 (P2) | P1: 6 auditor + proaktivně 7× `e-shop` (TR-1), TR-4, TR-9 · P2: 7 | **TR-12…TR-16 odtud.** P1 opravy v P2 nere-flagnuté (drží); P2 odhalil 2. vrstvu na opraveném L152 (`competing for effort`→`for resources`, TR-15). Verdikt P2: „largely fluent, native-style US marketing English". |
+
+**Pillar — one-off opravy (mimo obecná pravidla, pro úplnost):** `Hire … a template`→`Build or commission a template` (zeugma — najímá se člověk, ne šablona) · `Write SEO+AEO+GEO-friendly at once`→`…-friendly content at once` (visící adjektivum) · `a path leads from those answers`→`there's a clear path from those answers` · `costs nothing extra over X`→`doesn't cost any more than X` · `AI Overviews will pull you up`→`…will boost your visibility` · `priority steps`→`prioritized next steps`. Pozn.: `e-shop`→primárně `e-commerce site`; `online store` použito, kde by vzniklo echo („sites and …") nebo char-limit (frontmatter description, ≤160).
 
 **Homepage — detail aplikovaných změn:**
 - `statBar.1.label`: + „they do" (TR-7)
