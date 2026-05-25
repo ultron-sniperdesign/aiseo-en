@@ -109,7 +109,7 @@ export const quartet: Quartet[] = [
     d: "seo",
     abbr: "SEO",
     name: "Search Engine Optimization",
-    desc: "Classic optimization for rankings on Google and Bing. It stays the foundation for everything else — without indexing, neither GEO nor AEO works.",
+    desc: "Classic optimization for rankings on Google and Bing. It remains the foundation for everything else — without indexing, neither GEO nor AEO works.",
     features: [
       "Targets the top 10 on Google",
       "First results in 3 to 6 months",
@@ -148,7 +148,7 @@ export const quartet: Quartet[] = [
     d: "aio",
     abbr: "AI SEO",
     name: "AI SEO — the umbrella",
-    desc: "The strategic umbrella over SEO, GEO, and AEO. The coherent plan that ties classic rankings, generative citations, and answer panels together — so the other three pull in one direction.",
+    desc: "The strategic umbrella over SEO, GEO, and AEO. The coherent plan that ties classic rankings, generative citations, and answer panels together — so the other three pull in the same direction.",
     features: [
       "Targets a coherent strategy",
       "Iterated quarter over quarter",
@@ -181,7 +181,7 @@ export const trioVerdicts = [
   {
     type: "AI chatbot (ChatGPT, Perplexity, Gemini)",
     key: "What the user gets",
-    val: "A conversational answer. A click to you isn't on the cards.",
+    val: "A conversational answer. A click to you isn't in the cards.",
   },
 ];
 
@@ -251,7 +251,7 @@ export const statBar = [
   {
     num: "<strong>Far more often</strong>",
     label:
-      "For informational and problem-solving queries, AI Overviews show up far more often than across searches on average",
+      "For informational and problem-solving queries, AI Overviews show up far more often than they do across searches on average",
     src: "A zero-click threat to your organic traffic on educational topics",
   },
   {
@@ -301,7 +301,7 @@ export const anatomyList = [
   },
   {
     title: "A short answer in the first 40–60 words",
-    desc: "A concise definition sits right under the H1. A short answer up top raises the odds that an AI system quickly grasps the page's main point and finds it as a citable passage.",
+    desc: "A concise definition sits right under the H1. A short answer up top raises the odds that an AI system quickly grasps the page's main point and identifies it as a citable passage.",
   },
   {
     title: "Dense text with concrete facts",
@@ -331,7 +331,7 @@ export const wireframe = {
     "Wireframe of an ideal AI-friendly page with six numbered elements: an H1 as a question, a short answer, dense text, subheadings, an FAQ, and schema markup.",
   h1: "H1: What is AI SEO?",
   answerLabel: "SHORT ANSWER",
-  h2: "H2: How to start with GEO?",
+  h2: "H2: How to get started with GEO?",
   faqLabel: "FAQ",
   faqQ1: "Q: How do I optimize for ChatGPT?",
   faqQ2: "Q: What's the difference between SEO and GEO?",
@@ -346,13 +346,13 @@ export const pillarPromo = {
   eyebrow: "Main guide",
   title:
     'SEO vs. GEO vs. AEO: the <strong>complete guide</strong> to <span class="hl">AI search</span>',
-  lead: "The main article that breaks down each discipline from definition through comparison to a decision matrix. Recommended reading in one sitting.",
+  lead: "The main article that breaks down each discipline from definition through comparison to a decision matrix. Best read in one sitting.",
   meta: ["About 3,000 words", "Seven common questions", "Comparison table", "12-minute read"],
   btnLabel: "Open the main guide",
   btnHref: "/seo-vs-geo-vs-aeo/",
   excerptMark: "From the main guide",
   excerptText:
-    "When your customer wants an answer, they ask ChatGPT, Perplexity, or Google with AI Overview. You need your brand <strong>in that answer</strong> — with a path that leads back to you. The guide shows exactly what to change on a website or e-shop.",
+    "When your customer wants an answer, they ask ChatGPT, Perplexity, or Google and see an AI Overview. You need your brand <strong>in that answer</strong> — with a path that leads back to you. The guide shows exactly what to change on a website or e-commerce site.",
 };
 
 /** Sekce 05 — Vybrané články. LATER-WAVE (blog) → prázdné pole skryje sekci. */

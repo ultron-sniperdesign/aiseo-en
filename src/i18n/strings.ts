@@ -72,7 +72,7 @@ export const nav = {
 
 export const footer = {
   tagline:
-    "A practical guide to AI SEO — search in the age of AI. What SEO, GEO, and AEO each do, how they come together as AI SEO, and when to use which on a website or e-shop.",
+    "A practical guide to AI SEO — search in the age of AI. What SEO, GEO, and AEO each do, how they come together as AI SEO, and when to use which on a website or e-commerce site.",
   /** Skládá se jako: © {rok} {doména} · {builtNote} */
   builtNote: "built with Astro · hosted in the EU",
   sitemapLabel: "Sitemap",
