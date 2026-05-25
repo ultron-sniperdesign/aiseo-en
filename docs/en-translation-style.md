@@ -35,10 +35,19 @@
 | **TR-14** | `after a mature SEO program` (událostní rámec) | `once your SEO program is mature` (podmínka) | předložka / word-order | Zralost je stav/podmínka, ne událost, po které „jsi". Přeformuluj na `once … is mature`. |
 | **TR-15** | `competing for effort` | `competing for resources` (/ `attention` / `budget`) | kolokace | V AJ se soupeří O zdroje/pozornost/rozpočet, ne „o effort". |
 | **TR-16** | `X as a bold paragraph is a direct signal … showing where …` | `A bold paragraph … directly signals … where …` | word-order / nominalizace | Vyhni se naskládanému „is a signal … showing"; podmět dej dopředu a použij přímé sloveso (`signals`). |
+| **TR-17** | `concretely [delivers]`, `concrete results` | `actually delivers`, `specific results` / `real results` | kalk („konkrétní/konkrétně") | „concretely + sloveso" a „concrete results" zní překladově. **Ponech `concrete facts/numbers/values`** — to je validní AJ kolokace. |
+| **TR-18** | `works as long-term visibility building`, `works as visibility building` | `builds long-term visibility`, `builds visibility` | nominalizace | „works as [X] building" → použij přímé sloveso (`builds`). |
+| **TR-19** | `when each one is in order` (= funguje/hotovo) | `when each one is in place` | kalk („v pořádku") | „in order" ve významu „připravené/funkční" → `in place`. |
+| **TR-20** | `until there's time` | `until you have time` | kalk („až bude čas") | Bezpodmětné „je čas" → osobní `you have time`. |
+| **TR-21** | `the starting state of the site` | `the site's starting point` | kalk | „výchozí stav webu" → idiomatické `starting point`. |
+| **TR-22** | `sharply cut the odds that …` | `dramatically reduce the chances that …` | kolokace | „cut the odds" není přirozený idiom; `reduce the chances`. |
+| **TR-23** | `Detail in the [X] section.` (samostatná věta) | `More details are in the [X] section.` | kalk („Detail v…") | České „Detail v sekci X" jako celá věta → `More details are in…`. |
+| **TR-24** | `A realistic horizon:` / time `horizon` | `A realistic timeline:` / `timeline` | kalk | Pro časový rámec použij `timeline`, ne `horizon`. (Pozn.: `time horizon` jako termín jinde OK.) |
 
 ### Obecné US konvence (preventivně — i když je audit zatím neoznačil)
 - **Pravopis:** `-ize` ne `-ise` (`optimize`, `organize`), `-or` ne `-our` (`color`, `favor`, `behavior`), `-er` ne `-re` (`center`), `analyze` ne `analyse`, `catalog` ne `catalogue`.
-- **Slovník:** `while` ne `whilst`, `among` ne `amongst`, `toward` ne `towards` (US tíhne k bezkoncovkovému).
+- **Slovník:** `while` ne `whilst`, `among` ne `amongst`, `toward` ne `towards` (US tíhne k bezkoncovkovému), `business hours` ne `opening hours`.
+- **Kalkové vazby „X over Y":** `value over the top 10` → `value beyond…`; `costs nothing extra over X` → `doesn't cost any more than X` (čes. „nad rámec" ≠ angl. „over").
 - **Interpunkce:** tečka/čárka uvnitř uvozovek (US), em dash `—` bez mezer pro vsuvky (drží se stávající styl webu).
 - **„e-shop" rodina:** viz TR-1. Pár: `a website or an e-commerce site` / `website or e-commerce site`.
 
@@ -65,6 +74,9 @@
 | **Homepage `/`** (`index.ts` + footer.tagline) | 2026-05-24 | gpt-5.5 | 9 | 7 celé + 2 částečně | TR-1…TR-9 vzešly odtud. Verdikt auditora: „mostly natural and confident, only a handful of translation traces." |
 | **Homepage `/` — 2. průchod** | 2026-05-24 | gpt-5.5 | 5 | 3 | Žádná ze 7 oprav 1. průchodu znovu neoznačena (drží ✅). Aplikováno: #1→TR-10, #2→TR-11, #3 (`with no order`→`with no clear order`). Zahozeno: #4 (`orders the other three`) + #5 (`when to use which`) = variance/flip-flop. Verdikt: „largely native and idiomatic". **Klesající výnosy = konvergence → homepage uzavřena.** |
 | **Pillar `/seo-vs-geo-vs-aeo/`** | 2026-05-24 | gpt-5.5 | 6 (P1) + 7 (P2) | P1: 6 auditor + proaktivně 7× `e-shop` (TR-1), TR-4, TR-9 · P2: 7 | **TR-12…TR-16 odtud.** P1 opravy v P2 nere-flagnuté (drží); P2 odhalil 2. vrstvu na opraveném L152 (`competing for effort`→`for resources`, TR-15). Verdikt P2: „largely fluent, native-style US marketing English". |
+| **`/seo/` (seo.mdx)** | 2026-05-24 | gpt-5.5 | 14 (P1) + 8 (P2) | P1: 14 auditor + 5× `e-shop`, `Reading comfort` (TR-12), 2× `concrete` theme · P2: 8 + sjednocení 3× `starting state` | **TR-17…TR-24 odtud.** Husté nálezy (jiná překladová vrstva). P1 opravy v P2 nere-flagnuté. Cross-page: `sharply cut the odds` (TR-22) opraveno i na homepage `index.ts` (konzistence). Verdikt P2: „mostly fluent native US marketing copy". |
+
+**SEO sekce — one-off opravy:** `answers reaches people`→`people get answers` · `occupy the stages`→`show up at each stage` · `search popularity`→`search demand` · `post-mortem optimization`→`after-the-fact optimization` · `the vast majority is content`→`…involve content` · `Implementation runs alongside SEO`→`These should be implemented alongside SEO` · `where your traffic appears`→`where people find you` · `Helps machine readability`→`Helps machines read the content`.
 
 **Pillar — one-off opravy (mimo obecná pravidla, pro úplnost):** `Hire … a template`→`Build or commission a template` (zeugma — najímá se člověk, ne šablona) · `Write SEO+AEO+GEO-friendly at once`→`…-friendly content at once` (visící adjektivum) · `a path leads from those answers`→`there's a clear path from those answers` · `costs nothing extra over X`→`doesn't cost any more than X` · `AI Overviews will pull you up`→`…will boost your visibility` · `priority steps`→`prioritized next steps`. Pozn.: `e-shop`→primárně `e-commerce site`; `online store` použito, kde by vzniklo echo („sites and …") nebo char-limit (frontmatter description, ≤160).
 

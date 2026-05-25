@@ -59,7 +59,7 @@ export const pillDefs: PillDef[] = [
     fullName: "Search Engine Optimization",
     oneLine: "Rankings on Google and Bing.",
     quick:
-      "Classic optimization for a place in the top 10 organic results. Without an indexable, well-structured site you sharply cut the odds that AI tools find you, understand you, and use you as a source.",
+      "Classic optimization for a place in the top 10 organic results. Without an indexable, well-structured site you dramatically reduce the chances that AI tools find you, understand you, and use you as a source.",
     href: "/seo/",
   },
   {
