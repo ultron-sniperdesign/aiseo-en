@@ -1,44 +1,44 @@
 ---
-title: "Jak omezit AI Overviews v Googlu (návod 2026)"
-description: "Krok za krokem: jak omezit Google AI Overviews v prohlížeči, na účtu i na vlastním webu. Funkční metody pro Chrome, Edge, Firefox, Brave i mobil."
-answer: "Google AI Overviews nelze garantovaně globálně vypnout — Google nedává master switch. Lze je ale omezit nebo obejít: (1) přes Search Labs experiment v Google účtu (dostupnost závisí na účtu, regionu, rollout fázi); (2) přes web filter `&udm=14`, který aktuálně potlačuje AIO i další SERP prvky; (3) přepnutím výchozího vyhledávače na Brave Search nebo DuckDuckGo. Pro vlastní web pak `data-nosnippet` nebo `nosnippet` direktivy selektivně, podle typu dotazu."
-slug: "jak-vypnout-ai-overview"
+title: "How to Turn Off AI Overviews in Google (2026 Guide)"
+description: "How to turn off or limit Google AI Overviews — in your browser, your Google account, on mobile, and on your own site. Working methods for 2026."
+answer: "Google AI Overviews can't be reliably turned off everywhere — Google doesn't offer a master switch. But you can limit or bypass them: (1) the Search Labs experiment in your Google account (availability varies by account, region, and rollout stage); (2) the `&udm=14` web filter, which currently suppresses AI Overviews and other SERP features; (3) switching your default search engine to Brave Search or DuckDuckGo. For your own site, use `data-nosnippet` or `nosnippet` directives selectively, by query type."
+slug: "how-to-turn-off-ai-overviews"
 category: "defensive"
 updated: "2026-05-06"
 variant: "rich"
 keywords:
-  - "jak vypnout ai overview"
-  - "ai overview vypnout"
-  - "google ai overview vypnout"
-  - "turn off ai overview google"
-  - "how to disable ai overview"
-  - "ai overviews vypnout"
+  - "how to turn off ai overviews"
+  - "turn off ai overviews"
+  - "disable ai overviews google"
+  - "how to disable ai overviews"
+  - "google ai overviews off"
+  - "remove ai overviews from search"
 faq:
-  - q: "Lze AI Overviews v Googlu úplně vypnout?"
-    a: "Ne, Google nedává garantovaný globální vypínač. Lze AIO omezit pro část dotazů přes Search Labs experiment (pokud ho ve vašem účtu vidíte) nebo obejít přepnutím výchozího vyhledávače na Brave Search či DuckDuckGo, které vlastní AIO panel nemají. Web filter `&udm=14` aktuálně potlačuje většinu AIO prvků v Googlu, ale nejde o oficiální dlouhodobou direktivu — Google může chování parametru kdykoli změnit."
-  - q: "Vrátí se AI Overviews po updatu prohlížeče?"
-    a: "Search Labs nastavení je vázané na Google účet a může se resetovat při větších změnách AI funkcí. Web filter `&udm=14` je přepnutí Google search režimu — funguje, dokud Google chování parametru nezmění. Brave Search a DuckDuckGo AIO neobsahují, ale mohou mít vlastní AI/odpovědní funkce, které je vhodné zkontrolovat v jejich nastavení."
-  - q: "Jak vypnu AI Overviews na mobilu (Android/iOS)?"
-    a: "Postupy se liší podle verze Google app, regionu a účtu. Obecná cesta na obou platformách: Google app → profilová ikona → Settings → Search Labs → vyhledat experiment týkající se AI Overviews → vypnout. Pokud Search Labs nevidíte nebo postup nezabírá, spolehlivější workaround je nastavit web filter v prohlížeči nebo přepnout výchozí vyhledávač na Brave Search nebo DuckDuckGo."
-  - q: "Jak omezit AI Overviews pro vlastní web?"
-    a: "Použít snippet direktivy podle Google dokumentace: `<meta name=\"robots\" content=\"nosnippet\">` plošně (omezí použití textu ve snippetech i AI Overviews na celé stránce — i klasické featured snippets) nebo `data-nosnippet` selektivně na konkrétních HTML blocích, kde nechcete, aby Google obsah použil. Není to blokace samostatného AIO crawleru — Google AIO pracuje s Googlebotem a indexovaným obsahem, snippet direktivy omezují použití obsahu, ne crawl."
-  - q: "Proč by někdo chtěl omezit AI Overviews?"
-    a: "Hlavní důvody: (1) AIO odpovědi mohou být u některých dotazů nepřesné nebo vynechávat kontext; (2) panel zabírá horní část SERPu a u některých dotazů může snižovat CTR organických výsledků; (3) preference pro klasické vyhledávání. Reálný dopad AIO na traffic se ale výrazně liší podle typu dotazu, intentu, vertikály i toho, zda je váš web v AIO citovaný — než se rozhodnete pro snippet restrikce, vyhodnoťte data v GSC."
-  - q: "Funguje vypnutí AI Overviews i v Bingu / Copilotu?"
-    a: "Bing Chat a Copilot jsou integrální součástí Bing.com a Edge a Microsoft pro ně standardní vypínač nedává. Lze je obejít přepnutím na klasický Bing search bez Chat módu nebo použitím jiného search enginu. V Edge prohlížeči lze postranní Copilot panel deaktivovat v Settings → Sidebar → Copilot."
+  - q: "Can you fully turn off AI Overviews in Google?"
+    a: "No — Google doesn't offer a guaranteed global switch. You can limit AI Overviews for some queries through the Search Labs experiment (if it shows up in your account) or bypass them by switching your default search engine to Brave Search or DuckDuckGo, which have no AI Overviews panel of their own. The `&udm=14` web filter currently suppresses most AI Overviews elements in Google, but it isn't an official long-term directive — Google can change how the parameter behaves at any time."
+  - q: "Will AI Overviews come back after a browser update?"
+    a: "The Search Labs setting is tied to your Google account and can reset when Google makes larger changes to its AI features. The `&udm=14` web filter switches Google into a web-results mode — it works until Google changes how the parameter behaves. Brave Search and DuckDuckGo don't include AI Overviews, but they may have their own AI/answer features worth checking in their settings."
+  - q: "How do I turn off AI Overviews on mobile (Android/iOS)?"
+    a: "The exact labels vary by Google app version, region, and account. The general path on both platforms: Google app → profile icon → Settings → Search Labs → find the AI Overviews experiment → turn it off. If you don't see Search Labs or the steps don't work, a more reliable workaround is to set a web filter in your browser or switch your default search engine to Brave Search or DuckDuckGo."
+  - q: "How do I limit AI Overviews for my own site?"
+    a: "Use the snippet directives from Google's documentation: `<meta name=\"robots\" content=\"nosnippet\">` site-wide (this limits how your text is used in snippets and AI Overviews across the whole page — including classic featured snippets) or `data-nosnippet` selectively on specific HTML blocks where you don't want Google to use the content. This isn't a way to block a separate AI Overviews crawler — Google's AI Overviews work with Googlebot and indexed content; snippet directives limit how the content is used, not whether it's crawled."
+  - q: "Why would anyone want to limit AI Overviews?"
+    a: "The main reasons: (1) AI Overviews answers can be inaccurate or miss context for some queries; (2) the panel takes up the top of the SERP and can lower the click-through rate of organic results for some queries; (3) a preference for classic search. But the real impact of AI Overviews on traffic varies widely by query type, intent, vertical, and whether your site is cited in them — before you reach for snippet restrictions, check the data in Google Search Console."
+  - q: "Does turning off AI Overviews also work in Bing / Copilot?"
+    a: "Bing Chat and Copilot are built into Bing.com and Edge, and Microsoft doesn't offer a standard off switch for them. You can work around them by switching to classic Bing search without Chat mode, or by using a different search engine. In the Edge browser, you can disable the side Copilot panel under Settings → Sidebar → Copilot."
 howto:
-  name: "Jak omezit AI Overviews v Google vyhledávání"
+  name: "How to limit AI Overviews in Google Search"
   steps:
-    - name: "Přihlaste se do Google účtu"
-      text: "Search Labs experimenty fungují jen pro přihlášené uživatele. Otevřete google.com a klikněte na profilovou ikonu vpravo nahoře."
-    - name: "Otevřete Search Labs"
-      text: "Přejděte na labs.google.com nebo přes Google → Settings → Search Labs. Dostupnost experimentů se liší podle účtu a regionu — pokud Search Labs nevidíte, přejděte rovnou ke kroku 4 nebo 5."
-    - name: "Vypněte AI Overviews experiment (pokud ho vidíte)"
-      text: "V seznamu experimentálních funkcí najděte 'AI Overviews and more in Search'. Vypnutí může omezit experimentální AI prvky, ale Google může AIO zobrazovat i mimo Labs — nejde o garantovaný globální vypínač."
-    - name: "Použijte web filter `&udm=14` (alternativa)"
-      text: "Přidejte parametr &udm=14 na konec Google URL — typicky potlačuje AIO i další rozšířené SERP prvky a vrací klasické modré odkazy. Není to oficiální dlouhodobá direktiva; Google může chování parametru kdykoli změnit."
-    - name: "Zvažte alternativní vyhledávač"
-      text: "Brave Search a DuckDuckGo neimplementují Google AIO panel. Pozor: nestačí používat Brave jako prohlížeč — musíte změnit výchozí vyhledávač. Brave Search má vlastní AI odpovědní funkce, které je vhodné zkontrolovat v nastavení."
+    - name: "Sign in to your Google account"
+      text: "Search Labs experiments work only for signed-in users. Open google.com and click the profile icon in the top right."
+    - name: "Open Search Labs"
+      text: "Go to labs.google.com or open Google → Settings → Search Labs. Experiment availability varies by account and region — if you don't see Search Labs, skip ahead to step 4 or 5."
+    - name: "Turn off the AI Overviews experiment (if you see it)"
+      text: "In the list of experimental features, find 'AI Overviews and more in Search.' Turning it off can limit experimental AI features, but Google may still show AI Overviews outside Labs — it isn't a guaranteed global switch."
+    - name: "Use the `&udm=14` web filter (alternative)"
+      text: "Add the &udm=14 parameter to the end of the Google URL — it typically suppresses AI Overviews and other expanded SERP features and returns classic blue links. It isn't an official long-term directive; Google can change how the parameter behaves at any time."
+    - name: "Consider an alternative search engine"
+      text: "Brave Search and DuckDuckGo don't implement Google's AI Overviews panel. Note: using Brave as a browser isn't enough — you have to change your default search engine. Brave Search has its own AI answer feature worth checking in the settings."
 ---
 import PersonaGrid from "../../components/blocks/PersonaGrid.astro";
 import Persona from "../../components/blocks/Persona.astro";
@@ -47,49 +47,49 @@ import Mistake from "../../components/blocks/Mistake.astro";
 import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
 import Stepper from "../../components/blocks/Stepper.astro";
 
-## Proč hledat <strong>„jak vypnout</strong> <span class="hl">AI Overviews"</span>
+## Why people search for <strong>"how to turn off</strong> <span class="hl">AI Overviews"</span>
 
-Google AI Overviews jsou v Česku aktivní od **léta 2025**. Pro některé uživatele jsou užitečné — krátký souhrn nahoře nad výsledky šetří čas. Pro jiné jsou frustrující: panel zabírá horní polovinu SERPu, AI u některých dotazů odpovídá nepřesně a uživatel musí scrollovat pro klasické modré odkazy, které dříve byly hned dostupné.
+Google AI Overviews rolled out widely across 2024 and 2025. For some people they're useful — a short summary at the top of the results saves time. For others they're frustrating: the panel takes up the top half of the SERP, the AI answers some queries inaccurately, and you have to scroll past it to reach the classic blue links that used to be right there.
 
-V Google Trends jsou u CZ v období 1/2025 → 4/2026 mezi rising queries u seed dotazu `ai overview` několik defenzivních formulací (`turn off ai overview google`, `how to disable ai overview google`). Jde o **indikativní signál zájmu**, ne o reprezentativní měření poptávky — z rising queries nelze odvozovat objem ani share dotazů, jen směr růstu.
+In Google Trends, defensive searches like "turn off AI Overviews" and "how to disable AI Overviews" show up among the rising queries alongside "AI Overviews." That's an indication of interest, not a representative measure of demand — rising queries tell you the direction of growth, not the volume or share.
 
-Tento návod pokrývá **hlavní dnes používané metody**, jak AIO omezit nebo obejít — od nastavení v účtu po web-only vyhledávání a alternativní search enginy. Jako bonus: jak omezit použití obsahu v AIO pro vlastní web (pro publishers, kteří vidí pokles organické CTR u informačních non-brand dotazů).
+This guide covers the **main methods people use today** to limit or bypass AI Overviews — from account settings to web-only search and alternative search engines. As a bonus: how to limit the way your own site's content is used in AI Overviews (for publishers who see a drop in organic CTR on informational, non-brand queries).
 
-> **Krátká odpověď** _(stav k 5/2026)_:
-> - **Globální vypnutí AI Overviews Google nenabízí.**
-> - **Reálně fungují 3 cesty pro uživatele:** Search Labs experiment (závislé na účtu), `&udm=14` URL parametr (web-only režim), nebo přepnutí na Brave Search / DuckDuckGo.
-> - **Pro vlastní web** lze jen omezovat použitelnost obsahu (`data-nosnippet`, `nosnippet`, `max-snippet:0`) — ne „vypnout AIO crawler". Nasazujte selektivně po segmentaci dotazů, ne plošně.
+> **The short answer** _(as of May 2026)_:
+> - **Google doesn't offer a global off switch for AI Overviews.**
+> - **Three routes actually work for users:** the Search Labs experiment (account-dependent), the `&udm=14` URL parameter (web-only mode), or switching to Brave Search / DuckDuckGo.
+> - **For your own site,** you can only limit how your content can be used (`data-nosnippet`, `nosnippet`, `max-snippet:0`) — not "turn off the AI Overviews crawler." Deploy it selectively after segmenting your queries, not site-wide.
 
-## Metoda 1 — <strong>Search Labs</strong> <span class="hl">(experiment v Google účtu)</span>
+## Method 1 — <strong>Search Labs</strong> <span class="hl">(experiment in your Google account)</span>
 
-Nejjednodušší metoda pro přihlášené uživatele:
+The easiest method for signed-in users:
 
-1. Přihlaste se do Google účtu na **google.com**
-2. Otevřete **Search Labs**: https://labs.google.com/search nebo přes profilovou ikonu → Settings → Search Labs
-3. Najděte experiment **„AI Overviews and more in Search"**
-4. Klikněte na přepínač do polohy **Off**
+1. Sign in to your Google account at **google.com**
+2. Open **Search Labs**: https://labs.google.com/search or via the profile icon → Settings → Search Labs
+3. Find the **"AI Overviews and more in Search"** experiment
+4. Flip the toggle to **Off**
 
-**Funguje typicky na:** Chrome, Edge, Firefox, Safari (přihlášený Google účet, desktop).
+**Typically works on:** Chrome, Edge, Firefox, Safari (signed-in Google account, desktop).
 
-**Limit:** Pokud ve vašem účtu vidíte experiment „AI Overviews and more in Search", vypnutí může omezit experimentální AI prvky. **Nejde ale o garantovaný globální vypínač všech AI Overviews** — Google je může zobrazovat i mimo Labs, dostupnost a efekt nastavení závisí na účtu, regionu a aktuálním rollout stavu. Pokud Search Labs experiment nevidíte vůbec, postup pro vás nefunguje.
+**The catch:** if you see the "AI Overviews and more in Search" experiment in your account, turning it off can limit experimental AI features. **But it isn't a guaranteed global switch for all AI Overviews** — Google may still show them outside Labs, and the availability and effect of the setting depend on your account, region, and current rollout state. If you don't see the Search Labs experiment at all, this method won't work for you.
 
-## Metoda 2 — <strong>`&udm=14` web filter</strong> <span class="hl">(URL parametr)</span>
+## Method 2 — <strong>`&udm=14` web filter</strong> <span class="hl">(URL parameter)</span>
 
-Tento parametr přepíná výsledky do **webového režimu**, kde se typicky nezobrazují AI Overviews ani část dalších rozšířených SERP prvků (People Also Ask, featured snippets) — vrací jen klasické modré odkazy.
+This parameter switches the results into **web mode**, where AI Overviews and some other expanded SERP features (People Also Ask, featured snippets) typically don't appear — it returns just the classic blue links.
 
-⚠️ **Důležité:** `&udm=14` **není oficiální dlouhodobá direktiva**. Jde o web filter, jehož chování může Google kdykoli změnit. Některé prvky SERPu se mohou lišit podle země a dotazu. Není to garantovaný permanentní vypínač.
+⚠️ **Important:** `&udm=14` **isn't an official long-term directive.** It's a web filter whose behavior Google can change at any time. Some SERP elements may differ by country and query. It isn't a guaranteed permanent off switch.
 
-### Jak ho aktivovat jednorázově
+### How to use it once
 
-Po vyhledávání přidejte na konec URL:
+After searching, add this to the end of the URL:
 
 ```
-https://www.google.com/search?q=váš+dotaz&udm=14
+https://www.google.com/search?q=your+query&udm=14
 ```
 
-### Jak ho nastavit jako default
+### How to set it as the default
 
-Přidejte si vlastní search engine v prohlížeči:
+Add a custom search engine in your browser:
 
 **Chrome / Edge / Brave:**
 
@@ -98,64 +98,64 @@ Přidejte si vlastní search engine v prohlížeči:
    - Name: `Google (web only)`
    - Shortcut: `gw`
    - URL: `https://www.google.com/search?q=%s&udm=14`
-3. Nastavit jako default
+3. Set it as the default
 
 **Firefox:**
 
-1. Pravým tlačítkem na Google search bar → **Add a Search Engine**
-2. Použijte URL výše
-3. V Settings → Search nastavit jako default
+1. Right-click the Google search bar → **Add a Search Engine**
+2. Use the URL above
+3. Set it as the default under Settings → Search
 
-Po aktivaci typicky vrací klasické modré odkazy bez AIO panelu — dokud Google chování parametru nezmění.
+Once it's on, it typically returns classic blue links with no AI Overviews panel — until Google changes how the parameter behaves.
 
-## Metoda 3 — <strong>Přepnutí</strong> <span class="hl">výchozího vyhledávače</span>
+## Method 3 — <strong>Switching</strong> <span class="hl">your default search engine</span>
 
-⚠️ **Pozor na záměnu prohlížeče a vyhledávače.** Brave a DuckDuckGo nabízejí jak prohlížeč, tak vlastní search engine. Pokud nainstalujete **Brave prohlížeč** a ponecháte **Google jako výchozí vyhledávač**, AIO uvidíte dál — Brave browser používá vyhledávač, který si nastavíte. AIO se netýkají prohlížeče, ale vyhledávače.
+⚠️ **Don't confuse the browser with the search engine.** Brave and DuckDuckGo offer both a browser and their own search engine. If you install the **Brave browser** but leave **Google as your default search engine**, you'll still see AI Overviews — the Brave browser uses whatever search engine you set. AI Overviews are a function of the search engine, not the browser.
 
 ### Brave Search
 
-**[Brave Search](https://search.brave.com)** je vlastní vyhledávač Brave. **Google AIO panel neimplementuje.** Brave Search má vlastní AI Answer feature, která je opt-in (ne default) — pokud chcete vyhledávání úplně bez AI funkcí, ověřte v nastavení.
+**[Brave Search](https://search.brave.com)** is Brave's own search engine. **It doesn't implement the Google AI Overviews panel.** Brave Search has its own AI Answer feature that's opt-in (not the default) — if you want search with no AI features at all, check the settings.
 
 ### DuckDuckGo
 
-**[DuckDuckGo](https://duckduckgo.com)** je tradiční privacy-first vyhledávač. Google AIO neimplementuje. Má vlastní DuckAssist (AI summaries v některých Wikipedia odpovědích) — opět opt-in.
+**[DuckDuckGo](https://duckduckgo.com)** is a long-standing privacy-first search engine. It doesn't implement Google AI Overviews. It has its own DuckAssist (AI summaries on some Wikipedia answers) — again opt-in.
 
 ### Ecosia / Startpage / Mojeek
 
-Další privacy-first alternativy. Žádná z nich Google AIO panel neimplementuje. Mohou ale mít vlastní AI/odpovědní funkce — zkontrolovat v nastavení každé z nich.
+More privacy-first alternatives. None of them implement the Google AI Overviews panel. They may have their own AI/answer features, though — check the settings of each.
 
-## Metoda 4 — <strong>Mobil</strong> <span class="hl">(Android, iOS)</span>
+## Method 4 — <strong>Mobile</strong> <span class="hl">(Android, iOS)</span>
 
-Na mobilu se **názvy položek liší podle verze Google app, účtu a regionu**. Na obou platformách funguje obecná cesta:
+On mobile, **the menu labels vary by Google app version, account, and region.** This general path works on both platforms:
 
-1. Otevřete **Google app** (ne Safari nebo Chrome)
-2. Profilová ikona vpravo nahoře → **Settings**
-3. **Search Labs** → vyhledat experiment týkající se AI Overviews → vypnout
+1. Open the **Google app** (not Safari or Chrome)
+2. Profile icon in the top right → **Settings**
+3. **Search Labs** → find the experiment related to AI Overviews → turn it off
 
-Pokud Search Labs experiment nevidíte nebo postup nezabírá, spolehlivější workaround:
+If you don't see the Search Labs experiment or the steps don't work, a more reliable workaround:
 
-- **Nastavit web filter** v prohlížeči (viz Metoda 2)
-- **Změnit výchozí vyhledávač** v prohlížeči na Brave Search nebo DuckDuckGo (Safari → Settings → Search → Search Engine; Chrome Android → Settings → Search engine)
+- **Set a web filter** in your browser (see Method 2)
+- **Change your default search engine** to Brave Search or DuckDuckGo (Safari → Settings → Search → Search Engine; Chrome on Android → Settings → Search engine)
 
-Discover, Assistant, Gemini a běžné Search **nemají jednotný veřejný „AI off" přepínač** — pokud chcete omezit AI prvky širokoplošně, jdete přes vyhledávač, ne přes jednu položku v nastavení.
+Discover, Assistant, Gemini, and regular Search **don't have a single public "AI off" toggle** — if you want to limit AI features broadly, go through the search engine, not a single setting.
 
-## Metoda 5 — Pro vlastní web: <strong>snippet direktivy</strong> <span class="hl">selektivně</span>
+## Method 5 — For your own site: <strong>snippet directives</strong> <span class="hl">selectively</span>
 
-Pokud u **informačních non-brand dotazů** vidíte v GSC pokles organické CTR po nástupu AIO, můžete testovat omezení použití vybraných bloků obsahu. Dvě úrovně podle podle dopadu — **netestujte plošně, segmentujte podle typu dotazu**.
+If you see a drop in organic CTR on **informational, non-brand queries** in Google Search Console after AI Overviews rolled out, you can test limiting how selected blocks of content are used. Two levels, depending on the impact — **don't test site-wide; segment by query type.**
 
-### Měkká blokace — `data-nosnippet` na konkrétních blocích
+### Soft block — `data-nosnippet` on specific blocks
 
 ```html
 <div data-nosnippet>
-  Tento odstavec se nepoužije ve snippetech ani v AI Overviews.
+  This paragraph won't be used in snippets or in AI Overviews.
 </div>
 ```
 
-`data-nosnippet` může Googlu zabránit použít konkrétní HTML blok jako textový snippet a podle Google dokumentace také omezit použití daného bloku v AI Overviews. **Nejde o blokaci samostatného AIO crawleru** — Google AIO pracuje s Googlebotem a indexovaným obsahem, direktiva omezuje použití textu, ne crawl.
+`data-nosnippet` can stop Google from using a specific HTML block as a text snippet and, according to Google's documentation, also limit how that block is used in AI Overviews. **It isn't a way to block a separate AI Overviews crawler** — Google's AI Overviews work with Googlebot and indexed content; the directive limits how the text is used, not whether it's crawled.
 
-Použít primárně na **úvodní answer block** dlouhých how-to průvodců, kde bývá kompletní stručná odpověď.
+Use it mainly on the **opening answer block** of long how-to guides, where the complete short answer usually sits.
 
-### Tvrdá blokace — `nosnippet` plošně
+### Hard block — `nosnippet` site-wide
 
 ```html
 <head>
@@ -163,140 +163,137 @@ Použít primárně na **úvodní answer block** dlouhých how-to průvodců, kd
 </head>
 ```
 
-Standardní zápis je `<meta name="robots" content="nosnippet">` (nebo Google-specific `<meta name="googlebot" content="nosnippet">`). **Omezí použití textového obsahu** ve snippetech a AI Overviews na celé stránce. **Není to odstranění stránky z výsledků ani kontrola všech AI funkcí.**
+The standard form is `<meta name="robots" content="nosnippet">` (or the Google-specific `<meta name="googlebot" content="nosnippet">`). It **limits how your text content is used** in snippets and AI Overviews across the whole page. **It doesn't remove the page from the results, and it doesn't control every AI feature.**
 
-⚠️ **Vedlejší dopad:** ztratíte také klasické featured snippets (pozice 0), které u některých dotazů přivádějí traffic. **Před plošným nasazením je minimum pilot na vybraném segmentu URL** a vyhodnocení dopadu v GSC; ideálně test na úrovni skupin stránek a dotazů (ne celého webu).
+⚠️ **Side effect:** you'll also lose classic featured snippets (position 0), which drive traffic for some queries. **At a minimum, pilot it on a selected set of URLs before rolling it out site-wide** and evaluate the impact in GSC — ideally test at the level of page groups and queries, not the whole site.
 
-### Maximální omezení — `max-snippet:0`
+### Maximum limit — `max-snippet:0`
 
 ```html
 <meta name="robots" content="max-snippet:0">
 ```
 
-Hard limit na 0 znaků snippet. Nastavení `max-snippet:0` výrazně omezuje možnost použít text stránky ve snippetech a může omezit i využití obsahu v AI Overviews. **Neznamená ale odstranění stránky z indexu** ani garanci nulové přítomnosti ve všech AI formátech.
+A hard limit of 0 characters per snippet. Setting `max-snippet:0` sharply limits the ability to use the page's text in snippets and can also limit how the content is used in AI Overviews. **But it doesn't remove the page from the index** or guarantee zero presence across every AI format.
 
-### Rozhodovací rámec pro snippet direktivy
+### A decision framework for snippet directives
 
-Snippet restrikce **nikdy nenasazujte plošně bez segmentace**:
+Never deploy snippet restrictions site-wide without segmenting:
 
-- **Testujte primárně u informačních non-brand dotazů**, kde AIO odpovídá bez nutnosti kliku a GSC ukazuje konkrétní pokles CTR
-- **Nepoužívejte plošně** na brandové, navigační, produktové a konverzní stránky bez samostatného vyhodnocení — u brandových dotazů je často cílem maximalizovat kontrolu SERPu, ne blokovat snippets, kvalitní brand snippet může být pro značku výhodnější než obranná blokace
-- **U YMYL obsahu (medicína, finance, právo)** zvažte dopad na důvěru v značku — chybějící snippet může poslat uživatele jinam
-- **U e-commerce** dopady často mírnější (intent je transakční, ne informační), ale stále testujte
+- **Test mainly on informational, non-brand queries** where an AI Overview answers the query without a click and GSC shows a clear CTR drop
+- **Don't apply them site-wide** to brand, navigational, product, and conversion pages without evaluating each separately — on brand queries the goal is often to maximize control of the SERP, not block snippets; a quality brand snippet can be more valuable than a defensive block
+- **For YMYL content (health, finance, law),** weigh the impact on brand trust — a missing snippet can send users elsewhere
+- **For e-commerce,** the impact is often milder (the intent is transactional, not informational), but test anyway
 
-## Pozor na <strong>AIO „dopad"</strong> <span class="hl">bez metodiky</span>
+## Beware of <strong>AI Overviews "impact"</strong> <span class="hl">claims with no methodology</span>
 
-V CZ marketingových diskusích kolují příklady „AIO snížila návštěvnost X webu o YY %". Než z nich vyvodíte závěry pro svůj web, ověřte:
+In marketing discussions you'll see claims like "AI Overviews cut site X's traffic by YY%." Before you draw conclusions for your own site, check:
 
-- **Zdroj dat** (GSC, GA4, Similarweb odhad, Ahrefs) — odhady z third-party nástrojů jsou aproximace, ne přesná čísla
-- **Kontrola sezónnosti** (porovnání period rok-na-rok, ne měsíc-na-měsíc)
-- **Kontrola jiných změn** (core update, redesign, technické změny, linkbuilding)
-- **Dotazová úroveň v GSC** — pokles na úrovni domény může pocházet z jiných důvodů než AIO; segmentace na non-brand vs brand a na úrovni intent (informační vs transakční) je nezbytná
+- **The data source** (GSC, GA4, a Similarweb estimate, Ahrefs) — third-party tool estimates are approximations, not exact numbers
+- **Seasonality control** (a year-over-year comparison, not month-over-month)
+- **Other changes** (a core update, a redesign, technical changes, link building)
+- **Query-level data in GSC** — a drop at the domain level can come from causes other than AI Overviews; segmenting by non-brand vs. brand and by intent (informational vs. transactional) is essential
 
-**Korelace mezi AIO a poklesem traffic není automaticky kauzalita.** Rozhodnutí o snippet restrikcích by mělo vycházet z dat v GSC na úrovni dotazů a typů landing pages, ne z agregovaných odhadů třetích stran.
+**Correlation between AI Overviews and a traffic drop isn't automatically causation.** A decision about snippet restrictions should come from GSC data at the level of queries and landing-page types, not from aggregated third-party estimates.
 
-## Které metody <span class="hl">fungují</span> a <strong>kdy</strong>
+## Which methods <span class="hl">work</span> and <strong>when</strong>
 
-| Metoda | Desktop | Mobil | Spolehlivost | Jednoduchost |
+| Method | Desktop | Mobile | Reliability | Simplicity |
 |---|---|---|---|---|
-| Search Labs Off | ⚠️ podle účtu | ⚠️ podle účtu | částečná | ⭐⭐⭐⭐ |
-| `&udm=14` web filter | ✅ | ⚠️ omezený | aktuálně ano, oficiálně negarantováno | ⭐⭐⭐ |
-| Brave Search | ✅ | ✅ | vysoká | ⭐⭐⭐⭐⭐ |
-| DuckDuckGo | ✅ | ✅ | vysoká | ⭐⭐⭐⭐⭐ |
-| Vlastní web `nosnippet` | n/a | n/a | omezuje použití textu, ne přítomnost stránky | ⭐⭐ |
+| Search Labs Off | ⚠️ depends on account | ⚠️ depends on account | partial | ⭐⭐⭐⭐ |
+| `&udm=14` web filter | ✅ | ⚠️ limited | works now, not officially guaranteed | ⭐⭐⭐ |
+| Brave Search | ✅ | ✅ | high | ⭐⭐⭐⭐⭐ |
+| DuckDuckGo | ✅ | ✅ | high | ⭐⭐⭐⭐⭐ |
+| Your own site `nosnippet` | n/a | n/a | limits text use, not page presence | ⭐⭐ |
 
-**Doporučení podle profilu uživatele:**
+**Recommendation by user profile:**
 
-- **Běžný uživatel** → vyzkoušet Search Labs experiment + Brave/DuckDuckGo backup
-- **Power user, chce klasický Google** → `&udm=14` web filter jako default search v prohlížeči (s vědomím, že Google může chování změnit)
-- **Privacy-first** → Brave Search nebo DuckDuckGo trvale (zkontrolovat opt-in AI funkce)
-- **Publisher u informačních non-brand dotazů s prokázaným poklesem CTR** → `data-nosnippet` selektivně po segmentaci, A/B test
-- **Brand / e-commerce / YMYL** → snippet direktivy nepoužívat plošně bez separátní analýzy dopadu na brand SERP
+- **Regular user** → try the Search Labs experiment + Brave/DuckDuckGo as a backup
+- **Power user who wants classic Google** → the `&udm=14` web filter as the default search in your browser (knowing Google can change the behavior)
+- **Privacy-first** → Brave Search or DuckDuckGo permanently (check the opt-in AI features)
+- **Publisher with a proven CTR drop on informational, non-brand queries** → `data-nosnippet` selectively after segmenting, with an A/B test
+- **Brand / e-commerce / YMYL** → don't apply snippet directives site-wide without a separate impact analysis of the brand SERP
 
-## Co se <strong>nedoporučuje</strong>
+## What's <strong>not recommended</strong>
 
 <MistakeGrid>
-  <Mistake num="01" title="Browser extensions na blokování AIO" fix="Použijte transparentnější web filter udm=14 — bez nutnosti oprávnění v prohlížeči navíc.">
-    Typicky AIO skrývají lokálně přes CSS/DOM úpravy. Spolehlivost kolísá s úpravami Google SERPu a vyžadují oprávnění v prohlížeči — řešte reputaci autora, rozsah permissions a bezpečnost.
+  <Mistake num="01" title="Browser extensions that block AI Overviews" fix="Use the more transparent &udm=14 web filter — no extra browser permissions needed.">
+    These usually hide AI Overviews locally with CSS/DOM tweaks. Reliability fluctuates as Google changes the SERP, and they need browser permissions — vet the author's reputation, the scope of the permissions, and the security implications.
   </Mistake>
-  <Mistake num="02" title="Hosts file modifikace" fix="Nikdy neblokujte gemini.google.com přes hosts — rozbijete celé Google, ne jen AIO.">
-    Staré rady doporučují blokovat `gemini.google.com`. Tím rozbijete celé Google features, ne jen AIO. Vedlejší dopady jsou nepředvídatelné.
+  <Mistake num="02" title="Editing the hosts file" fix="Never block gemini.google.com via hosts — you'll break all of Google, not just AI Overviews.">
+    Old advice tells you to block `gemini.google.com`. That breaks all of Google's features, not just AI Overviews. The side effects are unpredictable.
   </Mistake>
-  <Mistake num="03" title="Hledat globální vypínač AI Off" fix="Neexistuje. Search Labs experiment je nejblíž — a ani ten není garantovaný.">
-    Ve Google Settings žádný globální vypínač AI Overviews není. Hledání master switche je ztráta času.
+  <Mistake num="03" title="Hunting for a global 'AI off' switch" fix="There isn't one. The Search Labs experiment is the closest — and even that isn't guaranteed.">
+    There's no global AI Overviews switch in Google Settings. Hunting for a master switch is a waste of time.
   </Mistake>
-  <Mistake num="04" title="Žádost o vypnutí na Google supportu" fix="Account-specific vypnutí Google nedává — řešte přes web filter nebo jiný vyhledávač.">
-    AIO je strategická feature Google. Support pro ni individuální vypnutí neposkytuje.
+  <Mistake num="04" title="Asking Google support to turn it off" fix="Google doesn't offer an account-specific opt-out — use the web filter or a different search engine instead.">
+    AI Overviews is a strategic feature for Google. Support doesn't provide an individual opt-out for it.
   </Mistake>
 </MistakeGrid>
 
-## <strong>Souhrn</strong> ve <span class="hl">5 řádcích</span>
+## <strong>Summary</strong> in <span class="hl">five lines</span>
 
-1. **Garantovaný globální vypínač Google AIO neexistuje** — Google ho nedává.
-2. **Search Labs experiment** — pokud ho ve vašem účtu vidíte, vypnutí může omezit AI prvky. Není to ale globální vypínač.
-3. **`&udm=14` web filter** je aktuálně nejstabilnější workaround pro klasický Google bez AIO. Není oficiální direktiva — Google může chování změnit.
-4. **Brave Search nebo DuckDuckGo** jako výchozí vyhledávač = nejspolehlivější cesta bez Google AIO.
-5. **Pro vlastní web** snippet direktivy **selektivně po segmentaci dotazů**, ne plošně. Před implementací A/B test, segmentace brand vs non-brand, kontrola dopadu na featured snippets.
+1. **There's no guaranteed global off switch for Google AI Overviews** — Google doesn't offer one.
+2. **The Search Labs experiment** — if you see it in your account, turning it off can limit AI features. But it isn't a global switch.
+3. **The `&udm=14` web filter** is currently the most stable workaround for classic Google without AI Overviews. It isn't an official directive — Google can change the behavior.
+4. **Brave Search or DuckDuckGo** as your default search engine is the most reliable route to Google without AI Overviews.
+5. **For your own site,** use snippet directives **selectively after segmenting your queries,** not site-wide. Before you implement, run an A/B test, segment brand vs. non-brand, and check the impact on featured snippets.
 
-## Publisher mini-metodika — <strong>jak rozhodnout</strong> o snippet politice
+## Publisher mini-method — <strong>how to decide</strong> on a snippet policy
 
-Pokud řešíte AIO jako web owner, ne jako uživatel, doporučujeme proces v 5 krocích, ne plošné nasazení:
+If you're dealing with AI Overviews as a site owner rather than a user, we recommend a five-step process instead of a site-wide rollout:
 
 <Stepper tone="aio" steps={[
-  { title: "Vybrat cluster URL", desc: "Typicky 10–30 informačních non-brand stránek se srovnatelným typem dotazu (how-to průvodce, definiční články, srovnání). Nemíchat s brand a transakčními URL." },
-  { title: "Vyfiltrovat dotazy v GSC", desc: "Performance → Queries, filtr brand vs non-brand. Pokles CTR u non-brand informačních dotazů se stabilními nebo rostoucími impressions = indikátor." },
-  { title: "Baseline metriky", desc: "Clicks, impressions, avg position a CTR za 4–8 týdnů před testem — zachytí sezónnost." },
-  { title: "Nasadit jen na segment", desc: "data-nosnippet na úvodní answer block 5–10 vybraných URL, ne plošně. Sledovat 30–60 dní." },
-  { title: "Vyhodnotit po týdnech", desc: "Porovnání baseline vs po-test, kontrola brand query mixu (brand snippet je často výhoda, ne ztráta), vyhodnotit, jestli se pokles CTR zlepšil bez vedlejších škod." }
+  { title: "Pick a cluster of URLs", desc: "Typically 10–30 informational, non-brand pages with a comparable query type (how-to guides, definition articles, comparisons). Don't mix them with brand and transactional URLs." },
+  { title: "Filter queries in GSC", desc: "Performance → Queries, filtered by brand vs. non-brand. A CTR drop on non-brand informational queries with steady or rising impressions is your signal." },
+  { title: "Baseline the metrics", desc: "Clicks, impressions, average position, and CTR for 4–8 weeks before the test — to capture seasonality." },
+  { title: "Deploy on the segment only", desc: "data-nosnippet on the opening answer block of 5–10 selected URLs, not site-wide. Watch for 30–60 days." },
+  { title: "Evaluate after a few weeks", desc: "Compare baseline vs. post-test, check the brand-query mix (a brand snippet is often an advantage, not a loss), and judge whether the CTR drop improved without unintended side effects." }
 ]} />
 
-<AntiPersona title="Co NEDĚLAT jako publisher">
+<AntiPersona title="What NOT to do as a publisher">
 
-- Nasadit `nosnippet` plošně na celý blog bez segmentace
-- Vyhodnocovat dopad jen na úrovni sessions (smíchá brand a non-brand)
-- Brát Similarweb / Ahrefs odhady jako důkaz dopadu AIO (jsou to aproximace, ne přesná data)
-- Ignorovat brand query mix — chybějící brand snippet může poslat uživatele jinam, ne přivést
+- Roll out `nosnippet` site-wide across the whole blog without segmenting
+- Evaluate the impact only at the session level (which mixes brand and non-brand)
+- Treat Similarweb / Ahrefs estimates as proof of AI Overviews impact (they're approximations, not exact data)
+- Ignore the brand-query mix — a missing brand snippet can send users elsewhere rather than bring them in
 
 </AntiPersona>
 
-## Pro koho je <strong>tento článek</strong>
+## Who <strong>this article is for</strong>
 
 <PersonaGrid>
-  <Persona icon="🔍" title="Uživatel: Google bez AIO" tone="aio">
-    Chcete dál používat Google, jen bez panelu. Cesta: Search Labs experiment + `&udm=14` web filter jako default vyhledávač.
+  <Persona icon="🔍" title="User: Google without AI Overviews" tone="aio">
+    You want to keep using Google, just without the panel. The route: the Search Labs experiment + the `&udm=14` web filter as your default search engine.
   </Persona>
-  <Persona icon="🛡️" title="Uživatel: minimum AI prvků" tone="aio">
-    Nechcete řešit Google účet. Přepněte výchozí vyhledávač na Brave Search nebo DuckDuckGo — Google AIO panel nemají.
+  <Persona icon="🛡️" title="User: minimal AI features" tone="aio">
+    You'd rather not deal with a Google account. Switch your default search engine to Brave Search or DuckDuckGo — they have no Google AI Overviews panel.
   </Persona>
-  <Persona icon="📊" title="SEO / content tým" tone="aio">
-    Řešíte pokles CTR po nástupu AIO. Snippet direktivy selektivně + GSC query-level audit (brand vs non-brand).
+  <Persona icon="📊" title="SEO / content team" tone="aio">
+    You're dealing with a CTR drop after AI Overviews rolled out. Snippet directives selectively + a GSC query-level audit (brand vs. non-brand).
   </Persona>
-  <Persona icon="📰" title="Publisher / magazín / obsahový web" tone="aio">
-    Mini-metodika výše + segmentace brand/non-brand. Obranná snippet politika podle typu obsahu, ne plošně.
+  <Persona icon="📰" title="Publisher / magazine / content site" tone="aio">
+    The mini-method above + brand/non-brand segmentation. A defensive snippet policy by content type, not site-wide.
   </Persona>
-  <Persona icon="🛒" title="E-commerce a leadgen" tone="aio">
-    Nejdřív ověřte, jestli je AIO reálný problém — u transakčního intentu se panel typicky negeneruje.
+  <Persona icon="🛒" title="E-commerce and lead gen" tone="aio">
+    First check whether AI Overviews is a real problem — for transactional queries, the panel usually doesn't appear.
   </Persona>
-  <Persona icon="⚖️" title="Regulované obory (YMYL)" tone="aio">
-    Opatrnější přístup. Zvažte dopad na důvěru ve značku a posuzujte individuálně, ne paušálně.
+  <Persona icon="⚖️" title="Regulated industries (YMYL)" tone="aio">
+    A more cautious approach. Weigh the impact on brand trust, and judge case by case rather than across the board.
   </Persona>
 </PersonaGrid>
 
-## Kde si nechat <strong>poradit</strong>
+## Where to <strong>get advice</strong>
 
-Tento web provozuje agentura **[Sniperdesign](https://www.sniperdesign.cz/)** — pokud řešíte AIO jako business problém, ne jen jako uživatelské nastavení, [nabízíme 3 typy auditu](https://www.sniperdesign.cz/audity):
+This site is run by **[Sniper Design](https://www.sniperdesign.cz/)** — if you're dealing with AI Overviews as a business problem rather than a personal setting, [we offer an AI visibility audit](/audit/):
 
-- **Pro publishery a obsahové weby** — query-level audit v GSC, segmentace brand/non-brand, návrh obranné snippet politiky podle typu obsahu
-- **Pro e-commerce** — ověření, jestli je AIO reálný problém, nebo jen šum v agregovaných datech (často transakční intent AIO panel negeneruje)
-- **Pro SEO/content týmy** — pokud řešíte pokles CTR po nástupu AIO, navrhneme test-first přístup pro snippet restrikce na vybraných URL a vyhodnotíme dopad
+- **For publishers and content sites** — a query-level GSC audit, brand/non-brand segmentation, and a defensive snippet policy by content type
+- **For e-commerce** — a check on whether AI Overviews is a real problem or just noise in aggregated data (transactional intent often doesn't trigger the panel)
+- **For SEO/content teams** — if you're seeing a CTR drop after AI Overviews, we propose a test-first approach to snippet restrictions on selected URLs and measure the impact
 
-Tuhle problematiku řešíme u publisherů, content webů a leadgen projektů. **U klientů v informačním segmentu jsme po segmentaci typicky zjistili, že pokles CTR se týkal jen části non-brand how-to dotazů, ne celého webu** — což zásadně mění prioritu obrany.
+We work on this with publishers, content sites, and lead-gen projects. **For clients with informational content, we've typically found after segmentation that the CTR drop affected only a subset of their non-brand how-to queries, not the whole site** — which fundamentally changes the priority of any defensive move.
 
-První [konzultace](https://www.sniperdesign.cz/konzultace) nezávazná.
+## <strong>Related</strong>
 
-## <strong>Související</strong>
-
-- [AIO — AI Optimization / AI Overviews](/aio/) — co AIO je a jak funguje, proč je pro SEO důležité
-- [Rozhodovací matice](/rozhodovaci-matice/) — kdy AIO presence pomáhá (citation share) vs. kdy škodí (zero-click)
-- [Praktický postup](/prakticky-postup/) — implementační rámec pro publishers a obsahové weby
-- [AI search trendy Česko 2026](/blog/ai-search-trendy-cesko-2026/) — co je měřitelné a co je proxy v AIO datech
+- [AI SEO — the umbrella over SEO, GEO, and AEO](/ai-seo/) — what AI Overviews is, how it works, and why it matters for SEO
+- [Decision matrix](/decision-matrix/) — when AI Overviews presence helps (citation share) vs. hurts (zero-click)
+- [AI SEO playbook](/ai-seo-playbook/) — an implementation framework for publishers and content sites
