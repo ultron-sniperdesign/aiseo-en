@@ -1,7 +1,7 @@
 ---
 title: "The AI SEO playbook: prepare your site for AI search in 4 steps"
 seoTitle: "AI SEO playbook: prepare your site for AI search in 4 steps"
-description: "An implementation AI SEO guide for visibility in ChatGPT, AI Overviews, and Perplexity: audit, schema, structure, and measurement in four steps."
+description: "An AI SEO implementation guide for visibility in ChatGPT, AI Overviews, and Perplexity: audit, schema, structure, and measurement in four steps."
 answer: "The AI SEO playbook has 4 steps and its own scoring framework (the AI Visibility Readiness Framework — 5 layers). (1) Audit content for AI citability. (2) Schema.org markup. (3) Answer block + detailed context. (4) Measurement via GSC and AI citation monitoring. Steps 1 + 3 (the audit and structured answers) have the biggest impact; steps 2 + 4 are the necessary technical and measurement base."
 slug: "ai-seo-playbook"
 order: 5
@@ -21,7 +21,7 @@ faq:
   - q: "In what order should I do the 4 steps — in parallel or sequentially?"
     a: "Sequentially, one after another. Without the audit (step 1) you don't know what to fix. Without schema markup (step 2) AI engines don't understand the structure, so the answer block doesn't help them. Without the right content structure (step 3) measurement has nothing to report — you'll only see 'no citation,' not the reason. A practical schedule for a small business: week 1 audit, weeks 2–3 schema implementation on your top 20 pages, weeks 4–6 rewriting answer blocks and FAQs, week 7 setting up measurement in Looker Studio. First evaluation after 90 days."
   - q: "What if I have no pages in the top 10 — is it worth doing GEO/AEO?"
-    a: "Yes, even more so. If you're starting with a new site or 0 articles in the top 10, it's the ideal time to write content GEO-friendly right away — answer block, definitions, schema, fact density. It costs nothing extra, but in 6–12 months, once you reach the top 10, you'll be ready for AI citations. The classic mistake: 'SEO first, then GEO' = 50 articles to rewrite a year from now. The playbook is universal regardless of your starting position."
+    a: "Yes, even more so. If you're starting with a new site or 0 articles in the top 10, it's the ideal time to write GEO-friendly content from the start — answer block, definitions, schema, fact density. It costs nothing extra, but in 6–12 months, once you reach the top 10, you'll be ready for AI citations. The classic mistake: 'SEO first, then GEO' = 50 articles to rewrite a year from now. The playbook is universal regardless of your starting position."
 howto:
   name: "The AI SEO playbook: how to get started with GEO/AEO/AI SEO in 4 steps"
   steps:
@@ -40,7 +40,7 @@ import Stepper from "../../components/blocks/Stepper.astro";
 
 ## The <strong>playbook</strong> in <span class="hl">4 steps</span>
 
-This process is built to minimize "spinning in dead ends" and focus on the **actions with the highest impact**.
+This process is built to minimize "spinning your wheels" and focus on the **actions with the highest impact**.
 
 ## The <span class="hl">AI Visibility Readiness Framework</span> — <strong>the framework we score against</strong>
 
@@ -57,7 +57,7 @@ Before we get into the individual steps, it helps to know **what we assess a sit
   },
   {
     title: "Entity clarity",
-    desc: "A consistent brand spelling across the site, schema.org Organization and Person markup, linked identifiers (Wikidata, industry directories). It helps AI systems identify unambiguously who you are.",
+    desc: "Consistent spelling of the brand name across the site, schema.org Organization and Person markup, linked identifiers (Wikidata, industry directories). It helps AI systems unambiguously identify who you are.",
   },
   {
     title: "AI trust signals",
@@ -104,7 +104,7 @@ AI scrapers read the first 60 words under the H1/H2 and use them as the **citati
 
 ### Question 2: Does the page contain concrete facts, numbers, quotes?
 
-Fact-dense content has a **typically higher chance** of being cited in AI answers than general marketing copy. Count the "facts per 100 words":
+Fact-dense content **typically has a higher chance** of being cited in AI answers than general marketing copy. Count the "facts per 100 words":
 
 - ≥ 3 concrete facts (number / percentage / date / study) per 100 words = ✅ AI-friendly
 - < 1 fact per 100 words = ❌ too general
@@ -117,7 +117,7 @@ Fact-dense content has a **typically higher chance** of being cited in AI answer
 
 ### Question 3: Is the H2/H3 structure logical?
 
-Each subheading should answer a user's **sub-query**. A clear hierarchy usually helps AI systems and human readers identify faster what the page answers.
+Each subheading should answer a user's **sub-query**. A clear hierarchy usually helps AI systems and human readers identify what the page answers faster.
 
 **The fix:** rewrite the H2/H3 as questions or definitions ("What is …", "How to …", "When to use …").
 
@@ -135,7 +135,7 @@ FAQPage schema is a **direct channel** to Google AI Overviews — Google pulls Q
 
 ## Step 2 — <strong>Schema.org markup</strong> <span class="hl">(FAQPage, HowTo, Article)</span>
 
-Structured data helps search engines and AI systems understand faster and more accurately what a page is about, what content it contains, and which information matters most. Three types worth having on every content page:
+Structured data helps search engines and AI systems understand more quickly and accurately what a page is about, what content it contains, and which information matters most. Three types worth having on every content page:
 
 <div class="card-h3">
 
@@ -235,7 +235,7 @@ An example (from this page):
 
 <div class="card-h3">
 
-### Layer 2: The long context
+### Layer 2: The detailed context
 
 Below the answer block — for human readers who want depth. This is where you put:
 
@@ -259,7 +259,7 @@ This site has a prominent bold definition in every section (**"X is…"**). It i
 | **FAQ rich-snippet appearances** | GSC → Performance → Search Appearance | weekly |
 | **Brand mentions in ChatGPT** | Otterly, Profound | monthly |
 | **Citation share in Perplexity** | a manual audit or Profound | monthly |
-| **AI Overviews presence count** | a manual sheet of your top 10 keywords (see below) | monthly |
+| **AI Overviews presence count** | a simple spreadsheet of your top 10 keywords (see below) | monthly |
 | **AI crawler hits** | a Caddy/Nginx access-log filter | daily |
 
 <div class="card-h3">
@@ -271,7 +271,7 @@ If you don't have a budget for tools, do a **manual check once a month**:
 1. Take your top 10 keywords (from GSC)
 2. For each, open `https://google.com/search?q=<keyword>`
 3. Note: did the AI Overviews panel appear? Are you in the citations?
-4. Does a click come to you from the AI Overviews panel?
+4. Do you get a click from the AI Overviews panel?
 
 </div>
 
@@ -281,7 +281,7 @@ If you don't have a budget for tools, do a **manual check once a month**:
 
 The same process for AI engines:
 
-1. ChatGPT (search mode): "`<keyword>`" → are you in the citation?
+1. ChatGPT (search mode): "`<keyword>`" → are you cited?
 2. Perplexity: "`<keyword>`" → are you in the citations on the right?
 3. Claude (with search): "`<keyword>`" → does it cite you?
 
@@ -296,14 +296,14 @@ The same process for AI engines:
 </Insight>
 
 <Insight tone="accent" icon="✦" label="Real results from a combined playbook">
-  **Several e-shops — roughly 3× organic traffic in 6 months.** The playbook in practice: audit, schema, content structure, brand mentions, and measurement as one package. With the best-performing client, close to 5× over the same period.
+  **Several e-commerce sites — roughly 3× organic traffic in 6 months.** The playbook in practice: audit, schema, content structure, brand mentions, and measurement as one package. With the best-performing client, close to 5× over the same period.
 </Insight>
 
 ## <strong>Mapping project phases</strong> to <span class="hl">disciplines</span>
 
 | Project phase | Time | Recommended discipline |
 |---|---|---|
-| **0–6 months** (new site) | indexing, base content | [SEO](/seo/) only |
+| **0–6 months** (new site) | indexing, foundational content | [SEO](/seo/) only |
 | **6–12 months** | first rankings in the top 20 | SEO + schema markup prep |
 | **12–18 months** | 20+ articles in the top 10 | SEO + [AEO](/answer-engine-optimization/) (FAQ, HowTo schema, answer blocks) |
 | **18–24 months** | authority grows | SEO + AEO + [GEO](/generative-engine-optimization/) (citations, brand mentions) |
@@ -319,7 +319,7 @@ The key: **don't skip phases.** Each layer builds on the previous one. Without a
 
 - [ ] Audit your top 20 pages against the 4 questions from Step 1
 - [ ] Classify pages (short/long, informational/transactional)
-- [ ] Choose a strategy (AI Overviews embrace or bypass) — see the [Decision matrix](/decision-matrix/)
+- [ ] Choose a strategy (embrace or bypass AI Overviews) — see the [Decision matrix](/decision-matrix/)
 
 </div>
 
