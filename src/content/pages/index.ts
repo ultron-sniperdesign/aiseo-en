@@ -281,7 +281,7 @@ export const quartetHead: SectionHead = {
   title:
     'Each one owns <span class="hl">a different channel</span>. Together they form <strong>a quartet</strong>.',
   lead:
-    "These aren't synonyms or trend labels. Each discipline has its own platforms, its own signals, and its own time horizon. The mistake is doing all of them at once, with no order.",
+    "These aren't synonyms or trend labels. Each discipline has its own platforms, its own signals, and its own time horizon. The mistake is doing all of them at once, with no clear order.",
 };
 
 /** Sekce 03 — Anatomie AI-friendly stránky (SVG zůstává v .astro, text ve `wireframe`). */
@@ -331,7 +331,7 @@ export const wireframe = {
     "Wireframe of an ideal AI-friendly page with six numbered elements: an H1 as a question, a short answer, dense text, subheadings, an FAQ, and schema markup.",
   h1: "H1: What is AI SEO?",
   answerLabel: "SHORT ANSWER",
-  h2: "H2: How to get started with GEO?",
+  h2: "H2: How do I get started with GEO?",
   faqLabel: "FAQ",
   faqQ1: "Q: How do I optimize for ChatGPT?",
   faqQ2: "Q: What's the difference between SEO and GEO?",
@@ -346,7 +346,7 @@ export const pillarPromo = {
   eyebrow: "Main guide",
   title:
     'SEO vs. GEO vs. AEO: the <strong>complete guide</strong> to <span class="hl">AI search</span>',
-  lead: "The main article that breaks down each discipline from definition through comparison to a decision matrix. Best read in one sitting.",
+  lead: "The main article that breaks down each discipline, compares them, and ends with a decision matrix. Best read in one sitting.",
   meta: ["About 3,000 words", "Seven common questions", "Comparison table", "12-minute read"],
   btnLabel: "Open the main guide",
   btnHref: "/seo-vs-geo-vs-aeo/",

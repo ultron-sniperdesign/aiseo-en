@@ -28,6 +28,8 @@
 | **TR-7** | useknuté srovnání `more often than across searches` | `more often than **they do** across searches` | kalk (česká elipsa) | ČJ vypouští sloveso ve srovnání; AJ ho v této vazbě potřebuje (`than they do / it does`). |
 | **TR-8** | `recommended reading in one sitting` | `best read in one sitting` | wordiness / ambiguita | „recommended reading" se čte jako podstatné jméno (čtecí seznam) → dvojznačné. |
 | **TR-9** | `Google with AI Overview` (kalk „s funkcí") | `Google and see an AI Overview` / `Google's AI Overview` | kalk (předložka) | Nepřekládat „X s funkcí Y" doslovně přes „with"; přeformulovat, ať sloveso sedí. |
+| **TR-10** | sekvence `from definition through comparison to a decision matrix` | rozepsat slovesy: `breaks down each discipline, compares them, and ends with a decision matrix` | kalk (sekvence) | Vazba „od X přes Y k Z" je čitelná, ale překladově densní; nativní US copy radši přímá slovesa nebo prostý seznam. |
+| **TR-11** | `How to get started with GEO?` (otazník u „How to…") | bez „?" (`How to get started with GEO`) **nebo** skutečná otázka (`How do I get started with GEO?`) | slovosled / interpunkce | „How to…" je instruktážní fráze, ne otázka → otazník zní nenativně. Má-li to být otázka (FAQ/wireframe), použij `How do I…?` (konzistentní se zbytkem). |
 
 ### Obecné US konvence (preventivně — i když je audit zatím neoznačil)
 - **Pravopis:** `-ize` ne `-ise` (`optimize`, `organize`), `-or` ne `-our` (`color`, `favor`, `behavior`), `-er` ne `-re` (`center`), `analyze` ne `analyse`, `catalog` ne `catalogue`.
@@ -39,9 +41,11 @@
 
 ## Co jsem VĚDOMĚ NEzměnil (rejected — ať to příští audit neoznačuje znovu)
 
-- `from definition through comparison to a decision matrix` — validní AJ konstrukce „from X through Y to Z" (progrese/spektrum), zní nativně. **Ponecháno.**
-- `when to use which` — přirozená AJ („knowing when to use which"). Auditor navrhoval `each`, ale to je zbytečná změna. **Ponecháno `which`.**
+- `when to use which` — přirozená AJ („knowing when to use which"). **Ponecháno `which`.** Pozn.: 1. audit chtěl `each`, 2. audit `which one to use when` — **dva různé „fixy" na tutéž frázi = subjektivní zóna**, ne chyba. Klasický signál, kdy auditora přebít.
+- `the plan that orders the other three` (`pill.aio.quick`) — úderné/stylové; flagnuto jen v 2. průchodu („medium" confidence), návrh byl rozvláčnější. **Ponecháno.**
 - Krátké fragmenty, pomlčky, `the game is a mention in the output`, `put them there on purpose` — záměrný úderný hlas, rodilý mluvčí takhle píše. **Ponecháno.**
+
+> _Pozn. k TR-10:_ `from definition through comparison to a decision matrix` jsem v 1. průchodu ponechal (zdálo se validní), ale **2. průchod ho flagnul znovu s „high" confidence** → dvě nezávislé shody překlopily rozhodnutí na „opravit". Lekce: **opakovaný nález napříč průchody > jednorázové ponechání.**
 
 > **Princip:** auditor občas přidá k validnímu nálezu i nevyžádanou stylovou změnu —
 > aplikuj jen tu část, co opravuje *nativnost*, ne osobní preferenci. Když je text už
@@ -54,6 +58,7 @@
 | Stránka | Datum | Model | Nálezů | Aplikováno | Pozn. |
 |---------|-------|-------|--------|-----------|-------|
 | **Homepage `/`** (`index.ts` + footer.tagline) | 2026-05-24 | gpt-5.5 | 9 | 7 celé + 2 částečně | TR-1…TR-9 vzešly odtud. Verdikt auditora: „mostly natural and confident, only a handful of translation traces." |
+| **Homepage `/` — 2. průchod** | 2026-05-24 | gpt-5.5 | 5 | 3 | Žádná ze 7 oprav 1. průchodu znovu neoznačena (drží ✅). Aplikováno: #1→TR-10, #2→TR-11, #3 (`with no order`→`with no clear order`). Zahozeno: #4 (`orders the other three`) + #5 (`when to use which`) = variance/flip-flop. Verdikt: „largely native and idiomatic". **Klesající výnosy = konvergence → homepage uzavřena.** |
 
 **Homepage — detail aplikovaných změn:**
 - `statBar.1.label`: + „they do" (TR-7)
@@ -65,6 +70,12 @@
 - `pillarPromo.lead`: Recommended reading → Best read (TR-8) — *jen tato část, „from definition through…" ponecháno*
 - `pillarPromo.excerptText`: Google with AI Overview → … and see an AI Overview (TR-9) + e-shop → e-commerce site (TR-1)
 - `footer.tagline` (strings.ts): e-shop → e-commerce site (TR-1) — *„which" ponecháno*
+
+**Homepage — 2. průchod (2026-05-24):**
+- `pillarPromo.lead`: `from definition through comparison to a decision matrix` → `breaks down each discipline, compares them, and ends with a decision matrix` (TR-10)
+- `wireframe.h2`: `How to get started with GEO?` → `How do I get started with GEO?` (TR-11 — skutečná otázka, konzistentní s `faqQ1`)
+- `quartetHead.lead`: `with no order` → `with no clear order`
+- zahozeno: `orders the other three` (#4), `when to use which` (#5) — viz „rejected"
 
 ---
 
