@@ -1,0 +1,200 @@
+---
+title: "Pricing on Your Site and AI: How to State a Price Clearly"
+description: "Price on request and AI: why a blank space around price invites guesswork, and how to give a clear pricing signal when you can't publish a number."
+answer: "A price on your site is most readable to AI when it's written on the page as text. A number hidden in an image, in a PDF, or behind a form may never be read, and the system can reach for a third-party or outdated source instead. Even where an exact number isn't possible, a range, a starting-at price, or a description of what drives the price helps."
+slug: "pricing-on-your-site-and-ai"
+category: "tutorial"
+tags:
+  - "eshopy"
+published: "2026-07-17"
+updated: "2026-07-17"
+keywords:
+  - "pricing on website"
+  - "price on request"
+  - "pricing page for ai"
+  - "price in structured data"
+  - "pricing page seo"
+variant: "rich"
+stats:
+  - value: "text, not PDF"
+    label: "a price written on the page is readable; in an image, in a PDF, or behind a form it's much harder"
+  - value: "a range works"
+    label: "even where an exact number isn't possible, you can give a starting-at price or a range"
+  - value: "model > number"
+    label: "for custom work, describing what drives the price is usually more valuable than a single number"
+  - value: "must match"
+    label: "structured data should state the same price that's visible in the page copy"
+howto:
+  name: "How to state a price so both people and machines understand it"
+  steps:
+    - name: "Decide what you can say"
+      text: "Not every site can put out a single number, and that's fine. Work through the options from most specific down: an exact price, a price range, a starting-at price, or a description of how you calculate it. Even a sentence like from $5,000 depending on scope carries more information than price on request."
+    - name: "Write the price as text on the page"
+      text: "The price belongs in the page copy — not in an image, not only in a PDF price list, and not behind a click or a form. Put it where people look for it: near the product or service description, not in the footer."
+    - name: "Explain what drives the price"
+      text: "For custom work this is the most valuable thing you can give. Write down what pushes the price up and what brings it down: scope, number of pages, deadline, integrations. The reader gets a sense of it and you don't have to promise a number that won't hold."
+    - name: "Make the price consistent everywhere"
+      text: "Your site, your price list, your profiles, directories, and quotes should all say the same thing. When the numbers disagree, you're offering a choice and you have no say in which one a system takes. Check the third-party sources where someone else lists your prices, too."
+    - name: "Add structured data that matches the copy"
+      text: "Repeat the price in machine-readable form with Offer and PriceSpecification, and for a range with minPrice and maxPrice. The values have to match the price visible on the page. Every time the price changes, update both at once."
+faq:
+  - q: "Do I have to put prices on my site?"
+    a: "No. Whether to publish prices is a business decision that involves competition, margins, your segment, and how your clients buy. Price on request is a legitimate choice. This article is about something else: once you decide to communicate a price somehow, how to do it so both people and machines understand it."
+  - q: "What if every price is custom?"
+    a: "Then describe the model instead of the number. Say what figure projects typically start from, what pushes the price up and what brings it down, and how you put a quote together. A range or a starting-at price is still more specific than price on request, and it gives both the reader and the system something to work from."
+  - q: "Why isn't a PDF price list enough?"
+    a: "A PDF behind a link is a weak spot for reading page copy: a system processing the page may never get to the contents of the file. PDFs are also harder to keep current, so they often hold an older price than the site does. If you want a PDF price list, keep the substance in the page copy as well."
+  - q: "Will a price in structured data help me get cited by AI?"
+    a: "There's no way to guarantee it. Structured data is a machine-readable restatement of what's visible on the page, not a visibility switch. It makes sense as material that can be read unambiguously, but on its own it guarantees nothing and it doesn't replace a price written in the copy."
+  - q: "What's wrong with a starting at $0 price?"
+    a: "A starting-at price should match something you can actually buy. When it exists only as bait, the reader finds out on first contact and it doesn't build trust. Short term it can look good; long term it's the reason people don't believe starting-at prices."
+  - q: "How often should I update the price?"
+    a: "Whenever it changes. How quickly individual systems pick up changes from their sources isn't published and it varies, so an old price can stick around for a while after you fix it. That's a reason to change it everywhere at once, not a reason not to change it."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**A price on your site is most readable to AI when it's written on the page as text.** A number hidden in an image, in a PDF, or behind a form may never be read, and the system can reach for a third-party or outdated source instead. Even where an exact number isn't possible, a range, a starting-at price, or a description of what drives the price helps.
+
+Let's be clear about what this piece is not: **it isn't telling you to publish your prices.** That's a business decision, and "price on request" is a legitimate choice. It only takes on the second question — once you've decided to communicate a price somehow, how to do it so both a person and a machine understand it.
+
+## Why price is where the blank space shows up
+
+In the article on [wrong information about your brand in AI](/blog/wrong-information-about-your-brand-in-ai/) we wrote that a system is more likely to fill in an answer wherever clear, consistent material is missing. Price is exactly that kind of spot. It's one of the most common questions people ask, and on a lot of sites there's no answer to it.
+
+When a clear number is missing from your own site, third-party sources often fill the gap. Comparison sites, older articles, forum threads, directories. Those can be out of date or about something slightly different.
+
+<CompareTable
+  caption="Where the price lives and how well it reads"
+  columns={["Where", "How readable it is"]}
+  rows={[
+    { icon: "📝", label: "Text on the page", left: "Written in HTML", right: "The most readable option — people and machines both tend to handle it more easily" },
+    { icon: "🧾", label: "PDF price list", left: "A file behind a link", right: "Weaker — a system may not get to the contents of the file, and it's harder to keep current" },
+    { icon: "🖼️", label: "Image", left: "A price in graphics", right: "Weak — text in an image isn't the page's text" },
+    { icon: "🔒", label: "Behind a form", left: "A price list after signup", right: "Harder to reach — content behind a form only shows up once a visitor fills it in, and a system often never gets there" },
+  ]}
+/>
+
+<Insight tone="key">
+The difference isn't between "having prices" and "not having prices" — it's between **a clear signal and an unclear one**. "From $5,000 depending on scope; page count and deadline drive the price" is specific information. "Price on request" is an information-poor spot that can widen the room for guesswork.
+</Insight>
+
+## The process
+
+<Stepper
+  steps={[
+    {
+      label: "Choice",
+      title: "Decide what you can say",
+      text: "From most specific down: an exact price, a range, a starting-at price, or a description of how you calculate it. There's usually at least something you can say.",
+    },
+    {
+      label: "Text",
+      title: "Write the price on the page",
+      text: "In the copy, not in an image, not only in a PDF, and not after a click. Near the product or service description, not in the footer.",
+    },
+    {
+      label: "Model",
+      title: "Explain what drives the price",
+      text: "What pushes it up and what brings it down: scope, deadline, integrations. For custom work this is worth more than a single number.",
+    },
+    {
+      label: "Match",
+      title: "Make the price consistent everywhere",
+      text: "Site, price list, profiles, directories. When the numbers disagree, you're offering a choice and you have no say in what a system takes.",
+    },
+    {
+      label: "Data",
+      title: "Add structured data",
+      text: "Repeat the price in machine-readable form. The values have to match what's visible in the copy — and change along with it.",
+    },
+  ]}
+/>
+
+## Structured data for price
+
+You can write the price in machine-readable form with `Offer`, and for a range with something like `PriceSpecification` using `minPrice` and `maxPrice`. Currency goes in ISO 4217 (`"USD"`) and the number uses a decimal point, with no thousands separators. The exact shape depends on the page type and on what's actually visible on it — the data shouldn't supply a price the page doesn't have:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "AI SEO audit",
+  "offers": {
+    "@type": "Offer",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "minPrice": 2500,
+      "maxPrice": 7500,
+      "priceCurrency": "USD"
+    }
+  }
+}
+```
+
+It's an illustrative example — the exact markup differs by offer type and page. One condition holds across all of them: **the values have to match the price a visitor sees on the page.** With structured data it makes sense to keep parity with the visible content; when the two disagree, it's a problem for interpretation and for credibility — the data should describe the page, not say something off to the side. That it guarantees no citation on its own is covered in the article on [structured data for AI](/blog/structured-data-for-ai/).
+
+## What to avoid
+
+<MistakeGrid>
+  <Mistake number="01" title="Price on request as the only information">
+    Commercially legitimate, informationally empty. You can usually give at least a range, or describe what drives the price.
+  </Mistake>
+  <Mistake number="02" title="The price only in a PDF price list">
+    A system may not get to the contents of the file, and PDFs are harder to maintain, so they often hold an older price than the site does.
+  </Mistake>
+  <Mistake number="03" title="Structured data that contradicts the page">
+    When structured data states a different price than the copy, that's a problem in itself — and a signal that nobody is maintaining one of the two.
+  </Mistake>
+  <Mistake number="04" title="A fake starting-at price">
+    A starting-at price should match something you can actually buy. Otherwise the reader finds out on first contact.
+  </Mistake>
+</MistakeGrid>
+
+<Insight tone="warning">
+Price is one of the fastest-aging facts about a business. When you change it, change it **everywhere at once** — on the page, in structured data, in the price list, and on your profiles. How quickly systems pick up changes from their sources isn't published, so an old price can stick around for a while; on that, see [content updates for AI](/blog/content-updates-for-ai/).
+</Insight>
+
+## Where this article stops
+
+**It doesn't tell you whether to publish prices.** That's a business decision, not a technical one. This article is about form, not strategy.
+
+**It doesn't promise a citation or better rankings.** A clear price improves the odds that the number comes from you and not from somewhere else. It isn't a guarantee, and nobody can give you one.
+
+**It doesn't cover pricing strategy or the legal side.** Price disclosure rules for consumers, taxes, promotional pricing — those have their own rules, they vary by market, and they belong to a specialist.
+
+<DoDont
+  doTitle="Do"
+  dontTitle="Don't"
+  doItems={[
+    "A price, a range, or a starting-at price written as text on the page",
+    "A description of what drives the price — especially for custom work",
+    "The same price on your site, in your price list, on profiles, and in directories",
+    "Structured data with values identical to the visible copy",
+    "An update to every location at once whenever the price changes",
+  ]}
+  dontItems={[
+    "The price only in an image, only in a PDF, or behind a form",
+    "A starting-at price nobody can actually buy anything for",
+    "Structured data that says something other than the page",
+    "Prices that disagree between your site and your profiles",
+    "Price on request as the only information on the whole page",
+  ]}
+/>
+
+## What to take away
+
+Price tends to be a common blank space on websites and, at the same time, one of the first things people ask about. A blank space rarely stays blank — a third-party, sometimes older source usually fills it.
+
+The point isn't to publish a price list at any cost. The point is to give a clear signal: a range, a starting-at price, or at least a calculation model, written as text where a person looks for it. And then to keep it the same everywhere.
+
+Products have their own specifics — those are covered in [product pages for AI](/blog/product-pages-for-ai/), and services and B2B in [service pages for AI](/blog/service-pages-for-ai/).
+
+---
+
+**Want to know where the prices circulating about you come from?** An AI SEO audit traces the likely sources of the disputed numbers and lays out the content and technical steps that can improve the odds that more accurate figures about your business and its pricing get picked up.

@@ -1,0 +1,243 @@
+---
+title: "AI visibility test: a one-hour check for 2026"
+description: "Find out in an hour whether ChatGPT, Perplexity, or Google AI Overviews cite your brand. A practical AI visibility test, step by step."
+answer: "An AI visibility test is a manual check on whether and where your brand shows up in the answers AI tools give. Run 15 to 20 real customer queries on ChatGPT, Perplexity, and Google AI Overviews, record the mention, the position, the competitors, and the sources for each one, and repeat the test several times, because AI answers aren't the same every time."
+slug: "ai-visibility-test"
+category: "tutorial"
+tags:
+  - "audit-nastroje"
+  - "mereni"
+published: "2026-06-11"
+updated: "2026-06-11"
+keywords:
+  - "ai visibility test"
+  - "does ai cite me"
+  - "check ai citations"
+  - "how to check ai visibility"
+  - "ai visibility checker"
+variant: "rich"
+stats:
+  - value: "15–20"
+    label: "queries across four types are enough for a basic manual AI visibility test"
+  - value: "3–5×"
+    label: "how many times to repeat each query — AI answers aren't the same every time"
+  - value: "~1 hr"
+    label: "how long a basic manual test across the major AI platforms takes"
+  - value: "3+"
+    label: "AI platforms worth testing on (at minimum ChatGPT, Perplexity, Google AI Overviews)"
+howto:
+  name: "How to test your own brand's AI visibility"
+  steps:
+    - name: "Build 15 to 20 queries in your customers' language"
+      text: "Write the queries your customers actually ask, across four types: branded (what is your brand), category (best X in your city), problem-solution (how to fix Y), and comparison (your brand vs. a competitor). Category queries are the most important."
+    - name: "Run the queries across the major platforms"
+      text: "Test at least ChatGPT, Perplexity, and Google AI Overviews, and add Gemini and Claude if you want wider coverage. Test logged out or in a private window so your account history doesn't skew the results."
+    - name: "Repeat every query three to five times"
+      text: "AI answers aren't the same every time — the same query returns a slightly different answer on every run. Repeating three to five times gives you a realistic picture of how often you actually show up. If you're short on time, repeat at least your three most important category queries."
+    - name: "Record four things for every query"
+      text: "For each query, note whether you show up at all, where the first mention lands (1st / 2nd–3rd / 4th or later / not mentioned), who shows up instead of you (competitors), and which sources the AI cites (your site, review platforms, Reddit, and so on)."
+    - name: "Score the results and plan what to do"
+      text: "Work out what percentage of queries mentioned you. Address invisibility with content, a robots.txt check, and mentions and links from other sites. Correct wrong information on your own site. If a competitor is showing up instead of you, analyze what makes them stronger."
+faq:
+  - q: "What's the fastest way to find out whether AI cites me?"
+    a: "A basic test takes about an hour for a small set of queries and the three main platforms. Build 15 to 20 queries that real customers ask, run them on ChatGPT, Perplexity, and Google AI Overviews (ideally logged out), and for each one note whether you show up, in what position, who shows up instead of you, and which sources the AI cites. Repeat every query three to five times, because AI answers aren't the same every time."
+  - q: "Why do I have to repeat every query several times?"
+    a: "AI answers aren't the same every time — the same query returns a slightly different answer on each run, and the sources cited can vary too. A one-shot test therefore skews the picture. Repeating three to five times shows whether you appear consistently or only occasionally. If you're short on time, repeat at least your three most important category queries."
+  - q: "Which AI platforms should I test on?"
+    a: "Three at a minimum: ChatGPT (mentions brands, often without a link), Perplexity (usually lists sources with links, which makes it very easy to read in a manual test), and Google AI Overviews (inside regular search, drawing on web content and other sources). Gemini and Claude are worth adding for wider coverage."
+  - q: "Which queries should I use for the test?"
+    a: "Build 15 to 20 queries across four types: branded (what is your brand, brand reviews), category (best X in your city, companies in your industry), problem-solution (how to fix a specific issue), and comparison (your brand versus a competitor). Category and problem queries matter most — that's where people are looking for you without knowing your brand."
+  - q: "Do I need a paid tool, or is a manual test enough?"
+    a: "For a first audit and a read on where you stand, a free manual test is enough. There are also free tools with no signup (Ahrefs AI Visibility Checker or Semrush AI Search Visibility Checker, for example) that sweep several platforms at once. Paid tools (Ahrefs Brand Radar, Semrush AI Toolkit, Otterly.ai, Passionfruit Labs) make sense for ongoing monitoring, multiple brands, and competitive benchmarking. Pricing and features change over time."
+  - q: "What do I do if I don't show up in AI answers at all?"
+    a: "Rule out the causes one at a time: check whether your site is restricting search crawlers (robots.txt, and the Block AI Bots toggle in Cloudflare if you use it) — though blocking alone isn't the only reason. Confirm you actually have content on the question. Consider whether the brand is well known enough and has enough mentions off your own site. And look at who is showing up instead of you and what makes their content or authority stronger."
+---
+
+import Checklist from "~/components/blocks/Checklist.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**An AI visibility test is a manual check on whether and where your brand shows up in the answers from tools like ChatGPT, Perplexity, and Google AI Overviews.** You build 15 to 20 queries that real customers ask, run them across the major AI platforms, and record for each one whether you show up, where, and who is there instead of you. The basic version takes about an hour and no paid tool. This guide walks through the specific process and the common mistakes to avoid.
+
+Treat the result as a directional snapshot for one language, one market, and one moment — not as a definitive measurement of every AI answer.
+
+## Why test your AI visibility
+
+AI visibility is a new discipline, and **the first step is finding out where you stand** — otherwise you're guessing. Some industry analyses in B2B suggest that a large share of brands are functionally invisible to AI answers, but the results vary widely by market and methodology, so treat them as directional.
+
+The good news: **a manual test is cheap and fast.** You don't need a tool, just an hour and a structure. Paid tools only start to make sense for ongoing monitoring, not for a first read.
+
+<Insight tone="key">
+Without a test you're measuring by gut feel. Specific queries run across platforms tell you within an hour whether AI knows about you, what it says about you, and who is showing up instead of you.
+</Insight>
+
+## Step 1: Build the right queries
+
+The foundation of the test is **15 to 20 queries** that mirror how your customers actually ask. Split them into four types:
+
+<Checklist title="Four query types for an AI visibility test" items={[
+  { title: "Branded queries", desc: "“What is [brand],” “[brand] reviews,” “experience with [brand].” These check whether AI has the right information about you." },
+  { title: "Category queries", desc: "“Best [product] in [your city],” “[industry] companies near me.” The most important type — this is where people look for you without knowing your brand." },
+  { title: "Problem-solution queries", desc: "“How do I fix [problem],” “what can replace [X].” These show whether AI suggests you as a solution." },
+  { title: "Comparison queries", desc: "“[Brand] versus [competitor],” “alternatives to [X].” These show where you stand against the competition." },
+]} />
+
+<Insight tone="warning">
+The most common mistake is testing branded queries only. You already know your own brand — the point of the test is to find out whether AI suggests you on category and problem queries, where people are looking for you without knowing your name.
+</Insight>
+
+## Step 2: Test across platforms
+
+Every AI platform cites differently, so testing on one isn't enough. Three is the minimum.
+
+<CompareTable
+  caption="How each AI platform cites its sources"
+  columns={["Platform", "How it cites and what to watch for"]}
+  rows={[
+    { icon: "🔍", label: "Perplexity", left: "Usually lists sources with links", right: "Very easy to read in a manual test — you can see straight away where the AI is drawing from" },
+    { icon: "🌐", label: "Google AI Overviews", left: "Shows links inside regular search", right: "Often built from web content and other findable sources; watch which sites appear in the overview" },
+    { icon: "💬", label: "ChatGPT", left: "Mentions brands, often without a link", right: "The most widely used; watch whether it describes you correctly" },
+    { icon: "✨", label: "Gemini / Claude", left: "Conversational, varying degrees of linking", right: "Supplementary platforms; with Claude, watch whether the answer draws on web sources at all" },
+  ]}
+/>
+
+**Important: test logged out or in a private window.** A signed-in account can shift the results through history, memory, or personalization signals. A private window is closer to what an unfamiliar customer sees. Test in your target language and market, and with Google AI Overviews, watch whether an overview appears for that query type at all.
+
+## Step 3: Repeat and record
+
+AI answers aren't the same every time — the same query can return a slightly different answer and different cited sources (technically, they're **non-deterministic**). So:
+
+<Stepper
+  steps={[
+    {
+      label: "Repetition",
+      title: "Run every query three to five times",
+      text: "A one-shot test skews the picture. Repeating shows whether you appear consistently or only occasionally. For your key queries, more repetitions are worth the time.",
+    },
+    {
+      label: "Do you show up?",
+      title: "Record whether AI mentioned you at all",
+      text: "Yes/no for every query and every platform. This is the most basic metric — what percentage of queries mentioned you at all.",
+    },
+    {
+      label: "Position",
+      title: "Where in the answer you show up",
+      text: "Record the first occurrence consistently: 1st / 2nd–3rd / 4th or later / not mentioned. A first mention carries more weight than a mention buried among ten others.",
+    },
+    {
+      label: "Competitors",
+      title: "Who shows up instead of you",
+      text: "List the brands the AI mentions. If the same competitors keep coming up, you have a clear list of who you're competing with for AI visibility.",
+    },
+    {
+      label: "Sources",
+      title: "Which sources the AI cites",
+      text: "Where the AI is drawing from — your site, review platforms, Reddit, Wikipedia? That's the key to your strategy: if AI is describing you from third-party sources, you know where to focus your work on mentions and links from other sites.",
+    },
+  ]}
+/>
+
+Keep your record in a simple spreadsheet: columns for query, platform, appeared (yes/no), position, competitors, sources. After an hour you'll have an overview that tells you more than any gut feel.
+
+## Step 4: Interpret the results
+
+<CompareTable
+  caption="What each result means and how to respond"
+  columns={["Test result", "What to do about it"]}
+  rows={[
+    { icon: "✅", label: "You show up with the right information", left: "The best-case scenario", right: "Keep the content current; watch whether your position slips over time" },
+    { icon: "⚠️", label: "You show up, but the information is wrong", left: "Common with lesser-known brands", right: "Update your own content and structured data; add the facts to findable places" },
+    { icon: "🥈", label: "A competitor shows up instead of you", left: "A gap against the competition", right: "Analyze what makes the competitor stronger — content, reviews, credibility, and mentions or links from other sites" },
+    { icon: "❌", label: "You don't show up at all", left: "Zero AI visibility", right: "Check your robots.txt, your content on the topic, and your mentions off-site" },
+  ]}
+/>
+
+If you **don't show up at all**, work through the causes from the most technical down:
+
+1. **Are you restricting search crawlers?** Check your robots.txt and any site protection (the Block AI Bots toggle in Cloudflare, for example). Bear in mind, though, that blocking alone isn't the only reason you might not appear in AI answers.
+2. **Do you even have content on the question?** AI can't cite what doesn't exist.
+3. **Is the brand well known enough?** Few mentions off your own site means a weak signal.
+4. **Who is there instead of you, and why?** Analyze the competitors showing up.
+
+## Automation: when a tool is worth it
+
+A manual test is great for a **first audit**. For **ongoing monitoring**, though, a tool pays off — running 20 queries by hand every week isn't sustainable.
+
+<CompareTable
+  caption="Manual test versus automated tool"
+  columns={["Manual test (free)", "Automated tool (freemium / paid)"]}
+  rows={[
+    { icon: "💰", label: "Cost", left: "Free, just your time", right: "Free checks with no signup, plus paid plans for monitoring" },
+    { icon: "🎯", label: "Best for", left: "A first audit, a small business, a read on where you stand", right: "Ongoing monitoring, multiple brands, reporting" },
+    { icon: "🔁", label: "Frequency", left: "One-off or occasional", right: "Automatic and regular" },
+    { icon: "📊", label: "Scale", left: "Dozens of queries by hand", right: "Hundreds to thousands of queries across platforms" },
+    { icon: "🏁", label: "Examples", left: "ChatGPT, Perplexity, Google AI Overviews by hand", right: "Free checks and paid monitoring plans (see the list below)" },
+  ]}
+/>
+
+Specific tools as of June 2026 (features and pricing change over time, so check the current state with the provider):
+
+<Checklist title="AI visibility tracking tools (as of June 2026)" items={[
+  { title: "Free, no signup", desc: "Ahrefs AI Visibility Checker, Semrush AI Search Visibility Checker, Search-visibility.ai — a fast one-off check across platforms." },
+  { title: "Freemium and trials", desc: "Hall Lite (free plan with limits on projects and questions), Otterly.ai (trial period)." },
+  { title: "Paid, for ongoing monitoring", desc: "Ahrefs Brand Radar, Semrush AI Toolkit, Otterly.ai, Passionfruit Labs — automated tracking, multiple brands, competitive benchmarking." },
+]} />
+
+**A practical recommendation:** start with the manual test. If you're working on AI visibility consistently, add a free tool for quick cross-platform checks, and a paid one only once you need regular monitoring and reporting.
+
+## The most common testing mistakes
+
+<MistakeGrid>
+  <Mistake number="01" title="One query, one time">
+    AI answers aren't the same every time. A single query run once tells you nothing — you need more queries, and each of them repeated. Without repetition you're testing randomness.
+  </Mistake>
+  <Mistake number="02" title="Branded queries only">
+    You already know your own brand. The point of the test is the category and problem queries, where people look for you without knowing your name. Branded queries alone give you a false positive.
+  </Mistake>
+  <Mistake number="03" title="ChatGPT only">
+    Every platform cites differently. Testing on ChatGPT alone will miss the fact that Perplexity or Google AI Overviews might not mention you at all (or the other way around). Test at least three.
+  </Mistake>
+  <Mistake number="04" title="A signed-in account with history">
+    A signed-in account can shift the results through history, memory, or other personalization signals. A signed-in test shows you a picture shaped by your own past activity. Test logged out or in a private window.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="What to do"
+  dontTitle="What to avoid"
+  doItems={[
+    "Build 15 to 20 queries across four types, in your customers' language.",
+    "Test on ChatGPT, Perplexity, and Google AI Overviews at a minimum.",
+    "Repeat every query three to five times and record it in a spreadsheet.",
+    "Track not just whether you show up, but the position, the competitors, and the sources.",
+    "Test logged out for a more objective picture.",
+  ]}
+  dontItems={[
+    "Rely on a single query run a single time.",
+    "Test only branded queries, where AI already knows you.",
+    "Test a single platform.",
+    "Ignore which sources the AI cites — that's the key to your strategy.",
+    "Treat a one-off test as a permanent state — AI answers change over time.",
+  ]}
+/>
+
+## Key takeaways
+
+- **A manual AI visibility test** takes about an hour in its basic form, and it's free.
+- **15 to 20 queries** across four types (branded, category, problem-solution, comparison); the category ones matter most.
+- **Three platforms at a minimum** — ChatGPT, Perplexity, Google AI Overviews.
+- **Repeat three to five times**, because AI answers aren't the same every time, and record appearance, position, competitors, and sources.
+- **Test logged out** for an objective picture.
+- **An automated tool** makes sense for ongoing monitoring, not for a first audit.
+
+---
+
+If the test shows that AI isn't citing you, the next steps — content, structured data, mentions off your own site — are exactly what an AI SEO audit works through.
+
+**Would you rather not run the test by hand?** This site is run by **[Sniper Design](https://www.sniperdesign.cz/)** — an AI SEO audit walks your visibility across ChatGPT, Perplexity, and Google AI Overviews, compares you against your competitors, and lays out a specific plan of priorities.
+
+*Tool names and pricing in this article come from publicly available information as of June 2026; specific features and plans change over time, so check the current state with the provider. Sniper Design runs AI audits with real cross-platform testing, not just a single tool.*
