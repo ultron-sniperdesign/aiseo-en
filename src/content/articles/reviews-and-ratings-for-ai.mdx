@@ -78,13 +78,13 @@ Reviews bring three things nothing else on the page does:
 
 This is the most important part of the article, because it gets done wrong all the time.
 
-<Insight tone="warning">
+<Insight tone="warn">
 For ratings of the business as a whole (the Organization and LocalBusiness types), Google states that **if the entity being rated controls the reviews about itself, its pages are not eligible for star ratings in the result.** In practice: your own store score, marked up on your own site as a company rating, does not lead to stars. The legitimate route is reviews of the **products** you sell.
 </Insight>
 
 <CompareTable
-  caption="What you can mark up and what you can't"
-  columns={["Approach", "Where it stands"]}
+  leftLabel="Approach"
+  rightLabel="Where it stands"
   rows={[
     { icon: "📦", label: "Product review", left: "A rating of a specific product on the Product type", right: "Fine — this is the intended route" },
     { icon: "🏪", label: "Your own company score", left: "Organization/LocalBusiness under your own control", right: "Not eligible for star ratings" },
@@ -100,27 +100,27 @@ For ratings of the business as a whole (the Organization and LocalBusiness types
     {
       label: "Collect",
       title: "Ratings from real customers",
-      text: "After delivery, tied to a specific order, with no pressure on the score. Verified purchase helps keep fake reviews out.",
+      desc: "After delivery, tied to a specific order, with no pressure on the score. Verified purchase helps keep fake reviews out.",
     },
     {
       label: "Type",
       title: "Be clear about what you are marking up",
-      text: "Product reviews, yes. Your own store score on your own site is not enough for stars.",
+      desc: "Product reviews, yes. Your own store score on your own site is not enough for stars.",
     },
     {
       label: "Visibility",
       title: "Mark up only what is visible",
-      text: "The marked-up content has to be readily available to read on the page.",
+      desc: "The marked-up content has to be readily available to read on the page.",
     },
     {
       label: "Data",
       title: "Fill in the required properties",
-      text: "A value, a rating or review count, the rated item with a name; for an individual review, an author as well.",
+      desc: "A value, a rating or review count, the rated item with a name; for an individual review, an author as well.",
     },
     {
       label: "Text",
       title: "Mine the text, not just the number",
-      text: "Summarize what keeps coming up in the reviews in your own words — and leave the original ratings below it.",
+      desc: "Summarize what keeps coming up in the reviews in your own words — and leave the original ratings below it.",
     },
   ]}
 />
@@ -153,16 +153,16 @@ When seven out of twenty reviews mention that the product runs small, that is in
 ## Four mistakes in review markup
 
 <MistakeGrid>
-  <Mistake number="01" title="Marking up your own company score">
+  <Mistake num="01" title="Marking up your own company score">
     For the Organization and LocalBusiness types the rule holds: when the entity being rated controls the reviews about itself, Google says its pages are not eligible for star ratings.
   </Mistake>
-  <Mistake number="02" title="Pulling in someone else's reviews">
+  <Mistake num="02" title="Pulling in someone else's reviews">
     Google explicitly states that ratings from other sites should not be aggregated. Collect your own.
   </Mistake>
-  <Mistake number="03" title="Data with no visible content">
+  <Mistake num="03" title="Data with no visible content">
     A marked-up rating that appears nowhere on the page is a contradiction between your data and your content.
   </Mistake>
-  <Mistake number="04" title="Fake or pressured reviews">
+  <Mistake num="04" title="Fake or pressured reviews">
     Beyond the ethical problem, it is a fraud on the customer — and when it comes out, it damages the credibility you are building everywhere else.
   </Mistake>
 </MistakeGrid>

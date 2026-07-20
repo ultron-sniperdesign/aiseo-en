@@ -69,15 +69,15 @@ A product page has it easier: it has a price, availability, specs, often reviews
 
 A service page tends to be the opposite. Instead of information, it says we're a market leader, we take a tailored approach, and you should get in touch. That's copy nothing can be pulled out of — and so nothing can be cited from it either.
 
-<Insight tone="key">
+<Insight tone="aio">
 When someone asks what a service costs, AI answers from what it can find. If there isn't even a ballpark answer on your site, it'll more likely take one from a competitor — or stay generic. Missing information isn't a neutral state; it's a gap someone else fills.
 </Insight>
 
 ## What a service page should contain
 
 <CompareTable
-  caption="The questions a service page has to answer"
-  columns={["Block", "What belongs there"]}
+  leftLabel="Block"
+  rightLabel="What belongs there"
   rows={[
     { icon: "📌", label: "Short definition", left: "At the top", right: "40 to 60 words: what it is, who it's for, what the customer gets" },
     { icon: "🎯", label: "Who it's for", left: "The frame", right: "Who the service is meant for — and who it doesn't suit" },
@@ -95,27 +95,27 @@ When someone asks what a service costs, AI answers from what it can find. If the
     {
       label: "Definition",
       title: "Open with a short answer",
-      text: "40 to 60 words at the top: what the service is, who it's for, and what the customer gets out of it. It has to make sense pulled out of the page.",
+      desc: "40 to 60 words at the top: what the service is, who it's for, and what the customer gets out of it. It has to make sense pulled out of the page.",
     },
     {
       label: "Who it's for",
       title: "Frame your audience",
-      text: "Say specifically who the service is meant for and who it doesn't suit. A frame is a relevance signal, not lost customers.",
+      desc: "Say specifically who the service is meant for and who it doesn't suit. A frame is a relevance signal, not lost customers.",
     },
     {
       label: "Scope",
       title: "Describe what's included and how it runs",
-      text: "Specific deliverables and the steps of the engagement. Lines about a tailored approach say nothing here.",
+      desc: "Specific deliverables and the steps of the engagement. Lines about a tailored approach say nothing here.",
     },
     {
       label: "Price",
       title: "Give a price or at least a range",
-      text: "Ideally a specific number. For custom quotes, a starting-at price, a typical range, or an hourly rate is enough.",
+      desc: "Ideally a specific number. For custom quotes, a starting-at price, a typical range, or an hourly rate is enough.",
     },
     {
       label: "Data",
       title: "Add Service structured data",
-      text: "JSON-LD with the name, description, and provider; area served or price only when they're visible on the page.",
+      desc: "JSON-LD with the name, description, and provider; area served or price only when they're visible on the page.",
     },
   ]}
 />
@@ -161,23 +161,23 @@ For complex B2B services a fixed price may not be realistic, and forcing one ont
   ]}
 />
 
-<Insight tone="warning">
+<Insight tone="warn">
 Publishing a price guarantees nothing on its own — it won't promise you more inquiries or better visibility. Without one, though, your page gives no specific answer to the most common question, which lowers the chance it serves as the source of a specific answer.
 </Insight>
 
 ## The most common mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="Marketing copy with no information">
+  <Mistake num="01" title="Marketing copy with no information">
     Market leader, tailored approach, get in touch. Nothing can be pulled out of a page like that, and nothing can be cited from it.
   </Mistake>
-  <Mistake number="02" title="No price and no range">
+  <Mistake num="02" title="No price and no range">
     The most common question is what it costs. With no answer, AI will more likely take one elsewhere.
   </Mistake>
-  <Mistake number="03" title="Many services on one page">
+  <Mistake num="03" title="Many services on one page">
     Then none of them is described specifically, and it's harder to pull an answer out. Usually one main service per page helps.
   </Mistake>
-  <Mistake number="04" title="Data that doesn't match the page">
+  <Mistake num="04" title="Data that doesn't match the page">
     A price or scope in structured data that appears nowhere on the page is a mismatch.
   </Mistake>
 </MistakeGrid>

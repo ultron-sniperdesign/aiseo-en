@@ -61,7 +61,7 @@ Three things from that announcement are worth remembering:
 
 Alongside the switch, Google also mentions new reporting: impressions in generative features, which pages show up in AI answers and in which countries, with more metrics promised over time.
 
-<Insight tone="key">
+<Insight tone="aio">
 This isn't a fine-grained tool that lets you keep the sections that work and opt out the rest. It's one switch for the entire site — which is exactly why it can't be used as an experiment.
 </Insight>
 
@@ -70,8 +70,8 @@ This isn't a fine-grained tool that lets you keep the sections that work and opt
 This is where the confusion usually starts, because everything here looks like "blocking AI."
 
 <CompareTable
-  caption="Three different layers, three different effects"
-  columns={["Tool", "What it governs"]}
+  leftLabel="Tool"
+  rightLabel="What it governs"
   rows={[
     { icon: "🚧", label: "robots.txt", left: "Crawling", right: "Whether a crawler reaches the content at all" },
     { icon: "✂️", label: "nosnippet and friends", left: "Use of text in a snippet", right: "What can be used as snippet text; per page or per block" },
@@ -87,7 +87,7 @@ Availability isn't the main problem. The main problem is the decision itself.
 
 To evaluate opting out, you'd need to know how much the generative features actually bring in and what leaving would cost. But the individual AI surfaces can't be separated out of commonly available data — Search Console reports them in aggregate, as [measuring AI Mode](/blog/measuring-ai-mode-limits/) breaks down.
 
-<Insight tone="warning">
+<Insight tone="warn">
 In practice that means you'd be **switching off a channel whose value you can't yet measure reliably** — and after switching it off, you'd have nothing to compare against, because impressions from those features simply disappear. It's a decision that's hard to make in advance and even harder to evaluate afterward.
 </Insight>
 
@@ -102,8 +102,8 @@ That's one store, the starting point before any optimization, and visits from as
 There are real reasons to opt out. Nobody can decide for you without your numbers, but you can build a filter — and it's a fairly sharp one.
 
 <CompareTable
-  caption="Three situations and what each one means for the decision"
-  columns={["What it means for the decision", "What to check"]}
+  leftLabel="What it means for the decision"
+  rightLabel="What to check"
   rows={[
     { icon: "📚", label: "The information itself is the product", left: "Opting out has clear logic — giving away a summary for free is a different calculation than it is for a store", right: "How much of the content is genuinely your merchandise, and not just marketing" },
     { icon: "🛒", label: "You sell goods or services", left: "You're switching off the whole channel, not the problematic part of it", right: "Whether assistants send conversions, not just visits" },
@@ -116,16 +116,16 @@ Even in the first row, this is a business decision, not a technical setting.
 ## Common mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="Deciding before you have both the switch and the data">
+  <Mistake num="01" title="Deciding before you have both the switch and the data">
     A theoretical decision made without your own numbers will get redone anyway once it's actually on the table.
   </Mistake>
-  <Mistake number="02" title="Confusing it with directives">
+  <Mistake num="02" title="Confusing it with directives">
     nosnippet governs the use of text in a snippet, robots.txt governs crawling. The switch is a separate layer.
   </Mistake>
-  <Mistake number="03" title="Opting out over ranking fears">
+  <Mistake num="03" title="Opting out over ranking fears">
     Google explicitly states the setting won't be used as a ranking signal outside the generative features.
   </Mistake>
-  <Mistake number="04" title="Deciding without data">
+  <Mistake num="04" title="Deciding without data">
     If you can't separate the individual surfaces, you have nothing to estimate the impact from — or to verify it against.
   </Mistake>
 </MistakeGrid>

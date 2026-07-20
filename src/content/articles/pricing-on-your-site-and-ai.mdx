@@ -70,8 +70,8 @@ In the article on [wrong information about your brand in AI](/blog/wrong-informa
 When a clear number is missing from your own site, third-party sources often fill the gap. Comparison sites, older articles, forum threads, directories. Those can be out of date or about something slightly different.
 
 <CompareTable
-  caption="Where the price lives and how well it reads"
-  columns={["Where", "How readable it is"]}
+  leftLabel="Where"
+  rightLabel="How readable it is"
   rows={[
     { icon: "📝", label: "Text on the page", left: "Written in HTML", right: "The most readable option — people and machines both tend to handle it more easily" },
     { icon: "🧾", label: "PDF price list", left: "A file behind a link", right: "Weaker — a system may not get to the contents of the file, and it's harder to keep current" },
@@ -80,7 +80,7 @@ When a clear number is missing from your own site, third-party sources often fil
   ]}
 />
 
-<Insight tone="key">
+<Insight tone="aio">
 The difference isn't between "having prices" and "not having prices" — it's between **a clear signal and an unclear one**. "From $5,000 depending on scope; page count and deadline drive the price" is specific information. "Price on request" is an information-poor spot that can widen the room for guesswork.
 </Insight>
 
@@ -91,27 +91,27 @@ The difference isn't between "having prices" and "not having prices" — it's be
     {
       label: "Choice",
       title: "Decide what you can say",
-      text: "From most specific down: an exact price, a range, a starting-at price, or a description of how you calculate it. There's usually at least something you can say.",
+      desc: "From most specific down: an exact price, a range, a starting-at price, or a description of how you calculate it. There's usually at least something you can say.",
     },
     {
       label: "Text",
       title: "Write the price on the page",
-      text: "In the copy, not in an image, not only in a PDF, and not after a click. Near the product or service description, not in the footer.",
+      desc: "In the copy, not in an image, not only in a PDF, and not after a click. Near the product or service description, not in the footer.",
     },
     {
       label: "Model",
       title: "Explain what drives the price",
-      text: "What pushes it up and what brings it down: scope, deadline, integrations. For custom work this is worth more than a single number.",
+      desc: "What pushes it up and what brings it down: scope, deadline, integrations. For custom work this is worth more than a single number.",
     },
     {
       label: "Match",
       title: "Make the price consistent everywhere",
-      text: "Site, price list, profiles, directories. When the numbers disagree, you're offering a choice and you have no say in what a system takes.",
+      desc: "Site, price list, profiles, directories. When the numbers disagree, you're offering a choice and you have no say in what a system takes.",
     },
     {
       label: "Data",
       title: "Add structured data",
-      text: "Repeat the price in machine-readable form. The values have to match what's visible in the copy — and change along with it.",
+      desc: "Repeat the price in machine-readable form. The values have to match what's visible in the copy — and change along with it.",
     },
   ]}
 />
@@ -142,21 +142,21 @@ It's an illustrative example — the exact markup differs by offer type and page
 ## What to avoid
 
 <MistakeGrid>
-  <Mistake number="01" title="Price on request as the only information">
+  <Mistake num="01" title="Price on request as the only information">
     Commercially legitimate, informationally empty. You can usually give at least a range, or describe what drives the price.
   </Mistake>
-  <Mistake number="02" title="The price only in a PDF price list">
+  <Mistake num="02" title="The price only in a PDF price list">
     A system may not get to the contents of the file, and PDFs are harder to maintain, so they often hold an older price than the site does.
   </Mistake>
-  <Mistake number="03" title="Structured data that contradicts the page">
+  <Mistake num="03" title="Structured data that contradicts the page">
     When structured data states a different price than the copy, that's a problem in itself — and a signal that nobody is maintaining one of the two.
   </Mistake>
-  <Mistake number="04" title="A fake starting-at price">
+  <Mistake num="04" title="A fake starting-at price">
     A starting-at price should match something you can actually buy. Otherwise the reader finds out on first contact.
   </Mistake>
 </MistakeGrid>
 
-<Insight tone="warning">
+<Insight tone="warn">
 Price is one of the fastest-aging facts about a business. When you change it, change it **everywhere at once** — on the page, in structured data, in the price list, and on your profiles. How quickly systems pick up changes from their sources isn't published, so an old price can stick around for a while; on that, see [content updates for AI](/blog/content-updates-for-ai/).
 </Insight>
 

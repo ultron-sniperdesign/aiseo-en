@@ -55,7 +55,7 @@ The document titled **“Optimizing your website for generative AI features on G
 
 It's available at `developers.google.com/search/docs/fundamentals/ai-optimization-guide`. Google also published a companion post on the Google Search Central Blog.
 
-<Insight tone="key">
+<Insight tone="aio">
 The guide's core message: you don't need a separate new discipline for Google AI Overviews and AI Mode. The same Search index and comparable quality signals that drive classic organic results also play an important role in how Google picks sources for its AI answers.
 </Insight>
 
@@ -91,7 +91,7 @@ On the content side, Google recommends:
 - **A people-first approach** (people-first content, the principles of the Helpful Content Update).
 - **Clear organization** — obvious headings, images, video, easy navigation.
 
-<Insight tone="warning">
+<Insight tone="warn">
 The technical conditions read as trivial, but in reality they rule out plenty of sites: a site with broken HTTPS, slow on mobile, with snippets blocked via `nosnippet`, or poorly indexed in Google Search stays out of AI Overviews no matter how good the content is.
 </Insight>
 
@@ -110,8 +110,8 @@ The guide describes a process in which the AI answer is built from sources retri
 Google is in the position of **a company describing its own search engine**. Its guide applies to Google AI Overviews and AI Mode. But the AI ecosystem is broader, and by definition Google doesn't speak for its competitors.
 
 <CompareTable
-  caption="The Google guide vs. the broader AI ecosystem"
-  columns={["Google AI Overviews / AI Mode", "ChatGPT / Perplexity / Claude / Gemini and other competitors"]}
+  leftLabel="Google AI Overviews / AI Mode"
+  rightLabel="ChatGPT / Perplexity / Claude / Gemini and other competitors"
   rows={[
     { icon: "🎯", label: "Quality signals", left: "The same Search index and the same quality signals as classic results (Google confirms this explicitly)", right: "Their own systems, which Google by definition can't describe" },
     { icon: "📄", label: "llms.txt", left: "Not required — Google says so outright", right: "Per selected public analyses, some tools do work with it; it isn't a universally confirmed standard" },
@@ -121,23 +121,23 @@ Google is in the position of **a company describing its own search engine**. Its
   ]}
 />
 
-<Insight tone="key">
+<Insight tone="aio">
 Google is right that classic SEO is the foundation for its own AI features. But AEO/GEO practice (llms.txt, lists with specific numbers, FAQ structure, a brand entity, mentions and links off your own site) may help with citations outside Google — and Google, by definition, can neither confirm nor refute that. For systems outside Google there is no unified official documentation, so it's worth treating these recommendations as working hypotheses and validating them against your own data.
 </Insight>
 
 ## The most common misreadings since the guide came out
 
 <MistakeGrid>
-  <Mistake number="01" title="AEO/GEO doesn't exist, it's a marketing term">
+  <Mistake num="01" title="AEO/GEO doesn't exist, it's a marketing term">
     The Google guide doesn't say AEO/GEO is pointless — only that from Google's perspective it's still SEO. That says nothing about citations in ChatGPT or Perplexity, where their own specifics (content format, brand mentions, off-page signals) genuinely matter.
   </Mistake>
-  <Mistake number="02" title="I can ignore llms.txt because Google doesn't want it">
+  <Mistake num="02" title="I can ignore llms.txt because Google doesn't want it">
     Google doesn't recommend llms.txt as a requirement for AI Overviews. But outside Google, experiments with special files and machine-readable instructions keep showing up; it isn't a unified standard, but with some tools there may be an upside. Required, no. Potentially useful, yes.
   </Mistake>
-  <Mistake number="03" title="I don't need short citable chunks">
+  <Mistake num="03" title="I don't need short citable chunks">
     Google says it isn't a requirement. Analyses of citations outside Google, though, show that short, well-structured 50–150-word chunks tend to get cited more often than long unstructured text. For citability outside Google, it remains a practical tactic.
   </Mistake>
-  <Mistake number="04" title="If my SEO is good, AI is handled">
+  <Mistake num="04" title="If my SEO is good, AI is handled">
     For Google AI Overviews, good SEO is the foundation and can meaningfully raise your chances of showing up, but on its own it guarantees nothing. For citations in ChatGPT, Perplexity, Claude, and Gemini, what also matters is how trusted sources and trade sites talk about your brand. Good SEO alone doesn't deliver that.
   </Mistake>
 </MistakeGrid>

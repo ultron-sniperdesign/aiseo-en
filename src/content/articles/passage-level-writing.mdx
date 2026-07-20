@@ -69,8 +69,8 @@ The reason is mundane. Only a piece of a page often gets used — whether it's r
 It's almost always one of six things. What they have in common is that they lean on something that isn't in the section itself.
 
 <CompareTable
-  caption="What breaks a passage and what to replace it with"
-  columns={["Problem", "Replace it with"]}
+  leftLabel="Problem"
+  rightLabel="Replace it with"
   rows={[
     { icon: "↩️", label: "Backward reference", left: "“as we mentioned above,” “see the table above”", right: "Repeat the fact, or link to a specific page" },
     { icon: "🫥", label: "Unanchored pronoun", left: "“the same goes for it,” “that one is pricier”", right: "Name the subject" },
@@ -83,7 +83,7 @@ It's almost always one of six things. What they have in common is that they lean
 
 ## The cover test
 
-<Insight tone="key">
+<Insight tone="aio">
 Cover everything except one section and read it. **If you have to scroll up to understand it, the passage isn't self-contained.** It's a crude check, but it catches most of the problems in a few minutes — and it needs no tools.
 </Insight>
 
@@ -96,27 +96,27 @@ Work through the page this way, section by section. A common pattern: the first 
     {
       label: "Heading",
       title: "The heading carries a question or a claim",
-      text: "Not “More information,” but the question the section answers, or a specific claim.",
+      desc: "Not “More information,” but the question the section answers, or a specific claim.",
     },
     {
       label: "Answer",
       title: "The answer goes in the first sentence",
-      text: "The first sentence answers, it doesn't introduce. Elaboration and exceptions belong after it.",
+      desc: "The first sentence answers, it doesn't introduce. Elaboration and exceptions belong after it.",
     },
     {
       label: "Subject",
       title: "Out with pronouns and backward references",
-      text: "Repeat the subject by name, even if it feels slightly redundant when read straight through.",
+      desc: "Repeat the subject by name, even if it feels slightly redundant when read straight through.",
     },
     {
       label: "Context",
       title: "Put the context into the sentence",
-      text: "Spell out the abbreviation in the section, give the table its own caption, repeat what the example refers to.",
+      desc: "Spell out the abbreviation in the section, give the table its own caption, repeat what the example refers to.",
     },
     {
       label: "Test",
       title: "Run the cover test",
-      text: "Section by section. Whatever doesn't make sense without the rest of the page, rewrite it.",
+      desc: "Section by section. Whatever doesn't make sense without the rest of the page, rewrite it.",
     },
   ]}
 />
@@ -140,21 +140,21 @@ Five things changed: the heading names the section's topic specifically, the fir
 ## What to avoid
 
 <MistakeGrid>
-  <Mistake number="01" title="Headings with no content">
+  <Mistake num="01" title="Headings with no content">
     “More information” or “Note” say nothing about what's in the section. A heading should carry the question the section answers.
   </Mistake>
-  <Mistake number="02" title="Unanchored pronouns">
+  <Mistake num="02" title="Unanchored pronouns">
     “It,” “that one,” “this” — in a passage pulled off the page there's nothing to attach them to. Name the subject.
   </Mistake>
-  <Mistake number="03" title="Abbreviation only at the top of the page">
+  <Mistake num="03" title="Abbreviation only at the top of the page">
     Anyone landing straight into a section in the middle never sees the definition in the intro. Spell it out where you use it, too.
   </Mistake>
-  <Mistake number="04" title="Overdone self-containment">
+  <Mistake num="04" title="Overdone self-containment">
     Repeating the full context in every section makes the copy robotic. The goal is clarity, not a copy of the intro in every paragraph.
   </Mistake>
 </MistakeGrid>
 
-<Insight tone="warning">
+<Insight tone="warn">
 That last point is worth stressing, because it gets overlooked. When every paragraph restates what the whole article is about, you end up with copy that reads worse than the original. **Add enough context that the section makes sense — no more.** Usually it's enough to name the subject, spell out the abbreviation, and give the table a caption.
 </Insight>
 

@@ -55,7 +55,7 @@ In classic search, Google usually evaluates one main query and its semantic vari
 
 In its AI Mode demos, Google suggests the system can add sub-questions that expand on related user needs — for a query about things to do in a city with a group, that might mean restaurants, bars, or activities for different types of groups. Query fan-out has been described in more detail since 2025 in connection with AI Mode, and the analyses available connect it to earlier principles of topical search; it isn't a complete technical explanation confirmed by Google.
 
-<Insight tone="key">
+<Insight tone="aio">
 The fan-out is a shift from "one query = one search" to "one query = several parallel searches." Your page doesn't have to win the main query — answering one of the sub-questions it splits into can be enough to help.
 </Insight>
 
@@ -66,27 +66,27 @@ The fan-out is a shift from "one query = one search" to "one query = several par
     {
       label: "Query",
       title: "The user types a longer, conversational query",
-      text: "AI queries tend to run longer than classic search — a full sentence or question instead of two or three words. That gives the model more context to derive sub-questions from.",
+      desc: "AI queries tend to run longer than classic search — a full sentence or question instead of two or three words. That gives the model more context to derive sub-questions from.",
     },
     {
       label: "Breakdown",
       title: "The model breaks the query into sub-questions",
-      text: "A language model interprets the query and generates a set of related sub-questions — both explicit and implicit ones the user never asked directly but would probably want answered.",
+      desc: "A language model interprets the query and generates a set of related sub-questions — both explicit and implicit ones the user never asked directly but would probably want answered.",
     },
     {
       label: "Retrieval",
       title: "The sub-questions run in parallel",
-      text: "According to the descriptions available, each sub-question is searched separately across multiple sources — the web index and Google's other data layers, for example. And the sub-questions usually don't run one after another, but simultaneously.",
+      desc: "According to the descriptions available, each sub-question is searched separately across multiple sources — the web index and Google's other data layers, for example. And the sub-questions usually don't run one after another, but simultaneously.",
     },
     {
       label: "Passages",
       title: "AI often works with chunks, not whole pages",
-      text: "The system often works with specific passages of content, not just whole pages as a single block. Well-structured content is then easier to split into usable passages.",
+      desc: "The system often works with specific passages of content, not just whole pages as a single block. Well-structured content is then easier to split into usable passages.",
     },
     {
       label: "Synthesis",
       title: "The model assembles one answer with links",
-      text: "From chunks across sources, the model builds one coherent answer and attaches source links to the individual topics. A single answer can therefore cite several different sites at once.",
+      desc: "From chunks across sources, the model builds one coherent answer and attaches source links to the individual topics. A single answer can therefore cite several different sites at once.",
     },
   ]}
 />
@@ -110,7 +110,7 @@ The most important shift is that **a single position for a single keyword tells 
 
 That doesn't make classic SEO obsolete. According to public statements and analyses, AI answers still draw on the standard Search index, so indexability, authority, and content quality remain important. We cover how AI picks individual sources and chunks in more detail in our article on [how AI cites sources](/blog/how-ai-cites-sources/).
 
-<Insight tone="warning">
+<Insight tone="warn">
 The query breakdown tends to be contextual — the same query can fan out differently depending on the situation, such as phrasing, device, or location. That's why one fixed position tells you only so much about AI answers. Instead of tracking position, track whether AI answers cite you across query variants.
 </Insight>
 
@@ -121,8 +121,8 @@ The second consequence is about measurement and traffic. Because AI assembles th
 Google isn't the only one breaking queries into sub-questions. The comparison below is a rough interpretation based on publicly observed behavior, not a confirmed technical description — for each platform, it reflects how things appear from the outside rather than any verified internal process.
 
 <CompareTable
-  caption="A rough comparison of how platforms break down a query (based on publicly observed behavior)"
-  columns={["Platform", "How the query breakdown appears"]}
+  leftLabel="Platform"
+  rightLabel="How the query breakdown appears"
   rows={[
     { icon: "🌐", label: "Google AI Mode", left: "Parallel fan-out", right: "A simultaneous batch of searches across topics on top of the Search index; relatively well documented in how it works" },
     { icon: "🔍", label: "Perplexity", left: "Multiple queries at once", right: "Multi-stage ranking over several queries; treats content sections as independently usable passages" },
@@ -151,16 +151,16 @@ Covering comparison sub-questions helps especially with shopping topics — we b
 ## The most common mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="Optimizing for a single keyword">
+  <Mistake num="01" title="Optimizing for a single keyword">
     The fan-out breaks a query into several sub-questions. Target only one main phrase and you miss most of your chances to get cited in the secondary sub-questions.
   </Mistake>
-  <Mistake number="02" title="Writing long, undivided blocks">
+  <Mistake num="02" title="Writing long, undivided blocks">
     AI often works with chunks, not whole pages. A wall of text with no clear structure is harder to split into usable passages and harder to cite.
   </Mistake>
-  <Mistake number="03" title="Watching one stable position">
+  <Mistake num="03" title="Watching one stable position">
     The fan-out tends to be contextual, so one fixed position tells you only so much about AI answers. Track only the position for a single query and you can miss an important part of your visibility in AI answers.
   </Mistake>
-  <Mistake number="04" title="Ignoring implicit questions">
+  <Mistake num="04" title="Ignoring implicit questions">
     The user asks about one thing, but the system also handles what follows from the query. Content that covers only the literal question fits the fan-out less well.
   </Mistake>
 </MistakeGrid>

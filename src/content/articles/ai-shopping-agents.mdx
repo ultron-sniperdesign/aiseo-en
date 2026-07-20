@@ -57,7 +57,7 @@ There's a lot of noise around agentic shopping, so let's separate out what can a
 
 **What can't be documented:** how much sales volume runs through agents, exactly how agents pick and rank products, or that this is an established channel anywhere. The scope and availability of these features also vary by market and over time, and operators don't publish how the selection works.
 
-<Insight tone="key">
+<Insight tone="aio">
 It helps to separate two questions. "Are agents coming?" is speculation. "Is my product data complete and consistent?" is something you can solve today — and it pays off no matter how the agent story turns out.
 </Insight>
 
@@ -66,8 +66,8 @@ It helps to separate two questions. "Are agents coming?" is speculation. "Is my 
 The most significant change isn't technical, it's logical.
 
 <CompareTable
-  caption="Classic search vs. a shopping agent, from a store's point of view"
-  columns={["Angle", "Difference"]}
+  leftLabel="Angle"
+  rightLabel="Difference"
   rows={[
     { icon: "📄", label: "Output", left: "List vs. shortlist", right: "Instead of ten links, the customer gets a handful of options" },
     { icon: "🎯", label: "Goal", left: "Ranking vs. inclusion", right: "Sixth place was still a chance; missing the shortlist means far less of one" },
@@ -102,23 +102,23 @@ Structured data on the page and a product feed aren't alternatives — they desc
 
 A price in the feed that differs from the page isn't a detail: for the customer it's a letdown, and for any machine it's a signal that your values can't be trusted. The same goes for availability.
 
-<Insight tone="warning">
+<Insight tone="warn">
 Here's a contradiction you run into often: a store blocks AI crawlers in robots.txt and at the same time expects its products to show up in AI answers. Those can work against each other — though it depends on the specific system and where it pulls its data from. More details are in [robots.txt for AI](/blog/robots-txt-for-ai-crawlers/).
 </Insight>
 
 ## The most common mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="Price only in the copy">
+  <Mistake num="01" title="Price only in the copy">
     Price and availability visible on the page but missing from structured data — or the other way around. The machine then reads something different than the customer does.
   </Mistake>
-  <Mistake number="02" title="Missing identifier">
+  <Mistake num="02" title="Missing identifier">
     Without a GTIN, or an MPN where it applies, it's harder to tell that this is the same product your competitors sell; brand only sharpens the identification.
   </Mistake>
-  <Mistake number="03" title="Feed and page drift apart">
+  <Mistake num="03" title="Feed and page drift apart">
     A different price or availability in the feed than on the site. The mismatch hurts trust and machine processing alike.
   </Mistake>
-  <Mistake number="04" title="Rebuilding the store over hype">
+  <Mistake num="04" title="Rebuilding the store over hype">
     Agentic shopping doesn't yet drive a meaningful number of orders. Investing in clean data makes sense; an expensive rebuild based on speculation doesn't.
   </Mistake>
 </MistakeGrid>

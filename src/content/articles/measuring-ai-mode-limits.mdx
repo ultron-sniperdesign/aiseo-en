@@ -53,8 +53,8 @@ This article isn't a tool walkthrough — those already exist. It's about what t
 ## Three sources and what each one tells you about AI Mode
 
 <CompareTable
-  caption="What each source reveals about AI Mode"
-  columns={["What it shows", "What it won't tell you about AI Mode"]}
+  leftLabel="What it shows"
+  rightLabel="What it won't tell you about AI Mode"
   rows={[
     { icon: "📊", label: "Search Console", left: "Impressions in Google's generative AI features", right: "Doesn't separate AI Mode from AI Overviews — they sit in one view" },
     { icon: "📈", label: "Analytics", left: "Visits from AI assistants and their quality", right: "Won't tell you which Google surface the visit came from" },
@@ -70,7 +70,7 @@ It's tempting to treat the combined number as "close enough to AI Mode." But it 
 
 In an Ahrefs analysis of US data from September 2025 that captures individual generations, the cited URLs of AI Overviews and AI Mode overlapped by **just 13.7 percent**. [AI Mode vs. AI Overviews](/blog/ai-mode-vs-ai-overviews/) goes through it in detail.
 
-<Insight tone="key">
+<Insight tone="aio">
 When the combined number goes up, it can be growth in one surface, the other, or both — **and the number won't tell you which**. So the total isn't a reliable proxy for AI Mode. It's the sum of two things that are documented to diverge.
 </Insight>
 
@@ -79,8 +79,8 @@ When the combined number goes up, it can be growth in one surface, the other, or
 This is the practical part. The difference between a defensible claim and an indefensible one usually comes down to wording — but that wording decides whether the report holds up when someone reads it a year from now.
 
 <CompareTable
-  caption="Same data, two ways to word it"
-  columns={["Defensible", "Indefensible"]}
+  leftLabel="Defensible"
+  rightLabel="Indefensible"
   rows={[
     { icon: "👁️", label: "Impressions", left: "Impressions in Google's generative AI features grew by X%", right: "We have X impressions in AI Mode" },
     { icon: "🚪", label: "Visits", left: "AI assistants sent N visits, mostly from ChatGPT", right: "AI Mode sent N visits" },
@@ -94,21 +94,21 @@ This isn't hedging for its own sake. The left column says what was measured; the
 ## Common mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="Passing the total off as AI Mode">
+  <Mistake num="01" title="Passing the total off as AI Mode">
     The most common one. The report merges AI Overviews and AI Mode into a single view, so you can't read one surface's performance out of it.
   </Mistake>
-  <Mistake number="02" title="Reading impressions as traffic">
+  <Mistake num="02" title="Reading impressions as traffic">
     The report gives you impressions, not clicks and not CTR. An impression is a signal that you showed up, not a visit.
   </Mistake>
-  <Mistake number="03" title="Drawing a conclusion from one run">
+  <Mistake num="03" title="Drawing a conclusion from one run">
     Source selection fluctuates between runs. One answer you tried is an anecdote, not a measurement.
   </Mistake>
-  <Mistake number="04" title="Mixing Google AI with other assistants">
+  <Mistake num="04" title="Mixing Google AI with other assistants">
     The Search Console report covers Google's generative features only. ChatGPT and Perplexity aren't in it.
   </Mistake>
 </MistakeGrid>
 
-<Insight tone="warning">
+<Insight tone="warn">
 There's a good reason to repeat your measurements: earlier research cited in the Ahrefs study puts it at roughly **45 percent of citations changing between individual generations**. A one-off check captures a moment rather than a state — it only starts to mean something once you repeat it over time and across more queries.
 </Insight>
 

@@ -56,15 +56,15 @@ If every AI system cited the same way, you'd optimize once and be done. The real
 
 For anyone producing content, that means **being "good" in general isn't enough**. It pays to understand what each platform prioritizes when it picks sources.
 
-<Insight tone="key">
+<Insight tone="aio">
 The platforms agree on the basics — solid, factual, well-structured content helps everywhere. Above that foundation, though, they differ in which signals appear to carry the most weight when sources get selected: authority, freshness, or classic SEO signals.
 </Insight>
 
 ## Comparison: how each platform picks sources
 
 <CompareTable
-  caption="How each AI platform selects and cites sources (per the available 2026 analyses)"
-  columns={["Platform", "Main signal and behavior"]}
+  leftLabel="Platform"
+  rightLabel="Main signal and behavior"
   rows={[
     { icon: "💬", label: "ChatGPT", left: "Authority, reference-style depth", right: "Favors authoritative factual content; cites less often and mainly with web search turned on; compresses heavily" },
     { icon: "🔍", label: "Perplexity", left: "Freshness", right: "Across most interfaces it usually shows sources as numbered links; puts heavy weight on content from the last few weeks; often lists more sources than other platforms" },
@@ -107,7 +107,7 @@ Google AI Overviews builds on the **standard Google Search index**, enriched wit
 
 **What that means in practice:** for Google AI Overviews, classic SEO remains the foundation — but a ranking position is no longer a guarantee of a citation. Content with a clear structure, structured data, and trust signals tends to have a better shot. More details are in our article on [Google AI Mode and AI Overviews](/blog/google-ai-mode-content/).
 
-<Insight tone="warning">
+<Insight tone="warn">
 The specific numbers in this article (domain shares, citation multipliers, percentages) come from public marketing analyses published in 2026, not from official platform documentation. Treat them as directional — the direction is consistent, but the exact figures differ between studies and shift over time.
 </Insight>
 
@@ -130,27 +130,27 @@ The platforms differ, but there's a **universal foundation** that helps everywhe
     {
       label: "ChatGPT",
       title: "Reference-style depth and authority",
-      text: "Factually verifiable, well-structured content with clear definitions. It helps if the topic or the brand is findable in authoritative reference sources.",
+      desc: "Factually verifiable, well-structured content with clear definitions. It helps if the topic or the brand is findable in authoritative reference sources.",
     },
     {
       label: "Perplexity",
       title: "Freshness and organic findability",
-      text: "Update and date your content regularly (year in the title). A natural presence in relevant discussions helps too — organically, not through manufactured mentions.",
+      desc: "Update and date your content regularly (year in the title). A natural presence in relevant discussions helps too — organically, not through manufactured mentions.",
     },
     {
       label: "Google AI Overviews",
       title: "Classic SEO plus structured data",
-      text: "A solid SEO foundation, structured data, thorough topic coverage, and E-E-A-T. Don't lean on your ranking position alone — it no longer guarantees a citation.",
+      desc: "A solid SEO foundation, structured data, thorough topic coverage, and E-E-A-T. Don't lean on your ranking position alone — it no longer guarantees a citation.",
     },
     {
       label: "Claude and Gemini",
       title: "Balance and Google's ecosystem",
-      text: "There's less public comparative data on Claude and Gemini, so treat this as directional. Claude tends to suit balanced, high-quality content, while Gemini likely reflects signals from Google's wider ecosystem.",
+      desc: "There's less public comparative data on Claude and Gemini, so treat this as directional. Claude tends to suit balanced, high-quality content, while Gemini likely reflects signals from Google's wider ecosystem.",
     },
     {
       label: "Test",
       title: "Verify how each platform cites you",
-      text: "Because cited domains overlap so little across platforms, test each one separately. We walk through the practical process in a separate article on testing AI visibility.",
+      desc: "Because cited domains overlap so little across platforms, test each one separately. We walk through the practical process in a separate article on testing AI visibility.",
     },
   ]}
 />
@@ -158,16 +158,16 @@ The platforms differ, but there's a **universal foundation** that helps everywhe
 ## Common mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="Optimizing for one platform only">
+  <Mistake num="01" title="Optimizing for one platform only">
     Cited domains overlap very little across platforms. Target ChatGPT alone and you may stay invisible on Perplexity, and vice versa. Build the universal foundation, then add platform specifics.
   </Mistake>
-  <Mistake number="02" title="Ignoring freshness">
+  <Mistake num="02" title="Ignoring freshness">
     Freshness helps a lot, especially on Perplexity. Old, un-updated content loses to fresh content on the same topic. Updating and dating your work is worth the effort.
   </Mistake>
-  <Mistake number="03" title="Leaning on your Google ranking">
+  <Mistake num="03" title="Leaning on your Google ranking">
     Google AI Overviews relies less and less on the first page of results. Ranking first doesn't mean getting cited in the AI panel — structured data and E-E-A-T carry more weight now.
   </Mistake>
-  <Mistake number="04" title="Treating marketing numbers as certainty">
+  <Mistake num="04" title="Treating marketing numbers as certainty">
     Percentages and multipliers from these analyses are directional and shift over time. Use them for direction, not as precise targets — and verify with your own tests.
   </Mistake>
 </MistakeGrid>

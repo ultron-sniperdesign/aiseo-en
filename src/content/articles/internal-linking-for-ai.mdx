@@ -70,15 +70,15 @@ Three things that are broadly beyond dispute:
 - **Context** — anchor text says what is on the other side before anyone clicks through.
 - **Relationships and priority** — the link structure signals what belongs together and which pages carry higher priority within the site.
 
-<Insight tone="key">
+<Insight tone="aio">
 What you cannot claim: how much "power" a link passes, or exactly how AI systems weight internal links. Nobody publishes those weights. Stick to what can be verified — links help content get discovered and help make the relationships clear. That is reason enough to do them properly.
 </Insight>
 
 ## Four things that matter in practice
 
 <CompareTable
-  caption="What decides the value of an internal link"
-  columns={["Element", "Why it matters"]}
+  leftLabel="Element"
+  rightLabel="Why it matters"
   rows={[
     { icon: "🔤", label: "Anchor text", left: "Context", right: "Descriptive anchor text says what is on the other side; here says nothing" },
     { icon: "📍", label: "Where you link from", left: "Placement", right: "A link from the body copy usually carries more specific context than one in the footer" },
@@ -94,27 +94,27 @@ What you cannot claim: how much "power" a link passes, or exactly how AI systems
     {
       label: "Orphans",
       title: "Find the pages nothing links to",
-      text: "Compare your list of known URLs (CMS, sitemap) against what a crawl finds by following links. The difference is your list of candidate orphan pages.",
+      desc: "Compare your list of known URLs (CMS, sitemap) against what a crawl finds by following links. The difference is your list of candidate orphan pages.",
     },
     {
       label: "Anchors",
       title: "Get rid of anchor text like here",
-      text: "Anchor text should describe the target page. Write it naturally so it fits the sentence, rather than repeating the same canned phrase.",
+      desc: "Anchor text should describe the target page. Write it naturally so it fits the sentence, rather than repeating the same canned phrase.",
     },
     {
       label: "In-body",
       title: "Connect related topics from your paragraphs",
-      text: "Link from where it makes sense to the reader. A link in the context of a sentence says more than a link in the footer.",
+      desc: "Link from where it makes sense to the reader. A link in the context of a sentence says more than a link in the footer.",
     },
     {
       label: "Depth",
       title: "Shorten the path to important pages",
-      text: "Work out how many clicks from the homepage your key pages sit, and add links from relevant places.",
+      desc: "Work out how many clicks from the homepage your key pages sit, and add links from relevant places.",
     },
     {
       label: "Cleanup",
       title: "Fix broken links and redirects",
-      text: "Internal links should point straight at the destination. Fix links to error pages and links that run through a redirect chain.",
+      desc: "Internal links should point straight at the destination. Fix links to error pages and links that run through a redirect chain.",
     },
   ]}
 />
@@ -125,7 +125,7 @@ That last step matters most right after a site rebuild — the article on [migra
 
 Many AI systems work with retrieved chunks of content when they answer. Descriptive anchor text helps them understand what is on the other side, and internal linking shows that the site devotes more than one isolated page to the topic. The same principle drives pillar content structure, which is covered in [how to structure pillar content](/blog/how-to-structure-pillar-content/).
 
-<Insight tone="warning">
+<Insight tone="warn">
 Do not overrate it. Internal links will not rescue content that has nothing to offer — they only make it easier to find what is already there. If a page answers no question at all, ten links will not save it; [how AI cites sources](/blog/how-ai-cites-sources/) explains why.
 </Insight>
 
@@ -144,16 +144,16 @@ Do not overrate it. Internal links will not rescue content that has nothing to o
 ## The most common mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="Click here">
+  <Mistake num="01" title="Click here">
     Anchor text with no context. Neither reader nor machine can tell what is waiting on the other side.
   </Mistake>
-  <Mistake number="02" title="Orphan pages">
+  <Mistake num="02" title="Orphan pages">
     An article gets published and then nothing internal ever links to it. It is harder to discover and harder to place in context.
   </Mistake>
-  <Mistake number="03" title="Links only in the footer">
+  <Mistake num="03" title="Links only in the footer">
     The menu and footer are identical everywhere. For the relationship between two specific topics, a link in the text itself is usually more useful.
   </Mistake>
-  <Mistake number="04" title="Links for the sake of links">
+  <Mistake num="04" title="Links for the sake of links">
     Forcing in links where no relationship exists. If they make no sense to a reader, they make no sense to a machine either.
   </Mistake>
 </MistakeGrid>

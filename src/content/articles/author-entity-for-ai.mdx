@@ -76,7 +76,7 @@ An author entity is **a specific person that search engines and AI can unambiguo
   { title: "Consistency", desc: "The same name, photo, and bio across your site and every external profile." },
 ]} />
 
-<Insight tone="key">
+<Insight tone="aio">
 The point isn't “being an authority” in some abstract sense. The point is being a person AI and search engines can unambiguously identify — an entity they can tie to verified profiles and a publishing history.
 </Insight>
 
@@ -119,27 +119,27 @@ The author page is where the author entity settles in. Without one, the byline s
     {
       label: "Core identity",
       title: "Full name, role, and a portrait photo",
-      text: "Put the author's full name, their role or position, and a real portrait photo at the top of the page. A stock photo or a generated portrait does nothing for verifiability on its own, and on expert content it can raise doubts if it isn't the author's real identity.",
+      desc: "Put the author's full name, their role or position, and a real portrait photo at the top of the page. A stock photo or a generated portrait does nothing for verifiability on its own, and on expert content it can raise doubts if it isn't the author's real identity.",
     },
     {
       label: "Bio and credentials",
       title: "Specific experience and proof",
-      text: "A bio with specific experience (years in the field, the industry, what the author actually works on). On expert topics, add credentials: degrees, certifications, licenses. On sensitive topics, a verifiable credential is essential.",
+      desc: "A bio with specific experience (years in the field, the industry, what the author actually works on). On expert topics, add credentials: degrees, certifications, licenses. On sensitive topics, a verifiable credential is essential.",
     },
     {
       label: "External profiles",
       title: "Links to verified profiles (sameAs)",
-      text: "Visible links to LinkedIn, publications, and professional registries. Those same links then belong in the sameAs array in your structured data. Consistency between the visible links and the structured data strengthens the entity.",
+      desc: "Visible links to LinkedIn, publications, and professional registries. Those same links then belong in the sameAs array in your structured data. Consistency between the visible links and the structured data strengthens the entity.",
     },
     {
       label: "Article list",
       title: "The author's publishing history",
-      text: "A list of the articles the author has written, internally linked. It builds topical authority — expertise demonstrated repeatedly across one cluster of topics — and shows AI and readers alike that the author covers the subject consistently.",
+      desc: "A list of the articles the author has written, internally linked. It builds topical authority — expertise demonstrated repeatedly across one cluster of topics — and shows AI and readers alike that the author covers the subject consistently.",
     },
     {
       label: "Structured data",
       title: "Person data on the author page itself",
-      text: "The author page should carry its own Person structured data. Check the syntax and the relationships in the schema.org structured data validator, then use Google Rich Results Test to confirm the markup is error-free where Google processes it.",
+      desc: "The author page should carry its own Person structured data. Check the syntax and the relationships in the schema.org structured data validator, then use Google Rich Results Test to confirm the markup is error-free where Google processes it.",
     },
   ]}
 />
@@ -149,8 +149,8 @@ The author page is where the author entity settles in. Without one, the byline s
 On **sensitive topics** — YMYL (Your Money Your Life), meaning health, finance, law, and safety — the trust bar is far higher. A verifiable credential is often among the **strongest trust signals** available, alongside solid sources, expert editing, and institutional credibility.
 
 <CompareTable
-  caption="Verifiable credentials for sensitive topics"
-  columns={["Field", "Verifiable credential for sameAs"]}
+  leftLabel="Field"
+  rightLabel="Verifiable credential for sameAs"
   rows={[
     { icon: "🩺", label: "Health", left: "Physician, clinician", right: "State medical board license lookup, ABMS board certification, specialty society profile" },
     { icon: "⚖️", label: "Law", left: "Attorney, legal advisor", right: "A profile in a state bar association member directory" },
@@ -160,23 +160,23 @@ On **sensitive topics** — YMYL (Your Money Your Life), meaning health, finance
   ]}
 />
 
-<Insight tone="warning">
+<Insight tone="warn">
 On sensitive topics without a verifiable author credential, the odds of getting cited in AI answers tend to be lower. Medical content with no traceable physician, financial advice with no registered advisor, or a legal explainer with no attorney behind it carries a weaker trust signal for AI — even when the content itself is good.
 </Insight>
 
 ## The most common mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="An anonymous author">
+  <Mistake num="01" title="An anonymous author">
     “Editorial team”, “Admin”, or “Staff” as the author does nothing to tie the content to a specific person. Anonymous authorship is a wasted opportunity — a named expert is an entity AI can read and verify.
   </Mistake>
-  <Mistake number="02" title="Fake authors passed off as real people">
+  <Mistake num="02" title="Fake authors passed off as real people">
     A fake author presented as a real person is a trust problem. A stock photo or a generated portrait does nothing for verifiability on its own; the author entity has to correspond to an actual person.
   </Mistake>
-  <Mistake number="03" title="A name mismatch">
+  <Mistake num="03" title="A name mismatch">
     The name in your structured data should match the visible byline. A mismatch like “Jane Doe” versus “Jane M. Doe” can needlessly muddy the identity.
   </Mistake>
-  <Mistake number="04" title="An empty author page">
+  <Mistake num="04" title="An empty author page">
     An author page with no bio, no credentials, and no links to external profiles adds no trust. The page existing isn't enough — it needs content that backs the author up as an entity.
   </Mistake>
 </MistakeGrid>

@@ -55,8 +55,8 @@ Right up front, it helps to separate two things that get confused easily. **Dire
 This is the heart of it. "AI is lying about us" isn't one situation, it's three — and each one gets handled differently.
 
 <CompareTable
-  caption="Three causes of a bad claim and what to do about each"
-  columns={["Cause", "How to handle it"]}
+  leftLabel="Cause"
+  rightLabel="How to handle it"
   rows={[
     { icon: "🕰️", label: "Stale fact", left: "An old price, a discontinued service", right: "Update your own site and profiles; the most common case and the most fixable" },
     { icon: "🔗", label: "Bad third-party source", left: "A directory, an old article", right: "Contact whoever runs the source and get the claim corrected" },
@@ -66,7 +66,7 @@ This is the heart of it. "AI is lying about us" isn't one situation, it's three 
 
 Hallucinations may be more common where clear, consistent material is missing, but they also come out of a bad synthesis of several sources or a case of mistaken entity. So the risk can grow for brands with less consistent public material out there; on why models make things up, see the article on [AI-generated content](/blog/ai-generated-content-visibility/).
 
-<Insight tone="key">
+<Insight tone="aio">
 The key distinction: you can't rewrite the model, but you can fix the sources. Everything you can realistically do aims at **where the information comes from** — not at the answer itself. Anyone promising a direct or guaranteed fix to an AI answer is promising more than they can back up.
 </Insight>
 
@@ -77,27 +77,27 @@ The key distinction: you can't rewrite the model, but you can fix the sources. E
     {
       label: "Evidence",
       title: "Document it",
-      text: "Save the prompt, the answer, the date, and the system. Answers fluctuate, so try it several times — one answer may not mean anything.",
+      desc: "Save the prompt, the answer, the date, and the system. Answers fluctuate, so try it several times — one answer may not mean anything.",
     },
     {
       label: "Cause",
       title: "Work out where it's coming from",
-      text: "Stale fact, bad third-party source, or hallucination? The next step differs accordingly. Without that, you're firing blind.",
+      desc: "Stale fact, bad third-party source, or hallucination? The next step differs accordingly. Without that, you're firing blind.",
     },
     {
       label: "Source",
       title: "Fix the source",
-      text: "Update your own site; for a third-party source, contact whoever runs it. Sometimes one email or an edit to your own profile is enough, other times the process drags on with no certain outcome.",
+      desc: "Update your own site; for a third-party source, contact whoever runs it. Sometimes one email or an edit to your own profile is enough, other times the process drags on with no certain outcome.",
     },
     {
       label: "Answer",
       title: "Supply what's missing",
-      text: "One reason a model makes things up may be that the answer isn't stated clearly and consistently anywhere. Write it down in one place and keep it identical across the site.",
+      desc: "One reason a model makes things up may be that the answer isn't stated clearly and consistently anywhere. Write it down in one place and keep it identical across the site.",
     },
     {
       label: "Test",
       title: "Retest later",
-      text: "Check repeatedly and across different systems. Expect a lag — how often changes get picked up isn't published.",
+      desc: "Check repeatedly and across different systems. Expect a lag — how often changes get picked up isn't published.",
     },
   ]}
 />
@@ -107,21 +107,21 @@ Consistency matters more here than almost anywhere else. When the fact on your s
 ## What not to do
 
 <MistakeGrid>
-  <Mistake number="01" title="Panicking over a single answer">
+  <Mistake num="01" title="Panicking over a single answer">
     Answers fluctuate from run to run. Before you act on it, verify it several times and across different systems.
   </Mistake>
-  <Mistake number="02" title="A correction page on your site">
+  <Mistake num="02" title="A correction page on your site">
     Copy along the lines of it is not true that we do such and such won't help the reader, and it can tie the false claim to your name.
   </Mistake>
-  <Mistake number="03" title="Manufacturing fake sources">
+  <Mistake num="03" title="Manufacturing fake sources">
     Producing content purely to drown out an error is both a risk and an ethical problem. Fixing the source is usually the cleanest and most reliable route.
   </Mistake>
-  <Mistake number="04" title="Waiting for an edit button">
+  <Mistake num="04" title="Waiting for an edit button">
     Directly editing the answer itself usually isn't available in the standard interface. Time spent looking for a way into the model is better spent fixing sources and reporting the error.
   </Mistake>
 </MistakeGrid>
 
-<Insight tone="warning">
+<Insight tone="warn">
 Reporting the error in the AI tool itself makes sense, and some systems have feedback controls for it. Just don't count on it as a sure fix: how a report gets evaluated and worked in usually isn't transparent. It's a supplement to fixing the sources, not a replacement.
 </Insight>
 

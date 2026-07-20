@@ -70,7 +70,7 @@ AI interfaces and search answers (ChatGPT, Perplexity, or Google's AI Overviews,
 
 Marketing analyses published in 2026 consistently find structured data on cited pages; the exact percentages vary from study to study. The logic is consistent, though: **if AI has a harder time reading price, availability, and rating, the product has a lower chance of appearing in a comparison answer.**
 
-<Insight tone="key">
+<Insight tone="aio">
 On shopping queries, the value shifts from “being a ranking URL” to “being a citable entity.” A product AI can read and compare has a better chance of landing in an answer. A product without structured data is harder for AI to read, so it shows up in shopping answers less often.
 </Insight>
 
@@ -97,7 +97,7 @@ Available analyses suggest AI platforms mainly need the following to slot a prod
 
 Plenty of online stores **leave GTIN off** — yet it is one of the fields that helps identify a product correctly, especially on comparison shopping queries.
 
-<Insight tone="warning">
+<Insight tone="warn">
 One useful addition that shows up more often on cited shopping pages in 2026 analyses is hasMerchantReturnPolicy — a declaration of your return terms. Available analyses suggest ChatGPT's shopping answers favor products from stores that state returns explicitly. Return windows differ by market and product type, so fill the field in with your store's actual terms.
 </Insight>
 
@@ -110,27 +110,27 @@ Structured data is the technical foundation. But for AI to actually use the prod
     {
       label: "Specs",
       title: "Specifications as structure, not prose",
-      text: "Dimensions, material, weight, power, compatibility — in a clean table or list. That way AI and buyers alike find the spec fast. Buried in a marketing paragraph, it is harder to extract.",
+      desc: "Dimensions, material, weight, power, compatibility — in a clean table or list. That way AI and buyers alike find the spec fast. Buried in a marketing paragraph, it is harder to extract.",
     },
     {
       label: "Query-matched content",
       title: "Answer what people are actually working out",
-      text: "Think about how people ask AI about this type of product (“is it waterproof?”, “how much does it weigh?”, “what is it good for?”) and answer that directly in the description or the FAQ. Content matched to real queries has a better shot at a citation.",
+      desc: "Think about how people ask AI about this type of product (“is it waterproof?”, “how much does it weigh?”, “what is it good for?”) and answer that directly in the description or the FAQ. Content matched to real queries has a better shot at a citation.",
     },
     {
       label: "Product FAQ",
       title: "Four to six real questions with answers",
-      text: "Short questions with short answers that buyers actually ask. An FAQ section makes the content clearer and AI cites those chunks easily; add FAQPage structured data only where it makes sense and lines up with current search engine rules. Avoid invented questions that add nothing.",
+      desc: "Short questions with short answers that buyers actually ask. An FAQ section makes the content clearer and AI cites those chunks easily; add FAQPage structured data only where it makes sense and lines up with current search engine rules. Avoid invented questions that add nothing.",
     },
     {
       label: "Reviews",
       title: "Real reviews visible on the page",
-      text: "Display reviews on the page itself (not behind a login) and wire them into AggregateRating. If you collect reviews on an external platform, pull them back onto the product page.",
+      desc: "Display reviews on the page itself (not behind a login) and wire them into AggregateRating. If you collect reviews on an external platform, pull them back onto the product page.",
     },
     {
       label: "Technical",
       title: "Speed and clean indexing",
-      text: "Watch Core Web Vitals and the technical health of your indexing — without an indexable, fast page, AI never reaches the content. Confirm that your product pages aren't blocked from indexing and are reachable by the usual search crawlers.",
+      desc: "Watch Core Web Vitals and the technical health of your indexing — without an indexable, fast page, AI never reaches the content. Confirm that your product pages aren't blocked from indexing and are reachable by the usual search crawlers.",
     },
   ]}
 />
@@ -138,16 +138,16 @@ Structured data is the technical foundation. But for AI to actually use the prod
 ## The most common product page mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="No structured data at all">
+  <Mistake num="01" title="No structured data at all">
     Without structured data, AI reads price, availability, and rating less reliably. The product then has a lower chance of appearing on shopping queries. It's the most basic and most common mistake.
   </Mistake>
-  <Mistake number="02" title="Missing GTIN and brand">
+  <Mistake num="02" title="Missing GTIN and brand">
     GTIN and brand help identify a product unambiguously, especially on comparison shopping queries. Stores leave these fields out routinely, even though they matter for AI shopping queries.
   </Mistake>
-  <Mistake number="03" title="Specs only in marketing copy">
+  <Mistake num="03" title="Specs only in marketing copy">
     Specifications buried in a paragraph are harder to extract. AI and buyers alike need specs as structure — in a table or a list, not dissolved into a sales sentence.
   </Mistake>
-  <Mistake number="04" title="Structured data that contradicts the page">
+  <Mistake num="04" title="Structured data that contradicts the page">
     A different price or availability in structured data than on the page — Google can treat that as a mismatch, and the page may no longer be eligible for certain rich results. Structured data has to be truthful and current.
   </Mistake>
 </MistakeGrid>
@@ -176,8 +176,8 @@ Structured data is the technical foundation. But for AI to actually use the prod
 Complete structured data on a product has a twofold effect, according to available analyses. First, a **higher click-through rate (CTR, the share of people who click the result)** in classic search — stars, price, and availability right in the result lift clicks (the published figures vary by study and position, so treat them as directional). Second, a **better chance of being cited in AI shopping answers** — because AI has something to work with.
 
 <CompareTable
-  caption="A product page with and without structured data for AI"
-  columns={["Without structured data", "With complete structured data"]}
+  leftLabel="Without structured data"
+  rightLabel="With complete structured data"
   rows={[
     { icon: "💰", label: "Price and availability", left: "AI has to guess them from HTML — unreliably", right: "AI reads the exact price, currency, and availability" },
     { icon: "🔢", label: "Product identification", left: "Ambiguous without GTIN and brand", right: "GTIN and brand allow it into comparisons" },

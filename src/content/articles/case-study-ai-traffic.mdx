@@ -56,7 +56,6 @@ import Checklist from "~/components/blocks/Checklist.astro";
 Over twelve months (July 17, 2025 – July 16, 2026), AI tools brought in **1,867 visits** out of a total of 394,000 — roughly **0.5 percent**. Nine out of ten AI visits came from ChatGPT (1,688), the rest from Perplexity (126), Gemini (28), Copilot (23), and a handful from Claude and Grok.
 
 <DataColumns
-  caption="Visits from AI tools by month (GA4, session source: ChatGPT, Perplexity, Gemini, Copilot, Claude, Grok)"
   unit="visits"
   tableValueLabel="Visits"
   ticks={[0, 100, 200]}
@@ -84,7 +83,6 @@ Half a percent sounds like a rounding error. But the volume matters less than **
 A visitor from ChatGPT behaves differently than one who comes from a search engine. They're not there to "compare options" — they arrive with a specific recommendation the AI assembled for their exact question.
 
 <DataBars
-  caption="Conversion rate by traffic source (key events, GA4, 12 months)"
   unit="%"
   tableValueLabel="Conversion rate"
   rows={[
@@ -95,7 +93,6 @@ A visitor from ChatGPT behaves differently than one who comes from a search engi
 />
 
 <DataBars
-  caption="Revenue per visit by source, indexed to Google organic = 1.0 (GA4, 12 months)"
   unit="×"
   tableValueLabel="Revenue per visit (Google organic = 1.0)"
   rows={[
@@ -106,7 +103,7 @@ A visitor from ChatGPT behaves differently than one who comes from a search engi
   ]}
 />
 
-<Insight tone="key">
+<Insight tone="aio">
 A visit from ChatGPT converts roughly **4× better than one from Google organic** and brings in about **3× the revenue**. AI tools work like a filter: instead of ten curious browsers, they send one buyer who's already decided. So half a percent of traffic carries a far larger share of the value than its volume suggests.
 </Insight>
 
@@ -115,7 +112,6 @@ A visit from ChatGPT converts roughly **4× better than one from Google organic*
 Over the year, AI tools dropped people onto **668 different landing pages**. That's a finding in itself: AI doesn't just cite the homepage — it knows the categories, the articles, the courses, and the wholesale section.
 
 <DataBars
-  caption="Top landing pages for visits from AI tools (GA4, 12 months)"
   unit="visits"
   tableValueLabel="Visits"
   rows={[
@@ -135,7 +131,6 @@ Next to the homepage, the leaders are **educational articles and pages that prov
 Referrals are only the visible part, though. In 2026, Search Console added a new beta report — **Generative AI features** — showing how often a site appears directly inside Google's AI answers (AI Overviews and friends). For our store: **200,000 impressions between May 18 and July 15, 2026**, averaging around **3,400 impressions a day**.
 
 <DataBars
-  caption="Top pages in Google's generative AI features — impressions (Search Console, Beta, May 18 – July 15, 2026)"
   unit="impressions"
   tableValueLabel="Impressions"
   rows={[
@@ -163,7 +158,7 @@ Our store hasn't been through a deliberate AI SEO pass yet — that work is just
   ]}
 />
 
-<Insight tone="warning">
+<Insight tone="warn">
 The referral numbers in this study are a **floor estimate of AI's influence**. Those 200,000 AI Overviews impressions don't produce a visit, but they build awareness — and clicks from AI Overviews can't be separated from regular organic in Search Console anyway. A large share of AI influence is "dark traffic": someone gets a recommendation in ChatGPT or in a Google AI answer, then searches the brand or types the address directly, and it lands in analytics as organic or direct. The pattern backs that up: the strongest query in Search Console is the brand name itself, and direct traffic accounts for more than a fifth of the site.
 </Insight>
 

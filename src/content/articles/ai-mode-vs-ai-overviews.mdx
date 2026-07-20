@@ -53,8 +53,8 @@ From the outside it looks like one thing: "Google answers questions itself now."
 ## Where you'll run into each one
 
 <CompareTable
-  caption="AI Overviews and AI Mode side by side"
-  columns={["AI Overviews", "AI Mode"]}
+  leftLabel="AI Overviews"
+  rightLabel="AI Mode"
   rows={[
     { icon: "📍", label: "Where it lives", left: "A summary at the top of a regular results page", right: "A standalone conversational mode" },
     { icon: "🔗", label: "Links alongside", left: "Yes — the results stay below the summary", right: "No — the answer stands alone" },
@@ -72,13 +72,13 @@ This is the most interesting finding — and also where you need to be careful w
 
 Working from US data collected in September 2025 that captures individual generations, Ahrefs compared answers from both surfaces across a large sample: roughly 730,000 answer pairs for content similarity and 540,000 query pairs for citations. The answers were close in meaning — average semantic similarity around 86 percent, while word-level overlap came in around 16 percent. **The cited URLs overlapped by 13.7 percent**, and by 16.3 percent for the top three citations. In other words: both said much the same thing, but they backed it with different pages.
 
-<Insight tone="key">
+<Insight tone="aio">
 The practical implication is simple: **a citation in one surface doesn't guarantee a citation in the other.** If you confirm that the summary above the results mentions you, you've learned nothing about AI Mode — and vice versa.
 </Insight>
 
 Before you file that number away as fact, it comes with three caveats — either flagged by the study itself or baked into how it was set up.
 
-<Insight tone="warning">
+<Insight tone="warn">
 **This was US data from September 2025** — one market, and not current. **It was a snapshot of individual generations**, not a picture of source sets over time. And earlier research the study references found that roughly 45 percent of citations in AI Overviews change between generations — so the real overlap in sources may be higher than the snapshot suggests.
 </Insight>
 
@@ -95,16 +95,16 @@ The conclusion you can safely draw from the study is more sober than the headlin
 ## Common mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="Treating them as one surface">
+  <Mistake num="01" title="Treating them as one surface">
     "We're visible in AI" says almost nothing. These are two different places that behave — and cite — differently.
   </Mistake>
-  <Mistake number="02" title="Porting US numbers to your market">
+  <Mistake num="02" title="Porting US numbers to your market">
     Different market, different rollout stage, different volume of source material in the language. Treat numbers from a study run elsewhere as a guide, not a forecast.
   </Mistake>
-  <Mistake number="03" title="Drawing a conclusion from one run">
+  <Mistake num="03" title="Drawing a conclusion from one run">
     Citations fluctuate between runs. Anyone who infers a trend from a single test is measuring noise, not reality.
   </Mistake>
-  <Mistake number="04" title="Special tricks for one surface">
+  <Mistake num="04" title="Special tricks for one surface">
     Techniques promised exclusively for AI Mode or exclusively for AI Overviews usually can't be backed up. The shared foundation is still the same.
   </Mistake>
 </MistakeGrid>

@@ -69,7 +69,7 @@ Per publicly available documentation and release tracking, the Agentic Browsing 
 
 Unlike the classic Lighthouse categories, it **doesn't use a weighted 0 to 100 score**. It shows the **share of checks passed** instead (“3 of 4 checks passed,” for example). The category is new, and the audit still works with simpler pass/fail scoring. In practice that means every check tells you what's missing and where to start fixing it.
 
-<Insight tone="key">
+<Insight tone="aio">
 Agentic Browsing isn't an extension of classic SEO or Performance. It measures something else: how well an AI agent reads the page by machine, rather than as a human visitor would.
 </Insight>
 
@@ -114,8 +114,8 @@ Lighthouse targets **CLS < 0.1**, the same as classic Core Web Vitals. The optim
 There are three ways to run the audit. Chrome DevTools is the recommended one.
 
 <CompareTable
-  caption="Three ways to run a Lighthouse audit"
-  columns={["Chrome DevTools (recommended)", "PageSpeed Insights / CLI"]}
+  leftLabel="Chrome DevTools (recommended)"
+  rightLabel="PageSpeed Insights / CLI"
   rows={[
     { icon: "🖥️", label: "Where it runs", left: "Locally in the Chrome browser", right: "PageSpeed Insights: the pagespeed.web.dev web interface. CLI: a local Node environment." },
     { icon: "🔐", label: "What it can audit", left: "Deployed and local URLs, logged-in pages", right: "PageSpeed: publicly reachable URLs only. CLI: local and public alike, good for CI/CD." },
@@ -130,32 +130,32 @@ There are three ways to run the audit. Chrome DevTools is the recommended one.
     {
       label: "Open the page in Chrome",
       title: "Load the URL you want to audit",
-      text: "Open the page in Chrome. We recommend closing other tabs and extensions that could skew the results (ad blocker, password manager, screen reader). The audit should run in as clean an environment as possible.",
+      desc: "Open the page in Chrome. We recommend closing other tabs and extensions that could skew the results (ad blocker, password manager, screen reader). The audit should run in as clean an environment as possible.",
     },
     {
       label: "Launch DevTools and pick Lighthouse",
       title: "Open the developer tools and go to Lighthouse",
-      text: "Right-click the page and choose Inspect, or press F12. In the DevTools panel, switch to the Lighthouse tab. If you don't see it, click the two arrows on the right (More tabs) and pick it from the overflow menu.",
+      desc: "Right-click the page and choose Inspect, or press F12. In the DevTools panel, switch to the Lighthouse tab. If you don't see it, click the two arrows on the right (More tabs) and pick it from the overflow menu.",
     },
     {
       label: "Pick your categories and device",
       title: "Check Agentic Browsing plus the other categories",
-      text: "Check every relevant category (Performance, Accessibility, Best Practices, SEO, Agentic Browsing). Pick the device (mobile for a consumer-facing site, desktop for B2B tools). Leave Navigation as the measurement mode.",
+      desc: "Check every relevant category (Performance, Accessibility, Best Practices, SEO, Agentic Browsing). Pick the device (mobile for a consumer-facing site, desktop for B2B tools). Leave Navigation as the measurement mode.",
     },
     {
       label: "Analyze and wait",
       title: "Click the Analyze page load button and wait — typically tens of seconds",
-      text: "Lighthouse opens a fresh instance of the page in an isolated environment, walks it, and scores every category. Don't touch the page while the audit runs. When it finishes, you get a clear report of passed and failed checks.",
+      desc: "Lighthouse opens a fresh instance of the page in an isolated environment, walks it, and scores every category. Don't touch the page while the audit runs. When it finishes, you get a clear report of passed and failed checks.",
     },
     {
       label: "Read the Agentic Browsing output",
       title: "Focus on the failed checks",
-      text: "Agentic Browsing doesn't give you the usual 0 to 100 score — it gives you the share of checks passed (“3 of 4 checks passed,” for example). Every individual check expands with specifics on what's missing and how to fix it.",
+      desc: "Agentic Browsing doesn't give you the usual 0 to 100 score — it gives you the share of checks passed (“3 of 4 checks passed,” for example). Every individual check expands with specifics on what's missing and how to fix it.",
     },
     {
       label: "Plan the fixes by priority",
       title: "Work from cheapest to heaviest",
-      text: "Start with llms.txt (the cheapest), then the accessibility tree (names and labels), then layout stability work (CLS). Leave WebMCP for last — it's a heavy lift, and it mainly pays off for online stores and apps where an agent can take action.",
+      desc: "Start with llms.txt (the cheapest), then the accessibility tree (names and labels), then layout stability work (CLS). Leave WebMCP for last — it's a heavy lift, and it mainly pays off for online stores and apps where an agent can take action.",
     },
   ]}
 />
@@ -182,16 +182,16 @@ Lighthouse Agentic Browsing hands you an immediate list of what to fix. For **th
 />
 
 <MistakeGrid>
-  <Mistake number="01" title="Auditing the homepage only">
+  <Mistake num="01" title="Auditing the homepage only">
     Running Lighthouse on the homepage alone underrates the state of the whole site. Audit at least 3 page types: the homepage, a category or listing page, and a product or detail page. Failed checks often differ between templates.
   </Mistake>
-  <Mistake number="02" title="Optimizing without re-running the audit">
+  <Mistake num="02" title="Optimizing without re-running the audit">
     Changes to llms.txt or the accessibility tree need to be verified with another audit. Without a re-run, you can't confirm the fix actually worked and that Lighthouse registered it.
   </Mistake>
-  <Mistake number="03" title="An old version of Lighthouse">
+  <Mistake num="03" title="An old version of Lighthouse">
     If you're on anything older than Lighthouse 13.3, the Agentic Browsing category is either missing or experimental. For a relevant audit, we recommend an updated Chrome and a current version of Lighthouse.
   </Mistake>
-  <Mistake number="04" title="Relying on PageSpeed Insights for a dev build">
+  <Mistake num="04" title="Relying on PageSpeed Insights for a dev build">
     PageSpeed Insights can only audit publicly reachable URLs. To test a dev environment or logged-in pages, you need Chrome DevTools (local Lighthouse).
   </Mistake>
 </MistakeGrid>
@@ -207,7 +207,7 @@ Lighthouse Agentic Browsing is a useful technical audit, but **it isn't a comple
 
 Lighthouse Agentic Browsing is a **gateway** — if a site fails the basic checks here, that can point to weaker technical readiness for broader AI visibility and is worth digging into. The reverse holds too: a 100% share of checks passed in this category guarantees nothing about whether AI will cite you.
 
-<Insight tone="warning">
+<Insight tone="warn">
 Lighthouse Agentic Browsing is still a new category in 2026, and its weight in how AI agents actually behave isn't documented. Treat it as a useful technical signal, not a guarantee of AI visibility.
 </Insight>
 

@@ -67,15 +67,15 @@ Since July 1, 2026, every customer — **including those on the free plan** — 
 
 Right now, per Cloudflare, all three categories are allowed by default. **That changes on September 15, 2026 for newly created domains**: those are set to get Training and Agent blocked on pages with ads, and Search allowed. The same date retires the old Block AI bots toggle — the one guides have been recommending for years.
 
-<Insight tone="key">
+<Insight tone="aio">
 **Already have a domain? No need to panic.** Per the announcement, the new defaults apply to newly created domains — nothing flips on you by itself on September 15. You can choose your own settings whenever you like, now or later. Mostly the date is a good reminder to go look at what your site is set to today.
 </Insight>
 
 ## Three behaviors instead of a list of names
 
 <CompareTable
-  caption="How Cloudflare defines the categories"
-  columns={["What it is", "What it means for you"]}
+  leftLabel="What it is"
+  rightLabel="What it means for you"
   rows={[
     { icon: "🔍", label: "Search", left: "Behavior that collects or indexes content so it can answer questions about it later", right: "Per Cloudflare, the behavior that most naturally sends visitors back" },
     { icon: "🤖", label: "Agent", left: "Automated activity acting in real time on behalf of a specific person", right: "This covers assistants that handle tasks for a user" },
@@ -89,7 +89,7 @@ The difference between them isn't academic. As its reason for leaving **Search a
 
 Here's the most important sentence in this article, and it comes straight from Cloudflare's announcement: **blocking the Training category also hits bots that combine Search and Training.**
 
-<Insight tone="warning">
+<Insight tone="warn">
 Cloudflare doesn't spell out what that does to your visibility — you have to connect the dots yourself. The mechanics are simple, though: **a bot can't use what it never fetched.** So the popular line of thinking — block training, keep everything else — may not play out the way you picture it.
 </Insight>
 
@@ -129,16 +129,16 @@ Having both makes sense, and for most site owners a single sentence covers it: *
 ## Common mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="Blocking training and expecting citations to survive">
+  <Mistake num="01" title="Blocking training and expecting citations to survive">
     Mixed bots fall under the training block. The two can't always be separated.
   </Mistake>
-  <Mistake number="02" title="Leaving the defaults without knowing what they are">
+  <Mistake num="02" title="Leaving the defaults without knowing what they are">
     Today everything is allowed; from September 15, new domains get something else. Go look at what you have.
   </Mistake>
-  <Mistake number="03" title="Blocking by bot name">
+  <Mistake num="03" title="Blocking by bot name">
     Anyone can put anything in a user-agent header, so name-based blocking is leaky. Cloudflare's documentation distinguishes verified bots from unverified ones.
   </Mistake>
-  <Mistake number="04" title="Relying on a single layer">
+  <Mistake num="04" title="Relying on a single layer">
     Robots.txt on its own enforces nothing; a CDN block on its own gives well-behaved bots no signal.
   </Mistake>
 </MistakeGrid>

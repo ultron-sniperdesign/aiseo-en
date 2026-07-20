@@ -72,7 +72,7 @@ AI search adds a handful of new technical elements on top of traditional SEO. Fo
 - **Focusing your content** on short chunks and question-and-answer pairs that AI systems find easier to use in answers.
 - **Watching Core Web Vitals** and layout stability.
 
-<Insight tone="key">
+<Insight tone="aio">
 For WordPress AI SEO you usually don't need to change your theme or migrate to a different CMS. Most of the work is adding or fine-tuning plugins you already have.
 </Insight>
 
@@ -81,8 +81,8 @@ For WordPress AI SEO you usually don't need to change your theme or migrate to a
 For the AI SEO basics on WordPress, all the major plugins perform comparably. They differ mainly in how much the free version covers, in the user experience, and in their integrations.
 
 <CompareTable
-  caption="The main WordPress SEO plugins for AI SEO basics (as of June 2026)"
-  columns={["Yoast SEO / AIOSEO", "Rank Math / SEOPress"]}
+  leftLabel="Yoast SEO / AIOSEO"
+  rightLabel="Rank Math / SEOPress"
   rows={[
     { icon: "📊", label: "Structured data", left: "Article, Organization, BreadcrumbList, WebSite automatically; FAQPage and HowTo via Gutenberg blocks", right: "Schema generator covering a wide range of types (Article, FAQ, HowTo, Product, Review); more flexible customization at the post level" },
     { icon: "🤖", label: "robots.txt editor", left: "Built-in editor in the UI; you have to add rules for AI user agents yourself", right: "Built-in editor; some Rank Math modules ship with ready-made templates" },
@@ -108,32 +108,32 @@ Switching between them is possible, but **do it carefully** — because you can 
     {
       label: "SEO plugin",
       title: "Have a working main SEO plugin",
-      text: "If you're running Yoast SEO, Rank Math, SEOPress, or AIOSEO and your structured data works (test it with the Schema.org validator or Google's Rich Results Test), you have the AI SEO basics covered. If not, install one of them and configure the core types (Organization, WebSite, Article).",
+      desc: "If you're running Yoast SEO, Rank Math, SEOPress, or AIOSEO and your structured data works (test it with the Schema.org validator or Google's Rich Results Test), you have the AI SEO basics covered. If not, install one of them and configure the core types (Organization, WebSite, Article).",
     },
     {
       label: "llms.txt",
       title: "Add llms.txt",
-      text: "The easiest route: the Website LLMs.txt plugin (roughly 30,000+ active installs as of June 2026). It generates llms.txt from your content and keeps it updated automatically. The manual route: create a text file named llms.txt with a short Markdown overview and upload it to the root of your domain (over FTP or through your host's File Manager).",
+      desc: "The easiest route: the Website LLMs.txt plugin (roughly 30,000+ active installs as of June 2026). It generates llms.txt from your content and keeps it updated automatically. The manual route: create a text file named llms.txt with a short Markdown overview and upload it to the root of your domain (over FTP or through your host's File Manager).",
     },
     {
       label: "robots.txt",
       title: "Make sure AI crawlers aren't blocked",
-      text: "To be cited in AI answers, the major AI crawlers need access. The commonly managed identifiers include GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, and Meta-ExternalAgent. Handle Google-Extended separately. If your robots.txt is restrictive, add exceptions for the relevant identifiers. Careful: GPTBot and OAI-SearchBot are two separate rules.",
+      desc: "To be cited in AI answers, the major AI crawlers need access. The commonly managed identifiers include GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, and Meta-ExternalAgent. Handle Google-Extended separately. If your robots.txt is restrictive, add exceptions for the relevant identifiers. Careful: GPTBot and OAI-SearchBot are two separate rules.",
     },
     {
       label: "Structured data",
       title: "Add the types your SEO plugin doesn't generate automatically",
-      text: "Add FAQPage manually (an FAQ block on a product or service page), Product with Offer on WooCommerce, and Person on your author page. Most SEO plugins have a generator for these types right in the post editor or as a Gutenberg block.",
+      desc: "Add FAQPage manually (an FAQ block on a product or service page), Product with Offer on WooCommerce, and Person on your author page. Most SEO plugins have a generator for these types right in the post editor or as a Gutenberg block.",
     },
     {
       label: "Site speed",
       title: "Watch your Core Web Vitals",
-      text: "Target LCP < 2.5 s, INP < 200 ms, CLS < 0.1. Use a caching plugin (LiteSpeed Cache is free, WP Rocket is paid) and image optimization (ShortPixel, Imagify, Smush). The biggest single factor is usually hosting quality — for AI SEO we recommend managed WordPress hosting.",
+      desc: "Target LCP < 2.5 s, INP < 200 ms, CLS < 0.1. Use a caching plugin (LiteSpeed Cache is free, WP Rocket is paid) and image optimization (ShortPixel, Imagify, Smush). The biggest single factor is usually hosting quality — for AI SEO we recommend managed WordPress hosting.",
     },
     {
       label: "CDN and firewall",
       title: "Check your Cloudflare or other CDN configuration",
-      text: "If you use Cloudflare, confirm the Block AI Bots toggle is off — blocking at the CDN level is in practice stronger than any rule in robots.txt, and it can stop AI crawlers before they ever see your site. For AI SEO we recommend finer-grained rules per AI crawler: allow the ones that cite in AI answers, and block only the specific bad actors through a web application firewall (WAF).",
+      desc: "If you use Cloudflare, confirm the Block AI Bots toggle is off — blocking at the CDN level is in practice stronger than any rule in robots.txt, and it can stop AI crawlers before they ever see your site. For AI SEO we recommend finer-grained rules per AI crawler: allow the ones that cite in AI answers, and block only the specific bad actors through a web application firewall (WAF).",
     },
   ]}
 />
@@ -155,16 +155,16 @@ Here's the minimum workable template we recommend as a starting point. Adjust it
 ## The most common mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="Cloudflare Block AI Bots left on">
+  <Mistake num="01" title="Cloudflare Block AI Bots left on">
     If you're on Cloudflare with the Block AI Bots toggle on (added in 2024), blocking at the CDN level is in practice stronger than any rule in robots.txt, and it can stop AI crawlers before they ever see your site. Your site then can't be cited in AI answers, no matter how well you've done everything else. If you want to show up in AI answers, turn the toggle off.
   </Mistake>
-  <Mistake number="02" title="Only blocking Claude-Web and anthropic-ai">
+  <Mistake num="02" title="Only blocking Claude-Web and anthropic-ai">
     The older Claude-Web and anthropic-ai identifiers are no longer active. Anthropic's current crawler is ClaudeBot. If you want your rules to actually apply, use ClaudeBot.
   </Mistake>
-  <Mistake number="03" title="GPTBot ≠ OAI-SearchBot">
+  <Mistake num="03" title="GPTBot ≠ OAI-SearchBot">
     Blocking GPTBot does not block OAI-SearchBot. GPTBot pulls data for model training; OAI-SearchBot is ChatGPT's live search agent. For AI SEO you want both to have access; to block training data you need two separate rules.
   </Mistake>
-  <Mistake number="04" title="robots.txt regressions after an update">
+  <Mistake num="04" title="robots.txt regressions after an update">
     Changes to robots.txt creep in during WordPress migrations, theme updates, security plugin installs, or CDN configuration changes. After any significant change, run `curl https://yourdomain.com/robots.txt` and compare it against what you expect.
   </Mistake>
 </MistakeGrid>
@@ -199,7 +199,7 @@ Plugins handle the technical layer. Real AI visibility for your brand also takes
 - **Short citable chunks** of 50–150 words — AI picks out self-contained answers more easily.
 - **An author entity** — an author page with LinkedIn, a photo, and a short bio is a trust signal for AI and for Google alike.
 
-<Insight tone="warning">
+<Insight tone="warn">
 No plugin guarantees AI citations. Plugins give you the technical foundation (structured data, llms.txt, an unblocked robots.txt), but AI visibility itself comes down to content quality and brand authority — and you can't buy those in a plugin.
 </Insight>
 

@@ -68,7 +68,7 @@ When search engines and some AI systems interpret content, they work with **enti
 
 This article is the technical counterpart to how you build [an author entity for AI](/blog/author-entity-for-ai/) in the first place — that one covers the content and the strategy, this one covers the specific structured data.
 
-<Insight tone="key">
+<Insight tone="aio">
 Person data isn't magic on its own. But it works like a clear business card: it tells machines that a specific, verifiable person stands behind the content, with documented profiles to back it up. That can help systems identify the author correctly when they interpret the content.
 </Insight>
 
@@ -77,8 +77,8 @@ Person data isn't magic on its own. But it works like a clear business card: it 
 You don't have to fill in everything, but some properties carry more weight than others.
 
 <CompareTable
-  caption="The most important properties on the Person type"
-  columns={["Property", "What it tells AI and Google"]}
+  leftLabel="Property"
+  rightLabel="What it tells AI and Google"
   rows={[
     { icon: "🪪", label: "name", left: "Name", right: "The author's full name; has to match how they're credited on the articles" },
     { icon: "🔗", label: "sameAs", left: "Profiles", right: "Links to LinkedIn, Wikidata, a personal site — separates the author from everyone with the same name" },
@@ -134,27 +134,27 @@ This is a simplified example. In practice it's usually worth defining the publis
     {
       label: "Person",
       title: "Define the author on their profile page",
-      text: "Add JSON-LD with the Person type to the author page — name, role, description, and a link to the profile. The name in the data has to match exactly how the author is credited on the articles.",
+      desc: "Add JSON-LD with the Person type to the author page — name, role, description, and a link to the profile. The name in the data has to match exactly how the author is credited on the articles.",
     },
     {
       label: "sameAs",
       title: "Add links to their profiles",
-      text: "In sameAs, list the URLs that help identify the author reliably — LinkedIn, Wikidata, and any other public profiles that genuinely represent them. Credible, well-maintained profiles make that identification easier.",
+      desc: "In sameAs, list the URLs that help identify the author reliably — LinkedIn, Wikidata, and any other public profiles that genuinely represent them. Credible, well-maintained profiles make that identification easier.",
     },
     {
       label: "@id",
       title: "Assign a stable identifier and repeat it",
-      text: "Give the author one stable @id and use that same one on every one of their articles, which improves the odds that systems tie the individual mentions to one author rather than to many different people.",
+      desc: "Give the author one stable @id and use that same one on every one of their articles, which improves the odds that systems tie the individual mentions to one author rather than to many different people.",
     },
     {
       label: "Linking",
       title: "Connect the article to the author",
-      text: "In the article's data, point to the author through their @id and to the publisher through publisher. That way the author is defined once and articles simply reference them.",
+      desc: "In the article's data, point to the author through their @id and to the publisher through publisher. That way the author is defined once and articles simply reference them.",
     },
     {
       label: "Check",
       title: "Confirm it matches the visible content",
-      text: "Check that the data matches what's actually visible on the page. Don't invent credentials or profiles the author doesn't have; a mismatch is a risk.",
+      desc: "Check that the data matches what's actually visible on the page. Don't invent credentials or profiles the author doesn't have; a mismatch is a risk.",
     },
   ]}
 />
@@ -162,16 +162,16 @@ This is a simplified example. In practice it's usually worth defining the publis
 ## Common mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="Missing sameAs">
+  <Mistake num="01" title="Missing sameAs">
     Without links to profiles, it can be harder for AI and Google to tell the author apart from people with the same name. sameAs is one of the most important properties for making that distinction.
   </Mistake>
-  <Mistake number="02" title="A different @id on every article">
+  <Mistake num="02" title="A different @id on every article">
     When the author gets a different identifier on every page, it's harder for machines to tell it's the same author. Repeat one stable @id everywhere.
   </Mistake>
-  <Mistake number="03" title="Data that doesn't match the page">
+  <Mistake num="03" title="Data that doesn't match the page">
     A name or role in the data that differs from what's visible on the page is a mismatch. Structured data is there to describe reality, not to improve on it.
   </Mistake>
-  <Mistake number="04" title="Invented expertise">
+  <Mistake num="04" title="Invented expertise">
     Fake credentials or profiles the author doesn't have won't help credibility, and on sensitive topics they're an outright risk. E-E-A-T rests on real expertise.
   </Mistake>
 </MistakeGrid>

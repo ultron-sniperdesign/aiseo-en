@@ -70,7 +70,7 @@ Every retailer writes product names their own way. "Ultra Gloss Polish 16 oz," "
 
 An identifier shrinks that problem by definition: it's unique and internationally recognized, so it carries unambiguous information about the product no matter what anyone decided to call it. Google states that the GTIN is sent in the `gtin` attribute and helps its systems categorize and display products.
 
-<Insight tone="key">
+<Insight tone="aio">
 Without an identifier, all that's left to recognize a product by is a name and specs that every retailer writes differently. With one, there's a value that is identical everywhere for the same item. **On comparison queries, that's the difference between "some polish" and "exactly this product."**
 </Insight>
 
@@ -79,8 +79,8 @@ Without an identifier, all that's left to recognize a product by is a name and s
 This is where online stores lose the most ground — and it isn't a technology problem, it's a maintenance problem.
 
 <CompareTable
-  caption="Everywhere you describe your product"
-  columns={["Layer", "What usually goes wrong in it"]}
+  leftLabel="Layer"
+  rightLabel="What usually goes wrong in it"
   rows={[
     { icon: "🖥️", label: "Page", left: "What the customer sees", right: "Manual edits that never propagate anywhere else" },
     { icon: "📤", label: "Feed", left: "The data file for Merchant Center and other shopping channels", right: "Generated automatically, often from older fields" },
@@ -99,27 +99,27 @@ Price is the most sensitive field of all — why that is, is covered in the arti
     {
       label: "Inventory",
       title: "Find out which products have a GTIN",
-      text: "It's on the packaging next to the barcode. Google states that not every product has one — own manufacturing, bundles, made-to-order.",
+      desc: "It's on the packaging next to the barcode. Google states that not every product has one — own manufacturing, bundles, made-to-order.",
     },
     {
       label: "Feed",
       title: "Add the identifiers",
-      text: "GTIN into the gtin attribute. For products without one, the brand and the manufacturer's part number.",
+      desc: "GTIN into the gtin attribute. For products without one, the brand and the manufacturer's part number.",
     },
     {
       label: "Agreement",
       title: "Make the data agree across layers",
-      text: "Price, availability, name, and specs have to say the same thing on the page, in the feed, and in structured data.",
+      desc: "Price, availability, name, and specs have to say the same thing on the page, in the feed, and in structured data.",
     },
     {
       label: "Verification",
       title: "Vet third-party identifiers",
-      text: "For supplier GTINs, Google recommends verifying they are legitimate; if you can't find one, ask the manufacturer.",
+      desc: "For supplier GTINs, Google recommends verifying they are legitimate; if you can't find one, ask the manufacturer.",
     },
     {
       label: "Maintenance",
       title: "Check on a schedule",
-      text: "The feed runs automatically, pages change by hand. Walk a sample of products repeatedly.",
+      desc: "The feed runs automatically, pages change by hand. Walk a sample of products repeatedly.",
     },
   ]}
 />
@@ -133,21 +133,21 @@ The answer is not to invent an identifier — that's the worst possible option, 
 ## Four mistakes in product data
 
 <MistakeGrid>
-  <Mistake number="01" title="An invented or inherited GTIN">
+  <Mistake num="01" title="An invented or inherited GTIN">
     An incorrect identifier can categorize the product wrong. For identifiers from third-party sources, Google recommends verifying they are legitimate.
   </Mistake>
-  <Mistake number="02" title="The feed and the page disagree">
+  <Mistake num="02" title="The feed and the page disagree">
     Two contradictory values for one thing. And presenting a product inaccurately is prohibited by the Shopping ads policies on top of that.
   </Mistake>
-  <Mistake number="03" title="Structured data with nothing behind it">
+  <Mistake num="03" title="Structured data with nothing behind it">
     A value in structured data that isn't visible on the page runs against the requirement to match the visible content.
   </Mistake>
-  <Mistake number="04" title="Set the feed up and forget it">
+  <Mistake num="04" title="Set the feed up and forget it">
     Prices, availability, and the assortment all change. Without a regular check, the layers drift apart on their own.
   </Mistake>
 </MistakeGrid>
 
-<Insight tone="warning">
+<Insight tone="warn">
 Most stores run more than one feed at a time — Google Merchant Center alongside Bing Shopping, a Meta catalog, sometimes a marketplace on top. Each has its own format and its own documentation, and each has to be respected on its own terms. The consequence of a mismatch is the same everywhere, though: **the more places that describe your product, the more places that can contradict each other.** The field-level requirements of individual channels are out of scope here; those belong in their own documentation.
 </Insight>
 

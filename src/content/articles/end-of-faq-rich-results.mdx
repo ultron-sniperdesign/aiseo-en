@@ -58,22 +58,22 @@ FAQ rich results were a type of rich result: expandable questions and answers fr
     {
       label: "May 7, 2026",
       title: "FAQ rich results left Search",
-      text: "Google added a deprecation notice to its FAQ structured data documentation and the expandable questions and answers stopped appearing in results. This change has already happened.",
+      desc: "Google added a deprecation notice to its FAQ structured data documentation and the expandable questions and answers stopped appearing in results. This change has already happened.",
     },
     {
       label: "June 2026",
       title: "FAQ report and testing tool removed",
-      text: "The FAQ report disappeared from Search Console, along with FAQ support in the Rich Results Test. That started the retirement of the tooling around FAQ rich results.",
+      desc: "The FAQ report disappeared from Search Console, along with FAQ support in the Rich Results Test. That started the retirement of the tooling around FAQ rich results.",
     },
     {
       label: "August 2026",
       title: "End of API support (coming)",
-      text: "Per Google's announced timeline, FAQ support in the Search Console API is set to end in August 2026. As of this article's publication date, that step has been announced but has not happened yet.",
+      desc: "Per Google's announced timeline, FAQ support in the Search Console API is set to end in August 2026. As of this article's publication date, that step has been announced but has not happened yet.",
     },
   ]}
 />
 
-<Insight tone="key">
+<Insight tone="aio">
 The distinction that matters: what ended is the display feature in Search, not the FAQPage type or its value. The markup remains valid, and the thing that mattered was never the structured data itself — it was the content, meaning clear questions and answers that genuinely help.
 </Insight>
 
@@ -94,8 +94,8 @@ Even without the rich result, a structured FAQ section has value — the value j
 There is no blanket answer. It comes down to whether the FAQ section genuinely helps, or whether it only ever existed to earn a nicer result.
 
 <CompareTable
-  caption="When to keep FAQPage markup and when to consider removing it"
-  columns={["Keep it", "Consider removing it"]}
+  leftLabel="Keep it"
+  rightLabel="Consider removing it"
   rows={[
     { icon: "✅", label: "Match with content", left: "The markup accurately describes the questions and answers visible on the page", right: "The markup points to content that is no longer on the page" },
     { icon: "🙋", label: "Usefulness", left: "The FAQ section genuinely answers what users ask", right: "The FAQ was thin and added only for the rich result" },
@@ -104,7 +104,7 @@ There is no blanket answer. It comes down to whether the FAQ section genuinely h
   ]}
 />
 
-<Insight tone="warning">
+<Insight tone="warn">
 The worst option is not keeping the markup, and it is not deleting it — it is leaving it out of sync with the visible content. If you take an FAQ section off a page, take its FAQPage markup off too. Consistency between structured data and what the user actually sees matters more now than it used to.
 </Insight>
 
@@ -117,16 +117,16 @@ That does not mean structured data is losing its point. Quite the opposite — w
 ## The most common mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="Deleting every FAQ across the board">
+  <Mistake num="01" title="Deleting every FAQ across the board">
     The end of rich results is not the end of FAQs. Panic-deleting working FAQ sections costs you content that still helps users and AI systems.
   </Mistake>
-  <Mistake number="02" title="Leaving markup with no content">
+  <Mistake num="02" title="Leaving markup with no content">
     If you take the FAQ section off a page but leave the markup, you create a mismatch between structured data and content. That is a needless risk.
   </Mistake>
-  <Mistake number="03" title="Waiting for rich results to come back">
+  <Mistake num="03" title="Waiting for rich results to come back">
     Google's public documentation frames the change as a retirement, and as of summer 2026 nothing publicly suggests FAQ rich results are coming back. Building a strategy on the feature returning wastes time — put that energy into content and AI visibility instead.
   </Mistake>
-  <Mistake number="04" title="Treating markup as a silver bullet">
+  <Mistake num="04" title="Treating markup as a silver bullet">
     The thing that mattered was never the structured data itself, it was the content. Markup alone, without useful answers, never delivered visibility, and after the end of rich results that goes double.
   </Mistake>
 </MistakeGrid>

@@ -73,7 +73,7 @@ Reddit has been around since 2005 — that's **more than 20 years** of structure
 
 On top of that comes a **steady stream of new content** across every topic. For AI models that need recency, that's an advantage over static sources.
 
-<Insight tone="key">
+<Insight tone="aio">
 Reddit holds a strong position in AI citations thanks to a combination of content, community structure, and — with some providers — contractually secured access to the data. What public sources can't confirm is that a license by itself guarantees more citations.
 </Insight>
 
@@ -92,16 +92,16 @@ The practical takeaway: **Reddit makes sense as one of several investments in AI
 Reddit's rules for brands are clear and enforced fairly strictly. Violations often draw fast penalties, from a deleted post to a permanent ban across the whole platform.
 
 <MistakeGrid>
-  <Mistake number="01" title="Self-promotion with no community activity">
+  <Mistake num="01" title="Self-promotion with no community activity">
     Reddit runs on a rough 90/10 rule: normal participation in the discussion should dominate, and only a small slice of your activity (on the order of 10%) should be self-promotion. An account that only shares links to its own site runs a high risk of being flagged as spam by moderators or by the platform's systems.
   </Mistake>
-  <Mistake number="02" title="Multiple accounts propping up your own posts">
+  <Mistake num="02" title="Multiple accounts propping up your own posts">
     Creating extra accounts to upvote your own posts, plant fake recommendations, or simulate positive sentiment is one of the most harshly punished violations there is. It routinely ends in a permanent ban across every account linked that way.
   </Mistake>
-  <Mistake number="03" title="Fake identities">
+  <Mistake num="03" title="Fake identities">
     Posting under a fake identity, pretending to be an independent user, or hiding your connection to a company is something Reddit and its moderators often catch and penalize. The usual result is a ban.
   </Mistake>
-  <Mistake number="04" title="Ignoring a specific subreddit's rules">
+  <Mistake num="04" title="Ignoring a specific subreddit's rules">
     Most subreddits have their own rules and minimum requirements (often karma — a user's score — of 50 to 500 and an account age of 7 to 30 days). Plenty of subreddits ban self-promotion outright or require moderator approval first. Promoting across many subreddits at once can get your posts throttled or deleted, or draw a penalty from moderators or the platform.
   </Mistake>
 </MistakeGrid>
@@ -115,32 +115,32 @@ If you want to use Reddit as part of a broader AI visibility effort, the only pa
     {
       label: "Picking subreddits",
       title: "Choose 3 to 5 relevant communities",
-      text: "Find the subreddits where your topic actually gets discussed. For marketing, r/marketing, r/SEO, r/Entrepreneur; for e-commerce, r/ecommerce and r/Entrepreneur. Read the rules and find out the minimum karma and account age each one requires.",
+      desc: "Find the subreddits where your topic actually gets discussed. For marketing, r/marketing, r/SEO, r/Entrepreneur; for e-commerce, r/ecommerce and r/Entrepreneur. Read the rules and find out the minimum karma and account age each one requires.",
     },
     {
       label: "Account prep",
       title: "Clear the minimum bar before your first move",
-      text: "For most subreddits, a realistic threshold is karma (a user's score) of 50 to 500 and an account age of 7 to 30 days. Clear it through comments and voting across a wider set of communities. An account that drops a company link right after signup runs a high risk of being blocked.",
+      desc: "For most subreddits, a realistic threshold is karma (a user's score) of 50 to 500 and an account age of 7 to 30 days. Clear it through comments and voting across a wider set of communities. An account that drops a company link right after signup runs a high risk of being blocked.",
     },
     {
       label: "The active-lurking phase",
       title: "Spend 2 to 4 weeks in the discussion without mentioning your company",
-      text: "Before you name your own company for the first time, spend 2 to 4 weeks commenting on other people's posts, answering questions, and sharing relevant third-party articles. The community needs to see that you're not a drive-by marketer.",
+      desc: "Before you name your own company for the first time, spend 2 to 4 weeks commenting on other people's posts, answering questions, and sharing relevant third-party articles. The community needs to see that you're not a drive-by marketer.",
     },
     {
       label: "Useful answers",
       title: "Answer specifically, with numbers and experience",
-      text: "Available analyses suggest AI models cite answers with concrete numbers and data more often than they cite qualitative opinions. Share the specific experience, the results, the process. If you mention your own company, it should be a natural part of a good answer, not the reason for the post.",
+      desc: "Available analyses suggest AI models cite answers with concrete numbers and data more often than they cite qualitative opinions. Share the specific experience, the results, the process. If you mention your own company, it should be a natural part of a good answer, not the reason for the post.",
     },
     {
       label: "Open disclosure",
       title: "Say publicly who you work for",
-      text: "Openly disclosing it (“I work at XY, so factor in the bias, but here's my experience…”) is something the community usually appreciates. A hidden connection is something it hates, and moderators frequently penalize it.",
+      desc: "Openly disclosing it (“I work at XY, so factor in the bias, but here's my experience…”) is something the community usually appreciates. A hidden connection is something it hates, and moderators frequently penalize it.",
     },
     {
       label: "Long-term strategy",
       title: "Treat it as a 12-month-plus investment, not a campaign",
-      text: "A realistic goal for a small business is landing specific expertise in 5 to 10 highly rated answers across relevant subreddits over a year. A mass campaign on Reddit usually doesn't pay off.",
+      desc: "A realistic goal for a small business is landing specific expertise in 5 to 10 highly rated answers across relevant subreddits over a year. A mass campaign on Reddit usually doesn't pay off.",
     },
   ]}
 />
@@ -169,8 +169,8 @@ If you want to use Reddit as part of a broader AI visibility effort, the only pa
 For a lot of brands, choosing between Reddit and LinkedIn is the more important question than “how do I do Reddit.” For many companies — B2B especially — LinkedIn is the more sensible investment.
 
 <CompareTable
-  caption="Reddit versus LinkedIn for AI visibility"
-  columns={["Reddit", "LinkedIn"]}
+  leftLabel="Reddit"
+  rightLabel="LinkedIn"
   rows={[
     { icon: "🏢", label: "B2C vs B2B", left: "Leans B2C — reviews, solving specific problems, personal experience", right: "B2B, expertise, employer brand, networking" },
     { icon: "🤖", label: "AI citations 2026", left: "One of the most-cited sources in aggregate analyses (~40%), but volatile", right: "Pulled ahead of Reddit on expert and B2B queries in analyses from late 2025 and early 2026; citation frequency climbing sharply" },
@@ -185,7 +185,7 @@ For a lot of brands, choosing between Reddit and LinkedIn is the more important 
 2. **B2C with a broad consumer topic:** Reddit is a viable path, but treat it as a long-term organic investment, not a marketing campaign.
 3. **Niche or local B2C:** if your topic barely gets discussed on Reddit, there's little there for AI to cite — your own content plus [structured data](/blog/structured-data-for-ai/) usually pays off faster.
 
-<Insight tone="warning">
+<Insight tone="warn">
 No brand should mistake Reddit's strong position in AI citations for a guaranteed outcome. A change in how a provider selects and displays sources can move Reddit's citation share fast — see the drop on ChatGPT from roughly 60% to 10% over six weeks in late 2025.
 </Insight>
 

@@ -53,8 +53,8 @@ That sounds like a big change, and in one respect it is. In another it's boring:
 ## What changes and what doesn't
 
 <CompareTable
-  caption="A shopping query in a list of results and in AI Mode"
-  columns={["Regular results", "AI Mode"]}
+  leftLabel="Regular results"
+  rightLabel="AI Mode"
   rows={[
     { icon: "📋", label: "What the customer sees", left: "A list of stores, they pick themselves", right: "An assembled answer and links to sources" },
     { icon: "🥇", label: "What's at stake", left: "Position in the list", right: "Being one of the answer's sources" },
@@ -71,7 +71,7 @@ Here's what matters for a store. Queries like "which vacuum is best for pet hair
 
 A store carrying nothing but the manufacturer's description has nothing to contribute. Your competitors have the same copy.
 
-<Insight tone="key">
+<Insight tone="aio">
 In a comparison query, the prettiest page doesn't win — the one with **data you can actually compare** does: price, availability, specs, who the product suits and where its limits are. Anything missing on your side, or contradicting your feed, the system fills in from somewhere else.
 </Insight>
 
@@ -83,7 +83,7 @@ So this isn't purely theoretical: on our own store we measured what AI tools rea
 
 So: small volume, higher-quality visit. The full data and the methodology are in the [AI traffic case study](/blog/case-study-ai-traffic/).
 
-<Insight tone="warning">
+<Insight tone="warn">
 Three caveats come with those numbers. It's **one store**, it's the **starting point before any deliberate optimization**, and — most important for this article — **none of it is AI Mode**. The impressions we measured in Google's generative AI features fall under AI Overviews. Passing them off as AI Mode results would be exactly the mistake [AI Mode vs. AI Overviews](/blog/ai-mode-vs-ai-overviews/) warns about.
 </Insight>
 
@@ -100,16 +100,16 @@ In practice that means the claim "we get X visits from AI Mode" would be hard to
 ## Common mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="Treating AI Mode and AI Overviews as one thing">
+  <Mistake num="01" title="Treating AI Mode and AI Overviews as one thing">
     They're different surfaces with different citations — in an Ahrefs analysis from September 2025 (US), the cited URLs overlapped by 13.7 percent. A number from one tells you nothing about the other.
   </Mistake>
-  <Mistake number="02" title="Passing data from one surface off as the other">
+  <Mistake num="02" title="Passing data from one surface off as the other">
     It happens most often with Search Console impressions, which are reported in aggregate.
   </Mistake>
-  <Mistake number="03" title="Relying on the manufacturer's description">
+  <Mistake num="03" title="Relying on the manufacturer's description">
     It adds nothing to a comparison that your competitors don't also have. The value is in what you add.
   </Mistake>
-  <Mistake number="04" title="A mismatch between the page and the feed">
+  <Mistake num="04" title="A mismatch between the page and the feed">
     When price or availability contradict each other, the system has nothing to work from and looks elsewhere.
   </Mistake>
 </MistakeGrid>

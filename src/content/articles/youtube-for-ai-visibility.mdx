@@ -68,7 +68,7 @@ YouTube is an enormous content library, Google owns it, and its transcripts are 
 
 Citations aren't distributed evenly, though. In marketing studies published through summer 2026, [Perplexity](/blog/perplexity-seo/) and [Google AI Overviews](/blog/google-ai-mode-content/) account for roughly three quarters of YouTube citations, while ChatGPT trails well behind.
 
-<Insight tone="key">
+<Insight tone="aio">
 YouTube is an off-site channel, but unlike Reddit, you control your channel, your videos, your descriptions, and your transcripts to a large degree. That makes it one of the few AI visibility levers you actually run yourself.
 </Insight>
 
@@ -78,7 +78,7 @@ This is the single most important point in this guide. **Most AI systems don't w
 
 In practice that means the text around the video often decides your odds of a citation more than the footage does. We break down how AI picks and cites sources in general in the article on [how AI cites sources](/blog/how-ai-cites-sources/).
 
-<Insight tone="warning">
+<Insight tone="warn">
 The best footage in the world won't help if the transcript is full of errors and the description is a wall of hashtags. Put the effort where AI is looking: the transcript, the description, and the chapters. The visuals are for the viewer; the text is for the citation.
 </Insight>
 
@@ -91,27 +91,27 @@ Five steps that cover what AI actually reads on a video — from the transcript 
     {
       label: "Transcript",
       title: "Publish an edited transcript, not just auto-captions",
-      text: "Auto-captions routinely mangle brand names, product names, and technical terms, and those errors can carry into how AI understands your content. Upload an edited, corrected transcript — it's often one of the most reliable text sources AI has to work from.",
+      desc: "Auto-captions routinely mangle brand names, product names, and technical terms, and those errors can carry into how AI understands your content. Upload an edited, corrected transcript — it's often one of the most reliable text sources AI has to work from.",
     },
     {
       label: "Chapters",
       title: "Break the video into chapters with timestamps",
-      text: "Chapters tell AI where each topic is covered. Each one can work as a standalone topical section, which can improve the odds that one longer, well-chaptered video picks up several different AI citations.",
+      desc: "Chapters tell AI where each topic is covered. Each one can work as a standalone topical section, which can improve the odds that one longer, well-chaptered video picks up several different AI citations.",
     },
     {
       label: "Description",
       title: "Write the description as an abstract with a direct answer",
-      text: "Instead of a wall of hashtags, write 200 to 300 words summarizing the content: a direct answer up top, the key points in a clear structure, related concepts woven in naturally, and timestamps.",
+      desc: "Instead of a wall of hashtags, write 200 to 300 words summarizing the content: a direct answer up top, the key points in a clear structure, related concepts woven in naturally, and timestamps.",
     },
     {
       label: "Data",
       title: "Add VideoObject structured data and a transcript page",
-      text: "Add VideoObject structured data (name, description, upload date, thumbnail, and a link to the page with the video) for a clean machine-readable description of the video. Publish the transcript itself as a page on your own site — controlled text on your own domain.",
+      desc: "Add VideoObject structured data (name, description, upload date, thumbnail, and a link to the page with the video) for a clean machine-readable description of the video. Publish the transcript itself as a page on your own site — controlled text on your own domain.",
     },
     {
       label: "Measurement",
       title: "Check whether AI actually cites your video",
-      text: "Run queries from your industry in ChatGPT, Perplexity, and Google AI and record whether your video or transcript page shows up. Repeat the test, because the answers change.",
+      desc: "Run queries from your industry in ChatGPT, Perplexity, and Google AI and record whether your video or transcript page shows up. Repeat the test, because the answers change.",
     },
   ]}
 />
@@ -121,8 +121,8 @@ Five steps that cover what AI actually reads on a video — from the transcript 
 A quick overview of where each element belongs and why AI cares about it.
 
 <CompareTable
-  caption="Where each element belongs and why it helps AI"
-  columns={["Where it belongs", "Why it matters for AI"]}
+  leftLabel="Where it belongs"
+  rightLabel="Why it matters for AI"
   rows={[
     { icon: "📝", label: "Edited transcript", left: "YouTube and a page on your own site", right: "The main text AI cites from; corrected, not automatic" },
     { icon: "🔖", label: "Chapters and timestamps", left: "In the video description", right: "Each chapter can become its own citation" },
@@ -143,16 +143,16 @@ A quick overview of where each element belongs and why AI cares about it.
 ## The most common mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="Relying on auto-captions">
+  <Mistake num="01" title="Relying on auto-captions">
     Auto-captions mangle names and terms, and those errors carry into how AI cites the video. An edited transcript is the baseline, not a bonus.
   </Mistake>
-  <Mistake number="02" title="A description that's a wall of hashtags">
+  <Mistake num="02" title="A description that's a wall of hashtags">
     A description packed with hashtags and links tells AI nothing. Without an abstract that opens with a direct answer, you're giving up one of the main citable texts under the video.
   </Mistake>
-  <Mistake number="03" title="A video with no chapters">
+  <Mistake num="03" title="A video with no chapters">
     With no chapters, you're handing AI one undivided block. With chapters, a single video can earn several separate citations.
   </Mistake>
-  <Mistake number="04" title="Optimizing the visuals instead of the text">
+  <Mistake num="04" title="Optimizing the visuals instead of the text">
     The footage alone won't help most AI systems produce a citation. Polish only the look and ignore the transcript and description, and you're optimizing the one thing AI mostly doesn't work with.
   </Mistake>
 </MistakeGrid>

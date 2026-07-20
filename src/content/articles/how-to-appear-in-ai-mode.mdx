@@ -71,8 +71,8 @@ Google's documentation on AI features states that appearing in AI Overviews or i
 Just as useful is what it says you **don't** need: new machine-readable files, special text files for AI, or dedicated structured data created because of AI features.
 
 <CompareTable
-  caption="What the documentation says helps and what isn't needed"
-  columns={["Worth doing", "Not needed"]}
+  leftLabel="Worth doing"
+  rightLabel="Not needed"
   rows={[
     { icon: "🔎", label: "Availability", left: "Indexed, crawling allowed, eligible for snippets", right: "A special opt-in for AI features" },
     { icon: "📝", label: "Content", left: "The substance in text form", right: "Text files built for AI" },
@@ -81,7 +81,7 @@ Just as useful is what it says you **don't** need: new machine-readable files, s
   ]}
 />
 
-<Insight tone="key">
+<Insight tone="aio">
 The point of this article isn't a trick — it's killing a myth. **If someone promises you a special ticket into AI Mode, they're going beyond what Google confirms in its documentation.** The work remains the same — sloppy work just shows more clearly now.
 
 The piece on [llms.txt](/blog/llms-txt-guide/) makes the same point: files built for AI aren't a ticket in.
@@ -94,27 +94,27 @@ The piece on [llms.txt](/blog/llms-txt-guide/) makes the same point: files built
     {
       label: "Availability",
       title: "Make sure the page is visible",
-      text: "Indexed, crawling allowed in robots.txt, eligible for snippets. Without that, the rest doesn't matter.",
+      desc: "Indexed, crawling allowed in robots.txt, eligible for snippets. Without that, the rest doesn't matter.",
     },
     {
       label: "Text",
       title: "Put the substance in text",
-      text: "Anything that lives only in an image, in a video with no transcript, or behind a click may not be as available to crawlers as text in the HTML.",
+      desc: "Anything that lives only in an image, in a video with no transcript, or behind a click may not be as available to crawlers as text in the HTML.",
     },
     {
       label: "Passages",
       title: "Write in passages",
-      text: "Its own heading for each sub-question, the answer up front. A passage has to make sense pulled out of context.",
+      desc: "Its own heading for each sub-question, the answer up front. A passage has to make sense pulled out of context.",
     },
     {
       label: "Evidence",
       title: "Back up what you claim",
-      text: "Sources, your own data, an author. Structured data only where it matches the visible text.",
+      desc: "Sources, your own data, an author. Structured data only where it matches the visible text.",
     },
     {
       label: "Measurement",
       title: "Measure repeatedly",
-      text: "More queries, spread over time, each surface separately. A single run is an anecdote — source selection can fluctuate.",
+      desc: "More queries, spread over time, each surface separately. A single run is an anecdote — source selection can fluctuate.",
     },
   ]}
 />
@@ -133,21 +133,21 @@ A few very specific things follow from that:
 ## What to avoid
 
 <MistakeGrid>
-  <Mistake number="01" title="Hunting for a switch">
+  <Mistake num="01" title="Hunting for a switch">
     According to Google's documentation, there are no special requirements. Time spent hunting for a shortcut is better spent on availability and text.
   </Mistake>
-  <Mistake number="02" title="Manufacturing files for AI">
+  <Mistake num="02" title="Manufacturing files for AI">
     Google states that new machine-readable files and text files for AI aren't needed.
   </Mistake>
-  <Mistake number="03" title="Substance only in graphics">
+  <Mistake num="03" title="Substance only in graphics">
     Anything that isn't in text is harder to use. That includes video with no transcript and content that appears only after an interaction.
   </Mistake>
-  <Mistake number="04" title="Data that doesn't match the page">
+  <Mistake num="04" title="Data that doesn't match the page">
     Structured data is supposed to describe visible content. A mismatch is a problem in its own right, not a clever shortcut.
   </Mistake>
 </MistakeGrid>
 
-<Insight tone="warning">
+<Insight tone="warn">
 Completing every step makes a page **eligible**, not cited. On top of that, an Ahrefs analysis of US data from September 2025 found that individual AI surfaces often reach for different URLs, and earlier research showed that citation selection changes between generations — [AI Mode vs. AI Overviews](/blog/ai-mode-vs-ai-overviews/) explains why you can't measure them as one thing.
 </Insight>
 

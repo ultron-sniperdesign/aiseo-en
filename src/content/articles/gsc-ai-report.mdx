@@ -69,7 +69,7 @@ The **Generative AI features** report has been available in Search Console since
 - **Search** — AI Overviews and AI Mode in Search.
 - **Discover** — generative AI features in Discover.
 
-<Insight tone="key">
+<Insight tone="aio">
 Before this report, there was no official Google data source for how often a site shows up in its AI features. Measurement leaned on estimates, a [manual AI visibility test](/blog/ai-visibility-test/), and indirect signals. That makes this report a significant new layer — but it's still in beta, and it's not the full picture.
 </Insight>
 
@@ -89,7 +89,7 @@ The most important thing to know about this report: **version 1 tracks impressio
 
 Google doesn't publish clicks, CTR, position, or queries in this version of the report. In practice, that means you can't read traffic or post-click performance out of it. One likely explanation is that people interact with AI answers differently — those answers often resolve the question right in the interface, so a click isn't necessarily the main outcome of the interaction. We cover that effect in detail in the article on the [zero-click effect](/blog/zero-click-and-ai-overviews/).
 
-<Insight tone="warning">
+<Insight tone="warn">
 Don't read AI impressions as traffic. A high impression count in AI Overviews doesn't mean a high visitor count. It means your URLs are showing up often in AI features — which is a signal of presence, not traffic.
 </Insight>
 
@@ -102,22 +102,22 @@ The right way to read an impressions-only report is to treat impressions as a **
     {
       label: "Presence",
       title: "High AI impressions = your URL shows up more often in Google AI",
-      text: "A page with high AI impressions appears frequently in Google's AI features. That's useful information in itself about which content is visible inside AI features — even if it isn't yet proof of quality or value.",
+      desc: "A page with high AI impressions appears frequently in Google's AI features. That's useful information in itself about which content is visible inside AI features — even if it isn't yet proof of quality or value.",
     },
     {
       label: "Comparison",
       title: "Compare AI impressions against organic clicks",
-      text: "Take the same URL and compare its AI impressions in the new report with its organic clicks in the classic Performance report. The gap between them tells you whether the content also brings traffic.",
+      desc: "Take the same URL and compare its AI impressions in the new report with its organic clicks in the classic Performance report. The gap between them tells you whether the content also brings traffic.",
     },
     {
       label: "Interpretation",
       title: "Separate what's visible from what brings traffic",
-      text: "High AI impressions plus low organic clicks means content that's visible in AI but isn't sending traffic (the zero-click effect). High AI impressions plus high clicks means content that works in both layers.",
+      desc: "High AI impressions plus low organic clicks means content that's visible in AI but isn't sending traffic (the zero-click effect). High AI impressions plus high clicks means content that works in both layers.",
     },
     {
       label: "Trend",
       title: "Track the change over time",
-      text: "The report supports hourly through monthly intervals. Watch whether AI impressions are rising or falling — and tie that back to your content changes or to changes on Google's side.",
+      desc: "The report supports hourly through monthly intervals. Watch whether AI impressions are rising or falling — and tie that back to your content changes or to changes on Google's side.",
     },
   ]}
 />
@@ -129,22 +129,22 @@ The right way to read an impressions-only report is to treat impressions as a **
     {
       label: "Availability",
       title: "Confirm you have access to the report",
-      text: "The report has been rolling out since June 2026. Under Performance in Search Console, check whether a Generative AI features section is available. If it isn't there yet, stick with a manual test for now.",
+      desc: "The report has been rolling out since June 2026. Under Performance in Search Console, check whether a Generative AI features section is available. If it isn't there yet, stick with a manual test for now.",
     },
     {
       label: "Opening it",
       title: "Go to Performance and switch to Search",
-      text: "If the report is available in your interface, open Performance in Search Console and then Generative AI features. Switch between the Search view (AI Overviews + AI Mode) and Discover. For AI search, focus mainly on Search.",
+      desc: "If the report is available in your interface, open Performance in Search Console and then Generative AI features. Switch between the Search view (AI Overviews + AI Mode) and Discover. For AI search, focus mainly on Search.",
     },
     {
       label: "Segmentation",
       title: "Filter by page, country, and time",
-      text: "Filter by specific URLs, by country, and by date. The default Performance report mixes all search types together, which masks AI trends — so use a separate filter or export for AI features only.",
+      desc: "Filter by specific URLs, by country, and by date. The default Performance report mixes all search types together, which masks AI trends — so use a separate filter or export for AI features only.",
     },
     {
       label: "Your own view",
       title: "Track the AI report on a regular schedule",
-      text: "Build your own recurring view on top of the AI report — a data export, for example — segmented by page, country, and date. That's the foundation for tracking how your site's AI visibility develops.",
+      desc: "Build your own recurring view on top of the AI report — a data export, for example — segmented by page, country, and date. That's the foundation for tracking how your site's AI visibility develops.",
     },
   ]}
 />
@@ -154,8 +154,8 @@ The right way to read an impressions-only report is to treat impressions as a **
 The report is a strong new layer, but you need to know where it stops.
 
 <CompareTable
-  caption="What the Search Console AI report shows and what it doesn't"
-  columns={["Shows", "Doesn't show"]}
+  leftLabel="Shows"
+  rightLabel="Doesn't show"
   rows={[
     { icon: "👁️", label: "Impressions", left: "Yes — how many times your URLs appeared in Google AI", right: "—" },
     { icon: "🖱️", label: "Clicks and CTR", left: "—", right: "No — version 1 doesn't track clicks" },
@@ -170,8 +170,8 @@ The report is a strong new layer, but you need to know where it stops.
 Search Console is one layer. For the full picture of your AI visibility and what it's worth, you need more than one source.
 
 <CompareTable
-  caption="The layers of AI visibility measurement"
-  columns={["What you measure", "What you measure it with"]}
+  leftLabel="What you measure"
+  rightLabel="What you measure it with"
   rows={[
     { icon: "👁️", label: "Google AI impressions", left: "How often you show up in Google AI", right: "Search Console — Generative AI features report" },
     { icon: "📊", label: "Traffic from AI", left: "How many people came to your site from AI", right: "GA4 (AI referrals, partially) + UTM parameters" },
@@ -183,16 +183,16 @@ Search Console is one layer. For the full picture of your AI visibility and what
 ## The most common mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="Reading impressions as traffic">
+  <Mistake num="01" title="Reading impressions as traffic">
     High AI impressions don't mean high traffic. The report doesn't show clicks. Treat impressions as traffic and you'll overestimate what AI visibility is actually worth.
   </Mistake>
-  <Mistake number="02" title="Relying on GSC alone">
+  <Mistake num="02" title="Relying on GSC alone">
     The report covers Google AI only. ChatGPT, Perplexity, and Claude aren't in it. Measure only in Search Console and you're seeing one slice of the AI ecosystem.
   </Mistake>
-  <Mistake number="03" title="Leaving the data in the default report">
+  <Mistake num="03" title="Leaving the data in the default report">
     The default Performance report mixes all search types together, and AI trends disappear into the aggregate. Without a separate filter on AI features, the specific picture is lost.
   </Mistake>
-  <Mistake number="04" title="Not combining it with organic clicks">
+  <Mistake num="04" title="Not combining it with organic clicks">
     AI impressions on their own tell half the story. Only comparing them with organic clicks for the same URL shows you whether the content brings traffic or is merely visible.
   </Mistake>
 </MistakeGrid>

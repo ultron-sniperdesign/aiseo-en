@@ -68,7 +68,7 @@ LinkedIn is a large source of expert content with clear author identity — exac
 
 Its weight also appears to be growing. Publicly available analyses from the turn of 2025 into 2026 show LinkedIn's share of citations rising in the samples they track, especially on ChatGPT. How AI picks sources in general is covered in our article on [how AI cites sources](/blog/how-ai-cites-sources/).
 
-<Insight tone="key">
+<Insight tone="aio">
 LinkedIn is an off-site channel where you have a lot of control over what you publish and how often. Unlike Reddit, where other people do most of the writing about you, here you write it yourself — and that makes it one of the few levers on AI visibility that you genuinely control.
 </Insight>
 
@@ -77,8 +77,8 @@ LinkedIn is an off-site channel where you have a lot of control over what you pu
 Not every type of content has the same odds. According to 2026 analyses, citation rates differ sharply between formats.
 
 <CompareTable
-  caption="How each format performs in AI citations (per available 2026 analyses)"
-  columns={["Format", "Role in AI citations"]}
+  leftLabel="Format"
+  rightLabel="Role in AI citations"
   rows={[
     { icon: "📄", label: "Long expert articles", left: "Strongest", right: "Roughly half to two thirds of cited LinkedIn content; ideal length on the order of 500–2,000 words (per 2026 analyses)" },
     { icon: "📝", label: "Feed posts", left: "Supporting role", right: "A smaller share of citations, but they work; short and substantive does best" },
@@ -96,27 +96,27 @@ Five steps drawn from what shows up more often in available 2026 analyses of cit
     {
       label: "Two tracks",
       title: "Publish from the company page and from personal profiles",
-      text: "AI platforms pull LinkedIn citations from both sides — ChatGPT and Google AI Mode lean toward content from individuals, Perplexity leans toward company pages. Do both, and you cover both citation patterns.",
+      desc: "AI platforms pull LinkedIn citations from both sides — ChatGPT and Google AI Mode lean toward content from individuals, Perplexity leans toward company pages. Do both, and you cover both citation patterns.",
     },
     {
       label: "Questions",
       title: "Write about your customers' real questions",
-      text: "Build the editorial calendar around the questions customers actually ask, and give each one a clear, direct answer right at the top. AI systems are more likely to pick up content that answers specifically and plainly.",
+      desc: "Build the editorial calendar around the questions customers actually ask, and give each one a clear, direct answer right at the top. AI systems are more likely to pick up content that answers specifically and plainly.",
     },
     {
       label: "Formats",
       title: "Mix long articles with short posts",
-      text: "Long expert articles are the main driver of citations according to available 2026 analyses; back them up with shorter posts. A mix of formats covers more of the types of questions people ask AI.",
+      desc: "Long expert articles are the main driver of citations according to available 2026 analyses; back them up with shorter posts. A mix of formats covers more of the types of questions people ask AI.",
     },
     {
       label: "Cadence",
       title: "Publish consistently",
-      text: "Keep several posts a month going out across the team. According to available 2026 analyses, consistency tends to matter more for citations than one viral hit.",
+      desc: "Keep several posts a month going out across the team. According to available 2026 analyses, consistency tends to matter more for citations than one viral hit.",
     },
     {
       label: "Measurement",
       title: "Check whether AI cites you from LinkedIn",
-      text: "Run about 20 queries from your industry in ChatGPT, Perplexity, and Google AI Mode and record whether and where your LinkedIn shows up. Repeat the test, because the answers change.",
+      desc: "Run about 20 queries from your industry in ChatGPT, Perplexity, and Google AI Mode and record whether and where your LinkedIn shows up. Repeat the test, because the answers change.",
     },
   ]}
 />
@@ -139,8 +139,8 @@ Format is only half of it. The other half is what you write about and how.
 LinkedIn isn't the only source AI draws brand mentions from. According to some 2026 analyses, most of the brand mentions they track come from third-party sites (roughly 85 % in specific samples), not from your own site — and the channels differ in how much control you have.
 
 <CompareTable
-  caption="Off-site channels for AI visibility and how much control you have"
-  columns={["Channel", "Role and control"]}
+  leftLabel="Channel"
+  rightLabel="Role and control"
   rows={[
     { icon: "💼", label: "LinkedIn", left: "High control", right: "You decide what you publish and how often; strong on B2B and professional queries" },
     { icon: "👥", label: "Reddit", left: "Low control", right: "Other people do the writing; a strong signal, but hard to steer — [full breakdown here](/blog/reddit-ai-citations/)" },
@@ -149,7 +149,7 @@ LinkedIn isn't the only source AI draws brand mentions from. According to some 2
   ]}
 />
 
-<Insight tone="warning">
+<Insight tone="warn">
 Some 2026 marketing analyses report that brand mentions in their samples correlate with AI visibility about three times more strongly than links from other sites — but that isn't proof of causation. AI works with text more than with the link graph. So some of the effort you'd otherwise put into link building may be worth shifting toward building mentions in places like LinkedIn.
 </Insight>
 
@@ -158,16 +158,16 @@ How brand mentions work across platforms is covered in our article on [brand men
 ## The most common mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="Only resharing other people's content">
+  <Mistake num="01" title="Only resharing other people's content">
     Reshares show up less often among citations. If all you do on LinkedIn is share other people's articles without original content of your own, you're giving AI few reasons to cite you.
   </Mistake>
-  <Mistake number="02" title="Chasing likes instead of relevance">
+  <Mistake num="02" title="Chasing likes instead of relevance">
     Cited posts often don't have much engagement, according to available analyses. Optimizing for viral reach instead of a substantive answer can miss what AI more often selects on.
   </Mistake>
-  <Mistake number="03" title="Publishing in bursts">
+  <Mistake num="03" title="Publishing in bursts">
     Without consistency, the odds of a citation tend to be lower. Most cited authors are frequent publishers, not people posting once a quarter.
   </Mistake>
-  <Mistake number="04" title="A company page with no people behind it">
+  <Mistake num="04" title="A company page with no people behind it">
     ChatGPT and Google AI Mode lean toward content from individuals. Relying on the company page alone can cost you part of the citation logic these platforms assign to personal profiles.
   </Mistake>
 </MistakeGrid>

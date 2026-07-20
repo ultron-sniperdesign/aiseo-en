@@ -53,7 +53,7 @@ Classic search gives you a **ranked list of results**. You could measure positio
 
 That changes the question you're asking. Instead of "where do we rank," it's now **are we in the answer at all, how prominently, and in what context**. That's exactly what Share of Model tries to capture.
 
-<Insight tone="key">
+<Insight tone="aio">
 Share of Model isn't about your site — it's about what the model says about you. You can rank high on Google and still be absent from a share of AI answers, and vice versa. That makes it a separate signal that classic rankings don't replace.
 </Insight>
 
@@ -62,8 +62,8 @@ Share of Model isn't about your site — it's about what the model says about yo
 SoM is easy to confuse with similar-sounding terms. The difference is in what exactly each one measures.
 
 <CompareTable
-  caption="How Share of Model differs from related metrics"
-  columns={["Metric", "What it measures"]}
+  leftLabel="Metric"
+  rightLabel="What it measures"
   rows={[
     { icon: "🤖", label: "Share of Model", left: "Mentions in AI", right: "Your share of the mentions in AI answers across a set of queries" },
     { icon: "📣", label: "Share of Voice", left: "Visibility in a channel", right: "Your share of visibility or mentions in a chosen channel (advertising, organic, media, social)" },
@@ -81,27 +81,27 @@ You don't need a paid tool right away. A manual test gives you the basic picture
     {
       label: "Queries",
       title: "Build a set of real queries",
-      text: "Write down 10 to 30 questions your customers genuinely ask — the right solution for a given situation, not queries on your own name.",
+      desc: "Write down 10 to 30 questions your customers genuinely ask — the right solution for a given situation, not queries on your own name.",
     },
     {
       label: "Models",
       title: "Run them across models",
-      text: "Put the queries into ChatGPT, Perplexity, and Gemini. Behavior differs between models, so measure each one separately.",
+      desc: "Put the queries into ChatGPT, Perplexity, and Gemini. Behavior differs between models, so measure each one separately.",
     },
     {
       label: "Record",
       title: "Record the mentions",
-      text: "For each answer, note whether your brand is mentioned, which competitors appear, and who is listed as a source.",
+      desc: "For each answer, note whether your brand is mentioned, which competitors appear, and who is listed as a source.",
     },
     {
       label: "Share",
       title: "Calculate the share of mentions",
-      text: "Divide your brand's mentions by all brand mentions in the answers. Calculate it per model first, then across all of them.",
+      desc: "Divide your brand's mentions by all brand mentions in the answers. Calculate it per model first, then across all of them.",
     },
     {
       label: "Repeat",
       title: "Measure regularly and watch the trend",
-      text: "Repeat the same queries over time — monthly, for example. What you care about is the direction of travel, not a one-off number.",
+      desc: "Repeat the same queries over time — monthly, for example. What you care about is the direction of travel, not a one-off number.",
     },
   ]}
 />
@@ -120,7 +120,7 @@ Time to be honest: Share of Model is an **estimate, not an exact metric**. A few
   ]}
 />
 
-<Insight tone="warning">
+<Insight tone="warn">
 That's why you should never derive hard promises from Share of Model — nothing along the lines of "higher SoM means this many more sales." Treat it as a directional visibility indicator you track as a trend, not as a precise number on the books.
 </Insight>
 
@@ -138,16 +138,16 @@ This ties into the [zero-click](/blog/zero-click-and-ai-overviews/) reality: if 
 ## The most common measurement mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="One measurement = a conclusion">
+  <Mistake num="01" title="One measurement = a conclusion">
     Answers fluctuate. A single snapshot tells you nothing; only repeated measurement and a trend mean anything.
   </Mistake>
-  <Mistake number="02" title="Branded queries">
+  <Mistake num="02" title="Branded queries">
     Asking the model about your own name inflates the result. Measure on neutral queries that address a problem, not a brand.
   </Mistake>
-  <Mistake number="03" title="One model standing in for all">
+  <Mistake num="03" title="One model standing in for all">
     Behavior differs between ChatGPT, Perplexity, and Gemini. Averaging across a single model distorts the overall picture.
   </Mistake>
-  <Mistake number="04" title="SoM instead of results">
+  <Mistake num="04" title="SoM instead of results">
     Share of Model is a directional indicator, not a goal in itself. Always pair it with traffic and conversions.
   </Mistake>
 </MistakeGrid>

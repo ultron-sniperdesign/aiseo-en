@@ -69,7 +69,7 @@ When someone asks AI for the “best X for Y,” the model needs to understand t
 
 Some 2026 analyses also find that AI answers show up often on “best [product]” queries; the share is directional and varies by industry. So on shopping topics, categories have a real shot at being one of the sources.
 
-<Insight tone="key">
+<Insight tone="aio">
 The key shift: a category is no longer just a signpost pointing at products. To AI it is a page you can read an entire selection off of and recommend from. So it should help the buyer decide, not just list what you have in stock.
 </Insight>
 
@@ -93,27 +93,27 @@ Good category copy is not about length — it is about whether it helps someone 
     {
       label: "Answer",
       title: "Put a short answer above the grid",
-      text: "In the first sentence or two above the product grid, say what the category contains and who it is for. A short answer like that tends to be easy for AI and users alike to read, and it helps people grasp what the category is about fast.",
+      desc: "In the first sentence or two above the product grid, say what the category contains and who it is for. A short answer like that tends to be easy for AI and users alike to read, and it helps people grasp what the category is about fast.",
     },
     {
       label: "Criteria",
       title: "Spell out the buying criteria",
-      text: "Explain what to choose on — size, material, performance, price, or how the product is used. Criteria help the buyer and AI alike understand how the products differ and who each one suits.",
+      desc: "Explain what to choose on — size, material, performance, price, or how the product is used. Criteria help the buyer and AI alike understand how the products differ and who each one suits.",
     },
     {
       label: "Segmentation",
       title: "Segment and compare the types",
-      text: "Split the range by who it is for, and if the category holds several product types, explain the differences, ideally in a comparison table. Every self-contained, clearly written passage raises the odds AI picks up the right context from it when it answers.",
+      desc: "Split the range by who it is for, and if the category holds several product types, explain the differences, ideally in a comparison table. Every self-contained, clearly written passage raises the odds AI picks up the right context from it when it answers.",
     },
     {
       label: "Data",
       title: "Add category structured data",
-      text: "Add CollectionPage, ItemList, and BreadcrumbList structured data. Together they give AI and search engines a machine-readable map of what the category holds and where it sits in the store's structure.",
+      desc: "Add CollectionPage, ItemList, and BreadcrumbList structured data. Together they give AI and search engines a machine-readable map of what the category holds and where it sits in the store's structure.",
     },
     {
       label: "Linking",
       title: "Link out to subcategories and guides",
-      text: "Link to relevant subcategories, your hero products, and a blog buying guide or comparison. Internal linking helps the customer and AI get their bearings in your range and in the related topics.",
+      desc: "Link to relevant subcategories, your hero products, and a blog buying guide or comparison. Internal linking helps the customer and AI get their bearings in your range and in the related topics.",
     },
   ]}
 />
@@ -123,8 +123,8 @@ Good category copy is not about length — it is about whether it helps someone 
 Alongside the copy, a machine-readable description of the category through [structured data](/blog/structured-data-for-ai/) helps too. Three types are usually the most relevant for a category.
 
 <CompareTable
-  caption="Structured data for an online store's category page"
-  columns={["Type", "What it tells AI and Google"]}
+  leftLabel="Type"
+  rightLabel="What it tells AI and Google"
   rows={[
     { icon: "🗂️", label: "CollectionPage", left: "The page type", right: "That this is a page presenting a selection of content — a category or a listing" },
     { icon: "📋", label: "ItemList", left: "The list of products", right: "Which products the category holds — a machine-readable map of the range" },
@@ -132,23 +132,23 @@ Alongside the copy, a machine-readable description of the category through [stru
   ]}
 />
 
-<Insight tone="warning">
+<Insight tone="warn">
 Structured data has to match what is actually visible on the page. If ItemList enumerates products that are not on the page, or the description promises a range you do not carry, you create a mismatch that helps neither AI nor Google.
 </Insight>
 
 ## The most common mistakes
 
 <MistakeGrid>
-  <Mistake number="01" title="A category with no copy">
+  <Mistake num="01" title="A category with no copy">
     A bare product grid tells AI very little. With no intro copy and no criteria, the model has nothing to work from to understand what the category is about and who it suits.
   </Mistake>
-  <Mistake number="02" title="Copy written for keywords only">
+  <Mistake num="02" title="Copy written for keywords only">
     Text stuffed with keywords and no value for the buyer helps neither people nor AI. Usefulness to the buyer usually does more than phrase density.
   </Mistake>
-  <Mistake number="03" title="It describes but does not help you decide">
+  <Mistake num="03" title="It describes but does not help you decide">
     Copy that describes the range in general terms, with no criteria and no segmentation, makes the choice no easier for the buyer or for AI. A category should help people decide.
   </Mistake>
-  <Mistake number="04" title="Duplicate copy across categories">
+  <Mistake num="04" title="Duplicate copy across categories">
     A generic paragraph copied into every category tends to do less for AI and search engines, and it often does not help the buyer either. Every important category deserves its own specific copy.
   </Mistake>
 </MistakeGrid>

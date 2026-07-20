@@ -72,7 +72,7 @@ Publicly cited analyses of AI citations from 2025 and 2026 — including a Profo
 
 For a brand, that means **a Wikipedia article can be one of the more effective anchors** for getting AI to describe your brand correctly and to name it as a source. It isn't a universal fix, and Wikipedia doesn't work in isolation — it works mainly when the brand is also earning independent mentions in the press.
 
-<Insight tone="key">
+<Insight tone="aio">
 Wikipedia is a lagging signal of notability. It kicks in only after independent media start writing about your brand. On its own, it creates nothing.
 </Insight>
 
@@ -94,16 +94,16 @@ Wikipedia holds companies to a stricter notability standard (WP:NCORP) than it d
 ]} />
 
 <MistakeGrid>
-  <Mistake number="01" title="Your own press releases and paid placements">
+  <Mistake num="01" title="Your own press releases and paid placements">
     Press releases don't count toward notability, even when a newswire picks them up. Neither do sponsored articles, native advertising, or commercial content in media outlets.
   </Mistake>
-  <Mistake number="02" title="Your own content (blog, YouTube, social)">
+  <Mistake num="02" title="Your own content (blog, YouTube, social)">
     Your own content is not an independent source. A Wikipedia article requires what other people wrote about your brand — not what you published yourself.
   </Mistake>
-  <Mistake number="03" title="Database listings">
+  <Mistake num="03" title="Database listings">
     Crunchbase, various "top 100" lists, and business directories aren't significant independent coverage. They're catalogs, not editorial content.
   </Mistake>
-  <Mistake number="04" title="A passing mention inside another article">
+  <Mistake num="04" title="A passing mention inside another article">
     A sentence along the lines of "…including X and Y…" in a piece that's primarily about something else isn't enough. Notability requires substantial, direct discussion of the brand, not a name in a list.
   </Mistake>
 </MistakeGrid>
@@ -138,32 +138,32 @@ If you're writing the article as part of your job, as the company's owner, or as
     {
       label: "Coverage audit",
       title: "Collect your real independent sources",
-      text: "Search Google for the brand name, then exclude your own domain and any press releases. Build a list of substantial independent articles. If you have fewer than three, stop here — the draft would usually either fail review or get deleted.",
+      desc: "Search Google for the brand name, then exclude your own domain and any press releases. Build a list of substantial independent articles. If you have fewer than three, stop here — the draft would usually either fail review or get deleted.",
     },
     {
       label: "Account and edit history",
       title: "Create an account and reach autoconfirmed status",
-      text: "A registered account older than 4 days with at least 10 edits reaches what's called autoconfirmed status. Make those edits on unrelated articles — accounts created solely to promote one brand are easy to spot from the edit pattern and often attract scrutiny.",
+      desc: "A registered account older than 4 days with at least 10 edits reaches what's called autoconfirmed status. Make those edits on unrelated articles — accounts created solely to promote one brand are easy to spot from the edit pattern and often attract scrutiny.",
     },
     {
       label: "Conflict-of-interest disclosure",
       title: "State openly who you represent",
-      text: "Put the Paid template on your user page with the name of the client or employer. Without that disclosure, you risk having the account blocked and the article deleted. It's mandatory under the Wikimedia Foundation's terms of use.",
+      desc: "Put the Paid template on your user page with the name of the client or employer. Without that disclosure, you risk having the account blocked and the article deleted. It's mandatory under the Wikimedia Foundation's terms of use.",
     },
     {
       label: "Articles for Creation draft",
       title: "Submit the draft for independent review",
-      text: "Articles for Creation is the recommended route for editors with a conflict of interest. You create a draft in the Draft namespace and independent volunteers review it. Approval takes weeks to months.",
+      desc: "Articles for Creation is the recommended route for editors with a conflict of interest. You create a draft in the Draft namespace and independent volunteers review it. Approval takes weeks to months.",
     },
     {
       label: "Encyclopedic style and citations",
       title: "Write neutrally and source every claim",
-      text: "Leave out the marketing phrasing and the general praise. Every substantial claim needs a link to an independent source. The tone is descriptive, factual, and neutral.",
+      desc: "Leave out the marketing phrasing and the general praise. Every substantial claim needs a link to an independent source. The tone is descriptive, factual, and neutral.",
     },
     {
       label: "Maintenance",
       title: "Watch the article and fix verifiable errors",
-      text: "A Wikipedia article is publicly editable, so anyone can change it. Keep the page on your watchlist and respond to substantial inaccuracies. Don't delete negative facts that independent sources back up.",
+      desc: "A Wikipedia article is publicly editable, so anyone can change it. Keep the page on your watchlist and respond to substantial inaccuracies. Don't delete negative facts that independent sources back up.",
     },
   ]}
 />
@@ -173,8 +173,8 @@ If you're writing the article as part of your job, as the company's owner, or as
 The honest truth is that **plenty of small and midsize companies can't clear the notability bar** for English Wikipedia, and for some of them that isn't going to change any time soon. A Wikipedia article for a company like that would either fail review or get deleted quickly. In that case, other levers are worth pulling.
 
 <CompareTable
-  caption="Wikipedia versus the alternatives for brand visibility in AI"
-  columns={["A Wikipedia article", "Wikidata + independent media coverage"]}
+  leftLabel="A Wikipedia article"
+  rightLabel="Wikidata + independent media coverage"
   rows={[
     { icon: "🎯", label: "Notability barrier", left: "Very high — a minimum of 3 to 5 substantial independent articles", right: "Wikidata's barrier is usually lower; media coverage builds up over time" },
     { icon: "⚙️", label: "Effort and time", left: "Weeks to months of review through Articles for Creation, the recommended process for getting a draft assessed", right: "A Wikidata item often takes hours to days; media coverage is ongoing" },
@@ -191,7 +191,7 @@ The honest truth is that **plenty of small and midsize companies can't clear the
 3. **Structured data on your own site** — Organization, [Person](/blog/person-schema-for-authors/), and Product [structured data](/blog/structured-data-for-ai/) on your company pages. It helps AI understand who and what your brand is.
 4. **An active presence on Reddit, LinkedIn, and YouTube** — the other places AI demonstrably pulls citations from.
 
-<Insight tone="warning">
+<Insight tone="warn">
 If someone offers to "get you a Wikipedia page in a week" with no conflict-of-interest disclosure and no audit of your independent media coverage, that's probably a violation of the Wikimedia Foundation's terms of use, and the page will most likely be deleted. You won't get the money back.
 </Insight>
 

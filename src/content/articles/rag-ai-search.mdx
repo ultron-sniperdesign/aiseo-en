@@ -56,7 +56,7 @@ A language model picks up plenty during training, but it has two problems: it kn
 
 The result can be an answer **grounded in specific sources** — often more current and less prone to hallucination, as long as the retrieved material is solid. Ideally you can trace the main claims back to a source, though in practice that's rarely airtight.
 
-<Insight tone="key">
+<Insight tone="aio">
 The key shift: the model isn't answering from memory, it's answering from what it just retrieved. That means model quality alone doesn't decide your visibility in an AI answer; whether your content is retrievable and well structured plays a significant role too.
 </Insight>
 
@@ -67,22 +67,22 @@ The key shift: the model isn't answering from memory, it's answering from what i
     {
       label: "Query",
       title: "Someone asks a question",
-      text: "The input is a user's query. In AI search it tends to be longer and more conversational than in classic search.",
+      desc: "The input is a user's query. In AI search it tends to be longer and more conversational than in classic search.",
     },
     {
       label: "Retrieval",
       title: "The system finds the relevant passages",
-      text: "The system searches an index or knowledge base and finds the most relevant passages of content. It often uses embeddings to do this — both the query and the documents get turned into numerical representations of meaning, and the system looks for the closest matches in meaning, not for keyword matches.",
+      desc: "The system searches an index or knowledge base and finds the most relevant passages of content. It often uses embeddings to do this — both the query and the documents get turned into numerical representations of meaning, and the system looks for the closest matches in meaning, not for keyword matches.",
     },
     {
       label: "Context",
       title: "The passages go into the model's prompt",
-      text: "The retrieved passages are handed to the model as context to work from. The model gets specific material for the query, which can be more current than the model's own training.",
+      desc: "The retrieved passages are handed to the model as context to work from. The model gets specific material for the query, which can be more current than the model's own training.",
     },
     {
       label: "Answer",
       title: "The model assembles an answer with links",
-      text: "From that context the model assembles an answer and points to the sources. So it isn't answering from memory — it's answering from what was retrieved for that particular query.",
+      desc: "From that context the model assembles an answer and points to the sources. So it isn't answering from memory — it's answering from what was retrieved for that particular query.",
     },
   ]}
 />
@@ -94,8 +94,8 @@ Public descriptions say [Google AI Overviews and AI Mode](/blog/google-ai-mode-c
 RAG also ties into the way AI Mode breaks a query apart. The system splits the query into several sub-questions and runs its own retrieval for each one — we cover that mechanic in the article on [query fan-out](/blog/query-fan-out/). How a citation finally gets picked out of the retrieved passages is something we cover in the article on [how AI cites sources](/blog/how-ai-cites-sources/).
 
 <CompareTable
-  caption="An answer with retrieval (RAG) versus one from model training alone"
-  columns={["With RAG (AI search)", "From model training alone"]}
+  leftLabel="With RAG (AI search)"
+  rightLabel="From model training alone"
   rows={[
     { icon: "📚", label: "Source of the answer", left: "Passages retrieved from an index", right: "Only what the model learned" },
     { icon: "🕐", label: "Freshness", left: "Draws on a live index", right: "Capped by the training date" },
@@ -120,16 +120,16 @@ The most important takeaway: **when AI retrieves from the Search index, classic 
 ## What RAG is not
 
 <MistakeGrid>
-  <Mistake number="01" title="An AI that remembers everything">
+  <Mistake num="01" title="An AI that remembers everything">
     RAG isn't the model's memory. The model doesn't lean only on what it carries out of training — when it answers, it also works with what it just retrieved from the index for your query.
   </Mistake>
-  <Mistake number="02" title="Model training">
+  <Mistake num="02" title="Model training">
     RAG isn't retraining. The knowledge base updates on its own — you change the content and the answers can change without the model learning anything again.
   </Mistake>
-  <Mistake number="03" title="A guarantee of truth">
+  <Mistake num="03" title="A guarantee of truth">
     RAG doesn't guarantee accuracy. If the retrieved source is wrong, out of date, or missing, the answer can be wrong too.
   </Mistake>
-  <Mistake number="04" title="The end of SEO">
+  <Mistake num="04" title="The end of SEO">
     RAG doesn't mean the end of SEO. Quite the opposite — in systems that retrieve from the Search index, indexability and content quality remain important.
   </Mistake>
 </MistakeGrid>

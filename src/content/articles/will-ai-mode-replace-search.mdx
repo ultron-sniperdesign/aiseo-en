@@ -63,8 +63,8 @@ Google describes its AI features as an addition: AI Overviews, it says, are mean
 What's more interesting is reading what's claimed and what isn't.
 
 <CompareTable
-  caption="What Google states and what doesn't follow from it"
-  columns={["The claim", "What doesn't follow"]}
+  leftLabel="The claim"
+  rightLabel="What doesn't follow"
   rows={[
     { icon: "➕", label: "An addition", left: "AI features are meant to add value beyond Search", right: "That the scale of use won't change" },
     { icon: "⭐", label: "Click quality", left: "Clicks from AI Overviews are higher quality, Google says", right: "That there are more of them — nothing is claimed about volume" },
@@ -79,7 +79,7 @@ This isn't an accusation, just a suggestion to read closely. With the claim abou
 
 When someone claims AI Mode is taking over search, they usually back it with rising search interest in the term. Interest in "AI Mode" really is growing.
 
-<Insight tone="key">
+<Insight tone="aio">
 But search demand for a term measures **interest in the word**, not how far the technology has spread or whether behavior has moved. When people are searching in numbers for *what AI Mode is*, that suggests they don't know it yet. Adoption would show up as a share of sessions or queries — and that isn't publicly available.
 </Insight>
 
@@ -91,23 +91,23 @@ A caveat first: the numbers below cover **visits from external AI assistants**, 
 
 Small volume, higher-quality visit. But it's one store and the starting point before any deliberate optimization — an illustration, not proof about the market. And above all: even these numbers don't tell us how much was lost elsewhere. The data is in the [case study](/blog/case-study-ai-traffic/).
 
-<Insight tone="warning">
+<Insight tone="warn">
 Substitution would show up in a comparison of how many queries ended in AI Mode instead of the regular results. But AI Mode can't be isolated from commonly available data — Search Console lumps it in with AI Overviews. Why that is gets covered in [measuring AI Mode](/blog/measuring-ai-mode-limits/). **So nobody today has anything to back a claim about the scale of the replacement.**
 </Insight>
 
 ## Mistakes in reasoning
 
 <MistakeGrid>
-  <Mistake number="01" title="Reading search demand as adoption">
+  <Mistake num="01" title="Reading search demand as adoption">
     Growth in search demand for a term shows interest in the word, not a change in user behavior.
   </Mistake>
-  <Mistake number="02" title="Treating AI as one surface">
+  <Mistake num="02" title="Treating AI as one surface">
     The individual surfaces diverge in what they cite. A claim about "AI" in general lumps together things that behave differently.
   </Mistake>
-  <Mistake number="03" title="Shifting budget on predictions">
+  <Mistake num="03" title="Shifting budget on predictions">
     The share of AI surfaces can't be measured yet, and the foundation is shared. Deciding by headlines is a bet, not a strategy.
   </Mistake>
-  <Mistake number="04" title="Passing off a vendor statement as evidence">
+  <Mistake num="04" title="Passing off a vendor statement as evidence">
     Even Google's claims about its own products are Google's claims. They describe intent, not independently verified impact.
   </Mistake>
 </MistakeGrid>
