@@ -122,7 +122,7 @@ const allLd = [blogJsonLd, itemListJsonLd, breadcrumbJsonLd, faqJsonLd];
 const answerText = blogPage.answerText;
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription} jsonLd={allLd} image="/og/blog.png">
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={allLd} image="/og/blog.jpg">
   <div class="page">
     <!-- HERO -->
     <section class="hero">
@@ -204,11 +204,11 @@ const answerText = blogPage.answerText;
                   )}
                   <img
                     class="acard__img"
-                    src={`/og/${entry.data.slug}.png`}
+                    src={`/og/${entry.data.slug}.jpg`}
                     alt={entry.data.title}
                     loading="lazy"
-                    width="1536"
-                    height="1024"
+                    width="1200"
+                    height="800"
                   />
                 </picture>
                 <div class="acard__body">

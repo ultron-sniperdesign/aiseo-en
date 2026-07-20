@@ -47,7 +47,7 @@ const readingMinutes = Math.max(1, Math.round(wordCount / 200));
 
 const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
 const articleURL = `${SITE_ORIGIN}/seo-vs-geo-vs-aeo/`;
-const articleImageURL = `${SITE_ORIGIN}/og/pillar.png`;
+const articleImageURL = `${SITE_ORIGIN}/og/pillar.jpg`;
 
 /**
  * JSON-LD — Article + FAQPage. Pillar = hlavní průvodce, dostává
@@ -118,7 +118,7 @@ const faqCount = entry.data.faq?.length ?? 0;
   title={entry.data.seoTitle ?? entry.data.title}
   description={entry.data.description}
   jsonLd={allLd}
-  image="/og/pillar.png"
+  image="/og/pillar.jpg"
   ogType="article"
   breadcrumb={[{ label: ui.pillar.eyebrow, href: "/seo-vs-geo-vs-aeo-vs-aio/" }]}
 >

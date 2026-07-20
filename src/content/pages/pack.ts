@@ -42,7 +42,7 @@ export const productJsonLd = {
   name: "AI SEO Wireframe Pack",
   description:
     "Sedm typů stránek pro AI vyhledávání: anotované wireframy, šablony textů, ukázky strukturovaných dat a krok-za-krokem návod aplikace. Master PDF 85 stran. Aplikujete na svůj web během odpoledne.",
-  image: [`${SITE_ORIGIN}/og/pack.png`],
+  image: [`${SITE_ORIGIN}/og/pack.jpg`],
   sku: "AISEO-PACK-V1",
   brand: { "@type": "Brand", name: "Sniper Design" },
   category: "Digital Product / E-book / Framework",

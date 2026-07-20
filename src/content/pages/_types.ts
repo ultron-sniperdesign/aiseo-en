@@ -18,7 +18,7 @@
 export interface PageMeta {
   title: string;
   description: string;
-  /** OG image path, např. "/og/navod-zdarma.png". */
+  /** OG image path, např. "/og/navod-zdarma.jpg". */
   ogImage: string;
 }
 

@@ -23,9 +23,9 @@ const { s } = Astro.props;
 const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
 const pageUrl = `${SITE_ORIGIN}${SERIES_BASE}${s.slug}/`;
 
-/** Featured image — stejná konvence jako články: /og/serie-<slug>.png
+/** Featured image — stejná konvence jako články: /og/serie-<slug>.jpg
  *  (fork si vygeneruje vlastní dle blogger/IMAGE_GUIDE.md). */
-const heroImage = `/og/serie-${s.slug}.png`;
+const heroImage = `/og/serie-${s.slug}.jpg`;
 const heroWebp = existsSync(`public/og/serie-${s.slug}.webp`);
 
 const all = await getCollection("articles");

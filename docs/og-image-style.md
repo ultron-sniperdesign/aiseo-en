@@ -19,6 +19,7 @@
 ## Rozměr
 
 - **1536×1024** (3:2, jediný landscape gpt-image-2). Pozn.: část starších blog OGs je 1200×669 (resize) — pro nové generuj 1536×1024.
+- **Publikuje se ale zmenšené a v JPEG** — viz § Publikační formát níže. PNG originál v `public/` NEcommituj.
 
 ## Text je ZAPEČENÝ do promptu (ne overlay)
 
@@ -55,6 +56,26 @@ Spell all text exactly. No other text, no logos beyond the wordmark.
 > ikonografická scéna, menší nadpis) — pro **konzistenci ber jako kanon tuhle „light
 > editorial" OG variantu** (wordmark + obří nadpis + mockup). CZ sada sama není 100%
 > jednotná (víc dávek) → při příští velké revizi sjednotit.
+
+## Publikační formát a váha (KANONICKÉ od 2026-07-20)
+
+Generuje se 1536×1024 PNG (gpt-image-2 neumí menší landscape), ale do
+`public/og/` se commituje **jen publikační derivát**:
+
+| Použití | Formát | Rozměr | Proč |
+|---|---|---|---|
+| **`og:image` meta** (social crawlery) | **JPEG q85** (`/og/<slug>.jpg`) | **1200×800** (3:2 zachováno) | WebP má i v 2026 nespolehlivou podporu v LinkedIn scraperu a částečnou ve WhatsApp → JPEG je jediný bezpečný „všude". PNG je zbytečně 10–20× těžší. |
+| **In-page náhledy** (karty blogu, hero) | WebP q80 (`/og/<slug>.webp`) + JPEG fallback v `<picture>` | 1200×800 (starší 1536 OK) | prohlížeče WebP umí všechny; fallback `<img src=.jpg>`. |
+
+- **Proč 1200×800 a ne 1200×630:** originály jsou 3:2 se zapečeným textem — crop
+  na 1.91:1 by ořízl wordmark/nadpis. Platformy 3:2 přijímají (náhled si ořežou samy).
+- **Konverze:** `node scripts/og-publish.mjs` (PNG → JPG+WebP), s `--delete` smaže
+  zdrojové PNG. Idempotentní; přeskakuje `hero-*.png` (ne-OG assety).
+- **Workflow nového obrázku:** gpt-image-2 → PNG do `public/og/` → `node
+  scripts/og-publish.mjs --delete` → commit jen `.jpg`+`.webp`.
+- Šablony referencují `.jpg` (og:image, JSON-LD image, fallback `<img>`);
+  `og:image:width/height` v BaseLayout = 1200×800.
+- Váhový efekt (2026-07-20, CZ): 103 PNG 120 MB → JPG 6 MB (+ WebP ~3 MB).
 
 ## Per-mutace (FORK-OWNED)
 

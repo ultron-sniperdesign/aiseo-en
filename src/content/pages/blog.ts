@@ -21,7 +21,7 @@ export const meta: PageMeta = {
   title: "AI SEO blog: practical guides to SEO, GEO, AEO, and AI Mode",
   description:
     "Tutorials, analyses, and defensive guides to AI SEO — SEO, GEO, AEO, and Google AI Mode. Written to be cited, not skimmed.",
-  ogImage: "/og/blog.png",
+  ogImage: "/og/blog.jpg",
 };
 
 /** Hero H1 — set:html (hl zvýraznění + nbsp). */

@@ -77,7 +77,7 @@ const readingMinutes = Math.max(1, Math.round(wordCount / 200));
 
 const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
 const articleURL = `${SITE_ORIGIN}/${entry.data.slug}/`;
-const articleImageURL = `${SITE_ORIGIN}/og/${entry.data.slug}.png`;
+const articleImageURL = `${SITE_ORIGIN}/og/${entry.data.slug}.jpg`;
 
 /**
  * JSON-LD schema — Article s completným polem pro Google Article Rich Results.
@@ -168,8 +168,8 @@ const allLd: Record<string, unknown>[] = [
  */
 const heroStyle = `--d: ${c.d}; --d-tint: ${c.tint}; --d-soft: ${c.soft};`;
 
-/** OG image per slug (každá sekce má vlastní vizuál v public/og/<slug>.png). */
-const ogImage = `/og/${entry.data.slug}.png`;
+/** OG image per slug (každá sekce má vlastní vizuál v public/og/<slug>.jpg). */
+const ogImage = `/og/${entry.data.slug}.jpg`;
 
 /**
  * Mini markdown → HTML pro FAQ answer stringy v frontmatteru.

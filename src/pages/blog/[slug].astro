@@ -46,7 +46,7 @@ const wordCountRounded = Math.round(wordCount / 100) * 100;
 
 const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
 const articleURL = `${SITE_ORIGIN}/blog/${entry.data.slug}/`;
-const articleImageURL = `${SITE_ORIGIN}/og/${entry.data.slug}.png`;
+const articleImageURL = `${SITE_ORIGIN}/og/${entry.data.slug}.jpg`;
 
 /**
  * JSON-LD — Article + FAQPage + HowTo (pokud má článek `howto` field).
@@ -125,7 +125,7 @@ const allLd: Record<string, unknown>[] = [
 ].filter(Boolean) as Record<string, unknown>[];
 
 const faqCount = entry.data.faq?.length ?? 0;
-const ogImage = `/og/${entry.data.slug}.png`;
+const ogImage = `/og/${entry.data.slug}.jpg`;
 ---
 
 <BaseLayout

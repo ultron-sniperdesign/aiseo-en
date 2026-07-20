@@ -8,7 +8,7 @@ import { ui } from "~/i18n/strings";
 export interface Props {
   title: string;
   description: string;
-  /** OG image URL (absolutní nebo /og/...). Default = /og/default.png. */
+  /** OG image URL (absolutní nebo /og/...). Default = /og/default.jpg. */
   image?: string;
   /** Canonical URL — pokud chybí, vygeneruje se z Astro.url. */
   canonical?: string;
@@ -31,7 +31,7 @@ export interface Props {
 const {
   title,
   description,
-  image = "/og/default.png",
+  image = "/og/default.jpg",
   canonical,
   jsonLd,
   noindex = false,
@@ -165,8 +165,8 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImageURL} />
-    <meta property="og:image:width" content="1536" />
-    <meta property="og:image:height" content="1024" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="800" />
     <meta property="og:image:alt" content={title} />
     <meta property="og:locale" content={site.locale} />
     <meta property="og:site_name" content={site.name} />

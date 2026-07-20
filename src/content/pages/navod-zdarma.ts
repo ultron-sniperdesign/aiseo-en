@@ -26,7 +26,7 @@ export const meta: PageMeta = {
   title: "Návod zdarma — Jak má vypadat homepage pro AI vyhledávání",
   description:
     "Stáhněte si zdarma 6stránkový PDF průvodce s wireframem, anotacemi a třemi principy. Jak má homepage vypadat, aby ji našel Google, citoval ChatGPT a vytahoval Google AI Overviews. Výměnou za e-mail.",
-  ogImage: "/og/navod-zdarma.png",
+  ogImage: "/og/navod-zdarma.jpg",
 };
 
 export const hero = {
