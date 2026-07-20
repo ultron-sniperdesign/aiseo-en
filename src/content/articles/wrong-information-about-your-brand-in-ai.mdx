@@ -1,0 +1,167 @@
+---
+title: "Wrong Information About Your Brand in AI: How to Respond"
+description: "AI is saying something false about your company? The likely causes, how to fix the sources, and how to report it — without unrealistic promises."
+answer: "When AI states something false about your company, you usually can't rewrite the answer directly — there's no standard interface for editing it yourself. What you can realistically do is fix the sources the system draws on, state the correct information clearly on your own site, and report the error. The effect is indirect, with no guarantee and no firm timeline."
+slug: "wrong-information-about-your-brand-in-ai"
+category: "analysis"
+tags:
+  - "duveryhodnost"
+published: "2026-07-11"
+updated: "2026-07-11"
+keywords:
+  - "wrong information in ai"
+  - "false information ai"
+  - "correct information in ai"
+  - "ai about my company"
+  - "brand reputation in ai"
+variant: "rich"
+stats:
+  - value: "no rewrite"
+    label: "directly editing the answer itself usually isn't available in the standard interface"
+  - value: "sources, yes"
+    label: "you can fix where the claim comes from: your own site plus third-party directories and profiles"
+  - value: "3 causes"
+    label: "a stale fact, a bad third-party source, or a hallucination — each one gets handled differently"
+  - value: "no guarantee"
+    label: "even after doing everything right, no one can promise a correction or a date"
+faq:
+  - q: "Can I correct what AI says about my company?"
+    a: "Correcting bad information in AI usually happens indirectly: by fixing the sources, stating the correct information clearly on your own site, and reporting the error to the platform where that's possible. Directly editing the answer itself as a user usually isn't available in the standard interface. What you can fix is mainly the sources the system draws on — your own site, business profiles, directories."
+  - q: "Why does AI say nonsense about my company?"
+    a: "Usually for one of three reasons. Either a stale fact is still living somewhere, like an old price or a service you discontinued. Or the source is a third-party site with an error in it, an outdated directory listing, say. Or the model made the claim up — which tends to happen where clear, consistent material is missing, though it can also be a mix-up with another company or a bad merge of several sources. Each cause gets handled differently, so step one is figuring out which one you're dealing with."
+  - q: "How long does a correction take to show up?"
+    a: "There's no way to say. How often individual systems pick up changes from their sources isn't published and varies. Assume it won't be immediate, and retest periodically. Nobody can promise you it will be corrected, or when."
+  - q: "Is it worth reporting the error in the AI tool itself?"
+    a: "Yes, it's a legitimate step, and some systems have feedback controls for exactly this. Just don't count on it as a sure fix: how a report gets evaluated and worked in usually isn't transparent, so you rarely see how the submission is assessed or when it might take effect. Treat it as a supplement to fixing the sources, not a replacement."
+  - q: "Should I put a page on my site saying it isn't true?"
+    a: "Careful. A page along the lines of it is not true that we do such and such usually helps neither the reader nor the machines, and it can end up tying the false claim to your name. Better to state the correct information clearly and positively where people actually look for it — and above all consistently across your site and profiles."
+  - q: "What if the claim is genuinely damaging?"
+    a: "In a serious case, where a false claim is doing real harm to the company, talking to a lawyer is the right call. This article sticks to what you can do on the content and technical side and doesn't cover legal remedies; assessing a specific situation is a job for a professional."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**When AI states something false about your company, you usually can't rewrite the answer directly** — there's no standard interface for editing it yourself. What you can realistically do is fix the sources the system draws on, state the correct information clearly on your own site, and report the error. The effect is indirect, with no guarantee and no firm timeline.
+
+Right up front, it helps to separate two things that get confused easily. **Directly editing the answer itself** usually isn't available in the standard interface. **Reporting the error, though, you can do** — some platforms have feedback controls for it and let you update the related business record or profile. What you don't get to see is how exactly the report is evaluated and when it might take effect.
+
+## Start with the cause
+
+This is the heart of it. "AI is lying about us" isn't one situation, it's three — and each one gets handled differently.
+
+<CompareTable
+  caption="Three causes of a bad claim and what to do about each"
+  columns={["Cause", "How to handle it"]}
+  rows={[
+    { icon: "🕰️", label: "Stale fact", left: "An old price, a discontinued service", right: "Update your own site and profiles; the most common case and the most fixable" },
+    { icon: "🔗", label: "Bad third-party source", left: "A directory, an old article", right: "Contact whoever runs the source and get the claim corrected" },
+    { icon: "💭", label: "Hallucination", left: "No clear material to work from", right: "Supply a clear answer where nothing specific about you exists; it can also be a mix-up with another company" },
+  ]}
+/>
+
+Hallucinations may be more common where clear, consistent material is missing, but they also come out of a bad synthesis of several sources or a case of mistaken entity. So the risk can grow for brands with less consistent public material out there; on why models make things up, see the article on [AI-generated content](/blog/ai-generated-content-visibility/).
+
+<Insight tone="key">
+The key distinction: you can't rewrite the model, but you can fix the sources. Everything you can realistically do aims at **where the information comes from** — not at the answer itself. Anyone promising a direct or guaranteed fix to an AI answer is promising more than they can back up.
+</Insight>
+
+## What you can actually do
+
+<Stepper
+  steps={[
+    {
+      label: "Evidence",
+      title: "Document it",
+      text: "Save the prompt, the answer, the date, and the system. Answers fluctuate, so try it several times — one answer may not mean anything.",
+    },
+    {
+      label: "Cause",
+      title: "Work out where it's coming from",
+      text: "Stale fact, bad third-party source, or hallucination? The next step differs accordingly. Without that, you're firing blind.",
+    },
+    {
+      label: "Source",
+      title: "Fix the source",
+      text: "Update your own site; for a third-party source, contact whoever runs it. Sometimes one email or an edit to your own profile is enough, other times the process drags on with no certain outcome.",
+    },
+    {
+      label: "Answer",
+      title: "Supply what's missing",
+      text: "One reason a model makes things up may be that the answer isn't stated clearly and consistently anywhere. Write it down in one place and keep it identical across the site.",
+    },
+    {
+      label: "Test",
+      title: "Retest later",
+      text: "Check repeatedly and across different systems. Expect a lag — how often changes get picked up isn't published.",
+    },
+  ]}
+/>
+
+Consistency matters more here than almost anywhere else. When the fact on your site, in your profiles, and in directories doesn't line up, you're handing the machines a choice — and you have no say in which one they take. Where else your brand can show up is covered in [brand mentions in AI](/blog/ai-brand-mentions/) and [your brand on Wikipedia](/blog/wikipedia-for-ai-citations/).
+
+## What not to do
+
+<MistakeGrid>
+  <Mistake number="01" title="Panicking over a single answer">
+    Answers fluctuate from run to run. Before you act on it, verify it several times and across different systems.
+  </Mistake>
+  <Mistake number="02" title="A correction page on your site">
+    Copy along the lines of it is not true that we do such and such won't help the reader, and it can tie the false claim to your name.
+  </Mistake>
+  <Mistake number="03" title="Manufacturing fake sources">
+    Producing content purely to drown out an error is both a risk and an ethical problem. Fixing the source is usually the cleanest and most reliable route.
+  </Mistake>
+  <Mistake number="04" title="Waiting for an edit button">
+    Directly editing the answer itself usually isn't available in the standard interface. Time spent looking for a way into the model is better spent fixing sources and reporting the error.
+  </Mistake>
+</MistakeGrid>
+
+<Insight tone="warning">
+Reporting the error in the AI tool itself makes sense, and some systems have feedback controls for it. Just don't count on it as a sure fix: how a report gets evaluated and worked in usually isn't transparent. It's a supplement to fixing the sources, not a replacement.
+</Insight>
+
+## Where this article stops
+
+Two things this piece doesn't address and can't.
+
+**It can't promise a result.** Even after every step is done correctly, there's no guaranteeing the answer will change, or when. Anyone claiming otherwise is selling certainty they don't have.
+
+**It doesn't cover the legal side.** Alongside fixing sources, it can sometimes be worth reporting the output to the platform, correcting the related business record, or making a formal request to the source; the specific route depends on the type of error and the service. If a false claim is doing real harm to you, talking to a lawyer is the right call. Here we're staying with what you can do on the content and technical side.
+
+<DoDont
+  doTitle="What to do"
+  dontTitle="What to avoid"
+  doItems={[
+    "Document the prompt, the answer, the date, and the system.",
+    "Identify the cause before the fix.",
+    "Update your own site and business profiles.",
+    "Supply a clear answer where one is missing.",
+    "Retest repeatedly and over time.",
+  ]}
+  dontItems={[
+    "Acting on a single answer.",
+    "Publishing correction copy in the it is not true vein.",
+    "Manufacturing fake sources to drown out the error.",
+    "Promising leadership it will be fixed within a week.",
+    "Letting the facts on your site and in your profiles drift apart.",
+  ]}
+/>
+
+## Key takeaways
+
+- **You can't rewrite the model, but you can fix the sources** — everything that works aims at where the claim comes from.
+- **Cause first, then fix** — a stale fact, a third-party source, and a hallucination each get handled differently.
+- **Hallucinations often grow where clear material is missing** — though it can also be a case of mixed-up brands.
+- **Consistency across your site and profiles** — contradictions leave the choice to the machines.
+- **No guarantee and no timeline** — verify repeatedly, see the [AI visibility test](/blog/ai-visibility-test/), and never promise anyone a date.
+
+---
+
+**Not sure what AI says about you, or where it's getting it?** An AI SEO audit from **[Sniper Design](https://www.sniperdesign.cz/)** walks through how AI systems answer questions about your company, helps trace the likely sources behind the disputed claims, and lays out the content and technical steps that can improve the odds of a correction.
+
+*For transparency: this article reflects publicly available information and practice as of July 2026. AI providers don't publish exactly how they pick up changes from their sources, so the steps above can't guarantee a correction or its timing. This article is not legal advice.*
