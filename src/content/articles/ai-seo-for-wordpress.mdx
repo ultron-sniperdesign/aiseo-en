@@ -1,0 +1,218 @@
+---
+title: "AI SEO for WordPress: A Practical 2026 Guide"
+description: "How to set up WordPress for AI search: llms.txt, robots.txt for AI crawlers, structured data, and site speed. A practical step-by-step guide."
+answer: "AI SEO on WordPress means setting up your site so AI systems understand its content better and can use it more easily in answers. It typically involves an SEO plugin, structured data, a robots.txt check for AI crawlers, optionally llms.txt, and healthy Core Web Vitals."
+slug: "ai-seo-for-wordpress"
+category: "tutorial"
+tags:
+  - "technicke-zaklady"
+published: "2026-06-11"
+updated: "2026-06-11"
+keywords:
+  - "ai seo wordpress"
+  - "wordpress for ai search"
+  - "wordpress llms.txt"
+  - "wordpress robots.txt ai"
+  - "ai seo plugin wordpress"
+variant: "rich"
+stats:
+  - value: "~40%"
+    label: "WordPress's share of all websites, based on publicly cited estimates for 2026"
+  - value: "5"
+    label: "commonly managed AI crawler identifiers, plus the Google-Extended rule worth checking in 2026"
+  - value: "~30,000+"
+    label: "active installs of the most widely used WordPress plugin for llms.txt (as of June 2026)"
+  - value: "4"
+    label: "main WordPress SEO plugins that cover the AI SEO basics"
+howto:
+  name: "How to set up WordPress for AI search"
+  steps:
+    - name: "Make sure you have a working SEO plugin"
+      text: "For the AI SEO basics, any of the major plugins will do: Yoast SEO, Rank Math, SEOPress, or All in One SEO (AIOSEO). All of them generate structured data (Article, Organization, BreadcrumbList) and an XML sitemap, and all let you edit robots.txt. If you don't have one, install one."
+    - name: "Add llms.txt"
+      text: "Install the Website LLMs.txt plugin (roughly 30,000+ active installs as of June 2026, with integrations for the major SEO plugins) or create llms.txt by hand at the root of your domain. Verify it with `curl -I https://yourdomain.com/llms.txt` (HTTP 200) and open the file in a browser so you can see the contents too."
+    - name: "Make sure AI crawlers aren't blocked in robots.txt"
+      text: "To be cited in AI answers, the major AI user agents can't be blocked. Those include GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, and Meta-ExternalAgent. Handle the Google-Extended rule separately — that's how Google governs the use of your content for certain AI purposes. Careful: blocking GPTBot does not block OAI-SearchBot. They're two separate rules."
+    - name: "Add the structured data your SEO plugin doesn't generate automatically"
+      text: "Add FAQPage manually (an FAQ block on a product or service page), Product with Offer on WooCommerce, and Person on your author page. Most SEO plugins have a generator for these types right in the post editor."
+    - name: "Watch Core Web Vitals and your CDN configuration"
+      text: "Target LCP < 2.5 s, INP < 200 ms, CLS < 0.1. Use a caching plugin (LiteSpeed Cache is free, WP Rocket is paid) and image optimization (ShortPixel, Imagify). If you use Cloudflare, confirm the Block AI Bots toggle is off — in practice it can override your robots.txt and block AI crawlers outright."
+faq:
+  - q: "Is one plugin enough for AI SEO on WordPress?"
+    a: "For the basics, a combination of two: a main SEO plugin (Yoast, Rank Math, SEOPress, or AIOSEO) for structured data and sitemaps, plus a dedicated llms.txt plugin (Website LLMs.txt). The main SEO plugin generates Article, Organization, and BreadcrumbList automatically. The llms.txt plugin provides a machine-readable summary of your content for AI models. The rest — robots.txt and site speed — you can handle through existing plugins or by hand."
+  - q: "Which WordPress SEO plugin is best for AI SEO in 2026?"
+    a: "For the AI SEO basics, all four major plugins perform comparably: Yoast SEO, Rank Math, SEOPress, and All in One SEO (AIOSEO). They differ mainly in how much the free version covers and in the user experience. Rank Math has a generous free version with a structured data generator; Yoast is the most widely used and integrates well with third-party plugins (Website LLMs.txt among them). Switching between them is possible, but do it carefully — you can lose settings along the way."
+  - q: "Which AI crawlers should I handle in robots.txt?"
+    a: "The identifiers commonly managed in 2026 include GPTBot (OpenAI training), OAI-SearchBot (OpenAI live search), ClaudeBot (Anthropic), PerplexityBot (Perplexity), and Meta-ExternalAgent (Meta AI). Handle the Google-Extended rule separately — that's how Google governs the use of your content for certain AI purposes. Careful: GPTBot and OAI-SearchBot are separate. Newer documentation and current practice generally focus on ClaudeBot; the older Claude-Web and anthropic-ai identifiers show up far less in up-to-date guides. Some site owners report that Bytespider (ByteDance) only partially respects robots.txt — if you see the same in your logs, blocking at the CDN or firewall level tends to work better."
+  - q: "How do I add llms.txt to WordPress without a plugin?"
+    a: "Create a text file named llms.txt with a short Markdown overview of your main pages and upload it to the root of your domain (over FTP or through your host's File Manager, for example). Verify it with `curl -I https://yourdomain.com/llms.txt` (HTTP 200) and open the file in a browser so you can see the contents too. That said, the Website LLMs.txt plugin does this automatically and keeps it current as your site changes, so for most people it's the better option."
+  - q: "If I use Cloudflare, should I turn on the Block AI Bots toggle?"
+    a: "If you want a better shot at citations in AI answers, turning it on is usually a bad idea. Cloudflare's Block AI Bots (added in 2024) operates at the CDN level, which in practice is stronger than any rule in robots.txt, and it can stop AI crawlers before they ever see your site. Instead of a blanket block, we recommend finer-grained rules per AI crawler: allow the ones that cite in AI answers, and block only the specific bad actors through a web application firewall (WAF)."
+  - q: "How is AI SEO on WordPress different from classic SEO?"
+    a: "The foundation is the same: structured data, quality content, a sitemap, technical health. AI SEO adds three layers: unblocked AI crawlers in robots.txt, optionally llms.txt as a supplementary machine-readable overview of your site, and an emphasis on content structure that AI can use more easily in answers (short 50–150 word chunks, FAQs, lists with specific numbers). Most of the SEO work you've already done still counts for AI — you just need to fill in the specifics."
+---
+
+import Checklist from "~/components/blocks/Checklist.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**AI SEO on WordPress is the set of configurations that help AI systems (ChatGPT, Google AI Overviews, Perplexity, Claude, Gemini) understand and use your content. In concrete terms: a properly configured SEO plugin for structured data, backed up with [llms.txt](/blog/llms-txt-guide/), the relevant AI user agents unblocked in robots.txt, and healthy Core Web Vitals.** Publicly cited estimates put WordPress behind roughly 40% of all websites in 2026, which means it's where most site owners will be doing their AI SEO work. The good news: you can handle most of it with plugins, no coding required. This guide covers exactly what to do, and in what order.
+
+## What AI SEO means on WordPress
+
+AI search adds a handful of new technical elements on top of traditional SEO. For WordPress sites in 2026, that mostly comes down to:
+
+- **Keeping the major AI crawlers unblocked** in [robots.txt](/blog/robots-txt-for-ai-crawlers/). The commonly managed identifiers include GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, and Meta-ExternalAgent. We also recommend checking the Google-Extended rule separately. The list isn't final, though, and it shifts over time.
+- **Considering llms.txt** as a supplementary orientation file for AI systems. It isn't a universally confirmed standard, but it can make your content easier to navigate.
+- **Having [structured data](/blog/structured-data-for-ai/)** (Article, Organization, BreadcrumbList, FAQPage, Product) — your SEO plugin already handles most of it.
+- **Focusing your content** on short chunks and question-and-answer pairs that AI systems find easier to use in answers.
+- **Watching Core Web Vitals** and layout stability.
+
+<Insight tone="key">
+For WordPress AI SEO you usually don't need to change your theme or migrate to a different CMS. Most of the work is adding or fine-tuning plugins you already have.
+</Insight>
+
+## The four main SEO plugins — a quick comparison
+
+For the AI SEO basics on WordPress, all the major plugins perform comparably. They differ mainly in how much the free version covers, in the user experience, and in their integrations.
+
+<CompareTable
+  caption="The main WordPress SEO plugins for AI SEO basics (as of June 2026)"
+  columns={["Yoast SEO / AIOSEO", "Rank Math / SEOPress"]}
+  rows={[
+    { icon: "📊", label: "Structured data", left: "Article, Organization, BreadcrumbList, WebSite automatically; FAQPage and HowTo via Gutenberg blocks", right: "Schema generator covering a wide range of types (Article, FAQ, HowTo, Product, Review); more flexible customization at the post level" },
+    { icon: "🤖", label: "robots.txt editor", left: "Built-in editor in the UI; you have to add rules for AI user agents yourself", right: "Built-in editor; some Rank Math modules ship with ready-made templates" },
+    { icon: "🔗", label: "llms.txt plugin integration", left: "Full integration with the Website LLMs.txt plugin (it pulls data from the SEO plugin)", right: "Also supported; Website LLMs.txt can read metadata from all four major SEO plugins" },
+    { icon: "💰", label: "Free version", left: "Yoast — a workable free tier, premium for advanced features. AIOSEO — free basics, paid for the Schema Custom Editor", right: "Rank Math — a generous free version with most features. SEOPress — a workable free tier, paid for the more advanced features" },
+    { icon: "🌍", label: "Community and support", left: "Yoast is the largest with the most tutorials; AIOSEO is the second most widely used", right: "Rank Math is still growing as of June 2026; SEOPress is smaller but stable" },
+  ]}
+/>
+
+**What we recommend in practice:**
+
+- **Yoast SEO** — if you want the proven standard with the broadest community.
+- **Rank Math** — if you want more features in the free version.
+- **SEOPress** — if you want a European plugin that's friendly to GDPR compliance.
+- **AIOSEO** — if you prefer a less technical interface.
+
+Switching between them is possible, but **do it carefully** — because you can lose settings and meta tags, we recommend exporting first and testing on a staging copy of the site.
+
+## The step-by-step process
+
+<Stepper
+  steps={[
+    {
+      label: "SEO plugin",
+      title: "Have a working main SEO plugin",
+      text: "If you're running Yoast SEO, Rank Math, SEOPress, or AIOSEO and your structured data works (test it with the Schema.org validator or Google's Rich Results Test), you have the AI SEO basics covered. If not, install one of them and configure the core types (Organization, WebSite, Article).",
+    },
+    {
+      label: "llms.txt",
+      title: "Add llms.txt",
+      text: "The easiest route: the Website LLMs.txt plugin (roughly 30,000+ active installs as of June 2026). It generates llms.txt from your content and keeps it updated automatically. The manual route: create a text file named llms.txt with a short Markdown overview and upload it to the root of your domain (over FTP or through your host's File Manager).",
+    },
+    {
+      label: "robots.txt",
+      title: "Make sure AI crawlers aren't blocked",
+      text: "To be cited in AI answers, the major AI crawlers need access. The commonly managed identifiers include GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, and Meta-ExternalAgent. Handle Google-Extended separately. If your robots.txt is restrictive, add exceptions for the relevant identifiers. Careful: GPTBot and OAI-SearchBot are two separate rules.",
+    },
+    {
+      label: "Structured data",
+      title: "Add the types your SEO plugin doesn't generate automatically",
+      text: "Add FAQPage manually (an FAQ block on a product or service page), Product with Offer on WooCommerce, and Person on your author page. Most SEO plugins have a generator for these types right in the post editor or as a Gutenberg block.",
+    },
+    {
+      label: "Site speed",
+      title: "Watch your Core Web Vitals",
+      text: "Target LCP < 2.5 s, INP < 200 ms, CLS < 0.1. Use a caching plugin (LiteSpeed Cache is free, WP Rocket is paid) and image optimization (ShortPixel, Imagify, Smush). The biggest single factor is usually hosting quality — for AI SEO we recommend managed WordPress hosting.",
+    },
+    {
+      label: "CDN and firewall",
+      title: "Check your Cloudflare or other CDN configuration",
+      text: "If you use Cloudflare, confirm the Block AI Bots toggle is off — blocking at the CDN level is in practice stronger than any rule in robots.txt, and it can stop AI crawlers before they ever see your site. For AI SEO we recommend finer-grained rules per AI crawler: allow the ones that cite in AI answers, and block only the specific bad actors through a web application firewall (WAF).",
+    },
+  ]}
+/>
+
+## A robots.txt template for AI SEO on WordPress
+
+Here's the minimum workable template we recommend as a starting point. Adjust it for your site's specifics (logged-in areas, custom URL structure, parameters):
+
+<Checklist title="What a WordPress robots.txt for AI SEO contains" items={[
+  { title: "Don't block the major AI user agents", desc: "GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Meta-ExternalAgent — if your rules are restrictive, add exceptions for them." },
+  { title: "The Google-Extended rule", desc: "Decide separately whether you want to let Google use your content for certain AI purposes." },
+  { title: "Disallow admin", desc: "/wp-admin/, /wp-login.php — your admin area has no business being in any search index." },
+  { title: "Disallow internal search", desc: "Parameters like /?s= or /search/ — they generate thousands of duplicate pages." },
+  { title: "Allow admin-ajax.php", desc: "Some site features (comments, search) need admin-ajax reachable by crawlers." },
+  { title: "Sitemap reference", desc: "Sitemap: https://yourdomain.com/sitemap_index.xml — generated by your SEO plugin." },
+  { title: "Optional Disallow for Bytespider", desc: "Bytespider is often a nuisance; you can try blocking it, but reliable protection means a WAF." },
+]} />
+
+## The most common mistakes
+
+<MistakeGrid>
+  <Mistake number="01" title="Cloudflare Block AI Bots left on">
+    If you're on Cloudflare with the Block AI Bots toggle on (added in 2024), blocking at the CDN level is in practice stronger than any rule in robots.txt, and it can stop AI crawlers before they ever see your site. Your site then can't be cited in AI answers, no matter how well you've done everything else. If you want to show up in AI answers, turn the toggle off.
+  </Mistake>
+  <Mistake number="02" title="Only blocking Claude-Web and anthropic-ai">
+    The older Claude-Web and anthropic-ai identifiers are no longer active. Anthropic's current crawler is ClaudeBot. If you want your rules to actually apply, use ClaudeBot.
+  </Mistake>
+  <Mistake number="03" title="GPTBot ≠ OAI-SearchBot">
+    Blocking GPTBot does not block OAI-SearchBot. GPTBot pulls data for model training; OAI-SearchBot is ChatGPT's live search agent. For AI SEO you want both to have access; to block training data you need two separate rules.
+  </Mistake>
+  <Mistake number="04" title="robots.txt regressions after an update">
+    Changes to robots.txt creep in during WordPress migrations, theme updates, security plugin installs, or CDN configuration changes. After any significant change, run `curl https://yourdomain.com/robots.txt` and compare it against what you expect.
+  </Mistake>
+</MistakeGrid>
+
+## WooCommerce specifics
+
+For WordPress stores built on WooCommerce (roughly 25–30% of online stores), AI SEO adds a few specific tasks:
+
+<DoDont
+  doTitle="What to do on WooCommerce"
+  dontTitle="What to avoid"
+  doItems={[
+    "Have Product structured data with Offer (price, availability) and AggregateRating (reviews) — your SEO plugin generates most of it automatically, so fill in what's missing.",
+    "Add an FAQ block to your product pages — it answers exactly the questions buyers put to AI.",
+    "Write category copy (top and bottom intro) with specific information — that kind of content can improve the odds your page shows up in AI answers for “best X” or “X for Y” queries.",
+    "Feed reviews (Trustpilot, Trusted Shops, Google Reviews) back onto the product through Review structured data.",
+  ]}
+  dontItems={[
+    "Rely on WooCommerce's default structured data alone — it's missing FAQs, product authorship, and sometimes AggregateRating.",
+    "Leave categories empty with no copy — AI systems then have less usable content to answer with.",
+    "Hide reviews behind a login — AI can't read them.",
+    "Block AI crawlers in robots.txt because “I don't want AI taking my products” — without them, AI answers won't know your products exist.",
+  ]}
+/>
+
+## What to do beyond plugins
+
+Plugins handle the technical layer. Real AI visibility for your brand also takes the things no plugin will do for you:
+
+- **Regular content updates** — on fast-moving topics, updating regularly can improve the odds that AI systems treat your content as current.
+- **Specific numbers and original data** — your own research, an A/B test, or a case study with concrete numbers can make your content more interesting and more citable for AI answers.
+- **Short citable chunks** of 50–150 words — AI picks out self-contained answers more easily.
+- **An author entity** — an author page with LinkedIn, a photo, and a short bio is a trust signal for AI and for Google alike.
+
+<Insight tone="warning">
+No plugin guarantees AI citations. Plugins give you the technical foundation (structured data, llms.txt, an unblocked robots.txt), but AI visibility itself comes down to content quality and brand authority — and you can't buy those in a plugin.
+</Insight>
+
+## Key takeaways
+
+- **AI SEO on WordPress** = an SEO plugin (Yoast, Rank Math, SEOPress, or AIOSEO) + an llms.txt plugin + unblocked AI user agents in robots.txt + structured data + Core Web Vitals.
+- **The 5 main AI user agents in 2026**: GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Meta-ExternalAgent. Google-Extended separately. GPTBot ≠ OAI-SearchBot.
+- **The Cloudflare Block AI Bots toggle** overrides robots.txt in practice — for AI SEO, **leave it off**.
+- **WooCommerce** needs FAQs added to products, category copy written, and reviews integrated.
+- **Plugins handle the technical side.** Real AI citations take quality content, updates, and brand authority.
+
+---
+
+**If you'd rather not assemble these steps one by one**, this site is run by **[Sniper Design](https://www.sniperdesign.cz/)** — an AI SEO audit walks your main pages, checks structured data, robots.txt, and CDN configuration, and hands you the fixes in priority order with an estimate of their impact.
+
+*For transparency: Sniper Design specializes in e-commerce audits and implementation. The AI SEO principles described in this article apply much the same way across WordPress, WooCommerce, and other CMSs — what differs is the specific implementation through plugins or templates. AI user agent configurations and their relative weight change over time; this article is based on public information available as of June 2026.*

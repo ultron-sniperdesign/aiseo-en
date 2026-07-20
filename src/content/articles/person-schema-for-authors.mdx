@@ -1,0 +1,209 @@
+---
+title: "Person schema for authors: structured data in 2026"
+description: "Person structured data (JSON-LD) helps AI and Google understand who wrote your content. A guide to sameAs, @id, and a code example."
+answer: "Person is a structured data type that describes an author in machine-readable form — name, role, profiles, and areas of expertise. It helps AI and Google understand who created the content and connect it to other public profiles. The two things that matter most are the sameAs property, with links to profiles like LinkedIn or Wikidata, and a stable @id that, repeated across all of an author's articles, improves the odds they get consistently resolved into a single entity."
+slug: "person-schema-for-authors"
+category: "tutorial"
+tags:
+  - "strukturovana-data"
+  - "duveryhodnost"
+published: "2026-07-11"
+updated: "2026-07-11"
+keywords:
+  - "person schema author"
+  - "author structured data"
+  - "person json-ld"
+  - "sameas author ai"
+  - "author entity ai"
+variant: "rich"
+stats:
+  - value: "sameAs"
+    label: "the single most important property — links to profiles (LinkedIn, Wikidata) separate your author from everyone with the same name"
+  - value: "1 @id"
+    label: "one stable @id repeated across every article improves the odds the author resolves into a single entity"
+  - value: "E-E-A-T"
+    label: "Person data helps AI and Google understand who the author is and which expertise signals belong to them"
+  - value: "~40%"
+    label: "roughly the lift in AI-answer citations reported by selected GEO studies for the combination of structured data, citations, and statistics"
+howto:
+  name: "How to implement Person structured data for an author"
+  steps:
+    - name: "Define the author as a Person on their profile page"
+      text: "Add JSON-LD with the Person type to the author page — name, role, description, and a link to the profile. The name in the data has to match exactly how the author is credited on the articles."
+    - name: "Add sameAs with links to their profiles"
+      text: "In the sameAs property, list the URLs that help identify the author reliably — LinkedIn, Wikidata, and any other public profiles that genuinely represent them. Credible, well-maintained profiles make that identification easier."
+    - name: "Assign a stable @id and repeat it"
+      text: "Give the author one stable identifier in @id, for example example.com/#author-name. Use that same @id on every one of their articles, which improves the odds that AI and Google tie the individual mentions to one author rather than to many different people."
+    - name: "Connect the article to the author through @id"
+      text: "In the article's JSON-LD (Article), point to the author through author with their @id, and to the publisher through publisher. That way the author is defined once and articles simply reference them."
+    - name: "Check that it matches the visible content"
+      text: "Confirm the structured data matches what's actually visible on the page — name, role, profiles. Don't invent credentials or profiles the author doesn't have; a mismatch is a risk."
+faq:
+  - q: "What is Person and what does it do for an author?"
+    a: "Person is a type from the Schema.org vocabulary that describes an author in machine-readable form: name, role, profiles, and areas of expertise. It helps Google and AI recognize the author as an entity and connect the signals about them across the web. In an AI era where who writes the content carries growing weight (E-E-A-T), this data describes the author technically and can help systems link the content to other signals about them."
+  - q: "What is sameAs and why does it matter so much for an author?"
+    a: "sameAs is the property where you list the URLs that help identify the author reliably — LinkedIn, Wikidata, X, or a personal site. That's exactly what helps Google and AI tell your author apart from anyone else with the same name. Credible, well-maintained profiles make that distinction easier. Aim for at least one canonical profile, ideally more."
+  - q: "What is @id and why should I repeat it?"
+    a: "@id is a stable identifier for the author, typically their profile URL with an anchor. When you use that same @id in the Person data on the profile page and on every article they've written, you improve the odds that Google and AI tie the individual mentions to one author instead of treating them as a different person on every page. A consistent @id is stronger than redefining the author from scratch on each page."
+  - q: "Where do I put the Person JSON-LD?"
+    a: "Put the JSON-LD in a script tag with type application/ld+json on the page. The proven approach is to define the author with the Person type once on their author profile and simply reference it through @id in the individual articles. In practice that usually lives in the article template or the author page template in your system or CMS."
+  - q: "Does the data have to match the visible content of the page?"
+    a: "Yes, and it's fundamental. Structured data should match what's actually visible on the page — the author's name, their role, and their profiles. Don't invent credentials or profiles the author doesn't have. A mismatch between the data and the content is a risk, and especially so on sensitive topics like health, finance, or law."
+  - q: "What if the author isn't on Wikidata?"
+    a: "That's fine. Put the public profiles the author genuinely has into sameAs — LinkedIn is usually the anchor, alongside a personal site or a professional profile. A Wikidata entry can make sense for better-known people if one already exists; don't create one just to fill the property. Write the author profile in the language of the site and spell the name consistently — same form, same accents — across the site and every profile. The principle is the same everywhere: an author entity described clearly and consistently helps AI and Google understand who writes the content."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Person is a structured data type that describes an author in machine-readable form — name, role, profiles, and areas of expertise — and helps Google and AI understand who created the content.** Two things do most of the work: the `sameAs` property, with links to profiles like LinkedIn or Wikidata, and a stable `@id` that, repeated across every article, improves the odds the author resolves into a single entity. This guide walks through how to implement Person data, code example included.
+
+## What Person solves
+
+When search engines and some AI systems interpret content, they work with **entities and the relationships between them**, not just keywords. Who writes the content carries growing weight — in other words, [author credibility (E-E-A-T)](/blog/e-e-a-t-for-ai/). Person data describes exactly that on the technical side: who the author is, what they know, and where else on the web that can be verified.
+
+This article is the technical counterpart to how you build [an author entity for AI](/blog/author-entity-for-ai/) in the first place — that one covers the content and the strategy, this one covers the specific structured data.
+
+<Insight tone="key">
+Person data isn't magic on its own. But it works like a clear business card: it tells machines that a specific, verifiable person stands behind the content, with documented profiles to back it up. That can help systems identify the author correctly when they interpret the content.
+</Insight>
+
+## The key Person properties
+
+You don't have to fill in everything, but some properties carry more weight than others.
+
+<CompareTable
+  caption="The most important properties on the Person type"
+  columns={["Property", "What it tells AI and Google"]}
+  rows={[
+    { icon: "🪪", label: "name", left: "Name", right: "The author's full name; has to match how they're credited on the articles" },
+    { icon: "🔗", label: "sameAs", left: "Profiles", right: "Links to LinkedIn, Wikidata, a personal site — separates the author from everyone with the same name" },
+    { icon: "💼", label: "jobTitle and worksFor", left: "Role and company", right: "The author's position and the organization they work for (only state it when the relationship genuinely holds)" },
+    { icon: "🧠", label: "knowsAbout", left: "Expertise", right: "Topics the author actually knows — a signal of expertise" },
+    { icon: "🆔", label: "@id", left: "Identity", right: "A stable identifier that helps resolve the author's articles into a single entity" },
+  ]}
+/>
+
+## sameAs and @id — the heart of the author entity
+
+Two properties tend to matter most in practice. **`sameAs`** gives AI and Google the links that help identify the author reliably — as a general rule, credible, well-maintained profiles (say [LinkedIn](/blog/linkedin-for-ai-citations/) and [Wikidata](/blog/wikipedia-for-ai-citations/)) make it easier to tell the author apart from people with the same name. **`@id`** is the stable identifier you repeat on every one of the author's articles, which improves the odds that systems tie the individual mentions to a single author.
+
+## A JSON-LD example
+
+Here's what a simplified Person definition for an author might look like on their profile page:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://example.com/#author-sarah-miller",
+  "name": "Sarah Miller",
+  "url": "https://example.com/about/sarah-miller/",
+  "jobTitle": "AI SEO consultant",
+  "worksFor": { "@type": "Organization", "name": "Your Company" },
+  "knowsAbout": ["AI SEO", "structured data", "e-commerce"],
+  "sameAs": [
+    "https://www.linkedin.com/in/sarah-miller/",
+    "https://www.wikidata.org/wiki/Q000000"
+  ]
+}
+```
+
+The author's own profile on the same site belongs primarily in `url`; `sameAs` points mainly to other public profiles and reference identities (LinkedIn, Wikidata). In an article you then reference the author through that same `@id`, so you define them once instead of repeating the whole block on every page. In the article's data (`Article`), you point to the author through `author` and to the publisher through `publisher`:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Article title",
+  "author": { "@id": "https://example.com/#author-sarah-miller" },
+  "publisher": { "@type": "Organization", "name": "Your Company" }
+}
+```
+
+This is a simplified example. In practice it's usually worth defining the publisher (`Organization`) separately and consistently across the site — on larger sites, with its own `@id` as well.
+
+## How to implement Person data
+
+<Stepper
+  steps={[
+    {
+      label: "Person",
+      title: "Define the author on their profile page",
+      text: "Add JSON-LD with the Person type to the author page — name, role, description, and a link to the profile. The name in the data has to match exactly how the author is credited on the articles.",
+    },
+    {
+      label: "sameAs",
+      title: "Add links to their profiles",
+      text: "In sameAs, list the URLs that help identify the author reliably — LinkedIn, Wikidata, and any other public profiles that genuinely represent them. Credible, well-maintained profiles make that identification easier.",
+    },
+    {
+      label: "@id",
+      title: "Assign a stable identifier and repeat it",
+      text: "Give the author one stable @id and use that same one on every one of their articles, which improves the odds that systems tie the individual mentions to one author rather than to many different people.",
+    },
+    {
+      label: "Linking",
+      title: "Connect the article to the author",
+      text: "In the article's data, point to the author through their @id and to the publisher through publisher. That way the author is defined once and articles simply reference them.",
+    },
+    {
+      label: "Check",
+      title: "Confirm it matches the visible content",
+      text: "Check that the data matches what's actually visible on the page. Don't invent credentials or profiles the author doesn't have; a mismatch is a risk.",
+    },
+  ]}
+/>
+
+## Common mistakes
+
+<MistakeGrid>
+  <Mistake number="01" title="Missing sameAs">
+    Without links to profiles, it can be harder for AI and Google to tell the author apart from people with the same name. sameAs is one of the most important properties for making that distinction.
+  </Mistake>
+  <Mistake number="02" title="A different @id on every article">
+    When the author gets a different identifier on every page, it's harder for machines to tell it's the same author. Repeat one stable @id everywhere.
+  </Mistake>
+  <Mistake number="03" title="Data that doesn't match the page">
+    A name or role in the data that differs from what's visible on the page is a mismatch. Structured data is there to describe reality, not to improve on it.
+  </Mistake>
+  <Mistake number="04" title="Invented expertise">
+    Fake credentials or profiles the author doesn't have won't help credibility, and on sensitive topics they're an outright risk. E-E-A-T rests on real expertise.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="Do"
+  dontTitle="Don't"
+  doItems={[
+    "Define the author with the Person type on their profile page.",
+    "Add sameAs with links to LinkedIn, Wikidata, and a personal site.",
+    "Use one stable @id and repeat it on every article.",
+    "Keep the name and role in the data identical to the visible content.",
+    "Fill in knowsAbout with real areas of expertise.",
+  ]}
+  dontItems={[
+    "Leave Person data without sameAs.",
+    "Give the author a different @id on every page.",
+    "Link to someone else's profiles, or to profiles that don't exist.",
+    "Invent titles and credentials the author doesn't have.",
+    "Leave the data at odds with the author byline on the page.",
+  ]}
+/>
+
+## What to take away
+
+- **Person data describes the author as an entity** — name, role, profiles, and expertise, for AI and Google alike.
+- **sameAs is among the most important properties** — links to LinkedIn and Wikidata help separate the author from people with the same name.
+- **Repeat one stable @id** across every article so the author resolves into a single entity.
+- **The article references the author through @id** — you define the author once.
+- **The data has to match the visible content** — no invented credentials.
+- **Person data helps make clear who the author is** — verify the result with an [AI visibility test](/blog/ai-visibility-test/).
+
+---
+
+*For transparency: the description of the Person properties draws on public Schema.org documentation and analyses available as of July 2026. The statistics cited (higher citation rates, for example) are directional findings from specific GEO studies, not a universal effect; the actual impact on visibility varies by site and topic and shifts over time. How the content on this site is produced is described on the [author page](/author/kamil/).*

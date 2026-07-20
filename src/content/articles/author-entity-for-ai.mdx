@@ -1,0 +1,224 @@
+---
+title: "Author entity for AI: how to build one that gets cited"
+description: "How to build an author entity for AI: a named byline, an author page, Person structured data, and verified sameAs profiles."
+answer: "An author entity is a specific person that AI tools and search engines can unambiguously connect to your content, through a named byline, an author page, Person structured data, and verified sameAs profiles. Available analyses suggest content with a named expert gets cited more often than content published anonymously or under a generic “Editorial team” byline."
+slug: "author-entity-for-ai"
+category: "tutorial"
+tags:
+  - "duveryhodnost"
+published: "2026-06-11"
+updated: "2026-06-11"
+keywords:
+  - "author entity for ai"
+  - "author entity"
+  - "author as a trust signal"
+  - "person schema for authors"
+  - "author page seo"
+variant: "rich"
+stats:
+  - value: "2+"
+    label: "verified external profiles in sameAs — the point where some analyses start to see an effect (not a hard rule)"
+  - value: "a few"
+    label: "verified, publicly accessible profiles in sameAs — how unambiguous and how solid they are matters more than how many"
+  - value: "a series"
+    label: "of published articles on the topic under one name, building expertise that shows up repeatedly (not a single article)"
+  - value: "3–6 mo."
+    label: "a rough timeline from marketing analyses before an author profile starts showing up in citations (not a guarantee)"
+howto:
+  name: "How to build an author entity for AI visibility"
+  steps:
+    - name: "Retire your anonymous authors"
+      text: "Replace every generic byline — “Editorial team”, “Admin”, “Staff” — with the name of a real person. Anonymous authorship adds no clear authorship signal. A named expert with a traceable identity is an entity AI can read."
+    - name: "Collect the basic author data"
+      text: "For every byline you need: full name, role or job title, a portrait photo that matches the author's real identity (stock photography confirms nothing on its own), one or two sentences of bio, and at least one canonical profile such as LinkedIn. The name has to be identical everywhere."
+    - name: "Build an author page"
+      text: "Create a page at /authors/name/ with a bio, a portrait photo, credentials (degrees, certifications, licenses), links to external profiles, and a list of that author's articles. Link to it from every article they write."
+    - name: "Add Person structured data"
+      text: "Add Person structured data (per schema.org) nested inside Article. The key fields: name (exactly as the byline reads), url pointing to the author page, image, jobTitle, and sameAs with two or more verified profiles. Check the syntax in a structured data validator."
+    - name: "Expand sameAs and stay consistent"
+      text: "Add more verified profiles to sameAs (Wikidata, ORCID for academics, professional registries). Keep the same name, the same photo, and a consistent bio across your site and every external profile. Inconsistency weakens the entity."
+faq:
+  - q: "What is an author entity and why does it matter?"
+    a: "An author entity is a specific person that search engines and AI can unambiguously connect to your content — not just a name in the text. It's made up of the byline on the article, an author page, Person structured data, and sameAs links to verified external profiles. Available analyses suggest content with a named expert gets cited more often than content published anonymously or under a generic “Editorial team” byline."
+  - q: "What structured data does an author need?"
+    a: "The foundation is the Person type from schema.org, nested inside Article or BlogPosting as author. The key fields: name (exactly as the visible byline reads), url pointing to the author page, image (a portrait photo), jobTitle, and sameAs as an array of links to verified profiles. Available analyses put the practical minimum at two verified external profiles; working lists in mid-2026 tend to run 5 to 12 URLs. The links have to work and be publicly accessible."
+  - q: "What is sameAs and which profiles belong in it?"
+    a: "sameAs is a structured data property that connects an author to their verified profiles on other sites and helps pin down their identity. Good candidates: LinkedIn (the minimum), Wikidata, ORCID for academics, professional registries (a state bar directory for attorneys, a state medical board listing for physicians), and the author's official personal site on a different domain. Avoid anonymous accounts with no traceable identity, and avoid dead links."
+  - q: "Does the name in the structured data have to match the byline exactly?"
+    a: "Yes, it should. The name in your structured data should match the visible byline. A mismatch like “Jane Doe” in the structured data and “Jane M. Doe” in the text can needlessly muddy the identity. Use the same form of the name on the site, in the data, and on external profiles wherever you can — a single consistent identity is the whole point of an author entity."
+  - q: "What about sensitive topics like health, finance, and law?"
+    a: "On sensitive topics — YMYL, or Your Money Your Life — the trust bar is far higher, and a verifiable credential is often among the strongest trust signals available. A physician with a traceable state medical board license, an attorney listed in a state bar directory, or a financial advisor registered with FINRA or the SEC gives a much stronger verifiable signal on these topics than an author with nothing to check. Without one, the odds of getting cited on sensitive topics tend to be lower — though solid sources and expert editing matter too."
+  - q: "How long before an author profile shows results?"
+    a: "According to available marketing analyses, authors with Person structured data, verified sameAs profiles (at least two platforms), and five or more published articles on the topic start to see citations improve in roughly three to six months. It isn't a guarantee or an instant effect — without a steady publishing cadence, the improvement may never show up. An author entity is a long-term investment, built through a series of content under one name."
+---
+
+import Checklist from "~/components/blocks/Checklist.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**An author entity is a specific person that AI tools and search engines can unambiguously connect to your content, through a named byline, an author page, Person structured data, and verified sameAs profiles.** What gets them there is a visible byline, an author page, and verifiable links to profiles off your site. Available analyses suggest content with a named expert gets cited more often than content published anonymously or under a generic “Editorial team” byline. This guide walks through building that entity — from the byline through the author page to Person structured data and sameAs links.
+
+By “citation” in this article we mean a page being included among the sources an AI answer links to or draws on.
+
+## What an author entity is
+
+An author entity is **a specific person that search engines and AI can unambiguously connect to your content** — not just a name in the text. It's built from five layers, each one resting on the last:
+
+<Checklist title="The five layers of an author entity" items={[
+  { title: "A byline on the article", desc: "The name of a real person on the article, not “Editorial team” or “Admin”." },
+  { title: "An author page", desc: "A dedicated page with a bio, a portrait photo, credentials, and a list of articles." },
+  { title: "Person structured data", desc: "A machine-readable description of the author per schema.org (name, url, image, jobTitle, sameAs)." },
+  { title: "sameAs links", desc: "Links to verified external profiles (LinkedIn, Wikidata, ORCID, professional registries)." },
+  { title: "Consistency", desc: "The same name, photo, and bio across your site and every external profile." },
+]} />
+
+<Insight tone="key">
+The point isn't “being an authority” in some abstract sense. The point is being a person AI and search engines can unambiguously identify — an entity they can tie to verified profiles and a publishing history.
+</Insight>
+
+## Why it works
+
+Google and some AI systems try to work with signals of content trustworthiness. At Google, the framework people reach for here is **E-E-A-T** (experience, expertise, authoritativeness, trustworthiness), and the author can be one of the things carrying those signals. We cover the broader concept in [E-E-A-T for AI](/blog/e-e-a-t-for-ai/).
+
+According to available analyses from 2026:
+
+- **Content with a named expert** tends to get cited more often than content with a generic byline. The reported lift lands somewhere in the tens of percent in some analyses (the specific figures vary by study and by industry).
+- In some marketing analyses, more complete structured data (Person plus Article) shows up more often on cited pages. That's a correlation, though, not a confirmed cause.
+- Some marketing analyses suggest that citations in AI answers may not come down to classic ranking position alone, but also to the strength of trust signals including the author. It isn't a universal rule, though.
+
+Treat the specific numbers as directional — they come from marketing analyses, not official documentation. The direction is consistent, though: **a named, verifiable author helps.**
+
+## Person structured data — the foundation
+
+The core of the technical layer is the **Person** type from schema.org, nested inside `Article` or `BlogPosting` as `author`. The key fields:
+
+<Checklist title="Key Person structured data fields" items={[
+  { title: "name", desc: "The author's full name — exactly as the visible byline reads." },
+  { title: "url", desc: "A link to the author page on your site (for example /authors/name/)." },
+  { title: "image", desc: "The URL of a portrait photo that matches the author's real identity (stock photography confirms nothing on its own)." },
+  { title: "jobTitle", desc: "The author's role or position (for example “SEO consultant”, “physician”, “tax advisor”)." },
+  { title: "sameAs", desc: "An array of links to verified external profiles. A handful of verified, publicly accessible profiles belongs here; how unambiguous and how solid they are matters more than how many." },
+]} />
+
+**Rules for sameAs:**
+
+- **sameAs should hold a few verified, publicly accessible profiles** — how unambiguous and how solid they are matters more than how many. Available analyses found the difference showed up more often, on a subset of the sites tracked, for authors with at least two verified profiles.
+- **Good profiles:** LinkedIn (often useful for B2B authors as one of the verifiable profiles), Wikidata, ORCID for academics, professional registries, the author's official personal site on a different domain, a university page.
+- **Poor profiles:** anonymous accounts with no traceable identity, dead links, profiles under a different name.
+
+## The author page
+
+The author page is where the author entity settles in. Without one, the byline stays an empty name.
+
+<Stepper
+  steps={[
+    {
+      label: "Core identity",
+      title: "Full name, role, and a portrait photo",
+      text: "Put the author's full name, their role or position, and a real portrait photo at the top of the page. A stock photo or a generated portrait does nothing for verifiability on its own, and on expert content it can raise doubts if it isn't the author's real identity.",
+    },
+    {
+      label: "Bio and credentials",
+      title: "Specific experience and proof",
+      text: "A bio with specific experience (years in the field, the industry, what the author actually works on). On expert topics, add credentials: degrees, certifications, licenses. On sensitive topics, a verifiable credential is essential.",
+    },
+    {
+      label: "External profiles",
+      title: "Links to verified profiles (sameAs)",
+      text: "Visible links to LinkedIn, publications, and professional registries. Those same links then belong in the sameAs array in your structured data. Consistency between the visible links and the structured data strengthens the entity.",
+    },
+    {
+      label: "Article list",
+      title: "The author's publishing history",
+      text: "A list of the articles the author has written, internally linked. It builds topical authority — expertise demonstrated repeatedly across one cluster of topics — and shows AI and readers alike that the author covers the subject consistently.",
+    },
+    {
+      label: "Structured data",
+      title: "Person data on the author page itself",
+      text: "The author page should carry its own Person structured data. Check the syntax and the relationships in the schema.org structured data validator, then use Google Rich Results Test to confirm the markup is error-free where Google processes it.",
+    },
+  ]}
+/>
+
+## Sensitive topics: a higher bar
+
+On **sensitive topics** — YMYL (Your Money Your Life), meaning health, finance, law, and safety — the trust bar is far higher. A verifiable credential is often among the **strongest trust signals** available, alongside solid sources, expert editing, and institutional credibility.
+
+<CompareTable
+  caption="Verifiable credentials for sensitive topics"
+  columns={["Field", "Verifiable credential for sameAs"]}
+  rows={[
+    { icon: "🩺", label: "Health", left: "Physician, clinician", right: "State medical board license lookup, ABMS board certification, specialty society profile" },
+    { icon: "⚖️", label: "Law", left: "Attorney, legal advisor", right: "A profile in a state bar association member directory" },
+    { icon: "💰", label: "Finance", left: "Financial advisor", right: "FINRA BrokerCheck, SEC adviser registration, CFP Board verification" },
+    { icon: "🎓", label: "Academia", left: "Researcher, scientist", right: "ORCID, university faculty page, Google Scholar" },
+    { icon: "🔧", label: "Licensed trades", left: "Licensed professional", right: "State licensing board, professional association (NCEES, NCARB, and similar)" },
+  ]}
+/>
+
+<Insight tone="warning">
+On sensitive topics without a verifiable author credential, the odds of getting cited in AI answers tend to be lower. Medical content with no traceable physician, financial advice with no registered advisor, or a legal explainer with no attorney behind it carries a weaker trust signal for AI — even when the content itself is good.
+</Insight>
+
+## The most common mistakes
+
+<MistakeGrid>
+  <Mistake number="01" title="An anonymous author">
+    “Editorial team”, “Admin”, or “Staff” as the author does nothing to tie the content to a specific person. Anonymous authorship is a wasted opportunity — a named expert is an entity AI can read and verify.
+  </Mistake>
+  <Mistake number="02" title="Fake authors passed off as real people">
+    A fake author presented as a real person is a trust problem. A stock photo or a generated portrait does nothing for verifiability on its own; the author entity has to correspond to an actual person.
+  </Mistake>
+  <Mistake number="03" title="A name mismatch">
+    The name in your structured data should match the visible byline. A mismatch like “Jane Doe” versus “Jane M. Doe” can needlessly muddy the identity.
+  </Mistake>
+  <Mistake number="04" title="An empty author page">
+    An author page with no bio, no credentials, and no links to external profiles adds no trust. The page existing isn't enough — it needs content that backs the author up as an entity.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="What to do"
+  dontTitle="What to avoid"
+  doItems={[
+    "Put a specific person with a traceable identity on every article.",
+    "Run an author page with a bio, a portrait photo, credentials, and a list of articles.",
+    "Add Person structured data with two or more verified profiles in sameAs.",
+    "Keep the same name, photo, and bio across your site and every external profile.",
+    "On sensitive topics, add a verifiable credential (state license, bar directory, FINRA or SEC registration, ORCID).",
+  ]}
+  dontItems={[
+    "Sign content as “Editorial team”, “Admin”, or “Staff”.",
+    "Pass invented authors off as real people.",
+    "Leave a mismatch between the name in the byline and the name in the structured data.",
+    "Put anonymous accounts or dead links in sameAs.",
+    "Expect an immediate effect — on some sites the change takes a while to show, often months.",
+  ]}
+/>
+
+## Timeline and realistic expectations
+
+An author entity **is not a switch you flip**. According to available marketing analyses, for authors with Person structured data, verified sameAs profiles (at least two platforms), and **five or more published articles** on the topic, the difference showed up on a subset of the sites tracked after roughly **three to six months**. It isn't a guarantee — without a steady publishing cadence, the improvement may never show up.
+
+It's a **long-term investment**, built through:
+
+1. **A series of content** under one name (not a single article).
+2. **A consistent identity** across sites.
+3. **A growing publishing history** on the topic (topical authority).
+
+## Key takeaways
+
+- **An author entity** is a specific, traceable person, not just a name in the text — AI and Google increasingly work with entities.
+- **Five layers:** the byline, the author page, Person structured data, sameAs links, consistency.
+- **Person structured data** needs name (exactly as the byline reads), url, image, jobTitle, and sameAs with **a few verified profiles**.
+- **On sensitive topics** (health, finance, law), a verifiable author credential carries real weight — state licensing boards, bar directories, FINRA and SEC registries, ORCID.
+- **The most common mistakes:** an anonymous author, fake authors, a name mismatch, an empty author page.
+- **A three to six month timeline** and a series of content under one name — not an instant effect.
+
+---
+
+*For transparency: author pages and Person structured data can be handled through templates on WordPress, Shopify, or any other CMS. The specific numbers on the impact of an author entity in this article come from public marketing analyses published in 2026, not from official search engine documentation; treat them as directional. The principle of a named, verifiable author is consistent across sources, though. How the content on this site is produced is described on the [author page](/author/kamil/).*

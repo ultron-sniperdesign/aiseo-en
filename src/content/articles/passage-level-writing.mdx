@@ -1,0 +1,199 @@
+---
+title: "Passage-level writing: making a section stand on its own"
+description: "AI systems and readers often use only part of a page. What breaks a passage, how the cover test catches it, and how to rewrite it — with a before and after."
+answer: "Passage-level writing means writing each section so it makes sense even when it's pulled off the page. Every section gets its own heading that names its topic specifically, the answer in the first sentence, and no dependence on the surrounding copy: no backward references like as we mentioned above, no pronouns without a named subject, and abbreviations spelled out where they're used."
+slug: "passage-level-writing"
+category: "tutorial"
+tags:
+  - "obsah"
+  - "strategie"
+published: "2026-07-18"
+updated: "2026-07-18"
+keywords:
+  - "passage-level writing"
+  - "content for ai"
+  - "self-contained passages"
+  - "article structure for ai"
+  - "citable copy"
+variant: "rich"
+stats:
+  - value: "cover test"
+    label: "cover the rest of the page and read one section — if you have to scroll up, it isn't self-contained"
+  - value: "6 patterns"
+    label: "backward references, unanchored pronouns, abbreviations, empty headings, tables with no setup, callbacks"
+  - value: "heading = topic"
+    label: "“More information” says nothing; a heading should name the section's topic specifically"
+  - value: "don't overdo it"
+    label: "repeating the full context in every section makes the copy robotic — the goal is clarity, not a copy of the intro"
+howto:
+  name: "How to write sections that stand on their own"
+  steps:
+    - name: "Give every section a heading that names its topic"
+      text: "A heading like More information or Note says nothing about what the section covers. Write the question the section answers, or a specific claim, instead. Readers and machines can then tell what's in the section without reading the rest of the page."
+    - name: "Put the answer in the section's first sentence"
+      text: "The first sentence should answer, not introduce. Elaboration, context, and exceptions belong after it. Anyone who reads only the start of the section should walk away with the answer; anyone who keeps going gets the details."
+    - name: "Replace backward references and pronouns"
+      text: "Phrases like as we mentioned above, see the table above, or the same goes for it have nothing to attach to in a passage pulled off the page. Repeat the subject by name, even if it feels slightly redundant when read straight through."
+    - name: "Put the context right into the sentence"
+      text: "Spell out an abbreviation the first time you use it in that section, not just in the page intro. Give tables a caption that stands on its own. With an example, repeat what it refers to instead of pointing back to an earlier section."
+    - name: "Run the cover test"
+      text: "Cover everything except one section and read it. If you have to scroll up to understand it, it isn't self-contained. Work through the page section by section and rewrite whatever doesn't hold up."
+faq:
+  - q: "What is passage-level writing?"
+    a: "It's a way of writing where individual sections make sense even when pulled off the page. Every section gets its own heading that names its topic, the answer in the first sentence, and no references to the surrounding copy. The reason is practical: only part of a page often gets used, whether it's read by a person arriving from a link or by a system assembling an answer."
+  - q: "How do I tell whether a section stands on its own?"
+    a: "Use the cover test. Cover everything except one section and read it. If you have to scroll up to work out what it's about, whose feature it is, or what an abbreviation means, the passage isn't self-contained. It's a crude check, but it catches most of the problems in a few minutes."
+  - q: "What breaks a passage most often?"
+    a: "Six things: backward references like as we mentioned above, pronouns with no named subject, abbreviations spelled out only in the page intro, empty headings like More information, tables and lists with no setup, and callbacks to an example from an earlier section."
+  - q: "Won't this make the copy repetitive?"
+    a: "It can, if you overdo it. The goal isn't to repeat the full context in every paragraph, only to add enough that the section makes sense. In practice it's enough to name the subject instead of using a pronoun, spell out an abbreviation at first use in the section, and give the table its own caption. When every section repeats the intro, the copy turns robotic."
+  - q: "Does this apply to every type of content?"
+    a: "No. In narrative pieces, case studies, or articles built on an idea unfolding step by step, continuity is the point, and breaking it would hurt the piece. Passage-level writing is mainly for how-tos, roundups, comparisons, and documentation — the formats where readers jump around anyway."
+  - q: "Does it guarantee an AI citation?"
+    a: "No. It's craft that raises the odds a section is usable on its own — not a visibility switch. The main payoff is for readers: people arrive from links into the middle of a page and scan. Copy that holds up in pieces serves them better regardless of who's reading it."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Passage-level writing means writing each section so it makes sense even when it's pulled off the page.** Every section gets its own heading that names its topic specifically, the answer in the first sentence, and no dependence on the surrounding copy: no backward references like “as we mentioned above,” no pronouns without a named subject, and abbreviations spelled out where they're used.
+
+The reason is mundane. Only a piece of a page often gets used — whether it's read by a person who landed straight in the middle from a link, or by a system assembling an answer from several sources.
+
+## What breaks a passage
+
+It's almost always one of six things. What they have in common is that they lean on something that isn't in the section itself.
+
+<CompareTable
+  caption="What breaks a passage and what to replace it with"
+  columns={["Problem", "Replace it with"]}
+  rows={[
+    { icon: "↩️", label: "Backward reference", left: "“as we mentioned above,” “see the table above”", right: "Repeat the fact, or link to a specific page" },
+    { icon: "🫥", label: "Unanchored pronoun", left: "“the same goes for it,” “that one is pricier”", right: "Name the subject" },
+    { icon: "🔤", label: "Abbreviation only in the intro", left: "CTR, GSC spelled out once at the top of the page", right: "Spell it out at first use in the section" },
+    { icon: "🏷️", label: "Empty heading", left: "“More information,” “Note”", right: "A question or a specific claim" },
+    { icon: "📊", label: "Table with no setup", left: "A rundown that only makes sense after the paragraph above it", right: "A caption that stands on its own" },
+    { icon: "🔗", label: "Callback to an example", left: "“for that online store from the last section”", right: "Repeat which case you mean" },
+  ]}
+/>
+
+## The cover test
+
+<Insight tone="key">
+Cover everything except one section and read it. **If you have to scroll up to understand it, the passage isn't self-contained.** It's a crude check, but it catches most of the problems in a few minutes — and it needs no tools.
+</Insight>
+
+Work through the page this way, section by section. A common pattern: the first stretch of copy holds up and the problems pile up toward the end, where the writer was already going full speed.
+
+## How to rewrite a passage that can't stand alone
+
+<Stepper
+  steps={[
+    {
+      label: "Heading",
+      title: "The heading carries a question or a claim",
+      text: "Not “More information,” but the question the section answers, or a specific claim.",
+    },
+    {
+      label: "Answer",
+      title: "The answer goes in the first sentence",
+      text: "The first sentence answers, it doesn't introduce. Elaboration and exceptions belong after it.",
+    },
+    {
+      label: "Subject",
+      title: "Out with pronouns and backward references",
+      text: "Repeat the subject by name, even if it feels slightly redundant when read straight through.",
+    },
+    {
+      label: "Context",
+      title: "Put the context into the sentence",
+      text: "Spell out the abbreviation in the section, give the table its own caption, repeat what the example refers to.",
+    },
+    {
+      label: "Test",
+      title: "Run the cover test",
+      text: "Section by section. Whatever doesn't make sense without the rest of the page, rewrite it.",
+    },
+  ]}
+/>
+
+## Example: before and after the rewrite
+
+Nothing shows it faster than an example. This section leans hard on the surrounding context:
+
+> ### Additional notes
+>
+> As we mentioned above, the same goes for it. And per the table above it's cheaper, so it usually pays off. CTR doesn't change.
+
+Pulled off the page it says nothing at all: we don't know what it applies to, what's cheaper, or what CTR is. After the rewrite:
+
+> ### When annual billing pays off
+>
+> Annual billing on the Standard plan pays off if you use the service for more than seven months. It works out 18% cheaper than paying month to month. Click-through rate (CTR) isn't affected either way.
+
+Five things changed: the heading names the section's topic specifically, the first sentence answers, named entities replaced the vague pronouns, the number sits in the copy instead of pointing at a table, and the abbreviation is spelled out. The length stayed almost the same.
+
+## What to avoid
+
+<MistakeGrid>
+  <Mistake number="01" title="Headings with no content">
+    “More information” or “Note” say nothing about what's in the section. A heading should carry the question the section answers.
+  </Mistake>
+  <Mistake number="02" title="Unanchored pronouns">
+    “It,” “that one,” “this” — in a passage pulled off the page there's nothing to attach them to. Name the subject.
+  </Mistake>
+  <Mistake number="03" title="Abbreviation only at the top of the page">
+    Anyone landing straight into a section in the middle never sees the definition in the intro. Spell it out where you use it, too.
+  </Mistake>
+  <Mistake number="04" title="Overdone self-containment">
+    Repeating the full context in every section makes the copy robotic. The goal is clarity, not a copy of the intro in every paragraph.
+  </Mistake>
+</MistakeGrid>
+
+<Insight tone="warning">
+That last point is worth stressing, because it gets overlooked. When every paragraph restates what the whole article is about, you end up with copy that reads worse than the original. **Add enough context that the section makes sense — no more.** Usually it's enough to name the subject, spell out the abbreviation, and give the table a caption.
+</Insight>
+
+## Where this approach has limits
+
+**It doesn't apply to every genre.** In narrative pieces, case studies, or articles built on an idea unfolding step by step, continuity is the point, and breaking it would do damage. Passage-level writing is mainly for how-tos, roundups, comparisons, and documentation.
+
+**It doesn't guarantee a citation.** It's craft that raises the odds a section is usable, not a visibility switch. It fixes form, not substance: a self-contained passage with nothing of value in it is still empty.
+
+**It isn't only “for AI.”** Readers scan, and they arrive from links into the middle of a page. Copy that holds up in pieces serves them better regardless of who's reading it.
+
+<DoDont
+  doTitle="Do"
+  dontTitle="Don't"
+  doItems={[
+    "Write headings as a question or a specific claim",
+    "Put the answer in the section's first sentence",
+    "Use a named subject instead of a pronoun",
+    "Spell out abbreviations where you use them",
+    "Run the cover test on every section",
+  ]}
+  dontItems={[
+    "Backward references like “as we mentioned above”",
+    "Headings like “More information” and “Note”",
+    "A table that only makes sense after the paragraph above it",
+    "Repeating the full context in every section",
+  ]}
+/>
+
+## The takeaway
+
+Pages rarely get read end to end. A reader arrives from a link into the middle, scans two headings, and leaves; a system may work with a single section. Copy that assumes a top-to-bottom read is the copy that loses.
+
+The craft is cheap: a specific heading, the answer in the first sentence, a named subject, a spelled-out abbreviation. Plus the cover test, which takes a few minutes and shows you where things fall apart.
+
+Just don't overdo it. The goal is a section you can understand on its own — not an article that repeats itself in every paragraph.
+
+**Related reading:** what to write on the substance side is covered in [four principles of citable content](/blog/ai-seo-content/), how sections get assembled into an answer in [how AI cites sources](/blog/how-ai-cites-sources/), the mechanics of breaking down a query in [query fan-out](/blog/query-fan-out/), and the broader process in [how to appear in AI Mode](/blog/how-to-appear-in-ai-mode/).
+
+---
+
+**Want to know how your own content holds up?** An AI SEO audit from **Sniper Design** walks your page structure and copy section by section and names the specific passages worth rewriting.
