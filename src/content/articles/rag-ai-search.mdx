@@ -1,0 +1,169 @@
+---
+title: "RAG: how AI search works in 2026"
+description: "RAG is, put simply, how AI search retrieves the material behind an answer. Here's how it works and why SEO still drives AI visibility."
+answer: "RAG stands for retrieval-augmented generation: for a given query the model first retrieves relevant passages of content from an index, and only then assembles an answer with links from them. Public descriptions say Google AI Overviews and AI Mode work on the same principle over the Search index, so indexability and SEO still play an important role."
+slug: "rag-ai-search"
+category: "analysis"
+tags:
+  - "technicke-zaklady"
+  - "strategie"
+published: "2026-07-11"
+updated: "2026-07-11"
+keywords:
+  - "rag ai"
+  - "how ai search works"
+  - "retrieval augmented generation"
+  - "rag seo"
+  - "rag google ai overviews"
+variant: "rich"
+stats:
+  - value: "retrieval"
+    label: "RAG first retrieves relevant passages of content, and only then does the model assemble an answer"
+  - value: "index"
+    label: "Google AI Overviews and AI Mode both retrieve from the Search index — indexability is usually a basic condition"
+  - value: "meaning"
+    label: "embeddings look for the passages closest in meaning, not for keyword matches"
+  - value: "freshness"
+    label: "RAG draws on a live index; updated content can make it into an answer without retraining the model"
+faq:
+  - q: "What is RAG in simple terms?"
+    a: "RAG stands for retrieval-augmented generation. It means a language model doesn't answer only from what it learned during training — for your query it first retrieves relevant passages of content from a knowledge base or an index, and only then assembles an answer from them. That makes the answer grounded in specific sources, more current, and less prone to making things up."
+  - q: "How does RAG work step by step?"
+    a: "A query comes in first. The system then searches an index or knowledge base and finds the most relevant passages of content; it often uses embeddings to do that, turning both the query and the documents into numbers that represent meaning and looking for the closest matches. The retrieved passages are handed to the model as context, and the model assembles an answer from them and points to the sources. So the model isn't answering from memory — it's answering from what it retrieved."
+  - q: "Does Google use RAG too?"
+    a: "Public descriptions say Google AI Overviews and AI Mode run on a principle similar to RAG over the standard Google Search index. They retrieve material from a live index of trustworthy sources rather than only from what the model learned during training. That's why answers can be more current and why fresh pages can make it into them. ChatGPT and Perplexity use a similar principle when search is turned on."
+  - q: "Does RAG mean classic SEO is dead?"
+    a: "If anything, the opposite. When AI retrieves answers from the Search index, indexability is a basic condition — if it isn't in the index, the system usually can't retrieve it. What actually makes it into the answer then depends heavily on authority, relevance, and content structure, the same things classic SEO deals with. That's why RAG shows how closely SEO and AI visibility are often tied together, as we break down in the article on why AEO and GEO are still SEO."
+  - q: "What are embeddings?"
+    a: "Embeddings turn text into numbers that represent meaning. Both the query and the content get encoded into vectors, and the system looks for the ones closest in meaning — not the ones with matching keywords. In practice that means retrieval depends more on whether your content covers the meaning of the query than on how many times the exact phrase appears in it. So it pays to write naturally and stay coherent on topic."
+  - q: "What can't RAG do, and where are its limits?"
+    a: "RAG is no guarantee of truth. If a source is bad, out of date, or missing from the index, the answer can be bad too. RAG also isn't the model's memory — it draws on what it retrieves in the moment, not on what it remembers. And it isn't training: the knowledge base updates without retraining, so a content change can show up in answers, but the quality of the answer always depends on the quality of the retrieved sources."
+---
+
+import Checklist from "~/components/blocks/Checklist.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**RAG, or retrieval-augmented generation, is how AI search answers a question: instead of drawing only on its training, the model first retrieves relevant passages of content from an index for your query and assembles an answer with links out of them.** Public descriptions say [Google AI Overviews and AI Mode](/blog/google-ai-mode-content/) work the same way over the Search index — so classic SEO and indexability still carry a lot of weight. This article explains how RAG works and what that means for content that wants to be visible in AI.
+
+## What RAG is
+
+A language model picks up plenty during training, but it has two problems: it knows nothing about anything created after training, and it occasionally makes things up. **RAG eases both by having the model retrieve relevant material before it answers.** Relevant content gets retrieved for the query first, and only then does the model assemble an answer from it.
+
+The result can be an answer **grounded in specific sources** — often more current and less prone to hallucination, as long as the retrieved material is solid. Ideally you can trace the main claims back to a source, though in practice that's rarely airtight.
+
+<Insight tone="key">
+The key shift: the model isn't answering from memory, it's answering from what it just retrieved. That means model quality alone doesn't decide your visibility in an AI answer; whether your content is retrievable and well structured plays a significant role too.
+</Insight>
+
+## How RAG works step by step
+
+<Stepper
+  steps={[
+    {
+      label: "Query",
+      title: "Someone asks a question",
+      text: "The input is a user's query. In AI search it tends to be longer and more conversational than in classic search.",
+    },
+    {
+      label: "Retrieval",
+      title: "The system finds the relevant passages",
+      text: "The system searches an index or knowledge base and finds the most relevant passages of content. It often uses embeddings to do this — both the query and the documents get turned into numerical representations of meaning, and the system looks for the closest matches in meaning, not for keyword matches.",
+    },
+    {
+      label: "Context",
+      title: "The passages go into the model's prompt",
+      text: "The retrieved passages are handed to the model as context to work from. The model gets specific material for the query, which can be more current than the model's own training.",
+    },
+    {
+      label: "Answer",
+      title: "The model assembles an answer with links",
+      text: "From that context the model assembles an answer and points to the sources. So it isn't answering from memory — it's answering from what was retrieved for that particular query.",
+    },
+  ]}
+/>
+
+## How Google uses it
+
+Public descriptions say [Google AI Overviews and AI Mode](/blog/google-ai-mode-content/) run on a principle similar to RAG over the **standard Google Search index**. They retrieve material from a live index rather than only from what the model learned during training — which is why answers can be more current and why fresh pages can make it into them.
+
+RAG also ties into the way AI Mode breaks a query apart. The system splits the query into several sub-questions and runs its own retrieval for each one — we cover that mechanic in the article on [query fan-out](/blog/query-fan-out/). How a citation finally gets picked out of the retrieved passages is something we cover in the article on [how AI cites sources](/blog/how-ai-cites-sources/).
+
+<CompareTable
+  caption="An answer with retrieval (RAG) versus one from model training alone"
+  columns={["With RAG (AI search)", "From model training alone"]}
+  rows={[
+    { icon: "📚", label: "Source of the answer", left: "Passages retrieved from an index", right: "Only what the model learned" },
+    { icon: "🕐", label: "Freshness", left: "Draws on a live index", right: "Capped by the training date" },
+    { icon: "🔗", label: "Sources", left: "Can be linked and verified", right: "No traceable source" },
+    { icon: "⚠️", label: "Risk of making things up", left: "Lower — grounded in sources", right: "Higher — nothing to lean on" },
+  ]}
+/>
+
+## What this means for SEO and content
+
+The most important takeaway: **when AI retrieves from the Search index, classic SEO doesn't stop making sense — it often remains a key condition for visibility.** RAG shows why AI visibility and SEO are so often tied together, as we break down in the article on why [AEO and GEO are still SEO](/blog/aeo-geo-is-still-seo/).
+
+<Checklist title="What helps RAG retrieve and use your content" items={[
+  { title: "Indexability", desc: "If it isn't in the Search index, the system usually can't retrieve it. Technical SEO and access for search crawlers are the foundation." },
+  { title: "Covering the meaning", desc: "Embeddings help find closeness in meaning, not just matching phrases. Write naturally and stay coherent on topic." },
+  { title: "Passage structure", desc: "Short passages that stand on their own are easier to retrieve and cite." },
+  { title: "Clear claims backed by data", desc: "RAG looks for specific answers; supported, clear sentences get used better." },
+  { title: "Freshness", desc: "A live index means [updated content](/blog/content-updates-for-ai/) has a shot at making it into an answer." },
+  { title: "Clear entities", desc: "Consistent naming and [structured data](/blog/structured-data-for-ai/) help the model connect your content to the topic." },
+]} />
+
+## What RAG is not
+
+<MistakeGrid>
+  <Mistake number="01" title="An AI that remembers everything">
+    RAG isn't the model's memory. The model doesn't lean only on what it carries out of training — when it answers, it also works with what it just retrieved from the index for your query.
+  </Mistake>
+  <Mistake number="02" title="Model training">
+    RAG isn't retraining. The knowledge base updates on its own — you change the content and the answers can change without the model learning anything again.
+  </Mistake>
+  <Mistake number="03" title="A guarantee of truth">
+    RAG doesn't guarantee accuracy. If the retrieved source is wrong, out of date, or missing, the answer can be wrong too.
+  </Mistake>
+  <Mistake number="04" title="The end of SEO">
+    RAG doesn't mean the end of SEO. Quite the opposite — in systems that retrieve from the Search index, indexability and content quality remain important.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="What to do"
+  dontTitle="What to avoid"
+  doItems={[
+    "Keep the site indexable and technically sound.",
+    "Write coherently on topic and cover the meaning behind queries.",
+    "Break content into short passages that stand on their own.",
+    "Back your claims with data and write clear answers.",
+    "Keep content fresh so it makes it into the live index.",
+  ]}
+  dontItems={[
+    "Counting on AI to remember you without retrievable content.",
+    "Stuffing keywords instead of covering meaning.",
+    "Packing content into long, undivided blocks.",
+    "Publishing vague claims with nothing behind them.",
+    "Treating AI search as a reason to stop doing SEO.",
+  ]}
+/>
+
+## Key takeaways
+
+- **RAG = retrieval-augmented generation** — the model retrieves content for the query first and assembles an answer out of it.
+- **Public descriptions say Google AI Overviews and AI Mode work this way** — they retrieve from the Search index.
+- **For answers drawn from the index, indexability tends to be a basic condition** — if it isn't in the index, the system usually can't retrieve it.
+- **Embeddings look for closeness in meaning, not just phrases** — write naturally and cover the topic.
+- **Passages, clear claims, and freshness** help your content get retrieved and used.
+- **RAG shows why SEO and AI visibility are often connected** — check yours with an [AI visibility test](/blog/ai-visibility-test/).
+
+---
+
+**Want to know whether your content is retrievable and usable for RAG?** A Sniper Design AI SEO audit checks your site's indexability, structure, and entities from the perspective of how AI retrieves and assembles answers — and shows you where you'd gain the most. If you'd rather start on your own, rebuild your key pages around a passage-level structure: short, self-contained blocks that can make it easier for AI to retrieve and use your content.
+
+*For transparency: this description of how RAG and AI search work draws on public documentation and analyses (Google Cloud, Search Engine Land, and others) as of summer 2026; it's a simplified picture, and specific implementations differ from platform to platform and keep evolving. How the content on this site is produced is described on the [author page](/author/kamil/).*

@@ -1,0 +1,200 @@
+---
+title: "Query Fan-Out: How Google AI Mode Reads Content"
+description: "Query fan-out in Google AI Mode can break one query into several sub-questions. Here's how it works and what it changes for citable content."
+answer: "Query fan-out is, according to Google and the analyses available, the way Google AI Mode can break a single query into several parallel sub-questions. It searches each one separately and assembles one answer with links from the passages it finds. For visibility, a single ranking position isn't the only thing that matters — so does whether your content covers the individual sub-questions."
+slug: "query-fan-out"
+category: "analysis"
+tags:
+  - "ai-platformy"
+published: "2026-07-11"
+updated: "2026-07-11"
+keywords:
+  - "query fan-out"
+  - "google ai mode query fan-out"
+  - "how ai mode works"
+  - "query decomposition in ai search"
+  - "ai search sub-questions"
+variant: "rich"
+stats:
+  - value: "1 → many"
+    label: "query fan-out breaks a single query into several sub-questions that run in parallel"
+  - value: "2025"
+    label: "query fan-out has been described in more detail since 2025 in connection with Google AI Mode; it builds on the principles of topical search"
+  - value: "dozens+"
+    label: "for a single prompt, the more intensive Deep Search can generate dozens to hundreds of background queries, according to Google"
+  - value: "passages"
+    label: "AI doesn't pick whole pages — it picks specific chunks of content across sub-questions"
+faq:
+  - q: "What is query fan-out?"
+    a: "Query fan-out is a technique Google AI Mode and part of AI Overviews use to break a single user query into several parallel sub-questions. The system searches each sub-question separately across the web, the knowledge graph, and specialized sources, then assembles one answer with links from the passages it finds. So it isn't one search for one term — it's a fan of related searches running in parallel."
+  - q: "How does query fan-out work, step by step?"
+    a: "The user types a query, usually longer and conversational. A language model interprets it and breaks it into a set of sub-questions, including ones the user never asked directly. The sub-questions run in parallel, and for each one the system picks specific chunks of content rather than whole pages — the chunks that match each individual aspect. The model then assembles one answer from those chunks across sources and attaches links to the topics it covers."
+  - q: "What does query fan-out change for SEO and rankings?"
+    a: "When one query splits into several sub-questions, a classic position for a single keyword tells you less than it used to. Whether an AI answer uses you now depends heavily on how well your content answers one of those sub-questions. Classic SEO isn't going away, though, because AI answers still draw on the standard Search index according to public statements. What really changes is measurement: track whether you get cited, not just where you rank."
+  - q: "What types of sub-questions does Google generate?"
+    a: "According to public analyses, the system generates alternate phrasings of the same question, broader and narrower versions, logically related and implied questions, and — for shopping topics — comparison or pricing sub-questions. These are categories inferred from observation and patents, not an official, complete list. The practical takeaway is that it pays to cover the secondary questions around your main topic, the ones a user might reasonably ask next."
+  - q: "How do I write content that query fan-out will cite?"
+    a: "Write in self-contained chunks, where one short paragraph answers one question, and put a brief definition or short answer up top. Around your main topic, cover the implicit sub-questions too: price, comparisons, who it's for, how to get started. Topical internal linking and clear entity naming help. The goal is for every chunk to work on its own as an answer to one of the sub-questions."
+  - q: "Does query fan-out apply outside the US?"
+    a: "Yes. Google AI Mode is rolling out market by market, and AI Overviews are already active in many languages. People tend to ask longer, conversational questions in AI tools, so it pays to cover natural language rather than short keywords alone. If your market has meaningful search engines outside Google, measure those separately — they run on their own logic."
+---
+
+import Checklist from "~/components/blocks/Checklist.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Query fan-out is, according to Google and the analyses available, the way [Google AI Mode](/blog/google-ai-mode-content/) can break a single user query into several parallel sub-questions, search each one separately, and assemble one answer with links from the passages it finds.** For visibility, a single position for a single keyword isn't the only thing that matters — so does whether your content covers one of the sub-questions the query splits into. Below we break down how the fan-out works, what types of sub-questions show up, and what that means for content that wants to be visible in AI.
+
+## What query fan-out is
+
+In classic search, Google usually evaluates one main query and its semantic variants. In AI Mode, the query can also be broken into several separate sub-questions: the model evaluates the query and **can derive a set of related questions from it** — including ones you never asked directly. According to the descriptions available, it handles each as its own search, groups the results by topic, and assembles a single answer from them.
+
+In its AI Mode demos, Google suggests the system can add sub-questions that expand on related user needs — for a query about things to do in a city with a group, that might mean restaurants, bars, or activities for different types of groups. Query fan-out has been described in more detail since 2025 in connection with AI Mode, and the analyses available connect it to earlier principles of topical search; it isn't a complete technical explanation confirmed by Google.
+
+<Insight tone="key">
+The fan-out is a shift from "one query = one search" to "one query = several parallel searches." Your page doesn't have to win the main query — answering one of the sub-questions it splits into can be enough to help.
+</Insight>
+
+## How query fan-out works, step by step
+
+<Stepper
+  steps={[
+    {
+      label: "Query",
+      title: "The user types a longer, conversational query",
+      text: "AI queries tend to run longer than classic search — a full sentence or question instead of two or three words. That gives the model more context to derive sub-questions from.",
+    },
+    {
+      label: "Breakdown",
+      title: "The model breaks the query into sub-questions",
+      text: "A language model interprets the query and generates a set of related sub-questions — both explicit and implicit ones the user never asked directly but would probably want answered.",
+    },
+    {
+      label: "Retrieval",
+      title: "The sub-questions run in parallel",
+      text: "According to the descriptions available, each sub-question is searched separately across multiple sources — the web index and Google's other data layers, for example. And the sub-questions usually don't run one after another, but simultaneously.",
+    },
+    {
+      label: "Passages",
+      title: "AI often works with chunks, not whole pages",
+      text: "The system often works with specific passages of content, not just whole pages as a single block. Well-structured content is then easier to split into usable passages.",
+    },
+    {
+      label: "Synthesis",
+      title: "The model assembles one answer with links",
+      text: "From chunks across sources, the model builds one coherent answer and attaches source links to the individual topics. A single answer can therefore cite several different sites at once.",
+    },
+  ]}
+/>
+
+## What kinds of sub-questions the fan-out generates
+
+Google doesn't publish the exact list, but these types come up repeatedly in the analyses and patent descriptions available. Treat them as rough categories, not an official inventory.
+
+<Checklist title="Typical sub-question categories (approximate)" items={[
+  { title: "Alternate phrasing", desc: "A different wording of the same question — a page doesn't have to match the exact words, just the meaning." },
+  { title: "Broader version", desc: "A wider form of the query; a document answering the broader question can get cited." },
+  { title: "Narrower version", desc: "A more detailed form — focused on a specific parameter, context, or entity." },
+  { title: "Follow-up question", desc: "The logical next step a user will probably take after this one." },
+  { title: "Implied question", desc: "Something that follows logically from the query, even if it was only implied." },
+  { title: "Comparison and pricing", desc: "For shopping topics, sub-questions like X versus Y, price, alternatives, or who it's a good fit for." },
+]} />
+
+## What query fan-out changes for content
+
+The most important shift is that **a single position for a single keyword tells you less in an AI-answer environment than it used to.** When a query splits into several sub-questions, your page competes in each of them separately — and it can win one even if it doesn't lead on the main query.
+
+That doesn't make classic SEO obsolete. According to public statements and analyses, AI answers still draw on the standard Search index, so indexability, authority, and content quality remain important. We cover how AI picks individual sources and chunks in more detail in our article on [how AI cites sources](/blog/how-ai-cites-sources/).
+
+<Insight tone="warning">
+The query breakdown tends to be contextual — the same query can fan out differently depending on the situation, such as phrasing, device, or location. That's why one fixed position tells you only so much about AI answers. Instead of tracking position, track whether AI answers cite you across query variants.
+</Insight>
+
+The second consequence is about measurement and traffic. Because AI assembles the answer directly, users often don't click any source at all — that's the [zero-click effect](/blog/zero-click-and-ai-overviews/). A citation in an AI answer is therefore more a visibility signal than a guarantee of traffic.
+
+## Query fan-out across platforms
+
+Google isn't the only one breaking queries into sub-questions. The comparison below is a rough interpretation based on publicly observed behavior, not a confirmed technical description — for each platform, it reflects how things appear from the outside rather than any verified internal process.
+
+<CompareTable
+  caption="A rough comparison of how platforms break down a query (based on publicly observed behavior)"
+  columns={["Platform", "How the query breakdown appears"]}
+  rows={[
+    { icon: "🌐", label: "Google AI Mode", left: "Parallel fan-out", right: "A simultaneous batch of searches across topics on top of the Search index; relatively well documented in how it works" },
+    { icon: "🔍", label: "Perplexity", left: "Multiple queries at once", right: "Multi-stage ranking over several queries; treats content sections as independently usable passages" },
+    { icon: "🟦", label: "Microsoft Copilot", left: "Sequential retrieval", right: "Step-by-step retrieval that grounds the answer in sources on top of Bing" },
+    { icon: "💬", label: "ChatGPT", left: "Undisclosed", right: "How it works isn't publicly documented; from observation, it rephrases the query and builds the answer with citations when search is turned on" },
+  ]}
+/>
+
+We go into more detail on how optimization differs by platform in our articles on [SEO for ChatGPT](/blog/chatgpt-seo/) and [SEO for Perplexity](/blog/perplexity-seo/).
+
+## How to write content for query fan-out
+
+Good news: most of what helps with a fan of sub-questions is solid content fundamentals. There's no extra trick to it.
+
+<Checklist title="What helps you get cited across sub-questions" items={[
+  { title: "Self-contained chunks", desc: "One short paragraph = an answer to one question. Every chunk has to make sense pulled out of context." },
+  { title: "A short answer up top", desc: "Put a brief definition or summary at the start of the page or section — the model draws on it easily." },
+  { title: "Coverage of secondary questions", desc: "Around your main topic, add the implicit sub-questions: price, comparisons, who it's for, how to get started, alternatives." },
+  { title: "Linking between pages", desc: "Tie related pages in the topic together (a pillar and its follow-up articles). It helps the system understand the connections between pages." },
+  { title: "Clear entities", desc: "Name your brand, products, and concepts consistently; back them up with [structured data](/blog/structured-data-for-ai/)." },
+  { title: "Natural language", desc: "Write the way people actually ask — full questions and sentences, not bare keywords." },
+]} />
+
+Covering comparison sub-questions helps especially with shopping topics — we break down how in our article on [comparison articles for AI](/blog/comparison-articles-for-ai/).
+
+## The most common mistakes
+
+<MistakeGrid>
+  <Mistake number="01" title="Optimizing for a single keyword">
+    The fan-out breaks a query into several sub-questions. Target only one main phrase and you miss most of your chances to get cited in the secondary sub-questions.
+  </Mistake>
+  <Mistake number="02" title="Writing long, undivided blocks">
+    AI often works with chunks, not whole pages. A wall of text with no clear structure is harder to split into usable passages and harder to cite.
+  </Mistake>
+  <Mistake number="03" title="Watching one stable position">
+    The fan-out tends to be contextual, so one fixed position tells you only so much about AI answers. Track only the position for a single query and you can miss an important part of your visibility in AI answers.
+  </Mistake>
+  <Mistake number="04" title="Ignoring implicit questions">
+    The user asks about one thing, but the system also handles what follows from the query. Content that covers only the literal question fits the fan-out less well.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="What to do"
+  dontTitle="What to avoid"
+  doItems={[
+    "Write in self-contained chunks, one paragraph per question.",
+    "Put a short answer or definition at the start of each section.",
+    "Cover the implicit sub-questions too (price, comparisons, who it's for, how to get started).",
+    "Tie related pages together by topic.",
+    "Measure citations across query variants, not just position.",
+  ]}
+  dontItems={[
+    "Betting everything on one main keyword.",
+    "Packing content into long, undivided blocks.",
+    "Relying on one stable position as the goal.",
+    "Handling only the literal question and ignoring the secondary ones.",
+    "Assuming the fan-out is a Google-only thing — test the other platforms too.",
+  ]}
+/>
+
+## Key takeaways
+
+- **Query fan-out breaks a single query** in Google AI Mode into several parallel sub-questions and assembles one answer with links from the results.
+- **Answering a sub-question counts for more than position** — your page can win one of the sub-questions even if it doesn't lead on the main query.
+- **AI often works with chunks, not whole pages** — write in self-contained paragraphs with a short answer up top.
+- **Cover the implicit sub-questions too** — price, comparisons, who it's for, and how to get started, not just the literal question.
+- **Classic SEO still matters** — AI answers draw on the standard Search index as well; what gets measured, though, is citations, not one position.
+- **The fan-out tends to be contextual** — verify your visibility with an [AI visibility test](/blog/ai-visibility-test/) across query variants.
+
+---
+
+**Want your pages to answer the right sub-questions and get cited by AI?** This site is run by **[Sniper Design](https://www.sniperdesign.cz/)** — an AI visibility audit reviews your content from a query fan-out perspective: where coverage of secondary questions is missing, how to split long blocks into citable chunks, and where to strengthen entities and internal linking.
+
+*Transparency: This description of query fan-out draws on public documentation and analysis (Google Search, Search Engine Journal, iPullRank) as of summer 2026; how AI Mode works is still evolving and specific behavior can change. How the content on this site is produced is described on the [author page](/author/kamil/).*
