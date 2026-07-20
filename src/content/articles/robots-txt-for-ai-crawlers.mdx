@@ -1,0 +1,175 @@
+---
+title: "Robots.txt for AI Crawlers: When to Allow and When to Restrict Access"
+description: "Robots.txt for AI crawlers: how to allow citations, restrict model training, and when the file isn't enough and you need your server or firewall."
+answer: "Robots.txt is a public file in your site's root that gives AI crawlers like GPTBot, OAI-SearchBot, ClaudeBot, or PerplexityBot rules for crawling. Distinguish between crawlers for training, crawlers for search, and on-demand fetchers. But robots.txt is a request, not a lock — well-behaved crawlers respect it, some ignore it, so hard blocking takes a server or a firewall."
+slug: "robots-txt-for-ai-crawlers"
+category: "tutorial"
+tags:
+  - "technicke-zaklady"
+published: "2026-05-24"
+updated: "2026-05-24"
+variant: "rich"
+keywords:
+  - "ai crawler"
+  - "robots.txt for ai"
+  - "gptbot"
+  - "oai-searchbot"
+  - "claudebot"
+  - "perplexitybot"
+  - "google-extended"
+  - "llms.txt"
+stats:
+  - value: "8+"
+    label: "AI crawlers and control tokens in play today"
+  - value: "a request"
+    label: "robots.txt is a request, not a lock"
+  - value: "Google-Extended"
+    label: "blocking it doesn't affect Google Search rankings"
+  - value: "public"
+    label: "robots.txt is a public text file"
+howto:
+  name: "How to control AI crawler access with robots.txt"
+  steps:
+    - name: "Map which crawlers visit your site"
+      text: "Use your server logs or analytics to find out which crawler identifiers (user agents) are connecting to your site — for example GPTBot, ClaudeBot, PerplexityBot, or Bytespider."
+    - name: "Decide: citability, or restricting training?"
+      text: "For a better shot at citations in AI answers, let the search crawlers through. If you don't want your content used for training or generative services, set rules for the training crawlers and control tokens. Protect private content with a login or at the server level, not with robots.txt."
+    - name: "Write the rules into robots.txt"
+      text: "For each crawler, specify a User-agent and either Allow or Disallow. The file belongs in your site's root (for example /robots.txt)."
+    - name: "Handle Google-Extended separately"
+      text: "Google-Extended controls whether your content is used to train Google's models; blocking it doesn't affect your rankings in regular Google Search."
+    - name: "Verify, then add hard blocking"
+      text: "Test your robots.txt, and for crawlers that ignore it, deploy blocking at the server, firewall, or CDN level."
+faq:
+  - q: "How do I give AI crawlers access to my site?"
+    a: "In the robots.txt file in your site's root, add rules for specific crawlers (GPTBot, OAI-SearchBot, PerplexityBot, ClaudeBot) with an Allow directive. If no rule disallows a crawler, it usually has access anyway — an explicit Allow is mostly for clarity and peace of mind."
+  - q: "How do I signal that I don't want my content used for model training?"
+    a: "In robots.txt you signal it to legitimate operators with Disallow: / for specific training crawlers, such as GPTBot or CCBot. Handle Google-Extended separately, as the control token for Google's generative services. This isn't a technical guarantee and it doesn't protect private content; for hard blocking, use your server, firewall, or CDN."
+  - q: "Will blocking Google-Extended hurt my Google rankings?"
+    a: "No. Google-Extended is a control token that, per Google's documentation, governs whether your content can be used for Google's generative AI services (Gemini Apps and Vertex AI, for example). According to that documentation it doesn't control regular crawling, indexing, or rankings in standard Google Search — Googlebot handles those."
+  - q: "Does robots.txt work on every AI crawler?"
+    a: "No. Robots.txt is a voluntary request, not a technical barrier. Well-behaved crawlers respect the rules, but some may ignore them — Bytespider, for instance, was listed among the most active AI crawlers in widely cited 2024 data, and there were reports of it disregarding robots.txt. Reliable blocking takes a server, firewall, or CDN."
+  - q: "Should I block AI crawlers or let them in?"
+    a: "It depends on your goal. If you want more citations in ChatGPT and Perplexity, let the search crawlers through. If you don't want your content used for model training, restrict the training crawlers. A combination often makes sense: allow the search crawlers, restrict the training ones."
+  - q: "Does an llms.txt file help control AI access?"
+    a: "llms.txt is a proposed format for describing a site's key content to AI tools, not an access-control mechanism. Based on the information available, the major crawlers don't reliably use it as of 2026. For access control, use robots.txt, server-level rules, or a firewall."
+---
+
+import Checklist from "../../components/blocks/Checklist.astro";
+import Insight from "../../components/blocks/Insight.astro";
+import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
+import Mistake from "../../components/blocks/Mistake.astro";
+
+## AI crawlers and robots.txt: who visits your site and how to control it
+
+**You control AI crawler access mainly through robots.txt** — a public text file in your site's root that hands crawlers the rules for crawling. This guide shows you how to set up robots.txt for AI crawlers: which crawlers are visiting sites today, how to allow them so you stay citable, how to restrict their use of your content for training, and where robots.txt stops being enough.
+
+Don't confuse this with turning off Google AI Overviews in the results (that has its own [separate guide](/blog/how-to-turn-off-ai-overviews/)). This is about **crawler access to your site** across AI services.
+
+## Which AI crawlers and control tokens robots.txt deals with
+
+The big players run several crawlers with different jobs — one for training, one for search, one for fetching a page when a user asks about it:
+
+| Crawler | Operator | Purpose |
+|---|---|---|
+| GPTBot | OpenAI | model training |
+| OAI-SearchBot | OpenAI | search and citations in ChatGPT |
+| ChatGPT-User | OpenAI | fetching a page on a user's request |
+| ClaudeBot | Anthropic | model training |
+| Claude-SearchBot | Anthropic | search |
+| Claude-User | Anthropic | on-demand fetching |
+| PerplexityBot | Perplexity | crawling for indexing and answers (per the operator's documentation) |
+| Google-Extended | Google | control token for using content in Google's generative AI services, e.g. Gemini (not classic indexing) |
+| CCBot | Common Crawl | building a public dataset of the web; the data can also be used for model training |
+
+The specific names change — check each service's documentation for the current list.
+
+## Want more citations: let the search crawlers through
+
+If you want AI tools to find you and cite you more often, let the **search crawlers** through above all. In `robots.txt` in your site's root:
+
+```txt
+# Allow AI crawlers for search and citations
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+```
+
+When no rule disallows a crawler, it usually has access even without an explicit `Allow` — listing it is mainly for clarity. But allowing crawlers doesn't earn you citations on its own; it only removes the technical obstacle, so your content can reach the search and answer layers. This layer builds on [SEO for ChatGPT](/blog/chatgpt-seo/) and belongs in a broader [AI SEO audit](/blog/ai-seo-audit/).
+
+## Don't want your content in training data: restrict the training crawlers
+
+If you want to signal that you'd rather not have your content used for model training, restrict the **training crawlers** (this is a signal to legitimate operators, not an enforceable guarantee):
+
+```txt
+# Restrict crawlers used for model training
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+```
+
+Keep the training crawlers and the search crawlers straight as you do it: you can disallow training (GPTBot) while still letting search through (OAI-SearchBot), so you stay citable. Blocking everything at once sacrifices your citability.
+
+## Handle Google-Extended separately
+
+`Google-Extended` is a common source of confusion. It isn't a classic indexing crawler but a control token that, per Google's documentation, governs whether your site's content can be used for **Google's generative AI services** (Gemini Apps and Vertex AI, for example). According to that documentation, blocking it **doesn't control regular crawling, indexing, or rankings in Google Search** — classic Googlebot handles that. So you can disallow Google-Extended without directly changing your visibility in Google Search.
+
+## Robots.txt is a request, not a lock
+
+This is the most important thing to take away: **robots.txt is a voluntary request, not a technical barrier.** Well-behaved crawlers respect the rules, but it isn't enforceable:
+
+- Some crawlers ignore the rules — Bytespider, for example, ranked among the most active AI crawlers in widely cited 2024 data and often failed to honor robots.txt.
+- For **harder blocking**, act at the server, firewall, or CDN level. A user agent can be spoofed, so pair it with IP range verification, rate limiting, and log monitoring.
+- **Don't put sensitive or non-public URLs in robots.txt** as a substitute for security — the file is public, and `Disallow` doesn't stop anyone from opening the page directly.
+
+Treat robots.txt as the first layer for well-behaved crawlers, not as a guarantee.
+
+<Insight tone="accent" icon="!" label="Remember">
+  Robots.txt is the first layer for well-behaved crawlers. Real blocking — and protecting non-public content — belongs on your server, firewall, or CDN, not in this file.
+</Insight>
+
+## How to verify your setup
+
+Once you've edited `robots.txt`, check the following:
+
+<Checklist tone="accent" title="Robots.txt setup check" items={[
+  { title: "The file is reachable", desc: "open https://yourdomain.com/robots.txt — it has to return HTTP 200 and contain your rules." },
+  { title: "The right rule group applies", desc: "most parsers give a specific User-agent precedence over a generic User-agent: *; test the behavior." },
+  { title: "Watch your server logs", desc: "once it's live, confirm the crawlers behave the way you expect." },
+  { title: "Keep an eye on hard blocks", desc: "where you block, watch for 403/429 responses and crawlers blocked by mistake." }
+]} />
+
+## What about llms.txt?
+
+The `llms.txt` file comes up often. Take it with a grain of salt: it's a proposed format that describes your site's content for AI, **not an access-control mechanism**. Based on the information available, the major crawlers don't reliably use it as of 2026. So for access control, rely on `robots.txt` and your server, not on `llms.txt`.
+
+## Common mistakes
+
+<MistakeGrid>
+  <Mistake num="01" title="Blocking every AI crawler" fix="Let the search crawlers through at least.">
+    A blanket block takes out the search crawlers too, so AI tools stop citing you.
+  </Mistake>
+  <Mistake num="02" title="Blocking Google-Extended over rankings" fix="It has no effect on Google Search rankings.">
+    Google-Extended only affects Google's generative AI services, not regular search.
+  </Mistake>
+  <Mistake num="03" title="Treating robots.txt as a lock" fix="Handle hard blocking on your server or firewall.">
+    Robots.txt won't stop the crawlers that don't play by the rules.
+  </Mistake>
+  <Mistake num="04" title="Mistaking llms.txt for access control" fix="Use robots.txt and your server to block.">
+    llms.txt isn't a blocking tool.
+  </Mistake>
+</MistakeGrid>
+
+## What's next: set this up across the whole site
+
+Crawler access is only one layer of AI visibility. For how to build on it with structure, structured data, and citable content, see the [practical SEO for AI checklist](/blog/seo-for-ai-checklist/).

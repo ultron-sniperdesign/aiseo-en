@@ -1,0 +1,147 @@
+---
+title: "AI Mode vs. AI Overviews: Different Sources, Similar Answer"
+description: "AI Mode and AI Overviews look alike but cite different sources. How they differ, what that changes for your site, and why they aren't one surface."
+answer: "AI Overviews is a summary at the top of a regular results page, with the classic links still below it. AI Mode is a standalone conversational mode where the answer stands on its own and you can keep asking follow-ups. Both build an answer from multiple sources, but they often cite different URLs — so you can't treat them as one surface."
+slug: "ai-mode-vs-ai-overviews"
+category: "analysis"
+tags:
+  - "ai-platformy"
+  - "mereni"
+published: "2026-07-17"
+updated: "2026-07-17"
+keywords:
+  - "ai mode vs ai overviews"
+  - "difference between ai mode and ai overviews"
+  - "google ai mode"
+  - "ai overviews"
+  - "ai citations"
+variant: "rich"
+stats:
+  - value: "two surfaces"
+    label: "AI Overviews sits above the results; AI Mode is a standalone conversational mode"
+  - value: "13.7%"
+    label: "overlap in cited URLs — Ahrefs, US, September 2025; a snapshot of individual generations, not a picture over time"
+  - value: "~4× longer"
+    label: "AI Mode answers were far longer in the same study and mentioned more entities — 3.3 vs. 1.3"
+  - value: "measure separately"
+    label: "a citation in one surface doesn't mean a citation in the other — and one run proves nothing"
+faq:
+  - q: "What's the difference between AI Mode and AI Overviews?"
+    a: "AI Overviews is a summary that appears at the top of a regular results page, with the classic links still below it. AI Mode is a standalone conversational mode where the answer stands on its own, you can ask follow-ups, and there are no organic results next to it. Both assemble an answer from multiple sources, but they differ in placement, length, and what they cite."
+  - q: "If AI Overviews cites me, will I show up in AI Mode too?"
+    a: "Not necessarily. In a large US analysis by Ahrefs from September 2025, the cited URLs of the two surfaces overlapped by 13.7 percent, even though the answers themselves were close in meaning. The study itself notes that this was a snapshot of individual generations, so the real overlap may be higher. Either way, the takeaway holds: one surface can't vouch for the other."
+  - q: "Do those numbers apply to my market?"
+    a: "Not without caveats. This was US data from September 2025, and AI Mode is rolling out country by country, so availability and behavior vary by market, account, and rollout stage. Treat the figures as a rough signal that the two surfaces behave differently — not as a number you can convert to your own site."
+  - q: "Should I optimize for AI Mode separately?"
+    a: "The foundation is the same for both: a clear answer to a specific sub-question, sources someone can verify, and consistent data. Both surfaces also use query fan-out — breaking a query into sub-questions. Separate techniques promised for just one surface usually can't be backed up, not even by the people selling them."
+  - q: "Why do the citations change when I repeat the same query?"
+    a: "Answers are generated fresh each time, and source selection fluctuates. Earlier research cited in the Ahrefs study found that roughly 45 percent of citations in AI Overviews change between individual generations. In practice that means a single measurement is an anecdote: test repeatedly, spread out over time, and across more queries."
+  - q: "Does a longer AI Mode answer mean a better shot at a mention?"
+    a: "In that study, AI Mode answers were far longer and mentioned more entities — 3.3 versus 1.3 on average — so there is more room. But that also means more names in a single answer, which means more competition for attention. More room isn't the same thing as more benefit."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**AI Overviews is a summary at the top of a regular results page, with the classic links still below it. AI Mode is a standalone conversational mode where the answer stands on its own and you can keep asking follow-ups.** Both build an answer from multiple sources, but they often cite different URLs — so you can't treat them as one surface.
+
+From the outside it looks like one thing: "Google answers questions itself now." In practice these are two different places with different behavior — and that has a fairly concrete consequence for how you measure and what you can promise.
+
+## Where you'll run into each one
+
+<CompareTable
+  caption="AI Overviews and AI Mode side by side"
+  columns={["AI Overviews", "AI Mode"]}
+  rows={[
+    { icon: "📍", label: "Where it lives", left: "A summary at the top of a regular results page", right: "A standalone conversational mode" },
+    { icon: "🔗", label: "Links alongside", left: "Yes — the results stay below the summary", right: "No — the answer stands alone" },
+    { icon: "💬", label: "Interaction", left: "A one-shot summary", right: "A conversation, with follow-ups" },
+    { icon: "📏", label: "Length", left: "Shorter", right: "Considerably longer" },
+    { icon: "🔀", label: "Query decomposition", left: "Uses query fan-out", right: "Uses query fan-out" },
+  ]}
+/>
+
+The common denominator matters more than it looks: based on what we've seen so far, both break the query into sub-questions and assemble the answer from several sources. How that works is covered in the piece on [query fan-out](/blog/query-fan-out/).
+
+## Same answer, different sources
+
+This is the most interesting finding — and also where you need to be careful with the numbers.
+
+Working from US data collected in September 2025 that captures individual generations, Ahrefs compared answers from both surfaces across a large sample: roughly 730,000 answer pairs for content similarity and 540,000 query pairs for citations. The answers were close in meaning — average semantic similarity around 86 percent, while word-level overlap came in around 16 percent. **The cited URLs overlapped by 13.7 percent**, and by 16.3 percent for the top three citations. In other words: both said much the same thing, but they backed it with different pages.
+
+<Insight tone="key">
+The practical implication is simple: **a citation in one surface doesn't guarantee a citation in the other.** If you confirm that the summary above the results mentions you, you've learned nothing about AI Mode — and vice versa.
+</Insight>
+
+Before you file that number away as fact, it comes with three caveats — either flagged by the study itself or baked into how it was set up.
+
+<Insight tone="warning">
+**This was US data from September 2025** — one market, and not current. **It was a snapshot of individual generations**, not a picture of source sets over time. And earlier research the study references found that roughly 45 percent of citations in AI Overviews change between generations — so the real overlap in sources may be higher than the snapshot suggests.
+</Insight>
+
+The conclusion you can safely draw from the study is more sober than the headline number: even where more than one source could support an answer, the two surfaces often reach for different ones.
+
+## What this changes for your site
+
+**Measure them separately.** Finding yourself in one tells you nothing about the other. How to check your visibility is covered in the [AI visibility test](/blog/ai-visibility-test/); for Search Console data, see [the AI report in GSC](/blog/gsc-ai-report/).
+
+**One run isn't enough.** When source selection shifts between runs, a single test is an anecdote. Repeat it over time and across more queries.
+
+**But the optimization doesn't split in two.** The foundation is the same for both: answer a specific sub-question clearly, keep your sources verifiable, and keep your data consistent. The practical content prep is covered in [Google AI Mode](/blog/google-ai-mode-content/).
+
+## Common mistakes
+
+<MistakeGrid>
+  <Mistake number="01" title="Treating them as one surface">
+    "We're visible in AI" says almost nothing. These are two different places that behave — and cite — differently.
+  </Mistake>
+  <Mistake number="02" title="Porting US numbers to your market">
+    Different market, different rollout stage, different volume of source material in the language. Treat numbers from a study run elsewhere as a guide, not a forecast.
+  </Mistake>
+  <Mistake number="03" title="Drawing a conclusion from one run">
+    Citations fluctuate between runs. Anyone who infers a trend from a single test is measuring noise, not reality.
+  </Mistake>
+  <Mistake number="04" title="Special tricks for one surface">
+    Techniques promised exclusively for AI Mode or exclusively for AI Overviews usually can't be backed up. The shared foundation is still the same.
+  </Mistake>
+</MistakeGrid>
+
+## Where this article stops
+
+**It doesn't tell you how to get into them.** That's a content-prep topic, not a comparison; for that, see [Google AI Mode](/blog/google-ai-mode-content/) and the pieces that follow.
+
+**It doesn't give numbers for your market.** There's no publicly documented data beyond the US analysis, so we'd rather leave it out than estimate.
+
+**It doesn't promise that one surface carries over to the other.** If anything, the opposite — the available analysis shows the citations of the two places often diverge.
+
+<DoDont
+  doTitle="Do"
+  dontTitle="Don't"
+  doItems={[
+    "Track both surfaces separately, not as a single line item",
+    "Test repeatedly, spread out over time and across more queries",
+    "Hold the foundation: a clear answer to a sub-question, verifiable sources",
+    "With numbers from elsewhere, check the market and the collection date",
+  ]}
+  dontItems={[
+    "Conclude from one run that it 'works' or 'doesn't work'",
+    "Convert US data to your own market",
+    "Buy techniques promised for one surface only",
+    "Treat a citation in one place as proof about the other",
+  ]}
+/>
+
+## What to take away
+
+AI Overviews and AI Mode blur easily into a single "Google answers questions itself now." But the difference is practical: the first is a summary above the results that leaves the links in place below it, the second is a standalone conversation without them.
+
+And above all — the available analysis suggests that even when they say similar things, they often back them with different sources. So track them separately, don't take one measurement as proof, and with numbers from elsewhere, always ask which market they came from and when.
+
+---
+
+Want to know where you stand across the individual AI surfaces and what you can do about it? **[Sniper Design](https://www.sniperdesign.cz/)** runs AI SEO audits that go through both visibility and content and help name the next steps.
+
+*Source for the numbers: an Ahrefs analysis comparing AI Overviews and AI Mode answers over Brand Radar data (US, September 2025). We cite it along with the limits the study itself flags.*

@@ -1,0 +1,154 @@
+---
+title: "llms.txt in 2026: The Guide, Who Supports It, and When to Skip It"
+description: "What llms.txt is, how to write one, who supports it (Claude, Perplexity), who doesn't (Google) — and when it's worth deploying."
+answer: "llms.txt is a proposed standard from Jeremy Howard — a Markdown file at the root of your domain that points to your most important content with short descriptions. As of 2026, Anthropic's Claude and Perplexity declare support; Google, based on public statements, does not. For most sites it's a useful add-on rather than a must-have — it pays off most on documentation and complex sites."
+slug: "llms-txt-guide"
+category: "tutorial"
+tags:
+  - "technicke-zaklady"
+published: "2026-06-09"
+updated: "2026-06-09"
+variant: "rich"
+keywords:
+  - "llms.txt"
+  - "llms.txt guide"
+  - "how to create llms.txt"
+  - "llms.txt format"
+  - "llms.txt google claude perplexity"
+  - "llms.txt validation"
+  - "llms-full.txt"
+stats:
+  - value: "Markdown"
+    label: "llms.txt is a Markdown file at the root of your domain (/llms.txt)"
+  - value: "Claude + Perplexity"
+    label: "confirmed support in Claude and Perplexity; ChatGPT unconfirmed, Google no"
+  - value: "2024"
+    label: "Jeremy Howard proposed the spec; community-maintained, not a formal standard"
+  - value: "Add-on"
+    label: "not a must-have for most sites; it pays off most on documentation and complex sites"
+howto:
+  name: "How to create an llms.txt file in 2026"
+  steps:
+    - name: "Decide whether you need one"
+      text: "It mostly makes sense for documentation, complex B2B SaaS sites, and anywhere your audience uses Claude or Perplexity to research. For small brochure sites, or a strategy aimed only at Google, it isn't a priority."
+    - name: "Write the Markdown file"
+      text: "Create llms.txt with your site name, a short description, and a list of key pages with one-sentence descriptions. Optionally add llms-full.txt with more detailed content."
+    - name: "Put it at the root of your domain"
+      text: "The file has to be reachable at https://yourdomain.com/llms.txt. Same as robots.txt — root level, not in a subfolder."
+    - name: "Test it and keep it current"
+      text: "Since April 2026, Lighthouse includes an llms.txt check. Ask Claude or Perplexity a question to get a rough sense of whether they find the pages you linked. Update it whenever your content changes significantly."
+faq:
+  - q: "What is llms.txt and who supports it?"
+    a: "llms.txt is a proposed standard from Jeremy Howard, published in 2024: a Markdown file at the root of your domain that tells large language models which pages on your site matter. As of 2026 it's officially supported by Anthropic's Claude (since January 2026) and Perplexity (since mid-2025). ChatGPT hasn't officially confirmed support — if you test llms.txt there, treat the results as rough observations only. Google doesn't support it and, according to statements from Gary Illyes and John Mueller, has no plans to."
+  - q: "Does Google support llms.txt?"
+    a: "Google does not support llms.txt. Gary Illyes of Google said in July 2025 that Google has no plans to support it; John Mueller compared it to the discredited keywords meta tag. So don't expect a direct payoff from llms.txt in classic search or in AI Overviews. The value is mainly for Claude and Perplexity. Google did add a check for it to Lighthouse in April 2026, but as a quality check — not as a ranking signal."
+  - q: "Where should llms.txt live?"
+    a: "Put llms.txt at the root of your domain, typically at `https://yourdomain.com/llms.txt`. The proposed spec says AI tools should look for it there — put it anywhere else and you can't count on them finding it. If you run a separate subdomain (documentation, for example), consider `https://docs.yourdomain.com/llms.txt` as well."
+  - q: "What's the difference between llms.txt and robots.txt?"
+    a: "Robots.txt controls which crawlers can and can't crawl pages on your site. llms.txt does the opposite: it points AI to the pages that matter and gives each one a short description. Robots.txt is a standardized file that mainstream search engines typically respect, but it isn't a technical block; with AI crawlers it depends on the operator. llms.txt, by contrast, is a proposed standard with uneven support."
+  - q: "Is llms.txt worth it for a small brochure site?"
+    a: "On a small brochure site with one to three pages (home, about, contact), the payoff from llms.txt tends to be low, because there isn't much content to prioritize. It makes more sense on sites with documentation, categories, a blog, pricing, or several content types, where llms.txt can point AI to the key entry points."
+  - q: "What is llms-full.txt?"
+    a: "llms-full.txt is a companion variant that, instead of just a list of links, contains the full text of your key pages in Markdown. It's meant for cases where you want to hand AI the complete content directly, without it having to fetch individual URLs. It tends to be much larger than llms.txt and is used mainly for documentation."
+---
+
+import Checklist from "../../components/blocks/Checklist.astro";
+import Insight from "../../components/blocks/Insight.astro";
+import CompareTable from "../../components/blocks/CompareTable.astro";
+import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
+import Mistake from "../../components/blocks/Mistake.astro";
+
+## What llms.txt is and why you're hearing about it in 2026
+
+**llms.txt is a proposed standard from Jeremy Howard, published in 2024 — a Markdown file at the root of your domain that tells AI tools and their search systems which pages on your site matter, and gives each one a short description.** It's a young idea: not a formal standard, but a community-maintained spec. As of 2026, Claude and Perplexity declare support, while Google, based on public statements, doesn't use it. So for most sites the question isn't "how do I write one" — it's **whether to bother with it at all right now**.
+
+This guide covers **who supports llms.txt in 2026 and who doesn't**, **how to write and place it correctly**, **when it's worth deploying**, and **when your time is better spent elsewhere**. It's different from the [guide to robots.txt for AI crawlers](/blog/robots-txt-for-ai-crawlers/), which covers AI crawler access rather than navigation for AI.
+
+<Insight tone="accent" icon="!" label="Key takeaway">
+  llms.txt isn't a must-have. Claude and Perplexity declare support; ChatGPT hasn't officially confirmed it, so treat any tests there as rough observations only. Based on public statements, Google doesn't use llms.txt for classic search or for AI Overviews. For most sites it's a useful add-on, and it pays off most on documentation and complex sites.
+</Insight>
+
+## The state of support in 2026
+
+Adoption of llms.txt is uneven as of mid-2026. The picture below is based on Anthropic's documentation, Perplexity's announcements and documentation, public statements from Gary Illyes and John Mueller, and the April 2026 changes to Lighthouse.
+
+<Checklist tone="seo" title="llms.txt support across AI platforms" items={[
+  { title: "Anthropic Claude", desc: "declares llms.txt support in its documentation (since January 2026); the file can act as a navigation aid for picking out important pages." },
+  { title: "Perplexity", desc: "declares support (since mid-2025); it can use the file to orient itself among your site's important URLs." },
+  { title: "ChatGPT (OpenAI)", desc: "hasn't officially confirmed support; if you test llms.txt there, treat the results as rough observations only." },
+  { title: "Google", desc: "per a July 2025 statement, doesn't support it and has no plans to; it did add an llms.txt check to Lighthouse in April 2026 as a quality check." }
+]} />
+
+The key takeaway: **if Google is your primary channel, don't expect llms.txt to pay off directly in classic search or in AI Overviews**. If you're targeting Claude or Perplexity users (typically B2B, documentation, developer tools), llms.txt can be worth it, because those tools declare support for it.
+
+## llms.txt vs robots.txt
+
+These two files are easy to mix up, but they do completely different jobs:
+
+<CompareTable
+  leftLabel="robots.txt"
+  leftTone="seo"
+  rightLabel="llms.txt"
+  rightTone="aeo"
+  rows={[
+    { icon: "🎯", label: "Purpose", left: "Controls crawler access to pages (allow/disallow)", right: "Points AI to important pages with a brief description" },
+    { icon: "📚", label: "Age and standard", left: "A standard since 1994, widely respected", right: "Proposed in 2024, community spec, uneven support" },
+    { icon: "📍", label: "Location", left: "Root of the domain (/robots.txt)", right: "Root of the domain (/llms.txt)" },
+    { icon: "🤖", label: "Who respects it", left: "Mainstream search engines typically do; with AI crawlers it depends on the operator", right: "Mainly Claude and Perplexity; Google doesn't" }
+  ]}
+/>
+
+Short version: **robots.txt is a must-have**, **llms.txt is an optional add-on** depending on what you're targeting.
+
+## The llms.txt format: how to write one
+
+Jeremy Howard's spec is simple — Markdown with headings and links:
+
+```markdown
+# Site name
+> A short description of what the site does.
+
+## Key pages
+- [Home](https://yourdomain.com/): the main entry point
+- [Services](https://yourdomain.com/services/): an overview of what we offer
+- [Pricing](https://yourdomain.com/pricing/): current pricing
+
+## Documentation
+- [Guides](https://yourdomain.com/docs/): step-by-step walkthroughs
+- [FAQ](https://yourdomain.com/faq/): the most common questions
+```
+
+You can optionally add an `llms-full.txt` with the complete text content of your key pages in Markdown — useful mainly for documentation, when you want to hand AI the full content directly instead of making it load individual URLs.
+
+## When to deploy llms.txt and when not to
+
+The decision comes down to the type of site:
+
+- **Deploy** — documentation, libraries, developer tools, complex B2B SaaS sites (multiple content types), and sites whose audience uses Claude or Perplexity to research.
+- **Consider** — mid-sized sites with mixed content (an e-commerce site with a blog plus documentation), if you have time to maintain it.
+- **Skip for now** — small brochure sites (1–3 pages), a strategy aimed only at Google, and sites with no capacity for regular upkeep.
+
+A poorly maintained llms.txt with stale links or links to 404s can point the tools that do support it toward worse entry points. If you don't have the capacity to keep it current, you're better off not deploying it yet.
+
+## Common mistakes and myths
+
+<MistakeGrid>
+  <Mistake num="01" title="Treating llms.txt as a ranking signal" fix="It isn't a signal for ranking results.">
+    No direct effect in Google; for Claude and Perplexity it's navigation, not ranking.
+  </Mistake>
+  <Mistake num="02" title="Deploying it on a small site with no maintenance plan" fix="Think about whether it's worth it.">
+    On a 1–3 page site it adds no value; once it goes stale, it just gets in the way.
+  </Mistake>
+  <Mistake num="03" title="Confusing llms.txt with robots.txt" fix="They're two different files with different purposes.">
+    robots.txt controls access, llms.txt points to content.
+  </Mistake>
+  <Mistake num="04" title="Putting it anywhere but the root" fix="Always /llms.txt at the root of the domain.">
+    The proposed spec says AI should look for it at the root; anywhere else, you can't count on it being found.
+  </Mistake>
+</MistakeGrid>
+
+## What's next: put llms.txt in context
+
+In 2026, llms.txt is a supplementary layer for AI search with uneven support. On a typical company site, quality content, structured data, reputation, and managing AI crawler access through robots.txt all come first. For the full picture of AI visibility, see the [practical SEO for AI checklist](/blog/seo-for-ai-checklist/).
+
+And if you're weighing whether llms.txt makes sense for your specific site, judge it as part of a broader AI visibility strategy — not in isolation.
