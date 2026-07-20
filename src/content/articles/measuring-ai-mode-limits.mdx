@@ -1,0 +1,158 @@
+---
+title: "Measuring AI Mode: Why the Data Won't Separate It Yet"
+description: "Search Console merges AI Mode with AI Overviews and assistant traffic blends together. What the numbers support and which AI Mode claims don't hold up."
+answer: "Performance in Google AI Mode can't be isolated from the data you can actually get. The Search Console report shows impressions for AI Overviews and AI Mode together, traffic from assistants blends together in analytics, and a manual test shows you a single answer. What you can measure is the total and its direction, not the performance of one surface."
+slug: "measuring-ai-mode-limits"
+category: "analysis"
+tags:
+  - "mereni"
+  - "ai-platformy"
+published: "2026-07-18"
+updated: "2026-07-18"
+keywords:
+  - "measuring ai mode"
+  - "ai mode traffic"
+  - "ai mode search console"
+  - "ai measurement limits"
+  - "ai visibility report"
+variant: "rich"
+stats:
+  - value: "merged"
+    label: "the Search Console report shows AI Overviews and AI Mode together in a single Search view"
+  - value: "13.7%"
+    label: "overlap in cited URLs across the two surfaces (Ahrefs, US, September 2025) — the total is a weak proxy"
+  - value: "no clicks"
+    label: "the report has no clicks and no CTR, so an impression is not a visit"
+  - value: "90% ChatGPT"
+    label: "in our data, traffic from assistants came mostly from ChatGPT, not from Google AI"
+faq:
+  - q: "Can AI Mode performance be measured on its own?"
+    a: "Not from commonly available data, not yet. The Generative AI features report in Search Console shows impressions for AI Overviews and AI Mode together in the Search view, traffic from assistants blends together in analytics, and a manual test shows a single answer rather than volume. What you can measure is the total and how it moves over time, not the performance of one surface."
+  - q: "Why isn't the combined number a good enough proxy for AI Mode?"
+    a: "Because it merges two surfaces we know behave differently. In an Ahrefs analysis of US data from September 2025, the cited URLs of AI Overviews and AI Mode overlapped by only 13.7 percent. When the total goes up, it can be growth in one surface, the other, or both — and the number won't tell you which."
+  - q: "So what can I claim about my AI visibility?"
+    a: "It's defensible to say that impressions in Google's generative AI features grew by a given percentage, that AI assistants sent a given number of visits, or that a repeated test on a given query mentioned you in some share of runs. What isn't defensible is attributing any of those numbers specifically to AI Mode."
+  - q: "Does this mean measuring is pointless?"
+    a: "It's pointless to pretend to a precision the data doesn't have. Measuring itself isn't: combined impressions show whether your site appears in Google's AI features and how that's trending, analytics shows the quality of visits from assistants, and a repeated manual test reveals a pattern. You just have to say what each number actually measures."
+  - q: "Why do the results change when I repeat the test?"
+    a: "Because answers are generated fresh each time and source selection fluctuates. Earlier research cited in the Ahrefs study puts it at roughly 45 percent of citations changing between individual generations. A one-off check shows noise more than a state; it only starts to mean something once you repeat it over time and across more queries."
+  - q: "Does the Search Console report cover ChatGPT or Perplexity?"
+    a: "No, it covers Google's generative features only. Traffic from other assistants has to be tracked separately in analytics. In our own store's data, ChatGPT accounted for 90 percent of the traffic from AI tools, so relying on Search Console alone would skew the picture."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Performance in Google AI Mode can't be isolated from the data you can actually get.** The Search Console report shows impressions for AI Overviews and AI Mode together, traffic from assistants blends together in analytics, and a manual test shows you a single answer. What you can measure is the total and its direction, not the performance of one surface.
+
+This article isn't a tool walkthrough — those already exist. It's about what the numbers you collect actually support, so no claim ends up in your report that won't hold up.
+
+## Three sources and what each one tells you about AI Mode
+
+<CompareTable
+  caption="What each source reveals about AI Mode"
+  columns={["What it shows", "What it won't tell you about AI Mode"]}
+  rows={[
+    { icon: "📊", label: "Search Console", left: "Impressions in Google's generative AI features", right: "Doesn't separate AI Mode from AI Overviews — they sit in one view" },
+    { icon: "📈", label: "Analytics", left: "Visits from AI assistants and their quality", right: "Won't tell you which Google surface the visit came from" },
+    { icon: "🔍", label: "Manual test", left: "Whether an answer to a specific query mentioned you", right: "Won't tell you volume, or how often it holds" },
+  ]}
+/>
+
+How to work with each one is covered in [the GSC AI report](/blog/gsc-ai-report/), [AI traffic and conversions](/blog/ai-traffic-and-conversions/), and [the AI visibility test](/blog/ai-visibility-test/). This piece is about what to conclude from them.
+
+## Why the total is a weak proxy
+
+It's tempting to treat the combined number as "close enough to AI Mode." But it merges two surfaces we know behave differently.
+
+In an Ahrefs analysis of US data from September 2025 that captures individual generations, the cited URLs of AI Overviews and AI Mode overlapped by **just 13.7 percent**. [AI Mode vs. AI Overviews](/blog/ai-mode-vs-ai-overviews/) goes through it in detail.
+
+<Insight tone="key">
+When the combined number goes up, it can be growth in one surface, the other, or both — **and the number won't tell you which**. So the total isn't a reliable proxy for AI Mode. It's the sum of two things that are documented to diverge.
+</Insight>
+
+## What you can actually claim
+
+This is the practical part. The difference between a defensible claim and an indefensible one usually comes down to wording — but that wording decides whether the report holds up when someone reads it a year from now.
+
+<CompareTable
+  caption="Same data, two ways to word it"
+  columns={["Defensible", "Indefensible"]}
+  rows={[
+    { icon: "👁️", label: "Impressions", left: "Impressions in Google's generative AI features grew by X%", right: "We have X impressions in AI Mode" },
+    { icon: "🚪", label: "Visits", left: "AI assistants sent N visits, mostly from ChatGPT", right: "AI Mode sent N visits" },
+    { icon: "🔁", label: "Test", left: "In a repeated test, 4 out of 5 runs mentioned us on that query", right: "We're visible in AI Mode for this query" },
+    { icon: "📉", label: "Trend", left: "The total is growing; we can't tell the surfaces apart", right: "We're growing in AI Mode" },
+  ]}
+/>
+
+This isn't hedging for its own sake. The left column says what was measured; the right one assigns a number to something that wasn't.
+
+## Common mistakes
+
+<MistakeGrid>
+  <Mistake number="01" title="Passing the total off as AI Mode">
+    The most common one. The report merges AI Overviews and AI Mode into a single view, so you can't read one surface's performance out of it.
+  </Mistake>
+  <Mistake number="02" title="Reading impressions as traffic">
+    The report gives you impressions, not clicks and not CTR. An impression is a signal that you showed up, not a visit.
+  </Mistake>
+  <Mistake number="03" title="Drawing a conclusion from one run">
+    Source selection fluctuates between runs. One answer you tried is an anecdote, not a measurement.
+  </Mistake>
+  <Mistake number="04" title="Mixing Google AI with other assistants">
+    The Search Console report covers Google's generative features only. ChatGPT and Perplexity aren't in it.
+  </Mistake>
+</MistakeGrid>
+
+<Insight tone="warning">
+There's a good reason to repeat your measurements: earlier research cited in the Ahrefs study puts it at roughly **45 percent of citations changing between individual generations**. A one-off check captures a moment rather than a state — it only starts to mean something once you repeat it over time and across more queries.
+</Insight>
+
+## What this looks like on real data
+
+Our own store's measurement shows the limit clearly. We recorded **200,000 impressions** in Google's generative AI features in under two months — but that number doesn't separate the surfaces. And **1,867 visits** from AI tools over twelve months, **90 percent** of them sent by ChatGPT — a tool that isn't in Search Console at all.
+
+Both are useful numbers. Neither one says anything about how the site is doing specifically in AI Mode. The full data is in the [case study](/blog/case-study-ai-traffic/), and we ran into the same limit in [AI Mode for e-commerce](/blog/ai-mode-for-ecommerce/).
+
+## Where this article stops
+
+**It isn't a tool walkthrough.** Where to find the report and how to segment it is covered in the linked articles.
+
+**It's accurate as of publication.** The report is in beta and rolling out gradually; if Google starts separating the surfaces, we'll update this piece.
+
+**It doesn't say measuring is pointless.** It says don't pretend to a precision the data doesn't have.
+
+<DoDont
+  doTitle="Do"
+  dontTitle="Don't"
+  doItems={[
+    "State what each number measures and over what period",
+    "Track the total over time, not a single data point",
+    "Repeat manual tests over time and across more queries",
+    "Track assistant traffic separately from Google AI",
+  ]}
+  dontItems={[
+    "Attribute combined impressions specifically to AI Mode",
+    "Pass impressions off as traffic",
+    "Build a conclusion on one answer you tried",
+    "Promise a client measurable AI Mode performance",
+  ]}
+/>
+
+## Key takeaways
+
+As of publication, AI Mode can't be isolated from the data you can actually get. Search Console merges it with AI Overviews, analytics can't tell the surfaces apart, and a manual test shows a moment rather than volume.
+
+That doesn't mean measuring blind. The total and its trend are a usable signal — you just have to say that it's a total. The most valuable skill in reporting AI visibility today is telling what was measured apart from what we filled in around it.
+
+And when someone offers guaranteed, measurable AI Mode performance, it's worth asking what data they're reading it from.
+
+---
+
+**Want your AI visibility measurement set up so the numbers hold up?** This site is run by **[Sniper Design](https://www.sniperdesign.cz/)** — an AI SEO audit goes through your measurement setup and names what the data supports and what it doesn't. We don't promise to separate AI Mode; nobody can do that today.
+
+*Sources: the Generative AI features report in Google Search Console (Beta), an Ahrefs analysis comparing AI Overviews and AI Mode (US, September 2025), and our own store's measurement. Accurate as of July 18, 2026.*

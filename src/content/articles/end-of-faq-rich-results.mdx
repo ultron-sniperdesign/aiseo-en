@@ -1,0 +1,166 @@
+---
+title: "The end of FAQ rich results: what to do in 2026"
+description: "Google ended FAQ rich results on May 7, 2026. What that means for FAQPage markup, and when to keep it or remove it."
+answer: "FAQ rich results were the expandable questions and answers shown in Google Search. Google ended them on May 7, 2026, but FAQPage markup remains valid — per Google's public documentation it is still processed to understand the page, and structured questions and answers can also be useful to AI systems. What ended is the display feature, not the value of structured data."
+slug: "end-of-faq-rich-results"
+category: "analysis"
+tags:
+  - "strukturovana-data"
+published: "2026-07-11"
+updated: "2026-07-11"
+keywords:
+  - "end of faq rich results"
+  - "faqpage 2026"
+  - "faq structured data"
+  - "faq rich results deprecated"
+  - "faq rich results google"
+variant: "rich"
+stats:
+  - value: "May 7, 2026"
+    label: "the date FAQ rich results stopped appearing in Google Search (per Google Search Central)"
+  - value: "still valid"
+    label: "FAQPage remains a valid type in the Schema.org vocabulary — per Google's public documentation, it is still processed"
+  - value: "3 phases"
+    label: "rich results ended (May), report and testing tool removed (June), announced end of API support (August 2026)"
+  - value: "0"
+    label: "negative effects on Search when the markup stays and matches the content (according to Google)"
+faq:
+  - q: "What exactly did Google do with FAQ rich results?"
+    a: "Per Google's public Search Central documentation, on May 7, 2026 Google added a deprecation notice to its FAQ structured data documentation, and FAQ rich results stopped appearing in Search results. The expandable questions and answers that used to sit right under the link are gone. This was not the removal of the FAQPage type itself, only of the display feature in Search."
+  - q: "Should I delete FAQPage markup from my pages now?"
+    a: "Not across the board. FAQPage remains a valid Schema.org type, and according to Google, unused markup does not hurt Search. Keep it wherever it accurately describes the questions and answers visible on the page and wherever the FAQ section genuinely helps users. Remove it only where it points to content that is no longer on the page, or where the FAQ section was thin and added purely to earn a nicer result."
+  - q: "Do AI systems read FAQ structured data too?"
+    a: "Based on the available information, yes. Per Google's public documentation, it still processes FAQ markup to understand the page, and a structured set of questions and answers can also be processed by AI systems and their crawlers. Clearly separated question–answer pairs are easy to lift into an answer. The value of the markup has shifted from display in Search toward content understanding and AI."
+  - q: "When does it make sense to remove FAQ markup?"
+    a: "When the markup points to questions and answers that are not visibly on the page, because a mismatch between structured data and content is a risk. Also when the FAQ section was thin or spammy and existed only to earn a rich result in Search. If the FAQ genuinely answers what users ask, there is no reason to remove it."
+  - q: "What happens to the FAQ report in Search Console and the Rich Results Test?"
+    a: "Per Google's announced timeline, June 2026 removed both the FAQ report in Search Console and FAQ support in the Rich Results Test, and August 2026 is set to end support in the Search Console API. This is a gradual retirement of the tooling around FAQ rich results. The FAQPage markup on your pages is not affected and can stay."
+  - q: "Does this apply to every site and every language?"
+    a: "Yes, the change is global and applies across markets and languages. Plenty of sites carried FAQPage mainly for the rich result in Search — now is a good moment to check whether the FAQ section genuinely helps users. A clear question-and-answer structure can also help in AI answers and assistant interfaces."
+---
+
+import Checklist from "~/components/blocks/Checklist.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**FAQ rich results were the expandable questions and answers that appeared right in Google Search — and Google ended them on May 7, 2026.** FAQPage markup remains valid, though, and per Google's public documentation it is still processed to understand the page; structured questions and answers can also be useful to AI systems. What ended is the display feature, not the value of structured data. This article covers what exactly happened, why the markup is worth keeping in most cases, and when to remove it instead.
+
+## What exactly happened
+
+FAQ rich results were a type of rich result: expandable questions and answers from a page's FAQ section, shown under the link in Search. Per Google's public Search Central documentation, that feature is being retired — and it is happening in three phases.
+
+<Stepper
+  steps={[
+    {
+      label: "May 7, 2026",
+      title: "FAQ rich results left Search",
+      text: "Google added a deprecation notice to its FAQ structured data documentation and the expandable questions and answers stopped appearing in results. This change has already happened.",
+    },
+    {
+      label: "June 2026",
+      title: "FAQ report and testing tool removed",
+      text: "The FAQ report disappeared from Search Console, along with FAQ support in the Rich Results Test. That started the retirement of the tooling around FAQ rich results.",
+    },
+    {
+      label: "August 2026",
+      title: "End of API support (coming)",
+      text: "Per Google's announced timeline, FAQ support in the Search Console API is set to end in August 2026. As of this article's publication date, that step has been announced but has not happened yet.",
+    },
+  ]}
+/>
+
+<Insight tone="key">
+The distinction that matters: what ended is the display feature in Search, not the FAQPage type or its value. The markup remains valid, and the thing that mattered was never the structured data itself — it was the content, meaning clear questions and answers that genuinely help.
+</Insight>
+
+## Why FAQPage markup still makes sense
+
+Even without the rich result, a structured FAQ section has value — the value just moved somewhere else.
+
+<Checklist title="What FAQPage still does after the end of rich results" items={[
+  { title: "Google still processes it", desc: "Per its public documentation, Google still processes FAQ markup to understand what a page contains." },
+  { title: "AI systems process it", desc: "A structured set of questions and answers can also be processed by AI systems and their crawlers." },
+  { title: "Easy to lift into an answer", desc: "Clearly separated question–answer pairs are easier to use in AI answers and in [short citations](/blog/how-ai-cites-sources/)." },
+  { title: "Better structure for users", desc: "A well-built FAQ section answers real questions — that has value regardless of any feature in the search results." },
+  { title: "No risk when it matches", desc: "According to Google, unused markup does not hurt Search as long as it matches the visible content." },
+]} />
+
+## Keep it or remove it? A decision framework
+
+There is no blanket answer. It comes down to whether the FAQ section genuinely helps, or whether it only ever existed to earn a nicer result.
+
+<CompareTable
+  caption="When to keep FAQPage markup and when to consider removing it"
+  columns={["Keep it", "Consider removing it"]}
+  rows={[
+    { icon: "✅", label: "Match with content", left: "The markup accurately describes the questions and answers visible on the page", right: "The markup points to content that is no longer on the page" },
+    { icon: "🙋", label: "Usefulness", left: "The FAQ section genuinely answers what users ask", right: "The FAQ was thin and added only for the rich result" },
+    { icon: "🤖", label: "Readability for AI", left: "You want AI systems to have a cleanly structured Q&A", right: "The Q&A on the page does not really make sense for readers" },
+    { icon: "⚠️", label: "Risk", left: "None — consistent markup is safe", right: "A mismatch between markup and content is a needless risk" },
+  ]}
+/>
+
+<Insight tone="warning">
+The worst option is not keeping the markup, and it is not deleting it — it is leaving it out of sync with the visible content. If you take an FAQ section off a page, take its FAQPage markup off too. Consistency between structured data and what the user actually sees matters more now than it used to.
+</Insight>
+
+## It fits a broader shift in structured data
+
+The end of FAQ rich results is not an isolated event. HowTo lost its rich result earlier, and Google keeps repeating that AI Overviews and AI Mode need [no special structured data](/blog/aeo-geo-is-still-seo/). The direction is consistent: structured data is meant to help systems understand content, not to decorate the result.
+
+That does not mean structured data is losing its point. Quite the opposite — when it accurately describes visible content, it helps Google and AI alike. Which types to deploy and how is covered in the article on [structured data for AI](/blog/structured-data-for-ai/).
+
+## The most common mistakes
+
+<MistakeGrid>
+  <Mistake number="01" title="Deleting every FAQ across the board">
+    The end of rich results is not the end of FAQs. Panic-deleting working FAQ sections costs you content that still helps users and AI systems.
+  </Mistake>
+  <Mistake number="02" title="Leaving markup with no content">
+    If you take the FAQ section off a page but leave the markup, you create a mismatch between structured data and content. That is a needless risk.
+  </Mistake>
+  <Mistake number="03" title="Waiting for rich results to come back">
+    Google's public documentation frames the change as a retirement, and as of summer 2026 nothing publicly suggests FAQ rich results are coming back. Building a strategy on the feature returning wastes time — put that energy into content and AI visibility instead.
+  </Mistake>
+  <Mistake number="04" title="Treating markup as a silver bullet">
+    The thing that mattered was never the structured data itself, it was the content. Markup alone, without useful answers, never delivered visibility, and after the end of rich results that goes double.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="What to do"
+  dontTitle="What to avoid"
+  doItems={[
+    "Keep FAQPage markup wherever it matches the visible content.",
+    "Check whether the FAQ section genuinely answers what users ask.",
+    "Keep the markup in sync with what is visible on the page.",
+    "Write short, clear answers that AI can easily lift.",
+    "Treat structured data as an aid to understanding, not as decoration for search results.",
+  ]}
+  dontItems={[
+    "Panic-deleting every FAQ across the board.",
+    "Leaving markup for content that is not on the page.",
+    "Counting on rich results to return.",
+    "Adding thin FAQs just to earn a rich result.",
+    "Treating markup on its own as a guarantee of visibility.",
+  ]}
+/>
+
+## What to take away
+
+- **Google ended FAQ rich results on May 7, 2026** — the expandable questions are gone from Search results.
+- **FAQPage markup remains valid** — per Google, both Google and AI systems still read it.
+- **What ended is the display feature, not the value** — the point was never the structured data, it was the content.
+- **Keep the markup when it matches** the visible questions and answers; remove only thin or mismatched FAQs.
+- **The retirement runs in three phases** — rich results (May), the GSC report (June), and API support (August 2026, still to come).
+- **The priority is shifting** from decorating search results toward clear structure and citability in AI.
+
+---
+
+**Not sure which structured data to keep, adjust, or remove?** An AI SEO audit from **Sniper Design** walks your structured data and FAQ sections, checks that the markup matches your content, and tells you what still helps your visibility in AI and what is just dead weight. If you would rather start on your own, the wireframes we work from lay out pages with the question-and-answer structure AI reads well.
+
+*For transparency: the description of the change draws on public Google Search Central documentation and analyses available as of summer 2026; the timeline follows the steps Google has announced, part of which (August 2026) had not happened as of this article's publication date. How the content on this site is produced is described on the [author page](/author/kamil/).*
