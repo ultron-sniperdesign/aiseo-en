@@ -1,0 +1,157 @@
+---
+title: "AI Shopping Agents and E-commerce: What's Changing"
+description: "AI shopping agents are changing how products get picked in ChatGPT and beyond. What's documented, what's hype, and which product data actually matters."
+answer: "An AI shopping agent is a system that searches for and compares products on the user's behalf, shortening the path from question to choice. Instead of a long list of stores, the customer gets a narrower comparison — which raises the value of well-described product data: price, availability, brand, and identifier. For most stores this is still preparation, not a meaningful source of orders."
+slug: "ai-shopping-agents"
+category: "analysis"
+tags:
+  - "eshopy"
+  - "ai-platformy"
+published: "2026-07-11"
+updated: "2026-07-11"
+keywords:
+  - "ai shopping agents"
+  - "agentic commerce"
+  - "ai and ecommerce"
+  - "chatgpt shopping"
+  - "product data for ai"
+variant: "rich"
+stats:
+  - value: "shortlist"
+    label: "instead of a list of stores, the customer gets a shortlist — outside it, a product loses much of its visibility in that answer"
+  - value: "GTIN"
+    label: "the identifier that makes it possible to tell your product is the same one your competitors sell"
+  - value: "matching data"
+    label: "price and availability in the feed and on the page have to match, or you create a mismatch"
+  - value: "still early"
+    label: "agentic shopping is still limited and uneven by market — this is preparation, not an established route to sales"
+faq:
+  - q: "What is an AI shopping agent?"
+    a: "It's an AI system that searches for and compares products on the user's behalf, shortening the path from question to choice; in some cases it can also walk them through the next step of the purchase. The difference from classic search is that the customer doesn't get a list of links to stores — they get a narrower comparison right away. That changes the question for retailers: it's not just about ranking, it's about whether your product makes the shortlist at all."
+  - q: "Are people actually buying through AI agents today?"
+    a: "Only at the margins so far. Shopping features in AI systems are mostly English-language and aimed at large markets, and for most stores they can't be counted on as a source that drives a meaningful number of orders. So treat this as preparation: do the work on your product data that pays off with or without agents, and don't rebuild your store for it."
+  - q: "Which product data matters most?"
+    a: "The data that lets a product be identified and compared unambiguously: name, brand, an identifier such as GTIN, price with currency, and availability. Image, description, real ratings, and shipping and return terms help on top of that. Without an identifier, it's harder to tell that this is the same product your competitors sell."
+  - q: "Is structured data on the page enough, or do I need a feed too?"
+    a: "They aren't alternatives. Structured data on the page and a product feed describe the same product, just for different consumers. What matters is that they agree: if the page shows a different price than the feed, you create a mismatch that hurts both customer trust and machine processing."
+  - q: "Do AI agents read product data differently than Google does?"
+    a: "This gets claimed a lot, but there's no public evidence for it. How individual systems pick and rank products isn't something their operators publish. The safer approach is to work from what holds generally: the more complete and consistent your product data is, the easier it is for any machine to work with."
+  - q: "Should I rebuild my store because of agents?"
+    a: "Agents usually aren't a reason to rebuild anything. Most of the useful changes make sense without them: complete and accurate product data, a feed that matches the page, clear prices and availability. An expensive rebuild aimed purely at agentic shopping is premature — but clean product data and consistent values are worth having today."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**An AI shopping agent is a system that searches for and compares products on the user's behalf, shortening the path from question to choice.** Instead of a long list of stores, the customer gets a narrower comparison — which raises the value of well-described product data: price, availability, brand, and identifier. For most stores, though, this is still preparation rather than a meaningful source of orders.
+
+## What's real and what's hype
+
+There's a lot of noise around agentic shopping, so let's separate out what can actually be documented.
+
+**What's documented is that it's being tried.** With ChatGPT, there are publicly observable scenarios where it helps compare and choose products; that doesn't mean a broadly available, established route to purchase. With Perplexity, tests of shopping-oriented output and paths to a product have been publicly visible. Google's AI experiences surface shopping-oriented answers and product information too — which is why it still makes sense for merchants to work on product data and Merchant Center. There are also concepts and partial attempts at consolidating the purchase steps inside assistants, but none of it has settled into a stable shape.
+
+**What can't be documented:** how much sales volume runs through agents, exactly how agents pick and rank products, or that this is an established channel anywhere. The scope and availability of these features also vary by market and over time, and operators don't publish how the selection works.
+
+<Insight tone="key">
+It helps to separate two questions. "Are agents coming?" is speculation. "Is my product data complete and consistent?" is something you can solve today — and it pays off no matter how the agent story turns out.
+</Insight>
+
+## From a list to a shortlist
+
+The most significant change isn't technical, it's logical.
+
+<CompareTable
+  caption="Classic search vs. a shopping agent, from a store's point of view"
+  columns={["Angle", "Difference"]}
+  rows={[
+    { icon: "📄", label: "Output", left: "List vs. shortlist", right: "Instead of ten links, the customer gets a handful of options" },
+    { icon: "🎯", label: "Goal", left: "Ranking vs. inclusion", right: "Sixth place was still a chance; missing the shortlist means far less of one" },
+    { icon: "🤖", label: "Reader", left: "Human vs. machine", right: "An agent doesn't judge a site the way a person does; it leans on machine-readable values" },
+    { icon: "🏷️", label: "Basis", left: "Copy vs. fields", right: "Specific values decide: price, availability, brand, identifier" },
+    { icon: "🌍", label: "Maturity", left: "Still early", right: "Shopping features are rolling out unevenly by market — this is preparation" },
+  ]}
+/>
+
+This connects to what the piece on [zero-click](/blog/zero-click-and-ai-overviews/) describes: the more of the decision that happens inside the answer, the smaller the role your site's appearance plays — and the bigger the role of what a machine can determine about the product.
+
+## Which data actually matters
+
+There's no secret here. These are the fields that let a product be **identified and compared unambiguously**.
+
+<Checklist
+  items={[
+    { title: "Name and brand", desc: "An unambiguous product name and brand — not an internal code or a marketing slogan." },
+    { title: "Identifier (GTIN, MPN)", desc: "It's what makes it possible to tell this is the same product your competitors sell; brand only sharpens the identification." },
+    { title: "Price and currency", desc: "A specific amount and currency, not just text on the page." },
+    { title: "Availability", desc: "In stock, on backorder, sold out — and current above all." },
+    { title: "Image and description", desc: "A visual and a clear description of what the product is and who it's for." },
+    { title: "Ratings and terms", desc: "Real ratings, shipping, and returns. Never invented." },
+  ]}
+/>
+
+In structured data, that mainly means watching the `Product` and `Offer` types: on the product, `name`, `brand`, and `gtin`, plus `mpn` where it applies; on the offer, `price`, `priceCurrency`, and `availability`. Optionally `aggregateRating` and shipping details via `Offer.shippingDetails`. How to implement them is covered by [product pages for AI](/blog/product-pages-for-ai/) and more broadly by [structured data for AI](/blog/structured-data-for-ai/). On WooCommerce or Shopify, this is usually handled by the theme or an app.
+
+## Your feed and your page have to match
+
+Structured data on the page and a product feed aren't alternatives — they describe the same product, just for a different consumer. The problem starts when they drift apart.
+
+A price in the feed that differs from the page isn't a detail: for the customer it's a letdown, and for any machine it's a signal that your values can't be trusted. The same goes for availability.
+
+<Insight tone="warning">
+Here's a contradiction you run into often: a store blocks AI crawlers in robots.txt and at the same time expects its products to show up in AI answers. Those can work against each other — though it depends on the specific system and where it pulls its data from. More details are in [robots.txt for AI](/blog/robots-txt-for-ai-crawlers/).
+</Insight>
+
+## The most common mistakes
+
+<MistakeGrid>
+  <Mistake number="01" title="Price only in the copy">
+    Price and availability visible on the page but missing from structured data — or the other way around. The machine then reads something different than the customer does.
+  </Mistake>
+  <Mistake number="02" title="Missing identifier">
+    Without a GTIN, or an MPN where it applies, it's harder to tell that this is the same product your competitors sell; brand only sharpens the identification.
+  </Mistake>
+  <Mistake number="03" title="Feed and page drift apart">
+    A different price or availability in the feed than on the site. The mismatch hurts trust and machine processing alike.
+  </Mistake>
+  <Mistake number="04" title="Rebuilding the store over hype">
+    Agentic shopping doesn't yet drive a meaningful number of orders. Investing in clean data makes sense; an expensive rebuild based on speculation doesn't.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="What to do"
+  dontTitle="What to avoid"
+  doItems={[
+    "Fill in brand and identifier wherever they're missing.",
+    "Keep price and availability in structured data current.",
+    "Get the product feed and the page in sync.",
+    "Reconsider which AI crawlers you block if you want a better chance of these systems using your data.",
+    "Track whether traffic from AI is actually growing.",
+  ]}
+  dontItems={[
+    "Invent ratings or availability.",
+    "Let the feed and the page drift apart.",
+    "Block AI crawlers and expect visibility in AI.",
+    "Spend heavily rebuilding a store for something that isn't bringing in orders yet.",
+    "Trust claims about exactly how agents make their picks.",
+  ]}
+/>
+
+## Key takeaways
+
+- **The output changes, not just the ranking** — a shortlist instead of a list of stores, and outside it your product isn't visible.
+- **Data decides, not impressions** — name, brand, identifier, price, availability.
+- **Feed and page have to match** — a mismatch hurts customers and machines alike.
+- **How agents select isn't public** — anyone claiming to know exactly how they pick is speculating.
+- **This is still preparation** — do the things that make sense without agents; for how to measure it, see [the AI report in Search Console](/blog/gsc-ai-report/).
+
+---
+
+**Not sure whether your product data holds up?** An AI SEO audit goes through the structured data on your product pages, checks that the feed and the page agree, and finds the fields that are missing. If you're building a new store, get the product and category templates right up front — with a structure that both people and machines read well.
+
+*For transparency: this is based on publicly available information about shopping features in AI systems as of July 11, 2026. How products are actually selected isn't published, availability of these features varies by market, and the space is moving fast — so this article doesn't explain how to "win" agents, and it doesn't guarantee results.*

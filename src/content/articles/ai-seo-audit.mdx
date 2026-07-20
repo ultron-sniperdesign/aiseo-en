@@ -1,0 +1,164 @@
+---
+title: "AI SEO audit: what to check for visibility in AI search"
+description: "A practical AI SEO audit step by step: find out whether ChatGPT, Perplexity, and Google AI Overviews cite you — and what to fix on your site."
+answer: "An AI SEO audit is a structured check on how well AI search tools — ChatGPT, Perplexity, and Google AI Overviews — understand and cite your site. You work through five layers: brand visibility in their answers, accessibility for AI crawlers, structured data, how citable your content is, and measurement over time. The output is a list of specific fixes. The recommended frequency is once a quarter."
+slug: "ai-seo-audit"
+category: "tutorial"
+tags:
+  - "audit-nastroje"
+published: "2026-05-23"
+updated: "2026-05-23"
+variant: "rich"
+keywords:
+  - "ai seo audit"
+  - "ai visibility audit"
+  - "visibility in ChatGPT"
+  - "optimizing for Perplexity"
+  - "Google AI Overviews"
+  - "GEO audit"
+  - "structured data for AI"
+  - "llms.txt"
+stats:
+  - value: "5"
+    label: "layers an AI SEO audit works through"
+  - value: "3"
+    label: "platforms in the basic check: ChatGPT, Perplexity, Google"
+  - value: "$0"
+    label: "cost of a basic pass (free tools only)"
+  - value: "4×/year"
+    label: "recommended audit frequency"
+howto:
+  name: "How to run an AI SEO audit"
+  steps:
+    - name: "Map your visibility in AI"
+      text: "Run 15–20 queries phrased the way your customers phrase them on ChatGPT, Perplexity, and Google (watching whether an AI Overview appears and which sources it cites), and record whether and how you're mentioned and who shows up instead of you."
+    - name: "Check AI crawler access"
+      text: "In your robots.txt file, confirm you aren't accidentally blocking relevant user agents like GPTBot, ClaudeBot, or PerplexityBot. Judge Google-Extended separately — it controls how your content is used in some of Google's AI features, and allowing it doesn't guarantee a citation on its own."
+    - name: "Validate your structured data"
+      text: "Test Article, FAQPage, Organization, and breadcrumb navigation with the Rich Results Test and the Schema.org structured data validator."
+    - name: "Fix your content structure"
+      text: "Add a short 40–60 word answer at the top, answer the main query within roughly the first 200 words, and rewrite vague sentences as specific ones."
+    - name: "Set up measurement and repeat"
+      text: "Track your share of mentions and citations over time, update content regularly, and repeat the whole audit once a quarter."
+faq:
+  - q: "What is an AI SEO audit?"
+    a: "An AI SEO audit is a structured check on how well AI search engines like ChatGPT, Perplexity, and Google AI Overviews understand and cite your site. It works through brand visibility in their answers, technical accessibility for AI crawlers, structured data, and content structure. The output is a list of specific fixes ordered by priority."
+  - q: "How do I find out whether ChatGPT or Perplexity cites me?"
+    a: "Run 15–20 queries phrased the way your customers phrase them directly on ChatGPT, Perplexity, and Google (watching whether an AI Overview appears) and record whether and how you're mentioned. For ongoing tracking, tools like Otterly, Profound, and AirOps measure your share of mentions and citations across platforms."
+  - q: "Is an AI SEO audit different from a classic SEO audit?"
+    a: "Yes. A classic audit covers Google rankings; an AI SEO audit covers citations in AI answers — and the two don't necessarily correlate. According to 2025 analyses, plenty of pages cited in ChatGPT have weak to nonexistent organic visibility in Google. The classic audit is the foundation; the AI layer sits on top of it."
+  - q: "Does an llms.txt file help with visibility in AI?"
+    a: "Only marginally so far. An llms.txt file describes what's on your site, but according to the available 2025 analyses, widespread use of it by the major AI crawlers (GPTBot, ClaudeBot, PerplexityBot) hasn't been demonstrated. You can set it up, but treat structured data and citable content as the priority."
+  - q: "How often should you run an AI SEO audit?"
+    a: "The recommended frequency is once a quarter. The AI search landscape changes fast — new crawlers appear, and the rules and the way citations work keep shifting — so the annual rhythm used for classic SEO is too slow here."
+  - q: "Do I have to pay for tools to run an AI SEO audit?"
+    a: "You can handle the basics for free: manual queries on ChatGPT and Perplexity, the Rich Results Test and the Schema.org structured data validator, and a robots.txt check. Paid tools (Otterly, Profound) only become useful for ongoing tracking of your share of mentions across many queries and competitors."
+---
+
+import Checklist from "../../components/blocks/Checklist.astro";
+import Insight from "../../components/blocks/Insight.astro";
+import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
+import Mistake from "../../components/blocks/Mistake.astro";
+
+## An AI SEO audit step by step: the five layers you work through
+
+**An AI SEO audit checks how ready your site is to be cited and mentioned in AI answers.** It works through **five layers** in a logical order: whether AI search tools mention you at all, whether they can get their crawlers to your site, whether machines understand your content, whether your copy is written so it can be cited, and how to measure all of it over time. This guide is a **DIY checklist** — a basic pass on a small or mid-sized site usually takes a single afternoon, mostly with free tools.
+
+Why handle this separately from classic SEO? Because Google rankings and citations in AI answers don't necessarily correlate. According to 2025 analyses, a significant share of the pages frequently cited in ChatGPT have weak to nonexistent organic visibility in Google. A solid classic [SEO audit](/blog/seo-audit-checklist/) is the foundation, but it won't cover the AI layer.
+
+## Why AI visibility matters right now
+
+The numbers in this article come from public analyses of AI search published in 2025–2026, and they vary widely by market, language, and industry — treat them as an order-of-magnitude trend, not an exact value for your vertical. The trend itself is consistent: a share of Google searches now return an AI Overview, and traffic from AI search is growing fast according to the available analyses. Even so, a large share of companies still aren't visible in AI answers — AI systems often don't cite them because their sites lack content that is clear, structured, and verifiable enough.
+
+The way people search is changing too: instead of ten blue links, they get one composed answer with a handful of cited sources. If your brand isn't among those sources, it's worth working out which sources AI systems prefer and why. What each discipline actually covers is broken down in the [SEO vs GEO vs AEO guide](/seo-vs-geo-vs-aeo/); this audit is the practical check on whether your site measures up.
+
+<Insight tone="accent" icon="!" label="The core principle">
+  Google rankings and citations in AI answers don't necessarily correlate. **Measure AI visibility separately** — a solid classic SEO audit is the foundation, but it won't cover the AI layer.
+</Insight>
+
+## Step 1: Map whether AI mentions you at all
+
+Start with where you actually stand. Write down **15–20 queries the way your customers phrase them** (not the way a marketer would) and run them on ChatGPT, Perplexity, and Google. On Google, also watch whether an AI Overview appears for the query and which sources it cites. For each query, note three things: whether you're mentioned, **how** you're described, and who shows up instead of you.
+
+It helps to know where each platform draws from. According to public 2025–2026 analyses, sources differ significantly between platforms (the specific shares shift by market, language, and query type):
+
+| Platform | Sources it draws on most, per the analyses |
+|---|---|
+| ChatGPT | authoritative and encyclopedic sources (Wikipedia and the like) |
+| Perplexity | a broad spread of sites including community content; usually many citations per answer |
+| Google AI Overviews | classic organic results supplemented with multimedia |
+
+A few prompts and a spreadsheet are enough for manual mapping. For **ongoing measurement** (more queries, competitive tracking) there are paid tools like Otterly, Profound, and AirOps — but that's a step for later, not a precondition for your first audit.
+
+## Step 2: Are you letting AI crawlers in? (robots.txt and llms.txt)
+
+If you want to be citable, AI systems have to be able to reach your content in the first place. In your `robots.txt` file, confirm you aren't **accidentally blocking** the relevant AI crawlers and user agents:
+
+- `GPTBot` (OpenAI / ChatGPT)
+- `ClaudeBot` (Anthropic)
+- `PerplexityBot` (Perplexity)
+- `Google-Extended` (controls how your content is used in some of Google's AI features)
+
+Draw a distinction between crawlers for classic indexing, for model training, and for live content retrieval — `Google-Extended`, for instance, isn't an indexing crawler like Googlebot but a control token for content use in some of Google's AI products. **Allowing access doesn't guarantee a citation on its own; it only removes the technical obstacle.** Plenty of sites block these crawlers without knowing it — typically through a rule inherited from a template. If you'd rather **restrict** access, that's a legitimate choice; how to do it and what it costs you is covered in the [guide to limiting AI Overviews](/blog/how-to-turn-off-ai-overviews/).
+
+The `llms.txt` file comes up a lot too. Take it with a grain of salt: it describes what's on your site, but according to the available 2025 analyses, widespread use of it by the major AI platforms hasn't been demonstrated. In 2026, treat it as a nice-to-have — structured data and content are the priority.
+
+## Step 3: Can machines understand you? (structured data)
+
+<span class="hl">Structured data</span> is a machine-readable description of what's on a page — it helps search engines and AI systems recognize the page type, author, organization, product, price, availability, or frequently asked questions (though it doesn't replace basic HTML structure). The impact isn't cosmetic: it reduces the risk that machines misinterpret the page.
+
+In the audit, check whether you have at least the basic types deployed site-wide and whether they're valid:
+
+<Checklist tone="geo" title="Structured data to verify" items={[
+  { title: "Article + breadcrumb navigation (BreadcrumbList)", desc: "on content and article pages." },
+  { title: "Organization", desc: "with contact details — name, address, phone." },
+  { title: "FAQPage", desc: "wherever you genuinely answer common questions; for most sites it no longer guarantees a rich result in Google, but it does help machine understanding." },
+  { title: "Product (for e-commerce sites)", desc: "product price and availability." }
+]} />
+
+Verify it in the **Rich Results Test** and the Schema.org structured data validator. Why this matters so much for AI, and how to build the content structure around it, is covered in the [guide to structuring pillar content](/blog/how-to-structure-pillar-content/) and the section on [generative engine optimization (GEO)](/generative-engine-optimization/).
+
+## Step 4: Is your content written so it can be cited?
+
+AI will skip even well-accessible, well-tagged content if there's no easy answer to pull out of it. Go through your top pages and fix these:
+
+<Checklist tone="aeo" title="Rules for citable content" items={[
+  { title: "A short answer up top", desc: "Right after the heading, 40–60 words that answer the page's main query on their own — it raises the odds AI uses them as a source." },
+  { title: "The answer within the first 100–200 words", desc: "The intro sets the topic and the main answer; bury the answer further down and you reduce the chance the page gets judged relevant." },
+  { title: "The standalone test", desc: "Every paragraph makes sense pulled out of context; rewrite vague sentences starting with It / This / That so they name a specific subject." },
+  { title: "Tables and lists", desc: "Structured content gets cited more readily than a solid block of prose." },
+  { title: "Freshness", desc: "Update content tied to the current year (2026, say) on a regular basis — stale numbers undercut both trust and citability." }
+]} />
+
+## Step 5: Measure and repeat
+
+An AI SEO audit isn't a one-off. Set up **basic measurement** — how many of your test queries mention you (your share of mentions, or share of voice) and which topics you're losing citations on to competitors. Keep a simple update calendar for your key pages.
+
+Then **repeat the whole audit once a quarter**. The landscape moves fast: new crawlers appear, and platforms change both the rules and the way citations work. If you're actively working on AI visibility, an annual check tends to be too slow — a basic comparison of queries and citations is worth repeating more often.
+
+<Insight tone="accent" icon="↻" label="How often">
+  Repeat the basic pass (queries + citations) **every quarter**, and ideally run the full audit 4× a year. The AI landscape changes faster than classic SEO.
+</Insight>
+
+## Common mistakes to avoid
+
+<MistakeGrid>
+  <Mistake num="01" title="Treating Google rankings as AI visibility" fix="Measure AI visibility separately — run manual queries on ChatGPT and Perplexity.">
+    According to 2025 analyses, plenty of pages cited in ChatGPT have weak to nonexistent organic visibility in Google.
+  </Mistake>
+  <Mistake num="02" title="Accidentally blocked AI crawlers" fix="Check robots.txt — GPTBot, ClaudeBot, PerplexityBot.">
+    A block inherited from a template reduces the chance AI systems find your content, understand it, and use it as a source.
+  </Mistake>
+  <Mistake num="03" title="Relying on llms.txt" fix="Structured data and citable content are the priority.">
+    The llms.txt file is still a nice-to-have with no demonstrated widespread use by the major AI platforms.
+  </Mistake>
+  <Mistake num="04" title="One audit and done" fix="Repeat it once a quarter.">
+    Without repeating it regularly, you'll fall behind the fast pace of change on AI platforms.
+  </Mistake>
+</MistakeGrid>
+
+## What's next: a framework, or a custom audit
+
+An AI SEO audit shows you **what** needs fixing on your site. When you want to apply that to your own site step by step — from the homepage through product and category pages to the blog — the [AI SEO playbook](/ai-seo-playbook/) lays out the framework: copy templates, structured data, and an implementation order you can start on in a single afternoon.
+
+If you'd rather not handle the implementation yourself, this site is run by **[Sniper Design](https://www.sniperdesign.cz/)** — we run custom AI SEO audits for e-commerce (WooCommerce, Shopify) and B2B sites. The playbook gives you the framework; a custom audit gives you the exact plan for your site.
