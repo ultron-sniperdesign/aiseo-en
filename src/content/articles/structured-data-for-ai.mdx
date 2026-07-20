@@ -1,0 +1,171 @@
+---
+title: "Structured data for AI: types and validation in 2026"
+description: "Which JSON-LD structured data types help AI understand your content, what changed with FAQ rich results in 2026, and how to validate them step by step."
+answer: "Structured data for AI is a machine-readable description of your content in JSON-LD format that helps AI tools like ChatGPT, Perplexity, and Google AI correctly identify what a page contains. The key types in 2026 are Article, FAQPage, HowTo, Product, Organization, and BreadcrumbList. They have to match the visible text, though — inaccurate structured data can be treated as spam and will do nothing for the page's credibility."
+slug: "structured-data-for-ai"
+category: "tutorial"
+tags:
+  - "strukturovana-data"
+published: "2026-06-07"
+updated: "2026-06-07"
+variant: "rich"
+keywords:
+  - "structured data for ai"
+  - "json-ld for ai"
+  - "schema.org for ai search"
+  - "structured data types"
+  - "structured data validator"
+  - "faqpage structured data"
+  - "rich results 2026"
+stats:
+  - value: "JSON-LD"
+    label: "the recommended format for Google and the standard route for structured data"
+  - value: "6 types"
+    label: "Article, FAQPage, HowTo, Product, Organization, and BreadcrumbList as a practical baseline for most sites"
+  - value: "2026"
+    label: "Google FAQ rich results are essentially over for ordinary sites in 2026"
+  - value: "must match"
+    label: "structured data has to match the visible text on the page"
+howto:
+  name: "How to implement structured data for AI in 2026"
+  steps:
+    - name: "Pick the relevant types"
+      text: "Article for an article, Product for a product, Organization at the site level, BreadcrumbList everywhere, HowTo only for genuine step-by-step procedures, and FAQPage only where the FAQ is visible to users too."
+    - name: "Write it in JSON-LD"
+      text: "Use JSON-LD inside a script tag with type application/ld+json in the head or at the end of the body. JSON-LD is the preferred format across Google, Bing, and AI tools alike."
+    - name: "Check that it matches the text"
+      text: "Structured data has to match the visible content of the page. Fabricated or padded values are treated as spam and can hurt the site."
+    - name: "Validate it and test it in AI"
+      text: "Use validator.schema.org to check syntax and Schema.org compliance, and Google Rich Results Test for rich result eligibility. Then ask ChatGPT or Perplexity about the content of the page and watch whether they mention it (a rough check, and only in modes with web access)."
+faq:
+  - q: "Which structured data should I implement for AI search?"
+    a: "In 2026 the core is Article (for articles), Product (for products), Organization (at the site level, to identify the brand), BreadcrumbList (for navigation), HowTo (for genuine step-by-step procedures), and FAQPage (where the FAQ is visible to users too). For specific content types, add Recipe, VideoObject, LocalBusiness, Event, or DefinedTerm. For most sites, start with that core."
+  - q: "Which structured data format is recommended for AI search?"
+    a: "JSON-LD. It is the format Google, Bing, and AI tools including ChatGPT and Perplexity prefer in 2026. Its advantage is that it lives in a separate script, apart from the HTML, so it is easier to maintain and less likely to break when the template changes. Microdata and RDFa work, but the recommended and widely used route is JSON-LD."
+  - q: "Does FAQPage still help in Google after May 2026?"
+    a: "Not for classic rich results in Google. Google has scaled FAQ rich results back sharply over the past few years, and in 2026 ordinary sites can no longer count on them for better presentation in the results. Existing FAQPage markup can stay in place as long as it matches the FAQ visible on the page exactly. The value of FAQPage in 2026 is mainly a clearer content structure for AI and for users — so only implement it where the FAQ is genuinely visible."
+  - q: "How do I validate structured data?"
+    a: "Use two tools side by side: validator.schema.org for a strict Schema.org compliance check, and Google Rich Results Test to confirm rich result eligibility in Google. Both surface errors and warnings directly. Once it is live, it also pays to ask ChatGPT or Perplexity about the content of the page and watch whether they mention it."
+  - q: "Does structured data have to match the text on the page?"
+    a: "Yes. Google treats this as a hard rule: structured data has to match exactly what the user actually sees. Adding values that are not on the page is spam and can lead to a manual action. For a product that covers price, availability, and ratings; for an FAQ, the questions and answers; for an article, the author and the publication and update dates."
+  - q: "Does structured data help you get cited in ChatGPT and Perplexity?"
+    a: "The available tests and hands-on experience from 2025–2026 suggest that valid structured data can improve the odds that AI tools understand your content correctly and use it. It is not a standalone factor that guarantees a citation, though. Structured data helps machine readability; it does not deliver the citation itself — without solid, credible content it is not enough on its own."
+---
+
+import Checklist from "../../components/blocks/Checklist.astro";
+import Insight from "../../components/blocks/Insight.astro";
+import CompareTable from "../../components/blocks/CompareTable.astro";
+import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
+import Mistake from "../../components/blocks/Mistake.astro";
+
+## Structured data for AI: what it is and why it matters
+
+**Structured data is a machine-readable description of your content in JSON-LD format that helps AI tools like ChatGPT, Perplexity, and Google AI correctly identify what a page contains.** For AI search it plays two roles: it makes facts easier to pull out (price, author, date, the steps in a procedure) and it helps classify the type of content correctly. The available tests and hands-on experience from 2025–2026 suggest that valid structured data can improve the odds that AI tools understand your content correctly and use it — but it is no guarantee of a citation.
+
+This guide covers **which types to implement in 2026**, **how to write them properly in JSON-LD**, **what changed when FAQ rich results ended**, and **how to validate them**. It adds the technical layer to the broader [content for the AI era](/blog/ai-seo-content/).
+
+<Insight tone="accent" icon="!" label="Key takeaway">
+  Structured data helps AI understand your content, but it is not a citation switch. It always has to match the visible text — inaccurate structured data is spam. JSON-LD is the preferred format across search engines and AI tools in 2026.
+</Insight>
+
+## Key structured data types for AI in 2026
+
+For most sites it is practical to start with these six types and add others as the content calls for them:
+
+<Checklist tone="seo" title="The core types for AI search" items={[
+  { title: "Article", desc: "for an article or blog post; author, publication and update dates, main image." },
+  { title: "Product", desc: "for a product in an online store; price, availability, ratings — all of it has to match the visible content." },
+  { title: "Organization", desc: "at the site level, to identify the brand; logo, social profiles (sameAs), contact details." },
+  { title: "BreadcrumbList", desc: "breadcrumb navigation across every page in the hierarchy — it helps AI understand the site structure." },
+  { title: "HowTo", desc: "only where the page contains a genuine step-by-step procedure." },
+  { title: "FAQPage", desc: "only where the FAQ is visible to users too (careful: no more rich results in Google — see below)." }
+]} />
+
+For specific content, add Recipe (a recipe), VideoObject (a video), LocalBusiness (a physical location), Event (an event), or DefinedTerm (a term definition).
+
+## JSON-LD as the preferred format
+
+JSON-LD is the standard choice for structured data in 2026. Here is why:
+
+- **Google and Bing support JSON-LD as a matter of course**, and for AI tools like ChatGPT, Perplexity, or Claude the format can make your content easier to read by machine, assuming they can reach the page.
+- **It lives in a separate script** (`<script type="application/ld+json">`), apart from the HTML — easier to maintain and less likely to break when the template changes.
+- **Multiple structured data blocks on one page** can go into one or several `script` blocks with no effect on the layout.
+
+Microdata and RDFa work too, but the recommended and widely used route is JSON-LD.
+
+A short, **simplified** example of what JSON-LD looks like for the `Article` type (in production you would usually add `mainEntityOfPage`, `publisher`, and other fields depending on the page type):
+
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Article headline",
+  "author": { "@type": "Person", "name": "Author name" },
+  "datePublished": "2026-06-07",
+  "dateModified": "2026-06-07",
+  "image": "https://example.com/og/article.png"
+}
+</script>
+```
+
+You can have several such blocks for different types (Article, BreadcrumbList, Organization) in the head or at the end of the `body`.
+
+## Heads-up: FAQ rich results in Google are no longer a win in 2026
+
+This is a significant change worth knowing about:
+
+<Insight tone="seo" icon="i" label="The end of FAQ rich results">
+  Google has scaled FAQ rich results back sharply over the past few years, and in 2026 ordinary sites can no longer count on them for better presentation in the results. Existing FAQPage markup can stay in place as long as it matches the FAQ visible on the page exactly. Its value now lies mainly in a better content structure for users and for machine reading.
+</Insight>
+
+What this means in practice: do not roll FAQPage out across the board for the sake of the SERP. Implement it only where the FAQ is genuinely visible to users and where it helps them navigate the content. For AI citations, what helps most is that the answers are short and to the point.
+
+## Structured data must match the text
+
+This is Google's core rule: structured data has to **match exactly what the user actually sees**. Adding values that are not on the page is spam and can lead to a manual action.
+
+- For **Product** that covers price, availability, and ratings.
+- For **FAQPage**, the questions and answers.
+- For **Article**, the author and the publication and update dates.
+- For **Organization**, contact details and social profiles.
+
+## How to validate structured data
+
+Before you ship and after every substantial change, use two tools side by side:
+
+<CompareTable
+  leftLabel="validator.schema.org"
+  leftTone="seo"
+  rightLabel="Google Rich Results Test"
+  rightTone="aeo"
+  rows={[
+    { icon: "🎯", label: "What it does", left: "Stricter check of Schema.org compliance", right: "Confirms rich result eligibility in Google" },
+    { icon: "✅", label: "What it catches", left: "Structural errors, properties that don't exist", right: "Missing required fields for rich results" },
+    { icon: "🔧", label: "When to use it", left: "Always — the baseline validity check", right: "When you're targeting a rich result in Google" },
+    { icon: "🤖", label: "AI check", left: "Doesn't cover AI tools", right: "Doesn't cover AI tools" }
+  ]}
+/>
+
+Once it is live and validated, it also pays to **ask ChatGPT or Perplexity** directly about the content of the page and watch whether they mention it, and which values they pull from it. No validator will confirm that AI is going to start citing you. Treat a manual query in ChatGPT or Perplexity as a rough check only — and only in modes that have access to the web or a current index.
+
+## Common mistakes
+
+<MistakeGrid>
+  <Mistake num="01" title="Blanket FAQPage for the sake of rich results" fix="Implement it only where the FAQ is visible.">
+    Google FAQ rich results are essentially over for ordinary sites in 2026; FAQPage no longer helps with how you appear in the results.
+  </Mistake>
+  <Mistake num="02" title="Structured data that doesn't match the text" fix="It always has to match the visible content exactly.">
+    Inaccurate or padded values are spam — you're risking a manual action.
+  </Mistake>
+  <Mistake num="03" title="Relying on schema instead of content" fix="Structured data is an aid, not a substitute.">
+    Without solid, credible content, structured data on its own will not win you a citation.
+  </Mistake>
+  <Mistake num="04" title="Not validating after you ship" fix="Run both validator.schema.org and Rich Results Test.">
+    An error in your JSON-LD can invalidate a given structured data block or keep it from being processed correctly.
+  </Mistake>
+</MistakeGrid>
+
+## What's next: put structured data in context
+
+Structured data is the technical layer that helps AI understand your content. Without solid content and credibility it is not enough on its own. For the full picture of AI visibility, see the [practical SEO for AI checklist](/blog/seo-for-ai-checklist/); credibility is covered in [E-E-A-T for AI](/blog/e-e-a-t-for-ai/).

@@ -1,0 +1,454 @@
+---
+title: "AEO in Practice: How to Get Into Featured Snippets and Google AI Overviews"
+seoTitle: "AEO in Practice: Featured Snippets and Google AI Overviews"
+description: "A practical AEO guide — answer block anatomy, 5 question templates, a schema cookbook, the AEO Coverage Score, and measuring in GSC."
+answer: "AEO (Answer Engine Optimization) shapes content so that Google and other answer engines can pull an easily extractable answer to a specific query out of it. The core of the playbook: a 40–60 word answer right after the heading, an FAQ built on real questions, valid FAQPage and HowTo schema, fact-density, and measurement in Search Console. For most sites, AEO has a more practical short-term impact than GEO, because Google remains the dominant entry point for informational queries."
+slug: "aeo-in-practice"
+category: "tutorial"
+tags:
+  - "obsah"
+  - "strukturovana-data"
+published: "2026-05-08"
+updated: "2026-05-08"
+variant: "rich"
+keywords:
+  - "aeo optimization"
+  - "answer engine optimization"
+  - "optimize for answer engines"
+  - "featured snippets 2026"
+  - "google ai overviews optimization"
+  - "faqpage schema"
+  - "howto schema"
+  - "aeo checklist"
+  - "aeo coverage score"
+  - "aeo vs seo"
+stats:
+  - value: "40–60"
+    label: "words in an ideal answer block"
+  - value: "5"
+    label: "question types = 5 templates"
+  - value: "25.1%"
+    label: "of Google SERPs show AI Overviews"
+  - value: "2–8 weeks"
+    label: "from implementation to Featured Snippet"
+faq:
+  - q: 'What is the difference between AEO and SEO?'
+    a: 'SEO is about getting your site onto the first page of the classic SERP. AEO is about getting a short answer straight into a Featured Snippet or the Google AI Overviews panel. They share the same technical foundation (indexability, structure, schema), but the writing is different — AEO needs short, definitive 40–60 word answers right after the heading, an FAQ built on real questions, and fact-density instead of marketing filler. SEO gets a user to your site; AEO turns you into a cited source.'
+  - q: 'What is the difference between AEO and GEO?'
+    a: 'AEO targets answer engines wired into a search engine — Google AI Overviews, Featured Snippets, Bing Copilot. GEO covers the wider field of generative AI, including ChatGPT, Perplexity, and Claude, which do not use a search engine in the classic sense. Most of the playbook overlaps, though: short answers, fact-density, FAQ schema, brand mentions. For most sites, AEO usually has a more direct impact on traffic, while GEO builds brand awareness and citation share over the long run.'
+  - q: 'How long until AEO results show up?'
+    a: 'Featured Snippets typically take 2–8 weeks after you implement FAQPage schema and short answers, assuming you already rank in the top 10. AI Overviews is less predictable — it depends on whether Google generates a panel for that query at all, and how often. A realistic timeline: your first AI Overviews citations 1–3 months after implementation on pages with solid rankings, and consistent AI Overviews presence across your ranking pages in 4–6 months. Without the SEO foundation (top 10 positions) the AEO playbook will not move the needle — Google pulls Featured Snippets primarily from the top 10 results.'
+  - q: 'Does AEO work for small businesses and B2B?'
+    a: 'Yes, and often with a better cost/benefit ratio than on large sites. A small business or a B2B specialist in a niche with low to medium competition can land a Featured Snippet faster than a big player — Google favors pages that answer directly and in a structured way. What works specifically: industry guides, how to choose X, X vs. Y comparisons, definitions of technical terms, and the questions clients actually ask. For purely transactional or local services with no informational layer, the impact is smaller.'
+  - q: 'What is the AEO Coverage Score?'
+    a: 'Our own framework for scoring how AEO-ready a page is across 5 dimensions: answer block coverage, schema density, snippet eligibility, citation-readiness, and voice-friendliness. Each dimension is worth 0–20 points, for a total of 0–100. A score above 80 means launch-ready — the page has a strong shot at both a Featured Snippet and an AI Overviews citation. A score of 50–80 calls for targeted fixes; below 50 you need a complete rewrite of the intro and the FAQ. More details on the methodology are in the AEO Coverage Score section below.'
+  - q: 'Is adding an FAQ section and FAQPage schema enough?'
+    a: 'It helps, but on its own it is not enough. Without a 40–60 word answer right after the H1, without fact-density in the copy, and without a proper H2/H3 structure, Google often ignores FAQPage schema entirely. FAQ rich snippets only show up where Google judges the whole page to be a quality answer to a specific query. FAQPage schema is a necessary condition, not a sufficient one. The full 7-step playbook is below.'
+  - q: 'Can I measure AEO without paid tools?'
+    a: 'Yes — a free baseline is enough for most small sites. Google Search Console: Performance → Search Appearance (FAQ rich snippets, HowTo), Performance → Queries (Featured Snippet impressions), Coverage (indexability). Plus a manual audit once a month — run your top 10 keywords in Google and log in a spreadsheet whether an AI Overviews panel appeared and whether it links to your site. Professional tracking (Otterly, Profound) starts to pay off once you have 20+ articles in the top 10.'
+howto:
+  name: "How to optimize a site for AEO in 7 steps"
+  steps:
+    - name: "Audit your existing content for AEO"
+      text: "For the top 20 pages on your site (by organic traffic), check 5 things: (1) is the answer to the main query in the first 60 words, (2) does the page have an FAQ section built on real user questions, (3) is FAQPage schema in the HTML head, (4) are the H2/H3 headings structured as questions and sub-answers, (5) does the copy carry 3+ specific facts per 100 words. Rewrite the answer block and add an FAQ on any page that fails 2 or more checks."
+    - name: "Build the ideal answer block"
+      text: "Right after the H1 or H2, write a 40–60 word answer. Structure: a definition in the form 'X is…', unambiguous and unqualified, one specific fact or number, and a practical takeaway for the reader. Bold the key term at the start. The second paragraph fills in the context. Use a pyramid layout — most important information at the top, detail underneath. Check the length before you publish — under 40 words there is nothing for AI to cite; over 60 it starts truncating."
+    - name: "Use the templates for the 5 question types"
+      text: "Write the answer block to match the query type: (1) what-is = definition + mechanism + consequence, (2) how-to = outcome + number of steps + time estimate, (3) comparison = X works this way, Y works that way, the main difference is Z, (4) listicle = number of items + the most important one + when to use which, (5) definitional = term + synonyms + typical context. Each type has its own ideal structure — see the 5 question types section below."
+    - name: "Implement FAQPage and HowTo schema"
+      text: "Add JSON-LD schema to the head of the page. FAQPage for every FAQ section built on real questions. HowTo for every tutorial with a step-by-step structure. QAPage for pages with a single main question (usually support). Article for blog posts. The schema has to match the HTML exactly — Google compares the two, and a mismatch means it gets ignored. Validating with the Google Rich Results Test and the Schema.org Validator is a mandatory step before you deploy."
+    - name: "Extend your FAQ with People Also Ask"
+      text: "In Google Search Console → Performance → Queries, filter for queries with impressions but a CTR under 5% — those are your AEO candidates. Add those queries as FAQ questions on the target pages. To find the wording people actually use, combine several sources: GSC queries, Reddit and Quora threads in your field, industry forums and communities, and your customer support logs. Target: 5–10 real questions per page in the FAQ section."
+    - name: "Measure in GSC plus a manual AI Overviews audit"
+      text: "GSC Search Appearance tracks FAQ rich snippets and HowTo impressions. GSC Performance → Queries shows Featured Snippet impressions (filter by search appearance). Google Search Console has no dedicated metric for AI Overviews yet — you track it manually: once a month, run your top 10 keywords in Google and log AI Overviews presence in a spreadsheet. Professional tracking with Otterly or Profound starts to pay off once you have 20+ articles in the top 10."
+    - name: "Iterate on the data — what to optimize next"
+      text: "After 60–90 days, review the results: which pages won a Featured Snippet, where an AI Overviews panel appeared citing you, and where you are stuck. For every stagnating page, check the AEO Coverage Score (section below) and fill in the missing dimensions. Iterate with targeted fixes on individual pages, not blanket changes. Featured Snippets are a moving target — Google keeps changing who it picks, and a monthly audit helps you catch both losses and new opportunities."
+---
+
+import Insight from "../../components/blocks/Insight.astro";
+import Persona from "../../components/blocks/Persona.astro";
+import PersonaGrid from "../../components/blocks/PersonaGrid.astro";
+import AntiPersona from "../../components/blocks/AntiPersona.astro";
+import DoDont from "../../components/blocks/DoDont.astro";
+import Do from "../../components/blocks/Do.astro";
+import Dont from "../../components/blocks/Dont.astro";
+import Mistake from "../../components/blocks/Mistake.astro";
+import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
+
+## What <span class="hl">AEO</span> is and why it <strong>matters now</strong>
+
+AEO (Answer Engine Optimization) **shapes your content** so it can answer specific user questions quickly and unambiguously — and so that Google AI Overviews, Featured Snippets, and Bing Copilot use that answer and cite your site as the source. When someone asks Google "how to choose a CRM for a small business" or "difference between SEO and GEO," a panel with a short answer usually shows up above the results. If you are not in it, you lose traffic even with a top 10 position.
+
+Classic SEO deals with rankings — and without solid rankings AEO usually does nothing, because Google pulls Featured Snippets and AI Overviews citations **typically from the top 10 results** (not exclusively, but in most cases). AEO is the layer that raises the odds Google picks your content as the direct answer **from pages that already rank well**. On content-driven sites, though, it makes sense to build AEO principles in as you create the content, not bolt them on afterward. The pillar [SEO vs. GEO vs. AEO](/seo-vs-geo-vs-aeo/) covers how the disciplines relate, and the [AEO — Answer Engine Optimization](/answer-engine-optimization/) section covers the discipline itself.
+
+### AEO vs. SEO vs. GEO — where the line is
+
+The three disciplines solve different layers and share the same technical foundation:
+
+| Discipline | What it solves | Main outcome |
+|---|---|---|
+| **[SEO](/seo/)** | Landing on page one of classic search | Positions 1–10 in Google |
+| **AEO** | Getting a short answer into the panel above the results | A citation in Google AI Overviews, Featured Snippets, Bing Copilot |
+| **[GEO](/generative-engine-optimization/)** | Being a cited source in generative AI | A mention in a ChatGPT, Perplexity, Claude, or Gemini answer |
+
+**What this means in practice:** SEO, AEO, and GEO reinforce each other. The same content that is structured for AI Overviews (short answer, FAQ schema) is usually easy to cite in ChatGPT or Perplexity too. What sets AEO apart from GEO: AEO targets **answer engines wired into a search engine** (Google, Bing) — so it has a **more direct impact on traffic**, because Google still handles the overwhelming majority of informational queries. GEO is the complementary discipline that builds brand awareness in generative AI — see the [GEO playbook](/blog/geo-optimization/).
+
+## What we <strong>know today</strong> about <span class="hl">Featured Snippets and AI Overviews</span>
+
+Featured Snippets have been a Google feature since 2014 (originally the "answer box"). AI Overviews is the next generation — instead of pulling from a single source, it aggregates facts from several pages and generates its own answer text. **Both formats favor content that is clearly structured, answers the query fast, and carries strong trust signals.** The selection mechanism is not identical, though — the same elements (FAQ schema, a structured answer block, authority) do not carry the same weight in both formats, and with AI Overviews the decision model is far less transparent.
+
+**Key numbers** (as of May 2026):
+
+- **25.1% of Google SERPs** in the US market contain an AI Overviews panel ([Semrush, 2025](https://www.semrush.com/blog/ai-overviews-study/)) — up from 13.1% in March 2025.
+- **Featured Snippet CTR** holds at **35.6%** in the top position ([Backlinko CTR study, 2025](https://backlinko.com/google-ctr-stats)).
+- **CTR decline** when an AI Overviews panel sits above the results: studies show a **20–60% drop** in organic CTR depending on query type ([Ahrefs, 2024](https://ahrefs.com/blog/ai-overviews-reduce-clicks/)).
+
+**What this means in practice:** a Featured Snippet or an AI Overviews citation **offsets the CTR decline** — when you are cited you do lose some clicks, but you gain brand exposure even with users who never click through. If you are not cited, you lose both. The AEO playbook decides which side you end up on.
+
+## Who <span class="hl">AEO</span> <strong>makes the most sense for</strong>
+
+AEO is most relevant wherever **a customer is asking something** and the content on your site could be the answer:
+
+<PersonaGrid>
+  <Persona icon="📰" title="Publishers and educational sites" tone="aeo">
+    You depend on organic traffic from informational queries. An AI Overviews panel can take clicks away from you — or cite you. Without an AEO playbook you have no direct influence on either side of that equation.
+  </Persona>
+  <Persona icon="🏢" title="B2B companies and SaaS with a research phase" chip="High impact" tone="aeo">
+    Before buying, the customer researches, compares, and looks for answers like "how to choose a CRM" or "difference between X and Y." Featured Snippets and the AI Overviews panel answer them — and you want to be the citation.
+  </Persona>
+  <Persona icon="🛒" title="E-commerce with research-heavy products" tone="aeo">
+    Category and educational content is exposed to zero-click search, but it also wins you brand exposure. More details are in [SEO for e-commerce in the AI era](/blog/seo-for-ecommerce-ai-era/).
+  </Persona>
+  <Persona icon="⚖️" title="Professional and advisory services" tone="aeo">
+    Lawyers, accountants, consultants, agencies. People search for "how do I handle X" and "when do I need Y." The AEO playbook puts your short answers near the top of the SERP.
+  </Persona>
+  <Persona icon="📍" title="Local services with an informational layer" tone="aeo">
+    An auto shop or a salon with a blog about the field. Featured Snippets and local results do not cancel each other out — the combination works well.
+  </Persona>
+</PersonaGrid>
+
+<AntiPersona title="When AEO has only a marginal impact">
+Purely transactional queries and impulse products — there the priorities are classic SEO, local SEO, and PPC. If you are not sure which discipline to tackle first, the [decision matrix](/decision-matrix/) helps.
+</AntiPersona>
+
+## Anatomy of the ideal <span class="hl">answer block</span>
+
+An answer block is a **short, structured answer** placed right after the H1 or H2, which Google can extract into a Featured Snippet or an AI Overviews panel. If your first paragraph is a marketing intro loaded with adjectives, AI skips you. If your first paragraph answers the page's main question precisely, your odds of being cited go up sharply.
+
+### Three rules every answer block has to meet
+
+**1. Length of 40–60 words.** Under 40 words the answer is often too short to cover even the basic context (definition + fact + consequence). Over 60 words, Featured Snippets typically start truncating and risk cutting out the key part. The sweet spot in practice: 45–55 words. This is a heuristic, not a hard rule — some answers carry 70 words fine, others work at 35.
+
+**2. A three-part structure:**
+
+- **A definition in the form "X is…"** — unambiguous, unqualified, with one bolded key term
+- **One specific fact or number** — a date, a percentage, a mechanism
+- **A practical takeaway** for the reader — what it means for them
+
+**3. Citation-friendly phrasing.** If the answer reads on its own without the rest of the page, it is extractable. If it opens with "as we mentioned above" or "in this section we will look at," AI leaves it out.
+
+### Before and after — a real example
+
+<DoDont>
+  <Dont>
+    "In today's digital era, it is important to know how to optimize your website for modern search engines. Our agency has extensive experience helping companies improve their online visibility. In this article we will look at the best practices for AEO."
+
+    No fact, no definition, no citation hooks → **AI skips it.**
+  </Dont>
+  <Do>
+    "AEO (Answer Engine Optimization) shapes content so Google AI Overviews, Featured Snippets, and Bing Copilot use it as a direct answer and cite your site. The key: a 40–60 word answer right after the heading, an FAQ with real questions, and valid FAQPage schema. Featured Snippet CTR holds at 35.6% (Backlinko 2025)."
+
+    Definition + fact + source, 52 words → **AI extracts it.**
+  </Do>
+</DoDont>
+
+<Insight tone="aeo" icon="✦" label="Time-to-answer rule">
+**The rule:** there should be **no more than 60 words of copy** between the start of the page and your first definitive answer (navigation and the hero block do not count). If the main answer only shows up deep in the page, you lower the odds the page serves as a quickly extractable source. The heuristic: answers buried in a "Detailed description" section under an H3 have a noticeably lower extraction rate in practice than answers under the H1 or the first H2 — Google and AI extractors alike favor content near the top of the page.
+</Insight>
+
+## <span class="hl">5 question types</span> and a template for <strong>each one</strong>
+
+There is no universal answer block — every question type has its own ideal structure. These are the 5 archetypes that cover the vast majority of Featured Snippet and AI Overviews queries:
+
+### Type 1 — what-is questions (definitions)
+
+**Example queries:** "what is AEO," "what is Generative Engine Optimization," "what does zero-click search mean"
+
+**Answer block template:**
+
+```
+[Term] is [a brief definition — what it does or what it means].
+[One mechanism explaining how it works]. [A specific fact or number
+with attribution]. [The practical takeaway for the reader].
+```
+
+**Example for AEO:** "AEO (Answer Engine Optimization) **shapes your content** so Google AI Overviews and Featured Snippets use the answer from your site. The mechanism: a 40–60 word answer right after the heading, FAQPage schema, fact-density. 25.1% of Google SERPs contain an AI Overviews panel (Semrush 2025). Without AEO you lose traffic even with a top 10 position."
+
+### Type 2 — how-to questions (procedures)
+
+**Example queries:** "how to optimize a site for AEO," "how to add FAQ schema," "how to measure Featured Snippets"
+
+**Answer block template:**
+
+```
+You get [the outcome you want] in [N steps / this much time].
+Key steps: [step 1], [step 2], [step 3]. [Time estimate].
+[The prerequisite — what has to be in place before you start].
+```
+
+This template is ideal for adding **HowTo schema** with a step-by-step structure — Google favors structured procedures over free-flowing prose.
+
+### Type 3 — comparison questions (X vs. Y)
+
+**Example queries:** "SEO vs. AEO," "FAQPage schema vs. HowTo schema," "Otterly vs. Profound"
+
+**Answer block template:**
+
+```
+[X] [primary function of X]. [Y] [primary function of Y]. The main
+difference is [the key distinguisher]. Use [X] when [scenario A],
+use [Y] when [scenario B]. Common ground: [what they share].
+```
+
+**Example:** "SEO is about getting your site to the top positions in the SERP. AEO is about getting a short answer into a Featured Snippet. The main difference: SEO is measured in positions, AEO in citations in the panel. Do SEO first, AEO on top of it. Common ground: indexability, FAQ schema, fact-density."
+
+### Type 4 — listicle questions (lists)
+
+**Example queries:** "best SEO tools 2026," "5 mistakes in an SEO audit," "top 10 schema types"
+
+**Answer block template:**
+
+```
+[N] [category]: [item 1], [item 2], [item 3]… The most important is
+[the highest-impact item] — [reason]. Second priority is [item 2] —
+[reason]. [Item N] [when not to use it].
+```
+
+The key: **an explicit order** by priority, not alphabetical. For a listicle-type Featured Snippet, Google picks headings with numbered items — H2/H3 structured as "1. X," "2. Y," not written as prose.
+
+### Type 5 — definitional / when questions (terminology)
+
+**Example queries:** "when do I need a lawyer," "when is local SEO enough," "what does position zero mean"
+
+**Answer block template:**
+
+```
+[Term] means [one brief definition]. Synonyms: [alternative
+spellings]. Typical context: [where you run into it]. Common
+mix-ups: [what people confuse it with]. The practical boundary:
+[when it applies and when it does not].
+```
+
+**The key for this type:** resolve the **ambiguity** — if a term has more than one meaning (like "AI Mode," which is both Google's search mode and a generic setting in plenty of other products), explain both and say which one you are using in this context.
+
+## A schema cookbook for <span class="hl">AEO</span>
+
+Structured data is no guarantee of a citation, but it clarifies the content type and the relationships between the elements on the page, and it supports consistent interpretation. For AEO it is a **strong supporting signal**, not a hard decision factor — Google and AI tools can work without schema markup, but structured data raises the odds your content gets extracted correctly. Here are 4 schema types worth having, plus the JSON-LD blocks to copy.
+
+### FAQPage schema
+
+For every page with an FAQ section. The key rule: **the questions and answers in the JSON-LD have to match the HTML exactly** — Google compares them, and a mismatch means the schema is ignored.
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between AEO and SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SEO is about getting your site to the top positions in the classic SERP. AEO is about getting a short answer straight into a Featured Snippet or the AI Overviews panel. They share a technical foundation, but the writing is different."
+      }
+    }
+  ]
+}
+```
+
+### HowTo schema
+
+For tutorials with a step-by-step structure. Google favors structured procedures over free-flowing prose.
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to optimize a site for AEO in 7 steps",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Audit your existing content for AEO",
+      "text": "For your top 20 pages, check 5 things..."
+    }
+  ]
+}
+```
+
+### QAPage schema
+
+For pages with **a single main question** (usually support, forums, knowledge bases). It differs from FAQPage in that it has one main question and multiple answers (a best answer plus alternatives).
+
+### Article schema
+
+For every blog post. Headline, description, datePublished, dateModified, author, image. Without Article schema, Google and AI tools cannot place the content as an information type at all.
+
+**Validation** before you deploy (a mandatory step):
+
+- [Google Rich Results Test](https://search.google.com/test/rich-results)
+- [Schema.org Validator](https://validator.schema.org/)
+
+There is a detailed guide to schema implementation in [Common SEO mistakes](/blog/common-seo-mistakes/).
+
+## <span class="hl">AEO Coverage Score™</span> — <strong>the 5 dimensions we score a page on</strong>
+
+This is our own framework, and we use it as a check pass on client sites — **5 dimensions, each worth 0–20 points, for a total of 0–100**. It helps you quickly identify where a page is leaving something on the table.
+
+### Dimension 1 — answer block coverage (0–20)
+
+- **20 points:** a 40–60 word answer block right after the H1, an "X is…" definition, a specific fact with attribution, a practical takeaway
+- **10–15 points:** the answer block exists but one element is missing (usually attribution or the takeaway)
+- **0–5 points:** no answer block at all, or a marketing intro instead of a definitive answer
+
+### Dimension 2 — schema density (0–20)
+
+- **20 points:** Article + FAQPage + HowTo (where relevant) in `<head>`, valid JSON-LD, mapped exactly to the HTML
+- **10–15 points:** FAQPage schema is missing or does not match the HTML exactly
+- **0–5 points:** no schema markup, or invalid JSON-LD
+
+### Dimension 3 — snippet eligibility (0–20)
+
+- **20 points:** the page is in the top 10 for its main keyword, H2/H3 headings are structured as questions, the FAQ is built on real questions, lists are numbered
+- **10–15 points:** top 10 yes, but the headings are marketing copy rather than questions
+- **0–5 points:** the page is not in the top 10, so snippet eligibility is zero
+
+### Dimension 4 — citation-readiness (0–20)
+
+- **20 points:** fact-density of 3+ per 100 words, inline source attribution, dated claims, an author profile on YMYL topics
+- **10–15 points:** the facts are there, but attribution or dating is missing
+- **0–5 points:** marketing prose with no numbers and no citations
+
+### Dimension 5 — voice-friendliness (0–20)
+
+- **20 points:** the answer reads aloud in 5–8 seconds, contains no visual references ("see the table above"), and uses everyday phrasing
+- **10–15 points:** the answer is fine as text but contains abbreviations or convoluted constructions
+- **0–5 points:** the answer is unreadable aloud — references to tables, long sentence constructions, jargon with no explanation
+
+**How to read the total score:**
+
+- **80–100:** launch-ready. The page meets most of the practical heuristics for AEO-ready content. That is not a guarantee of results, but it is a good sign that what is holding you back is no longer the page format — it is ranking, competition, or the query type.
+- **50–80:** targeted fixes. Fill in the missing dimensions rather than rewriting the whole thing.
+- **0–50:** a complete rewrite of the intro and the FAQ. As it stands, the page has limited citation potential — fix the answer structure first, then the other layers.
+
+**How to use the score:** work through 5 pages a month, score them, log them in a Google Sheet, and watch the trend. After 90 days you have a clear picture of where the investment in AEO fixes produced measurable movement.
+
+## <strong>Measuring AEO performance</strong> with <span class="hl">Search Console and a manual audit</span>
+
+A free baseline is enough for most small sites — paid tools only start to make sense once you have 20+ articles in the top 10.
+
+### What to measure in GSC
+
+**Performance → Search Appearance:**
+
+- **FAQ rich snippets** — how many impressions and clicks they get
+- **HowTo** — how many impressions and clicks
+- **Featured Snippets** — if you have them (they appear as a web result; look in Queries for high CTR)
+
+**Performance → Queries:**
+
+- Filter for **CTR under 5%** with at least 100 impressions = candidates for an AEO fix (people see you but do not click, which usually means they are taking the answer from another site's AI Overviews or snippet)
+- Filter for **positions 1–3** with low CTR = you are potentially losing clicks to the AI Overviews panel above the results
+
+**Coverage:**
+
+- Page indexability (the prerequisite for everything else)
+- Mobile usability (Google favors mobile-friendly pages for AI Overviews citations)
+
+### The manual AI Overviews audit (once a month)
+
+1. Run your top 10 keywords in Google (or top 20 for a more detailed picture)
+2. For each query, log: **AI Overviews panel shown (Y/N), your domain cited (Y/N), who else is cited**
+3. Keep a Google Sheet with the history — after 6 months you have a trend
+
+### Professional tracking — when it makes sense
+
+Investing $99–500 a month in tracking **pays off once you have a real content base** — at minimum 20+ articles in the top 10 and an active content team that will use the data to iterate.
+
+| Tool | Price | When to consider it |
+|---|---|---|
+| **Otterly AI** | $29 Lite, $99 Pro | Tracks 50+ prompts, citation share, sentiment, sources. Free tier to try it out. |
+| **Profound** | $500+/mo | Enterprise. Deeper tracking, reporting integrations, a dashboard for management. |
+| **Ahrefs Brand Radar** | included with Ahrefs | If you already pay for Ahrefs, Brand Radar is an add-on at no extra cost. |
+
+There is a detailed guide to the tools in [SEO tools](/blog/seo-tools/) and to the methodology in [Measuring SEO performance](/blog/measuring-seo-performance/).
+
+## What <strong>AEO alone won't fix</strong> — <span class="hl">the limits of the playbook</span>
+
+The AEO playbook works as an accelerator for pages that already meet the basic conditions. On its own, it will not make up for:
+
+- **The page does not rank in the top 10** — Google usually pulls Featured Snippets and AI Overviews candidates from the top 10. Without the SEO foundation (domain authority, technical SEO, link profile) the AEO playbook will not move the needle.
+- **The query is not snippet-friendly** — Google serves some queries with a different format entirely (local 3-pack, video carousel, shopping ads). No AI Overviews panel appears for them and a Featured Snippet is rare.
+- **The competition has stronger authority** — if you are up against Wikipedia, a government site, or an established player in your field, AEO structure alone will not close the gap. You need unique informational value, not just a better format.
+- **The content is commodity content** — if your article repeats what you can find in 50 other places, the AEO playbook will not save it. Featured Snippets and AI Overviews favor content with a unique contribution (original data, a specific perspective, an original framework).
+- **The query class generates AI Overviews inconsistently** — for some queries the panel shows up unpredictably (sometimes yes, sometimes no). Without a stable query class your tracking is skewed and iteration is slow.
+
+The rule: **the AEO playbook is 30% of the result; the SEO foundation, authority, and unique content are the other 70%**. If those layers are missing, AEO fixes will not work miracles. If they are in place, the AEO playbook is often what separates a page in the top 5 from a page cited in AI Overviews.
+
+## <strong>3 common mistakes</strong> that <span class="hl">kill AEO</span>
+
+<MistakeGrid>
+  <Mistake num="01" title="Over-optimizing the answer block" fix="One answer block = one main query. For 5 different queries, use 5 pages or 5 H2 sections, each with its own answer block.">
+    Some sites cram **5 keyword variants** into the first 60 words and try to cover every query at once. The result: the copy reads like a machine wrote it, Google flags it as keyword stuffing, and the snippet is ignored.
+  </Mistake>
+  <Mistake num="02" title="FAQ schema that does not match the HTML" fix="The questions and answers in the HTML and the JSON-LD have to match word for word. Validate on every deploy cycle.">
+    The most common issue in practice: **the FAQ questions in the JSON-LD differ from the text on the page** (typically a plugin pulls the data from the database while a copywriter edits the text by hand). The result: the schema is ignored.
+  </Mistake>
+  <Mistake num="03" title="Missing entity context" fix="Add source attribution to every important claim in the answer block — who says it and when (for example, a 2023 study).">
+    An answer block with no **brand or entity context** often goes unused by Google for AI Overviews. "SEO is a process that…" with no reference gives AI nothing to verify against; "a 2023 Princeton paper showed…" gives it **a fact + a source + a date**.
+  </Mistake>
+</MistakeGrid>
+
+## What to do <strong>this week, this month, this quarter</strong>
+
+**This week:**
+
+1. **An AEO audit of your top 5 pages** — run them through the AEO Coverage Score (5 dimensions, 0–100)
+2. **Identify the pages under 50** — those are candidates for an answer block rewrite
+3. **Validate your FAQPage schema** — Google Rich Results Test on your top 10 pages
+
+**This month:**
+
+1. **Rewrite the answer blocks** on your top 10 pages — 40–60 words, definition + fact + takeaway
+2. **Implement FAQPage and HowTo schema** wherever it is missing
+3. **Extend with People Also Ask** — filter low-CTR queries out of GSC and add them to your FAQ sections
+
+**This quarter:**
+
+1. **A monthly manual AI Overviews audit** — track the citation trend
+2. **Iterate on the data** — what won a Featured Snippet, where you are stuck
+3. **After 90 days**, review the movement in your AEO Coverage Scores — where the investment produced measurable results
+
+If you are not sure which strategy to tackle first, the [decision matrix](/decision-matrix/) will help you prioritize. For how the disciplines relate and the wider context, we recommend the [SEO vs. GEO vs. AEO pillar](/seo-vs-geo-vs-aeo/).
+
+## Real <strong>results</strong> in <span class="hl">practice</span>
+
+The AEO playbook has the biggest impact as part of a **combined workflow** — the SEO foundation, AEO structure, and GEO citability all at once.
+
+<Insight tone="aeo" icon="✦" label="This page as a live example of the AEO playbook">
+The article you are reading is itself an implementation of all 7 steps: a **40–60 word answer block at the top**, an **FAQ built on real questions with FAQPage schema**, **HowTo schema across 7 steps**, **fact-density** (the Princeton paper, Semrush data, Backlinko CTR), the **AEO Coverage Score** as an original framework, and **H2/H3 headings structured as questions**. Try it yourself — ask Google "how to optimize a site for AEO" or "AEO Coverage Score" and watch whether it turns up in the AI Overviews panel.
+</Insight>
+
+<Insight tone="aeo" icon="✦" label="What we actually see after 90 days of the AEO playbook">
+On some clients with **existing top 10 positions**, we see **Featured Snippet impressions grow** in GSC over 90 days after a systematic AEO pass (answer blocks + FAQ + schema + fact-density). The specific impact depends on your starting positions, the query type, and the competition — sometimes it is a few percent, sometimes a multiple. AI Overviews presence is less predictable, but on well-structured educational articles the first AI Overviews citations often appear within **1–3 months** of implementation. The key: this is not about blanket changes, it is about targeted rewrites of the intros on your top 20 pages.
+</Insight>
+
+## Where to get <strong>advice</strong> or <span class="hl">implementation help</span>
+
+The AEO playbook scales best when it is part of a **combined AI visibility audit** — not a one-off pass over 5 pages. If you run a site with **20+ URLs in the top 10** and want to know where AEO has the highest ROI, [Sniper Design offers an AEO audit](https://www.sniperdesign.cz/audity):
+
+- **What you get:** a shortlist of your top 20 pages ranked by AEO Coverage Score, a 1–10 prioritization, 3 rewritten answer blocks as a template for your team, a schema checklist for your CMS, and a GSC dashboard setup for tracking Featured Snippets and FAQ rich snippets.
+- **Who it is for:** B2B SaaS, content-driven publishers, e-commerce sites with research-driven catalogs, and consultants and agencies with 20+ articles in the top 10.
+- **When it pays off:** if you already pay for SEO content but your Featured Snippet impressions are flat, or if you see your competitors in the AI Overviews panel and never yourself.
+
+The first [consultation](https://www.sniperdesign.cz/konzultace) comes with no obligation — we go through a baseline AEO Coverage Score on 5 of your pages and tell you whether a full audit is worth it.

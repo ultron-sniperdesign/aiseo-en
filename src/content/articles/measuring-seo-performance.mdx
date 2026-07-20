@@ -1,0 +1,326 @@
+---
+title: "Measuring SEO Performance in 2026: 8 Metrics, a KPI Hierarchy, and Tools from GSC to AI Citation Tracking"
+description: "What to actually measure in SEO in 2026 — rankings, traffic, CTR, Core Web Vitals, AI citation share. KPI tiers by report audience and business type."
+answer: "Measuring SEO performance in 2026 rests on eight metrics split across four layers: visibility (rankings and CTR from GSC), traffic and engagement (sessions and behavior in GA4), site health (Core Web Vitals, indexing in the GSC Pages report, backlinks in Ahrefs), and AI presence (AI citation share via Otterly or Profound). Which metrics matter most depends on the business — a local service, a B2B lead-gen site, an online store, and a publisher all have different P0s and P1s. For a small business, free GSC + GA4 is enough; add the paid stack as specific use cases show up."
+slug: "measuring-seo-performance"
+category: "tutorial"
+tags:
+  - "mereni"
+published: "2026-05-03"
+updated: "2026-05-06"
+variant: "rich"
+keywords:
+  - "measuring seo"
+  - "seo metrics"
+  - "seo kpis"
+  - "google search console"
+  - "ga4 seo"
+  - "core web vitals"
+  - "ctr"
+  - "ai citation tracking"
+  - "seo dashboard"
+  - "seo reporting"
+faq:
+  - q: "What are the most important SEO metrics for a small business?"
+    a: "For a small business (a site under 100 pages, 1–2 people on SEO): rankings for your top 5 strategic keywords (GSC, weekly), organic traffic from Google and Bing (GA4, daily), CTR (GSC, monthly), and Core Web Vitals (PageSpeed Insights, quarterly). That's four metrics covering 80% of the insight. Backlinks and AI citation share are nice to have, but not a must until you clear 1,000 organic sessions a month."
+  - q: "How often should you check SEO metrics?"
+    a: "Keyword rankings weekly (Google changes its algorithm often, and waiting a month is too late). Organic traffic and conversions daily (so you catch drops, seasonality, and campaign effects fast). CTR and search impressions weekly to monthly. Backlinks and AI citation share monthly. Core Web Vitals and indexability quarterly, plus after any major update. Monitor anomalies with an alert in GA4 or Plausible — checking manually every day is a waste of time."
+  - q: "Is Google Search Console plus GA4 enough, or do I need a paid tool?"
+    a: "For most small and mid-size sites, GSC + GA4 covers 60–70% of the insight for free. What they don't do: competitive benchmarking (who ranks for your keywords), backlink monitoring (who links to you and to your competitors), keyword discovery (which keywords even exist), and AI citation tracking. For those four, you need a paid tool — typically Ahrefs ($29/mo) or SE Ranking ($65/mo). For AI tracking, add Otterly ($29/mo)."
+  - q: "What counts as a good CTR for organic search?"
+    a: "It depends heavily on position. A rough benchmark (Backlinko 2025, US market): position 1 = 28–30% CTR, position 2 = 15–18%, position 3 = 10–12%, positions 4–5 = 6–8%, positions 6–10 = 2–4%. If your CTR runs consistently well below what's typical for a comparable query type and SERP layout, it's worth auditing your snippet, your intent fit, and the SERP features in play — AI Overviews, ads, a map pack, or a video carousel can crush CTR without any mistake on your end. Branded queries behave differently than non-brand ones. Always read position and CTR together."
+  - q: "How do I measure AI citation share in ChatGPT and Perplexity?"
+    a: "Manually, by running prompts with your category keyword (for example, 'recommend an SEO agency for B2B SaaS') and checking whether you get cited. For reliable numbers, though, you need a dedicated tool: Otterly AI ($29/mo Lite, $99/mo Pro) tracks 50+ prompts and returns citation share, sentiment, and sources. Profound (enterprise, $500+) offers deeper tracking. The key thing: measure citation share **against your competitors**, not in absolute terms."
+  - q: "What are Core Web Vitals and how do I measure them?"
+    a: "Core Web Vitals are three user-experience metrics Google uses as a ranking signal: LCP (Largest Contentful Paint, when the main content loads, target under 2.5s), INP (Interaction to Next Paint, how fast the page responds to input, target under 200ms), and CLS (Cumulative Layout Shift, how much the page jumps around, target under 0.1). To measure them: PageSpeed Insights (free, lab plus field data from the Chrome UX Report), the GSC Core Web Vitals report (field data), and Lighthouse in Chrome DevTools (lab data). Field data matters more than lab data — it reflects real users."
+  - q: "How do I build an SEO dashboard?"
+    a: "At minimum: Looker Studio (free) connected to GSC + GA4 + Search Ads, aggregating your metrics into a single view. Four widgets: (1) the ranking trend for your top 10 keywords over the last 90 days, (2) daily organic sessions plus a year-over-year comparison, (3) your top 20 pages by organic traffic, and (4) Core Web Vitals status. Refresh daily. For an agency, something more complete: AgencyAnalytics ($59/mo) or the SE Ranking dashboard. The key thing: one dashboard for the client, one deeper one for the internal team."
+  - q: "What do I do when a keyword's rankings drop?"
+    a: "Diagnose it in four steps: (1) GSC — check whether impressions dropped too, or only position (flat impressions mean a SERP layout change, e.g. AI Overviews taking the slot); (2) GSC Coverage — is the page still indexed?; (3) Ahrefs — did a competitor move up? Are there new results in the top 10? Did you lose backlinks?; (4) PageSpeed Insights — did Core Web Vitals get worse (a new bundle, a badly optimized image)? Once you have the diagnosis, take targeted action rather than a blanket 're-optimization'. Most drops are reversible within 4–8 weeks."
+howto:
+  name: "How to build SEO measurement from scratch"
+  steps:
+    - name: "Set up GSC, GA4, and Bing Webmaster Tools"
+      text: "Day 1. Verify ownership of all three properties. Connect Google Analytics 4 to Google Search Console in the admin section (this unlocks the 'Search Console' report inside GA4). Submit sitemap.xml on all three platforms."
+    - name: "Define 5–10 strategic keywords and 5–10 pages"
+      text: "Week 1. From your keyword research, pick your top 5 primary keywords (high intent, realistic competition) plus 5–10 long-tail variants. Map 5–10 target pages to them (pillar plus cluster). This is your strategic measurement scope."
+    - name: "Set up baseline measurements"
+      text: "Weeks 1–2. Record where you are today — rankings, organic sessions, CTR, number of indexed pages, Domain Rating. This is the baseline you'll measure progress against. Without a baseline, you can't say whether you're growing or shrinking."
+    - name: "Build a Looker Studio dashboard"
+      text: "Week 2. Four widgets: the ranking trend for your top 10 keywords (90 days), daily organic sessions plus a YoY comparison, your top 20 pages by organic traffic, and Core Web Vitals status. Share a read-only link with the team. Looker Studio is free and connects to GSC and GA4."
+    - name: "Set up anomaly alerts"
+      text: "Week 3. GA4 custom insights for a day-over-day drop of 20%+ in organic sessions. GSC alerts for indexing errors. A manual PageSpeed Insights check quarterly. Without alerts, you find out about a drop a week later instead of an hour later."
+    - name: "Monthly review and iteration"
+      text: "Monthly. Once a month, review the dashboard and identify the 1–3 pages with the most upside (high impressions, low CTR = title rewrite candidates). Update the report for your client or leadership. After 90 days, run your first trend evaluation."
+---
+
+import Insight from "../../components/blocks/Insight.astro";
+import Stepper from "../../components/blocks/Stepper.astro";
+import Checklist from "../../components/blocks/Checklist.astro";
+import DoDont from "../../components/blocks/DoDont.astro";
+import Do from "../../components/blocks/Do.astro";
+import Dont from "../../components/blocks/Dont.astro";
+
+## Why <strong>measure</strong> <span class="hl">SEO performance</span> in layers
+
+The classic approach — "I track keyword rankings" — no longer cuts it. Three reasons:
+
+1. **Rankings on their own don't mean traffic.** Zero-click search and AI Overviews push click-through rates down even from top positions. You can sit at #1 and still see fewer clicks than you used to — read position and CTR together.
+2. **A growing share of answers happens outside the classic SERP.** Alongside Google, people get answers in ChatGPT, Perplexity, Gemini, and Copilot. The exact share for your market or vertical can't be reliably generalized yet — watch your server logs and, where tools are available (Otterly, Profound), a dedicated tracker.
+3. **Engagement signals are useful as diagnostics.** Bounce rate, scroll depth, and time on page are not publicly confirmed direct ranking signals — Google doesn't say it uses GA4 metrics for ranking. As a diagnostic of relevance and page quality, though, they're **very valuable**: if a page earns impressions but people leave right away, you typically have an intent, relevance, or UX problem.
+
+To get a real picture of performance, you need **three core layers of metrics** — plus an emerging fourth:
+
+- **Layer 1 — Visibility (rankings, CTR, impressions)** — where Google sees you
+- **Layer 2 — Traffic and engagement (sessions, time on page, conversions)** — what people do once they arrive
+- **Layer 3 — Health (Core Web Vitals, indexability, backlinks)** — whether the site is technically fit to hold its rankings
+- **Layer 4 — AI presence (citation share, mention rate)** — how AI engines see you (an emerging supplementary layer, not a first-tier KPI for most companies)
+
+## <span class="hl">Eight core metrics</span> with <strong>benchmarks</strong>
+
+### 1. Keyword rankings (rank tracking)
+
+**What it measures:** where you show up in Google's SERP for a specific query, in a specific location, on a specific device.
+
+**Source:** Google Search Console (free, your own rankings), Ahrefs / Semrush / SE Ranking (paid, competitive rank tracking).
+
+**Frequency:** weekly.
+
+**What good looks like:**
+- Positions 1–3 for primary keywords = top tier
+- Positions 4–10 for primary keywords = solid, but you're missing a slice of the traffic
+- Positions 11–20 = the page is relevant, but the mix of relevance, authority, internal support, and SERP appeal isn't there yet (it could be intent mismatch, thin topical coverage, SERP feature crowding, or strong competition — diagnosing it takes SERP analysis, not a mechanical "one or two signals are missing" verdict)
+- Position 21+ = needs a substantial intervention
+
+**The thing most people ignore:** track **position over time**, not a snapshot. A weekly swing of ±3 positions is normal. A downward trend over four weeks is a problem.
+
+### 2. Organic traffic (sessions from organic search)
+
+**What it measures:** how many unique sessions came in from Google and Bing organic.
+
+**Source:** Google Analytics 4 (free), Plausible ($9/mo, GDPR-friendly), Matomo (self-hosted or cloud).
+
+**Frequency:** daily (anomaly alerts), monthly (trend reporting).
+
+**What good looks like:**
+- A rising year-over-year (YoY) trend = healthy
+- A flat trend = it can mean stagnation and time for a content audit, but it can equally mean stable market share, a mature site, or a deliberate focus on lead quality over traffic growth — judge it against your business goals rather than treating it as an automatic red flag
+- Two straight months of decline = alarm, diagnose immediately
+
+**Watch out for seasonality.** B2C online stores spike in Q4; B2B SaaS dips in August and over the holidays. Always compare a month against the same month last year, not against the previous month.
+
+### 3. Click-through rate (CTR)
+
+**What it measures:** what percentage of the people who saw your page in the SERP clicked on it.
+
+**Source:** Google Search Console.
+
+**Frequency:** weekly.
+
+**Ballpark CTR by position (broad industry averages):**
+
+| Position | Ballpark CTR |
+|---|---|
+| 1 | 25–30% |
+| 2 | 14–18% |
+| 3 | 9–12% |
+| 4–5 | 5–8% |
+| 6–10 | 2–4% |
+| 11+ | under 1% |
+
+⚠️ **A caveat on using this benchmark:** CTR varies a lot by query type (informational vs. transactional), brand vs. non-brand, device, location, and SERP layout (AI Overviews, featured snippet, sitelinks). Treat the table as a **rough frame**, not a hard standard — your first comparison should be your own pages over time and by segment.
+
+**If your CTR sits well below the ballpark for your position:**
+- A generic or forgettable title tag (the most common cause)
+- A weak meta description that doesn't match intent
+- A competitor's featured snippet (skimming off the click)
+- AI Overviews answering the query (people don't need to click)
+
+**If your CTR sits well above the benchmark:** brand recognition, a strong brand, a good SERP snippet — keep doing what you're doing.
+
+### 4. Backlinks (DR/UR + referring domain count)
+
+**What it measures:** the quality and quantity of external links to your site. External links remain one of the important signals of trust, discoverability, and reputation for a URL or domain, even though their impact depends on the market, the query type, and the strength of your other signals. **Note:** DR and DA are third-party metrics (Ahrefs, Moz), not Google metrics — they're a rough proxy.
+
+**Source:** Ahrefs (DR — Domain Rating), Semrush (DA — Domain Authority), Moz (DA), Majestic (TF/CF).
+
+**Frequency:** monthly.
+
+**What good looks like:**
+- Stable DR plus a growing count of quality referring domains
+- No sudden drop-off in referring domains inside a single week — if it happens, **first check whether the tool's data changed**, whether you lost specific linking domains, or whether it's a real pattern (a recrawl or reclassification, an index outage, sites expiring, a redesign on the linking site, canonical changes). "A spam attack or a penalty" is the most dramatic explanation, but typically not the most likely one
+- A natural anchor text distribution (a mix of brand, exact match, partial match, and generic)
+
+**Note:** **link count on its own is a bad metric.** One link from an authoritative source (Forbes, a leading trade publication) is worth more than 100 links from a PBN.
+
+### 5. Core Web Vitals (LCP, INP, CLS)
+
+**What it measures:** site speed and user experience, from real users.
+
+**Source:** Google Search Console (Core Web Vitals report, field data), PageSpeed Insights (lab plus field), Lighthouse in Chrome DevTools (lab only).
+
+**Frequency:** quarterly, plus after every major release or redesign.
+
+**Targets (Google's "Good" thresholds):**
+- **LCP** (Largest Contentful Paint) — under 2.5s
+- **INP** (Interaction to Next Paint) — under 200ms (replaced FID in 2024)
+- **CLS** (Cumulative Layout Shift) — under 0.1
+
+**Note:** Core Web Vitals are one of the technical signals that can feed into how a page is assessed, **typically as a tie-breaker** between similarly strong candidates — not a standalone deciding ranking factor. They matter most where speed genuinely moves conversion (online stores, high-traffic mobile templates). Don't optimize forever chasing 99/100 — a solid 85+ is enough, and anything beyond that has diminishing ROI.
+
+### 6. Indexability (Pages report)
+
+**What it measures:** how many of your pages Google has indexed, how many have errors, and how many are excluded. Focus on **relevant URLs** rather than the absolute count of every indexed address — some pages (filters, pagination, taxonomy archives) shouldn't be indexed by definition.
+
+**Source:** Google Search Console — the Indexing / Pages report (formerly Coverage).
+
+**Frequency:** monthly, plus after every deployment of new content or sitemap update.
+
+**What to watch:**
+- **Indexed** — the number should be close to your count of relevant URLs (exclude tags, pagination, and filter URLs)
+- **Excluded — Crawled, currently not indexed** — a warning sign: Google sees the page but doesn't consider it worth indexing
+- **Excluded — Discovered, currently not indexed** — the page is in your sitemap, but Google didn't judge it worth crawling
+- **Errors** — 4xx/5xx, redirect chains, soft 404s — fix immediately
+
+### 7. Engagement metrics (time on page, scroll depth, bounce rate)
+
+**What it measures:** what people actually do on the page. Mostly useful for **internal diagnostics of content quality and intent fit** — but don't overstate their direct link to ranking. Google doesn't say it uses GA4 metrics as a ranking signal; their value lies in telling you whether a page matches user intent.
+
+**Source:** Google Analytics 4 (engagement metrics), Hotjar / Microsoft Clarity (session recordings, heatmaps).
+
+**Frequency:** monthly.
+
+**Ballpark targets for pillar content (~3,000 words):**
+- **Average time on page** — 4+ minutes
+- **Scroll depth of 75%+** — 40%+ of users
+- **Bounce rate** — roughly under 60%, but **without the context of page type and traffic source this metric doesn't tell you much**: a high bounce rate on an informational article can be perfectly normal (the user got their answer and left), while a high bounce rate on a BOFU landing page is a problem. Read it alongside a secondary metric (engaged sessions, scroll depth, conversion rate)
+- **Pages per session** — 1.8+ is the benchmark for sites with a deliberately designed content path (hub-and-spoke with cluster interlinking). For a well-answered standalone article, 1.0–1.2 can be perfectly fine
+
+### 8. AI citation share (mention rate in ChatGPT and Perplexity)
+
+**An emerging supplementary metric.** AI citation share is the percentage of relevant AI answers (ChatGPT, Perplexity, Gemini, Copilot) to a defined set of queries where your brand is cited as a source or a recommendation. Mention rate is broader — the percentage of answers where the brand is mentioned at all. **Note:** this is an experimental layer with limited reproducibility (it depends heavily on your prompt set, geolocation, personalization, model updates, and the tool's methodology). For most companies it is **not a first-tier KPI** — track it as a trend, not an exact number, and put methodological consistency ahead of the absolute value.
+
+**Source:** Otterly AI ($29/mo Lite, $99/mo Pro), Profound (enterprise, $500+).
+
+**Frequency:** monthly.
+
+**What to measure:**
+- **Mention rate** — the percentage of answers that include your brand
+- **Citation share vs. competitors** — who gets cited more often
+- **Sentiment** — whether the mention lands in a positive, neutral, or negative context
+- **Sources cited** — where AI pulls its information about you from
+
+**The key thing:** in 2026, measure AI citation share **against your competitors**, not in absolute numbers — the whole space is new and year-over-year comparisons lack context. How much this metric matters depends on whether your audience demonstrably uses AI tools when choosing — for local services and transactional online stores, it often ranks below classic SEO measurement.
+
+## <span class="hl">Priorities</span> by <strong>business type</strong>
+
+Before you go shopping for a tool stack, work out where your P0s and P1s sit for your type of project — measurement is highly contextual, and a generic list of metrics only gets you halfway:
+
+| Project type | P0 (don't start without it) | P1 (add after 30 days) | P2 (only with a real use case) |
+|---|---|---|---|
+| **Local service** | GBP Insights, GSC rankings for local keywords, organic sessions in GA4 | Local pack tracking, review growth, NAP consistency | AI mention tracking for local brand queries |
+| **B2B lead gen / SaaS** | GSC top keywords, organic sessions, **conversions (demos, trials)**, top entry pages | Brand vs. non-brand ratio in GSC, engagement on money pages | AI citation share — if your audience uses AI while choosing |
+| **E-commerce / catalog** | GSC indexing, Core Web Vitals, organic sessions, **revenue from organic in GA4** | Per-category rankings, product schema validity, CTR by SERP layout | AI citation for categories with a research phase |
+| **Publisher / blog** | Organic sessions, top pages, content freshness, indexing | Engagement (scroll depth, time on page), queries per page, CTR by position | AI citation share, AI Overviews impact |
+
+## The <span class="hl">KPI hierarchy</span> — <strong>who gets which report</strong>
+
+Not every metric belongs in every report. Here's the hierarchy by audience:
+
+<DoDont>
+  <Do title="Client / leadership (one page, monthly)">
+    Organic traffic plus a YoY comparison · conversions from organic · rankings for your top 5 strategic keywords · 2–3 highlight wins (a new top-3 ranking, a new pillar in the top 10) · one challenge and next steps
+  </Do>
+  <Dont title="What doesn't belong">
+    A raw table of 50 keywords with a 'position' column · individual Core Web Vitals scores · a list of every backlink · charts with no context · AI citation share, when the client doesn't even know the term
+  </Dont>
+</DoDont>
+
+<DoDont>
+  <Do title="Internal SEO team (dashboard, weekly)">
+    Keyword rankings per cluster · CTR per page · indexability · Core Web Vitals · backlink growth · anomaly alerts
+  </Do>
+  <Dont title="What doesn't belong">
+    Conversions (that's the marketing dashboard) · revenue (that's the sales dashboard) · brand awareness (that's PR and social)
+  </Dont>
+</DoDont>
+
+## <strong>How to build</strong> <span class="hl">SEO measurement from scratch</span>
+
+<Stepper tone="seo" steps={[
+  { title: "Set up GSC, GA4, and Bing Webmaster Tools", desc: "Day 1. Verify ownership of all three properties. Connect GA4 to GSC in the admin section (this unlocks the 'Search Console' report inside GA4). Submit sitemap.xml everywhere." },
+  { title: "Define 5–10 strategic keywords and 5–10 pages", desc: "Week 1. From your keyword research, pick your top 5 primary keywords (high intent, realistic competition) plus 5–10 long-tail terms. Map 5–10 target pages to them (pillar plus cluster)." },
+  { title: "Set up baseline measurements", desc: "Weeks 1–2. Record where you are today — rankings, organic sessions, CTR, number of indexed pages, DR. This is the baseline you'll measure progress against." },
+  { title: "Build a Looker Studio dashboard", desc: "Week 2. Four widgets: ranking trend for your top 10 keywords (90 days), daily organic sessions plus YoY, top 20 pages by organic traffic, CWV status. Share a read-only link with the team." },
+  { title: "Set up anomaly alerts", desc: "Week 3. GA4 custom insights for a day-over-day drop of 20%+ in organic sessions. GSC alerts for indexing errors. A manual PageSpeed Insights check quarterly." },
+  { title: "Monthly review and iteration", desc: "Monthly. Once a month: review the dashboard, identify the 1–3 pages with the most upside (high impressions, low CTR = title rewrite candidates). Update the report for your client or leadership." }
+]} />
+
+## Your <strong>checklist</strong> before you <span class="hl">start measuring</span>
+
+<Checklist tone="seo" items={[
+  "Google Search Console is verified for the domain (not just a URL prefix)",
+  "Google Analytics 4 is connected to GSC in the admin section",
+  "Sitemap.xml is submitted in GSC and Bing Webmaster Tools",
+  "Robots.txt doesn't block crawling of important pages (check in GSC URL Inspection)",
+  "You've defined 5–10 strategic keywords and 5–10 target pages",
+  "Baseline measurements are recorded with a date (screenshot or export)",
+  "The Looker Studio dashboard is built and shared with the team",
+  "Alerts are set for a day-over-day drop of 20%+ in organic traffic",
+  "A monthly review meeting is on the calendar (recurring)",
+  "For a paid stack: an Ahrefs or SE Ranking trial is running before you buy"
+]} />
+
+## <strong>Common mistakes</strong> in <span class="hl">SEO measurement</span>
+
+1. **Tracking keyword rankings only** — you're ignoring CTR, traffic, and engagement. You can sit at #1 and still see fewer clicks than you used to.
+2. **Reporting a snapshot instead of a trend** — "this week we're #4 for 'seo agency'" tells you nothing. What matters is the trend over 4–8 weeks and the YoY comparison.
+3. **Tracking too many keywords** — 50+ keywords in a rank tracker is noise. Watch your top 10 strategic keywords at high cadence and the rest monthly.
+4. **Ignoring seasonality** — a month-over-month comparison can look like a crash when it's a normal Q1 dip. Always check year-over-year too.
+5. **No alerts** — you find out about a 30% traffic drop a week later instead of an hour later. Set up GA4 custom insights.
+6. **Manually exporting to Excel every month** — wasted time. Looker Studio plus automation.
+7. **Mixing dashboards** — one dashboard for the client, one for the team. Mixing them ends in a report nobody reads.
+8. **Ignoring the AI layer entirely** — if your audience uses AI tools while choosing, not tracking citation share means one acquisition channel goes unmeasured. How much it matters depends on the business, though; it isn't a universal must.
+
+## Your <strong>tool stack</strong> by <span class="hl">company size</span>
+
+| Size | Stack | Monthly cost | Who runs it |
+|---|---|---|---|
+| **Solo / small business** | GSC + GA4 + PageSpeed Insights | $0 | 1 person, 2 hrs/mo |
+| **SMB (10–50 employees)** | The above + Ahrefs Starter / SE Ranking Essential | $30–65 | 1 person, 4 hrs/mo |
+| **Agency stack** | The above + Otterly Pro + AgencyAnalytics | $200–300 | 2 people, 20 hrs/mo |
+| **Enterprise** | The above + Profound + Looker Studio Pro + custom BigQuery | $1,000+ | 3+ people, full time |
+
+## <strong>Measurement</strong> in the <span class="hl">AI era</span> — what's changing
+
+In 2026, three layers get added on top of classic SEO measurement, and they carry different weight depending on the business:
+
+1. **AI citation share** — see metric #8. It's getting more important, but it isn't equally relevant to every business.
+2. **AI Overviews impact** — in some accounts and rollouts, GSC lets you track AI Overviews in the Performance report (Search appearance). Where it's available, treat it as supplementary context on performance, not a standalone KPI.
+3. **Branded vs. generic queries** — in ChatGPT and Perplexity, people tend to arrive with brand-conscious queries ("best SEO agency for B2B SaaS") rather than generic ones ("what is SEO"). Track your brand vs. non-brand ratio in GSC and in your AI tracking tools — especially for B2B SaaS and premium brands, where the decision path is longer.
+
+<Insight tone="seo" icon="!" label="Strategic note">
+  AI citation tracking makes sense mainly where **your audience demonstrably uses AI tools while choosing** (B2B SaaS, premium products, technical or specialist product lines). For local services and transactional online stores, it often ranks below classic measurement and conversion tracking. Start by working out whether the AI layer matches your buying cycle — then invest in tracking.
+</Insight>
+
+## Where to <strong>get advice</strong>
+
+This site is run by **[Sniper Design](https://www.sniperdesign.cz/)** — if you're wrestling with a specific pain point in measurement and reporting, here's what we do:
+
+- **If you have data but no clear KPI hierarchy** — an audit of your measurement framework, a proposed KPI structure by business type, and a clean split between the team dashboard and the management report
+- **If you report on SEO but leadership can't see the business impact** — translating SEO metrics into business outcomes (lead gen, assisted conversions, brand search lift), with a clear hierarchy for the management view
+- **If you want to separate the team dashboard from the management report** — a two-view architecture: an SEO team view (day-to-day operations) plus a management view (quarterly business impact)
+- **Implementation** — a Looker Studio dashboard on top of GSC and GA4, automated monthly reporting, and anomaly alerts
+
+The first consultation is no-obligation — we'll go through your actual measurement setup, not a generic methodology.
+
+## <strong>Sources</strong> and <span class="hl">further reading</span>
+
+- **[SEO — pillar section](/seo/)** — context on classic SEO and where measurement fits
+- **[SEO tools](/blog/seo-tools/)** — Ahrefs vs. Semrush vs. SE Ranking in detail, plus AI tracking tools
+- **[SEO audit — what to check once a year](/blog/seo-audit-checklist/)** — measurement as part of the annual audit
+- **[How to structure pillar content](/blog/how-to-structure-pillar-content/)** — engagement metrics for long-form
+- **Google Search Console** — `search.google.com/search-console`
+- **Google Analytics 4** — `analytics.google.com`
+- **Looker Studio** — `lookerstudio.google.com` (free dashboarding)
+- **PageSpeed Insights** — `pagespeed.web.dev`

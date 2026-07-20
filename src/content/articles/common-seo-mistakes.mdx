@@ -1,0 +1,313 @@
+---
+title: "Common SEO Mistakes in 2026 (Update): 12 Errors That Quietly Stall Your Results"
+seoTitle: "SEO Mistakes 2026: 12 Errors That Quietly Stall Results"
+description: "An updated rundown of 2026 SEO mistakes — keyword stuffing, intent mismatch, technical debt, ignoring brand. Softened claims, added prioritization."
+answer: "An updated list of common SEO mistakes in 2026: keyword stuffing, thin content, technical debt (Core Web Vitals, indexability), orphan pages, spammy backlinks, ignoring the AI era, poor search intent matching, generic content with no trust signals, measuring nothing but rankings, neglected content updates, ignoring brand as a ranking factor, and the 'do everything' mentality with no prioritization."
+slug: "common-seo-mistakes"
+category: "analysis"
+tags:
+  - "strategie"
+  - "audit-nastroje"
+published: "2026-05-06"
+updated: "2026-05-06"
+variant: "rich"
+keywords:
+  - "common seo mistakes"
+  - "seo mistakes"
+  - "keyword stuffing"
+  - "thin content"
+  - "spammy backlinks"
+  - "core web vitals"
+  - "e-e-a-t"
+  - "search intent"
+  - "helpful content update"
+  - "ai citation share"
+faq:
+  - q: "How many SEO mistakes is a site owner typically unaware of?"
+    a: "In the audits we run at Sniper Design, we typically find several of these 12 mistakes on sites that have been live for 3+ years and 'work' — most often in the technical layer, internal linking, and content/intent mapping. The recurring problems are ignored technical SEO (Core Web Vitals, indexing errors), thin content on online store category pages, and no measurement of visibility outside the classic SERP. Owners usually don't notice until organic traffic drops noticeably — typically after a Google core update."
+  - q: "Is keyword stuffing even a real problem in 2026?"
+    a: "Yes, but in a hidden form. Nobody writes 'buy cheap cars Denver Denver car deals Denver' anymore. What we still see: 1) repeating the primary keyword in every H2 and H3, 2) AI-generated content with unnatural phrasing (for example '...the best SEO services for your SEO needs in the SEO space...'), 3) keyword cramming in the meta description. Google's Helpful Content Update and SpamBrain both detect it and push rankings down."
+  - q: "How do I know if my site has thin content?"
+    a: "Three signals read in context (none of them is a verdict on its own): (1) average article length is far shorter than the top 10 in the SERP, (2) low average engagement time, which has to be read against the query type — a quick navigational query answered fast is not a problem in itself, (3) in Ahrefs or SE Ranking, a low count of long-tail keywords in the top 10 (each page ranks for 1–2 keywords instead of 10–20). Longer pillar articles often work well for strategic informational topics, but length alone doesn't decide anything — coverage completeness and relevance to the SERP matter more. More details are in the separate guide to structuring pillar content."
+  - q: "What's the worst kind of backlink in 2026?"
+    a: "A bought link from a PBN (Private Blog Network) — a network of domains built artificially for link building. Google Penguin (2012) and today's SpamBrain identify them with high accuracy through pattern detection (same hosting, same content tool, similar anchor text patterns). The penalty tends to be either manual (a review in GSC) or algorithmic (a ranking drop). The best defense: no bought links, content marketing and PR instead."
+  - q: "What's the minimum technical SEO a site has to get right today?"
+    a: "Seven items: (1) Core Web Vitals in the green (LCP under 2.5 s, INP under 200 ms, CLS under 0.1), (2) sitemap.xml submitted in GSC and Bing Webmaster Tools, (3) robots.txt not blocking crawl of important pages, (4) a canonical URL on every page, (5) HTTPS with a valid certificate, (6) mobile-first responsive design, (7) no 4xx/5xx errors in the coverage report. If a site is failing the technical minimum, the technical layer needs to come first — that doesn't mean on-page and content should sit idle, only that they're usually not first in line."
+  - q: "What does E-E-A-T mean and when do I need to worry about it?"
+    a: "E-E-A-T stands for Experience, Expertise, Authoritativeness, Trustworthiness. Google uses it to assess content trustworthiness, mainly on YMYL topics (Your Money or Your Life — health, finance, legal, safety). For those verticals E-E-A-T is critical. For an ordinary B2B or B2C site it's closer to a nice-to-have. Concrete implementation: a visible author with a bio, citations in authoritative sources, transparent company information (registration details, address, contact info), a security policy, and a privacy policy."
+  - q: "What is poor search intent matching and how do I spot it?"
+    a: "It's when you optimize a page for a keyword where the user wants something else. Example: you optimize an online store category page for 'how to choose winter tires' (informational intent — the user wants an article or guide, not a catalog). That page has a far lower chance of breaking through, because the top 10 is all blogs, not stores. Detection: (1) look at the top 10 results for your primary keyword in Google, (2) if they're articles and you have a category page — or the other way around — that's a mismatch."
+  - q: "How often do I need to update evergreen content?"
+    a: "Pillar content once a year (rewrite outdated sections, refresh the data, check screenshots, fix broken links). Cluster articles every 12–18 months. Tutorial articles with step-by-step instructions every 6 months (tool UIs change). After every update, refresh dateModified in the Article schema plus the date in the text — Google reads that as a freshness signal. If you leave content untouched for 24+ months, organic traffic typically drops 10–20% year over year."
+  - q: "What's the biggest way sites ignore the AI era today?"
+    a: "Tracking nothing but keyword rankings in Google and saying 'we're #3 on our primary keyword, we're fine.' The 2026 reality: 15%+ of search traffic no longer flows through the classic SERP but through ChatGPT, Perplexity, Gemini, and Copilot. If your content isn't citable in AI tools (no FAQ schema, no answer block, no structured data), that slice of the audience will never find you. The minimum: track AI citation share with a tool like Otterly or Profound."
+  - q: "What is an orphan page and why does it matter?"
+    a: "An orphan page is a page with no internal links pointing to it. Google's crawlers only find it through the sitemap, and without internal links it receives no authority. The result: the page indexes poorly and ranks low. Detection: Screaming Frog or Ahrefs Site Audit will list your orphan pages. The fix: make sure every important page has at least 3 internal links from relevant related pages (typically pillar → cluster and cluster → cluster cross-linking)."
+---
+
+import Insight from "../../components/blocks/Insight.astro";
+import Compare from "../../components/blocks/Compare.astro";
+import CompareCol from "../../components/blocks/CompareCol.astro";
+import DoDont from "../../components/blocks/DoDont.astro";
+import Do from "../../components/blocks/Do.astro";
+import Dont from "../../components/blocks/Dont.astro";
+import Checklist from "../../components/blocks/Checklist.astro";
+
+
+## Why <span class="hl">SEO mistakes</span> quietly <strong>eat your rankings</strong>
+
+The classic model of SEO mistakes was simple: you keyword-stuffed → Google penalized you → your rankings tanked. In 2026, Google no longer reacts to a single trigger penalty — **the algorithm scores content holistically** across dozens of signals, and mistakes add up into a quiet decline.
+
+Three things make SEO mistakes easy to overlook:
+
+1. **No immediate drop** — a mistake usually shows up in rankings **only after the next core update** (Google ships 2–4 a year). In the meantime the site looks fine.
+2. **A downward trend instead of a crash** — if you have 3 of the 10 mistakes, organic traffic doesn't fall 50%; it slides 5–10% every quarter. It looks like "seasonality."
+3. **Your competitors are improving** — even if you're standing still, they're shipping pillar content plus AEO and GEO. You fall behind relatively, without a single technical failure.
+
+## The twelve most common <span class="hl">SEO mistakes</span> we <strong>find again and again in audits</strong>
+
+### 1. Keyword stuffing (including the hidden kind)
+
+Nobody writes classic keyword stuffing like "buy cheap cars Denver Denver car deals Denver" anymore. The hidden variants we see today:
+
+- **Repeating the primary keyword in every H2 and H3** — it reads unnaturally for users and for search engines, hurts readability, and often signals templated or AI-overgenerated copy
+- **AI-generated content with unnatural phrasing** — typically "...the best SEO services for your SEO needs in the SEO space..."
+- **Keyword cramming in the meta description** — title, meta, and H1 all carry the same phrase five times over
+
+Google's **Helpful Content Update (2022+)** and **SpamBrain** detect both. The penalty tends to be algorithmic — a slow ranking slide with no warning in GSC.
+
+### 2. Content that doesn't cover the search intent (often short)
+
+Careful with the oversimplification: **Google has never set a minimum word count.** Short content (200–500 words) **works great** for definitions, FAQs, local queries, calculators, and navigational intent. The problem starts when short content **doesn't cover the search intent behind the query** — typically on informational topics where the user wants context, examples, comparisons.
+
+Better framing than "thin content under 800 words":
+
+- **Does the content cover the whole search intent?** Pillar content needs depth; an FAQ answer can be 50 words.
+- **Do AI engines cite you?** ChatGPT and Perplexity often cite **short structured passages** (definitions, FAQ snippets) — fact density and structure matter more than word count.
+- **Long-tail traffic** — if one page ranks for 1–2 keywords while a competitor ranks for 20+, your content probably isn't covering the subtopics.
+
+**Detection:** in Ahrefs or SE Ranking, compare the long-tail keyword count of your top page against your top competitor's. If you have far fewer, **broaden the coverage** — not necessarily the word count, but the range of subtopics and the depth of the answers.
+
+<Insight tone="seo" icon="→" label="Deeper guide">
+  The complete guide to structuring pillar content (~3,000 words, the anatomy of all 5 layers, a visual blueprint) has its own article: **[How to structure pillar content](/blog/how-to-structure-pillar-content/)**.
+</Insight>
+
+### 3. Ignoring technical SEO
+
+A slow page typically hurts UX and often conversions too. For SEO, the real problem usually shows up where slowness combines with worse crawlability or weaker user signals. For AI citations the impact is indirect rather than demonstrably direct. Here are the **seven technical SEO minimums** to check before you start scaling content or link building:
+
+<Checklist tone="seo" items={[
+  "Core Web Vitals in the green (LCP under 2.5 s, INP under 200 ms, CLS under 0.1)",
+  "Sitemap.xml submitted in Google Search Console and Bing Webmaster Tools",
+  "Robots.txt doesn't block crawl of important pages",
+  "A canonical URL explicitly set on every page",
+  "HTTPS with a valid TLS certificate (Let's Encrypt at minimum)",
+  "Mobile-first responsive design (Google indexes the mobile version first)",
+  "No 4xx/5xx errors in the GSC coverage report"
+]} />
+
+Note: Core Web Vitals are a **secondary signal and a UX factor**, not a gatekeeper. Sites with terrible CWV often rank fine if the content and authority are strong. It's a **tie-breaker** that helps in competitive SERPs and improves conversions. Ignoring the technical layer doesn't pay off — but neither does overrating it.
+
+### 4. No internal link building (orphan pages)
+
+An orphan page is a page with no internal links pointing to it. Google's crawlers only find it through the sitemap, and without internal links it receives no authority. The result: the page indexes poorly and ranks low.
+
+**The rule:** every important page should have **at least 3 internal links** from relevant related pages. Pillar → cluster, cluster → cluster cross-linking, related articles below the post.
+
+**Detecting orphan pages:** Screaming Frog (free up to 500 URLs) → Internal → "Inlinks: 0" filter. Or Ahrefs Site Audit.
+
+### 5. Spammy backlinks
+
+Bought links from PBNs (Private Blog Networks), guest post farms, link exchanges. Modern Google **typically devalues spam links** (ignores them) instead of handing out manual penalties. What that costs you: the ROI of your link building, not necessarily your rankings. With massive PBNs, though, a manual penalty is still on the table.
+
+What Google picks up on:
+
+- The same hosting or IP range across source sites
+- The same CMS or content tool
+- Similar anchor text patterns (often exact match)
+- No organic traffic on the source sites
+
+<DoDont>
+  <Do>
+    **Slow but sustainable link building.** Content marketing (quality content people link to naturally), digital PR (citations in authoritative media), guest posts on **real industry blogs**, event sponsorships, industry associations. Quality over quantity holds — the specific numbers depend on your competition and niche.
+  </Do>
+  <Dont>
+    **Bought links and PBNs.** Any platform selling "X guaranteed links per month" — 99% of them are PBNs. Recovering from a manual penalty is expensive (a disavow file plus 6+ months of cleanup), even though devaluation is more common than punishment today.
+  </Dont>
+</DoDont>
+
+### 6. Ignoring the AI era (no AEO or GEO)
+
+Tracking nothing but keyword rankings in Google isn't enough in 2026. AI search is growing fast — estimates (Similarweb, Sparktoro 2025) point to a **5–15% traffic share in some verticals** (B2B tech, SaaS, consulting), while mainstream online stores are still **typically under 5%**. For most sites the SERP is still dominant, but **the trend is growing by double digits year over year**.
+
+What you can do **at no extra cost**:
+
+- **FAQ schema** (FAQPage JSON-LD) — helps AI scrapers understand your structure
+- **An answer block** (a 40–60 word definition at the top of the article) — a typical citation source
+- **Structured data** (Article, HowTo, Product schema) matched to the content type
+- **Fact density** (numbers, data, specific examples) instead of vague claims
+
+**Measuring citation share** with Otterly or Profound is an **add-on metric** — useful for mature programs with AI presence ambitions, not a requirement for a local store.
+
+### 7. Poor search intent matching
+
+You optimize a page for a keyword where the user wants something other than what you're offering.
+
+<Compare>
+  <CompareCol heading="Bad intent match" tone="bad">
+    - **Keyword:** "how to choose winter tires" (informational intent)
+    - **Your page:** an online store category page for winter tires (a transactional offer)
+    - **SERP top 10:** all blogs and guides
+    - **Result:** your page has a far lower chance of breaking through, even with a very strong domain
+  </CompareCol>
+  <CompareCol heading="Good intent match" tone="good">
+    - **Keyword:** "winter tires 195/65 R15"
+    - **Your page:** a category or product page for those tires (transactional)
+    - **SERP top 10:** stores selling that size
+    - **Result:** your page has a real shot at the top 10
+  </CompareCol>
+</Compare>
+
+**Detection:** before you optimize a new page for a keyword, look at the **top 10 in Google**. If they're articles and you have a category page — or the other way around — it's a mismatch. Change either the keyword or the page format.
+
+### 8. Generic content with no trust signals
+
+E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) **is not a direct ranking factor** — it's a concept from the **Search Quality Rater Guidelines** that Google uses to evaluate search quality. Algorithmically, Google tries to **approximate trust signals**, mainly on YMYL topics (Your Money or Your Life — health, finance, legal, safety).
+
+**Six signals that help Google approximate trustworthiness:**
+
+- **A visible author** with a bio, a photo, and a LinkedIn link on the article
+- **Citations in authoritative sources** (Wikipedia, trade media, academic sources)
+- **Transparent company information** (registration details, address, contacts, an About page)
+- **Security and privacy policy** pages
+- **Reviews and ratings** from real clients (Google Business Profile, Trustpilot)
+- **Brand mentions** in relevant communities (Reddit, industry sites)
+
+For **YMYL verticals these signals are critical** — algorithmic approximations of trust carry heavy weight. For ordinary B2B and B2C it's less dramatic, but the long-term direction is the same.
+
+### 9. Measuring nothing but rankings
+
+"We're #3, we're fine." The traditional metric. It's no longer enough in 2026 — rankings don't mean traffic, and traffic doesn't mean conversions. **The reporting minimum in 2026:**
+
+- Positions for your top 5–10 strategic keywords (GSC, weekly)
+- Organic sessions plus a year-over-year comparison (GA4, daily)
+- CTR per page (GSC, weekly)
+- Engagement (time on page, scroll depth, bounce rate — GA4)
+- AI citation share (Otterly, monthly)
+- Core Web Vitals (quarterly)
+
+<Insight tone="seo" icon="→" label="Deeper guide">
+  The complete guide to measuring SEO performance (8 metrics across 4 layers, a KPI hierarchy, a tool stack from free GSC to enterprise) has its own article: **[Measuring SEO performance](/blog/measuring-seo-performance/)**.
+</Insight>
+
+### 10. Neglecting evergreen content updates
+
+Pillar content doesn't have an infinite shelf life. Without updates, organic traffic typically falls 10–20% year over year — even though "evergreen" is supposed to mean "doesn't age." The reasons:
+
+- Google watches **freshness** (dateModified in the Article schema)
+- Competitors update and move above you
+- Real data (numbers, prices, screenshots, tool workflows) goes stale
+- Broken links pile up
+- New queries from **People Also Ask** are missing from your content
+
+**Update frequency:**
+
+| Content type | Frequency | What to update |
+|---|---|---|
+| Pillar content | Once a year | Refresh the data, rewrite outdated sections, check screenshots, fix broken links |
+| Cluster article | Every 12–18 months | Same as pillar, less intensive |
+| Tutorial article | Every 6 months | Tool UIs change — steps, screenshots, pricing |
+| News / update | No updates | Dated content; it ages out and makes room for newer pieces |
+
+After every update, refresh **dateModified in the Article schema** plus the date in the text (visibly) — Google reads that as a freshness signal.
+
+### 11. Ignoring brand and entity signals
+
+This may be the **most underrated factor** of 2026. A strong brand improves SEO mostly **indirectly**: it lifts branded demand, CTR, natural mentions, links, and user trust. Google and AI systems both find it easier to trust entities with consistent mentions, branded demand, and quality links. It isn't one isolated signal but the interplay of brand demand, authority, and reputation — and in competitive segments that interplay often has a bigger long-term impact than isolated on-page tweaks.
+
+**Brand signals that correlate with SEO performance** (their exact role as direct ranking factors isn't transparently confirmed — Google hasn't stated it explicitly, but empirical observation shows a strong correlation):
+
+- **Brand search volume** — how many people search for your brand by name in Google (you can check this in GSC)
+- **Direct traffic** — users who arrive without a search engine (typing the URL, bookmarks, app referrals)
+- **Branded anchor text** in backlinks — natural links contain the brand name
+- **Co-occurrence** — your brand mentioned alongside authorities in your field (contextual association with trusted entities)
+- **Co-citation** — your brand cited alongside the same sources as your competitors
+- **Community mentions** — Reddit, Quora, industry discussions, podcasts (even without a link)
+
+**What to do about it:**
+
+- **PR and digital PR** — citations in authoritative trade and business media in your industry
+- **Podcasts** — as a host or a guest; transcripts get indexed by AI engines
+- **Original data, analyses, and studies** — content people link to naturally
+- **Community involvement** — answering on Reddit and Quora in your field, industry conferences
+- **Consistent NAP and brand representation** across every channel (site, Google Business Profile, social)
+
+Brand matters even more in the AI era — ChatGPT and Perplexity are far more willing to cite **recognizable brands** than unknown domains, even when the on-page work is weaker.
+
+### 12. The "do everything" mentality with no prioritization
+
+The classic mistake of SEO articles (including the previous version of this one): **presenting everything as a priority at once**. In reality, a small local store doesn't need to worry about AI citation share — it needs to fix its product feeds and category pages. The senior SEO view is about **prioritizing by business context**, not about "do everything."
+
+**Practical prioritization by business type:**
+
+| Business type | Top 3 priorities | What to postpone |
+|---|---|---|
+| **Local store / service business** | Google Business Profile + NAP consistency, technical cleanup, category and product pages | AI citation share, GEO for global queries |
+| **B2B SaaS / consulting** | Pillar content + thought leadership, brand building (PR, podcasts), AI presence (citations in ChatGPT/Perplexity) | Local SEO, aggressive link building |
+| **Large online store (product catalog)** | Product feeds + structured data, technical SEO (CWV, indexability), internal linking | Pillar content at the expense of product pages |
+| **Publisher / media** | Freshness + speed, AI Overviews defense (data-nosnippet for long how-tos), distribution | Classic link building |
+| **Local B2B (trades, attorneys, doctors)** | Local SEO (GBP, reviews, NAP), service-area landing pages, branded search | AI citation share, international SEO |
+
+The rule: **3 priorities per quarter, not 12 at once**. Anything outside the first 3 is "later," not "also."
+
+## Anti-checklist: <span class="hl">12 things</span> you <strong>should have covered</strong>
+
+If you run through this list and most of the boxes are ticked, you're ahead of most of your competition. The items are framed as **positive states**, not mechanical prohibitions — context decides.
+
+<Checklist tone="seo" items={[
+  "No keyword stuffing in the body, in H1–H6, or in the meta description",
+  "Strategic topics have depth that matches the SERP and the query type (not mechanically by word count)",
+  "Core Web Vitals are in the green (checked quarterly in GSC)",
+  "No orphan pages (Screaming Frog / Ahrefs Site Audit shows 0)",
+  "The backlink profile is clean (an Ahrefs audit once a year, no demonstrably manipulative links)",
+  "Important pages carry schema matched to the content type (FAQPage only where there's a real FAQ)",
+  "Search intent matching verified before every new page (a top 10 SERP check)",
+  "A visible author, a bio, and authoritative citations on YMYL content",
+  "On content-mature sites with AI presence ambitions, extended visibility measurement outside the classic SERP is set up",
+  "Pillar content updated within the last 12 months (dateModified in the schema)",
+  "Brand search volume tracked in GSC (trending up)",
+  "3 priorities per quarter clearly defined by business context (not 'do everything')"
+]} />
+
+## What to do <strong>this week</strong> if you find mistakes
+
+1. **Days 1–2:** Audit with Screaming Frog (free up to 500 URLs) plus the GSC coverage report. Build a list of orphan pages, 4xx errors, and indexing problems.
+2. **Days 3–4:** Ahrefs Site Audit plus a backlink profile audit. Review the risky links. **Disavow mostly makes sense where the link building was demonstrably manipulative** (historical PBN campaigns, a manual action from Google) — not for every low-quality link a tool flags as spam. Google ignores most spam links on its own these days.
+3. **Day 5:** Content audit — find pages under 800 words on strategic topics. Plan which to expand into pillars, which to merge, and which to retire (301 redirect to the relevant pillar).
+4. **Weeks 2–4:** Implement the fixes by priority (P0 = technical errors blocking rankings, P1 = content gaps, P2 = optimization).
+
+## Sniper Design and SEO audits
+
+This site is run by [Sniper Design](https://www.sniperdesign.cz/). In an SEO audit we typically cover 4 things that set our approach apart from a standard checklist audit:
+
+- **An audit in 3 layers** — technical (CWV, indexability, schema validation), on-page (search intent, content depth, internal linking), off-page (backlink profile, brand and entity signals)
+- **Business prioritization** — instead of "do everything," 3 specific priorities for the first quarter based on business type (local store / B2B SaaS / publisher / local service)
+- **AI visibility built in** — citation share in ChatGPT, Perplexity, and Google's AI Overviews, not just classic rankings
+- **An action plan plus implementation under one roof** — strategy, audits, copywriting, and implementation with a single point of contact
+
+**When an audit makes sense:** the site has been flat for 6+ months despite steady content production, a redesign with no recovery, you have 100+ URLs and want prioritization, you depend on organic traffic for lead gen.
+
+**When it doesn't:** the site is new (under 6 months), you haven't nailed product/offer fit, you have no internal capacity to implement the recommendations.
+
+The first [consultation](https://www.sniperdesign.cz/konzultace) is free and non-binding.
+
+## Sources and further reading
+
+- **[SEO — pillar section](/seo/)** — the context of classic SEO, where these mistakes come from
+- **[SEO audit — what to check once a year](/blog/seo-audit-checklist/)** — the complete 3-layer audit checklist
+- **[How to structure pillar content](/blog/how-to-structure-pillar-content/)** — the opposite of thin content
+- **[Measuring SEO performance](/blog/measuring-seo-performance/)** — what to track besides rankings
+- **[SEO tools](/blog/seo-tools/)** — Ahrefs, SE Ranking, and Screaming Frog for spotting these mistakes
+- **Google Search Central — Helpful Content Update** — `developers.google.com/search/blog`
+- **Search Engine Land** — ongoing coverage of core updates and SpamBrain
+- **Backlinko** — research-driven SEO best practices

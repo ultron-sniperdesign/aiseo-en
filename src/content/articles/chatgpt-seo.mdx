@@ -1,0 +1,147 @@
+---
+title: "ChatGPT SEO: How to Get Into ChatGPT's Answers and Citations"
+description: "ChatGPT SEO step by step: crawler access, short direct answers, brand authority, third-party mentions, and measuring ChatGPT citations."
+answer: "ChatGPT SEO is the practice of optimizing your site so ChatGPT with web search can find it, understand it, and cite it in its answers. It rests on four pillars: technical access for OpenAI's search crawlers and Bing, content written as direct answers, topical authority, and mentions on third-party sites. You can't guarantee a citation, but technique, content, and authority influence it substantially."
+slug: "chatgpt-seo"
+category: "tutorial"
+tags:
+  - "ai-platformy"
+published: "2026-05-23"
+updated: "2026-05-23"
+variant: "rich"
+keywords:
+  - "chatgpt seo"
+  - "how to get into chatgpt"
+  - "chatgpt citations"
+  - "optimize for chatgpt"
+  - "gptbot"
+  - "bing indexing"
+  - "short answer"
+  - "ai visibility"
+stats:
+  - value: "6"
+    label: "signals that published analyses link to citations"
+  - value: "30 days"
+    label: "monthly check of your most important pages"
+  - value: "Bing"
+    label: "a key source for discoverability in ChatGPT"
+  - value: "$0"
+    label: "most of these steps need no paid tools"
+howto:
+  name: "How to get into ChatGPT's answers"
+  steps:
+    - name: "Be discoverable to OpenAI search and Bing"
+      text: "In robots.txt, check the rules for OAI-SearchBot and for on-demand fetching by ChatGPT-User; GPTBot is primarily a training crawler, so allowing it won't earn you citations on its own. Also verify that your site is discoverable in Bing."
+    - name: "Write short, direct answers"
+      text: "Open every section with a direct answer in 1–2 sentences, backed by specific facts, numbers, and tool names."
+    - name: "Add structured data and author details"
+      text: "Article, FAQPage, Organization, and clear author details help search engines and AI better understand the type of content, the author, and the organization behind the site."
+    - name: "Build mentions off your own site"
+      text: "A large share of AI citations comes from third-party sources; reviews, industry sites, and authentic participation in discussions (Reddit) all help — without the spam."
+    - name: "Measure citations and update"
+      text: "Test queries on ChatGPT regularly, track your share of mentions, and on topics where recency matters, recheck your data, prices, tools, and FAQs."
+faq:
+  - q: "What is ChatGPT SEO?"
+    a: "ChatGPT SEO is the practice of optimizing your site so ChatGPT with web search can find it, understand it, and cite it in its answers. It applies mainly to the ChatGPT search mode that pulls in live sources, not to answers generated from training data. It rests on technical eligibility, content written as direct answers, topical authority, and mentions on third-party sites."
+  - q: "Which OpenAI crawlers should I allow on my site?"
+    a: "For ChatGPT with search, the rules that matter most are the ones for OAI-SearchBot and for on-demand fetching by ChatGPT-User. GPTBot is primarily a training crawler, so don't treat it as the main signal of citability. Check that your robots.txt doesn't block the relevant OpenAI search crawlers and that your key pages aren't set to noindex."
+  - q: "Why does Bing matter for ChatGPT SEO?"
+    a: "Bing is one of the important sources behind how discoverable your site is in ChatGPT's AI search. That's why it's worth checking your indexing in Bing Webmaster Tools, submitting a sitemap, and clearing the technical obstacles that can keep important pages from being found."
+  - q: "Are good Google rankings enough?"
+    a: "Good Google rankings can help, but they don't guarantee citations in ChatGPT on their own. According to industry analyses, the overlap between Google results and ChatGPT citations varies by topic, language, and query type — so AI visibility needs to be worked on and measured separately."
+  - q: "How do I tell whether ChatGPT is citing me?"
+    a: "The fastest way is manual: run 15–20 queries phrased the way your customers phrase them through ChatGPT with search, and watch whether and how you're mentioned — and who shows up instead of you. For ongoing tracking, there are paid tools that measure share of mentions and citations."
+  - q: "How quickly do ChatGPT citations show up?"
+    a: "The technical steps (crawler access, Bing, structured data, direct answers) can show results in a matter of weeks. Authority and third-party mentions, though, are long-term work measured in months — so treat ChatGPT SEO as an ongoing process, not a one-time setup."
+---
+
+import Checklist from "../../components/blocks/Checklist.astro";
+import Insight from "../../components/blocks/Insight.astro";
+import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
+import Mistake from "../../components/blocks/Mistake.astro";
+
+## ChatGPT SEO: the four pillars behind every citation
+
+**ChatGPT SEO is the practice of optimizing your site so ChatGPT with web search can find it, understand it, and cite it.** It rests on four pillars: technical eligibility (your site is reachable by the crawler and indexed), content written as direct answers, topical authority, and mentions on third-party sites. This guide breaks each pillar down into specific steps.
+
+One important clarification: we're mainly talking about **ChatGPT with web search**, which pulls in live sources and shows citations — not about answers generated from training data, which you can't influence directly. And since Google rankings and ChatGPT citations only partly overlap, [AI visibility](/blog/ai-seo-audit/) needs to be worked on and measured separately.
+
+## What published analyses say increases your chance of a ChatGPT citation
+
+Public analyses from 2025–2026 keep pointing to roughly **six signals** that often correlate with citations in ChatGPT: source authority, topical match with the query, content structure, freshness, structured data, and how recognizable your brand is as an entity. This isn't an official algorithm — the signals work together, and their weight shifts with the query and the industry. Treat the numbers in this article as directional; they vary by industry, language, and query type.
+
+That gives you a practical order of work: first get into the game at all (technique), then give your content a citable shape, and only then build authority and mentions over the long haul.
+
+<Insight tone="accent" icon="!" label="Order of work">
+  Work in this order: **technique → content → authority**. Until OpenAI's search and Bing can find you, there's no point tuning the rest.
+</Insight>
+
+## Step 1: Be discoverable to OpenAI search and Bing
+
+Before you touch the content, confirm that ChatGPT can find you at all:
+
+- **Don't block OpenAI's search crawlers.** OpenAI separates its training crawler (`GPTBot`) from its search and on-demand fetch agents (`OAI-SearchBot`, `ChatGPT-User`). Overly restrictive rules in `robots.txt` can reduce the chance that ChatGPT finds and uses your content. Restricting access is a legitimate choice — just expect lower citability in return.
+- **Be discoverable in Bing.** Bing is an important reference point for discoverability in AI search. Verify your site in Bing Webmaster Tools and submit a sitemap; the IndexNow protocol helps get pages indexed faster.
+
+This layer is the foundation: without access for the relevant crawlers and without discoverability in the search sources that matter, your chances of being cited drop sharply. It also belongs in a broader [AI SEO audit](/blog/ai-seo-audit/).
+
+## Step 2: Put short answers at the top of each section
+
+Content that ChatGPT cites has one thing in common: <span class="hl">the answer comes first</span>, not buried halfway down the page.
+
+<Checklist tone="aeo" title="How to write citable content" items={[
+  { title: "A direct answer in 1–2 sentences", desc: "at the start of every section; save the context for after." },
+  { title: "Fact density", desc: "specific numbers, tool names, and procedures — generic phrasing doesn't get cited." },
+  { title: "A short answer up top", desc: "40–60 words for the page as a whole, written to make sense on its own." }
+]} />
+
+It's the same logic as [answer engine optimization (AEO)](/answer-engine-optimization/) and [pillar content](/blog/how-to-structure-pillar-content/) — write so that a single citable chunk can be lifted straight out of the page.
+
+## Step 3: Build topical authority and a recognizable entity
+
+ChatGPT citations more often go to sources that publish consistently on a topic and can be recognized as a trustworthy entity:
+
+<Checklist tone="geo" title="Building blocks of authority" items={[
+  { title: "Topical authority", desc: "regular content in your niche, not one lone article." },
+  { title: "Structured data and author", desc: "Article, FAQPage, and Organization plus clear author details help identify who stands behind the content." },
+  { title: "A consistent brand", desc: "the same name, description, and contact details across your site and your profiles." }
+]} />
+
+## Step 4: Earn mentions off your own site
+
+This is the part most companies underestimate: in plenty of AI citation analyses, **third-party sources** — reviews, industry sites, comparison platforms, and discussions — play a major role, not just the brand's own site. ChatGPT effectively "verifies" you against what other people write about you.
+
+- Industry sites, comparison platforms, and reviews that mention you.
+- Authentic participation in discussions (typically Reddit) — substantive and spam-free, not promo posts.
+- Consistent mentions of your brand name across the web.
+
+It's the slowest pillar — results are measured in months, not days. Over the long run, though, it's one of the strongest trust signals there is.
+
+## Step 5: Measure citations and repeat
+
+Without measurement you have no idea whether any of this is working:
+
+- **A manual test** — 15–20 customer queries on ChatGPT with search, and a record of whether and how you're mentioned.
+- **Share of mentions** (share of voice) against competitors on your key topics.
+- **Content updates** — on queries where recency matters, regularly refreshed content can improve your chance of being cited. For your most important pages, a monthly check makes sense: verify the data, prices, tools, procedures, and FAQs.
+
+## Common mistakes to avoid
+
+<MistakeGrid>
+  <Mistake num="01" title="An overly restrictive robots.txt" fix="Let OAI-SearchBot and ChatGPT-User through.">
+    Blocking OpenAI's search crawlers can dramatically reduce your chances of being cited.
+  </Mistake>
+  <Mistake num="02" title="Ignoring Bing" fix="Verify your site in Bing Webmaster Tools and submit a sitemap.">
+    Without discoverability in Bing, ChatGPT has a harder time reaching your content.
+  </Mistake>
+  <Mistake num="03" title="Treating Google rankings as a guarantee" fix="Measure AI citations separately.">
+    According to published analyses, Google rankings and ChatGPT citations overlap only partly.
+  </Mistake>
+  <Mistake num="04" title="A one-time setup" fix="Test and update on an ongoing basis.">
+    Without measurement and updates, citability degrades over time.
+  </Mistake>
+</MistakeGrid>
+
+## What's next: apply this to your own site
+
+ChatGPT SEO isn't one trick — it's technique, content, and authority working together. Run it in that order: confirm that OpenAI's search crawlers and Bing can reach you, rewrite the top of each section as a direct answer, and then spend the following months on authority and third-party mentions. Recheck your most important pages monthly and re-run the same customer queries, so you can see whether any of it is actually moving.

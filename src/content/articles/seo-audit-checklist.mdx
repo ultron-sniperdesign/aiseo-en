@@ -1,0 +1,156 @@
+---
+title: "SEO audit: what to check once a year and how to prioritize the findings"
+description: "A structured SEO audit in three layers. What to review, how to prioritize by site type, and when to do it yourself or hire an agency."
+answer: "An SEO audit checks three layers — technical (crawl, indexability, Core Web Vitals, mobile, HTTPS, schema), on-page (title/meta, H1–H6, internal linking, image alt, canonical) and off-page + reputation (backlink profile, anchor text, brand mentions, NAP, E-E-A-T as a trust framework). The order is a practical guide, not dogma — critical technical problems come first because they block indexing. The output: dozens of findings prioritized P0/P1/P2 by site type. Run an audit once a year, or right after a major redesign."
+slug: "seo-audit-checklist"
+category: "tutorial"
+tags:
+  - "audit-nastroje"
+published: "2026-05-02"
+updated: "2026-05-06"
+variant: "rich"
+keywords:
+  - "seo audit"
+  - "seo audit checklist"
+  - "what is an seo audit"
+  - "technical seo audit"
+  - "on-page seo audit"
+  - "off-page seo audit"
+  - "seo audit cost"
+  - "seo audit tools"
+faq:
+  - q: "What is an SEO audit and what should it cover?"
+    a: "An SEO audit is a structured diagnostic across three layers: (1) technical — crawl errors, indexability, sitemap, robots.txt, Core Web Vitals, mobile usability; (2) on-page — title/meta, H1–H6 structure, internal linking, image alt text, canonical URLs, structured data where it has real SERP eligibility; (3) off-page + reputation — backlink profile (quality, anchor text distribution, toxic links), brand mentions, author profiles, transparent company information. The output is a prioritized list of findings with an estimate of impact and effort. It makes sense to run an audit once a year, or right after a major redesign."
+  - q: "How often should you run an SEO audit?"
+    a: "The standard rhythm: a full audit once a year, a mini-audit (technical layer + Core Web Vitals) every quarter. After a major redesign or a platform migration, run one immediately so you catch any regression within the first few weeks. If an agency handles your SEO continuously, refresh the audit every six months."
+  - q: "In what order should you work through audit findings?"
+    a: "The layers have a recommended order, not a mandatory one: technical → on-page → off-page. Critical technical problems (5xx errors, a robots.txt block, noindex on key pages) come first because they limit indexing and crawling. But if nothing technical is blocking you, on-page fixes can carry more business impact than minor technical shortcomings. Within a layer, sort by impact and effort: P0 (critical, blocks crawling/indexing/availability), P1 (high impact, schedule within a month), P2 (minor optimizations, as capacity allows)."
+  - q: "Can I run an SEO audit myself?"
+    a: "It depends on the size and type of your site. Free tools (Google Search Console, PageSpeed Insights, Rich Results Test, Screaming Frog up to 500 URLs) cover the technical layer and basic on-page checks. The weak spots when you do it yourself: the backlink profile (you need a paid Ahrefs or Semrush plan) and interpreting priorities (that takes experience). For a small site under 100 pages in a low-competition niche, a DIY audit makes sense; for 500+ pages, an e-commerce site with faceted navigation, or a competitive niche, an agency is worth it."
+  - q: "How much does an agency SEO audit cost?"
+    a: "The range is wide and depends on scope and site type — the models to compare (as of 5/2026; pricing moves): a basic audit (title/meta + URL structure, a few dozen findings, a few days of work) sits at the low end. A comprehensive audit (three layers, P0/P1/P2 prioritized findings, a roadmap, a debrief call, 2–4 weeks of work) costs several times more and scales with site size. Specialized audits (page speed, UX, accessibility) fall somewhere in between. What you should always pin down before you start: the specific deliverable, the number of hours, what size site the quote assumes, and what is and isn't included. The return on an audit depends on your implementation capacity — without implementation, an audit stays a diagnostic document."
+  - q: "What tools do I need for an SEO audit?"
+    a: "The free baseline: Google Search Console (first-party data), PageSpeed Insights (Core Web Vitals), Rich Results Test (schema), Screaming Frog (free up to 500 URLs for a crawl audit). The paid stack for a deep audit: Ahrefs or Semrush (backlink profile, competitive benchmark, gap analysis) and the full version of Screaming Frog (larger crawls). For most small sites, the free baseline plus one paid backlink tool is enough."
+---
+import Checklist from "../../components/blocks/Checklist.astro";
+import Insight from "../../components/blocks/Insight.astro";
+
+## Why <strong>run</strong> an <span class="hl">SEO audit</span>
+
+An SEO audit is **diagnosis**, not implementation. The goal isn't to fix everything — it's to work out **what to fix first**, so SEO has the best shot at taking off (or at least stops sliding). Without an audit you fix problems at random and often invest in the ones that never had much impact.
+
+In 2026 it makes sense to widen the audit to cover whether your content gives **clear answers to specific intents**, whether structured data is valid where it actually has SERP eligibility, and whether your phrasing is easy to cite for [AI Overviews](/ai-seo/) and chat assistants. This doesn't replace classic on-page SEO — it's an additional check for search and AI interfaces whose impact depends on your vertical, your content type, and how a given product currently behaves (Google AI Overviews, ChatGPT, Perplexity). For some sites this layer is already worth tracking; for others the impact is still marginal and it can wait. An audit that puts it on par with classic SEO without that context will overshoot — and an audit that ignores it entirely will slowly lose coverage of signals that matter.
+
+<Insight tone="seo" icon="!" label="How often">
+  **A full audit once a year, a mini-audit every quarter** (technical layer + Core Web Vitals). After a major redesign or platform migration, run one immediately.
+</Insight>
+
+## <span class="hl">The three audit layers</span> — <strong>the order is a guide, not dogma</strong>
+
+A structured audit works through **three layers** in a recommended order:
+
+1. **Technical** — crawl, indexability, Core Web Vitals, mobile, HTTPS, [structured data](/blog/structured-data-for-ai/) where it makes sense
+2. **On-page** — title/meta, H1–H6 structure, internal linking, image alt, canonical
+3. **Off-page + reputation** — backlink profile, anchor text, [brand mentions](/blog/ai-brand-mentions/), NAP, [E-E-A-T](/blog/e-e-a-t-for-ai/) as a trust framework (not as a direct ranking factor)
+
+The order is practical, not magical: critical technical problems (5xx on key URLs, a robots.txt block, noindex where it shouldn't be) can **limit crawling or indexing**, so no amount of title/meta tweaking will help afterward. But if nothing technical is blocking you, on-page and content fixes can carry more business impact than minor technical shortcomings.
+
+Backlinks don't exist in a vacuum either: for low-competition queries and niche topics, strong content relevance can be enough even without a heavy link profile. For competitive topics, the reverse holds — weak on-page structure reduces the chance that link authority lands on the right URL and the right queries. So treat the order as a **diagnostic skeleton**, not a rigid waterfall.
+
+<Checklist tone="seo" title="1. Technical layer" items={[
+  { title: "Crawl & indexability", desc: "sitemap.xml at the root, advertised in robots.txt, valid XML; canonical pages with no conflict against noindex." },
+  { title: "Crawl errors", desc: "no 4xx/5xx on main pages (GSC Coverage report)." },
+  { title: "Core Web Vitals", desc: "LCP < 2.5 s, INP < 200 ms, CLS < 0.1 — measure field data in GSC first, not just lab data in PSI; CWV are a tie-breaker, not a primary ranking factor." },
+  { title: "Mobile-first", desc: "content available on mobile, no display: none on key elements, parity with the desktop version." },
+  { title: "HTTPS", desc: "valid TLS certificate, no mixed content warnings." },
+  { title: "Structured data (where it makes sense)", desc: "Article, Breadcrumb, Organization across the board; Product/FAQ/HowTo only where they have real SERP eligibility — test with the Rich Results Test." }
+]} />
+
+<Checklist tone="seo" title="2. On-page layer" items={[
+  { title: "Title & meta description", desc: "optimized for your top 20 pages by GSC impressions; watch for patterns with high impressions and low CTR." },
+  { title: "H1–H6 hierarchy", desc: "one clearly defined main heading and a logical H1–H6 structure; multiple H1s aren't necessarily a technical problem, but they often signal a muddled template or page structure. No keyword stuffing in subheads." },
+  { title: "Image alt text", desc: "informative images get descriptive alt text based on page context; decorative images get empty alt (alt=\"\"). Primarily accessibility and context, secondarily image search — not a ranking signal in itself." },
+  { title: "Internal linking", desc: "no orphan pages, pillar ↔ cluster relationships work, money pages have enough inbound internal links." },
+  { title: "Canonical URLs", desc: "indexable canonical pages carry a self-referencing canonical; duplicate variants, parameters, filters and pagination canonicalize according to your indexing strategy. Check for conflicts between canonical, noindex, sitemap and internal links." },
+  { title: "Open Graph + Twitter Cards", desc: "valid on every page (test with the Facebook Sharing Debugger)." }
+]} />
+
+<Checklist tone="seo" title="3. Off-page + reputation layer" items={[
+  { title: "Backlink profile", desc: "DR/UR trend in Ahrefs, follow/nofollow split, geographic distribution, no obviously manipulative or spammy link sources (PBNs, link farms, irrelevant paid placements, sitewide spam)." },
+  { title: "Anchor text distribution", desc: "diversified, not 80% exact match — that looks engineered." },
+  { title: "Brand mentions", desc: "track them in Google Alerts plus a tool like Brand24; brand search in GSC is a useful proxy for branded demand and reputation, not standalone proof of authority." },
+  { title: "NAP consistency", desc: "for a local business, across Google Business Profile, Bing Places and the major directories." },
+  { title: "E-E-A-T as a framework", desc: "author profiles where they make sense; clear contact and company information; transparent terms; cited sources; consistent information across channels. Treat E-E-A-T as an evaluation framework from the Search Quality Rater Guidelines that the algorithm approximates through proxy signals — not as an isolated ranking factor you fix by \"adding an author bio\"." }
+]} />
+
+## <strong>The audit output</strong> — how to <span class="hl">prioritize</span>
+
+On small and mid-sized sites, an audit typically ends with **dozens of findings** — the exact count depends on site size, migration history and technical debt. They don't all carry the same weight. Work with a priority scale:
+
+- **P0 — critical**: blocks crawling, indexing, availability or a core conversion flow. Examples: 5xx errors on key URLs, a robots.txt block, noindex on important pages, a broken canonical, bad redirects after a migration. Fix immediately, within a week.
+- **P1 — high impact**: a measurable shift in rankings, CTR or conversions. Examples: reworking title patterns on pages with high impressions and low CTR, filling in missing content sections based on intent, strengthening internal links to money pages, structured data where it has real SERP eligibility (Product, Breadcrumb, Organization, possibly Article — Google has scaled back FAQ rich results in recent years, and the impact depends on site type and topic). Schedule within a month.
+- **P2 — incremental optimizations**: small items that carry no impact on their own but add up to overall quality. Image lazy loading, OG card optimization, supplementary structured data. As capacity allows.
+
+**A recommended implementation rhythm:** the top 10 findings every month, a full pass in 3–6 months, a new audit after a year.
+
+## <strong>What takes priority</strong> by <span class="hl">site type</span>
+
+Site size (URL count) is a useful axis, but it isn't enough. An audit for a local law firm, a B2B SaaS, a publisher and a marketplace produces different P0/P1 priorities, even at a similar page count:
+
+| Site type | Typical P0/P1 findings |
+|---|---|
+| **Local service** (lawyer, doctor, trades) | Google Business Profile optimization, NAP consistency across directories, local landing pages, reviews, indexing of the main services. Backlinks are secondary, local signals come first. |
+| **E-commerce** (up to ~5k products) | Category indexing, faceted navigation and parameters, product feed, canonical strategy for variants, product availability, Product schema with valid price and stock. |
+| **B2B lead gen / SaaS** | Intent coverage across the buying journey (awareness → consideration → decision), money pages with conversion elements, internal links to pricing/demo, proof points (case studies, customer logos). |
+| **Publisher / blog** | Crawl budget management, article templates, internal linking, topic clusters, Article + Breadcrumb schema, content freshness. |
+| **Large catalog / marketplace** | Parameters and duplicates, pagination, log file analysis, templated title/meta at scale, indexing hygiene. |
+
+If an audit hands you a universal P0 list regardless of site type, ask for it to be re-segmented. A universal checklist is a tool, not a deliverable.
+
+<Insight tone="seo" icon="!" label="When to bring in an agency">
+  **If you have 500+ pages, faceted navigation, or strong competition in the top 10**, a DIY audit has limited value — you're missing the competitive benchmark and the interpretation of priorities in business context. What a comprehensive agency audit returns depends on your implementation capacity and site size — without implementation, measurement and prioritization, an audit stays a diagnostic document, not a guarantee of growth.
+</Insight>
+
+## Who should <strong>run</strong> the <span class="hl">SEO audit</span>
+
+| Situation | Recommendation |
+|---|---|
+| **Small site (under 100 pages), low competition, owner has the time and the appetite** | A DIY audit with free tools. You can handle the technical layer and basic on-page work; the weak spots will be the backlink profile (you need an Ahrefs/Semrush trial or paid plan) and interpreting priorities. |
+| **Mid-sized site (100–500 pages), no SEO expertise in-house** | A hybrid: an agency audit plus a roadmap, with the owner implementing over time. Keeps the cost down but gives you structure. |
+| **Large site (500+ pages), e-commerce with parameters, competitive niche** | A comprehensive agency audit. Without one you're fixing problems at random, and faceted navigation tends to be the most common source of indexing problems. |
+| **After a major redesign or platform migration** | Audit immediately, don't wait for the annual rhythm — regressions surface within the first few weeks, and that's when they're easiest to fix. |
+| **An agency already handles SEO continuously** | A refresh audit every six months, run independently (not by the same agency). |
+
+For most sites that have neglected rankings for a long time, a **combination** makes sense: a one-off agency audit plus in-house implementation against the priority list, optionally with consulting oversight at the key milestones.
+
+## How to <strong>choose</strong> an <span class="hl">audit provider</span>
+
+A specialist agency audit makes sense where your own capacity doesn't stretch to interpreting priorities or running a competitive benchmark. When you pick an agency, look for:
+
+- **Specialization in your type of site** (e-commerce vs. B2B SaaS vs. publisher have different priorities)
+- **A specific deliverable, not a generic checklist** — the audit report should rank priorities by business impact, not just list findings
+- **Data methodology** — where the agency's numbers come from (GSC, first-party data, benchmarks), so nothing is arbitrary
+- **Implementation follow-through** — an audit with no implementation support is an expensive document
+
+## What an audit <strong>won't fix</strong> (and it's good to know upfront)
+
+An audit is a diagnostic tool, not a solution. If you're weighing one up, keep your expectations realistic:
+
+- **An audit alone won't grow traffic** — without implementing the recommendations, it stays a document
+- **It won't fix your business positioning or your offer** — if the product or offer fit is weak, an audit won't repair that
+- **It doesn't replace a content strategy** — an audit identifies content gaps, but it won't do your keyword research and content plan for you
+- **It doesn't get around capacity limits** — if you don't have the in-house capacity or budget to implement the P0/P1 findings, an audit has limited value
+- **It doesn't account for external change** — a Google core update can reshape the landscape mid-year; an audit has a shelf life, not permanent validity
+
+Worth knowing upfront — an audit pays off for companies that have the capacity to implement the findings, either in-house or with a partner.
+
+## Where to <strong>get</strong> your audit done
+
+This site is run by **[Sniper Design](https://www.sniperdesign.cz/)**, an agency specializing in e-commerce (WooCommerce, Shopify) and B2B sites. If you're considering a structured SEO audit, here's the framework:
+
+- **Who an audit makes sense for:** sites after a redesign or migration, sites losing organic traffic, sites about to migrate CMS, teams facing stagnating lead gen or organic traffic, and sites with 100+ URLs and no SEO owner
+- **What you get as the deliverable:** a list of findings across 3 layers (technical / on-page / off-page), P0/P1/P2 priorities with an estimate of impact and effort, implementation notes, and a 3-month roadmap
+- **How the engagement runs:** kickoff call → 2–4 weeks of audit work → debrief call (60 min) → handover documentation
+- **What an audit doesn't normally include:** implementation, copywriting, content production, link building (unless agreed separately)
+
+The first consultation comes with no strings attached — we walk through your specific site and recommend whether a full audit, a mini-audit, or a completely different format makes sense.

@@ -1,0 +1,150 @@
+---
+title: "SEO for AI: A Practical Checklist for Where to Start"
+description: "A practical SEO checklist for the AI era: what to set up and in what order, so your site has a better shot at being found and cited in AI answers."
+answer: "SEO for AI is a practical process for preparing your site so that AI tools and traditional search engines can find it, understand it, and potentially cite it. The good news: you don't need two strategies — one well-structured, technically healthy, credible site is the shared foundation for Google and for tools like ChatGPT and Perplexity. This checklist walks you through where to start and what to tackle in what order."
+slug: "seo-for-ai-checklist"
+category: "tutorial"
+tags:
+  - "strategie"
+published: "2026-05-24"
+updated: "2026-05-24"
+variant: "rich"
+keywords:
+  - "seo for ai"
+  - "how to get started with ai seo"
+  - "ai seo checklist"
+  - "ai search"
+  - "optimizing for chatgpt"
+  - "structured data"
+  - "answer block"
+  - "ai visibility"
+stats:
+  - value: "5"
+    label: "steps in the core checklist"
+  - value: "1 foundation"
+    label: "shared by Google and AI tools"
+  - value: "2–8 weeks"
+    label: "rough window for checking technical changes"
+  - value: "$0"
+    label: "you can get started with no paid tools"
+howto:
+  name: "How to get started with SEO for AI in five steps"
+  steps:
+    - name: "Measure your starting point"
+      text: "Take a simple baseline measurement: pull your rankings and traffic, and manually check whether and how ChatGPT, Perplexity, and — on queries where it appears — Google's AI Overviews mention you. Save the exact wording of the query, the date, and the tool."
+    - name: "Open your site to AI crawlers and Bing"
+      text: "In your robots.txt, let the AI search crawlers through (for example OAI-SearchBot, PerplexityBot, and the relevant Anthropic user agents for Claude, per their current documentation) and confirm your site is discoverable in Bing."
+    - name: "Implement structured data"
+      text: "Add Article and Organization first, and FAQPage where the page has real questions and answers. Check validity in the Schema.org validator; use the Rich Results Test for the types Google supports."
+    - name: "Write citable content"
+      text: "Put a 40–60 word answer block at the top, raise your fact density, cite your sources, and demonstrate experience, expertise, authoritativeness, and trustworthiness (E-E-A-T)."
+    - name: "Measure and repeat"
+      text: "Track mentions and citations over time, update your key pages regularly, and run through the checklist again roughly every quarter."
+faq:
+  - q: "How do I get started with SEO for AI?"
+    a: "Start by measuring your starting point (an AI SEO audit), then open your site to AI search crawlers and Bing, implement basic structured data, rework your content so it's citable, and set up measurement. You don't need two separate strategies — a technically healthy, credible site is the shared foundation for Google and AI tools alike, and you layer short answers, facts, and evidence on top of it."
+  - q: "Do I need SEO and AI SEO separately?"
+    a: "No. For the most part it's one job: solid technical quality, a clear structure, readable content, and credibility help traditional search and AI tools alike. The AI layer (answer blocks, fact density, mentions elsewhere) goes on top of SEO, not instead of it."
+  - q: "What should I do first?"
+    a: "Measure where you stand. Without a starting point, you won't know whether your changes are helping. Run 15–20 customer queries through ChatGPT and Perplexity, check your rankings and traffic, and write down a baseline you can come back to."
+  - q: "How long before I see results?"
+    a: "It depends on your site's existing authority. It makes sense to check technical changes after roughly 2–8 weeks, and to evaluate content changes after one to three months. That's not a guarantee of citations in AI answers — it's a practical window for measurement."
+  - q: "Can I get started without paid tools?"
+    a: "The basics, yes. Manual queries in ChatGPT and Perplexity, the Schema.org validator for structured data, a robots.txt check, and Bing Webmaster Tools are all free. Paid tools (citation tracking) only start to pay off once you're measuring many queries and competitors on an ongoing basis."
+  - q: "Who benefits most from SEO for AI?"
+    a: "Mainly businesses whose audience uses AI tools while making decisions — B2B, consulting services, and topics with a longer decision cycle. In general: keep working traditional rankings for transactional and local queries, and treat AI citations as the higher priority on advisory, B2B, and informational topics. For any specific site, confirm the priority with your own measurement."
+---
+
+import Stepper from "../../components/blocks/Stepper.astro";
+import Insight from "../../components/blocks/Insight.astro";
+import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
+import Mistake from "../../components/blocks/Mistake.astro";
+
+## SEO for AI: where to start and what to tackle in what order
+
+**SEO for AI is a practical process for preparing your site so that AI tools and traditional search engines can find it, understand it, and potentially cite it.** This article isn't another conceptual overview — you'll find that in the pillar guide [SEO vs GEO vs AEO](/seo-vs-geo-vs-aeo/). This one is a **checklist: what to do, and in what order.**
+
+The good news up front: you don't need two separate strategies. One well-structured, technically healthy, credible site is the shared foundation for Google and for tools like ChatGPT and Perplexity. The AI layer just goes on top of it.
+
+## SEO for AI isn't a second SEO
+
+Traditional SEO and optimizing for AI overlap heavily: technical quality, a clear structure, readable content, and credibility help both. The main difference is what you're additionally aiming at — citations in AI answers alongside rankings. [SEO vs GEO](/blog/seo-vs-geo/) breaks down when each layer carries more weight.
+
+<Insight tone="accent" icon="!" label="The right order">
+  Work **technical → content → measurement**. Until AI can find you, there's no point tuning content; until you're measuring, you won't know what works.
+</Insight>
+
+Here are the five steps at a glance, with a link to the detailed guide for each one below:
+
+<Stepper tone="accent" steps={[
+  { title: "Measure your starting point", desc: "Rankings, traffic, and a manual check of mentions in AI tools." },
+  { title: "Open your site to crawlers and Bing", desc: "robots.txt for AI search crawlers, plus verifying your site in Bing." },
+  { title: "Implement structured data", desc: "Article, Organization, and FAQPage; validated through Schema.org." },
+  { title: "Write citable content", desc: "An answer block at the top, fact density, and evidence." },
+  { title: "Measure and repeat", desc: "Share of mentions, updates, and a review roughly every quarter." }
+]} />
+
+## Step 1: Measure your starting point
+
+Without a starting point, you won't know whether your changes are helping. Run a simple [AI SEO audit](/blog/ai-seo-audit/):
+
+- Run 15–20 customer queries through ChatGPT, Perplexity, and Google; for each one, save the exact wording, the date, the tool, and a screenshot of the answer (ideally with personalization off).
+- Check your queries, rankings, and traffic in Google Search Console.
+- Save the result as a baseline you can come back to.
+
+## Step 2: Open your site to AI search crawlers and Bing
+
+Before you touch content, confirm that AI can find you at all:
+
+- In your `robots.txt`, let the AI search crawlers through (for example OAI-SearchBot, PerplexityBot, and the relevant Anthropic user agents for Claude — per their current documentation); more details are in the guide to [SEO for ChatGPT](/blog/chatgpt-seo/).
+- Verify your site in **Bing Webmaster Tools** — Bing is a practical discoverability check, and it tends to be an important source for part of AI search.
+- If you'd rather limit how your content gets used, distinguish between AI search crawlers and Google; with Google's AI Overviews, the options for limiting them separately aren't the same as blocking AI search crawlers, and they can affect regular results too — the [guide to limiting AI Overviews](/blog/how-to-turn-off-ai-overviews/) covers that.
+
+## Step 3: Implement structured data
+
+Structured data (one of the [GEO](/generative-engine-optimization/) techniques) helps machines recognize the content type, the author, and the organization:
+
+- Across the site, focus on **Article** and **Organization**; use **FAQPage** only where the page really does have questions and answers.
+- Check validity in the Schema.org validator; use the **Rich Results Test** for the types Google supports.
+- Valid markup won't guarantee a citation, but it does reduce the risk that machines misread your content.
+
+## Step 4: Write citable content
+
+This is where it's decided whether AI has anything to cite. [AI SEO content](/blog/ai-seo-content/) covers it in depth; in short:
+
+- **An answer block at the top** — 40–60 words that make sense on their own.
+- **Fact density** — concrete numbers and examples instead of generic phrasing.
+- **Evidence** — cite your sources and demonstrate experience, expertise, authoritativeness, and trustworthiness (E-E-A-T).
+
+## Step 5: Measure and repeat
+
+SEO for AI isn't a one-time setup:
+
+- Track your **share of mentions** against competitors on key topics across [ChatGPT](/blog/chatgpt-seo/) and [Perplexity](/blog/perplexity-seo/).
+- Review your key pages regularly; on time-sensitive topics, refresh the data and examples (freshness helps there), and on evergreen content, change only what improves accuracy.
+- Run through the whole checklist again roughly every quarter.
+
+## How long before you see results
+
+It depends on your site's existing authority. As a working window, check technical changes after a few weeks and evaluate content changes after one to three months. It's not a guarantee of citations in AI answers, but it is a practical framework for measurement.
+
+## Common mistakes at the start
+
+<MistakeGrid>
+  <Mistake num="01" title="Two separate strategies" fix="Create one set of content for Google and AI.">
+    SEO and the AI layer overlap heavily — don't build them separately.
+  </Mistake>
+  <Mistake num="02" title="Skipping measurement" fix="Save a baseline first.">
+    Without a starting point, you won't know whether your changes are helping.
+  </Mistake>
+  <Mistake num="03" title="Blocked crawlers or no Bing" fix="Check robots.txt and verify your site in Bing.">
+    If the AI search crawlers can't find you, you won't make it into the answers.
+  </Mistake>
+  <Mistake num="04" title="Content with no answer block and no facts" fix="Put the answer at the top and add concrete facts.">
+    Vague copy gives AI nothing to cite.
+  </Mistake>
+</MistakeGrid>
+
+## What's next: apply the checklist to your own site
+
+This checklist is an entry map. The next step is turning it into specific templates for your homepage, product pages, and articles — and the fastest way to find out what to fix first is to run step 1 and measure where you actually stand.
