@@ -1,0 +1,207 @@
+---
+title: "Reviews and ratings for AI: a citable signal"
+description: "Reviews are usually the most valuable text on a product page that the seller didn't write. How to collect them, mark them up, and mine them properly."
+answer: "Reviews give an online store a source of text the seller didn't write: they carry customers' own phrasing and answer questions a product description never reaches. To be eligible for a rich result with a rating, you have to mark them up with structured data, keep them visible on the page, and collect them directly from users."
+slug: "reviews-and-ratings-for-ai"
+category: "tutorial"
+tags:
+  - "eshopy"
+  - "duveryhodnost"
+published: "2026-07-18"
+updated: "2026-07-18"
+keywords:
+  - "reviews for ai"
+  - "product rating schema"
+  - "aggregaterating"
+  - "ecommerce reviews seo"
+  - "star ratings in search results"
+variant: "rich"
+stats:
+  - value: "outside voice"
+    label: "reviews are usually the most valuable content on a product page that neither the seller nor the manufacturer wrote"
+  - value: "self ≠ eligible"
+    label: "for Organization and LocalBusiness: reviews about yourself that you control are not eligible for star ratings"
+  - value: "visible only"
+    label: "you can only mark up reviews that are genuinely readable on the page"
+  - value: "no scraping"
+    label: "Google states that reviews and ratings from other sites should not be aggregated"
+howto:
+  name: "How to turn reviews into a usable signal"
+  steps:
+    - name: "Collect ratings from real customers"
+      text: "Google states that ratings should come directly from users. Reach out after delivery, tie the request to a specific order, and never force a score. Verified purchase is also a practical way to keep fake reviews out."
+    - name: "Be clear about what you are marking up"
+      text: "Reviews of a product you sell get marked up on the Product type. Watch out for ratings of the business as a whole (the Organization and LocalBusiness types): if the entity being rated controls the reviews about itself, Google says its pages are not eligible for star ratings. The route runs through product reviews, not through your store's own score on your own site."
+    - name: "Mark up only what is visible"
+      text: "Google requires the marked-up review content to be readily available to read on the page. Structured data should describe a visible rating, not supply a number that appears nowhere on the page."
+    - name: "Fill in the required properties"
+      text: "AggregateRating needs ratingValue, at least one of ratingCount or reviewCount, and a link to the rated item through itemReviewed with a name; when it is nested under Product, the link and the name are inherited from the parent. An individual review also needs author and reviewRating with a value. The author name should be under one hundred characters."
+    - name: "Mine the text, not just the number"
+      text: "An average score is a single data point. What matters more is what keeps coming up in the reviews: what customers complain about, what they use the product for, what surprised them. Summarize that in a standalone passage in your own words and leave the original reviews below it."
+faq:
+  - q: "Why are reviews more interesting to AI than a product description?"
+    a: "Because the seller didn't write them. A manufacturer's description sits on your competitors' sites too, so it adds nothing distinctive to a comparison. Reviews carry customers' own phrasing — the language people actually use when they ask about a product — and they cover the granular questions a description never reaches: how it fits, how long it lasts, what to watch out for."
+  - q: "Can I mark up my own store's rating?"
+    a: "Not for star ratings on your own business. For the Organization and LocalBusiness types, Google states that if the entity being rated controls the reviews about itself, its pages are not eligible for this feature. What is worth marking up are reviews of the products you sell; don't treat your own company score on your own site as eligible material."
+  - q: "Can I use reviews from a review platform or another site?"
+    a: "No. Google explicitly states that reviews and ratings from other sites should not be aggregated. Pulling a score off Trustpilot or Google Reviews and marking it up as your own breaks the rules. Collect your own reviews from your own customers."
+  - q: "What does structured data for a rating have to include?"
+    a: "An aggregate rating needs a value, at least one of a rating count or a review count, and an indication of what is being rated, including its name. An individual review adds an author, the rated item, and a rating value; the name has to be on the rated item or on the parent. The author name should be under one hundred characters."
+  - q: "Is it enough to add structured data for a number that isn't on the page?"
+    a: "No. Google requires the marked-up review content to be readily available on the page. The data should describe what a visitor sees. Marking up a rating that appears nowhere on the page is a contradiction between your data and your content, not a clever shortcut."
+  - q: "Does structured data guarantee star ratings in the results?"
+    a: "No. Meeting the requirements makes a page eligible, not displayed. Whether the rating shows up in a result is the search engine's call. The main value of reviews is somewhere else anyway: they are material that says something about the product the seller could never write."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Reviews give an online store a source of text the seller didn't write:** they carry customers' own phrasing and answer questions a product description never reaches. To be eligible for a rich result with a rating, you have to mark them up with structured data, keep them visible on the page, and collect them directly from users.
+
+On a product page, most of the text comes from the seller or the manufacturer. Reviews are the exception — and that is exactly what makes them interesting.
+
+## Why reviews carry more weight than the description
+
+Your competitors have the manufacturer's description too. When a store simply reuses it, it has nothing to contribute to a comparison query; the article on [AI Mode and e-commerce](/blog/ai-mode-for-ecommerce/) breaks that down.
+
+Reviews bring three things nothing else on the page does:
+
+- **Customers' own phrasing** — the language people actually use when they ask about a product.
+- **Granular questions** — how it fits, how long it lasts, what to watch out for.
+- **An independent voice** — text written by someone other than the person selling the product.
+
+## Where online stores most often get this wrong
+
+This is the most important part of the article, because it gets done wrong all the time.
+
+<Insight tone="warning">
+For ratings of the business as a whole (the Organization and LocalBusiness types), Google states that **if the entity being rated controls the reviews about itself, its pages are not eligible for star ratings in the result.** In practice: your own store score, marked up on your own site as a company rating, does not lead to stars. The legitimate route is reviews of the **products** you sell.
+</Insight>
+
+<CompareTable
+  caption="What you can mark up and what you can't"
+  columns={["Approach", "Where it stands"]}
+  rows={[
+    { icon: "📦", label: "Product review", left: "A rating of a specific product on the Product type", right: "Fine — this is the intended route" },
+    { icon: "🏪", label: "Your own company score", left: "Organization/LocalBusiness under your own control", right: "Not eligible for star ratings" },
+    { icon: "🔁", label: "Reviews from another site", left: "Pulled off Trustpilot, G2, or a similar service", right: "Google states these should not be aggregated" },
+    { icon: "👻", label: "Data with no content", left: "A marked-up rating that isn't on the page", right: "Breaks the visibility requirement" },
+  ]}
+/>
+
+## How to roll reviews out step by step
+
+<Stepper
+  steps={[
+    {
+      label: "Collect",
+      title: "Ratings from real customers",
+      text: "After delivery, tied to a specific order, with no pressure on the score. Verified purchase helps keep fake reviews out.",
+    },
+    {
+      label: "Type",
+      title: "Be clear about what you are marking up",
+      text: "Product reviews, yes. Your own store score on your own site is not enough for stars.",
+    },
+    {
+      label: "Visibility",
+      title: "Mark up only what is visible",
+      text: "The marked-up content has to be readily available to read on the page.",
+    },
+    {
+      label: "Data",
+      title: "Fill in the required properties",
+      text: "A value, a rating or review count, the rated item with a name; for an individual review, an author as well.",
+    },
+    {
+      label: "Text",
+      title: "Mine the text, not just the number",
+      text: "Summarize what keeps coming up in the reviews in your own words — and leave the original ratings below it.",
+    },
+  ]}
+/>
+
+## What the markup looks like in JSON-LD
+
+An aggregate rating needs a value, at least one of a rating or review count, and a link to the rated item (`itemReviewed`) with a name. When the markup is nested under `Product`, both the link and the name come from the parent, so you don't have to state `itemReviewed`:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Ultra Gloss Paint Polish 500 ml",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": 4.6,
+    "reviewCount": 128
+  }
+}
+```
+
+An individual review also needs `author`, `itemReviewed`, and `reviewRating` with a value, and the name has to be either on `itemReviewed` or on the parent; the author name should be under one hundred characters. How structured data fits into the bigger picture is covered in the article on [structured data for AI](/blog/structured-data-for-ai/).
+
+## The most valuable part of a review isn't the number
+
+An average score is a single data point, and there is nothing interesting to cite in it. What reviews really hold are the recurring themes.
+
+When seven out of twenty reviews mention that the product runs small, that is information the manufacturer's description does not contain — and it is exactly what people ask about. Summarize themes like that in a standalone passage in your own words and leave the original ratings below it. For that passage to work when it gets pulled out of context, it follows the same rules as [passage-level writing](/blog/passage-level-writing/).
+
+## Four mistakes in review markup
+
+<MistakeGrid>
+  <Mistake number="01" title="Marking up your own company score">
+    For the Organization and LocalBusiness types the rule holds: when the entity being rated controls the reviews about itself, Google says its pages are not eligible for star ratings.
+  </Mistake>
+  <Mistake number="02" title="Pulling in someone else's reviews">
+    Google explicitly states that ratings from other sites should not be aggregated. Collect your own.
+  </Mistake>
+  <Mistake number="03" title="Data with no visible content">
+    A marked-up rating that appears nowhere on the page is a contradiction between your data and your content.
+  </Mistake>
+  <Mistake number="04" title="Fake or pressured reviews">
+    Beyond the ethical problem, it is a fraud on the customer — and when it comes out, it damages the credibility you are building everywhere else.
+  </Mistake>
+</MistakeGrid>
+
+## Where this guide stops
+
+**It doesn't guarantee stars or a citation.** Meeting the requirements makes a page eligible, not displayed; the search engine decides.
+
+**It doesn't cover the legal side.** Collecting and publishing reviews comes with consumer-facing rules, including how you label verified purchases. That belongs to a specialist, not to this article.
+
+**It doesn't give you an impact number.** How much reviews move AI visibility is not publicly documented.
+
+<DoDont
+  doTitle="Do"
+  dontTitle="Don't"
+  doItems={[
+    "Collect reviews from real customers with a verified purchase",
+    "Mark up reviews of the products you sell",
+    "Keep the marked-up data identical to what is visible on the page",
+    "Summarize recurring themes from the reviews in a passage of your own",
+  ]}
+  dontItems={[
+    "Mark up your own store score as grounds for star ratings",
+    "Pull ratings in from other sites",
+    "Add a rating to your data when it isn't on the page",
+    "Pressure customers into reviews or manufacture them",
+  ]}
+/>
+
+## What to take away
+
+Reviews are usually the most valuable text on a product page that the seller didn't write. That is their value — for the customer and for the content of the page alike.
+
+Technically it is simple: collect from real customers, mark up product reviews, keep the data identical to the visible content. The most common mistake is marking up your own company score and waiting for stars; for Organization and LocalBusiness under your own control, Google states the ineligibility outright.
+
+And the most valuable thing about reviews still isn't the average. It is what keeps coming up in them — the things you won't learn anywhere else on the page.
+
+---
+
+**Want to know whether your reviews are marked up correctly?** This site is run by **[Sniper Design](https://www.sniperdesign.cz/)** — an AI SEO audit walks your product pages and structured data and names what needs fixing.
+
+*Source of the rules: Google Search Central documentation on review snippets, as of July 18, 2026.*

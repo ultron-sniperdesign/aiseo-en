@@ -1,0 +1,227 @@
+---
+title: "Lighthouse Agentic Browsing: the AI check in 2026"
+description: "What Lighthouse Agentic Browsing checks in 2026, how to run the audit, and which failed checks to fix first."
+answer: "Lighthouse Agentic Browsing is a new audit category that, per the available documentation, scores how ready a page is for machine reading and agentic actions. It showed up in Lighthouse 13.3 in May 2026. It covers four areas: llms.txt, WebMCP, the accessibility tree, and layout stability (CLS). The output isn't a 0–100 score but the share of checks passed."
+slug: "lighthouse-agentic-browsing"
+category: "tutorial"
+tags:
+  - "technicke-zaklady"
+  - "audit-nastroje"
+published: "2026-06-11"
+updated: "2026-06-11"
+keywords:
+  - "lighthouse ai check"
+  - "lighthouse agentic browsing"
+  - "ai readiness audit"
+  - "lighthouse llms.txt"
+  - "lighthouse webmcp"
+variant: "rich"
+stats:
+  - value: "4"
+    label: "areas the Agentic Browsing category checks in Lighthouse 13.3"
+  - value: "13.3"
+    label: "the Lighthouse version from May 2026 where, per the available documentation, Agentic Browsing appears as its own category"
+  - value: "CLS < 0.1"
+    label: "the recommended layout stability target in Agentic Browsing and Core Web Vitals alike"
+  - value: "tens of sec"
+    label: "how long a Lighthouse audit typically takes to run in Chrome DevTools"
+howto:
+  name: "How to run a Lighthouse Agentic Browsing audit"
+  steps:
+    - name: "Open the page in Chrome and launch DevTools"
+      text: "In Chrome, open the URL you want to audit. Right-click the page and choose Inspect, or press F12. In DevTools, switch to the Lighthouse tab."
+    - name: "Pick your categories and device"
+      text: "Check Agentic Browsing along with Performance, Accessibility, Best Practices, and SEO. Pick the device (mobile or desktop) based on what you want to audit. Leave Navigation as the measurement mode."
+    - name: "Run the audit and wait"
+      text: "Click the Analyze page load button. Lighthouse opens a fresh instance of the page, walks it in an emulated environment, and scores every category you checked. The run typically takes tens of seconds, depending on your machine and how complex the page is."
+    - name: "Read the Agentic Browsing output"
+      text: "Agentic Browsing doesn't give you the usual 0 to 100 score — it gives you the share of checks passed (“3 of 4 checks passed,” for example). Every individual check expands to show what's missing and where to start fixing it."
+    - name: "Work through the fixes in priority order"
+      text: "Start with llms.txt (the cheapest fix), then the accessibility tree (names and labels) and layout stability (CLS). Leave WebMCP for last — it's the heaviest lift, and it mainly pays off for online stores and apps where an agent can actually take action."
+faq:
+  - q: "What is the Lighthouse Agentic Browsing audit?"
+    a: "A new category in Google Lighthouse alongside Performance, Accessibility, Best Practices, and SEO. It checks how ready a site is for AI agents working with the page. The audit tests four areas: whether llms.txt is present, support for the WebMCP protocol, the quality of the accessibility tree, and layout stability (CLS). Lighthouse 13.3 added it to the defaults in May 2026."
+  - q: "How does the Agentic Browsing score differ from classic Lighthouse?"
+    a: "The classic categories (Performance, SEO) use a weighted 0 to 100 score. Agentic Browsing uses the share of checks passed instead (“3 of 4 checks passed”). The category is new, and the audit still works with simpler pass/fail scoring. In practice that means every check tells you what's missing and where to start fixing it."
+  - q: "What is llms.txt and why does Lighthouse check for it?"
+    a: "llms.txt is a machine-readable summary of a site's content at the root of the domain (`https://yoursite.com/llms.txt`, for example). Lighthouse checks that it's there and has a basic structure. If the file is missing, that check fails. It's usually the cheapest fix — in most cases, a static llms.txt text file at the root of the site is enough."
+  - q: "What is WebMCP and do I have to implement it?"
+    a: "WebMCP is a frontend protocol that lets a site offer an AI agent specific actions (add to cart, submit a form, search for a product). It differs from the usual MCP servers on the backend — WebMCP runs in the user's browser. As of 2026 the standard is still experimental. It mainly pays off for online stores, booking sites, and SaaS apps where an agent can take specific actions."
+  - q: "How does Agentic Browsing relate to accessibility?"
+    a: "Per the available documentation, AI agents reading a page rely on the accessibility tree — the same structure screen readers use for blind users. Within Agentic Browsing, Lighthouse checks a specific subset of accessibility audits that matter to machines, mainly programmatically detectable names for interactive elements. Optimizing for AI agents therefore often helps your classic accessibility score too."
+  - q: "Where is the best place to run a Lighthouse audit?"
+    a: "The recommended route is Chrome DevTools (the Lighthouse tab) — it works on deployed and local sites alike, handles logged-in pages, and lets you pick categories. For publicly reachable URLs, PageSpeed Insights at pagespeed.web.dev is enough. For CI/CD pipelines there's the Lighthouse CLI. The older Chrome extensions are no longer recommended as of June 2026."
+---
+
+import Checklist from "~/components/blocks/Checklist.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Lighthouse Agentic Browsing is a new category in Google Lighthouse that, per publicly available documentation, showed up in version 13.3 in May 2026. It covers four areas that shape how tools read a page by machine: whether llms.txt is present, support for the WebMCP protocol, the quality of the accessibility tree, and layout stability (CLS).** The score isn't weighted from 0 to 100 — it shows the share of checks passed, and each one clearly reads as pass or fail. You can run the audit in Chrome DevTools, in PageSpeed Insights, or through the Lighthouse CLI (command line). This guide explains what the audit tests, how to run it, and what order to fix failed checks in.
+
+## What Lighthouse Agentic Browsing is
+
+Per publicly available documentation and release tracking, the Agentic Browsing category showed up in Lighthouse 13.3 in May 2026. It started appearing as its own category in public builds of the interface, in PageSpeed Insights over the following weeks, with the Chrome 150 DevTools integration following on. The category measures how well a site is set up for **AI agents** — tools that can read a page by machine and, in some cases, take action on it.
+
+Unlike the classic Lighthouse categories, it **doesn't use a weighted 0 to 100 score**. It shows the **share of checks passed** instead (“3 of 4 checks passed,” for example). The category is new, and the audit still works with simpler pass/fail scoring. In practice that means every check tells you what's missing and where to start fixing it.
+
+<Insight tone="key">
+Agentic Browsing isn't an extension of classic SEO or Performance. It measures something else: how well an AI agent reads the page by machine, rather than as a human visitor would.
+</Insight>
+
+## The four areas the audit checks
+
+Lighthouse Agentic Browsing tests four specific areas:
+
+<Checklist title="Checks in the Agentic Browsing category" items={[
+  { title: "llms.txt", desc: "A machine-readable summary of your content at the root of the domain (/llms.txt, for example). Lighthouse checks that it's present and has a basic structure." },
+  { title: "WebMCP", desc: "A frontend protocol that lets an agent take specific actions on the site (add to cart, submit a form). Still experimental." },
+  { title: "Accessibility tree", desc: "A specific subset of accessibility audits that matter to AI agents (programmatically detectable names, ARIA attributes)." },
+  { title: "Layout stability (CLS)", desc: "Cumulative Layout Shift — if elements move around, an agent and a visitor alike can target the wrong spot. The recommended value is CLS < 0.1." },
+]} />
+
+### 1. llms.txt
+
+A machine-readable summary of your content at the root of the domain — `https://yoursite.com/llms.txt`, for example. Lighthouse checks whether the file exists and has a basic structure. **If it's missing, that check fails.** It's usually the cheapest fix in the whole category — in most cases, a static llms.txt text file at the root of the site is enough. There's a separate [guide to llms.txt](/blog/llms-txt-guide/) for the details.
+
+### 2. WebMCP
+
+WebMCP (Web Model Context Protocol) is described in the available documentation as an experimental protocol sites use to offer agentic tools specific actions. It differs from the usual MCP servers running on the backend — WebMCP runs in the visitor's browser and describes what a tool can do on a given page (click, form, search).
+
+As of 2026 the standard is **still experimental** and only a handful of agents actively support it. Implementing it mainly makes sense for **online stores, booking sites, and SaaS apps**, where an agent can realistically take action.
+
+### 3. Accessibility tree
+
+Per the available documentation, the accessibility tree is the key data model for agentic reading of a page. Agentic tools reading a page rely on the same structure screen readers use for blind users. Lighthouse checks a specific subset of accessibility audits, mainly:
+
+- **Names and labels** — every interactive button, link, and input needs a readable description (text in the button, `aria-label` on an icon, `<label>` on an input).
+- **ARIA attributes** — correct `role`, `aria-label`, `aria-describedby`.
+
+Things like tab order and focus management relate to usability, but per the available documentation Lighthouse concentrates here mainly on names and labels and ARIA. Optimizing for AI agents **often improves your classic accessibility score too** and makes the site easier to use for people on assistive technology.
+
+### 4. Layout stability (CLS)
+
+Cumulative Layout Shift measures how much page elements move around after load. For a human visitor that means frustration (“I went to click the button and it moved”). An unstable layout can also make an action harder to complete — an agent and a user alike can target an element that has since shifted or moved.
+
+Lighthouse targets **CLS < 0.1**, the same as classic Core Web Vitals. The optimization work is shared with the Performance category.
+
+## How to run a Lighthouse audit
+
+There are three ways to run the audit. Chrome DevTools is the recommended one.
+
+<CompareTable
+  caption="Three ways to run a Lighthouse audit"
+  columns={["Chrome DevTools (recommended)", "PageSpeed Insights / CLI"]}
+  rows={[
+    { icon: "🖥️", label: "Where it runs", left: "Locally in the Chrome browser", right: "PageSpeed Insights: the pagespeed.web.dev web interface. CLI: a local Node environment." },
+    { icon: "🔐", label: "What it can audit", left: "Deployed and local URLs, logged-in pages", right: "PageSpeed: publicly reachable URLs only. CLI: local and public alike, good for CI/CD." },
+    { icon: "⚙️", label: "Category selection", left: "Pick categories, device (mobile/desktop), and mode", right: "PageSpeed: default settings. CLI: fully configurable through parameters." },
+    { icon: "📊", label: "Output", left: "An interactive report right in DevTools, with a history of previous runs", right: "PageSpeed: a web page with the report. CLI: an HTML / JSON file for archiving and CI/CD." },
+    { icon: "🎯", label: "Good for", left: "Developers, one-off audits, diagnosing a specific page", right: "PageSpeed: a quick audit of a public page with nothing to install. CLI: automation in a CI/CD pipeline." },
+  ]}
+/>
+
+<Stepper
+  steps={[
+    {
+      label: "Open the page in Chrome",
+      title: "Load the URL you want to audit",
+      text: "Open the page in Chrome. We recommend closing other tabs and extensions that could skew the results (ad blocker, password manager, screen reader). The audit should run in as clean an environment as possible.",
+    },
+    {
+      label: "Launch DevTools and pick Lighthouse",
+      title: "Open the developer tools and go to Lighthouse",
+      text: "Right-click the page and choose Inspect, or press F12. In the DevTools panel, switch to the Lighthouse tab. If you don't see it, click the two arrows on the right (More tabs) and pick it from the overflow menu.",
+    },
+    {
+      label: "Pick your categories and device",
+      title: "Check Agentic Browsing plus the other categories",
+      text: "Check every relevant category (Performance, Accessibility, Best Practices, SEO, Agentic Browsing). Pick the device (mobile for a consumer-facing site, desktop for B2B tools). Leave Navigation as the measurement mode.",
+    },
+    {
+      label: "Analyze and wait",
+      title: "Click the Analyze page load button and wait — typically tens of seconds",
+      text: "Lighthouse opens a fresh instance of the page in an isolated environment, walks it, and scores every category. Don't touch the page while the audit runs. When it finishes, you get a clear report of passed and failed checks.",
+    },
+    {
+      label: "Read the Agentic Browsing output",
+      title: "Focus on the failed checks",
+      text: "Agentic Browsing doesn't give you the usual 0 to 100 score — it gives you the share of checks passed (“3 of 4 checks passed,” for example). Every individual check expands with specifics on what's missing and how to fix it.",
+    },
+    {
+      label: "Plan the fixes by priority",
+      title: "Work from cheapest to heaviest",
+      text: "Start with llms.txt (the cheapest), then the accessibility tree (names and labels), then layout stability work (CLS). Leave WebMCP for last — it's a heavy lift, and it mainly pays off for online stores and apps where an agent can take action.",
+    },
+  ]}
+/>
+
+## What order to fix failed checks in
+
+Lighthouse Agentic Browsing hands you an immediate list of what to fix. For **the most value per hour of work**, we recommend the following order.
+
+<DoDont
+  doTitle="Fix in this order"
+  dontTitle="What to avoid"
+  doItems={[
+    "1. llms.txt — typically 5 to 30 minutes of work, high impact. A static text file at the root of the domain.",
+    "2. Accessibility tree (names and labels) — 1 to 4 hours depending on the size of the site. Helps your classic accessibility score too.",
+    "3. Layout stability (CLS) — work shared with classic Core Web Vitals. Explicit width/height on images, preloading fonts, reserving space for lazy-loaded content.",
+    "4. WebMCP — a heavy implementation, only for online stores and apps with real agent actions.",
+  ]}
+  dontItems={[
+    "Starting with WebMCP before the lighter fixes — typically a bad ratio of work to result.",
+    "Ignoring failed checks on the grounds that “it isn't a ranking factor” — they relate to how tools read the page by machine.",
+    "Optimizing for a 100% share of checks passed at any cost — some checks (WebMCP, for example) don't make sense for most sites in 2026.",
+    "Relying on Lighthouse alone — pair it with manual testing in a real AI tool that browses the web agentically.",
+  ]}
+/>
+
+<MistakeGrid>
+  <Mistake number="01" title="Auditing the homepage only">
+    Running Lighthouse on the homepage alone underrates the state of the whole site. Audit at least 3 page types: the homepage, a category or listing page, and a product or detail page. Failed checks often differ between templates.
+  </Mistake>
+  <Mistake number="02" title="Optimizing without re-running the audit">
+    Changes to llms.txt or the accessibility tree need to be verified with another audit. Without a re-run, you can't confirm the fix actually worked and that Lighthouse registered it.
+  </Mistake>
+  <Mistake number="03" title="An old version of Lighthouse">
+    If you're on anything older than Lighthouse 13.3, the Agentic Browsing category is either missing or experimental. For a relevant audit, we recommend an updated Chrome and a current version of Lighthouse.
+  </Mistake>
+  <Mistake number="04" title="Relying on PageSpeed Insights for a dev build">
+    PageSpeed Insights can only audit publicly reachable URLs. To test a dev environment or logged-in pages, you need Chrome DevTools (local Lighthouse).
+  </Mistake>
+</MistakeGrid>
+
+## What the Agentic Browsing audit won't show you
+
+Lighthouse Agentic Browsing is a useful technical audit, but **it isn't a complete AI SEO audit**. What it doesn't measure:
+
+- **Content quality** — whether your answers are useful, factual, citable.
+- **AI brand visibility** — whether AI models know about you at all and cite you.
+- **Position in AI answers** — you have to measure that analytically in ChatGPT, Perplexity, and Google AI Overviews.
+- **Deeper structured data optimization** — Lighthouse isn't a full structured data validator and doesn't address the deeper design of your markup for search or AI systems.
+
+Lighthouse Agentic Browsing is a **gateway** — if a site fails the basic checks here, that can point to weaker technical readiness for broader AI visibility and is worth digging into. The reverse holds too: a 100% share of checks passed in this category guarantees nothing about whether AI will cite you.
+
+<Insight tone="warning">
+Lighthouse Agentic Browsing is still a new category in 2026, and its weight in how AI agents actually behave isn't documented. Treat it as a useful technical signal, not a guarantee of AI visibility.
+</Insight>
+
+## Key takeaways
+
+- **Lighthouse 13.3 in May 2026** added a new **Agentic Browsing** category that checks how ready a site is for AI agents.
+- The audit tests **four areas**: llms.txt, WebMCP, the accessibility tree, and layout stability (CLS).
+- The score **isn't weighted 0 to 100** — it's the share of checks passed, with specific pass and fail signals.
+- **You can run it** in Chrome DevTools (recommended), in PageSpeed Insights, or through the Lighthouse CLI.
+- **Fix order by impact**: llms.txt → accessibility tree (names and labels) → CLS → WebMCP.
+- The audit is a **gateway**, not complete AI SEO. Pair it with measurement in real AI tools and a content strategy.
+
+---
+
+**Want to walk a Lighthouse Agentic Browsing audit step by step and fix the failed checks?** An AI SEO audit from **Sniper Design** covers your key pages, works through the failed checks in priority order, and proposes specific fixes with an estimate of their impact.
+
+*For transparency: this article draws on publicly available Chrome for Developers documentation as of June 2026 and on tracking of Lighthouse 13.3+; individual checks and their weight may change in later versions. How the content on this site is produced is described on the [author page](/author/kamil/).*
