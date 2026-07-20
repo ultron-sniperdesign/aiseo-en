@@ -1,0 +1,197 @@
+---
+title: "Site migration and redesign: how to keep your AI visibility"
+description: "A migration or redesign can cost you rankings and AI citations. Watch the URL map, 301 redirects, structured data, robots.txt, and post-launch measurement."
+answer: "A site migration or redesign is a change to your URLs, templates, or domain that risks losing indexing, rankings, and citations in AI answers. The essentials are a map of old URLs to new ones, permanent 301 redirects, structured data carried over intact, and measurement both before and after launch. With some AI tools, the changes can also take longer to show up than they do in regular search."
+slug: "migration-redesign-ai-visibility"
+category: "tutorial"
+tags:
+  - "technicke-zaklady"
+published: "2026-07-11"
+updated: "2026-07-11"
+keywords:
+  - "site migration seo"
+  - "website redesign seo"
+  - "ai visibility after migration"
+  - "301 redirects"
+  - "site migration checklist"
+variant: "rich"
+stats:
+  - value: "301"
+    label: "a permanent redirect from the old URL to the new one — not a 302, and no redirect chains"
+  - value: "1:1"
+    label: "every old URL should get its own destination, not a blanket redirect to the homepage"
+  - value: "404"
+    label: "a deleted URL with no redirect can cost you signals, visibility, and the destination for every citation you already have"
+  - value: "lag"
+    label: "with some AI tools, changes show up later than they do in regular search — plan for it"
+howto:
+  name: "How to migrate a site without losing AI visibility"
+  steps:
+    - name: "Inventory your URLs and measure your starting point"
+      text: "Export every indexed URL from Search Console, your sitemap, and a crawl of the site. Record your baseline traffic and visibility so you have something to compare against after launch."
+    - name: "Build a map of old URLs to new ones"
+      text: "Assign every old URL a specific new address with the same or very similar content. Prioritize the pages that get AI traffic or tend to be cited."
+    - name: "Deploy permanent 301 redirects"
+      text: "For a permanent migration, 301 is the right call; 302 is meant for temporary moves and can extend the period where systems hold on to the old URL. Avoid chains where one URL redirects to a second and that one to a third — a single hop to the destination is ideal."
+    - name: "Carry over structured data and check robots.txt"
+      text: "Confirm that the new template outputs the same structured data as the old one. Check robots.txt, noindex tags, and canonical URLs — a crawl or indexing block left over from staging is a common issue."
+    - name: "Submit your sitemap and measure after launch"
+      text: "Submit the new sitemap to Search Console and Bing Webmaster Tools. Then watch indexing, crawl errors, and AI traffic, and compare them against your baseline."
+faq:
+  - q: "What's at risk in a site migration or redesign?"
+    a: "A migration changes URLs, templates, or the domain, which means search engines and many AI tools end up working with different addresses and templates than before. You risk losing indexing and rankings, and in the AI era you also risk losing the foundation for citations: many AI tools link to specific URLs, and when one stops working, the citation loses its destination."
+  - q: "Why use a 301 instead of a 302?"
+    a: "A 301 redirect signals a permanent change; a 302 signals a temporary one. A migration is permanent, so a 301 tells search engines clearly that the new URL replaces the old one. A temporary 302 can leave systems holding on to the original address, which drags out the ambiguity for no reason."
+  - q: "Can I delete the old URLs eventually?"
+    a: "It's better to leave the redirects running long term. AI systems ingested your content earlier and can point at an old URL well after the fact. As long as the redirect works, the visitor lands on the right page. Kill the URL and that citation becomes a link to a broken page."
+  - q: "How fast does a migration show up in AI answers?"
+    a: "Expect a lag. Regular search usually processes changes relatively quickly, but with some AI tools the changes can surface later, and the pace varies from tool to tool. So for a while, AI may keep pointing at your old URLs. That's one more reason to keep the redirects working."
+  - q: "What should I check right after launch?"
+    a: "Start with robots.txt, noindex tags, and canonical URLs, because a crawl block, an indexing block, or a pointer to the staging domain often survives the move. Then confirm the redirects work and no 404s are piling up, and submit your sitemap. Finally, track indexing and AI traffic against your baseline."
+  - q: "Can I rewrite the content during a redesign?"
+    a: "You can, but you make evaluation harder on yourself. When URLs, templates, and copy all change at once, you won't be able to tell what caused a drop if one happens. Separate the steps if you can: migrate first with the content intact, confirm everything is healthy, and only then rework the copy."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**A site migration or redesign is a change to your URLs, templates, or domain that risks losing indexing, rankings, and citations in AI answers.** The essentials are a map of old URLs to new ones, permanent 301 redirects, structured data carried over intact, and measurement both before and after launch. This guide covers what to watch before, during, and after a migration — including confirming that old URLs still lead to matching content and that the new build hasn't blocked crawling or indexing.
+
+## What migrations add in the AI era
+
+Classic SEO migration work watches indexing and rankings: redirects, sitemaps, internal links. That still holds. But there's a new layer on top.
+
+Many AI tools cite **specific URLs** or source pages in their answers. When a URL changes and the old one stops working, the citation loses its destination. On top of that, these tools ingested your content earlier and refresh on **their own schedule** — with some of them, changes surface later than they do in regular search, and the pace varies from tool to tool. So for a while, AI may point at URLs you no longer have — and whether the visitor lands on the right page or on an error comes down to your redirects.
+
+<CompareTable
+  caption="What to watch in a migration: the classic layer and what AI adds"
+  columns={["Area", "What to watch for"]}
+  rows={[
+    { icon: "🔀", label: "Redirects", left: "Classic SEO", right: "A 1:1 map, permanent 301s, no chains and no blanket redirect to the homepage" },
+    { icon: "🔗", label: "Cited URLs", left: "AI layer", right: "Many AI tools link to specific URLs — those should stay reachable after the migration" },
+    { icon: "🧩", label: "Structured data", left: "Both", right: "The new template often forgets to carry it over" },
+    { icon: "🤖", label: "robots.txt and noindex", left: "Both", right: "A crawl or indexing block left over from staging is a classic post-launch mistake" },
+    { icon: "⏳", label: "Refresh cadence", left: "AI layer", right: "With some AI tools, changes surface later and less predictably" },
+  ]}
+/>
+
+<Insight tone="key">
+One of the most expensive migration mistakes is an old URL that returns a 404. You lose the ranking, and you lose the foundation for every citation in AI answers that points at it. That's why redirects need to run long term, not just for a few weeks.
+</Insight>
+
+## Before the migration: what to prepare
+
+Most problems come down to nobody measuring the starting point. Without it, you can't tell after launch whether a drop is real.
+
+<Checklist
+  items={[
+    { title: "URL inventory", desc: "Export every indexed URL from Search Console, your sitemap, and a crawl of the site." },
+    { title: "Measurement baseline", desc: "Record traffic, indexing, and visibility before the migration — otherwise you'll have nothing to compare against." },
+    { title: "Prioritize cited pages", desc: "Find out which pages get AI traffic or tend to be cited; watch those most closely." },
+    { title: "Map of old URLs to new ones", desc: "A specific destination with matching content for every old URL — not a blanket redirect to the homepage." },
+    { title: "Back up content and data", desc: "Save the original copy and structured data so you have something to compare against after launch." },
+  ]}
+/>
+
+## The migration, step by step
+
+<Stepper
+  steps={[
+    {
+      label: "Inventory",
+      title: "Measure your baseline and export your URLs",
+      text: "Export indexed URLs from Search Console and your sitemap, and record your starting traffic and visibility.",
+    },
+    {
+      label: "Map",
+      title: "Match old URLs to new ones",
+      text: "Give every old URL a specific new address with matching content. Pages with AI traffic come first.",
+    },
+    {
+      label: "301",
+      title: "Deploy permanent redirects",
+      text: "For a permanent migration, 301 is the right call; 302 is meant for temporary moves. Avoid chains — a single hop straight to the destination is ideal.",
+    },
+    {
+      label: "Check",
+      title: "Carry over structured data and check robots.txt",
+      text: "Confirm the new template has the same structured data, and check robots.txt, noindex tags, and canonical URLs.",
+    },
+    {
+      label: "Measure",
+      title: "Submit your sitemap and track the results",
+      text: "Submit the sitemap to Search Console and Bing Webmaster Tools, and compare indexing and traffic against your baseline.",
+    },
+  ]}
+/>
+
+If you're targeting Bing as well, you can announce the URL changes through IndexNow. It can speed up discovery of the changes inside the Bing ecosystem, but on its own it won't guarantee that every signal gets rewritten quickly — more details are in the article on [Bing as a layer for AI](/blog/bing-seo-for-ai/). Settings for AI crawlers are covered in [robots.txt for AI](/blog/robots-txt-for-ai-crawlers/).
+
+## After launch: what to measure
+
+The first few days matter. Track:
+
+- **Indexing and crawl errors** — especially a spike in 404s, which points to missing redirects.
+- **Internal links and navigation** — make sure they point straight to the new URLs, not through a redirect.
+- **AI traffic** — if you track it (through custom segments or traffic sources), check whether it dropped; [AI segments in Search Console](/blog/gsc-ai-report/) help here.
+- **AI visibility, manually** — run your key queries through a [visibility test](/blog/ai-visibility-test/) and compare against the pre-migration picture.
+- **Structured data** — whether the new template actually outputs it; see [structured data for AI](/blog/structured-data-for-ai/).
+
+<Insight tone="warning">
+Don't panic over a drop in the first few days. Short-term swings after a migration are normal, and if the migration is technically sound, visibility can come back gradually. What should get your attention is 404s climbing or pages dropping out of the index in Search Console — those aren't signs of things settling, they're signs of a missing redirect.
+</Insight>
+
+## Common mistakes
+
+<MistakeGrid>
+  <Mistake number="01" title="A 404 instead of a redirect">
+    The fastest way to lose both your rankings and the foundation for AI citations. Every old URL needs a destination.
+  </Mistake>
+  <Mistake number="02" title="Everything to the homepage">
+    Redirecting old URLs to the homepage en masse can be treated as a soft 404 or an irrelevant redirect, and the relevance is lost.
+  </Mistake>
+  <Mistake number="03" title="A forgotten crawl block">
+    A line blocking crawling of the whole site survives from staging. The site is live for users, but robots.txt can stop search crawlers from crawling it.
+  </Mistake>
+  <Mistake number="04" title="Everything at once">
+    Changing URLs, templates, and copy together means you won't know what caused a drop. Separate the steps when you can.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="Do"
+  dontTitle="Avoid"
+  doItems={[
+    "Measure your baseline before the migration.",
+    "Map old URLs to new ones 1:1.",
+    "Use permanent 301 redirects with a single hop.",
+    "Carry structured data over into the new template.",
+    "Leave the redirects running long term.",
+  ]}
+  dontItems={[
+    "Deleting old URLs with no redirect.",
+    "Sending everything to the homepage en masse.",
+    "Using a 302 where the change is permanent.",
+    "Leaving a staging block in robots.txt.",
+    "Changing URLs, design, and content in one step.",
+  ]}
+/>
+
+## Key takeaways
+
+- **A migration changes what search engines and AI already know** — without a URL map, you risk losing indexing and citations alike.
+- **301s and a single hop** — permanent redirects, no chains, no blanket redirect to the homepage.
+- **Leave the redirects running for a long time** — AI can point at old URLs well after the fact.
+- **Structured data and robots.txt** — the two things a new template breaks most often.
+- **Measure before and after** — without a baseline you can't evaluate a drop; [why URLs matter](/blog/how-ai-cites-sources/).
+
+---
+
+**Planning a redesign and don't want to lose visibility?** This site is run by **[Sniper Design](https://www.sniperdesign.cz/)** — an AI SEO audit walks your redirects, structured data, and AI visibility after a migration and pinpoints what got lost along the way.
+
+*For transparency: this process draws on public search engine documentation and practice as of July 11, 2026. The pace at which AI systems settle after a migration varies by tool and can't be guaranteed; the steps here reduce the risk but don't eliminate it. How the content on this site is produced is described on the [author page](/author/kamil/).*

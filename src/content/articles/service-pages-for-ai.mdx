@@ -1,0 +1,216 @@
+---
+title: "Service pages for AI: a guide for B2B sites"
+description: "How to write a service page so AI and search engines understand your offer — what to cover on scope, price, and Service structured data."
+answer: "A service page is a page describing one specific service. For AI to draw from it reliably, it should answer what people actually ask: what it is, who it's for, what's included, roughly what it costs, and how it works. Service structured data and a short answer at the top both help."
+slug: "service-pages-for-ai"
+category: "tutorial"
+tags:
+  - "obsah"
+  - "strategie"
+published: "2026-07-11"
+updated: "2026-07-11"
+keywords:
+  - "service page"
+  - "seo for service pages"
+  - "service structured data"
+  - "b2b service page ai"
+  - "service pricing on your website"
+variant: "rich"
+stats:
+  - value: "1 service"
+    label: "in most cases one main service per page works better than a bundle"
+  - value: "a price range"
+    label: "with no price or at least a range, the page can't answer what the service costs"
+  - value: "who it's for"
+    label: "spelling out who the service fits and who it doesn't is a strong relevance signal"
+  - value: "Service"
+    label: "the structured data type for services — it usually doesn't produce its own result appearance, it helps machine readability"
+howto:
+  name: "How to build a service page AI can actually draw from"
+  steps:
+    - name: "Open with a short definition of the service"
+      text: "Put 40 to 60 words at the top covering what the service is, who it's for, and what the customer gets out of it. It has to make sense on its own, pulled out of the page."
+    - name: "Spell out who it's for and who it isn't"
+      text: "Say specifically who the service is meant for and who it doesn't suit. It saves both sides time and it's a clear relevance signal."
+    - name: "Describe the scope and the process"
+      text: "State exactly what's included, what the deliverables are, and how the engagement runs step by step. Generic lines about a tailored approach don't cut it here."
+    - name: "Give a price or a price range"
+      text: "Ideally a specific number. If every quote is custom, give at least a frame: a starting-at price, a typical range by scope, or an hourly rate."
+    - name: "Add Service structured data"
+      text: "Add JSON-LD with the Service type — typically the name, description, provider, and optionally the area served or a price offer, but only when those are genuinely on the page. The data has to match what's visible."
+faq:
+  - q: "What is a service page and how is it different from a product page?"
+    a: "It's a page describing one specific service, not an item in an online store. The main difference is that a service usually has no fixed price and no stock availability, and it's often quoted by scope. That makes it all the more important to spell out in words what's included, who it's for, and what price range it sits in."
+  - q: "Do I have to put a price on a service page?"
+    a: "You don't, but then your page gives no specific answer to the most common question. When someone asks what a service costs, AI systems generally work from whatever they find on the web; if there's nothing on your site, they may fall back on more general or third-party sources. The answer doesn't have to be an exact price: a frame is often enough — a starting-at price, a typical range by scope, or an hourly rate."
+  - q: "What is Service structured data?"
+    a: "It's a type from the Schema.org vocabulary that describes a service in machine-readable form: the name, the description, who provides it, where they provide it, and optionally for how much. It helps search engines and AI understand what the service actually is. Unlike products, though, the Service type usually doesn't produce a standalone result with its own appearance; its main benefit is machine readability."
+  - q: "Why spell out who the service isn't for?"
+    a: "Because framing it too broadly makes it harder to understand which situations the service actually fits. A specific frame helps a customer tell quickly whether they're in the right place, and it gives search engines and AI a clearer sense of which queries the page suits. It also saves you inquiries you didn't want anyway."
+  - q: "Should I put all my services on one page?"
+    a: "In most cases one main service per page is better. When a single page covers many different services, none of them is described specifically enough, and it's harder to pull an answer to a specific question out of it. Splitting them into separate pages also lets each one carry its own scope, price, and structured data."
+  - q: "Does structured data have to match the page content?"
+    a: "Yes, and it's fundamental. If you put a price, a scope, or an area served in the data, it has to be visible on the page itself. A mismatch between the data and the visible content is a risk — and with a service, where the customer's money is on the line, especially so."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**A service page is a page describing one specific service.** For AI to draw from it reliably, it should answer what people actually ask: what it is, who it's for, what's included, roughly what it costs, and how it works. `Service` structured data and a short answer at the top both help. In the structured data, it's enough to describe what's genuinely visible on the page.
+
+## Why service pages are weaker for AI than product pages
+
+A product page has it easier: it has a price, availability, specs, often reviews — plus structured data that makes all of it readable. [Product pages for AI](/blog/product-pages-for-ai/) covers that in detail.
+
+A service page tends to be the opposite. Instead of information, it says we're a market leader, we take a tailored approach, and you should get in touch. That's copy nothing can be pulled out of — and so nothing can be cited from it either.
+
+<Insight tone="key">
+When someone asks what a service costs, AI answers from what it can find. If there isn't even a ballpark answer on your site, it'll more likely take one from a competitor — or stay generic. Missing information isn't a neutral state; it's a gap someone else fills.
+</Insight>
+
+## What a service page should contain
+
+<CompareTable
+  caption="The questions a service page has to answer"
+  columns={["Block", "What belongs there"]}
+  rows={[
+    { icon: "📌", label: "Short definition", left: "At the top", right: "40 to 60 words: what it is, who it's for, what the customer gets" },
+    { icon: "🎯", label: "Who it's for", left: "The frame", right: "Who the service is meant for — and who it doesn't suit" },
+    { icon: "📦", label: "Scope", left: "Specifically", right: "What's included, what the deliverables are, what the customer receives" },
+    { icon: "💰", label: "Price", left: "At least a range", right: "A specific price, a range by scope, or an hourly rate" },
+    { icon: "🔄", label: "Process", left: "In steps", right: "How the engagement runs and what happens after someone reaches out" },
+    { icon: "🪪", label: "Who does the work", left: "Verifiably", right: "A person or team with real experience; see E-E-A-T (experience, expertise, authoritativeness, trustworthiness)" },
+  ]}
+/>
+
+## Step by step
+
+<Stepper
+  steps={[
+    {
+      label: "Definition",
+      title: "Open with a short answer",
+      text: "40 to 60 words at the top: what the service is, who it's for, and what the customer gets out of it. It has to make sense pulled out of the page.",
+    },
+    {
+      label: "Who it's for",
+      title: "Frame your audience",
+      text: "Say specifically who the service is meant for and who it doesn't suit. A frame is a relevance signal, not lost customers.",
+    },
+    {
+      label: "Scope",
+      title: "Describe what's included and how it runs",
+      text: "Specific deliverables and the steps of the engagement. Lines about a tailored approach say nothing here.",
+    },
+    {
+      label: "Price",
+      title: "Give a price or at least a range",
+      text: "Ideally a specific number. For custom quotes, a starting-at price, a typical range, or an hourly rate is enough.",
+    },
+    {
+      label: "Data",
+      title: "Add Service structured data",
+      text: "JSON-LD with the name, description, and provider; area served or price only when they're visible on the page.",
+    },
+  ]}
+/>
+
+## A structured data example
+
+Here's what a simplified description of a service with the `Service` type can look like:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "AI SEO audit",
+  "serviceType": "AI SEO audit",
+  "description": "A review of a website from the standpoint of visibility in AI answers and in search.",
+  "provider": { "@type": "Organization", "name": "Your Company, Inc." },
+  "areaServed": { "@type": "Country", "name": "United States" },
+  "offers": {
+    "@type": "Offer",
+    "price": "1500",
+    "priceCurrency": "USD"
+  }
+}
+```
+
+The sample is a simplified minimum, not a universal template: only add specific properties when they match the visible content of the page. If you include `offers`, the price should be clearly visible on the page and refer to the same service. You can optionally add an audience (`audience`) as well, though for a basic setup you often don't need it.
+
+On top of that, the `Service` type usually doesn't produce a standalone result with its own appearance — don't expect stars or a price tag in the link from it. The value is elsewhere: helping machines read what the service is and who provides it, plus any further details that are genuinely stated on the page. [Structured data for AI](/blog/structured-data-for-ai/) covers this more broadly.
+
+## Price: the touchiest part
+
+We don't publish prices, every job is different. There's a reasonable case for that — but from the standpoint of someone asking, it's simply a missing answer.
+
+For complex B2B services a fixed price may not be realistic, and forcing one onto the page at all costs doesn't make sense. For some services, a range, a pricing model, or example scenarios work better than one fixed figure. Even then, it's still an answer — unlike silence.
+
+<Checklist
+  items={[
+    { title: "A specific price", desc: "The best option when you can state one. The answer is unambiguous." },
+    { title: "A starting-at price", desc: "When scope varies, at least the lower bound gives a sense of the order of magnitude." },
+    { title: "A typical range", desc: "For example, typically X to Y depending on scope. That's still an answer." },
+    { title: "An hourly rate", desc: "For consulting, often the most honest option." },
+    { title: "What drives the price", desc: "Briefly explain what the scope depends on — and quoting stops being a mystery." },
+  ]}
+/>
+
+<Insight tone="warning">
+Publishing a price guarantees nothing on its own — it won't promise you more inquiries or better visibility. Without one, though, your page gives no specific answer to the most common question, which lowers the chance it serves as the source of a specific answer.
+</Insight>
+
+## The most common mistakes
+
+<MistakeGrid>
+  <Mistake number="01" title="Marketing copy with no information">
+    Market leader, tailored approach, get in touch. Nothing can be pulled out of a page like that, and nothing can be cited from it.
+  </Mistake>
+  <Mistake number="02" title="No price and no range">
+    The most common question is what it costs. With no answer, AI will more likely take one elsewhere.
+  </Mistake>
+  <Mistake number="03" title="Many services on one page">
+    Then none of them is described specifically, and it's harder to pull an answer out. Usually one main service per page helps.
+  </Mistake>
+  <Mistake number="04" title="Data that doesn't match the page">
+    A price or scope in structured data that appears nowhere on the page is a mismatch.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="What to do"
+  dontTitle="What to avoid"
+  doItems={[
+    "Put a short definition of the service at the top.",
+    "Frame who the service is for and who it isn't.",
+    "Describe the specific scope and process.",
+    "Give a price or at least a price range.",
+    "Keep structured data consistent with the content.",
+  ]}
+  dontItems={[
+    "Writing generic lines instead of information.",
+    "Leaving price with no answer at all.",
+    "Merging every service onto one page.",
+    "Putting things in the data that aren't on the page.",
+    "Making up references or numbers.",
+  ]}
+/>
+
+## What to take away
+
+- **A service page has to answer the questions** — what it is, who it's for, what's included, what it costs, how it runs.
+- **A missing price is a missing answer** — give at least a frame: a starting-at price, a range, an hourly rate.
+- **A clear frame helps** — who it's for and who it isn't; see the [B2B context](/blog/ai-seo-for-b2b/).
+- **Usually one service per page** — otherwise a specific answer is harder to find.
+- **Keep structured data in line with the content** — and don't expect it to give you your own appearance in results; [how AI cites sources](/blog/how-ai-cites-sources/) explains why specific answers matter.
+
+---
+
+**Not sure how to put a service page together?** This site is run by **[Sniper Design](https://www.sniperdesign.cz/)** — an AI SEO audit walks your service pages and shows you what's missing: the scope, the pricing signal, and the structured data that would make the page easier for both people and AI to read.
+
+*For transparency: the description of the Service type's properties draws on the public Schema.org and Google documentation available as of July 11, 2026. Publishing a price or adding structured data does not guarantee visibility in AI answers; the specific impact varies by industry and by site. How the content on this site is produced is described on the [author page](/author/kamil/).*
