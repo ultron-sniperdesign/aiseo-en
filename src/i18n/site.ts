@@ -36,6 +36,13 @@ export const site = {
     alternateName: "CPU s.r.o.",
     description:
       "An educational guide to AI SEO — optimizing for search in the AI era: traditional SEO, Generative Engine Optimization (GEO), and Answer Engine Optimization (AEO). Run by the Sniper Design agency (CPU s.r.o.).",
-    sameAs: ["https://www.sniperdesign.cz/", "https://www.megadetail.cz/"],
+    sameAs: [
+      "https://www.sniperdesign.cz/",
+      "https://www.megadetail.cz/",
+      "https://www.youtube.com/channel/UCgg_pplVfiWhtkULnMHVpOw",
+      "https://www.linkedin.com/company/sniper-design",
+      "https://www.instagram.com/sniperdesign_cz/",
+      "https://www.facebook.com/SniperDesign.cz",
+    ],
   },
 };

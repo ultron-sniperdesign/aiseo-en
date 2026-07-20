@@ -1,10 +1,13 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
+import ProofStrip from "~/components/blocks/ProofStrip.astro";
 import RelatedSections from "~/components/blocks/RelatedSections.astro";
+import HeroVideo from "~/components/blocks/HeroVideo.astro";
 import { getCollection, render } from "astro:content";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
+import { buildPersonRef } from "~/lib/jsonld";
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = (async () => {
@@ -29,6 +32,7 @@ const colorByAbbr: Record<string, ColorTriple> = {
   GEO: { d: "var(--color-geo)", tint: "var(--color-geo-tint)", soft: "var(--color-geo-soft)" },
   AEO: { d: "var(--color-aeo)", tint: "var(--color-aeo-tint)", soft: "var(--color-aeo-soft)" },
   AIO: { d: "var(--color-aio)", tint: "var(--color-aio-tint)", soft: "var(--color-aio-soft)" },
+  AIMODE: { d: "var(--color-aimode)", tint: "var(--color-aimode-tint)", soft: "var(--color-aimode-soft)" },
   PRAXE: { d: "var(--color-praxe)", tint: "var(--color-praxe-tint)", soft: "var(--color-praxe-soft)" },
   MATICE: { d: "var(--color-matice)", tint: "var(--color-matice-tint)", soft: "var(--color-matice-soft)" },
 };
@@ -100,7 +104,7 @@ const articleJsonLd = {
   headline: entry.data.title,
   description: entry.data.description,
   image: [articleImageURL],
-  datePublished: entry.data.updated,
+  datePublished: entry.data.published ?? entry.data.updated,
   dateModified: entry.data.updated,
   inLanguage: site.inLanguage,
   about: displayAbbr,
@@ -108,12 +112,7 @@ const articleJsonLd = {
   wordCount,
   timeRequired: `PT${readingMinutes}M`,
   mainEntityOfPage: { "@type": "WebPage", "@id": articleURL },
-  author: {
-    "@type": "Person",
-    name: site.author,
-    url: "https://www.sniperdesign.cz/",
-    worksFor: { "@id": `${SITE_ORIGIN}/#publisher` },
-  },
+  author: buildPersonRef(SITE_ORIGIN),
   publisher: { "@id": `${SITE_ORIGIN}/#publisher` },
 };
 
@@ -134,9 +133,34 @@ const howToJsonLd = entry.data.howto
     }
   : undefined;
 
-const allLd: Record<string, unknown>[] = [articleJsonLd, faqJsonLd, howToJsonLd].filter(
-  Boolean,
-) as Record<string, unknown>[];
+/** VideoObject — jen sekce s frontmatter `video`. uploadDate = kdy bylo video
+ * na stránku nasazeno (všechna tři 2026-06-01, viz git historie); author
+ * odkazuje kanonickou Person entitu, publisher org. Google video rich results
+ * vyžadují name/thumbnailUrl/uploadDate. */
+const videoJsonLd = entry.data.video
+  ? {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      name: entry.data.video.badge ?? `Video průvodce · ${displayAbbr}`,
+      description: entry.data.description,
+      thumbnailUrl: [
+        `https://i.ytimg.com/vi/${entry.data.video.youtubeId}/maxresdefault.jpg`,
+      ],
+      uploadDate: "2026-06-01",
+      embedUrl: `https://www.youtube-nocookie.com/embed/${entry.data.video.youtubeId}`,
+      url: `https://www.youtube.com/watch?v=${entry.data.video.youtubeId}`,
+      inLanguage: site.inLanguage,
+      author: buildPersonRef(SITE_ORIGIN),
+      publisher: { "@id": `${SITE_ORIGIN}/#publisher` },
+    }
+  : undefined;
+
+const allLd: Record<string, unknown>[] = [
+  articleJsonLd,
+  faqJsonLd,
+  howToJsonLd,
+  videoJsonLd,
+].filter(Boolean) as Record<string, unknown>[];
 
 /**
  * Inline style nastaví per-page discipline color CSS variables.
@@ -200,6 +224,15 @@ function renderFaqMarkdown(text: string): string {
       </div>
     </section>
 
+    {/* Volitelný video explainer pod answer blockem (per-section, frontmatter `video`). */}
+    {entry.data.video && (
+      <HeroVideo
+        youtubeId={entry.data.video.youtubeId}
+        badge={entry.data.video.badge}
+        playLabel={entry.data.video.playLabel}
+      />
+    )}
+
     <!-- ARTICLE BODY -->
     <article class="article">
       <div class="article__prose">
@@ -207,6 +240,8 @@ function renderFaqMarkdown(text: string): string {
       </div>
     </article>
 
+    <!-- PROOF STRIP — 200 tis. zobrazení v AI odpovědích (trust prvek před pitch) -->
+    <ProofStrip />
     <!-- SNIPERDESIGN SMALL CONTACT — nad FAQ, pokud frontmatter nemá inlineSmallContact: true -->
     {!entry.data.inlineSmallContact && <SniperDesignSmallContact />}
 

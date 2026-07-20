@@ -1,0 +1,162 @@
+---
+/**
+ * DataBars — horizontální sloupcový graf pro datové články (HTML/CSS, žádné SVG).
+ *
+ * Pravidla (dataviz spec): bar ≤ 24px, zaoblený jen datový konec (4px), baseline
+ * hrana rovná; hodnota u špičky baru v ink tokenu (text nikdy nenese barvu dat);
+ * zvýrazněný řádek = plná datová barva (--color-seo), ostatní de-emfáze šedá —
+ * identita jde z popisků řádků, ne z barvy. Fallback: <details> tabulka.
+ *
+ * Použití v MDX:
+ *   <DataBars
+ *     caption="Konverzní míra podle zdroje"
+ *     unit="%"
+ *     rows={[
+ *       { label: "ChatGPT", value: 3.5, display: "3,5 %", emphasized: true },
+ *       { label: "Google organic", value: 0.88, display: "0,88 %" },
+ *     ]}
+ *   />
+ */
+interface Row {
+  label: string;
+  value: number;
+  /** Zobrazená hodnota (CZ formát). Když chybí, vypíše se value. */
+  display?: string;
+  /** Zvýrazněný řádek (datová barva); ostatní šedá de-emfáze. */
+  emphasized?: boolean;
+}
+
+interface Props {
+  caption: string;
+  rows: Row[];
+  /** Popisek jednotky do tabulkového fallbacku (např. "%", "Kč", "návštěv"). */
+  unit?: string;
+  /** Label sloupce s hodnotami v tabulce. */
+  tableValueLabel?: string;
+}
+
+const { caption, rows, unit = "", tableValueLabel = "Hodnota" } = Astro.props;
+const max = Math.max(...rows.map((r) => r.value));
+/** display už jednotku obsahuje — unit se přidává jen k surové hodnotě. */
+const fmt = (r: Row) => r.display ?? `${r.value}${unit ? ` ${unit}` : ""}`;
+---
+
+<figure class="dbars">
+  <figcaption class="dbars__caption">{caption}</figcaption>
+  <div class="dbars__rows">
+    {
+      rows.map((r) => (
+        <div class="dbars__row" title={`${r.label}: ${fmt(r)}`}>
+          <span class="dbars__label">{r.label}</span>
+          <span class="dbars__track">
+            <span
+              class={`dbars__bar${r.emphasized ? " dbars__bar--emph" : ""}`}
+              style={`width: calc((100% - 5.5rem) * ${Math.max(0.015, r.value / max).toFixed(4)})`}
+            />
+            <span class="dbars__value">{r.display ?? r.value}</span>
+          </span>
+        </div>
+      ))
+    }
+  </div>
+  <details class="dbars__table">
+    <summary>Zobrazit data v tabulce</summary>
+    <table>
+      <thead>
+        <tr><th>Položka</th><th>{tableValueLabel}</th></tr>
+      </thead>
+      <tbody>
+        {rows.map((r) => (
+          <tr><td>{r.label}</td><td>{fmt(r)}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </details>
+</figure>
+
+<style>
+  .dbars {
+    margin: 2rem 0;
+    padding: clamp(1.25rem, 2.5vw, 1.75rem);
+    border: 1px solid var(--color-rule);
+    border-radius: 16px;
+    background: var(--color-paper);
+  }
+  .dbars__caption {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: 1.1rem;
+  }
+  .dbars__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .dbars__row {
+    display: grid;
+    /* Sloupec popisků jen tak široký, jak potřebuje nejdelší popisek (strop 14rem) —
+       bez stropu by na desktopu zabíral třetinu karty a vlevo vznikal mrtvý prostor. */
+    grid-template-columns: fit-content(14rem) 1fr;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .dbars__label {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: var(--color-ink-muted);
+    text-align: right;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+  .dbars__track {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+  }
+  .dbars__bar {
+    display: block;
+    height: 18px;
+    border-radius: 0 4px 4px 0;
+    background: oklch(0.85 0.015 260);
+    flex-shrink: 0;
+  }
+  .dbars__bar--emph {
+    background: var(--color-seo);
+  }
+  .dbars__value {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+  .dbars__table {
+    margin-top: 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: var(--color-ink-muted);
+  }
+  .dbars__table summary {
+    cursor: pointer;
+  }
+  .dbars__table table {
+    margin-top: 0.6rem;
+    border-collapse: collapse;
+    width: 100%;
+    font-variant-numeric: tabular-nums;
+  }
+  .dbars__table th,
+  .dbars__table td {
+    text-align: left;
+    padding: 0.3rem 0.6rem 0.3rem 0;
+    border-bottom: 1px solid var(--color-rule);
+    color: var(--color-ink-muted);
+  }
+  .dbars__table th {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+</style>

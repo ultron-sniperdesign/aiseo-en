@@ -53,9 +53,10 @@ const {
         </svg>
         {eyebrow}
       </span>
-      <h3 id="free-strip-title" class="free-strip__title">
+      <!-- h2 (ne h3): blok se vkládá přímo pod h1/h2 sekce — h3 přeskakovalo úroveň (a11y heading-order) -->
+      <h2 id="free-strip-title" class="free-strip__title">
         {title} <span class="free-strip__hl">{titleHighlight}</span>
-      </h3>
+      </h2>
       <p class="free-strip__desc">{description}</p>
       <ul class="free-strip__bullets">
         {bullets.map((b) => <li>{b}</li>)}

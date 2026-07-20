@@ -1,9 +1,18 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import RichLayout from "~/components/article/RichLayout.astro";
+import AuthorByline from "~/components/article/AuthorByline.astro";
+import AuthorBox from "~/components/article/AuthorBox.astro";
+import FreeStrip from "~/components/blocks/FreeStrip.astro";
+import RelatedArticles from "~/components/article/RelatedArticles.astro";
+import TagChips from "~/components/article/TagChips.astro";
+import SeriesNav from "~/components/article/SeriesNav.astro";
+import { findSeriesPart, SERIES_BASE } from "~/i18n/series";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
 import { getCollection, render } from "astro:content";
 import { site } from "~/i18n/site";
+import { ui } from "~/i18n/strings";
+import { buildPersonRef } from "~/lib/jsonld";
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = (async () => {
@@ -19,15 +28,9 @@ const { Content } = await render(entry);
 const useRich = entry.data.variant === "rich";
 
 /**
- * Per-category crumb context label.
+ * Per-category crumb context label — z i18n vrstvy (fork přeloží ui.category).
  */
-const crumbByCategory: Record<string, string> = {
-  tutorial: "Tutorial",
-  analysis: "Analýza",
-  defensive: "Defenzivní",
-  "case-study": "Case study",
-};
-const crumbLabel = crumbByCategory[entry.data.category] ?? "Článek";
+const crumbLabel = ui.category[entry.data.category] ?? ui.categoryFallback;
 
 /**
  * Word count + reading time dynamicky z entry.body (raw markdown).
@@ -53,13 +56,16 @@ const articleImageURL = `${SITE_ORIGIN}/og/${entry.data.slug}.png`;
  * - mainEntityOfPage: cíl rich snippet linku
  * - wordCount, articleSection, timeRequired: signal pro Discover / kategorizaci
  */
+/** Členství v sérii (registr i18n/series.ts) — pro isPartOf v JSON-LD. */
+const seriesHit = findSeriesPart(entry.data.slug);
+
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: entry.data.title,
   description: entry.data.description,
   image: [articleImageURL],
-  datePublished: entry.data.updated,
+  datePublished: entry.data.published ?? entry.data.updated,
   dateModified: entry.data.updated,
   inLanguage: site.inLanguage,
   keywords: entry.data.keywords.join(", "),
@@ -67,13 +73,19 @@ const articleJsonLd = {
   articleSection: crumbLabel,
   timeRequired: `PT${readingMinutes}M`,
   mainEntityOfPage: { "@type": "WebPage", "@id": articleURL },
-  author: {
-    "@type": "Person",
-    name: site.author,
-    url: "https://www.sniperdesign.cz/",
-    worksFor: { "@id": `${SITE_ORIGIN}/#publisher` },
-  },
+  author: buildPersonRef(SITE_ORIGIN),
   publisher: { "@id": `${SITE_ORIGIN}/#publisher` },
+  // Článek v sérii → isPartOf CreativeWorkSeries + pozice dílu
+  ...(seriesHit
+    ? {
+        isPartOf: {
+          "@type": "CreativeWorkSeries",
+          name: seriesHit.series.title,
+          url: `${SITE_ORIGIN}${SERIES_BASE}${seriesHit.series.slug}/`,
+        },
+        position: seriesHit.index + 1,
+      }
+    : {}),
 };
 
 const faqJsonLd =
@@ -123,7 +135,7 @@ const ogImage = `/og/${entry.data.slug}.png`;
   image={ogImage}
   ogType="article"
   breadcrumb={[
-    { label: "Blog", href: "/blog/" },
+    { label: ui.crumbBlog, href: "/blog/" },
     { label: entry.data.title, href: `/blog/${entry.data.slug}/` },
   ]}
 >
@@ -140,30 +152,43 @@ const ogImage = `/og/${entry.data.slug}.png`;
   <div class="page">
     <!-- HERO -->
     <section class="hero">
-      <nav class="hero__crumbs" aria-label="Drobečková navigace">
-        <a href="/">Úvod</a>
+      <nav class="hero__crumbs" aria-label={ui.ariaBreadcrumb}>
+        <a href="/">{ui.crumbHome}</a>
         <span class="crumb-sep">›</span>
-        <a href="/blog/">Blog</a>
+        <a href="/blog/">{ui.crumbBlog}</a>
         <span class="crumb-sep">›</span>
         <span class="hero__crumb-pill">{crumbLabel}</span>
       </nav>
 
       <h1 class="display hero__title">{entry.data.title}</h1>
 
+      <div class="hero__byline">
+        <AuthorByline />
+      </div>
+
       <div class="hero__meta">
-        <span>~{wordCountRounded.toLocaleString(site.inLanguage)} slov</span>
-        <span>{faqCount} častých otázek</span>
-        <span>~{readingMinutes} minut čtení</span>
-        <span>Aktualizováno: {entry.data.updated}</span>
+        <span>~{wordCountRounded.toLocaleString(site.inLanguage)} {ui.metaWords}</span>
+        <span>{faqCount} {ui.metaFaqs}</span>
+        <span>~{readingMinutes} {ui.metaReadingMins}</span>
+        <span>{ui.metaUpdated} {entry.data.updated}</span>
+      </div>
+
+      <div class="hero__tags">
+        <TagChips tags={entry.data.tags} />
       </div>
     </section>
 
     <!-- ANSWER BLOCK -->
     <section class="answer">
       <div class="answer__inner">
-        <span class="answer__mark">Stručná odpověď</span>
+        <span class="answer__mark">{ui.answerShort}</span>
         <p class="answer__text">{entry.data.answer}</p>
       </div>
+    </section>
+
+    <!-- SÉRIE — jen u článků z registru i18n/series.ts -->
+    <section class="series-slot">
+      <SeriesNav slug={entry.data.slug} />
     </section>
 
     <!-- ARTICLE BODY -->
@@ -173,6 +198,12 @@ const ogImage = `/og/${entry.data.slug}.png`;
       </div>
     </article>
 
+    <!-- AUTHOR BOX — kdo za obsahem stojí (E-E-A-T), hned pod článkem -->
+    <AuthorBox />
+
+    <!-- FREE STRIP — lead magnet (blog čtenář = TOFU, e-mail za free PDF) -->
+    <FreeStrip marginTop="2.5rem" />
+
     <!-- SNIPERDESIGN SMALL CONTACT — nad FAQ -->
     <SniperDesignSmallContact />
 
@@ -181,10 +212,8 @@ const ogImage = `/og/${entry.data.slug}.png`;
       entry.data.faq && entry.data.faq.length > 0 && (
         <section class="faq" aria-labelledby="faq-title">
           <header class="faq__head">
-            <span class="eyebrow"><span class="eyebrow__num">FAQ</span> Časté otázky</span>
-            <h2 id="faq-title" class="faq__title">
-              <span class="hl">Časté otázky</span>, které k tématu <strong>nejčastěji padají</strong>
-            </h2>
+            <span class="eyebrow"><span class="eyebrow__num">{ui.faqEyebrowNum}</span> {ui.faqEyebrow}</span>
+            <h2 id="faq-title" class="faq__title" set:html={ui.blogFaqTitleHtml} />
           </header>
 
           <dl class="faq__list">
@@ -202,13 +231,21 @@ const ogImage = `/og/${entry.data.slug}.png`;
       )
     }
 
+    <!-- SOUVISEJÍCÍ ČLÁNKY — automaticky dle keywords + kategorie -->
+    <RelatedArticles
+      currentSlug={entry.data.slug}
+      category={entry.data.category}
+      keywords={entry.data.keywords}
+      tags={entry.data.tags}
+    />
+
     <!-- BACK CTA -->
     <section class="back-cta">
       <a href="/blog/" class="back-cta__primary">
         <span aria-hidden="true">←</span>
-        Všechny články v blogu
+        {ui.allArticles}
       </a>
-      <a href="/" class="back-cta__secondary">Zpět na úvod</a>
+      <a href="/" class="back-cta__secondary">{ui.backToHome}</a>
     </section>
   </div>
   )}
@@ -288,6 +325,9 @@ const ogImage = `/og/${entry.data.slug}.png`;
     max-width: 50rem;
     margin: 0 0 1.75rem;
   }
+  .hero__byline {
+    margin: 1.4rem 0 1.5rem;
+  }
   .hero__meta {
     font-family: var(--font-sans);
     font-size: 0.9rem;
@@ -308,6 +348,9 @@ const ogImage = `/og/${entry.data.slug}.png`;
     background: var(--d);
     border-radius: 50%;
   }
+  .hero__tags {
+    margin-top: 1.25rem;
+  }
 
   @keyframes rise {
     from { opacity: 0; transform: translateY(10px); }
@@ -324,6 +367,14 @@ const ogImage = `/og/${entry.data.slug}.png`;
     max-width: var(--max-section);
     margin: 0 auto;
     padding: 0 var(--space-section-x) clamp(2.5rem, 5vw, 4rem);
+  }
+  .series-slot {
+    max-width: var(--max-section);
+    margin: calc(-1 * clamp(1.25rem, 2.5vw, 2rem)) auto 0;
+    padding: 0 var(--space-section-x);
+  }
+  .series-slot:has(> :first-child) {
+    padding-bottom: clamp(2rem, 4vw, 3rem);
   }
   .answer__inner {
     background: var(--color-paper-deep);

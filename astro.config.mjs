@@ -113,6 +113,7 @@ export default defineConfig({
           "/generative-engine-optimization/",
           "/answer-engine-optimization/",
           "/ai-seo/",
+          "/ai-mode/",
           "/ai-seo-playbook/",
           "/decision-matrix/",
           "/seo-vs-geo-vs-aeo/",

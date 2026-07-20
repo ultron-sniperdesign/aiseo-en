@@ -1,5 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
+import { TAG_IDS } from "./i18n/tags";
 
 /**
  * Sekce — 6 hlavních pilířů dle myšlenkové mapy:
@@ -23,7 +24,7 @@ const sections = defineCollection({
     /** Pořadí v navigaci (1 = nahoře). */
     order: z.number().int().positive(),
     /** Hlavní zkratka, kterou článek pokrývá. */
-    abbr: z.enum(["SEO", "GEO", "AEO", "AIO", "PRAXE", "MATICE"]),
+    abbr: z.enum(["SEO", "GEO", "AEO", "AIO", "AIMODE", "PRAXE", "MATICE"]),
     /**
      * Když je true, [slug].astro NEVYKRESLÍ auto "Související" sekci na konci.
      * Použij, když chceš stejný blok vložit INLINE do MDX přes
@@ -36,7 +37,23 @@ const sections = defineCollection({
      */
     inlineSmallContact: z.boolean().optional().default(false),
     /** Datum poslední aktualizace (ISO YYYY-MM-DD). */
+    /** Datum prvního publikování (ISO). Když chybí, schema použije `updated`. */
+    published: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/)
+      .optional(),
     updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    /**
+     * Volitelné YouTube video pod answer blockem. Lazy facade přes
+     * `HeroVideo.astro` komponentu. Fork přeloží `badge`/`playLabel`.
+     */
+    video: z
+      .object({
+        youtubeId: z.string(),
+        badge: z.string().optional(),
+        playLabel: z.string().optional(),
+      })
+      .optional(),
     /** FAQ položky (volitelné, použijí se do FAQPage JSON-LD). */
     faq: z
       .array(
@@ -72,6 +89,11 @@ const pillar = defineCollection({
     /** Volitelný SEO <title> pro SERP. Když chybí, použije se `title` (= H1 na stránce). */
     seoTitle: z.string().optional(),
     description: z.string().min(70).max(160),
+    /** Datum prvního publikování (ISO). Když chybí, schema použije `updated`. */
+    published: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/)
+      .optional(),
     updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     /** Klíčová slova pro meta keywords + interní reference. */
     keywords: z.array(z.string()),
@@ -115,8 +137,18 @@ const articles = defineCollection({
     /** 40–60 slovní answer block hned po H1 — AI scraper hook. */
     answer: z.string(),
     slug: z.string().regex(/^[a-z0-9-]+$/),
-    /** Kategorie — pro pozdější filter v blog kategorii. */
+    /** Kategorie — formát článku (filter chips na /blog/). */
     category: z.enum(["defensive", "case-study", "tutorial", "analysis"]),
+    /**
+     * Tematické tagy (1–3 per článek) — id z registru `src/i18n/tags.ts`.
+     * Generují tag stránky /blog/tema/<slug>/ a chips na článku i listingu.
+     */
+    tags: z.array(z.enum(TAG_IDS as [string, ...string[]])).min(1).max(3),
+    /** Datum prvního publikování (ISO). Když chybí, schema použije `updated`. */
+    published: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/)
+      .optional(),
     updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     keywords: z.array(z.string()),
     /**
@@ -164,8 +196,79 @@ const articles = defineCollection({
   }),
 });
 
+/**
+ * Services — prodejní katalog služeb (komerční nabídka).
+ *
+ * Cards: každá služba má kartu v `/sluzby/` indexu (per `bucket` seskupené).
+ * Detail pages: opt-in přes `hasDetailPage: true` → vykreslí `/sluzby/<slug>/`
+ * z MDX body + frontmatter polí (valueProp / forWhom / model / upsell / cta / faq).
+ * `href` overruje výchozí `/sluzby/<slug>/` (např. Audit → `/audit/` na stávající landing).
+ *
+ * Mutace: fork přeloží MDX (jako sections/articles); struktura sdílená.
+ */
+const services = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/services" }),
+  schema: z.object({
+    /** Display název v kartě + H1 detailu. */
+    name: z.string(),
+    /** URL slug (vede na `/sluzby/<slug>/` pokud hasDetailPage, jinak jen klíč). */
+    slug: z.string().regex(/^[a-z0-9-]+$/),
+    /** Bucket — sekce v indexu. */
+    bucket: z.enum([
+      "audit-strategie",
+      "obsah-pro-ai",
+      "technika-mereni",
+      "rust-autorita",
+      "doplnky",
+    ]),
+    /** Pořadí v rámci bucketu (1 = nahoře). */
+    order: z.number().int().positive(),
+    /** 1-věta popisku pro kartu (max ~160 znaků). */
+    oneLine: z.string().max(200),
+    /** Persony, kterým služba pasuje. */
+    personas: z.array(z.enum(["eshop", "firemni"])).min(1),
+    /** Typ angažmá (filtr/štítek). */
+    type: z.enum(["vstupni", "jednorazova", "mesicni", "addon"]),
+    /** Když true, `/sluzby/<slug>/` se vykreslí z MDX body + detail polí níže. */
+    hasDetailPage: z.boolean().default(false),
+    /** Override URL karty — když nastaveno, karta vede sem místo `/sluzby/<slug>/`. */
+    href: z.string().optional(),
+
+    /* ===== Detail page fields (povinné když hasDetailPage=true) ===== */
+    /** SEO <title>; když chybí, použije se `name`. */
+    seoTitle: z.string().optional(),
+    /** Meta description (70–160 znaků). */
+    description: z.string().min(70).max(160).optional(),
+    /** Answer block (40–60 slov) — citovatelný blok nahoře detailu. */
+    answer: z.string().optional(),
+    /** „Pro koho" sekce — komu služba sedí. */
+    forWhom: z.string().optional(),
+    /** „Výstup / model" — jednorázová / retainer / sprint, časový horizont, cena. */
+    model: z.string().optional(),
+    /** „Co následuje / upsell" — jaké navazující služby z nabídky doplňují. */
+    upsell: z.string().optional(),
+    /** Primární CTA label. Default v šabloně: „Mám zájem". */
+    cta: z.string().optional(),
+    /** FAQ položky → FAQPage JSON-LD. */
+    faq: z
+      .array(
+        z.object({
+          q: z.string(),
+          a: z.string(),
+        }),
+      )
+      .optional(),
+    /** Datum poslední aktualizace (volitelné, pro Article schema u detailu). */
+    updated: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/)
+      .optional(),
+  }),
+});
+
 export const collections = {
   sections,
   pillar,
   articles,
+  services,
 };

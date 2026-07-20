@@ -13,7 +13,6 @@
  * Opt-in přes frontmatter `variant: rich`.
  */
 import type { CollectionEntry } from "astro:content";
-import { existsSync } from "node:fs";
 
 import Insight from "~/components/blocks/Insight.astro";
 import Compare from "~/components/blocks/Compare.astro";
@@ -29,17 +28,8 @@ import PersonaGrid from "~/components/blocks/PersonaGrid.astro";
 import AntiPersona from "~/components/blocks/AntiPersona.astro";
 import Mistake from "~/components/blocks/Mistake.astro";
 import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
-import DataBars from "~/components/blocks/DataBars.astro";
-import DataColumns from "~/components/blocks/DataColumns.astro";
 import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.astro";
-import AuthorByline from "~/components/article/AuthorByline.astro";
-import AuthorBox from "~/components/article/AuthorBox.astro";
-import FreeStrip from "~/components/blocks/FreeStrip.astro";
-import RelatedArticles from "~/components/article/RelatedArticles.astro";
-import TagChips from "~/components/article/TagChips.astro";
-import SeriesNav from "~/components/article/SeriesNav.astro";
 import { site } from "~/i18n/site";
-import { ui } from "~/i18n/strings";
 
 interface Props {
   entry: CollectionEntry<"articles">;
@@ -52,10 +42,6 @@ interface Props {
 
 const { entry, Content, crumbLabel, wordCountRounded, readingMinutes, faqCount } =
   Astro.props as Props;
-
-/** Build-time check: WebP varianta hero obrázku (viz blogger/IMAGE_GUIDE.md §2b).
- *  Když chybí, <picture> nedostane <source> a padá se na PNG — nikdy rozbitý obrázek. */
-const heroWebp = existsSync(`public/og/${entry.data.slug}.webp`);
 
 /**
  * Build heading list z raw entry.body — H2 a H3.
@@ -111,8 +97,6 @@ const _bundlerHints = [
   AntiPersona,
   Mistake,
   MistakeGrid,
-  DataBars,
-  DataColumns,
 ];
 ---
 
@@ -124,10 +108,10 @@ const _bundlerHints = [
 <div class="rich-page">
   <!-- HERO — clean, no stat tiles, žádný rail (chytřeji přidáme později) -->
   <section class="rhero">
-    <nav class="rhero__crumbs" aria-label={ui.ariaBreadcrumb}>
-      <a href="/">{ui.crumbHome}</a>
+    <nav class="rhero__crumbs" aria-label="Drobečková navigace">
+      <a href="/">Úvod</a>
       <span class="crumb-sep">›</span>
-      <a href="/blog/">{ui.crumbBlog}</a>
+      <a href="/blog/">Blog</a>
       <span class="crumb-sep">›</span>
       <span class="rhero__crumb-pill">{crumbLabel}</span>
     </nav>
@@ -136,54 +120,37 @@ const _bundlerHints = [
 
     <p class="rhero__sub">{entry.data.description}</p>
 
-    <div class="rhero__byline">
-      <AuthorByline />
-    </div>
-
     <div class="rhero__meta">
-      <span>~{wordCountRounded.toLocaleString(site.inLanguage)} {ui.metaWords}</span>
-      <span>{faqCount} {ui.metaFaqs}</span>
-      <span>~{readingMinutes} {ui.metaReadingMins}</span>
-      <span>{ui.metaUpdated} {entry.data.updated}</span>
+      <span>~{wordCountRounded.toLocaleString(site.inLanguage)} slov</span>
+      <span>{faqCount} častých otázek</span>
+      <span>~{readingMinutes} minut čtení</span>
+      <span>Aktualizováno: {entry.data.updated}</span>
     </div>
 
-    <div class="rhero__tags">
-      <TagChips tags={entry.data.tags} />
-    </div>
-
-    <picture>
-      {heroWebp && <source srcset={`/og/${entry.data.slug}.webp`} type="image/webp" />}
-      <img
-        class="rhero__img"
-        src={`/og/${entry.data.slug}.png`}
-        alt={entry.data.title}
-        width="1536"
-        height="1024"
-        fetchpriority="high"
-      />
-    </picture>
+    <img
+      class="rhero__img"
+      src={`/og/${entry.data.slug}.png`}
+      alt={entry.data.title}
+      width="1536"
+      height="1024"
+    />
   </section>
 
   <!-- ANSWER BLOCK -->
   <section class="ranswer">
     <div class="ranswer__inner">
-      <span class="ranswer__mark">{ui.answerShort}</span>
+      <span class="ranswer__mark">Stručná odpověď</span>
       <p class="ranswer__text">{entry.data.answer}</p>
     </div>
-  </section>
-
-  <!-- SÉRIE — jen u článků, které patří do série (registr i18n/series.ts) -->
-  <section class="rseries">
-    <SeriesNav slug={entry.data.slug} />
   </section>
 
   <!-- ARTICLE GRID — sticky TOC (≥1080px) + content -->
   <div class="rgrid">
     {
       headings.length > 0 && (
-        <aside class="rtoc" aria-label={ui.ariaToc}>
+        <aside class="rtoc" aria-label="Obsah článku">
           <div class="rtoc__sticky">
-            <span class="rtoc__label">{ui.tocLabelRich}</span>
+            <span class="rtoc__label">V tomto článku</span>
             <nav class="rtoc__nav">
               <ol class="rtoc__list">
                 {headings.map((h) => (
@@ -207,12 +174,6 @@ const _bundlerHints = [
     </article>
   </div>
 
-  <!-- AUTHOR BOX — kdo za obsahem stojí (E-E-A-T), hned pod článkem -->
-  <AuthorBox />
-
-  <!-- FREE STRIP — lead magnet (blog čtenář = TOFU, e-mail za free PDF) -->
-  <FreeStrip marginTop="2.5rem" />
-
   <!-- SNIPERDESIGN SMALL CONTACT — nad FAQ -->
   <SniperDesignSmallContact />
 
@@ -221,9 +182,9 @@ const _bundlerHints = [
     entry.data.faq && entry.data.faq.length > 0 && (
       <section class="rfaq" aria-labelledby="rfaq-title">
         <header class="rfaq__head">
-          <span class="rfaq__eyebrow">{ui.richFaqEyebrowHtml.replace("{n}", String(entry.data.faq.length))}</span>
+          <span class="rfaq__eyebrow">FAQ · {entry.data.faq.length} otázek</span>
           <h2 id="rfaq-title" class="rfaq__title">
-            {ui.richFaqTitle}
+            Časté otázky, které k tématu padají
           </h2>
         </header>
 
@@ -243,20 +204,12 @@ const _bundlerHints = [
     )
   }
 
-  <!-- SOUVISEJÍCÍ ČLÁNKY — automaticky dle keywords + kategorie -->
-  <RelatedArticles
-    currentSlug={entry.data.slug}
-    category={entry.data.category}
-    keywords={entry.data.keywords}
-    tags={entry.data.tags}
-  />
-
   <section class="rback">
     <a href="/blog/" class="rback__primary">
       <span aria-hidden="true">←</span>
-      {ui.allArticles}
+      Všechny články v blogu
     </a>
-    <a href="/" class="rback__secondary">{ui.backToHome}</a>
+    <a href="/" class="rback__secondary">Zpět na úvod</a>
   </section>
 </div>
 
@@ -428,9 +381,6 @@ const _bundlerHints = [
     max-width: 50rem;
     margin: 0 0 2rem;
   }
-  .rhero__byline {
-    margin: 0 0 1.5rem;
-  }
   .rhero__meta {
     font-family: var(--font-sans);
     font-size: 0.875rem;
@@ -451,19 +401,13 @@ const _bundlerHints = [
     background: var(--d);
     border-radius: 50%;
   }
-  .rhero__tags {
-    margin-top: 1.25rem;
-  }
   /* Featured image — 16:9 banner pod hlavičkou článku. */
   .rhero__img {
     display: block;
     width: 100%;
     max-width: 60rem;
-    /* Poměr = existující OG (1200×669) → bez ořezu stran (text vpravo zůstane);
-       object-position: top zachová text generovaných 3:2 obrázků (vlevo nahoře). */
-    aspect-ratio: 1200 / 669;
+    aspect-ratio: 3 / 2;
     object-fit: cover;
-    object-position: center top;
     border: 1px solid var(--color-rule);
     border-radius: 12px;
     margin-top: clamp(1.5rem, 3vw, 2.5rem);
@@ -475,16 +419,6 @@ const _bundlerHints = [
     max-width: var(--max-section);
     margin: 0 auto;
     padding: 0 var(--space-section-x) clamp(2.5rem, 5vw, 3.5rem);
-  }
-  /* SeriesNav container — přisunutý pod answer block; prázdný (článek mimo
-     sérii) nezabírá místo, SeriesNav pak nic nerendruje. */
-  .rseries {
-    max-width: var(--max-section);
-    margin: calc(-1 * clamp(1.25rem, 2.5vw, 2rem)) auto 0;
-    padding: 0 var(--space-section-x);
-  }
-  .rseries:has(> :first-child) {
-    padding-bottom: clamp(2rem, 4vw, 3rem);
   }
   .ranswer__inner {
     background: var(--color-paper-deep);

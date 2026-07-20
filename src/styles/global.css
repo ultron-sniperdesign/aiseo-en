@@ -45,6 +45,11 @@
   --color-aio-tint: oklch(0.96 0.022 305);
   --color-aio-soft: oklch(0.86 0.06 305);
 
+  /* AI Mode — pátá disciplína (Google AI Mode), teal */
+  --color-aimode: oklch(0.46 0.13 215);
+  --color-aimode-tint: oklch(0.96 0.022 215);
+  --color-aimode-soft: oklch(0.86 0.06 215);
+
   /* Sekce mimo 4 disciplíny — používané v /prakticky-postup/ a /rozhodovaci-matice/ */
   --color-praxe: var(--color-accent);
   --color-praxe-tint: oklch(0.96 0.022 250);

@@ -1,0 +1,97 @@
+---
+/**
+ * AuthorByline — kompaktní podpis autora pod H1 článku.
+ *
+ * Avatar (foto z author.photo; fallback = iniciály na stejném gradientu jako
+ * video facade → autor se vizuálně pojí s tváří z videí) + label + jméno.
+ * Když má autor URL (autorská stránka), jméno je odkaz; jinak plain <span>.
+ *
+ * Data: src/i18n/author.ts (fork přeloží labely, identita zůstává).
+ * Margin řeší rodič (obal .hero__byline / .rhero__byline) — komponenta sama
+ * žádný vnější margin nemá, aby šla použít v obou šablonách.
+ */
+import { author } from "~/i18n/author";
+---
+
+<div class="byline">
+  {
+    author.photo ? (
+      <img
+        class="byline__avatar"
+        src={author.photo}
+        alt=""
+        width="40"
+        height="40"
+        loading="lazy"
+      />
+    ) : (
+      <span class="byline__avatar byline__avatar--initials" aria-hidden="true">
+        {author.initials}
+      </span>
+    )
+  }
+  <span class="byline__text">
+    <span class="byline__label">{author.bylineLabel}</span>
+    {
+      author.url ? (
+        <a class="byline__name" href={author.url}>
+          {author.name}
+        </a>
+      ) : (
+        <span class="byline__name">{author.name}</span>
+      )
+    }
+  </span>
+</div>
+
+<style>
+  .byline {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .byline__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .byline__avatar--initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+      135deg,
+      oklch(0.45 0.16 250),
+      oklch(0.5 0.13 155)
+    );
+    color: oklch(1 0 0);
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+  .byline__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  .byline__label {
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+  .byline__name {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+  a.byline__name:hover {
+    text-decoration: underline;
+  }
+</style>

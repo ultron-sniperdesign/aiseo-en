@@ -1,0 +1,202 @@
+---
+/**
+ * DataColumns — svislý sloupcový graf (trend v čase) pro datové články.
+ *
+ * HTML/CSS, žádné SVG. Pravidla (dataviz spec): sloupec ≤ 24px, zaoblený jen
+ * horní (datový) konec 4px, baseline rovná; hairline gridlines (1px, plná);
+ * hodnoty jen u vybraných bodů (první / peak / poslední — `labeled: true`),
+ * zbytek nese osa a tabulkový fallback. Jedna série = žádná legenda; barvu
+ * nese sloupec (--color-seo), text vždy ink tokeny.
+ *
+ * Použití v MDX:
+ *   <DataColumns
+ *     caption="Návštěvy z AI nástrojů po měsících"
+ *     points={[
+ *       { label: "srp 25", value: 156, labeled: true },
+ *       { label: "zář", value: 124 },
+ *     ]}
+ *     ticks={[0, 100, 200]}
+ *   />
+ */
+interface Point {
+  label: string;
+  value: number;
+  /** Vypsat hodnotu nad sloupcem (jen vybrané body — první / extrém / poslední). */
+  labeled?: boolean;
+}
+
+interface Props {
+  caption: string;
+  points: Point[];
+  /** Hodnoty vodorovných gridlines (vzestupně, včetně 0). */
+  ticks: number[];
+  /** Popisek jednotky do tabulkového fallbacku. */
+  unit?: string;
+  tableValueLabel?: string;
+}
+
+const { caption, points, ticks, unit = "", tableValueLabel = "Hodnota" } = Astro.props;
+const top = Math.max(...ticks, ...points.map((p) => p.value));
+const pct = (v: number) => (v / top) * 100;
+---
+
+<figure class="dcols">
+  <figcaption class="dcols__caption">{caption}</figcaption>
+  <div class="dcols__plot">
+    <div class="dcols__grid" aria-hidden="true">
+      {
+        [...ticks].reverse().map((t) => (
+          <div class="dcols__gridline" style={`bottom: ${pct(t)}%`}>
+            <span class="dcols__tick">{t.toLocaleString("cs-CZ")}</span>
+          </div>
+        ))
+      }
+    </div>
+    <div class="dcols__cols">
+      {
+        points.map((p) => (
+          <div class="dcols__slot" title={`${p.label}: ${p.value.toLocaleString("cs-CZ")}${unit ? " " + unit : ""}`}>
+            {p.labeled && <span class="dcols__value">{p.value.toLocaleString("cs-CZ")}</span>}
+            <span class="dcols__bar" style={`height: ${pct(p.value)}%`} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+  <div class="dcols__labels" aria-hidden="true">
+    {points.map((p) => <span class="dcols__xlabel">{p.label}</span>)}
+  </div>
+  <details class="dcols__table">
+    <summary>Zobrazit data v tabulce</summary>
+    <table>
+      <thead>
+        <tr><th>Období</th><th>{tableValueLabel}</th></tr>
+      </thead>
+      <tbody>
+        {points.map((p) => (
+          <tr><td>{p.label}</td><td>{p.value.toLocaleString("cs-CZ")}{unit ? ` ${unit}` : ""}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </details>
+</figure>
+
+<style>
+  .dcols {
+    margin: 2rem 0;
+    padding: clamp(1.25rem, 2.5vw, 1.75rem);
+    border: 1px solid var(--color-rule);
+    border-radius: 16px;
+    background: var(--color-paper);
+  }
+  .dcols__caption {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: 1.25rem;
+  }
+  .dcols__plot {
+    position: relative;
+    height: 200px;
+    margin-left: 2.4rem;
+  }
+  .dcols__grid {
+    position: absolute;
+    inset: 0;
+  }
+  .dcols__gridline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--color-rule);
+  }
+  .dcols__tick {
+    position: absolute;
+    left: -2.4rem;
+    top: -0.55em;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    color: var(--color-ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+  .dcols__cols {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2px;
+  }
+  .dcols__slot {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    min-width: 0;
+  }
+  .dcols__bar {
+    display: block;
+    width: min(24px, 78%);
+    border-radius: 4px 4px 0 0;
+    background: var(--color-seo);
+  }
+  .dcols__value {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: 0.3rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .dcols__labels {
+    display: flex;
+    justify-content: space-between;
+    gap: 2px;
+    margin: 0.5rem 0 0 2.4rem;
+  }
+  .dcols__xlabel {
+    flex: 1;
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    color: var(--color-ink-faint);
+    overflow-wrap: anywhere;
+  }
+  .dcols__table {
+    margin-top: 1.1rem;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: var(--color-ink-muted);
+  }
+  .dcols__table summary {
+    cursor: pointer;
+  }
+  .dcols__table table {
+    margin-top: 0.6rem;
+    border-collapse: collapse;
+    width: 100%;
+    font-variant-numeric: tabular-nums;
+  }
+  .dcols__table th,
+  .dcols__table td {
+    text-align: left;
+    padding: 0.3rem 0.6rem 0.3rem 0;
+    border-bottom: 1px solid var(--color-rule);
+    color: var(--color-ink-muted);
+  }
+  .dcols__table th {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  @media (max-width: 640px) {
+    .dcols__xlabel {
+      font-size: 0.58rem;
+    }
+  }
+</style>

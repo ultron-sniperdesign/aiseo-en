@@ -1,0 +1,169 @@
+---
+/**
+ * AuthorBox — bio box autora na konci článku (E-E-A-T krok 2).
+ *
+ * Foto + eyebrow + jméno + 3–4 věty bio + odkazy (agentura, e-shop; později
+ * autorská stránka / YouTube / LinkedIn — přidávají se v author.ts, komponenta
+ * je vykreslí automaticky). Když má autor URL (autorská stránka, bod 3),
+ * jméno je odkaz.
+ *
+ * Data: src/i18n/author.ts (fork přeloží eyebrow/bio, identita zůstává).
+ * Vkládá se hned pod tělo článku — v obou článkových layoutech.
+ */
+import { author } from "~/i18n/author";
+---
+
+<aside class="abox" aria-label={author.box.eyebrow}>
+  {
+    author.photo ? (
+      <img
+        class="abox__photo"
+        src={author.photo}
+        alt={author.name}
+        width="88"
+        height="88"
+        loading="lazy"
+      />
+    ) : (
+      <span class="abox__photo abox__photo--initials" aria-hidden="true">
+        {author.initials}
+      </span>
+    )
+  }
+  <div class="abox__body">
+    <span class="abox__eyebrow">{author.box.eyebrow}</span>
+    {
+      author.url ? (
+        <a class="abox__name" href={author.url}>
+          {author.name}
+        </a>
+      ) : (
+        <span class="abox__name">{author.name}</span>
+      )
+    }
+    <p class="abox__bio">{author.box.bio}</p>
+    {
+      author.box.links.length > 0 && (
+        <div class="abox__links">
+          {author.box.links.map((l) => (
+            <a
+              class="abox__link"
+              href={l.href}
+              target="_blank"
+              rel="noopener"
+            >
+              {l.label}
+              <span aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</aside>
+
+<style>
+  .abox {
+    width: min(50rem, calc(100% - 2 * var(--space-section-x, 1.5rem)));
+    margin: clamp(2.5rem, 5vw, 3.5rem) auto 0;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    display: flex;
+    gap: clamp(1.1rem, 2.5vw, 1.6rem);
+    align-items: flex-start;
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-radius: 16px;
+  }
+  .abox__photo {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .abox__photo--initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+      135deg,
+      oklch(0.45 0.16 250),
+      oklch(0.5 0.13 155)
+    );
+    color: oklch(1 0 0);
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 2rem;
+  }
+  .abox__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    min-width: 0;
+  }
+  .abox__eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+  .abox__name {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    font-weight: 650;
+    color: var(--color-ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  a.abox__name:hover {
+    text-decoration: underline;
+  }
+  .abox__bio {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--color-ink-muted);
+  }
+  .abox__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.65rem;
+    margin-top: 0.35rem;
+  }
+  .abox__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration: none;
+    padding: 0.32rem 0.75rem;
+    border: 1px solid var(--color-rule);
+    border-radius: 999px;
+    background: var(--color-paper);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .abox__link:hover {
+    border-color: var(--color-ink-faint);
+    transform: translateY(-1px);
+  }
+  .abox__link span {
+    font-size: 0.72rem;
+    opacity: 0.55;
+  }
+
+  @media (max-width: 560px) {
+    .abox {
+      flex-direction: column;
+    }
+    .abox__photo {
+      width: 72px;
+      height: 72px;
+    }
+  }
+</style>

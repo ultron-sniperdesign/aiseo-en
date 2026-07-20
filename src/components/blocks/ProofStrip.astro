@@ -1,0 +1,181 @@
+---
+/**
+ * ProofStrip — výrazný trust panel s ověřitelnými čísly z vlastního
+ * e-shopu (case study MEGA DETAIL).
+ *
+ * V2 po review: tmavý inverzní panel (stejná rodina jako dark bloky webu —
+ * SniperDesign kontakt, kontakt hero), titulek který číslo vysvětlí sám
+ * od sebe, 3 stat dlaždice a dvojice CTA (důkaz + akce). Texty:
+ * src/i18n/proof.ts (fork přeloží).
+ *
+ * Použití: <ProofStrip /> těsně před Sniper Design pitch blokem.
+ */
+import { proof } from "~/i18n/proof";
+---
+
+<section class="proof" aria-label={proof.aria}>
+  <div class="proof__inner">
+    <span class="proof__eyebrow">{proof.eyebrow}</span>
+
+    <h2 class="proof__title" set:html={proof.titleHtml} />
+
+    <p class="proof__lead">{proof.lead}</p>
+
+    <dl class="proof__stats">
+      {
+        proof.stats.map((s) => (
+          <div class="proof__stat">
+            <dt class="proof__stat-value">{s.value}</dt>
+            <dd class="proof__stat-label">{s.label}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <div class="proof__actions">
+      <a class="proof__cta proof__cta--primary" href={proof.ctaPrimary.href}>
+        {proof.ctaPrimary.label}
+        <span aria-hidden="true">→</span>
+      </a>
+      <a class="proof__cta proof__cta--secondary" href={proof.ctaSecondary.href}>
+        {proof.ctaSecondary.label}
+      </a>
+    </div>
+
+    <p class="proof__source">{proof.source}</p>
+  </div>
+</section>
+
+<style>
+  .proof {
+    max-width: var(--max-section);
+    margin: clamp(3rem, 7vw, 5rem) auto;
+    padding: 0 var(--space-section-x);
+  }
+  .proof__inner {
+    border-radius: 24px;
+    background:
+      radial-gradient(120% 160% at 85% -20%, oklch(0.42 0.14 264 / 0.55), transparent 55%),
+      radial-gradient(100% 140% at 0% 110%, oklch(0.4 0.1 155 / 0.35), transparent 50%),
+      oklch(0.21 0.03 262);
+    color: oklch(0.97 0.005 250);
+    padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 4.5vw, 3.5rem);
+    box-shadow:
+      0 32px 80px -32px oklch(0.2 0.06 262 / 0.55),
+      0 6px 16px -8px oklch(0.2 0.06 262 / 0.3);
+  }
+  .proof__eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: oklch(0.85 0.06 250);
+    border: 1px solid oklch(1 0 0 / 0.18);
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+    margin-bottom: 1.4rem;
+  }
+  .proof__title {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1.12;
+    font-size: clamp(1.75rem, 4vw, 2.9rem);
+    max-width: 24ch;
+    margin: 0 0 1rem;
+    color: oklch(1 0 0);
+  }
+  .proof__title :global(strong) {
+    font-weight: 650;
+    color: oklch(0.87 0.09 250);
+    white-space: nowrap;
+  }
+  .proof__lead {
+    font-family: var(--font-sans);
+    font-weight: 350;
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    line-height: 1.6;
+    color: oklch(0.9 0.01 250);
+    max-width: 46rem;
+    margin: 0 0 2rem;
+  }
+  .proof__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: oklch(1 0 0 / 0.14);
+    border: 1px solid oklch(1 0 0 / 0.14);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 0 0 2rem;
+  }
+  .proof__stat {
+    background: oklch(0.24 0.03 262 / 0.85);
+    padding: 1.25rem 1.4rem;
+    margin: 0;
+  }
+  .proof__stat-value {
+    font-family: var(--font-sans);
+    font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    color: oklch(1 0 0);
+    font-variant-numeric: tabular-nums;
+  }
+  .proof__stat-label {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: oklch(0.82 0.015 250);
+    margin: 0.35rem 0 0;
+  }
+  .proof__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .proof__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.7rem 1.4rem;
+    border-radius: 999px;
+    transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+  .proof__cta--primary {
+    background: oklch(1 0 0);
+    color: oklch(0.22 0.012 260);
+  }
+  .proof__cta--primary:hover {
+    transform: translateY(-1px);
+    background: oklch(0.93 0.01 250);
+  }
+  .proof__cta--secondary {
+    border: 1px solid oklch(1 0 0 / 0.35);
+    color: oklch(1 0 0);
+  }
+  .proof__cta--secondary:hover {
+    transform: translateY(-1px);
+    border-color: oklch(1 0 0 / 0.7);
+  }
+  .proof__source {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: oklch(0.72 0.015 250);
+    margin: 0;
+  }
+
+  @media (max-width: 760px) {
+    .proof__stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

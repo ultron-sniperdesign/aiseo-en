@@ -1,0 +1,179 @@
+---
+/**
+ * HeroVideo — reusable lazy YouTube facade.
+ *
+ * Při loadu se ukáže jen YouTube náhled (thumbnail + play overlay + badge);
+ * teprve klik načte iframe z `youtube-nocookie.com` → žádné YT cookies / perf
+ * zátěž při loadu (sedí k privacy lince webu + Lighthouse).
+ *
+ * Použití (z .astro / MDX):
+ *   import HeroVideo from "~/components/blocks/HeroVideo.astro";
+ *   <HeroVideo youtubeId="oPfYftelijw" badge="Video průvodce" />
+ *
+ * Použité třídy: `.video-facade*` (vlastní namespace, neslepí se s homepage
+ * `.hero-video*` — homepage má vlastní inline implementaci; sjednotit lze později).
+ *
+ * Pozn. k iframu: vytvářený v JS přes createElement → NEdostane Astro scoped
+ * CSS atribut, takže nutné inline styly v JS (jinak by zůstal 300×150 default).
+ */
+interface Props {
+  /** YouTube video ID (např. "oPfYftelijw" z https://youtu.be/oPfYftelijw). */
+  youtubeId: string;
+  /** Volitelný badge vlevo dole (např. "Úvodní video · 2 min"). */
+  badge?: string;
+  /** aria-label pro play tlačítko. */
+  playLabel?: string;
+  /** Max šířka kontejneru — default ~52rem (vejde se vedle answer blocku). */
+  maxWidth?: string;
+}
+
+const {
+  youtubeId,
+  badge,
+  playLabel = "Přehrát video",
+  maxWidth = "52rem",
+} = Astro.props;
+---
+
+<div class="video-facade-wrap" style={`max-width: ${maxWidth}`}>
+  <div class="video-facade" data-yt-wrap>
+    <button
+      type="button"
+      class="video-facade__btn"
+      data-yt={youtubeId}
+      aria-label={playLabel}
+    >
+      {/* Lokální WebP poster (bez třetí domény) — fallback ytimg pro videa bez posteru. */}
+      <img
+        class="video-facade__thumb"
+        src={`/video/poster-${youtubeId}.webp`}
+        alt=""
+        width="1280"
+        height="720"
+        loading="lazy"
+        onerror={`this.onerror=null;this.src='https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg'`}
+      />
+      <span class="video-facade__play" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"
+          ><path d="M8 5v14l11-7z" /></svg
+        >
+      </span>
+      {badge && <span class="video-facade__badge">{badge}</span>}
+    </button>
+  </div>
+</div>
+
+<style>
+  .video-facade-wrap {
+    margin: clamp(2rem, 4vw, 3rem) auto;
+  }
+  .video-facade {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--color-rule);
+    background: linear-gradient(
+      135deg,
+      oklch(0.45 0.16 250),
+      oklch(0.5 0.13 155)
+    );
+    box-shadow:
+      0 24px 60px -24px oklch(0.2 0.05 260 / 0.45),
+      0 4px 12px -6px oklch(0.2 0.05 260 / 0.2);
+  }
+  .video-facade__btn {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: block;
+  }
+  .video-facade__thumb {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* Klasický YouTube play button — červený rounded rectangle s bílým trojúhelníkem.
+     Lazy facade vizuálně matchuje co lidi z YouTube znají; benefit (žádné YT cookies
+     do kliku) zůstává. */
+  .video-facade__play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 68px;
+    height: 48px;
+    border-radius: 14px;
+    background: #ff0000; /* YouTube red */
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 4px;
+    box-shadow: 0 4px 16px oklch(0.2 0.05 260 / 0.25);
+    transition: background 0.18s ease, transform 0.18s ease;
+  }
+  .video-facade__btn:hover .video-facade__play {
+    background: #cc0000; /* YouTube hover red */
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+  .video-facade__btn:focus-visible {
+    outline: 2px solid #ff0000;
+    outline-offset: 3px;
+  }
+  .video-facade__badge {
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: oklch(1 0 0);
+    background: oklch(0.2 0.03 260 / 0.7);
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .video-facade__play {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // Lazy facade pro YouTube — klik načte youtube-nocookie iframe.
+  // Inline styly iframu nutné: JS-vytvořený element nedostane Astro scoped CSS
+  // atribut, takže scoped `.video-facade-iframe` pravidlo by ho nestylovalo
+  // (stejná gotcha jako u homepage videa — viz commit 9a499f3).
+  (() => {
+    document
+      .querySelectorAll<HTMLElement>(".video-facade[data-yt-wrap]")
+      .forEach((wrap) => {
+        const btn = wrap.querySelector<HTMLButtonElement>(".video-facade__btn");
+        if (!btn) return;
+        btn.addEventListener("click", () => {
+          const id = btn.dataset.yt;
+          if (!id) return;
+          const ifr = document.createElement("iframe");
+          ifr.style.cssText =
+            "position:absolute;inset:0;width:100%;height:100%;border:0";
+          ifr.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1`;
+          ifr.title = btn.getAttribute("aria-label") || "";
+          ifr.allow =
+            "autoplay; encrypted-media; picture-in-picture; web-share";
+          ifr.allowFullscreen = true;
+          btn.remove();
+          wrap.appendChild(ifr);
+        });
+      });
+  })();
+</script>

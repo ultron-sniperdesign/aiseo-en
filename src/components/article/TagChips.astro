@@ -1,0 +1,54 @@
+---
+/**
+ * TagChips — odkazové chips na tematické clustery článku.
+ * Renderuje se v hero článku (pod meta řádkem) v classic i rich layoutu.
+ * Data: frontmatter `tags` → registr `src/i18n/tags.ts`.
+ */
+import { ui } from "~/i18n/strings";
+import { tagById, TAG_BASE } from "~/i18n/tags";
+
+interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props;
+const resolved = tags.map((id) => tagById.get(id)).filter(Boolean);
+---
+
+{
+  resolved.length > 0 && (
+    <nav class="tagchips" aria-label={ui.articleTagsLabel}>
+      {resolved.map((t) => (
+        <a class="tagchips__chip" href={`${TAG_BASE}${t!.slug}/`}>
+          {t!.label}
+        </a>
+      ))}
+    </nav>
+  )
+}
+
+<style>
+  .tagchips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .tagchips__chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.8rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-ink-muted);
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .tagchips__chip:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+</style>

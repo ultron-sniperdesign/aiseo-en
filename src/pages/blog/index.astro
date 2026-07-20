@@ -4,6 +4,8 @@ import SniperDesignSmallContact from "~/components/sniperdesign/SmallContact.ast
 import FreeStrip from "~/components/blocks/FreeStrip.astro";
 import { getCollection } from "astro:content";
 import { site } from "~/i18n/site";
+import { ui } from "~/i18n/strings";
+import { BLOG_TAGS, TAG_BASE } from "~/i18n/tags";
 
 const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
 
@@ -15,13 +17,14 @@ const articles = (await getCollection("articles")).sort((a, b) =>
   b.data.updated.localeCompare(a.data.updated),
 );
 
-/** Category labels pro filter chips + per-card tag. */
-const categoryLabel: Record<string, string> = {
-  tutorial: "Tutorial",
-  analysis: "Analýza",
-  defensive: "Defenzivní",
-  "case-study": "Case study",
-};
+/** Category labels pro filter chips + per-card tag — z i18n vrstvy (fork přeloží ui.category). */
+const categoryLabel = ui.category;
+
+/** Build-time: sloty s WebP variantou OG (fallback = PNG, nikdy rozbitý obrázek). */
+import { existsSync } from "node:fs";
+const webpSlugs = new Set(
+  articles.filter((a) => existsSync(`public/og/${a.data.slug}.webp`)).map((a) => a.data.slug),
+);
 
 /** Reading time per článek — dynamicky z body. */
 function calcReading(body: string): { wordCount: number; minutes: number } {
@@ -35,6 +38,12 @@ function calcReading(body: string): { wordCount: number; minutes: number } {
 
 /** Distinct categories ze článků pro filter chips. */
 const usedCategories = Array.from(new Set(articles.map((a) => a.data.category)));
+
+/** Tematické clustery s počtem článků — odkazové chips na /blog/tema/<slug>/. */
+const tagRow = BLOG_TAGS.map((t) => ({
+  ...t,
+  count: articles.filter((a) => a.data.tags.includes(t.id)).length,
+})).filter((t) => t.count > 0);
 
 /** Dynamic stats pro fact-density v leadu. */
 const totalWords = articles.reduce((sum, a) => {
@@ -56,7 +65,7 @@ const faq = [
   },
   {
     q: "Jak často vychází nový článek?",
-    a: "Aktuálně přibývá průměrně 1 článek týdně. Plánujeme přejít na automatizovanou denní kadenci přes AI skill. Datum poslední aktualizace každého článku je viditelně zobrazené v hlavičce; všechny články se 1× ročně přepisují, aby data zůstávala aktuální (datový refresh, fix broken linků, screenshot updaty).",
+    a: "Aktuálně vychází několik nových článků týdně (v červnu a červenci 2026 průměrně 4–6 týdně). Datum prvního publikování i poslední aktualizace každého článku je viditelně zobrazené v hlavičce; články průběžně aktualizujeme, aby data zůstávala aktuální (datový refresh, fix broken linků, screenshot updaty).",
   },
   {
     q: "Pro koho je obsah určený?",
@@ -68,7 +77,7 @@ const faq = [
   },
   {
     q: "Mohu se přihlásit k odběru nových článků?",
-    a: "Aktuálně nemá web RSS feed ani newsletter — pracujeme na tom. Nejsnadnější způsob sledovat nové články: bookmark této stránky (/blog/) nebo follow GitHub repository. RSS feed přidáme současně se spuštěním automatizované denní publikace.",
+    a: "Ano — web má RSS feed na adrese /rss.xml (odkaz najdete i v patičce), který obsahuje všechny články řazené od nejnovějších. E-mailový newsletter zatím neposíláme; pokud chcete obsah e-mailem, stáhněte si návod zdarma na /navod-zdarma/ — na stejný kontakt pošleme i zásadní novinky.",
   },
   {
     q: "Můžu některý článek použít ve své práci, citovat nebo přeložit?",
@@ -143,10 +152,10 @@ const answerText =
   <div class="page">
     <!-- HERO -->
     <section class="hero">
-      <nav class="hero__crumbs" aria-label="Drobečková navigace">
-        <a href="/">Úvod</a>
+      <nav class="hero__crumbs" aria-label={ui.ariaBreadcrumb}>
+        <a href="/">{ui.crumbHome}</a>
         <span class="crumb-sep">›</span>
-        <span class="hero__crumb-pill">Blog</span>
+        <span class="hero__crumb-pill">{ui.crumbBlog}</span>
       </nav>
 
       <h1 class="display hero__title">
@@ -163,20 +172,24 @@ const answerText =
         <span>průměrně ~{avgWords.toLocaleString(site.inLanguage)} slov / článek</span>
         <span>nejnovější: {newestDate}</span>
       </div>
+
+      <p class="hero__start">
+        {ui.blogStartLead} <a href="/zacnete-tady/">{ui.blogStartLink} <span aria-hidden="true">→</span></a>
+      </p>
     </section>
 
     <!-- ANSWER BLOCK -->
     <section class="answer">
       <div class="answer__inner">
-        <span class="answer__mark">Stručná definice</span>
+        <span class="answer__mark">{ui.answerDefinition}</span>
         <p class="answer__text">{answerText}</p>
       </div>
     </section>
 
     <!-- FILTER CHIPS -->
-    <section class="filter-bar" aria-label="Filtr článků podle kategorie">
+    <section class="filter-bar" aria-label={ui.ariaArticleFilter}>
       <button class="chip chip--active" data-filter="all" type="button">
-        Všechny <span class="chip__count">({articles.length})</span>
+        {ui.filterAll} <span class="chip__count">({articles.length})</span>
       </button>
       {
         usedCategories.map((cat) => {
@@ -191,8 +204,20 @@ const answerText =
       }
     </section>
 
+    <!-- TÉMATA — odkazové chips na tag stránky (server-side, indexovatelné) -->
+    <nav class="tag-row" aria-label={ui.ariaTagNav}>
+      <span class="tag-row__label">{ui.tagsRowLabel}:</span>
+      {
+        tagRow.map((t) => (
+          <a class="tchip" href={`${TAG_BASE}${t.slug}/`}>
+            {t.label} <span class="tchip__count">({t.count})</span>
+          </a>
+        ))
+      }
+    </nav>
+
     <!-- ARTICLES GRID -->
-    <section class="articles" aria-label="Seznam článků">
+    <section class="articles" aria-label={ui.ariaArticleList}>
       <div class="articles__grid">
         {
           articles.map((entry) => {
@@ -203,26 +228,31 @@ const answerText =
                 class="acard"
                 data-category={entry.data.category}
               >
-                <img
-                  class="acard__img"
-                  src={`/og/${entry.data.slug}.png`}
-                  alt={entry.data.title}
-                  loading="lazy"
-                  width="1536"
-                  height="1024"
-                />
+                <picture>
+                  {webpSlugs.has(entry.data.slug) && (
+                    <source srcset={`/og/${entry.data.slug}.webp`} type="image/webp" />
+                  )}
+                  <img
+                    class="acard__img"
+                    src={`/og/${entry.data.slug}.png`}
+                    alt={entry.data.title}
+                    loading="lazy"
+                    width="1536"
+                    height="1024"
+                  />
+                </picture>
                 <div class="acard__body">
                   <div class="acard__header">
                     <span class="acard__tag">{categoryLabel[entry.data.category] ?? entry.data.category}</span>
-                    <span class="acard__time">{reading.minutes} min</span>
+                    <span class="acard__time">{reading.minutes} {ui.metaMinShort}</span>
                   </div>
                   <h2 class="acard__title">{entry.data.title}</h2>
                   <p class="acard__desc">{entry.data.description}</p>
                   <div class="acard__meta">
                     <span>{entry.data.updated}</span>
-                    <span>~{reading.wordCount.toLocaleString(site.inLanguage)} slov</span>
+                    <span>~{reading.wordCount.toLocaleString(site.inLanguage)} {ui.metaWords}</span>
                     <span class="acard__cta">
-                      Číst <span aria-hidden="true">→</span>
+                      {ui.cardReadMore} <span aria-hidden="true">→</span>
                     </span>
                   </div>
                 </div>
@@ -241,10 +271,8 @@ const answerText =
     <!-- FAQ -->
     <section class="faq" aria-labelledby="faq-title">
       <header class="faq__head">
-        <span class="eyebrow"><span class="eyebrow__num">FAQ</span> Časté otázky</span>
-        <h2 id="faq-title" class="faq__title">
-          Šest otázek, které k <span class="hl">blogu</span> <strong>nejčastěji padají</strong>
-        </h2>
+        <span class="eyebrow"><span class="eyebrow__num">{ui.faqEyebrowNum}</span> {ui.faqEyebrow}</span>
+        <h2 id="faq-title" class="faq__title" set:html={ui.blogIndexFaqTitleHtml} />
       </header>
 
       <dl class="faq__list">
@@ -376,6 +404,18 @@ const answerText =
     background: var(--d);
     border-radius: 50%;
   }
+  .hero__start {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+    margin: 1rem 0 0;
+  }
+  .hero__start a {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .hero__start a:hover { text-decoration: underline; }
 
   /* ===== FILTER CHIPS ===== */
   .filter-bar {
@@ -415,6 +455,46 @@ const answerText =
     color: var(--color-paper);
   }
   .chip--active .chip__count { color: var(--color-paper); }
+
+  /* ===== TÉMATA (odkazové chips) ===== */
+  .tag-row {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: 1rem var(--space-section-x) 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .tag-row__label {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+    margin-right: 0.25rem;
+  }
+  .tchip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.9rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-ink-muted);
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .tchip:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+  .tchip__count { color: var(--color-ink-faint); font-weight: 400; }
 
   /* ===== ARTICLES GRID ===== */
   .articles {
@@ -466,8 +546,12 @@ const answerText =
   .acard__img {
     display: block;
     width: 100%;
-    aspect-ratio: 3 / 2;
+    /* Poměr = existující OG (1200×669) → ty se vejdou bez ořezu stran (text vpravo
+       zůstane). object-position: top zachová text generovaných 3:2 obrázků (vlevo
+       nahoře), ořízne se jen spodek. */
+    aspect-ratio: 1200 / 669;
     object-fit: cover;
+    object-position: center top;
     background: var(--color-paper-deep);
     border-bottom: 1px solid var(--color-rule);
   }

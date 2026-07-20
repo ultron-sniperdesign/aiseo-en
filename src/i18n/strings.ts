@@ -17,7 +17,7 @@ export interface NavLink {
   href: string;
   label: string;
   /** Disciplína — barevné zvýraznění (tečka / hover barva). */
-  d?: "seo" | "geo" | "aeo" | "aio";
+  d?: "seo" | "geo" | "aeo" | "aio" | "aimode";
   /** Stylová varianta (pillar / blog / audit / free). */
   variant?: "pillar" | "blog" | "audit" | "free";
 }
@@ -34,6 +34,97 @@ export const nav = {
   closeLabel: "Close menu",
   navAria: "Main navigation",
   mobileAria: "Mobile navigation",
+
+  /**
+   * HEADER v4a — dvouřádkový header (řádek 1: logo + hledání + akvizice;
+   * řádek 2: disciplíny s dropdown náhledy + doplňky). EN fork: vlastní slugy,
+   * „AIO" přerámováno na **AI SEO**, akviziční pilulky prázdné (EN komerční
+   * stránky zatím nejsou přeložené — later-wave).
+   */
+  header: {
+    /** Vyhledávání (Pagefind → /search/). */
+    search: {
+      placeholder: "Search disciplines, guides, terms…",
+      placeholderMobile: "Search…",
+      button: "Search",
+      aria: "Search the site",
+      action: "/search/",
+    },
+    /** Disciplíny (řádek 2) + obsah dropdown karet. */
+    disciplines: [
+      {
+        d: "seo",
+        label: "SEO",
+        href: "/seo/",
+        badge: "SEO",
+        fullName: "Search Engine Optimization",
+        lead: "Rankings on Google and Bing.",
+        desc: "Classic optimization for search rankings. It remains the foundation for everything else — without indexing, neither GEO nor AEO works.",
+      },
+      {
+        d: "geo",
+        label: "GEO",
+        href: "/generative-engine-optimization/",
+        badge: "GEO",
+        fullName: "Generative Engine Optimization",
+        lead: "Citations in ChatGPT, Perplexity, Claude, and Gemini.",
+        desc: "Instead of a blue link, you aim to be the source the AI draws its facts from while generating an answer.",
+      },
+      {
+        d: "aeo",
+        label: "AEO",
+        href: "/answer-engine-optimization/",
+        badge: "AEO",
+        fullName: "Answer Engine Optimization",
+        lead: "Google AI Overviews and Bing Chat.",
+        desc: "A narrower discipline — FAQ sections, how-tos, and short answers right after the heading. That's its craft.",
+      },
+      {
+        d: "aio",
+        label: "AI SEO",
+        href: "/ai-seo/",
+        badge: "AI SEO",
+        fullName: "AI SEO — the umbrella",
+        lead: "The strategic umbrella over SEO, GEO, and AEO.",
+        desc: "The plan that orders the other three, so they pull in the same direction instead of competing for resources.",
+      },
+      {
+        d: "aimode",
+        label: "AI Mode",
+        href: "/ai-mode/",
+        badge: "AI MODE",
+        fullName: "Google AI Mode",
+        lead: "Conversational search inside Google itself.",
+        desc: "The emerging interface with query fan-out — answers without clicks. It decides whether Google shows you at all.",
+      },
+    ],
+    /** CTA v dropdown kartě. */
+    dropdownCta: "Open the discipline →",
+    /** Doplňky (utlumená část řádku 2). */
+    addons: [
+      { href: "/seo-vs-geo-vs-aeo/", label: "Guide" },
+    ],
+    /** Akviziční blok — EN: prázdné, komerční stránky nejsou přeložené. */
+    acquisitions: [] as { href: string; label: string; variant: string }[],
+    /** Mobilní drawer. */
+    mobile: {
+      disciplinesTitle: "DISCIPLINES",
+      searchAria: "Open search",
+    },
+  },
+
+  /** DESKTOP lišta — edukativní část. */
+  desktopEdu: [
+    { href: "/seo/", label: "SEO", d: "seo" },
+    { href: "/generative-engine-optimization/", label: "GEO", d: "geo" },
+    { href: "/answer-engine-optimization/", label: "AEO", d: "aeo" },
+    { href: "/ai-seo/", label: "AI SEO", d: "aio" },
+    { href: "/ai-mode/", label: "AI Mode", d: "aimode" },
+    { href: "/seo-vs-geo-vs-aeo/", label: "Guide", variant: "pillar" },
+  ] as NavLink[],
+
+  /** DESKTOP lišta — komerční část. EN: prázdné (later-wave). */
+  desktopOffers: [] as NavLink[],
 
   /**
    * DESKTOP lišta — kompaktní pills. First-wave: jen edukativní jádro
@@ -57,6 +148,7 @@ export const nav = {
         { href: "/generative-engine-optimization/", label: "GEO", d: "geo" },
         { href: "/answer-engine-optimization/", label: "AEO", d: "aeo" },
         { href: "/ai-seo/", label: "AI SEO", d: "aio" },
+        { href: "/ai-mode/", label: "Google AI Mode", d: "aimode" },
       ],
     },
     {
@@ -76,6 +168,7 @@ export const footer = {
   /** Skládá se jako: © {rok} {doména} · {builtNote} */
   builtNote: "built with Astro · hosted in the EU",
   sitemapLabel: "Sitemap",
+  rssLabel: "RSS",
   updatedLabel: "Updated May 2026",
 };
 
@@ -91,6 +184,54 @@ export const footer = {
  * i se značkami a v jiném slovosledu. `{abbr}` placeholder nahradí šablona.
  */
 export const ui = {
+  // --- Blog chrome (A externalizoval e7cae2f) ---
+  cardReadMore: "Read",
+  filterAll: "All",
+  metaMinShort: "min",
+  ariaArticleFilter: "Filter articles by category",
+  ariaArticleList: "Article list",
+  blogStartLead: "First time here?",
+  blogStartLink: "Start here",
+  blogFaqTitleHtml: '<span class="hl">Common questions</span> people <strong>ask about this topic</strong>',
+  blogIndexFaqTitleHtml: 'Six questions people <strong>ask most</strong> about <span class="hl">the blog</span>',
+  richFaqEyebrowHtml: "FAQ · {n} questions",
+  richFaqTitle: "Common questions on this topic",
+  relatedArticlesAria: "Recommended related articles",
+  relatedArticlesEyebrow: "Keep reading",
+  relatedArticlesTitle: "Related articles",
+
+  // --- Tagy / tematické clustery ---
+  ariaTagNav: "Blog topics",
+  articleTagsLabel: "Article topics",
+  tagsRowLabel: "Topics",
+  tagPageEyebrow: "Topic",
+  tagPageCountSuffix: "articles on this topic",
+  tagPageAllTags: "More topics",
+  tagPageBackToBlog: "All blog articles",
+
+  // --- Série článků (EN: zatím prázdné v i18n/series.ts) ---
+  seriesEyebrow: "Series",
+  seriesNavAria: "Series navigation",
+  seriesPartOf: "Part {x} of {n}",
+  seriesPrev: "← Previous part",
+  seriesNext: "Next part →",
+  seriesAllParts: "All parts",
+  seriesStartCta: "Start with part 1",
+  seriesPromoLead: "We have a full series on this topic:",
+  seriesPromoCta: "Go through the series",
+  seriesPlannedTitle: "Coming up",
+  seriesPlannedNote: "More parts are in the content plan — they'll be added over the coming weeks.",
+
+  // --- Stránka /search/ (Pagefind) ---
+  searchPage: {
+    title: "Search",
+    metaTitle: "Search the site",
+    metaDescription:
+      "Full-text search across the whole site — articles, disciplines, the glossary, and practical guides to the AI era of search.",
+    lead: "Searches all articles, discipline sections, and the glossary.",
+    devNote: "The search index is built at build time — it isn't available on the dev server.",
+  },
+
   // Breadcrumbs (viditelné ve stránce; JSON-LD breadcrumb root řeší site.breadcrumbRoot)
   crumbHome: "Home",
   crumbBlog: "Blog",
@@ -128,6 +269,7 @@ export const ui = {
     GEO: "Second discipline · GEO",
     AEO: "Third discipline · AEO",
     AIO: "The umbrella · AI SEO",
+    AIMODE: "Fifth discipline · Google AI Mode",
     PRAXE: "Guide · AI SEO playbook",
     MATICE: "Decision · When to use what",
   } as Record<string, string>,
@@ -143,6 +285,7 @@ export const ui = {
     GEO: "GEO",
     AEO: "AEO",
     AIO: "AI SEO",
+    AIMODE: "AI Mode",
     PRAXE: "the playbook",
     MATICE: "the decision matrix",
   } as Record<string, string>,

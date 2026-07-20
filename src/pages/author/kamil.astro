@@ -1,0 +1,473 @@
+---
+/**
+ * Autorská stránka — kanonický domov author entity (E-E-A-T krok 3).
+ *
+ * Přesně podle vlastního tutorialu (/blog/autorsky-profil-pro-ai/): foto,
+ * bio, ověřitelné credentials, videa s tváří autora, výpis článků a plné
+ * Person JSON-LD s @id — na tuhle entitu se odkazuje author.url z byline,
+ * AuthorBoxu a (bod 4) z Article schema všech článků.
+ *
+ * Texty: src/i18n/author.ts (fork přeloží). Videa se čtou z content/sections
+ * frontmatter (video field) — žádné duplikované youtubeId. Články z kolekce.
+ */
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import HeroVideo from "~/components/blocks/HeroVideo.astro";
+import ArticleCard from "~/components/blocks/ArticleCard.astro";
+import { getCollection } from "astro:content";
+import { author } from "~/i18n/author";
+import { ui } from "~/i18n/strings";
+
+const p = author.page;
+
+/* Videa z sekcí (SEO/GEO/AEO…) — jen sekce, které video mají. */
+const sections = await getCollection("sections");
+const videoSections = sections
+  .filter((s) => s.data.video)
+  .sort((a, b) => a.data.order - b.data.order);
+
+/* Poslední články (celkový počet → credential dlaždice). */
+const articles = await getCollection("articles");
+const articleCount = articles.length;
+const latest = [...articles]
+  .sort((a, b) => b.data.updated.localeCompare(a.data.updated))
+  .slice(0, 6);
+
+const readingMinutes = (body: string | undefined) => {
+  const words = (body ?? "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[#*_`>~]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean).length;
+  return Math.max(1, Math.round(words / 200));
+};
+
+const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
+
+/* Person JSON-LD — plná entita s @id; články na ni odkazují (bod 4). */
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${SITE_ORIGIN}/autor/kamil/#person`,
+  name: author.name,
+  url: `${SITE_ORIGIN}/autor/kamil/`,
+  image: `${SITE_ORIGIN}${author.photo ?? "/autor/kamil.jpg"}`,
+  description: author.box.bio,
+  worksFor: { "@id": `${SITE_ORIGIN}/#publisher` },
+  sameAs: author.sameAs,
+  knowsAbout: [
+    "SEO",
+    "GEO — Generative Engine Optimization",
+    "AEO — Answer Engine Optimization",
+    "AI SEO",
+    "E-commerce",
+    "Upgates",
+    "Shoptet",
+  ],
+};
+---
+
+<BaseLayout
+  title={p.seoTitle}
+  description={p.description}
+  jsonLd={personJsonLd}
+  image="/autor/kamil-velky.jpg"
+  breadcrumb={[{ label: p.breadcrumbLabel, href: "/autor/kamil/" }]}
+>
+  <div class="apage">
+    <!-- ===== HERO — foto + identita + credentials ===== -->
+    <section class="ahero" aria-labelledby="ahero-title">
+      <nav class="ahero__crumbs" aria-label={ui.ariaBreadcrumb}>
+        <a href="/">{ui.crumbHome}</a>
+        <span class="crumb-sep">›</span>
+        <span class="ahero__crumb-pill">{p.breadcrumbLabel}</span>
+      </nav>
+
+      <div class="ahero__grid">
+        <img
+          class="ahero__photo"
+          src="/autor/kamil-velky.jpg"
+          alt={author.name}
+          width="900"
+          height="1124"
+          loading="eager"
+        />
+
+        <div class="ahero__body">
+          <span class="ahero__eyebrow">{p.eyebrow}</span>
+          <h1 id="ahero-title" class="ahero__title">{author.name}</h1>
+          <p class="ahero__lead">{p.lead}</p>
+
+          <div class="ahero__links">
+            {
+              author.box.links.map((l) => (
+                <a class="ahero__link" href={l.href} target="_blank" rel="noopener">
+                  {l.label}
+                  <span aria-hidden="true">↗</span>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <dl class="ahero__creds">
+        {
+          p.credentials.map((c) => (
+            <div class="ahero__cred">
+              <dt class="ahero__cred-value">{c.value}</dt>
+              <dd class="ahero__cred-label">{c.label}</dd>
+            </div>
+          ))
+        }
+        <div class="ahero__cred">
+          <dt class="ahero__cred-value">{articleCount}</dt>
+          <dd class="ahero__cred-label">{p.credentialArticles}</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- ===== TRANSPARENTNOST — jak vzniká obsah ===== -->
+    <section class="atrans" aria-labelledby="atrans-title">
+      <div class="atrans__inner">
+        <span class="eyebrow"><span class="eyebrow__num">i</span> {p.transparency.eyebrow}</span>
+        <h2 id="atrans-title" class="atrans__title">{p.transparency.title}</h2>
+        <p class="atrans__text">{p.transparency.text}</p>
+      </div>
+    </section>
+
+    <!-- ===== VIDEA — tvář autora, data ze sekcí ===== -->
+    {
+      videoSections.length > 0 && (
+        <section class="avideos" aria-labelledby="avideos-title">
+          <header class="section__head">
+            <span class="eyebrow">
+              <span class="eyebrow__num">▶</span> {p.videos.eyebrow}
+            </span>
+            <h2 id="avideos-title" class="avideos__title">{p.videos.title}</h2>
+            <p class="avideos__note">{p.videos.note}</p>
+          </header>
+          <div class="avideos__grid">
+            {videoSections.map((s) => (
+              <div class="avideos__cell">
+                <HeroVideo
+                  youtubeId={s.data.video!.youtubeId}
+                  badge={s.data.video!.badge}
+                  playLabel={s.data.video!.playLabel}
+                  maxWidth="100%"
+                />
+                <a class="avideos__cta" href={`/${s.data.slug}/`}>
+                  {ui.sectionBadge[s.data.abbr] ?? s.data.abbr}
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <!-- ===== POSLEDNÍ ČLÁNKY ===== -->
+    <section class="aarticles" aria-labelledby="aarticles-title">
+      <header class="section__head">
+        <span class="eyebrow"><span class="eyebrow__num">B</span> {p.articles.eyebrow}</span>
+        <h2 id="aarticles-title" class="aarticles__title">{p.articles.title}</h2>
+      </header>
+
+      <div class="aarticles__grid">
+        {
+          latest.map((a) => (
+            <ArticleCard
+              href={`/blog/${a.data.slug}/`}
+              tag={ui.category[a.data.category] ?? ui.categoryFallback}
+              time={`${readingMinutes(a.body)} ${ui.metaMinShort}`}
+              title={a.data.title}
+            >
+              {a.data.description}
+            </ArticleCard>
+          ))
+        }
+      </div>
+
+      <div class="aarticles__all">
+        <a href="/blog/" class="aarticles__all-link">
+          {ui.allArticles}
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .apage {
+    --d: var(--color-accent);
+  }
+
+  /* ===== HERO ===== */
+  .ahero {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(3rem, 8vh, 5rem) var(--space-section-x) clamp(2rem, 4vw, 3rem);
+  }
+  .ahero__crumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    flex-wrap: wrap;
+  }
+  .ahero__crumbs a {
+    color: var(--color-ink-muted);
+    text-decoration: none;
+  }
+  .ahero__crumbs a:hover {
+    color: var(--color-ink);
+  }
+  .crumb-sep {
+    opacity: 0.4;
+  }
+  .ahero__crumb-pill {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .ahero__grid {
+    display: grid;
+    grid-template-columns: minmax(200px, 280px) 1fr;
+    gap: clamp(1.75rem, 4vw, 3rem);
+    align-items: start;
+  }
+  .ahero__photo {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    border: 1px solid var(--color-rule);
+    box-shadow:
+      0 24px 60px -24px oklch(0.2 0.05 260 / 0.35),
+      0 4px 12px -6px oklch(0.2 0.05 260 / 0.15);
+  }
+  .ahero__eyebrow {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+    margin-bottom: 0.9rem;
+  }
+  .ahero__title {
+    font-family: var(--font-sans);
+    font-weight: 250;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+    margin: 0 0 1.25rem;
+    color: var(--color-ink);
+  }
+  .ahero__lead {
+    font-family: var(--font-sans);
+    font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+    font-weight: 350;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    max-width: 42rem;
+    margin: 0 0 1.5rem;
+  }
+  .ahero__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .ahero__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration: none;
+    padding: 0.45rem 0.95rem;
+    border: 1px solid var(--color-rule);
+    border-radius: 999px;
+    background: var(--color-paper-deep);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .ahero__link:hover {
+    border-color: var(--color-ink-faint);
+    transform: translateY(-1px);
+  }
+  .ahero__link span {
+    font-size: 0.75rem;
+    opacity: 0.55;
+  }
+  .ahero__creds {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--color-rule);
+    border: 1px solid var(--color-rule);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: clamp(2rem, 4vw, 3rem) 0 0;
+  }
+  .ahero__cred {
+    background: var(--color-paper);
+    padding: 1.25rem 1.4rem;
+    margin: 0;
+  }
+  .ahero__cred-value {
+    font-family: var(--font-sans);
+    font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+  }
+  .ahero__cred-label {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    margin: 0.3rem 0 0;
+  }
+
+  /* ===== TRANSPARENTNOST ===== */
+  .atrans {
+    max-width: var(--max-section);
+    margin: clamp(2rem, 5vw, 3.5rem) auto 0;
+    padding: 0 var(--space-section-x);
+  }
+  .atrans__inner {
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-paper-deep);
+    border-radius: 0 16px 16px 0;
+    padding: clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3.5vw, 2.5rem);
+    max-width: 52rem;
+  }
+  .atrans__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0.75rem 0 0.75rem;
+    color: var(--color-ink);
+  }
+  .atrans__text {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+
+  /* ===== VIDEA ===== */
+  .avideos {
+    max-width: var(--max-section);
+    margin: clamp(3rem, 7vw, 5rem) auto 0;
+    padding: 0 var(--space-section-x);
+  }
+  .avideos__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    margin: 0.9rem 0 0.5rem;
+    color: var(--color-ink);
+  }
+  .avideos__note {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+  .avideos__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    margin-top: 1.5rem;
+  }
+  .avideos__cell :global(.video-facade-wrap) {
+    margin: 0;
+  }
+  .avideos__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+  .avideos__cta:hover {
+    text-decoration: underline;
+  }
+
+  /* ===== ČLÁNKY ===== */
+  .aarticles {
+    max-width: var(--max-section);
+    margin: clamp(3rem, 7vw, 5rem) auto;
+    padding: 0 var(--space-section-x);
+  }
+  .aarticles__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    margin: 0.9rem 0 1.5rem;
+    color: var(--color-ink);
+  }
+  .aarticles__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  .aarticles__all {
+    margin-top: 2rem;
+  }
+  .aarticles__all-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--color-rule);
+    border-radius: 999px;
+    background: var(--color-paper-deep);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .aarticles__all-link:hover {
+    border-color: var(--color-ink-faint);
+    transform: translateY(-1px);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .ahero__creds {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .avideos__grid,
+    .aarticles__grid {
+      grid-template-columns: 1fr;
+    }
+    .avideos__grid {
+      max-width: 34rem;
+    }
+  }
+  @media (max-width: 640px) {
+    .ahero__grid {
+      grid-template-columns: 1fr;
+    }
+    .ahero__photo {
+      max-width: 260px;
+    }
+  }
+</style>

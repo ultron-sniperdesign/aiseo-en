@@ -1,0 +1,132 @@
+---
+/**
+ * SeriesNav — box „Díl X z N série …" na článku, který patří do série
+ * (registr src/i18n/series.ts, členství podle slugu — bez frontmatteru).
+ *
+ * Render: nic, když článek v sérii není. Jinak banner s názvem série,
+ * pozicí dílu a odkazy na předchozí/další díl + všechny díly.
+ */
+import { getCollection } from "astro:content";
+import { ui } from "~/i18n/strings";
+import { findSeriesPart, SERIES_BASE } from "~/i18n/series";
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const hit = findSeriesPart(slug);
+
+let prev: { href: string; title: string } | null = null;
+let next: { href: string; title: string } | null = null;
+let partLabel = "";
+let series = null;
+
+if (hit) {
+  series = hit.series;
+  partLabel = ui.seriesPartOf
+    .replace("{x}", String(hit.index + 1))
+    .replace("{n}", String(hit.series.parts.length));
+  const all = await getCollection("articles");
+  const bySlug = new Map(all.map((a) => [a.data.slug, a]));
+  const p = hit.series.parts[hit.index - 1];
+  const n = hit.series.parts[hit.index + 1];
+  if (p && bySlug.has(p.slug))
+    prev = { href: `/blog/${p.slug}/`, title: bySlug.get(p.slug)!.data.title };
+  if (n && bySlug.has(n.slug))
+    next = { href: `/blog/${n.slug}/`, title: bySlug.get(n.slug)!.data.title };
+}
+---
+
+{
+  hit && series && (
+    <nav class="snav" aria-label={ui.seriesNavAria}>
+      <div class="snav__head">
+        <span class="snav__badge">{ui.seriesEyebrow}</span>
+        <a class="snav__title" href={`${SERIES_BASE}${series.slug}/`}>
+          {series.shortTitle}
+        </a>
+        <span class="snav__part">{partLabel}</span>
+      </div>
+      <div class="snav__links">
+        {prev && (
+          <a class="snav__step" href={prev.href} title={prev.title}>
+            {ui.seriesPrev}
+          </a>
+        )}
+        {next && (
+          <a class="snav__step snav__step--next" href={next.href} title={next.title}>
+            {ui.seriesNext}
+          </a>
+        )}
+        <a class="snav__all" href={`${SERIES_BASE}${series.slug}/`}>
+          {ui.seriesAllParts}
+        </a>
+      </div>
+    </nav>
+  )
+}
+
+<style>
+  .snav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    background: oklch(from var(--color-accent) l c h / 0.06);
+    border: 1px solid oklch(from var(--color-accent) l c h / 0.25);
+    border-radius: 8px;
+    padding: 0.8rem 1.1rem;
+  }
+  .snav__head {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+  }
+  .snav__badge {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--color-paper);
+    background: var(--color-accent);
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+  }
+  .snav__title {
+    font-family: var(--font-sans);
+    font-size: 0.925rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+  .snav__title:hover { color: var(--color-accent); }
+  .snav__part {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+  }
+  .snav__links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+  }
+  .snav__step,
+  .snav__all {
+    color: var(--color-accent);
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .snav__step:hover,
+  .snav__all:hover { text-decoration: underline; }
+  .snav__all {
+    color: var(--color-ink-muted);
+  }
+</style>

@@ -1,0 +1,85 @@
+---
+title: "AI Mode — Google's conversational search (and how to show up in it)"
+seoTitle: "Google AI Mode: what it is, how it works, and how to appear in it"
+description: "Google AI Mode is conversational search: instead of links, it composes an answer. What that means for your site, how query fan-out works, and how to prepare."
+answer: "AI Mode is Google's conversational search mode: instead of a list of links, it composes a complete answer from many sources at once and lets you ask follow-up questions. It typically breaks a query into dozens of sub-questions (query fan-out) and cites pages that answer those specific sub-questions."
+slug: "ai-mode"
+order: 7
+abbr: "AIMODE"
+published: "2026-07-17"
+updated: "2026-07-18"
+faq:
+  - q: "What is Google AI Mode?"
+    a: "AI Mode is a separate conversational search mode in Google (a tab next to the classic results). It answers your query with continuous text composed from many sources, with citations and the option to ask follow-up questions — like a chat, but over Google's current index."
+  - q: "How is AI Mode different from AI Overviews?"
+    a: "AI Overviews is an AI summary ABOVE the classic results — one block, with blue links underneath. AI Mode is the whole conversational experience: no list of results, just an answer with citations and follow-up questions. Everyone sees AI Overviews; AI Mode is something the user deliberately chooses."
+  - q: "How does AI Mode choose which sites to cite?"
+    a: "It breaks the query into dozens of sub-questions (query fan-out) and looks for the best answer to each one in the index. The pages with the best shot at a citation are those that answer a specific sub-question directly, factually, and readably — often different pages from the ones that win the classic SERP for the main query."
+  - q: "How do I tell whether my site appears in AI Mode?"
+    a: "Search Console has a beta report called \"Generative AI features\" that shows impressions of your site in generative search features (AI Mode and AI Overviews combined). Clicks can't be separated out yet, so treat it as a directional signal rather than an exact measurement."
+  - q: "Does AI Mode mean the end of classic SEO?"
+    a: "No — AI Mode builds on the same index and rewards the same fundamentals: a technically healthy site, structured content, and a trustworthy brand. What changes is the unit of optimization: instead of a position for a query, it's an answer to a sub-question. Good SEO is the ticket; citable content is the win."
+  - q: "Should I optimize differently for AI Mode than for AI Overviews?"
+    a: "Mostly no. The same content base feeds both: short factual answers, dense facts, clear structure, and structured data. The emphasis differs — AI Overviews rewards a crisp answer to the main query, while AI Mode rewards covering the many sub-questions a topic breaks into."
+howto:
+  name: "How to prepare your site for Google AI Mode"
+  steps:
+    - name: "Cover the sub-questions, not just the main query"
+      text: "Break the topic into specific questions and answers (an H2/H3 as a question, a 40–60 word answer right below it) — that's exactly how AI Mode composes answers through query fan-out."
+    - name: "Keep the facts dense and citable"
+      text: "Numbers, specs, procedures, tables. AI Mode skips generic marketing paragraphs — it cites passages that actually claim something."
+    - name: "Implement structured data"
+      text: "Article, Product, FAQPage, Organization, and Person schema help the system understand who you are and what the page is about."
+    - name: "Make the site accessible to AI crawlers"
+      text: "Check robots.txt (Googlebot and Google-Extended), load speed, and indexing in Search Console — what isn't in the index can't be cited."
+    - name: "Measure impressions in generative AI"
+      text: "Turn on the Generative AI features report in Search Console and watch the impression trend; add a GA4 segment for AI referrals."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+
+## What AI Mode is and why it exists
+
+**AI Mode is the biggest change to Google Search in a decade.** Where [AI Overviews](/answer-engine-optimization/) added an AI summary above the classic results, AI Mode leaves the classic results behind entirely: it's a separate tab where Google answers in continuous text, cites its sources, and waits for your follow-up question. Search turns into a conversation.
+
+For users, that's convenient. For websites, it's a new deal: **either you're part of the answer, or you don't exist.** There's no tenth position for someone to scroll down to.
+
+## How AI Mode works: query fan-out
+
+When a user types a query ("which wax for dark paint in winter"), AI Mode **breaks it into dozens of sub-questions** — what wax is versus sealant, what winter does to paint, which products exist, what the reviews say. For each sub-question it searches the index and composes the final text with citations from the best answers.
+
+The consequence: **the citation isn't won by the page that ranks first for the main query, but by the page that best answers a specific sub-question.** A small specialized article can beat a large authority — if it answers more precisely.
+
+<Insight tone="key" label="Key insight">
+In AI Mode, the unit of optimization becomes **the answer to a sub-question**, not a position for a keyword. A site structured as a set of clear questions and answers has mathematically more tickets in the draw than one long text optimized for a single query.
+</Insight>
+
+## AI Mode vs. AI Overviews vs. ChatGPT
+
+| | **AI Mode** | **AI Overviews** | **ChatGPT** |
+|---|---|---|---|
+| Where | a tab in Google | above Google's results | a separate app |
+| Form | a full conversation | one summary + links | a conversation |
+| Data source | Google's live index | Google's live index | training + its own search |
+| User | chooses it deliberately | sees it automatically | chooses it deliberately |
+| Optimization | query fan-out, citable answers | [AEO](/answer-engine-optimization/) — short answers, FAQ | [GEO](/generative-engine-optimization/) — citations, brand |
+
+The practical message: **the same content base feeds all three.** Short answers, facts, structure, and a trustworthy brand work across the board — only the emphasis differs.
+
+## AI Mode is arriving now, not later
+
+Google has been rolling AI Mode out across more countries and languages, and interest in it is growing quickly. Exact feature availability keeps shifting by market — the reliable way to know where you stand is to check the search interface itself and your own Search Console data.
+
+<Insight tone="warning" label="Watch out">
+Impressions in AI Mode and AI Overviews **won't show up in Google Analytics** — they happen before the click. The only direct measure is the beta "Generative AI features" report in Search Console (impressions only for now; clicks aren't separated).
+</Insight>
+
+## What it means for your site or online store
+
+1. **Informational queries stop bringing clicks** — the user gets the answer directly. Your content either has to sell your brand inside the answer (the citation), or target queries where an AI answer isn't enough (transactions, local services, comparisons that need personal experience).
+2. **The value of being the source goes up** — when AI Mode cites your site, you gain trust and brand awareness even without a click.
+3. **For e-commerce, product data decides it** — on shopping queries, AI Mode composes comparisons from specs, prices, and reviews. Structured data and solid product pages are the entry condition.
+
+## How to prepare — five steps
+
+The practical process is in the structure above (and in this page's HowTo schema): cover the sub-questions, keep facts dense, implement structured data, keep crawlers in, and measure. The full step-by-step methodology is in the [AI SEO playbook](/ai-seo-playbook/), and the [decision matrix](/decision-matrix/) helps you judge where this belongs in your priorities.

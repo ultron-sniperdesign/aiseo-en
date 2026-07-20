@@ -147,6 +147,7 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" type="application/rss+xml" title={`${site.name} — blog`} href="/rss.xml" />
 
     {/* Author — AI engines (ChatGPT, Perplexity) berou tento tag jako attribution signal. */}
     <meta name="author" content={site.author} />
@@ -190,7 +191,10 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
     {ga4Id && (
       <>
         <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
-        <script is:inline define:vars={{ ga4Id }}>{`
+        {/* POZOR: obsah skriptu psát PŘÍMO, ne jako {`template literal`} —
+            expression child se vyrenderuje jako řetězec, který se nikdy
+            nespustí (GA4 kvůli tomu od 2026-04-29 do 2026-07-19 neměřilo). */}
+        <script is:inline define:vars={{ ga4Id }}>
           // Honor Sec-GPC (Global Privacy Control) a Do-Not-Track — neload analytics
           if (navigator.globalPrivacyControl === true || navigator.doNotTrack === "1") {
             console.info("[ga4] respektuji Sec-GPC / DNT — analytics není aktivní");
@@ -201,11 +205,38 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
             gtag("js", new Date());
             gtag("config", ga4Id, { anonymize_ip: true });
           }
-        `}</script>
+        </script>
+        <script is:inline>
+          // GA4 konverzní eventy — delegovaně, guard na gtag (u GPC/DNT neexistuje).
+          // begin_checkout: klik na Stripe Payment Link (Pack CTA kdekoli na webu)
+          // generate_lead:  submit EmailCapture (free PDF) / poptávkový formulář na /audit/
+          document.addEventListener("click", function (e) {
+            if (typeof window.gtag !== "function" || !e.target.closest) return;
+            if (e.target.closest('a[href*="buy.stripe.com"]')) {
+              gtag("event", "begin_checkout", {
+                currency: "CZK", value: 1490, item_name: "AI SEO Wireframe Pack",
+                transport_type: "beacon",
+              });
+            }
+          });
+          document.addEventListener("submit", function (e) {
+            if (typeof window.gtag !== "function") return;
+            var f = e.target;
+            if (f.classList && f.classList.contains("ec-form")) {
+              gtag("event", "generate_lead", {
+                lead_type: "free_pdf", page_path: location.pathname, transport_type: "beacon",
+              });
+            } else if (location.pathname.indexOf("/audit") === 0) {
+              gtag("event", "generate_lead", {
+                lead_type: "audit", page_path: location.pathname, transport_type: "beacon",
+              });
+            }
+          }, true);
+        </script>
       </>
     )}
 
-    {/* Meta Pixel (Facebook) — pixel ID 990248333397178. Honor Sec-GPC / DNT
+    {/* Meta Pixel (Facebook) — pixel ID 990248353397178. Honor Sec-GPC / DNT
         stejně jako GA4 — pokud uživatel signalizuje opt-out, pixel se nenačte
         a žádný PageView event nepošle. <noscript> fallback se v takovém případě
         neuplatní (browser by neměl JS, a tudíž nemůže Sec-GPC vyhodnotit). */}
@@ -221,11 +252,11 @@ const ga4Id = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID as string | undefined;
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '990248333397178');
+        fbq('init', '990248353397178');
         fbq('track', 'PageView');
       }
     </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=990248333397178&ev=PageView&noscript=1" alt="" /></noscript>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=990248353397178&ev=PageView&noscript=1" alt="" /></noscript>
 
     {allJsonLd.map((s) => <script is:inline type="application/ld+json" set:html={JSON.stringify(s)} />)}
 

@@ -1,0 +1,105 @@
+---
+/**
+ * /hledat/ — fulltextové vyhledávání přes Pagefind.
+ *
+ * Index vzniká při buildu (`pagefind --site dist` v build skriptu) —
+ * na dev serveru assets /pagefind/* neexistují, stránka to hlásí.
+ * Header posílá dotaz jako ?q=…; PagefindUI ho po initu předvyplní.
+ * noindex (výsledková stránka nepatří do indexu).
+ */
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { ui } from "~/i18n/strings";
+
+const t = ui.searchPage;
+---
+
+<BaseLayout title={t.metaTitle} description={t.metaDescription} noindex>
+  <div class="sp">
+    <section class="sp-hero">
+      <h1 class="sp-hero__title">{t.title}</h1>
+      <p class="sp-hero__lead">{t.lead}</p>
+    </section>
+
+    <section class="sp-results">
+      <div id="pagefind-search"></div>
+      <p class="sp-devnote" data-devnote hidden>{t.devNote}</p>
+    </section>
+  </div>
+</BaseLayout>
+
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+<script is:inline src="/pagefind/pagefind-ui.js" onerror="document.querySelector('[data-devnote]').hidden = false"></script>
+<script is:inline>
+  window.addEventListener("DOMContentLoaded", function () {
+    if (typeof window.PagefindUI === "undefined") return;
+    new window.PagefindUI({
+      element: "#pagefind-search",
+      showSubResults: true,
+      showImages: false,
+      autofocus: true,
+      translations: {
+        placeholder: "Hledat disciplíny, návody, pojmy…",
+        clear_search: "Vymazat",
+        load_more: "Načíst další výsledky",
+        search_label: "Hledat na webu",
+        zero_results: "Pro „[SEARCH_TERM]“ jsme nic nenašli",
+        many_results: "[COUNT] výsledků pro „[SEARCH_TERM]“",
+        one_result: "[COUNT] výsledek pro „[SEARCH_TERM]“",
+        searching: "Hledám „[SEARCH_TERM]“…",
+      },
+    });
+    // Předvyplnění dotazu z ?q= (header form)
+    var q = new URLSearchParams(location.search).get("q");
+    if (q) {
+      var input = document.querySelector("#pagefind-search input");
+      if (input) {
+        input.value = q;
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+      }
+    }
+  });
+</script>
+
+<style>
+  .sp {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: clamp(3rem, 8vh, 5rem) var(--space-section-x) clamp(3rem, 6vw, 5rem);
+    min-height: 60vh;
+  }
+  .sp-hero__title {
+    font-family: var(--font-sans);
+    font-weight: 250;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+    color: var(--color-ink);
+    margin: 0 0 0.75rem;
+  }
+  .sp-hero__lead {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    color: var(--color-ink-muted);
+    margin: 0 0 2rem;
+  }
+  .sp-devnote {
+    font-family: var(--font-sans);
+    color: var(--color-ink-muted);
+    background: var(--color-paper-deep);
+    border: 1px dashed var(--color-rule);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+  }
+
+  /* Pagefind UI → design webu */
+  .sp-results {
+    --pagefind-ui-scale: 1;
+    --pagefind-ui-primary: var(--color-accent);
+    --pagefind-ui-text: var(--color-ink);
+    --pagefind-ui-background: var(--color-paper);
+    --pagefind-ui-border: var(--color-rule);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 8px;
+    --pagefind-ui-font: var(--font-sans);
+  }
+</style>

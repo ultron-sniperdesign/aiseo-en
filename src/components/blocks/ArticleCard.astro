@@ -20,6 +20,8 @@
  * Tone: accent (default) | seo | geo | aeo | aio
  */
 
+import { ui } from "~/i18n/strings";
+
 interface Props {
   href: string;
   tag: string;
@@ -47,7 +49,7 @@ const isExternal = href.startsWith("http");
   <div class="acard__meta">
     {words && <span>{words}</span>}
     <span class="acard__cta">
-      Číst <span aria-hidden="true">→</span>
+      {ui.cardReadMore} <span aria-hidden="true">→</span>
     </span>
   </div>
 </a>

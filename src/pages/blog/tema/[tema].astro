@@ -1,0 +1,349 @@
+---
+/**
+ * Tag stránka /blog/tema/<slug>/ — výpis článků jednoho tematického clusteru.
+ *
+ * Témata definuje registr `src/i18n/tags.ts` (fork přeloží slugy + labely),
+ * přiřazení drží frontmatter `tags` v článcích. JSON-LD: CollectionPage
+ * s ItemList (BlogPosting) + BreadcrumbList přes BaseLayout.
+ */
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import ArticleCard from "~/components/blocks/ArticleCard.astro";
+import FreeStrip from "~/components/blocks/FreeStrip.astro";
+import { getCollection } from "astro:content";
+import { site } from "~/i18n/site";
+import { ui } from "~/i18n/strings";
+import { BLOG_TAGS, TAG_BASE } from "~/i18n/tags";
+import { seriesForTag, SERIES_BASE } from "~/i18n/series";
+
+export async function getStaticPaths() {
+  return BLOG_TAGS.map((tag) => ({ params: { tema: tag.slug }, props: { tag } }));
+}
+
+const { tag } = Astro.props;
+const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
+
+const articles = (await getCollection("articles"))
+  .filter((a) => a.data.tags.includes(tag.id))
+  .sort((a, b) => b.data.updated.localeCompare(a.data.updated));
+
+const readingMinutes = (body: string | undefined) => {
+  const words = (body ?? "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[#*_`>~]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean).length;
+  return Math.max(1, Math.round(words / 200));
+};
+
+/** Ostatní témata pro chips navigaci (s počtem článků). */
+const allArticles = await getCollection("articles");
+const otherTags = BLOG_TAGS.filter((t) => t.id !== tag.id).map((t) => ({
+  ...t,
+  count: allArticles.filter((a) => a.data.tags.includes(t.id)).length,
+}));
+
+const pageUrl = `${SITE_ORIGIN}${TAG_BASE}${tag.slug}/`;
+
+/** Série promovaná na této tag stránce (např. E-shopy → AI SEO pro e-shopy). */
+const promoSeries = seriesForTag(tag.id);
+
+const collectionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: tag.title,
+  description: tag.description,
+  url: pageUrl,
+  inLanguage: site.inLanguage,
+  isPartOf: { "@type": "Blog", name: "Blog", url: `${SITE_ORIGIN}/blog/` },
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: articles.length,
+    itemListElement: articles.map((entry, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${SITE_ORIGIN}/blog/${entry.data.slug}/`,
+      item: {
+        "@type": "BlogPosting",
+        headline: entry.data.title,
+        description: entry.data.description,
+        datePublished: entry.data.published ?? entry.data.updated,
+        dateModified: entry.data.updated,
+        url: `${SITE_ORIGIN}/blog/${entry.data.slug}/`,
+        inLanguage: site.inLanguage,
+      },
+    })),
+  },
+};
+---
+
+<BaseLayout
+  title={tag.title}
+  description={tag.description}
+  jsonLd={collectionJsonLd}
+  image="/og/tema.png"
+  breadcrumb={[
+    { label: ui.crumbBlog, href: "/blog/" },
+    { label: tag.label, href: `${TAG_BASE}${tag.slug}/` },
+  ]}
+>
+  <div class="page">
+    <section class="hero">
+      <nav class="hero__crumbs" aria-label={ui.ariaBreadcrumb}>
+        <a href="/">{ui.crumbHome}</a>
+        <span class="crumb-sep">›</span>
+        <a href="/blog/">{ui.crumbBlog}</a>
+        <span class="crumb-sep">›</span>
+        <span class="hero__crumb-pill">{tag.label}</span>
+      </nav>
+
+      <p class="hero__eyebrow">{ui.tagPageEyebrow}</p>
+      <h1 class="display hero__title">{tag.title}</h1>
+      <p class="hero__lead">{tag.description}</p>
+      <p class="hero__count">
+        {articles.length} {ui.tagPageCountSuffix}
+      </p>
+    </section>
+
+    {
+      promoSeries && (
+        <section class="spromo" aria-label={ui.seriesEyebrow}>
+          <div class="spromo__inner">
+            <p class="spromo__lead">
+              {ui.seriesPromoLead} <strong>{promoSeries.shortTitle}</strong> ({promoSeries.parts.length} dílů v pořadí)
+            </p>
+            <a class="spromo__cta" href={`${SERIES_BASE}${promoSeries.slug}/`}>
+              {ui.seriesPromoCta} <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </section>
+      )
+    }
+
+    <section class="articles" aria-label={ui.ariaArticleList}>
+      <!-- sr-only h2: karty (ArticleCard) mají h3 — bez mezistupně by přeskočily úroveň po h1 -->
+      <h2 class="articles__sr-title">{ui.ariaArticleList}</h2>
+      <div class="articles__grid">
+        {
+          articles.map((entry) => (
+            <ArticleCard
+              href={`/blog/${entry.data.slug}/`}
+              tag={ui.category[entry.data.category] ?? ui.categoryFallback}
+              time={`${readingMinutes(entry.body)} ${ui.metaMinShort}`}
+              title={entry.data.title}
+            >
+              {entry.data.description}
+            </ArticleCard>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="others" aria-label={ui.ariaTagNav}>
+      <h2 class="others__title">{ui.tagPageAllTags}</h2>
+      <div class="others__chips">
+        {
+          otherTags.map((t) => (
+            <a class="tchip" href={`${TAG_BASE}${t.slug}/`}>
+              {t.label} <span class="tchip__count">({t.count})</span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <FreeStrip />
+
+    <section class="back-cta">
+      <a href="/blog/" class="back-cta__primary">
+        {ui.tagPageBackToBlog} <span aria-hidden="true">→</span>
+      </a>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .display {
+    font-family: var(--font-sans);
+    font-weight: 250;
+    letter-spacing: -0.045em;
+    line-height: 1;
+  }
+
+  .hero {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(3rem, 9vh, 5.5rem) var(--space-section-x) clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .hero__crumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    flex-wrap: wrap;
+  }
+  .hero__crumbs a {
+    color: var(--color-ink-muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .hero__crumbs a:hover { color: var(--color-ink); }
+  .hero__crumb-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.75rem;
+    background: oklch(from var(--color-accent) l c h / 0.08);
+    color: var(--color-accent);
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  .crumb-sep { color: var(--color-ink-faint); }
+
+  .hero__eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin: 0 0 0.75rem;
+  }
+  .hero__title {
+    font-size: clamp(2.1rem, 5.5vw, 3.6rem);
+    color: var(--color-ink);
+    margin: 0 0 1.25rem;
+    text-wrap: balance;
+  }
+  .hero__lead {
+    font-family: var(--font-sans);
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    max-width: 46rem;
+    margin: 0 0 1rem;
+  }
+  .hero__count {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-faint);
+    margin: 0;
+  }
+
+  .spromo {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(0.5rem, 1.5vw, 1rem) var(--space-section-x) 0;
+  }
+  .spromo__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    background: oklch(from var(--color-accent) l c h / 0.06);
+    border: 1px solid oklch(from var(--color-accent) l c h / 0.25);
+    border-radius: 8px;
+    padding: 0.9rem 1.25rem;
+  }
+  .spromo__lead {
+    font-family: var(--font-sans);
+    font-size: 0.925rem;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+  .spromo__lead strong { color: var(--color-ink); font-weight: 600; }
+  .spromo__cta {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .spromo__cta:hover { text-decoration: underline; }
+
+  .articles {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(1rem, 2.5vw, 2rem) var(--space-section-x) 0;
+  }
+  .articles__sr-title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .articles__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  @media (max-width: 1000px) {
+    .articles__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .articles__grid { grid-template-columns: 1fr; }
+  }
+
+  .others {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(2rem, 4vw, 3rem) var(--space-section-x) 0;
+  }
+  .others__title {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+    margin: 0 0 1rem;
+  }
+  .others__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .tchip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.95rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-ink-muted);
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .tchip:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+  .tchip__count { color: var(--color-ink-faint); font-weight: 400; }
+
+  .back-cta {
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: clamp(2rem, 4vw, 3rem) var(--space-section-x) clamp(3rem, 6vw, 5rem);
+  }
+  .back-cta__primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .back-cta__primary:hover { text-decoration: underline; }
+</style>

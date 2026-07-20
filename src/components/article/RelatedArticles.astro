@@ -1,0 +1,108 @@
+---
+/**
+ * RelatedArticles — 3 doporučené články pod koncem článku.
+ *
+ * Výběr: skóre = počet společných keywords (frontmatter) + bonus za
+ * stejnou kategorii; remíza → novější `updated` vyhrává. Bez ručních
+ * vazeb — s růstem blogu se doporučení udržují sama.
+ *
+ * Render přes existující ArticleCard (stejný design jako blog listing).
+ * Texty: ui.relatedArticles* v i18n/strings.ts (fork přeloží).
+ * Umístění: za FAQ, před back-cta — čtenář, který dočetl vše, dostane
+ * další krok místo konce stránky.
+ */
+import { getCollection } from "astro:content";
+import ArticleCard from "~/components/blocks/ArticleCard.astro";
+import { ui } from "~/i18n/strings";
+
+interface Props {
+  currentSlug: string;
+  category: string;
+  keywords: string[];
+  /** Tematické tagy článku (frontmatter `tags`) — sdílený tag = silný signál příbuznosti. */
+  tags?: string[];
+}
+
+const { currentSlug, category, keywords, tags = [] } = Astro.props;
+
+const all = await getCollection("articles");
+const kw = new Set(keywords.map((k) => k.toLowerCase()));
+const tagSet = new Set(tags);
+
+const scored = all
+  .filter((a) => a.data.slug !== currentSlug)
+  .map((a) => {
+    const overlap = a.data.keywords.filter((k) => kw.has(k.toLowerCase())).length;
+    const catBonus = a.data.category === category ? 1 : 0;
+    const tagOverlap = a.data.tags.filter((t) => tagSet.has(t)).length;
+    return { a, score: overlap * 2 + tagOverlap * 2 + catBonus };
+  })
+  .sort(
+    (x, y) =>
+      y.score - x.score || y.a.data.updated.localeCompare(x.a.data.updated),
+  )
+  .slice(0, 3);
+
+const readingMinutes = (body: string | undefined) => {
+  const words = (body ?? "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[#*_`>~]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean).length;
+  return Math.max(1, Math.round(words / 200));
+};
+---
+
+{
+  scored.length > 0 && (
+    <section class="relarts" aria-label={ui.relatedArticlesAria}>
+      <header class="relarts__head">
+        <span class="eyebrow">
+          <span class="eyebrow__num">→</span> {ui.relatedArticlesEyebrow}
+        </span>
+        <h2 class="relarts__title">{ui.relatedArticlesTitle}</h2>
+      </header>
+      <div class="relarts__grid">
+        {scored.map(({ a }) => (
+          <ArticleCard
+            href={`/blog/${a.data.slug}/`}
+            tag={ui.category[a.data.category] ?? ui.categoryFallback}
+            time={`${readingMinutes(a.body)} ${ui.metaMinShort}`}
+            title={a.data.title}
+          >
+            {a.data.description}
+          </ArticleCard>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .relarts {
+    max-width: var(--max-section);
+    margin: clamp(2.5rem, 6vw, 4rem) auto;
+    padding: 0 var(--space-section-x);
+  }
+  .relarts__head {
+    margin-bottom: 1.5rem;
+  }
+  .relarts__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    margin: 0.75rem 0 0;
+  }
+  .relarts__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  @media (max-width: 900px) {
+    .relarts__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

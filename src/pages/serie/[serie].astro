@@ -1,0 +1,450 @@
+---
+/**
+ * Landing série /serie/<slug>/ — očíslované díly v pořadí kurzu.
+ *
+ * Data: registr src/i18n/series.ts (díly = slugy článků + note).
+ * JSON-LD: CollectionPage s ItemList dílů. Připravované díly jako
+ * neklikatelná sekce „Připravujeme".
+ */
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import FreeStrip from "~/components/blocks/FreeStrip.astro";
+import AuthorByline from "~/components/article/AuthorByline.astro";
+import { existsSync } from "node:fs";
+import { getCollection } from "astro:content";
+import { site } from "~/i18n/site";
+import { ui } from "~/i18n/strings";
+import { SERIES, SERIES_BASE } from "~/i18n/series";
+
+export async function getStaticPaths() {
+  return SERIES.map((s) => ({ params: { serie: s.slug }, props: { s } }));
+}
+
+const { s } = Astro.props;
+const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
+const pageUrl = `${SITE_ORIGIN}${SERIES_BASE}${s.slug}/`;
+
+/** Featured image — stejná konvence jako články: /og/serie-<slug>.png
+ *  (fork si vygeneruje vlastní dle blogger/IMAGE_GUIDE.md). */
+const heroImage = `/og/serie-${s.slug}.png`;
+const heroWebp = existsSync(`public/og/serie-${s.slug}.webp`);
+
+const all = await getCollection("articles");
+const bySlug = new Map(all.map((a) => [a.data.slug, a]));
+const parts = s.parts
+  .filter((p) => bySlug.has(p.slug))
+  .map((p, i) => {
+    const entry = bySlug.get(p.slug)!;
+    const words = (entry.body ?? "")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/[#*_`>~]/g, " ")
+      .split(/\s+/)
+      .filter(Boolean).length;
+    return {
+      num: i + 1,
+      href: `/blog/${p.slug}/`,
+      title: entry.data.title,
+      note: p.note,
+      minutes: Math.max(1, Math.round(words / 200)),
+      updated: entry.data.updated,
+      published: entry.data.published ?? entry.data.updated,
+      description: entry.data.description,
+    };
+  });
+
+/** Meta řádek hero — jako na článku: díly, celkový čas, poslední aktualizace. */
+const totalMinutes = parts.reduce((n, p) => n + p.minutes, 0);
+const newestUpdated = parts.map((p) => p.updated).sort().at(-1);
+
+const collectionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: s.title,
+  description: s.description,
+  url: pageUrl,
+  inLanguage: site.inLanguage,
+  isPartOf: { "@type": "Blog", name: "Blog", url: `${SITE_ORIGIN}/blog/` },
+  mainEntity: {
+    "@type": "ItemList",
+    itemListOrder: "https://schema.org/ItemListOrderAscending",
+    numberOfItems: parts.length,
+    itemListElement: parts.map((p) => ({
+      "@type": "ListItem",
+      position: p.num,
+      url: `${SITE_ORIGIN}${p.href}`,
+      item: {
+        "@type": "BlogPosting",
+        headline: p.title,
+        description: p.description,
+        datePublished: p.published,
+        dateModified: p.updated,
+        url: `${SITE_ORIGIN}${p.href}`,
+        inLanguage: site.inLanguage,
+      },
+    })),
+  },
+};
+---
+
+<BaseLayout
+  title={s.title}
+  description={s.description}
+  jsonLd={collectionJsonLd}
+  image={heroImage}
+  breadcrumb={[
+    { label: ui.crumbBlog, href: "/blog/" },
+    { label: s.shortTitle, href: `${SERIES_BASE}${s.slug}/` },
+  ]}
+>
+  <div class="se">
+    <section class="se-hero">
+      <nav class="se-hero__crumbs" aria-label={ui.ariaBreadcrumb}>
+        <a href="/">{ui.crumbHome}</a>
+        <span class="crumb-sep">›</span>
+        <a href="/blog/">{ui.crumbBlog}</a>
+        <span class="crumb-sep">›</span>
+        <span class="se-hero__crumb-pill">{s.shortTitle}</span>
+      </nav>
+
+      <h1 class="se-hero__title">{s.title}</h1>
+
+      <p class="se-hero__sub">{s.description}</p>
+
+      <div class="se-hero__byline">
+        <AuthorByline />
+      </div>
+
+      <div class="se-hero__meta">
+        <span>{parts.length} dílů</span>
+        <span>~{totalMinutes} minut čtení celkem</span>
+        <span>{ui.metaUpdated} {newestUpdated}</span>
+      </div>
+
+      <picture>
+        {heroWebp && <source srcset={heroImage.replace(/\.png$/, ".webp")} type="image/webp" />}
+        <img
+          class="se-hero__img"
+          src={heroImage}
+          alt={s.title}
+          width="1536"
+          height="1024"
+          fetchpriority="high"
+        />
+      </picture>
+    </section>
+
+    <!-- ANSWER BLOCK — jako na článku -->
+    <section class="se-answer">
+      <div class="se-answer__inner">
+        <span class="se-answer__mark">{ui.seriesEyebrow}</span>
+        <p class="se-answer__text">{s.intro}</p>
+      </div>
+    </section>
+
+    <section class="se-start">
+      {
+        parts.length > 0 && (
+          <a class="se-hero__cta" href={parts[0].href}>
+            {ui.seriesStartCta} <span aria-hidden="true">→</span>
+          </a>
+        )
+      }
+    </section>
+
+    <section class="se-parts" aria-label={s.title}>
+      <ol class="se-list">
+        {
+          parts.map((p) => (
+            <li class="se-part">
+              <span class="se-part__num">{p.num}</span>
+              <div class="se-part__body">
+                <a class="se-part__title" href={p.href}>
+                  {p.title} <span aria-hidden="true">→</span>
+                </a>
+                <p class="se-part__note">{p.note}</p>
+                <p class="se-part__meta">
+                  ~{p.minutes} {ui.metaMinShort} · {ui.metaUpdated} {p.updated}
+                </p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+
+      {
+        s.planned.length > 0 && (
+          <div class="se-planned">
+            <h2 class="se-planned__title">{ui.seriesPlannedTitle}</h2>
+            <ul class="se-planned__list">
+              {s.planned.map((t) => (
+                <li class="se-planned__item">{t}</li>
+              ))}
+            </ul>
+            <p class="se-planned__note">{ui.seriesPlannedNote}</p>
+          </div>
+        )
+      }
+    </section>
+
+    <FreeStrip />
+
+    <section class="se-back">
+      <a href="/blog/" class="se-back__link">
+        <span aria-hidden="true">←</span> {ui.allArticles}
+      </a>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .se {
+    --d: var(--color-seo);
+    --d-tint: var(--color-seo-tint);
+    --d-soft: var(--color-seo-soft);
+    max-width: var(--max-section);
+    margin: 0 auto;
+    padding: 0 var(--space-section-x) clamp(3rem, 6vw, 5rem);
+  }
+
+  /* ===== HERO ===== */
+  .se-hero {
+    padding-top: clamp(3rem, 9vh, 5.5rem);
+  }
+  .se-hero__crumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    flex-wrap: wrap;
+  }
+  .se-hero__crumbs a {
+    color: var(--color-ink-muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .se-hero__crumbs a:hover { color: var(--color-ink); }
+  .se-hero__crumb-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.75rem;
+    background: var(--d-tint);
+    color: var(--d);
+    border: 1px solid var(--d-soft);
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  .crumb-sep { color: var(--color-ink-faint); }
+
+  .se-hero__title {
+    font-family: var(--font-sans);
+    font-weight: 250;
+    font-size: clamp(1.875rem, 4.4vw, 3.75rem);
+    letter-spacing: -0.045em;
+    line-height: 1.02;
+    margin: 0 0 1.25rem;
+    max-width: 24ch;
+    color: var(--color-ink);
+  }
+  .se-hero__sub {
+    font-family: var(--font-sans);
+    font-weight: 350;
+    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    max-width: 50rem;
+    margin: 0 0 2rem;
+  }
+  .se-hero__byline {
+    margin: 0 0 1.5rem;
+  }
+  /* Meta řádek s tečkami — zrcadlí .rhero__meta z článků. */
+  .se-hero__meta {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-ink-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+  }
+  .se-hero__meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .se-hero__meta span::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: var(--d);
+    border-radius: 50%;
+  }
+  /* Featured image — stejné proporce a rámeček jako .rhero__img na článcích. */
+  .se-hero__img {
+    display: block;
+    width: 100%;
+    max-width: 60rem;
+    aspect-ratio: 1200 / 669;
+    object-fit: cover;
+    object-position: center top;
+    border: 1px solid var(--color-rule);
+    border-radius: 12px;
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
+    background: var(--color-paper-deep);
+  }
+  .se-hero__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-paper);
+    background: var(--color-ink);
+    padding: 0.75rem 1.4rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+  .se-hero__cta:hover { background: var(--d); }
+
+  /* ===== ANSWER BLOCK — kopie .ranswer* z článku ===== */
+  .se-answer {
+    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+  .se-answer__inner {
+    background: var(--color-paper-deep);
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--d);
+    border-radius: 10px;
+    padding: clamp(1.5rem, 2.4vw, 2rem);
+    max-width: 60rem;
+  }
+  .se-answer__mark {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--d);
+    margin-bottom: 0.5rem;
+  }
+  .se-answer__text {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .se-start {
+    margin-top: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  /* ===== DÍLY ===== */
+  .se-parts {
+    max-width: 60rem;
+    margin-top: clamp(2rem, 5vw, 3rem);
+  }
+  .se-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .se-part {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--color-rule);
+  }
+  .se-part:last-child { border-bottom: 1px solid var(--color-rule); }
+  .se-part__num {
+    flex: none;
+    width: 2.4rem;
+    height: 2.4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--d);
+    background: var(--d-tint);
+    border-radius: 50%;
+  }
+  .se-part__title {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+  .se-part__title:hover { color: var(--d); }
+  .se-part__note {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+    margin: 0.35rem 0 0;
+  }
+  .se-part__meta {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--color-ink-faint);
+    margin: 0.4rem 0 0;
+  }
+
+  /* ===== PŘIPRAVUJEME ===== */
+  .se-planned {
+    margin-top: clamp(1.75rem, 4vw, 2.5rem);
+    background: var(--color-paper-deep);
+    border: 1px dashed var(--color-rule);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+  }
+  .se-planned__title {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--color-ink);
+    margin: 0 0 0.6rem;
+  }
+  .se-planned__list {
+    margin: 0;
+    padding: 0 0 0 1.1rem;
+  }
+  .se-planned__item {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+  }
+  .se-planned__note {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--color-ink-faint);
+    margin: 0.6rem 0 0;
+  }
+
+  /* ===== BACK ===== */
+  .se-back {
+    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+  .se-back__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .se-back__link:hover { text-decoration: underline; }
+</style>
