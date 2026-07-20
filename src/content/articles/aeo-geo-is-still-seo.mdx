@@ -1,0 +1,181 @@
+---
+title: "AEO and GEO = SEO? What Google's 2026 Guide Says"
+description: "Google published a guide to AI Overviews and AI Mode in May 2026. Here's what it means for AEO, GEO, and SEO in practice."
+answer: "In Google's view, AEO and GEO are part of SEO. The official guide published on May 15, 2026 states that Google AI Overviews and AI Mode draw on the same Search index and comparable quality signals as classic search. For Google, this isn't a new discipline — it's an extension of classic SEO."
+slug: "aeo-geo-is-still-seo"
+category: "analysis"
+tags:
+  - "strategie"
+published: "2026-06-11"
+updated: "2026-06-11"
+keywords:
+  - "aeo geo seo"
+  - "google ai optimization guide"
+  - "official google ai guide"
+  - "ai search seo"
+  - "google ai overviews seo"
+variant: "rich"
+stats:
+  - value: "May 15, 2026"
+    label: "the date Google published its first official AI optimization guide"
+  - value: "0"
+    label: "new special files, markup, or structured data that Google says you need purely because of AI"
+  - value: "retrieved sources + answer"
+    label: "the simplified principle described in the Google guide — the AI answer is built from sources retrieved in the Search index"
+  - value: "3"
+    label: "technical prerequisites the guide names as the basis for appearing as a supporting link in AI Overviews (an indexed page, snippet eligibility, general Search technical requirements)"
+faq:
+  - q: "What exactly did Google publish on May 15, 2026?"
+    a: "Google Search Central published its first official guide to optimizing for generative AI search, titled “Optimizing your website for generative AI features on Google Search.” The document sits in a new “Generative AI fundamentals” section of the Search Central documentation. The exact wording can change over time, so we recommend watching for later updates directly in the official documentation."
+  - q: "Google says AEO and GEO are still SEO. What does that mean in practice?"
+    a: "Google explicitly writes that its AI Overviews and AI Mode draw on the same Search index and the same quality signals as classic results. If a site performs well in ordinary organic search, it has a chance of showing up as a supporting link in AI Overviews too. From Google's perspective, AEO (answer engine optimization) and GEO (generative engine optimization) are marketing labels for work that is still SEO."
+  - q: "What does Google explicitly say I DON'T have to do?"
+    a: "According to the guide, you don't have to create new machine-readable files (no “AI text file,” for instance), add special structured data for AI Overviews, break content into very short chunks, or write in a specific way purely for AI search. Google also says its systems have no “ideal page length.”"
+  - q: "What does Google say I DO need?"
+    a: "To appear as a supporting link in AI Overviews or AI Mode, a page has to meet three technical conditions: be indexed, be eligible to appear with a snippet, and meet the Search technical requirements. On the content side, Google recommends unique content with a point of view, a people-first approach, and clear organization (headings, images, video)."
+  - q: "Do I need llms.txt or other special files because of Google AI Overviews?"
+    a: "Per the official guide, Google requires neither llms.txt nor any other special file for AI Overviews — it explicitly says you need no “AI text file” and no special structured data for AI Overviews. For citations outside Google (ChatGPT, Perplexity, Claude, Gemini), the AI ecosystem is broader, and some tactics Google explicitly doesn't recommend may still help. Treat those as working hypotheses to test, not confirmed rules. Google doesn't speak for those systems."
+  - q: "Does that mean good SEO is enough for AI visibility everywhere?"
+    a: "For Google AI Overviews, good SEO is the foundation and can meaningfully raise your chances of showing up, but on its own it guarantees nothing. For citations in ChatGPT, Perplexity, Claude, and Gemini, what also matters is how other sites talk about your brand, how cleanly AI can break your content into short answers, and whether the brand is well recognized in trusted sources."
+---
+
+import Checklist from "~/components/blocks/Checklist.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**In Google's view, AEO and GEO are part of SEO. Google laid this out in its first official guide to optimizing for generative AI search, published on May 15, 2026 — both AI Overviews and AI Mode draw on the same Search index and comparable quality signals as classic results.** Google explicitly writes that you don't need new special files or special structured data types “just for AI.” This article sums up what the Google guide actually says, where it's right, and where its position is simplified relative to the broader AI ecosystem.
+
+## What Google published on May 15, 2026
+
+The document titled **“Optimizing your website for generative AI features on Google Search”** sits in a new **“Generative AI fundamentals”** section of the Search Central documentation. It was published on May 15, 2026. The exact wording can change over time, so we recommend watching for later updates directly in the official documentation.
+
+It's available at `developers.google.com/search/docs/fundamentals/ai-optimization-guide`. Google also published a companion post on the Google Search Central Blog.
+
+<Insight tone="key">
+The guide's core message: you don't need a separate new discipline for Google AI Overviews and AI Mode. The same Search index and comparable quality signals that drive classic organic results also play an important role in how Google picks sources for its AI answers.
+</Insight>
+
+## What Google explicitly says
+
+### From Google's perspective, AEO and GEO are still SEO
+
+Google writes openly in the guide: *“AEO stands for answer engine optimization and GEO for generative engine optimization. These are both terms you may see used to describe work specifically focused on improving visibility in AI search experiences. From Google Search's perspective, optimizing for generative AI search is optimizing for the search experience, and thus still SEO.”*
+
+Asked whether SEO is still relevant for generative AI search, Google answers: **“In short, yes!”** Its argument is that *“the same index and quality signals that earn rankings are what earn citations in AI answers.”*
+
+### What Google says you DON'T have to do
+
+<Checklist title="What the Google guide says you DON'T have to do for AI search" items={[
+  { title: "You don't have to create new machine-readable files", desc: "Google explicitly writes that you need no “AI text file” (llms.txt, for example) as a requirement for showing up in AI Overviews." },
+  { title: "You don't need special structured data for AI", desc: "Per the Google guide, there is no special schema.org structured data type you have to add because of AI Overviews or AI Mode." },
+  { title: "You don't have to break content into very short chunks", desc: "Google writes that “there is no requirement to break content into small chunks so AI can understand it better.”" },
+  { title: "You don't have to write in a specific style for AI", desc: "Google says it outright: “you don't need to write in a specific way purely for generative AI search.”" },
+  { title: "There is no ideal page length", desc: "Per the guide, Google's systems have no “ideal length” — short and longer pages alike can be cited when they answer the query well." },
+]} />
+
+### What Google says you DO need
+
+To appear as a **supporting link** in AI Overviews or AI Mode, Google names three **technical prerequisites** as the baseline:
+
+1. **Being indexed** in the standard Google Search index.
+2. **Being eligible to appear with a snippet** (no `noindex` or `nosnippet` in your directives, for example).
+3. **Meeting the general Google Search technical requirements** — indexability, availability, mobile rendering, HTTPS.
+
+On the content side, Google recommends:
+
+- **Unique, valuable content** with a point of view of its own (not other people's information retold).
+- **A people-first approach** (people-first content, the principles of the Helpful Content Update).
+- **Clear organization** — obvious headings, images, video, easy navigation.
+
+<Insight tone="warning">
+The technical conditions read as trivial, but in reality they rule out plenty of sites: a site with broken HTTPS, slow on mobile, with snippets blocked via `nosnippet`, or poorly indexed in Google Search stays out of AI Overviews no matter how good the content is.
+</Insight>
+
+## How Google AI Overviews work technically
+
+The guide describes a process in which the AI answer is built from sources retrieved in the Search index and then assembled into a response. The technical literature calls this principle RAG (retrieval-augmented generation), though Google doesn't necessarily present that term as settled in its own guide.
+
+**What that means in practice for site owners:**
+
+- If a page **performs well in ordinary organic results** in Google Search, it has a real chance of showing up in AI Overviews too.
+- **Freshness, authority, technical health** = the same kind of quality signals as for classic results.
+- **This isn't a separate index.** AI Overviews and AI Mode are built on top of the standard Search index — source selection follows on from Google's ordinary search infrastructure, but you can't reduce it to simply lifting the classic ranking order.
+
+## Where Google is right — and where its position is simplified
+
+Google is in the position of **a company describing its own search engine**. Its guide applies to Google AI Overviews and AI Mode. But the AI ecosystem is broader, and by definition Google doesn't speak for its competitors.
+
+<CompareTable
+  caption="The Google guide vs. the broader AI ecosystem"
+  columns={["Google AI Overviews / AI Mode", "ChatGPT / Perplexity / Claude / Gemini and other competitors"]}
+  rows={[
+    { icon: "🎯", label: "Quality signals", left: "The same Search index and the same quality signals as classic results (Google confirms this explicitly)", right: "Their own systems, which Google by definition can't describe" },
+    { icon: "📄", label: "llms.txt", left: "Not required — Google says so outright", right: "Per selected public analyses, some tools do work with it; it isn't a universally confirmed standard" },
+    { icon: "📊", label: "Structured data", left: "There is no special “AI markup”; classic schema.org structured data works for rich results and AI features alike", right: "Classic structured data may help outside Google too, but individual systems have their own preferences" },
+    { icon: "📝", label: "Short citable chunks", left: "Google says this is not a requirement and that it has no “ideal length”", right: "In selected public citation analyses (Profound and LLM Pulse, for example), short 50–150-word chunks tend to be cited more often than long unstructured text" },
+    { icon: "🔗", label: "Off-page mentions", left: "Google talks mainly about your own page; brand mentions in trusted sources are secondary in the guide", right: "Reddit, Wikipedia, LinkedIn, and trade media come up in selected public analyses of citations outside Google as carrying more weight" },
+  ]}
+/>
+
+<Insight tone="key">
+Google is right that classic SEO is the foundation for its own AI features. But AEO/GEO practice (llms.txt, lists with specific numbers, FAQ structure, a brand entity, mentions and links off your own site) may help with citations outside Google — and Google, by definition, can neither confirm nor refute that. For systems outside Google there is no unified official documentation, so it's worth treating these recommendations as working hypotheses and validating them against your own data.
+</Insight>
+
+## The most common misreadings since the guide came out
+
+<MistakeGrid>
+  <Mistake number="01" title="AEO/GEO doesn't exist, it's a marketing term">
+    The Google guide doesn't say AEO/GEO is pointless — only that from Google's perspective it's still SEO. That says nothing about citations in ChatGPT or Perplexity, where their own specifics (content format, brand mentions, off-page signals) genuinely matter.
+  </Mistake>
+  <Mistake number="02" title="I can ignore llms.txt because Google doesn't want it">
+    Google doesn't recommend llms.txt as a requirement for AI Overviews. But outside Google, experiments with special files and machine-readable instructions keep showing up; it isn't a unified standard, but with some tools there may be an upside. Required, no. Potentially useful, yes.
+  </Mistake>
+  <Mistake number="03" title="I don't need short citable chunks">
+    Google says it isn't a requirement. Analyses of citations outside Google, though, show that short, well-structured 50–150-word chunks tend to get cited more often than long unstructured text. For citability outside Google, it remains a practical tactic.
+  </Mistake>
+  <Mistake number="04" title="If my SEO is good, AI is handled">
+    For Google AI Overviews, good SEO is the foundation and can meaningfully raise your chances of showing up, but on its own it guarantees nothing. For citations in ChatGPT, Perplexity, Claude, and Gemini, what also matters is how trusted sources and trade sites talk about your brand. Good SEO alone doesn't deliver that.
+  </Mistake>
+</MistakeGrid>
+
+## The practical takeaway for site owners and marketers
+
+Working out whether your site meets both Google's AI Overviews conditions and the practical AEO/GEO tactics for citations outside Google is exactly what an AI SEO audit is for.
+
+<DoDont
+  doTitle="What to do"
+  dontTitle="What to avoid"
+  doItems={[
+    "Stick to fundamental SEO: quality content, technical health, structured data for rich results, clear organization.",
+    "Follow the official Google Search Central documentation and its updates.",
+    "Test visibility in ChatGPT, Perplexity, Claude, and Google AI Overviews separately — each has its own logic.",
+    "Layer on AEO/GEO tactics (short citable chunks, FAQ, brand mentions) wherever you're also targeting AI systems outside Google.",
+    "Don't mistake Google AI Overviews for the whole AI ecosystem — it's an important surface, but not the only one.",
+  ]}
+  dontItems={[
+    "Buying expensive “AI SEO services” that sell new special markup or AI text files as a requirement.",
+    "Ripping out existing structured data on the grounds that “Google doesn't require it anyway” — rich results and cleaner machine readability have real value.",
+    "Treating the guide as the end of the discussion — Google speaks for itself, not for ChatGPT or Perplexity.",
+    "Ignoring mentions and links off your own site: in trusted sources they may play a role in citations outside Google that the guide doesn't address.",
+    "Underrating content quality — the Google guide repeatedly stresses people-first content and a unique point of view.",
+  ]}
+/>
+
+## What to take away
+
+- **On May 15, 2026, Google published its first official guide** to generative AI search.
+- **Google says AEO and GEO are still SEO** — its AI Overviews and AI Mode draw on the same Search index and the same quality signals.
+- **You don't need** new special files (no “AI text file”), special structured data, or a special way of writing purely for AI.
+- **You do need** a page that's indexed, snippet-eligible, and meets the Search technical requirements — plus unique content and clear organization.
+- **The Google guide applies to Google.** For citations in ChatGPT, Perplexity, Claude, and Gemini, the AI ecosystem is broader, and AEO/GEO practice (llms.txt, short chunks, brand mentions) may help.
+- **The pragmatic approach:** solid SEO plus supplementary AEO/GEO tactics for AI systems outside Google. Not one at the expense of the other.
+
+---
+
+**Want to know whether your site meets Google's AI Overviews conditions as well as the practical AEO/GEO tactics for citations outside Google?** This site is run by **[Sniper Design](https://www.sniperdesign.cz/)** — an AI SEO audit reviews your technical health, structured data, and content quality, plus the signals that can raise your odds of being cited outside Google, and lays out a prioritized plan. If you'd rather do the work yourself, start with the [AI SEO playbook](/ai-seo-playbook/) and the pillar [SEO vs. GEO vs. AEO](/seo-vs-geo-vs-aeo/).
+
+*For transparency: we don't sell empty “AEO/GEO” labels — quality SEO is the foundation. We deploy AEO/GEO tactics where they genuinely help across the broader AI ecosystem. This article draws on publicly available Google Search Central documentation as of June 2026; specific wording in the guide can change over time, so we recommend watching for later updates in the official documentation. How the content on this site is produced is described on the [author page](/author/kamil/).*
