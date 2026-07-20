@@ -1,0 +1,192 @@
+---
+title: "Product feeds and GTIN: the data that gets you found"
+description: "GTIN identifies a product unambiguously. What belongs in the feed, why the feed and the page have to agree, and what to do without one."
+answer: "GTIN is an internationally recognized unique product identifier, printed on the packaging next to the barcode. In a feed it lets systems place a product unambiguously instead of guessing from the name. It is sent in the gtin attribute, and according to Google it helps its systems categorize the product. Not every product has a GTIN, though — and you can't invent one."
+slug: "product-feed-and-gtin"
+category: "tutorial"
+tags:
+  - "eshopy"
+  - "technicke-zaklady"
+published: "2026-07-18"
+updated: "2026-07-18"
+keywords:
+  - "gtin"
+  - "product feed"
+  - "ean code ecommerce"
+  - "merchant center feed"
+  - "product data for ai"
+variant: "rich"
+stats:
+  - value: "unique code"
+    label: "GTIN is an internationally recognized unique identifier — printed on the packaging next to the barcode"
+  - value: "not always"
+    label: "Google states that not every product has a GTIN; for your own manufacturing, you don't invent one"
+  - value: "3 layers"
+    label: "the page, the feed, and structured data need to agree — otherwise the system picks for you"
+  - value: "verify the source"
+    label: "for GTINs taken from third-party sources, Google recommends verifying they are legitimate"
+howto:
+  name: "How to get your product data and identifiers in order"
+  steps:
+    - name: "Find out which products have a GTIN"
+      text: "The GTIN is on the packaging next to the barcode. Google states that not every product has one — typically your own manufacturing, bundles, or made-to-order items. For those products you don't invent an identifier; the practical substitute is the brand plus the manufacturer's part number, if you have them."
+    - name: "Add the identifiers to your feed"
+      text: "The GTIN is sent in product data through the gtin attribute. Google states that this helps its systems categorize and display products. For products without a GTIN, it pays in practice to add the brand and the manufacturer's part number so the listing can at least be identified that way."
+    - name: "Make the data agree across layers"
+      text: "Price, availability, name, and key specs need to match on the page, in the feed, and in structured data. When the sources disagree, the system has no way to decide which value holds — and you have no idea which one it will pick."
+    - name: "Verify identifiers from third-party sources"
+      text: "If you take GTINs from a supplier or a database, Google recommends verifying they are legitimate. If you can't find the identifier on the packaging, go to the manufacturer. An incorrect identifier can get your listing matched to a completely different product."
+    - name: "Check on a schedule"
+      text: "The feed is generated automatically, but pages and price lists get edited by hand. They will drift apart on their own. Put a recurring check of the key fields on a sample of products in place, not a one-time setup."
+faq:
+  - q: "What is a GTIN and where do I find it?"
+    a: "According to Google, a GTIN is an internationally recognized unique product identifier. You'll find it on the packaging next to the barcode; EAN and UPC codes are forms of it. Its job is to identify a specific product unambiguously, rather than by a name that every retailer writes differently."
+  - q: "What if a product doesn't have a GTIN?"
+    a: "Then don't invent one. Google explicitly states that not all products have a GTIN — typically your own manufacturing, bundles, or made-to-order items. For those products, adding the brand and the manufacturer's part number works well in practice, so the listing can be identified some other way. A made-up identifier is worse than none, because it can match your product to someone else's."
+  - q: "Why does the feed have to match the page?"
+    a: "It isn't an explicit rule about feeds, it's a practical necessity: otherwise two contradictory values describe the same thing and there's no way to decide which one holds. Two documented obligations do tie into it — the Shopping ads policies prohibit presenting products in a way that isn't accurate and truthful, and for structured data Google requires a match with the visible content of the page."
+  - q: "Which fields need the most attention?"
+    a: "The ones that change and also drive the purchase: price, availability, and delivery time. Plus the name and the key specs a product gets compared on. Price and availability are exactly where the feed and the page drift apart most often, because they are updated in different ways and at different times."
+  - q: "Is setting up the feed once enough?"
+    a: "It isn't. The feed is generated automatically, but your assortment, prices, and availability all change, and errors accumulate. The practical approach is to check a sample of products regularly and compare what the page says, what the feed says, and what structured data says."
+  - q: "Will a correct feed guarantee that AI recommends me?"
+    a: "No. Clean, consistent data is a precondition for your product being reliably identified and compared at all — not a guarantee of being shown or recommended. Nobody today can promise that a specific product will appear in a specific answer."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**GTIN is an internationally recognized unique product identifier, printed on the packaging next to the barcode.** In a feed it lets systems place a product unambiguously instead of guessing from the name. It is sent in the gtin attribute, and according to Google it helps its systems categorize the product. Not every product has a GTIN, though — and you can't invent one.
+
+This is the last piece in the series on AI SEO for e-commerce, and the most technical of the bunch. It's also the layer everything else sits on: without reliable product data, there's no point worrying about copy or reviews.
+
+## Why the identifier matters more than it looks
+
+Every retailer writes product names their own way. "Ultra Gloss Polish 16 oz," "Ultra Gloss polishing compound, 1 pint," and "ULTRA GLOSS 16" can all be the same product — and you won't reliably tell from the name.
+
+An identifier shrinks that problem by definition: it's unique and internationally recognized, so it carries unambiguous information about the product no matter what anyone decided to call it. Google states that the GTIN is sent in the `gtin` attribute and helps its systems categorize and display products.
+
+<Insight tone="key">
+Without an identifier, all that's left to recognize a product by is a name and specs that every retailer writes differently. With one, there's a value that is identical everywhere for the same item. **On comparison queries, that's the difference between "some polish" and "exactly this product."**
+</Insight>
+
+## Three layers that need to agree
+
+This is where online stores lose the most ground — and it isn't a technology problem, it's a maintenance problem.
+
+<CompareTable
+  caption="Everywhere you describe your product"
+  columns={["Layer", "What usually goes wrong in it"]}
+  rows={[
+    { icon: "🖥️", label: "Page", left: "What the customer sees", right: "Manual edits that never propagate anywhere else" },
+    { icon: "📤", label: "Feed", left: "The data file for Merchant Center and other shopping channels", right: "Generated automatically, often from older fields" },
+    { icon: "🏷️", label: "Structured data", left: "The machine-readable description on the page", right: "Left over from a previous version of the template" },
+  ]}
+/>
+
+When those three layers drift apart, you get a contradiction nobody can resolve. Keeping them in sync isn't an explicit rule about feeds, but it follows from two documented obligations: the Shopping ads policies prohibit presenting products in a way that isn't accurate and truthful, and for structured data Google requires a match with the visible content of the page.
+
+Price is the most sensitive field of all — why that is, is covered in the article on [pricing on your site](/blog/pricing-on-your-site-and-ai/).
+
+## How to get the data in order
+
+<Stepper
+  steps={[
+    {
+      label: "Inventory",
+      title: "Find out which products have a GTIN",
+      text: "It's on the packaging next to the barcode. Google states that not every product has one — own manufacturing, bundles, made-to-order.",
+    },
+    {
+      label: "Feed",
+      title: "Add the identifiers",
+      text: "GTIN into the gtin attribute. For products without one, the brand and the manufacturer's part number.",
+    },
+    {
+      label: "Agreement",
+      title: "Make the data agree across layers",
+      text: "Price, availability, name, and specs have to say the same thing on the page, in the feed, and in structured data.",
+    },
+    {
+      label: "Verification",
+      title: "Vet third-party identifiers",
+      text: "For supplier GTINs, Google recommends verifying they are legitimate; if you can't find one, ask the manufacturer.",
+    },
+    {
+      label: "Maintenance",
+      title: "Check on a schedule",
+      text: "The feed runs automatically, pages change by hand. Walk a sample of products repeatedly.",
+    },
+  ]}
+/>
+
+## What to do with products that have no GTIN
+
+Not every assortment has one, and Google acknowledges that explicitly. It mostly applies to your own manufacturing, bundles made up of several items, and made-to-order production.
+
+The answer is not to invent an identifier — that's the worst possible option, because an incorrect GTIN can match your listing to an entirely different product. What works in practice instead is adding the brand and the manufacturer's part number, so the product can be identified by at least that pair.
+
+## Four mistakes in product data
+
+<MistakeGrid>
+  <Mistake number="01" title="An invented or inherited GTIN">
+    An incorrect identifier can categorize the product wrong. For identifiers from third-party sources, Google recommends verifying they are legitimate.
+  </Mistake>
+  <Mistake number="02" title="The feed and the page disagree">
+    Two contradictory values for one thing. And presenting a product inaccurately is prohibited by the Shopping ads policies on top of that.
+  </Mistake>
+  <Mistake number="03" title="Structured data with nothing behind it">
+    A value in structured data that isn't visible on the page runs against the requirement to match the visible content.
+  </Mistake>
+  <Mistake number="04" title="Set the feed up and forget it">
+    Prices, availability, and the assortment all change. Without a regular check, the layers drift apart on their own.
+  </Mistake>
+</MistakeGrid>
+
+<Insight tone="warning">
+Most stores run more than one feed at a time — Google Merchant Center alongside Bing Shopping, a Meta catalog, sometimes a marketplace on top. Each has its own format and its own documentation, and each has to be respected on its own terms. The consequence of a mismatch is the same everywhere, though: **the more places that describe your product, the more places that can contradict each other.** The field-level requirements of individual channels are out of scope here; those belong in their own documentation.
+</Insight>
+
+## Where this guide stops
+
+**It doesn't promise placement or recommendation.** Consistent data is a precondition for reliable identification, not a guarantee your product turns up in a specific answer.
+
+**It doesn't list the requirements of individual channels.** Google Merchant Center, Bing Shopping, and Meta's catalog each have their own formats and documentation; reciting them from memory would be unreliable.
+
+**It isn't a Merchant Center walkthrough.** This article is about the data, not about clicking through an interface.
+
+<DoDont
+  doTitle="Do"
+  dontTitle="Don't"
+  doItems={[
+    "Add the GTIN wherever the product has an identifier",
+    "For products without a GTIN, add the brand and the manufacturer's part number",
+    "Make price, availability, and specs agree across layers",
+    "Verify identifiers taken from suppliers",
+    "Check a sample of products on a schedule",
+  ]}
+  dontItems={[
+    "Invent an identifier for a product that doesn't have one",
+    "Let the feed and the page each say something different",
+    "Put values into your data that aren't on the page",
+    "Rely on a one-time feed setup",
+  ]}
+/>
+
+## What to take away
+
+Product data is the least rewarding part of running a store: it's invisible, nobody praises you for it, and it breaks quietly. Yet everything else sits on top of it — copy and reviews are worthless if the system doesn't know which product it's looking at.
+
+The identifier helps with categorizing and recognizing the product; consistency across layers helps with how trustworthy the values are. Neither is difficult; both require maintenance.
+
+**Related reading:** how to write the product page itself is covered in [product pages for AI](/blog/product-pages-for-ai/), what shopping assistants pull from product data in [AI shopping agents](/blog/ai-shopping-agents/), and how to handle reviews in [reviews and ratings for AI](/blog/reviews-and-ratings-for-ai/).
+
+---
+
+**Not sure whether your feed and your pages agree?** This site is run by **[Sniper Design](https://www.sniperdesign.cz/)** — an AI SEO audit walks your product data, your structured data, and whether the two line up, then names what to fix. Ready-made product and category page templates cut out the guesswork on the layout itself.
+
+*Sources: Google Merchant Center documentation on the GTIN identifier and the Shopping ads policies, current as of July 18, 2026.*

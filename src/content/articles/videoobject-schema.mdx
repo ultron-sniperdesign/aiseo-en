@@ -1,0 +1,189 @@
+---
+title: "VideoObject: structured data for video and AI"
+description: "How to mark up video with VideoObject so search engines and AI understand it. Required properties, the role of the transcript, and common mistakes."
+answer: "VideoObject is structured data that attaches machine-readable facts to a video on your page: name, thumbnail image, and upload date are required, plus a link to the file or the player and the duration. AI systems can draw on that data and on the transcript. The markup alone won't guarantee a rich result, but it matters for eligibility."
+slug: "videoobject-schema"
+category: "tutorial"
+tags:
+  - "strukturovana-data"
+updated: "2026-07-17"
+keywords:
+  - "videoobject"
+  - "video structured data"
+  - "videoobject schema"
+  - "video for ai"
+  - "video transcript"
+variant: "rich"
+stats:
+  - value: "3 required"
+    label: "name, thumbnailUrl, and uploadDate — without them the video isn't eligible for a rich result"
+  - value: "+1 link"
+    label: "plus at least contentUrl or embedUrl; Google prefers contentUrl pointing at the video file"
+  - value: "transcript"
+    label: "a transcript turns what's in the video into text that AI can actually work with"
+  - value: "match"
+    label: "you can only mark up video that's genuinely visible on the page; anything else violates policy"
+howto:
+  name: "How to mark up video with VideoObject"
+  steps:
+    - name: "Confirm the video is genuinely visible on the page"
+      text: "Structured data describes a video that's actually on the page, not an add-on you bolt on. Marking up a video that isn't there violates Google's structured data policies. So put the video on the page first, then describe it."
+    - name: "Fill in the three required properties"
+      text: "Per Google's documentation, the required properties are name (a unique title for the video), thumbnailUrl (a link to a thumbnail image that crawlers can reach directly, not one hidden behind a login), and uploadDate (the publication date in ISO 8601 format, ideally with a time zone)."
+    - name: "Add a link to the video and its duration"
+      text: "Include at least one of contentUrl (a direct link to the video file, an MP4 for example) or embedUrl (a link to the player). Google prefers contentUrl; ideally you provide both. Add duration as well — the length in ISO 8601 format, for example PT4M12S."
+    - name: "Put a transcript on the page"
+      text: "This is often a genuinely useful step for AI. A text model typically works from the text on the page, so without a transcript the content of the video stays largely hidden. Publish the transcript as full text, not an abridged version. Structured data gives the facts about the video; the transcript gives its content."
+    - name: "Check that it matches and validates"
+      text: "The values in your structured data should match what's visible on the page. Test the markup in a structured data validation tool and watch for an uploadDate in the future or formats that don't parse."
+faq:
+  - q: "What is VideoObject?"
+    a: "VideoObject is a structured data type from the schema.org vocabulary that attaches machine-readable facts to a video on your page: name, thumbnail image, upload date, duration, and a link to the file or the player. Search engines and AI systems read basic information about the video from it — information they would otherwise have to mine from the surrounding text, or wouldn't have at all."
+  - q: "Which properties are required?"
+    a: "Google's documentation lists three: name, thumbnailUrl, and uploadDate. On top of that you need at least one of contentUrl or embedUrl, even though those are listed as recommended. Description is not required, despite what some guides claim; it's recommended and worth filling in, but on its own it isn't a condition of eligibility."
+  - q: "Why does a transcript matter so much for AI?"
+    a: "Because a text model typically works from text: the page content, the structured data, and the transcript. Structured data supplies facts like the title and the duration, but the actual content of the video — what was said in it — is something the model mostly learns from the transcript. A video without a transcript therefore stays largely hidden from AI, no matter how complete the data is."
+  - q: "Does VideoObject guarantee my video shows up as a rich result?"
+    a: "No. Meeting the required properties makes a video eligible for a rich result, but doesn't guarantee one. Whether it appears, and how, is Google's call based on several factors. Citations in AI work much the same way: structured data and a transcript improve your odds, but nobody can promise your video will be the source."
+  - q: "Do I have to include a view count?"
+    a: "No, it's optional. If you do want to include it, use interactionStatistic. Google still supports the older interactionCount property, but since 2019 it has recommended interactionStatistic instead — so for new markup, go straight to the recommended option."
+  - q: "Is embedding a YouTube video enough, or do I need the data too?"
+    a: "An embedded YouTube video works on the page, and YouTube has its own data on its side. But if you want machines to understand your page as well as possible, it makes sense to add VideoObject and, above all, a transcript on your own page. That puts the context and the content where you cover your topic, not just on the platform."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**VideoObject is structured data that attaches machine-readable facts to a video on your page.** Name, thumbnail image, and upload date are required, plus a link to the file or the player and the duration. AI systems can draw on that data and on the transcript. The markup alone won't guarantee a rich result, but it matters for eligibility.
+
+Video is a different problem for machines than text is. A search engine or an AI reads a paragraph directly; with video it sees a file it can't interpret without help. VideoObject and a transcript are two ways to attach text to that file — and each one does something different.
+
+## What AI sees in a video, and what it doesn't
+
+When they work with a page, many text-based AI models rely mainly on text: the surrounding content, the structured data, and the transcript. The difference between the data and the transcript is fundamental here, and it's easy to conflate the two.
+
+<CompareTable
+  caption="Structured data vs. transcript — what each one gives you"
+  columns={["Source", "What a machine gets from it"]}
+  rows={[
+    { icon: "🏷️", label: "VideoObject data", left: "Facts about the video", right: "Title, thumbnail, date, duration, link — machine-readable facts a system can point to" },
+    { icon: "📝", label: "Transcript", left: "The video's content", right: "What was said in the video — the actual message AI can draw on" },
+    { icon: "🔗", label: "Surrounding text", left: "Context", right: "What the page is about and how the video relates to it" },
+  ]}
+/>
+
+<Insight tone="key">
+Structured data and a transcript complement each other; they don't substitute for each other. The data tells a machine **that** the video is there and what its parameters are. The transcript tells it **what** is in the video. Without a transcript, the content of the video stays largely hidden even when the data is complete.
+</Insight>
+
+## The process
+
+<Stepper
+  steps={[
+    {
+      label: "Video",
+      title: "Have the video genuinely on the page",
+      text: "The data describes a video that's actually there, not a trick. Marking up a video that isn't on the page violates policy.",
+    },
+    {
+      label: "Required",
+      title: "Fill in the three required properties",
+      text: "name (a unique title), thumbnailUrl (a directly reachable thumbnail), and uploadDate in ISO 8601, ideally with a time zone.",
+    },
+    {
+      label: "Link",
+      title: "Add the link and the duration",
+      text: "At least contentUrl (the file) or embedUrl (the player); Google prefers contentUrl. Add duration as well.",
+    },
+    {
+      label: "Transcript",
+      title: "Put a transcript on the page",
+      text: "Full text, not abridged. Often a genuinely useful step for AI — the data gives the facts, the transcript gives the content.",
+    },
+    {
+      label: "Check",
+      title: "Check that it matches and validates",
+      text: "Values = what's visible. Test it in a structured data validation tool, keep uploadDate out of the future, get the formats right.",
+    },
+  ]}
+/>
+
+## What the markup looks like
+
+Only `name`, `thumbnailUrl`, and `uploadDate` are required. But for the video to be eligible you also need at least one of `contentUrl` or `embedUrl` (ideally both) — without a link to the video, the markup stays incomplete:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "How to set up structured data step by step",
+  "description": "A hands-on walkthrough of setting up structured data on a product page.",
+  "thumbnailUrl": "https://example.com/thumbnails/structured-data.jpg",
+  "uploadDate": "2026-05-19T08:00:00+02:00",
+  "duration": "PT4M12S",
+  "contentUrl": "https://example.com/video/structured-data.mp4",
+  "embedUrl": "https://example.com/player/structured-data"
+}
+```
+
+The `duration` format is ISO 8601 for durations: `PT4M12S` means 4 minutes and 12 seconds. The date in `uploadDate` is ISO 8601 too, and it's less ambiguous with a time zone. Where VideoObject fits into the bigger picture is covered in the article on [structured data for AI](/blog/structured-data-for-ai/).
+
+## What to avoid
+
+<MistakeGrid>
+  <Mistake number="01" title="A thumbnail behind a login or a redirect">
+    When Google can't reach the image in thumbnailUrl directly, that can block correct processing and reduce your chances of a rich result. The link should point straight at an accessible image.
+  </Mistake>
+  <Mistake number="02" title="Data for a video that isn't there">
+    Marking up a video that isn't genuinely on the page violates the structured data policies. The data describes what's visible.
+  </Mistake>
+  <Mistake number="03" title="Video without a transcript">
+    For a text model, the content of the video stays largely hidden no matter how complete the data is. A transcript tends to be an important source of that content for AI to draw on.
+  </Mistake>
+  <Mistake number="04" title="The outdated interactionCount">
+    If you're reporting a view count, use interactionStatistic. interactionCount has been deprecated since 2019.
+  </Mistake>
+</MistakeGrid>
+
+<Insight tone="warning">
+It pays to write the transcript as full text rather than a summary. An abridged transcript drops exactly the sentences AI might have cited. It's more work, but it tends to be one of the most direct ways to get spoken content into the text machines actually work with.
+</Insight>
+
+## Where this has limits
+
+**It won't guarantee a rich result or a citation.** The required properties make a video eligible, not displayed. Whether and how it shows up is Google's call based on several factors; the same goes for citations in AI.
+
+**It doesn't solve video production or hosting.** This article is about marking up video you already have, not about where to make it or store it.
+
+**Data and a transcript don't substitute for each other.** They're two different things — facts and content. You need both, not one instead of the other.
+
+<DoDont
+  doTitle="Do"
+  dontTitle="Don't"
+  doItems={[
+    "The three required properties: name, thumbnailUrl, uploadDate",
+    "At least contentUrl or embedUrl, ideally both, plus duration",
+    "A full transcript of the video as text directly on the page",
+    "Values in the structured data that match the visible content",
+    "interactionStatistic, if you're reporting a view count",
+  ]}
+  dontItems={[
+    "A thumbnail image behind a login or a redirect",
+    "Structured data for a video that isn't on the page",
+    "Relying on the data alone and skipping the transcript",
+    "An abridged or summarized transcript instead of the full one",
+    "The outdated interactionCount in new markup",
+  ]}
+/>
+
+## What to take away
+
+VideoObject and a transcript solve two different problems. The data gives machines the facts about the video — title, thumbnail, date, duration, link. The transcript gives them the substance: what was said in the video, the content AI can draw on.
+
+Only three properties are required, but without a link to the video — and above all without a transcript — the markup is half the job. And as with any structured data, it should describe what's genuinely visible on the page, not promise something that isn't there.
+
+If you're thinking about video more broadly than the technical side, [YouTube for AI visibility](/blog/youtube-for-ai-visibility/) picks up from here; how AI decides what to cite is covered in [how AI cites sources](/blog/how-ai-cites-sources/).
