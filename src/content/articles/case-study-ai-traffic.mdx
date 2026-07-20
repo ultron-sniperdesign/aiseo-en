@@ -1,0 +1,194 @@
+---
+title: "Case Study: What AI Tools Actually Send an Online Store — 12 Months of Data"
+seoTitle: "Case Study: Online Store Traffic from ChatGPT and AI Tools — Real Data"
+description: "Twelve months of real numbers from our own store: how many visits ChatGPT sends, how they convert, and why AI recommends a site only starting AI SEO."
+answer: "Over twelve months, AI tools sent our own store 1,867 visits — 90 percent of them from ChatGPT — converting roughly 4× better than Google organic. On top of that, the site picked up 200,000 impressions in Google's generative AI features (AI Overviews) in under two months. This is the starting point, before any deliberate AI SEO work; we'll update this article as new data comes in."
+slug: "case-study-ai-traffic"
+category: "case-study"
+tags:
+  - "mereni"
+  - "eshopy"
+published: "2026-07-17"
+updated: "2026-07-17"
+keywords:
+  - "ai traffic case study"
+  - "chatgpt traffic data"
+  - "ai seo case study"
+  - "how much traffic does chatgpt send"
+  - "conversion rate from ai tools"
+  - "ai recommendations ecommerce"
+variant: "rich"
+stats:
+  - value: "1,867"
+    label: "visits from AI tools over twelve months — 90 percent of them sent by ChatGPT"
+  - value: "3.5%"
+    label: "conversion rate for ChatGPT visits — roughly 4× Google organic (0.88%)"
+  - value: "3×"
+    label: "higher revenue per visit from ChatGPT than from Google organic"
+  - value: "200K"
+    label: "impressions in Google's generative AI features (AI Overviews) in under two months"
+faq:
+  - q: "How much traffic do AI tools actually send an online store?"
+    a: "In our measurement on our own store over twelve months (July 2025 – July 2026) it was 1,867 visits, roughly 0.5 percent of a total of 394,000. About 90 percent of that came from ChatGPT. The share is still small, but between March and May 2026 it grew by more than half."
+  - q: "How good is the traffic from ChatGPT?"
+    a: "In our data, well above average: a 3.5 percent conversion rate against 0.88 percent from Google organic, and roughly three times the revenue per visit. AI sends few people, but they've often already decided — they arrive with a specific recommendation in hand."
+  - q: "Why does AI recommend a store that never did any AI SEO?"
+    a: "Because for years it has built on what AI systems look for anyway: educational articles that answer real questions, structured product copy, a clear brand, and physical proof of existence (a retail store, a detailing studio, training courses). The ten most-visited pages from Google are articles, not products."
+  - q: "How many impressions does the store get in Google AI Overviews?"
+    a: "According to the new Search Console 'Generative AI features' report (Beta), our store had 200,000 impressions in Google's generative AI features in under two months (May 18 – July 15, 2026), averaging around 3,400 a day. All ten of the most-shown pages are educational articles."
+  - q: "What is dark AI traffic?"
+    a: "The influence of an AI recommendation that never shows up in analytics as an AI referral. Someone gets advice in ChatGPT or in an AI Overview, then searches for the brand on Google or types the address directly — and the visit lands in organic or direct. That's why measurable AI referrals are a floor, not a ceiling, on the real influence of AI tools."
+  - q: "Do these numbers transfer to another online store?"
+    a: "Roughly yes, exactly no. Both the share and the quality of AI traffic depend on the category, brand strength, and above all on whether the site has anything citable on it. But the pattern of 'few visits, high conversion' repeats across public analyses of AI traffic from 2025 and 2026."
+  - q: "How do you measure traffic from AI tools?"
+    a: "In GA4 via the Session source dimension: chatgpt.com, perplexity (.ai), gemini.google.com, copilot.com, claude.ai, and grok.com. Impressions in Google's generative AI features show up in the new beta Search Console report; clicks from AI Overviews still can't be separated from regular organic — another reason AI referrals are a floor estimate."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import DataBars from "~/components/blocks/DataBars.astro";
+import DataColumns from "~/components/blocks/DataColumns.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+
+**This is part one of a living case study.** Our own store — the car-care e-commerce site Sniper Design runs — gets recommended in ChatGPT, Perplexity, and other AI tools, even though we're only now starting deliberate AI SEO work on it. We're publishing the baseline numbers **before optimization**, and in a few months we'll put the after picture next to them. No borrowed study — our own GA4 and Search Console data.
+
+## How much AI tools actually send
+
+Over twelve months (July 17, 2025 – July 16, 2026), AI tools brought in **1,867 visits** out of a total of 394,000 — roughly **0.5 percent**. Nine out of ten AI visits came from ChatGPT (1,688), the rest from Perplexity (126), Gemini (28), Copilot (23), and a handful from Claude and Grok.
+
+<DataColumns
+  caption="Visits from AI tools by month (GA4, session source: ChatGPT, Perplexity, Gemini, Copilot, Claude, Grok)"
+  unit="visits"
+  tableValueLabel="Visits"
+  ticks={[0, 100, 200]}
+  points={[
+    { label: "Aug 25", value: 156, labeled: true },
+    { label: "Sep", value: 124 },
+    { label: "Oct", value: 144 },
+    { label: "Nov", value: 157 },
+    { label: "Dec", value: 107 },
+    { label: "Jan 26", value: 127 },
+    { label: "Feb", value: 112 },
+    { label: "Mar", value: 148 },
+    { label: "Apr", value: 223 },
+    { label: "May", value: 241, labeled: true },
+    { label: "Jun", value: 171, labeled: true },
+  ]}
+/>
+
+Through March the volume held around 110–160 visits a month. **In April and May 2026 it jumped to 223–241 — a rise of more than half** over the running average. We're not reading anything into the June dip yet; whether it's seasonality or noise, the next few months will tell.
+
+Half a percent sounds like a rounding error. But the volume matters less than **who those visitors are** — and that's where the data turns.
+
+## Fewer visitors, but ones who've already decided
+
+A visitor from ChatGPT behaves differently than one who comes from a search engine. They're not there to "compare options" — they arrive with a specific recommendation the AI assembled for their exact question.
+
+<DataBars
+  caption="Conversion rate by traffic source (key events, GA4, 12 months)"
+  unit="%"
+  tableValueLabel="Conversion rate"
+  rows={[
+    { label: "ChatGPT", value: 3.5, display: "3.5%", emphasized: true },
+    { label: "Google organic", value: 0.88, display: "0.88%" },
+    { label: "Site-wide average", value: 0.79, display: "0.79%" },
+  ]}
+/>
+
+<DataBars
+  caption="Revenue per visit by source, indexed to Google organic = 1.0 (GA4, 12 months)"
+  unit="×"
+  tableValueLabel="Revenue per visit (Google organic = 1.0)"
+  rows={[
+    { label: "ChatGPT", value: 2.86, display: "2.9×", emphasized: true },
+    { label: "Direct traffic", value: 1.01, display: "1.0×" },
+    { label: "Google organic", value: 1.0, display: "1.0×" },
+    { label: "Facebook", value: 0.42, display: "0.4×" },
+  ]}
+/>
+
+<Insight tone="key">
+A visit from ChatGPT converts roughly **4× better than one from Google organic** and brings in about **3× the revenue**. AI tools work like a filter: instead of ten curious browsers, they send one buyer who's already decided. So half a percent of traffic carries a far larger share of the value than its volume suggests.
+</Insight>
+
+## Where AI sends those visitors
+
+Over the year, AI tools dropped people onto **668 different landing pages**. That's a finding in itself: AI doesn't just cite the homepage — it knows the categories, the articles, the courses, and the wholesale section.
+
+<DataBars
+  caption="Top landing pages for visits from AI tools (GA4, 12 months)"
+  unit="visits"
+  tableValueLabel="Visits"
+  rows={[
+    { label: "Homepage", value: 298, display: "298", emphasized: true },
+    { label: "Article: where to practice driving", value: 122, display: "122", emphasized: true },
+    { label: "Detailing courses", value: 33, display: "33", emphasized: true },
+    { label: "Our detailing studio", value: 28, display: "28", emphasized: true },
+    { label: "Article: which diesel is the highest quality", value: 27, display: "27", emphasized: true },
+    { label: "Our retail store", value: 25, display: "25", emphasized: true },
+  ]}
+/>
+
+Next to the homepage, the leaders are **educational articles and pages that prove the business physically exists** — courses, the detailing studio, the brick-and-mortar store. Exactly the content that lets AI systems answer questions like "where can I learn detailing" or "where do I go to buy car care products in person."
+
+## Google AI Overviews: 200,000 impressions in two months
+
+Referrals are only the visible part, though. In 2026, Search Console added a new beta report — **Generative AI features** — showing how often a site appears directly inside Google's AI answers (AI Overviews and friends). For our store: **200,000 impressions between May 18 and July 15, 2026**, averaging around **3,400 impressions a day**.
+
+<DataBars
+  caption="Top pages in Google's generative AI features — impressions (Search Console, Beta, May 18 – July 15, 2026)"
+  unit="impressions"
+  tableValueLabel="Impressions"
+  rows={[
+    { label: "Engine lifespan: 1.0 TSI 85 kW", value: 17326, display: "17,326", emphasized: true },
+    { label: "1.2 PureTech engine problems", value: 8918, display: "8,918", emphasized: true },
+    { label: "What if I fail my driving school tests", value: 7645, display: "7,645", emphasized: true },
+    { label: "When to replace a timing belt", value: 7126, display: "7,126", emphasized: true },
+    { label: "Can I run 100-octane gas", value: 6631, display: "6,631", emphasized: true },
+    { label: "Using Waze in Austria", value: 6079, display: "6,079", emphasized: true },
+  ]}
+/>
+
+Two things stand out. First, the volume: a car-care store was **visible inside AI answers two hundred thousand times in two months** — a layer of visibility GA4 never shows you, because an impression in an AI answer doesn't produce a visit. Second, the structure: **all ten of the most-shown pages are, again, educational articles**, not products and not the homepage. The same content that wins classic search feeds the AI answers too.
+
+## Why AI recommends a site that never did AI SEO
+
+Our store hasn't been through a deliberate AI SEO pass yet — that work is just starting. It earned those recommendations with what it has been doing for years for people and for classic search:
+
+<Checklist
+  items={[
+    { title: "Educational content answering real questions", desc: "The ten most-visited pages from Google are ten articles (which diesel is highest quality, 100-octane gas, charging a car battery) — not products. Over twelve months they brought in tens of thousands of clicks." },
+    { title: "Structured product copy", desc: "Products have a benefit-led heading, specs, usage instructions, and a 'what it's good for' section — exactly the blocks AI assembles a recommendation from." },
+    { title: "Categories with a definition and internal links", desc: "Categories open with a short definition and link out to related guides — the hub-and-spoke pattern we describe in our guide to pillar structure." },
+    { title: "A distinctive brand with physical proof", desc: "Its own retail store, a detailing studio, training courses, a strong brand voice. An entity AI can remember and verify." },
+  ]}
+/>
+
+<Insight tone="warning">
+The referral numbers in this study are a **floor estimate of AI's influence**. Those 200,000 AI Overviews impressions don't produce a visit, but they build awareness — and clicks from AI Overviews can't be separated from regular organic in Search Console anyway. A large share of AI influence is "dark traffic": someone gets a recommendation in ChatGPT or in a Google AI answer, then searches the brand or types the address directly, and it lands in analytics as organic or direct. The pattern backs that up: the strongest query in Search Console is the brand name itself, and direct traffic accounts for more than a fifth of the site.
+</Insight>
+
+## What we're doing next
+
+That's exactly why this study is "living." The baseline is measured; now we're rolling out on the store the playbook we describe across the individual guides:
+
+- **[Content for AI](/blog/ai-seo-content/)** — short answers and fact-dense passages in the key categories and articles,
+- **[structured data](/blog/structured-data-for-ai/)** — Product, FAQPage, and Organization schema in full,
+- **[E-E-A-T signals](/blog/e-e-a-t-for-ai/)** — authors, hands-on experience, tying the entity to the physical locations,
+- **[measuring AI visibility](/blog/ai-visibility-test/)** — a recurring citation test across platforms instead of a one-off impression.
+
+In 3–6 months we'll add the same charts again — before and after. If the AI share of traffic and the conversion rates go up, you'll see exactly how much; if they don't, you'll see that too. The last-updated date next to the title always tells you how fresh the numbers you're reading are.
+
+## Key takeaways
+
+- **AI referrals are a fraction of a percent of traffic today** — anyone promising "20 percent of your traffic from ChatGPT within six months" isn't showing you data.
+- **The quality, though, is exceptional**: ~4× the conversion rate and ~3× the revenue per visit compared with Google. AI sends customers who've already decided.
+- **Visibility in AI is an order of magnitude bigger than referrals**: 200,000 AI Overviews impressions in two months — a layer you won't see in GA4.
+- **The trend points up** — April and May 2026 brought a jump of more than half.
+- **What gets cited is content, not the catalog**: articles, courses, physical locations. An online store with no educational content has nothing to cite.
+- **Measurable referrals are a floor estimate** — part of AI's influence hides in brand search, direct traffic, and AI answers that never get clicked.
+
+---
+
+**Want to know what AI tools would cite from your site?** This site is run by **[Sniper Design](https://www.sniperdesign.cz/)** — an AI SEO audit walks your content through the same lens we're now applying to our own store: what's citable, what's missing, and in what order to fix it.
+
+*For transparency: the store in this study is Sniper Design's own e-commerce site — the same agency that runs this site — so we know the data first-hand and publish it with permission. The numbers come from GA4 (Session source dimension, July 17, 2025 – July 16, 2026) and Google Search Console for the same period; impressions in generative AI features come from the beta Search Console report, which has data from May 18, 2026. Conversion rate = session key event rate in GA4. Clicks from Google AI Overviews can't be separated from regular organic in the data, so the AI referral figures are a floor estimate. Revenue per visit is published as a ratio to Google organic rather than an absolute amount. We'll update this article with new data once the AI SEO work is in place.*
