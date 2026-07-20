@@ -16,6 +16,8 @@
  * Pozn. k iframu: vytvářený v JS přes createElement → NEdostane Astro scoped
  * CSS atribut, takže nutné inline styly v JS (jinak by zůstal 300×150 default).
  */
+import { ui } from "~/i18n/strings";
+
 interface Props {
   /** YouTube video ID (např. "oPfYftelijw" z https://youtu.be/oPfYftelijw). */
   youtubeId: string;
@@ -30,7 +32,7 @@ interface Props {
 const {
   youtubeId,
   badge,
-  playLabel = "Přehrát video",
+  playLabel = ui.blocks.playVideo,
   maxWidth = "52rem",
 } = Astro.props;
 ---

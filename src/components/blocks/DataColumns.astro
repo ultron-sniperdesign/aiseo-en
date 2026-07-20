@@ -25,6 +25,8 @@ interface Point {
   labeled?: boolean;
 }
 
+import { ui } from "~/i18n/strings";
+
 interface Props {
   caption: string;
   points: Point[];
@@ -35,7 +37,7 @@ interface Props {
   tableValueLabel?: string;
 }
 
-const { caption, points, ticks, unit = "", tableValueLabel = "Hodnota" } = Astro.props;
+const { caption, points, ticks, unit = "", tableValueLabel = ui.blocks.dataValueCol } = Astro.props;
 const top = Math.max(...ticks, ...points.map((p) => p.value));
 const pct = (v: number) => (v / top) * 100;
 ---
@@ -67,10 +69,10 @@ const pct = (v: number) => (v / top) * 100;
     {points.map((p) => <span class="dcols__xlabel">{p.label}</span>)}
   </div>
   <details class="dcols__table">
-    <summary>Zobrazit data v tabulce</summary>
+    <summary>{ui.blocks.dataShowTable}</summary>
     <table>
       <thead>
-        <tr><th>Období</th><th>{tableValueLabel}</th></tr>
+        <tr><th>{ui.blocks.dataPeriodCol}</th><th>{tableValueLabel}</th></tr>
       </thead>
       <tbody>
         {points.map((p) => (

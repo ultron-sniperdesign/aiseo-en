@@ -9,6 +9,8 @@
  *   </Mistake>
  */
 
+import { ui } from "~/i18n/strings";
+
 interface Props {
   num: string;
   title: string;
@@ -22,7 +24,7 @@ const { num, title, fix } = Astro.props;
   <span class="mistake__num">{num}</span>
   <h3 class="mistake__title">{title}</h3>
   <div class="mistake__desc"><slot /></div>
-  {fix && <p class="mistake__fix"><strong>Fix:</strong> {fix}</p>}
+  {fix && <p class="mistake__fix"><strong>{ui.blocks.mistakeFixLabel}</strong> {fix}</p>}
 </article>
 
 <style>

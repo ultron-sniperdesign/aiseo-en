@@ -1,13 +1,15 @@
 ---
 /**
  * Dont — červená karta v <DoDont>. Špatný příklad / co nedělat.
+ * Label z i18n vrstvy (ui.blocks.dontLabel) — fork přeloží tam.
  */
+import { ui } from "~/i18n/strings";
 ---
 
 <div class="ddc ddc--dont">
   <header class="ddc__head">
     <span class="ddc__icon" aria-hidden="true">✕</span>
-    <span class="ddc__label">Takhle ne</span>
+    <span class="ddc__label">{ui.blocks.dontLabel}</span>
   </header>
   <div class="ddc__body"><slot /></div>
 </div>

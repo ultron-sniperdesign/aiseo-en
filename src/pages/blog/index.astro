@@ -6,6 +6,7 @@ import { getCollection } from "astro:content";
 import { site } from "~/i18n/site";
 import { ui } from "~/i18n/strings";
 import { BLOG_TAGS, TAG_BASE } from "~/i18n/tags";
+import * as blogPage from "~/content/pages/blog";
 
 const SITE_ORIGIN = new URL("/", Astro.site).toString().replace(/\/$/, "");
 
@@ -53,37 +54,11 @@ const totalWords = articles.reduce((sum, a) => {
 const avgWords = Math.round(totalWords / articles.length / 100) * 100;
 const newestDate = articles[0]?.data.updated;
 
-const pageTitle = "AI SEO blog: praktické články o SEO, GEO, AEO a AIO";
-const pageDescription =
-  "Tutoriály, analýzy a defenzivní průvodce AI SEO pro český trh — SEO, GEO, AEO i AIO. Nový článek pravidelně.";
+const pageTitle = blogPage.meta.title;
+const pageDescription = blogPage.meta.description;
 
-/** FAQ — 6 reálných otázek o blogu (zdroje pro AI scrapery + lidské čtenáře). */
-const faq = [
-  {
-    q: "Co na blogu najdu?",
-    a: "Praktické tutoriály (postupy krok za krokem), analýzy (rozbor trendů a změn) a defenzivní průvodce (jak se vypořádat s problémy typu zero-click éra Google AI Overviews). Každý článek má 1 700–3 000 slov, schema markup (Article + FAQPage + případně HowTo) a fact-density 3+ konkrétní fakta na 100 slov. Cíleno na provozovatele webů, e-shopů a marketéry.",
-  },
-  {
-    q: "Jak často vychází nový článek?",
-    a: "Aktuálně vychází několik nových článků týdně (v červnu a červenci 2026 průměrně 4–6 týdně). Datum prvního publikování i poslední aktualizace každého článku je viditelně zobrazené v hlavičce; články průběžně aktualizujeme, aby data zůstávala aktuální (datový refresh, fix broken linků, screenshot updaty).",
-  },
-  {
-    q: "Pro koho je obsah určený?",
-    a: "Pro tři typy čtenářů: (1) provozovatelé webů a e-shopů, kteří chtějí, aby je AI engine citoval místo přeskočil; (2) marketéři a SEO specialisté hledající aktuální postupy pro AI éru; (3) developery a content stratégy, kteří implementují schema markup, FAQPage a HowTo strukturu. Texty jsou v češtině, s důrazem na CZ trh (Seznam, GBP, ceny v Kč).",
-  },
-  {
-    q: "Jaký je rozdíl mezi blogem a hlavním průvodcem na webu?",
-    a: "Hlavní průvodce (/seo-vs-geo-vs-aeo-vs-aio/) je pillar content ~3 000 slov, který drží přehled napříč 4 disciplínami SEO/GEO/AEO/AIO. Sekce /seo/, /geo/, /aeo/ a /aio/ jsou hub-and-spoke clusters s konceptuálním rozborem každé disciplíny. Blog je sbírka samostatných tutoriálů a analýz, které jdou do hloubky konkrétních problémů (audit, nástroje, local SEO, měření, strukturování pillar contentu).",
-  },
-  {
-    q: "Mohu se přihlásit k odběru nových článků?",
-    a: "Ano — web má RSS feed na adrese /rss.xml (odkaz najdete i v patičce), který obsahuje všechny články řazené od nejnovějších. E-mailový newsletter zatím neposíláme; pokud chcete obsah e-mailem, stáhněte si návod zdarma na /navod-zdarma/ — na stejný kontakt pošleme i zásadní novinky.",
-  },
-  {
-    q: "Můžu některý článek použít ve své práci, citovat nebo přeložit?",
-    a: "Ano, s atribucí. Citace v rámci 'fair use' (krátké citace s odkazem na zdroj) je vítaná a podpoří GEO/AEO scénáře, na které sami v článcích cílíme. Pro celkové překlady, embedování v komerčních produktech nebo PDF distribuci napište na kontakt přes Sniper Design — jsme open to spolupráci.",
-  },
-];
+/** FAQ — obsah v datovém modulu (content/pages/blog.ts); fork překládá tam. */
+const faq = blogPage.faq;
 
 /** JSON-LD: Blog + ItemList (8× BlogPosting) + BreadcrumbList + FAQPage */
 const blogJsonLd = {
@@ -143,9 +118,8 @@ const faqJsonLd = {
 
 const allLd = [blogJsonLd, itemListJsonLd, breadcrumbJsonLd, faqJsonLd];
 
-/** Answer block — 40–60 slov, definice 'Blog je…' pro AI scrapery + lidské. */
-const answerText =
-  "Blog aiseo-optimalizace.cz je sbírka praktických tutoriálů, analýz a defenzivních průvodců pro AI éru vyhledávání. Každý článek je strukturovaný pro citovatelnost v ChatGPT, Perplexity i Google AI Overviews — answer block, FAQPage schema, 3+ konkrétní fakta na 100 slov. Pro provozovatele webů, e-shopů a marketéry, kteří chtějí, aby AI engine jejich obsah citoval, ne přeskočil.";
+/** Answer block — obsah v datovém modulu. */
+const answerText = blogPage.answerText;
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription} jsonLd={allLd} image="/og/blog.png">
@@ -158,19 +132,15 @@ const answerText =
         <span class="hero__crumb-pill">{ui.crumbBlog}</span>
       </nav>
 
-      <h1 class="display hero__title">
-        <span class="hl">Aktuální obsah</span> o AI&nbsp;vyhledávání
-      </h1>
+      <h1 class="display hero__title" set:html={blogPage.heroTitleHtml} />
 
-      <p class="hero__lead">
-        Tutoriály, analýzy a defenzivní průvodce pro provozovatele webů a e&#8209;shopů, kteří chtějí být <strong>citováni v ChatGPT, Perplexity i v Google AI Overviews</strong>. Nový článek pravidelně, bez vaty.
-      </p>
+      <p class="hero__lead" set:html={blogPage.heroLeadHtml} />
 
       <div class="hero__meta">
-        <span>{articles.length} článků</span>
-        <span>{usedCategories.length} kategorií</span>
-        <span>průměrně ~{avgWords.toLocaleString(site.inLanguage)} slov / článek</span>
-        <span>nejnovější: {newestDate}</span>
+        <span>{ui.blogMetaArticles.replace("{n}", String(articles.length))}</span>
+        <span>{ui.blogMetaCategories.replace("{n}", String(usedCategories.length))}</span>
+        <span>{ui.blogMetaAvgWords.replace("{n}", avgWords.toLocaleString(site.inLanguage))}</span>
+        <span>{ui.blogMetaNewest.replace("{date}", newestDate ?? "")}</span>
       </div>
 
       <p class="hero__start">

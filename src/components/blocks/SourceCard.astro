@@ -14,6 +14,8 @@
  *   </SourceCard>
  */
 
+import { ui } from "~/i18n/strings";
+
 interface Props {
   badge?: string;
   href: string;
@@ -21,7 +23,12 @@ interface Props {
   tone?: "seo" | "geo" | "aeo" | "aio" | "accent";
 }
 
-const { badge = "Zdroj", href, linkLabel = "Otevřít zdroj", tone = "geo" } = Astro.props;
+const {
+  badge = ui.blocks.sourceBadge,
+  href,
+  linkLabel = ui.blocks.sourceLinkLabel,
+  tone = "geo",
+} = Astro.props;
 const isExternal = href.startsWith("http");
 ---
 

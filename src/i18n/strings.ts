@@ -102,6 +102,7 @@ export const nav = {
     dropdownCta: "Open the discipline →",
     /** Doplňky (utlumená část řádku 2). */
     addons: [
+      { href: "/blog/", label: "Blog" },
       { href: "/seo-vs-geo-vs-aeo/", label: "Guide" },
     ],
     /** Akviziční blok — EN: prázdné, komerční stránky nejsou přeložené. */
@@ -121,6 +122,7 @@ export const nav = {
     { href: "/ai-seo/", label: "AI SEO", d: "aio" },
     { href: "/ai-mode/", label: "AI Mode", d: "aimode" },
     { href: "/seo-vs-geo-vs-aeo/", label: "Guide", variant: "pillar" },
+    { href: "/blog/", label: "Blog" },
   ] as NavLink[],
 
   /** DESKTOP lišta — komerční část. EN: prázdné (later-wave). */
@@ -157,6 +159,7 @@ export const nav = {
         { href: "/ai-seo-playbook/", label: "AI SEO playbook" },
         { href: "/decision-matrix/", label: "Decision matrix" },
         { href: "/seo-vs-geo-vs-aeo/", label: "Main guide", variant: "pillar" },
+        { href: "/blog/", label: "Blog" },
       ],
     },
   ] as NavGroup[],
@@ -184,6 +187,41 @@ export const footer = {
  * i se značkami a v jiném slovosledu. `{abbr}` placeholder nahradí šablona.
  */
 export const ui = {
+  /** Skip-link v BaseLayoutu (a11y). */
+  skipToContent: "Skip to content",
+
+  /** Mikrotexty sdílených blokových komponent (A externalizoval e555e4b). */
+  blocks: {
+    doLabel: "Do this",
+    dontLabel: "Not this",
+    /** Insight default label (přepsatelný props `label` z MDX). */
+    insightLabel: "Key insight",
+    /** Mistake — prefix fix řádku. */
+    mistakeFixLabel: "Fix:",
+    /** SourceCard defaulty (přepsatelné props). */
+    sourceBadge: "Source",
+    sourceLinkLabel: "Open the source",
+    /** ToolGrid tier labely (klíč = tier enum). */
+    tier: {
+      free: "Free",
+      paid: "Paid",
+      both: "Free + Paid",
+    } as Record<string, string>,
+    /** HeroVideo — aria-label play tlačítka. */
+    playVideo: "Play video",
+    /** DataBars / DataColumns — tabulkový fallback. */
+    dataShowTable: "Show the data as a table",
+    dataItemCol: "Item",
+    dataPeriodCol: "Period",
+    dataValueCol: "Value",
+  },
+
+  /** Blog listing — meta dlaždice ({n}/{date} nahradí šablona). */
+  blogMetaArticles: "{n} articles",
+  blogMetaAvgWords: "~{n} words per article on average",
+  blogMetaCategories: "{n} categories",
+  blogMetaNewest: "newest: {date}",
+
   // --- Blog chrome (A externalizoval e7cae2f) ---
   cardReadMore: "Read",
   filterAll: "All",
@@ -313,6 +351,29 @@ export const ui = {
   // Generický titulek funguje uniformně pro všech 6 sekcí.
   sectionFaqTitleHtml:
     'The questions people <strong>ask most</strong>',
+};
+
+/**
+ * FreeStrip promo — renderuje se pod každým blogovým článkem.
+ *
+ * EN fork: nemáme (zatím) vlastní EN lead magnet ani EN Ecomail list, takže
+ * NEslibujeme PDF za e-mail. Blok místo toho posílá na hlavní průvodce, který
+ * je zdarma a bez registrace. Až vznikne EN free PDF, přepsat sem.
+ */
+export const freeStrip = {
+  eyebrow: "Free · no email required",
+  title: "The whole framework in one place —",
+  titleHighlight: "the complete guide to AI search",
+  description:
+    "SEO, GEO, and AEO explained side by side: what each one does, how they come together as AI SEO, and a decision matrix for picking where to start. About 3,000 words, free to read.",
+  bullets: [
+    "All four disciplines compared in one table",
+    "A decision matrix by business type",
+    "A four-step process you can start this week",
+  ],
+  ctaText: "Read the complete guide",
+  ctaHref: "/seo-vs-geo-vs-aeo/",
+  badge: "~12 min read · no signup",
 };
 
 export const emailCapture = {

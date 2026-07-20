@@ -1,13 +1,15 @@
 ---
 /**
  * Do — zelená karta v <DoDont>. Best practice / správný příklad.
+ * Label z i18n vrstvy (ui.blocks.doLabel) — fork přeloží tam.
  */
+import { ui } from "~/i18n/strings";
 ---
 
 <div class="ddc ddc--do">
   <header class="ddc__head">
     <span class="ddc__icon" aria-hidden="true">✓</span>
-    <span class="ddc__label">Takhle ano</span>
+    <span class="ddc__label">{ui.blocks.doLabel}</span>
   </header>
   <div class="ddc__body"><slot /></div>
 </div>

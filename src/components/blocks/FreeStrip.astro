@@ -1,4 +1,10 @@
 ---
+/**
+ * Defaulty obsahu jdou z i18n vrstvy (freeStrip ve strings.ts) — fork je
+ * přeloží tam. Props z volajícího místa je dál přepíšou.
+ */
+import { freeStrip } from "~/i18n/strings";
+
 export interface Props {
   eyebrow?: string;
   title?: string;
@@ -14,20 +20,16 @@ export interface Props {
 }
 
 const {
-  eyebrow = "Návod zdarma · 0 Kč",
-  title = "Šest signálů AI-friendly stránky jako",
-  titleHighlight = "hotový návod pro vaši homepage",
-  description = "Wireframe s anotacemi, tři principy, které drží strukturu, a šablony textů. Šest stran A4 v PDF — výměnou za e-mail.",
-  bullets = [
-    "Wireframe homepage 1:1 s anotacemi",
-    "Šablony nadpisů, krátké odpovědi a FAQ",
-    "Checklist připravený k použití",
-  ],
-  ctaText = "Stáhnout PDF zdarma",
-  ctaHref = "/navod-zdarma/",
+  eyebrow = freeStrip.eyebrow,
+  title = freeStrip.title,
+  titleHighlight = freeStrip.titleHighlight,
+  description = freeStrip.description,
+  bullets = freeStrip.bullets,
+  ctaText = freeStrip.ctaText,
+  ctaHref = freeStrip.ctaHref,
   coverSrc = "/navod-zdarma/cover.jpg",
   wireframeSrc = "/navod-zdarma/wireframe.jpg",
-  badge = "6 stran A4 · PDF",
+  badge = freeStrip.badge,
   marginTop = "4rem",
 } = Astro.props;
 ---

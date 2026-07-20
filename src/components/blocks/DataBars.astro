@@ -26,6 +26,8 @@ interface Row {
   emphasized?: boolean;
 }
 
+import { ui } from "~/i18n/strings";
+
 interface Props {
   caption: string;
   rows: Row[];
@@ -35,7 +37,7 @@ interface Props {
   tableValueLabel?: string;
 }
 
-const { caption, rows, unit = "", tableValueLabel = "Hodnota" } = Astro.props;
+const { caption, rows, unit = "", tableValueLabel = ui.blocks.dataValueCol } = Astro.props;
 const max = Math.max(...rows.map((r) => r.value));
 /** display už jednotku obsahuje — unit se přidává jen k surové hodnotě. */
 const fmt = (r: Row) => r.display ?? `${r.value}${unit ? ` ${unit}` : ""}`;
@@ -60,10 +62,10 @@ const fmt = (r: Row) => r.display ?? `${r.value}${unit ? ` ${unit}` : ""}`;
     }
   </div>
   <details class="dbars__table">
-    <summary>Zobrazit data v tabulce</summary>
+    <summary>{ui.blocks.dataShowTable}</summary>
     <table>
       <thead>
-        <tr><th>Položka</th><th>{tableValueLabel}</th></tr>
+        <tr><th>{ui.blocks.dataItemCol}</th><th>{tableValueLabel}</th></tr>
       </thead>
       <tbody>
         {rows.map((r) => (

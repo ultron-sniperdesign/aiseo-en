@@ -15,6 +15,8 @@ interface ToolItem {
   url?: string;
 }
 
+import { ui } from "~/i18n/strings";
+
 interface Props {
   items: ToolItem[];
   tone?: "accent" | "seo" | "geo" | "aeo" | "aio";
@@ -22,7 +24,7 @@ interface Props {
 
 const { items, tone = "accent" } = Astro.props;
 
-const tierLabel = { free: "Free", paid: "Placený", both: "Free + Placený" };
+const tierLabel = ui.blocks.tier;
 ---
 
 <div class={`tg tg--${tone}`}>

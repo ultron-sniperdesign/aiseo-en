@@ -7,13 +7,15 @@
  *
  * Tone: accent (default) | seo | geo | aeo | aio | signal | warn
  */
+import { ui } from "~/i18n/strings";
+
 interface Props {
   icon?: string;
   tone?: "accent" | "seo" | "geo" | "aeo" | "aio" | "signal" | "warn";
   label?: string;
 }
 
-const { icon = "✦", tone = "accent", label = "Klíčový insight" } = Astro.props;
+const { icon = "✦", tone = "accent", label = ui.blocks.insightLabel } = Astro.props;
 ---
 
 <aside class={`insight insight--${tone}`} role="note">
