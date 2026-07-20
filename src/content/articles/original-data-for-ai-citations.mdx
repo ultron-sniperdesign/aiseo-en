@@ -1,0 +1,221 @@
+---
+title: "Original data for AI citations: a 2026 guide"
+description: "Original data can raise the odds that AI cites your site. How to collect it, document the method, and publish a source worth citing."
+answer: "Original data is research, measurement, or analysis that you published first. It tends to be valuable for AI citations because specific numbers raise the need for a traceable source. Describe the data clearly and document the method, and you improve the odds that AI cites you in an answer."
+slug: "original-data-for-ai-citations"
+category: "tutorial"
+tags:
+  - "obsah"
+  - "duveryhodnost"
+published: "2026-06-11"
+updated: "2026-06-11"
+keywords:
+  - "original data for ai"
+  - "original research for ai citations"
+  - "statistics for ai citations"
+  - "data as a source for ai"
+  - "primary source for ai"
+variant: "rich"
+stats:
+  - value: "~2.3×"
+    label: "higher citation rate for short 50-150 word passages in some AI citation analyses"
+  - value: "~3×"
+    label: "higher risk of losing AI citations on pages that go a quarter without an update"
+  - value: "100-1,000"
+    label: "a realistic respondent range for a publishable survey from a small or midsize company"
+  - value: "~37%"
+    label: "higher click-through on posts with statistics (analyses from X and LinkedIn)"
+howto:
+  name: "How to prepare original data that AI can cite"
+  steps:
+    - name: "Find a question nobody is answering"
+      text: "Start with what is unclear in your industry and what the existing sources do not cover. The goal is to fill a data gap, not to restate what someone has already published. A good question has an answer in numbers (how many, how often, how long), not in impressions."
+    - name: "Pick the method that fits the question"
+      text: "For opinions and experiences, run a survey. For the measurable state of something, use automated collection of public data or an analysis of your own data. For the impact of a specific change, run an A/B test or another before-and-after comparison with clearly documented conditions."
+    - name: "Define the scope and the method BEFORE you collect"
+      text: "As a rough guide: aim for at least 100 respondents on a directional survey, closer to 300 to 500 for a publishable study, and 1,000 or more for real marketing impact. This is not a statistical rule that holds across every industry — it depends on population size, sampling, and the kind of claim you want to make. Write down in advance what you are measuring, how, on whom, when, and how you will analyze it."
+    - name: "Publish in a format that improves the odds of a citation"
+      text: "Summarize the key results in 50 to 150 word passages up front. Document the method in a separate box or at the end. Where you can, add a downloadable data file (CSV) and structured data of type Dataset or Article."
+    - name: "Plan the update, not just the launch"
+      text: "Pages that go roughly a quarter without an update tend to carry a higher risk of losing AI citations, according to some analyses. This does not hold equally across industries; what matters most is updating where the data moves fast. Repeating on a yearly cycle (“The state of X in 2026, 2027…”) also builds a run of links over time."
+faq:
+  - q: "What counts as original data?"
+    a: "Your own survey of respondents, an analysis of your own sales, CRM, or GA4 data, an A/B test with specific numbers, a case study with before-and-after results, an annual benchmark report, or a new analysis of publicly available datasets (government open data, industry reports, GSC). The common thread: specific numbers, a clear method, and data nobody else has published in this form."
+  - q: "How many respondents do I need for this to be credible?"
+    a: "At least 100 respondents for a directional survey, 300 to 500 for a publishable study, and 1,000 or more for real marketing impact. What matters more than the absolute number, though, is how relevant the sample is to the question. An anonymous list of 30 people from your own Facebook group will not be saved by 5,000 respondents either, if none of them have a connection to the topic."
+  - q: "Does original data really help with AI citations?"
+    a: "The available analyses suggest it can. Short, independently citable passages of 50 to 150 words are cited roughly 2.3 times more often than long unstructured text in some studies. On top of that, AI usually needs a traceable source for specific numbers. These are directional benchmarks from public analyses, not a guarantee of results in every industry."
+  - q: "How often do I have to update the data?"
+    a: "Pages that go roughly a quarter without an update tend to carry a higher risk of losing AI citations in some analyses. For a research format, repeating on a yearly cycle works well (“The state of X in 2026, 2027…”) and generates a run of press links year after year. Between annual reports, supplements and seasonal mini-surveys can help."
+  - q: "Can I collect data if I run a small company?"
+    a: "Yes. Solo operators and micro companies can manage a mini-survey of 50 to 200 respondents from their own contacts, an A/B test in their own online store, or an analysis of their own data. Just avoid presenting an anonymous group of 20 people as a representative survey — that does more harm than good. A smaller sample with a clear method beats a large sample with an unreadable one."
+  - q: "What if I do not have the capacity for original research?"
+    a: "Start with what you already have. Analyze your own sales data, GA4, and Google Search Console — in 2026 it is adding more reports tied to AI search (availability can vary by market and by account). Public datasets can be cut from a new angle or at a new scale. Case studies from real client work with specific numbers work as a primary source too."
+---
+
+import Checklist from "~/components/blocks/Checklist.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Original data is research, measurement, or analysis published with a clear method. It tends to be valuable for AI citations because AI systems usually need a traceable source for specific numbers; without one, the risk of an error or an uncitable answer goes up.** It is one of the more effective ways a small or midsize company can improve the odds in 2026 that its site becomes a source for AI answers. This guide covers what counts as original data, how to produce it, and how to publish it so it actually gets cited.
+
+## Why original data works for AI citations
+
+Large language models cannot reliably back up specific numbers that have no source behind them. If someone writes "47% of online stores had product structured data in 2026," an AI model with nothing concrete to point to often cannot verify the figure and may drop it, distort it, or state it without support. That gives your own research a **better shot at becoming the primary source** an AI reaches for on a related question.
+
+The available citation analyses from 2025 and 2026 also show a few patterns. These are directional benchmarks from public analyses, not universal rules — the specific numbers differ from study to study, and in practice a lot depends on the industry, the format, and the model:
+
+- **Short, well-structured passages of 50 to 150 words** are cited more often than long unstructured text in some AI citation analyses (roughly 2.3 times more often in one of them).
+- **Pages that go roughly a quarter without an update** tend to carry a higher risk of losing their share of AI citations, according to some analyses.
+- **Posts with statistics** tend to earn a higher click-through and share rate on networks like X and LinkedIn than the same posts without numbers, per public marketing analyses — the gap typically lands somewhere between a few and a few dozen percent.
+
+<Insight tone="key">
+Original data works because AI usually needs a traceable source for specific numbers. When a verifiable question has exactly one relevant source, that source tends to hold a far stronger position in citations than a site that just retells someone else's figures.
+</Insight>
+
+## What counts as "original data"
+
+Original data means **specific numbers or measurements that nobody else has published in this form**. In practice that covers several types of content you can realistically produce.
+
+<Checklist title="Formats you can build a primary source from" items={[
+  { title: "Your own survey", desc: "100 to 1,000 respondents relevant to the topic, with a clear method." },
+  { title: "Analysis of your own data", desc: "Anonymized data from sales, CRM, GA4, email, or support." },
+  { title: "An A/B test or experiment", desc: "Specific numbers from a real change (“adding reviews lifted conversion by X%”)." },
+  { title: "A case study with numbers", desc: "Client, starting point, action, measurable result over a specific period." },
+  { title: "An annual benchmark / state of the industry", desc: "A recurring report along the lines of “The state of AI search in 2026.”" },
+  { title: "Analysis of public data", desc: "Government open data, GitHub, GSC, or Google Trends from a new angle or at a new scale." },
+]} />
+
+<MistakeGrid>
+  <Mistake num="01" title="Reciting other people's numbers">
+    Pulling 10 sources, lifting a number from each, and publishing them in one article is not original research. To AI, that is secondary processing of existing content.
+  </Mistake>
+  <Mistake num="02" title="Vague claims with no method">
+    “In our experience, roughly half of companies…” is not original data. Without a documented method and sample, it is an impression, not research, and AI usually ignores it in citations.
+  </Mistake>
+  <Mistake num="03" title="Data nobody can reproduce">
+    If there is no description of the method, no data file, and not even a summary of the sample, neither a reader nor a journalist can verify it. AI may still use a source like that occasionally, but your brand's authority takes the hit.
+  </Mistake>
+  <Mistake num="04" title="An anonymous mini-survey passed off as representative">
+    Twenty people from a Facebook group presented as “industry research” does more harm than good. The reputational risk outweighs the short-term gain in citations.
+  </Mistake>
+</MistakeGrid>
+
+## The process, step by step
+
+<Stepper
+  steps={[
+    {
+      label: "Finding the data gap",
+      title: "Find a question nobody is measuring",
+      text: "Start with what is unclear in your industry and where no public number exists. A good question has an answer in numbers (how many, how often, how long), not in impressions. Rule out topics where a strong source already covers the same metric.",
+    },
+    {
+      label: "Choosing the method",
+      title: "Pick the method that fits the question type",
+      text: "A survey for opinions and experiences. Automated collection or an analysis of your own data for the measurable state of something. An A/B test or a before-and-after comparison for the impact of a specific change. A case study for the results of real client work.",
+    },
+    {
+      label: "Plan and method",
+      title: "Plan the sample and the process before you collect",
+      text: "At least 100 respondents for a directional survey, 300 to 500 for a publishable study, 1,000 or more for real marketing impact. Write down in advance what you are measuring, how, on whom, when, and how you will analyze it.",
+    },
+    {
+      label: "Collection",
+      title: "Collect cleanly and transparently",
+      text: "For surveys, use a tool like SurveyMonkey, Typeform, or Jotform. For an analysis of your own data, anonymize it so the figures are aggregated and no individual can be identified. Store the data file so it can be found and reproduced.",
+    },
+    {
+      label: "Publication",
+      title: "Write the article so AI can actually use it",
+      text: "Summarize the key results in 50 to 150 word passages up front. Document the method in a separate box or at the end. Where you can, add a downloadable data file (CSV) and structured data of type Dataset or Article.",
+    },
+    {
+      label: "Distribution and updates",
+      title: "Push it out to the industry and plan the next edition",
+      text: "A press release with the headline numbers for journalists, charts that drop easily into other people's articles, and a topic pitch to podcasts and trade magazines. Then schedule a yearly or quarterly repeat — without updates, a page can lose its share of AI citations over time.",
+    },
+  ]}
+/>
+
+## What scale is realistic for your company
+
+Original data is not just for large corporations. The realistic scope varies with size, but **even a smaller company can usually find at least a limited data base** to build research material from.
+
+<CompareTable
+  caption="Realistic formats for original data by company size"
+  columns={["Solo / micro (1–5)", "Small to midsize (6–250)"]}
+  rows={[
+    { icon: "🔍", label: "Your own survey", left: "A mini-survey of 50 to 200 respondents from your own contact list or through client newsletters", right: "An industry survey of 200 to 1,000 respondents, or a partnership with a publisher that already has the audience" },
+    { icon: "📊", label: "Analysis of your own data", left: "Anonymized data from sales, GA4, and GSC over 12 months", right: "A benchmark across clients, segmentation, datasets from several sources" },
+    { icon: "🧪", label: "A/B test / experiment", left: "Your own online store, your own landing page, your own email — a measurable change", right: "Multivariate tests across clients, sequential experiments" },
+    { icon: "📰", label: "Annual report", left: "Realistically hard in year one; better once the shorter formats have landed", right: "“The state of X in 2026” as a recurring format, partnered with an association or a publisher" },
+    { icon: "🌐", label: "Analysis of public data", left: "Government open data, GitHub, Trends — relatively cheap, but a bigger time investment", right: "Collecting data on 500 to 5,000 sites in the industry, multi-year comparisons, comparisons across markets" },
+  ]}
+/>
+
+**For the smallest companies, these usually work best:**
+
+1. **A case study from your own client work** with a real client, specific numbers, and a documented method — the best ratio of result to time invested.
+2. **An analysis of your own GA4 / GSC data** — Google Search Console is adding [features and reports tied to AI search](/blog/gsc-ai-report/) in 2026 (coverage of Google AI Overviews and of the conversational search experience, [AI Mode](/ai-mode/)). Availability, data range, and the name of a given report can vary by market and by account; the official description always lives in Google's documentation. Even so, it is a fresh and citable source of your own data.
+3. **A mini-survey of 100 respondents** on one clearly framed question — less representative than a large sample, but with a careful method it still beats having no data.
+
+## How to publish so the data actually gets cited
+
+Collecting the data is only half the work. For AI citations, **how the research is published** matters just as much.
+
+<DoDont
+  doTitle="Do this"
+  dontTitle="Avoid this"
+  doItems={[
+    "Summarize the key results in 50 to 150 word passages right at the top of the article.",
+    "Document the method in a separate box or in the conclusion: what, how, on whom, when, and what sample.",
+    "Offer a downloadable data file (CSV, XLSX) or at least a summary of the sample.",
+    "Use structured data of type Dataset or Article with metadata (author, date, organization).",
+    "Plan the update or the yearly repeat of the survey at the first release, not later.",
+  ]}
+  dontItems={[
+    "Bury the key numbers at the end of a long piece — AI and readers alike will miss them.",
+    "Publish with no method — it reads as less credible to AI and is unusable for journalists.",
+    "Use vague phrasing (“roughly half of companies,” “most of the market”) instead of specific numbers.",
+    "Leave the data file with no description and no date — in a few months nobody will know when or how it was produced.",
+    "Publish once and never again — without updates, a page loses its share of AI citations over time.",
+  ]}
+/>
+
+<Insight tone="warning">
+Original data demands honesty. If the sample is not representative or the method is untested, it is better to say so openly than to hide it. AI may still take the citation, but when someone challenges it later, the reputational damage usually outweighs the short-term gain in citations.
+</Insight>
+
+## Where the openings usually are
+
+Original research has two openings that are easy to miss:
+
+1. **Narrow verticals face far less competition than broad topics.** A study on "AI search" in general is up against dozens of well-funded reports. A study on AI search inside one vertical often has no existing study at all — and a careful 200-respondent survey can end up being the only relevant source on the topic.
+2. **Public data is badly underused in marketing content.** Government open data, industry associations, and public APIs offer material that almost nobody turns into content. A new angle or a wider scope on an existing dataset is usually the cheapest route to original data there is.
+
+**Templates that tend to work:**
+
+- "The state of X in 2026: an analysis of 500 online stores" — a benchmark with specific numbers.
+- "We asked N companies: the biggest challenge in Y is…" — a survey with one clear question.
+- "How we lifted Z by N% in 90 days" — a case study with before-and-after numbers.
+- "Our GSC data: how AI visibility shifted across 12 online stores" — an analysis of your own data over time.
+- "The annual report: the numbers that will surprise you about Y" — a recurring format on a yearly cycle.
+
+## The takeaway
+
+- AI systems usually need a traceable source for specific numbers, and on questions where exactly one relevant source exists, that source tends to hold a stronger position in citations.
+- Original data covers **your own surveys, analyses of your own data, A/B tests, case studies with numbers, and analyses of public datasets from a new angle**.
+- For AI citations, the **publishing format** matters: short citable passages of 50 to 150 words, a clear method, a downloadable data file, and [structured data](/blog/structured-data-for-ai/).
+- **For small companies, the most effective options** are a case study from real client work, an analysis of your own GA4 / GSC data, and a mini-survey with an honest method.
+- Without **a plan for updates**, original research loses its value — a yearly or quarterly repeat tends to land harder in AI citations.
+
+---
+
+**Want to build your own survey or case study?** An AI SEO audit from **Sniper Design** looks at which data you already have that is worth publishing, and which research format has the best shot at citations in your industry.
+
+*For transparency: this article draws on publicly available AI citation analyses from 2025 and 2026; the right scale and method for original data always depends on the industry and the company. How the content on this site is produced is described on the [author page](/author/kamil/).*
