@@ -1,0 +1,195 @@
+---
+title: "How to Appear in Google AI Mode: A Practical Guide"
+description: "Google says AI Mode has no special requirements. So what actually works: availability, substance in text, passage-level writing, and measurement."
+answer: "Google AI Mode is a conversational search experience, and according to Google's documentation there are no special requirements or separate markup for it. A page therefore has to clear the same basics as it does for regular search: be indexed, be crawlable, be eligible for snippets, keep the substance in text, and carry structured data that matches what's visible."
+slug: "how-to-appear-in-ai-mode"
+category: "tutorial"
+tags:
+  - "ai-platformy"
+  - "obsah"
+published: "2026-07-18"
+updated: "2026-07-18"
+keywords:
+  - "how to appear in ai mode"
+  - "ai mode optimization"
+  - "google ai mode"
+  - "ai mode citations"
+  - "content for ai"
+variant: "rich"
+stats:
+  - value: "none extra"
+    label: "Google states there are no additional requirements for AI Mode or AI Overviews"
+  - value: "3 conditions"
+    label: "indexed, crawlable, eligible for snippets — without those, nothing else helps"
+  - value: "passage by passage"
+    label: "the answer is usually built from passages, so it pays to write ones that stand on their own"
+  - value: "no guarantee"
+    label: "meeting the conditions makes a page eligible, not cited — and source selection can fluctuate"
+howto:
+  name: "How to prepare your site to appear in Google AI Mode"
+  steps:
+    - name: "Check that the page is available at all"
+      text: "This is the foundation everything else sits on: the page has to be indexed, crawling has to be allowed in robots.txt, and the page has to be eligible for snippets. Check that no noindex or nosnippet directive is blocking it where you don't want one. Until that's in place, there's no point worrying about content."
+    - name: "Put the substance in text"
+      text: "Anything that lives only in an image, in a video with no transcript, or renders only after a click may not be as available to crawlers as text delivered directly in the HTML. Google explicitly recommends keeping important content in text form. Go through your key pages and check what's left of them once you take the graphics away."
+    - name: "Write in passages"
+      text: "Based on the descriptions available so far, the answer is built from passages across several sources, not from whole pages. Give every sub-question its own heading and put the answer at the top of the passage. Avoid back-references like as we wrote above — a passage has to make sense pulled out of context."
+    - name: "Back up what you claim"
+      text: "Say where your information comes from, add your own data, and include author information. Add structured data only where it matches the visible text; Google requires that match. According to its documentation, no special markup is needed for AI features."
+    - name: "Measure repeatedly and separately"
+      text: "Test several queries, spread over time, and each surface separately. Source selection can fluctuate between runs, so a single measurement is an anecdote. Watch for a repeated pattern rather than an individual answer."
+faq:
+  - q: "Is there special optimization for AI Mode?"
+    a: "According to Google's documentation, no. It states that there are no additional requirements and no special optimization for appearing in AI Overviews or in AI Mode. The same basics apply as for regular search: be indexed, be crawlable, be eligible for snippets, and have useful content in text form."
+  - q: "Do I need to create special files or markup because of AI?"
+    a: "Google's documentation states that you don't need to create new machine-readable files, text files for AI, or special structured data because of AI features. Structured data makes sense where it describes the page's visible content, but nobody has confirmed it as a ticket into AI answers."
+  - q: "What if the content loads via JavaScript?"
+    a: "Then it's worth checking what's actually available from the page once it's crawled and rendered. Content that appears only after a script runs or after a user interaction may not be as available as text delivered straight in the HTML. Keep the substance in text that's on the page from the start."
+  - q: "Why do people talk about passages instead of whole pages?"
+    a: "Because, based on the descriptions available so far, the answer is built from passages across several sources. The query is broken into sub-questions and a suitable passage is found for each one. In practice that means a passage with its own heading that answers up front and holds up out of context is more useful than a perfect page as a whole."
+  - q: "Do these steps guarantee a citation?"
+    a: "No. Meeting the conditions makes a page eligible, not cited. An Ahrefs analysis (US data from September 2025) also found that individual AI surfaces often cite different URLs, and earlier research showed that citation selection changes between generations. Anyone promising an appearance in AI Mode as a deliverable is promising more than they can back up."
+  - q: "How do I know it's working?"
+    a: "Through repeated measurement, not a single test. Try several phrasings of the query, repeat them over time, and watch for a pattern. A single answer is an anecdote, because source selection can change between runs."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Google AI Mode is a conversational search experience, and according to Google's documentation there are no special requirements or separate markup for it.** A page therefore has to clear the same basics as it does for regular search: be indexed, be crawlable, be eligible for snippets, keep the substance in text, and carry structured data that matches what's visible.
+
+That sounds like an anticlimax, and deliberately so. Plenty of "special AI Mode methods" get sold out there — and the most useful thing to say about them is that, according to Google itself, none of them are needed.
+
+## What Google actually says
+
+Google's documentation on AI features states that appearing in AI Overviews or in AI Mode takes **no additional requirements and no special optimization**. What it lists is the usual set: keep the page indexed and eligible for snippets, allow crawling, connect your content with internal links, provide a good page experience, keep the substance in text form, and use structured data that matches the visible text.
+
+Just as useful is what it says you **don't** need: new machine-readable files, special text files for AI, or dedicated structured data created because of AI features.
+
+<CompareTable
+  caption="What the documentation says helps and what isn't needed"
+  columns={["Worth doing", "Not needed"]}
+  rows={[
+    { icon: "🔎", label: "Availability", left: "Indexed, crawling allowed, eligible for snippets", right: "A special opt-in for AI features" },
+    { icon: "📝", label: "Content", left: "The substance in text form", right: "Text files built for AI" },
+    { icon: "🏷️", label: "Structured data", left: "Matching the visible text", right: "Special types added just for AI" },
+    { icon: "🔗", label: "Architecture", left: "Internal links, discoverability", right: "A separate version of the site for bots" },
+  ]}
+/>
+
+<Insight tone="key">
+The point of this article isn't a trick — it's killing a myth. **If someone promises you a special ticket into AI Mode, they're going beyond what Google confirms in its documentation.** The work remains the same — sloppy work just shows more clearly now.
+
+The piece on [llms.txt](/blog/llms-txt-guide/) makes the same point: files built for AI aren't a ticket in.
+</Insight>
+
+## The process
+
+<Stepper
+  steps={[
+    {
+      label: "Availability",
+      title: "Make sure the page is visible",
+      text: "Indexed, crawling allowed in robots.txt, eligible for snippets. Without that, the rest doesn't matter.",
+    },
+    {
+      label: "Text",
+      title: "Put the substance in text",
+      text: "Anything that lives only in an image, in a video with no transcript, or behind a click may not be as available to crawlers as text in the HTML.",
+    },
+    {
+      label: "Passages",
+      title: "Write in passages",
+      text: "Its own heading for each sub-question, the answer up front. A passage has to make sense pulled out of context.",
+    },
+    {
+      label: "Evidence",
+      title: "Back up what you claim",
+      text: "Sources, your own data, an author. Structured data only where it matches the visible text.",
+    },
+    {
+      label: "Measurement",
+      title: "Measure repeatedly",
+      text: "More queries, spread over time, each surface separately. A single run is an anecdote — source selection can fluctuate.",
+    },
+  ]}
+/>
+
+## Why passages specifically
+
+This is the part that goes beyond the bare basics — and it isn't a trick, it's how the answer gets built. Based on the descriptions available so far, AI Mode breaks a query into sub-questions and looks for a suitable passage for each one, so the final answer is assembled from passages across several sources. [Query fan-out](/blog/query-fan-out/) covers this in detail, including the limits of what's actually known.
+
+A few very specific things follow from that:
+
+- **Its own heading for every sub-question.** Not "More information," but the question the passage answers.
+- **The answer at the top of the passage**, the elaboration after it.
+- **No "as we wrote above."** A passage pulled out of context still has to hold up.
+- **Name the subject in the sentence.** Instead of "the same applies here," say what it applies to.
+
+## What to avoid
+
+<MistakeGrid>
+  <Mistake number="01" title="Hunting for a switch">
+    According to Google's documentation, there are no special requirements. Time spent hunting for a shortcut is better spent on availability and text.
+  </Mistake>
+  <Mistake number="02" title="Manufacturing files for AI">
+    Google states that new machine-readable files and text files for AI aren't needed.
+  </Mistake>
+  <Mistake number="03" title="Substance only in graphics">
+    Anything that isn't in text is harder to use. That includes video with no transcript and content that appears only after an interaction.
+  </Mistake>
+  <Mistake number="04" title="Data that doesn't match the page">
+    Structured data is supposed to describe visible content. A mismatch is a problem in its own right, not a clever shortcut.
+  </Mistake>
+</MistakeGrid>
+
+<Insight tone="warning">
+Completing every step makes a page **eligible**, not cited. On top of that, an Ahrefs analysis of US data from September 2025 found that individual AI surfaces often reach for different URLs, and earlier research showed that citation selection changes between generations — [AI Mode vs. AI Overviews](/blog/ai-mode-vs-ai-overviews/) explains why you can't measure them as one thing.
+</Insight>
+
+## When you'd rather not be used
+
+The same documentation covers the opposite direction. How much of your page can be used in a snippet is controlled by the `nosnippet`, `data-nosnippet`, and `max-snippet` directives, or you can drop the page entirely with `noindex`. It's a blunt instrument — it limits regular results too, not just AI answers. More details in [how to limit AI Overviews](/blog/how-to-turn-off-ai-overviews/).
+
+## The limits of this article
+
+**It doesn't guarantee an appearance or a citation.** It describes the eligibility conditions and how passages get selected, not the outcome.
+
+**It doesn't cover where AI Mode is available.** The rollout is gradual and varies by market, account, and rollout stage, so we'd rather not state a specific status here.
+
+**It's based on vendor documentation.** What Google says about its own products is authoritative for Google's surfaces, but it's still a vendor source; other AI systems behave their own way.
+
+<DoDont
+  doTitle="Do"
+  dontTitle="Don't"
+  doItems={[
+    "Verify indexing, crawling, and snippet eligibility",
+    "Keep the substance in text, not just in graphics or video",
+    "Give every sub-question its own heading and put the answer first",
+    "Keep structured data consistent with the visible text",
+    "Measure repeatedly and each surface separately",
+  ]}
+  dontItems={[
+    "Buy a \"secret AI Mode method\"",
+    "Manufacture special files for AI as a ticket in",
+    "Write passages that fall apart without the surrounding text",
+    "Add structured data that isn't visible on the page",
+    "Draw a conclusion from a single run",
+  ]}
+/>
+
+## What to take away
+
+The most useful thing about this question is that the answer is boring. Google states that there are no special requirements for AI Mode — so the work remains where it always was: an available page, the substance in text, claims you can back up.
+
+In practice, that makes it worth thinking about readability at the passage level too. Not for the algorithm's sake, but because the answer usually gets built from passages — and a passage that falls apart without its surroundings is harder to use.
+
+Then measurement: repeatedly, across several queries, and each surface separately. [The AI visibility test](/blog/ai-visibility-test/) covers what to start testing.
+
+---
+
+*Source: Google Search Central documentation on AI features and websites, as of July 18, 2026.*

@@ -1,0 +1,232 @@
+---
+title: "GSC AI report: measuring AI visibility in 2026"
+description: "The GSC AI report in Search Console shows AI Overviews and AI Mode without clicks or CTR. What it measures and how to read AI impressions."
+answer: "The Generative AI features report in Google Search Console is a beta report that shows how often your pages appear in AI Overviews, AI Mode, and generative features in Discover. It gives you impressions, pages, countries, devices, and dates — but no clicks, CTR, or queries. Read impressions as a signal that a URL is showing up in Google's AI features, not as traffic."
+slug: "gsc-ai-report"
+category: "tutorial"
+tags:
+  - "mereni"
+published: "2026-06-11"
+updated: "2026-06-11"
+keywords:
+  - "gsc ai report"
+  - "search console ai overviews"
+  - "measuring ai visibility in gsc"
+  - "generative ai performance report"
+  - "search console ai mode"
+variant: "rich"
+stats:
+  - value: "June 3, 2026"
+    label: "the date Google launched the Generative AI features report in Search Console (Beta)"
+  - value: "impressions"
+    label: "the report's headline metric — how many times your URLs appeared in generative AI features"
+  - value: "0"
+    label: "clicks, CTR, and queries in the report — version 1 tracks impressions only"
+  - value: "2"
+    label: "separate views: Search (AI Overviews + AI Mode) and Discover"
+howto:
+  name: "How to measure AI visibility in Google Search Console"
+  steps:
+    - name: "Check whether you have the report yet"
+      text: "The report has been rolling out to individual sites since June 2026. In Search Console, look under Performance to see whether a Generative AI features section is available. If it isn't there yet, fill the gap with a manual AI visibility test."
+    - name: "Open the report and switch to Search"
+      text: "In Search Console, go to Performance and open Generative AI features. Switch between the Search view (AI Overviews + AI Mode) and the Discover view. For AI search, focus mainly on the Search view."
+    - name: "Segment by page, country, and time"
+      text: "Filter the report by specific URLs (which pages are showing up in AI), by country (where you have visibility), and by date (how it's changing over time). The default Performance report mixes all search types together, so build a separate view for AI features only."
+    - name: "Compare AI impressions against organic clicks"
+      text: "The report shows impressions only, not clicks. Compare a URL's AI impressions with its organic clicks in the classic Performance report. High AI impressions plus low organic clicks means content that's visible in AI but isn't sending traffic (the zero-click effect)."
+    - name: "Add your own measurement beyond GSC"
+      text: "Search Console covers Google AI only — not ChatGPT, Perplexity, or Claude — and it doesn't show clicks. Add GA4 (traffic from AI), UTM parameters on your links, and a manual test across platforms. GSC is one layer, not the full picture."
+faq:
+  - q: "What did Google launch in Search Console in June 2026?"
+    a: "On June 3, 2026, Google launched the Generative AI features report (Beta) in Search Console, which shows how often a site's pages appear in the generative AI features of Search (AI Overviews and AI Mode) and in Discover. The report has two separate views — Search and Discover — and as of publication it is still rolling out to a subset of sites (Google says access is being granted gradually), so not every Search Console property has it yet."
+  - q: "What metrics does the report show?"
+    a: "The report shows impressions (how many times your URLs appeared in generative AI features), pages (which specific URLs appeared), countries (visibility by country), devices (Search view only), and dates with hourly, daily, weekly, and monthly intervals. What it doesn't show: clicks, click-through rate (CTR), position, or queries — version 1 tracks impressions only."
+  - q: "Why doesn't the report show clicks?"
+    a: "That's the report's biggest limitation. When someone reads an AI-generated answer, attributing a click back to a specific source inside a synthesized answer works differently than a click on a classic result. And an impression in an AI answer doesn't imply a click — AI answers are designed to answer directly, so the click-through rate from generative features tends to be structurally lower than it is for classic blue links."
+  - q: "How should I read the impressions in the report?"
+    a: "Treat impressions as a signal that your URL is showing up in Google's AI features, not as a traffic metric. They can be a useful signal that your content is relevant inside AI features, but they aren't direct proof of quality, traffic, or business value. The most useful move is to compare a URL's AI impressions with its organic clicks in the classic Performance report — that shows you what's visible in AI and what also brings traffic."
+  - q: "Does the GSC report replace a manual AI visibility test?"
+    a: "No, it complements it. The Search Console report covers Google AI only (AI Overviews, AI Mode, Discover) — not ChatGPT, Perplexity, Claude, or Gemini. It also shows neither clicks nor traffic quality. To see the whole AI ecosystem you still need a manual test across platforms plus traffic measurement in GA4. The GSC report is a strong new measurement layer for Google AI, not the full picture."
+  - q: "Does the report cover non-English markets?"
+    a: "Access is rolling out gradually, so sites outside the initial wave may not have it yet. Where AI Overviews appear in a given language and you have the report enabled, it can capture that visibility too — but availability is still expanding as of publication. For non-English markets, add a manual test across platforms, because Search Console covers neither local search engines nor the international AI platforms."
+---
+
+import Checklist from "~/components/blocks/Checklist.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**On June 3, 2026, Google launched the Generative AI features report in Search Console — the first official view of how often your pages appear in AI Overviews (the AI summaries in Google Search results), AI Mode (the conversational search mode), and generative features in Discover.** The beta version comes with serious limits, though: it shows impressions only, no clicks, no CTR, no queries. This guide covers where to find the report, how to segment it, and — most importantly — how to read those impressions correctly: as a signal of presence in AI features, not as traffic.
+
+## What Google launched
+
+The **Generative AI features** report has been available in Search Console since June 3, 2026 (Beta), and as of publication it is still rolling out to a subset of sites (Google says access is being granted gradually). Not every Search Console property has it yet. It has two separate views:
+
+- **Search** — AI Overviews and AI Mode in Search.
+- **Discover** — generative AI features in Discover.
+
+<Insight tone="key">
+Before this report, there was no official Google data source for how often a site shows up in its AI features. Measurement leaned on estimates, a [manual AI visibility test](/blog/ai-visibility-test/), and indirect signals. That makes this report a significant new layer — but it's still in beta, and it's not the full picture.
+</Insight>
+
+## What the report shows
+
+<Checklist title="Metrics and dimensions in the Generative AI features report" items={[
+  { title: "Impressions", desc: "The headline metric — how many times your URLs appeared in generative AI features in Search and Discover." },
+  { title: "Pages", desc: "Which specific URLs appeared in AI features." },
+  { title: "Countries", desc: "Visibility broken out by country." },
+  { title: "Devices", desc: "Mobile versus desktop — Search view only." },
+  { title: "Dates", desc: "Hourly, daily, weekly, and monthly intervals for tracking the trend." },
+]} />
+
+## The critical limitation: no clicks
+
+The most important thing to know about this report: **version 1 tracks impressions only.** No clicks, no click-through rate (CTR), no position, no queries.
+
+Google doesn't publish clicks, CTR, position, or queries in this version of the report. In practice, that means you can't read traffic or post-click performance out of it. One likely explanation is that people interact with AI answers differently — those answers often resolve the question right in the interface, so a click isn't necessarily the main outcome of the interaction. We cover that effect in detail in the article on the [zero-click effect](/blog/zero-click-and-ai-overviews/).
+
+<Insight tone="warning">
+Don't read AI impressions as traffic. A high impression count in AI Overviews doesn't mean a high visitor count. It means your URLs are showing up often in AI features — which is a signal of presence, not traffic.
+</Insight>
+
+## How to read impressions correctly
+
+The right way to read an impressions-only report is to treat impressions as a **signal of presence** — a signal that your URL is showing up in Google's AI features — not as a traffic metric. They can be a useful signal that your content is relevant inside AI features, but they aren't direct proof of quality, traffic, or business value.
+
+<Stepper
+  steps={[
+    {
+      label: "Presence",
+      title: "High AI impressions = your URL shows up more often in Google AI",
+      text: "A page with high AI impressions appears frequently in Google's AI features. That's useful information in itself about which content is visible inside AI features — even if it isn't yet proof of quality or value.",
+    },
+    {
+      label: "Comparison",
+      title: "Compare AI impressions against organic clicks",
+      text: "Take the same URL and compare its AI impressions in the new report with its organic clicks in the classic Performance report. The gap between them tells you whether the content also brings traffic.",
+    },
+    {
+      label: "Interpretation",
+      title: "Separate what's visible from what brings traffic",
+      text: "High AI impressions plus low organic clicks means content that's visible in AI but isn't sending traffic (the zero-click effect). High AI impressions plus high clicks means content that works in both layers.",
+    },
+    {
+      label: "Trend",
+      title: "Track the change over time",
+      text: "The report supports hourly through monthly intervals. Watch whether AI impressions are rising or falling — and tie that back to your content changes or to changes on Google's side.",
+    },
+  ]}
+/>
+
+## How to find and segment the report
+
+<Stepper
+  steps={[
+    {
+      label: "Availability",
+      title: "Confirm you have access to the report",
+      text: "The report has been rolling out since June 2026. Under Performance in Search Console, check whether a Generative AI features section is available. If it isn't there yet, stick with a manual test for now.",
+    },
+    {
+      label: "Opening it",
+      title: "Go to Performance and switch to Search",
+      text: "If the report is available in your interface, open Performance in Search Console and then Generative AI features. Switch between the Search view (AI Overviews + AI Mode) and Discover. For AI search, focus mainly on Search.",
+    },
+    {
+      label: "Segmentation",
+      title: "Filter by page, country, and time",
+      text: "Filter by specific URLs, by country, and by date. The default Performance report mixes all search types together, which masks AI trends — so use a separate filter or export for AI features only.",
+    },
+    {
+      label: "Your own view",
+      title: "Track the AI report on a regular schedule",
+      text: "Build your own recurring view on top of the AI report — a data export, for example — segmented by page, country, and date. That's the foundation for tracking how your site's AI visibility develops.",
+    },
+  ]}
+/>
+
+## What the GSC AI report can't do
+
+The report is a strong new layer, but you need to know where it stops.
+
+<CompareTable
+  caption="What the Search Console AI report shows and what it doesn't"
+  columns={["Shows", "Doesn't show"]}
+  rows={[
+    { icon: "👁️", label: "Impressions", left: "Yes — how many times your URLs appeared in Google AI", right: "—" },
+    { icon: "🖱️", label: "Clicks and CTR", left: "—", right: "No — version 1 doesn't track clicks" },
+    { icon: "🔤", label: "Queries and position", left: "—", right: "No — no query-level data" },
+    { icon: "💰", label: "Revenue and conversions", left: "—", right: "No — it won't tell you whether an impression led to a sale" },
+    { icon: "🌍", label: "AI outside Google", left: "—", right: "No — Google AI only, not ChatGPT, Perplexity, or Claude" },
+  ]}
+/>
+
+## Where the GSC report fits in AI measurement
+
+Search Console is one layer. For the full picture of your AI visibility and what it's worth, you need more than one source.
+
+<CompareTable
+  caption="The layers of AI visibility measurement"
+  columns={["What you measure", "What you measure it with"]}
+  rows={[
+    { icon: "👁️", label: "Google AI impressions", left: "How often you show up in Google AI", right: "Search Console — Generative AI features report" },
+    { icon: "📊", label: "Traffic from AI", left: "How many people came to your site from AI", right: "GA4 (AI referrals, partially) + UTM parameters" },
+    { icon: "🤖", label: "Citations outside Google", left: "How ChatGPT, Perplexity, and Claude cite you", right: "A manual test across platforms or dedicated tools" },
+    { icon: "🎯", label: "Quality of AI traffic", left: "Whether an AI visitor converts", right: "GA4 + UTM + conversion tracking" },
+  ]}
+/>
+
+## The most common mistakes
+
+<MistakeGrid>
+  <Mistake number="01" title="Reading impressions as traffic">
+    High AI impressions don't mean high traffic. The report doesn't show clicks. Treat impressions as traffic and you'll overestimate what AI visibility is actually worth.
+  </Mistake>
+  <Mistake number="02" title="Relying on GSC alone">
+    The report covers Google AI only. ChatGPT, Perplexity, and Claude aren't in it. Measure only in Search Console and you're seeing one slice of the AI ecosystem.
+  </Mistake>
+  <Mistake number="03" title="Leaving the data in the default report">
+    The default Performance report mixes all search types together, and AI trends disappear into the aggregate. Without a separate filter on AI features, the specific picture is lost.
+  </Mistake>
+  <Mistake number="04" title="Not combining it with organic clicks">
+    AI impressions on their own tell half the story. Only comparing them with organic clicks for the same URL shows you whether the content brings traffic or is merely visible.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="What to do"
+  dontTitle="What to avoid"
+  doItems={[
+    "Read impressions as a signal of presence in AI features, not as traffic.",
+    "Segment the report by page, country, and time.",
+    "Compare AI impressions with organic clicks for the same URL.",
+    "Supplement GSC with GA4, UTM parameters, and a manual test across platforms.",
+    "Track the AI impressions trend over time and tie it to your content changes.",
+  ]}
+  dontItems={[
+    "Confuse AI impressions with traffic.",
+    "Rely on GSC as complete measurement of the entire AI ecosystem.",
+    "Leave AI data mixed into the default Performance report.",
+    "Ignore the fact that the report may not be available for your site yet.",
+    "Expect revenue or conversion data — the report doesn't have it.",
+  ]}
+/>
+
+## Key takeaways
+
+- **Google launched the Generative AI features report (Beta)** in Search Console on June 3, 2026 — the first official data on Google AI visibility.
+- **It shows impressions, pages, countries, devices, and dates** — across two views (Search and Discover).
+- **It doesn't show clicks, CTR, position, or queries** — version 1 tracks impressions only.
+- **Read impressions as a signal of presence in Google's AI features**, not as traffic; compare them with organic clicks.
+- **The report covers Google AI only** — for ChatGPT, Perplexity, and Claude you need a manual test.
+- **Supplement GSC** with GA4, UTM, and a manual test — it's one layer, not the full picture.
+
+---
+
+**Want to set up complete AI visibility measurement across Search Console, GA4, and manual testing?** This site is run by **[Sniper Design](https://www.sniperdesign.cz/)** — our AI visibility audits connect Search Console data, GA4, and cross-platform manual testing, then show you where a change will have the biggest impact.
+
+*For transparency: we run our AI audits with measurement across all these layers (Search Console, GA4, manual testing). The description of the report is based on public Google Search Central documentation as of June 2026; the features are in Beta, and both their scope and availability can change. We describe how the content on this site is produced on the [author page](/author/kamil/).*
