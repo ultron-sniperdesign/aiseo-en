@@ -1,0 +1,154 @@
+---
+title: "Should You Block AI Answers in Google? A Decision Framework"
+description: "Google is testing a Search Console switch that opts your site out of AI answers. What it does, who it fits, and why most sites won't want it."
+answer: "The opt-out switch in Search Console is a site-wide setting that lets an owner decide whether their content is allowed to appear in Google's generative features. Google says an opted-out site gets no visits and no impressions from them, and that the setting isn't used as a ranking signal for results outside those generative features. For now it's only being tested on a slice of sites."
+slug: "should-you-block-ai-answers"
+category: "analysis"
+tags:
+  - "ai-platformy"
+  - "strategie"
+published: "2026-07-18"
+updated: "2026-07-18"
+keywords:
+  - "block ai answers"
+  - "opt out of ai overviews"
+  - "search console ai toggle"
+  - "google ai opt out"
+  - "turn off ai overviews for my site"
+variant: "rich"
+stats:
+  - value: "site-wide"
+    label: "the switch works at the whole-site level — all or nothing; the announcement mentions no per-page control"
+  - value: "0 from AI"
+    label: "Google says an opted-out site gets no visits and no impressions from generative features"
+  - value: "not ranking"
+    label: "Google states the setting won't be used as a ranking signal outside generative features"
+  - value: "UK first"
+    label: "in testing with a slice of site owners in the UK, with a global rollout only after that"
+faq:
+  - q: "What does the switch in Search Console actually do?"
+    a: "It's a site-wide setting that lets an owner decide whether their site is allowed to appear in Google's generative features and serve as source material for their answers — that means AI Overviews, AI Mode, and AI Overviews in Discover. Google says an opted-out site gets no visits and no impressions from those features."
+  - q: "Do I have it in my account yet?"
+    a: "Probably not. Google said the switch is starting out in testing with a slice of site owners in the UK, and that it wants to make it available globally only after that. It didn't specify availability outside that test or a timeline for other countries, so it's worth checking directly in your own account to see whether it's there."
+  - q: "Will opting out hurt my regular search rankings?"
+    a: "According to Google, no. The announcement explicitly states that the setting won't be used as a ranking signal for results outside the generative features. An opted-out site should stay indexed and ranked normally in results outside those generative features. Do note, though, that Google counts AI Overviews in Discover among the features affected. And this is a vendor statement about its own product, not independent verification."
+  - q: "Can I opt out only part of my site?"
+    a: "Not according to the announcement. The control it describes works at the whole-site level, and there's no mention of opting out individual pages. In practice that means all or nothing: you can't keep the sections that benefit from AI answers and opt out only the rest."
+  - q: "Is this the same as nosnippet or robots.txt?"
+    a: "No. Directives like nosnippet and data-nosnippet limit what can be used as snippet text, and they work at the page or block level. A robots.txt block deals with crawling. The Search Console switch is a separate layer: it decides whether the whole site participates in generative features at all."
+  - q: "Who might opting out make sense for?"
+    a: "Most likely sites whose product is the information itself — paid content, subscriptions, or content that gets licensed. Even there, it's a business decision, not a technical one. For sites that sell something and get converting visits from the AI channel, switching it off means losing that channel — a loss you have to weigh against whatever you expect opting out to get you."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+
+**The opt-out switch in Search Console is a site-wide setting that lets an owner decide whether their content is allowed to appear in Google's generative features.** Google says an opted-out site gets no visits and no impressions from them, and that the setting isn't used as a ranking signal for results outside those generative features. For now it's only being tested on a slice of sites.
+
+The most practical fact goes first: **Google said the switch is starting out in testing with a slice of site owners in the UK**, and that it wants to make it available globally only after that. It didn't specify availability outside that test — so you may not find it in your account yet. The rest of this article is about what to do with it once it shows up.
+
+## What the switch does, according to Google
+
+In its June 2026 announcement, Google describes a new Search Console setting that lets a site owner decide whether their pages are allowed to appear in the generative features of Search and serve as source material for their answers — specifically in AI Overviews, in AI Mode, and in AI Overviews in Discover.
+
+Three things from that announcement are worth remembering:
+
+- **An opted-out site gets no visits and no impressions from the generative features.**
+- **The setting isn't meant to be used as a ranking signal** for results outside those generative features; the site should stay indexed and ranked normally. But Google counts AI Overviews in Discover among the features affected.
+- The control it describes works at the **whole-site level** — there's no mention of opting out only certain pages.
+
+Alongside the switch, Google also mentions new reporting: impressions in generative features, which pages show up in AI answers and in which countries, with more metrics promised over time.
+
+<Insight tone="key">
+This isn't a fine-grained tool that lets you keep the sections that work and opt out the rest. It's one switch for the entire site — which is exactly why it can't be used as an experiment.
+</Insight>
+
+## How this differs from directives and robots.txt
+
+This is where the confusion usually starts, because everything here looks like "blocking AI."
+
+<CompareTable
+  caption="Three different layers, three different effects"
+  columns={["Tool", "What it governs"]}
+  rows={[
+    { icon: "🚧", label: "robots.txt", left: "Crawling", right: "Whether a crawler reaches the content at all" },
+    { icon: "✂️", label: "nosnippet and friends", left: "Use of text in a snippet", right: "What can be used as snippet text; per page or per block" },
+    { icon: "🔌", label: "The Search Console switch", left: "The site's participation in generative features", right: "Whether the site takes part at all; site-wide" },
+  ]}
+/>
+
+The user side — how to turn AI Overviews off for yourself — and working with directives are covered in [how to limit AI Overviews](/blog/how-to-turn-off-ai-overviews/); blocking at the crawl layer in [robots.txt for AI crawlers](/blog/robots-txt-for-ai-crawlers/).
+
+## Where it breaks down: you can't cleanly measure what the channel is worth
+
+Availability isn't the main problem. The main problem is the decision itself.
+
+To evaluate opting out, you'd need to know how much the generative features actually bring in and what leaving would cost. But the individual AI surfaces can't be separated out of commonly available data — Search Console reports them in aggregate, as [measuring AI Mode](/blog/measuring-ai-mode-limits/) breaks down.
+
+<Insight tone="warning">
+In practice that means you'd be **switching off a channel whose value you can't yet measure reliably** — and after switching it off, you'd have nothing to compare against, because impressions from those features simply disappear. It's a decision that's hard to make in advance and even harder to evaluate afterward.
+</Insight>
+
+## What one online store's numbers show
+
+Our own numbers aren't representative, but they point in a direction. Our own store got **1,867 visits from AI tools over twelve months** — low in raw volume. Their conversion rate was **3.5 percent against 0.88 percent** from organic search.
+
+That's one store, the starting point before any optimization, and visits from assistants generally rather than from Google specifically; the full data is in the [case study](/blog/case-study-ai-traffic/). Even so, it raises a question worth asking: what is a channel worth to you when it brings few people but converts above average?
+
+## A decision filter: who this actually fits
+
+There are real reasons to opt out. Nobody can decide for you without your numbers, but you can build a filter — and it's a fairly sharp one.
+
+<CompareTable
+  caption="Three situations and what each one means for the decision"
+  columns={["What it means for the decision", "What to check"]}
+  rows={[
+    { icon: "📚", label: "The information itself is the product", left: "Opting out has clear logic — giving away a summary for free is a different calculation than it is for a store", right: "How much of the content is genuinely your merchandise, and not just marketing" },
+    { icon: "🛒", label: "You sell goods or services", left: "You're switching off the whole channel, not the problematic part of it", right: "Whether assistants send conversions, not just visits" },
+    { icon: "🤷", label: "You can't even ballpark the value", left: "You have nothing to evaluate the impact against — before or after", right: "What your own data actually shows you about the AI channel" },
+  ]}
+/>
+
+Even in the first row, this is a business decision, not a technical setting.
+
+## Common mistakes
+
+<MistakeGrid>
+  <Mistake number="01" title="Deciding before you have both the switch and the data">
+    A theoretical decision made without your own numbers will get redone anyway once it's actually on the table.
+  </Mistake>
+  <Mistake number="02" title="Confusing it with directives">
+    nosnippet governs the use of text in a snippet, robots.txt governs crawling. The switch is a separate layer.
+  </Mistake>
+  <Mistake number="03" title="Opting out over ranking fears">
+    Google explicitly states the setting won't be used as a ranking signal outside the generative features.
+  </Mistake>
+  <Mistake number="04" title="Deciding without data">
+    If you can't separate the individual surfaces, you have nothing to estimate the impact from — or to verify it against.
+  </Mistake>
+</MistakeGrid>
+
+## Where this article stops
+
+**It doesn't give availability dates.** Google didn't name specific dates, and we're not going to guess at them here.
+
+**It rests on Google's announcement, not on independent testing.** Both the description of the behavior and the reassurance about ranking are a vendor's statements about its own product.
+
+**It won't decide for you.** The filter above is as far as anyone can go without knowing your numbers.
+
+
+## What to take away
+
+The switch is a real thing, but so far only a slice of sites has it in testing. When it arrives, it'll be one switch for the entire site.
+
+More important than the mechanics is a question few people answer honestly: **what would you actually base the decision on?** Cleanly separating the individual AI surfaces isn't possible from commonly available data today, and after switching it off there'd be nothing to compare against. That makes it all the more important to get at least a rough estimate — how many people arrive from assistants, what they do on your site, and whether they buy — before deciding completely blind.
+
+The line runs between sites that protect the content itself and sites that need a business result out of a visit. Which side you're on, you know better than anyone. What that channel is worth to you, though, you may not know yet — and that's something you can find out before switching anything off.
+
+---
+
+**If your main problem is exactly this — that you can't estimate the value of the AI channel from your own data** — measurement and visibility are the place to start. This site is run by **[Sniper Design](https://www.sniperdesign.cz/)** — an AI SEO audit goes through what your data can genuinely tell you and where you're only guessing.
+
+*Source: Google's announcement "New opportunities, control and insights for website owners" (June 3, 2026). As of July 18, 2026 — availability may change, and we'll update this article.*

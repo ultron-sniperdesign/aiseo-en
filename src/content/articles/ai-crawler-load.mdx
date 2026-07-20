@@ -1,0 +1,124 @@
+---
+title: "AI Crawlers: How Much They Take for Every Visit They Send Back"
+description: "The crawl-to-refer ratio shows what you actually get for the AI crawler load. How to find your own number, how to read it, and when it matters."
+answer: "The crawl-to-refer ratio tells you how many pages an AI platform crawls on your site for every visitor it sends back. In Cloudflare network data for July 2025 it ranged from 5.4 to 38,065.7 depending on the operator. Roughly 80 percent of that crawling goes to model training."
+slug: "ai-crawler-load"
+category: "analysis"
+tags:
+  - "technicke-zaklady"
+  - "mereni"
+published: "2026-07-19"
+updated: "2026-07-19"
+keywords:
+  - "ai crawler load"
+  - "crawl to refer ratio"
+  - "ai crawler traffic"
+  - "ai bot traffic on website"
+  - "cloudflare ai crawler data"
+variant: "rich"
+stats:
+  - value: "80%"
+    label: "of AI crawler activity goes to model training, not search, per Cloudflare"
+  - value: "5.4 vs 38,065.7"
+    label: "the spread in crawl-to-refer ratios between operators, July 2025"
+  - value: "+257%"
+    label: "how much Perplexity's ratio worsened in six months — these numbers age fast"
+  - value: "30 days"
+    label: "the window worth reading your own ratio over; not a single day"
+faq:
+  - q: "What is the crawl-to-refer ratio?"
+    a: "Cloudflare defines it as the number of pages a platform crawls relative to how often it sends a visitor to your site. A high ratio means a lot of crawling and few visits back. It's a more practical metric than request volume on its own, because it shows directly what you're getting for the load."
+  - q: "What were the numbers for the major platforms?"
+    a: "In Cloudflare data for July 2025, Google came in at 5.4, Microsoft at 40.7, Perplexity at 194.8, OpenAI at 1,091.4, and Anthropic at 38,065.7. These are figures from the Cloudflare network for that period, not from any one site — your own numbers may look very different."
+  - q: "How do I find my own number?"
+    a: "Since July 2026, Cloudflare offers a report that shows the crawl-to-refer ratio for your whole site and broken down by operator, over the past 24 hours, 7 days, or 30 days. Choose 30 days; shorter windows are vulnerable to one-off spikes. If you aren't on Cloudflare, you'll need to go into your server logs."
+  - q: "Do these numbers change fast?"
+    a: "Very. Between January and July 2025, Anthropic's ratio dropped by 86.7 percent while Perplexity's climbed by 256.7 percent. Treat any specific number as a snapshot on a date, not a permanent trait of the platform."
+  - q: "Why does most crawling go to training?"
+    a: "Cloudflare reports that training accounts for roughly 80 percent of AI crawler activity, up from 72 percent a year earlier. Search takes about 18 percent and user-triggered actions 2 percent. Content pulled for training doesn't come back as a visit — that isn't a failure, it's the purpose of that crawling."
+  - q: "Does a high ratio mean I should block the crawler?"
+    a: "Not automatically. It's an input to the decision, not the decision itself. A high ratio tells you how much content leaves for every visit that comes back — but whether that trade bothers you depends on how you make money and what you expect from the AI channel."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+
+**The crawl-to-refer ratio tells you how many pages an AI platform crawls on your site for every visitor it sends back.** In Cloudflare network data for July 2025 it ranged from 5.4 to 38,065.7 depending on the operator. Roughly 80 percent of that crawling goes to model training.
+
+AI crawler load usually gets discussed in terms of volume: how many requests, how much data transferred. This article is **not about server performance or hosting costs**. It's about a metric that's more useful for making decisions: what you get back for that load.
+
+## What the crawl-to-refer ratio measures
+
+Cloudflare defines it as the number of pages a platform crawls compared with how often it sends a person to your site. The higher the number, the more content leaves for every visit that comes back.
+
+<CompareTable
+  caption="Crawl-to-refer ratios per Cloudflare, July 2025"
+  columns={["Ratio", "Change since January 2025"]}
+  rows={[
+    { icon: "—", label: "Google", left: "5.4", right: "+43%" },
+    { icon: "—", label: "Microsoft", left: "40.7", right: "+5.7%" },
+    { icon: "—", label: "Perplexity", left: "194.8", right: "+256.7%" },
+    { icon: "—", label: "OpenAI", left: "1,091.4", right: "−10.4%" },
+    { icon: "—", label: "Anthropic", left: "38,065.7", right: "−86.7%" },
+  ]}
+/>
+
+The gap between the extremes is roughly seven thousand fold. But the main lesson from the table isn't in the specific numbers — it's that **"AI crawlers" aren't one thing with one behavior.**
+
+## Why you can't rely on someone else's numbers
+
+Look at the right-hand column. In just six months, Anthropic fell from 286,930 to 38,065.7 while Perplexity jumped from 54 to 195. Anyone who built a strategy in January around the values at the time had it backwards on both platforms by July.
+
+<Insight tone="warning">
+The same applies to this table: **any number in an article about AI crawlers has a limited shelf life.** These are also figures from the Cloudflare network, not from your site. Treat them as a rough picture of the market and make decisions on your own number — which you can now actually get.
+</Insight>
+
+## Most crawling goes to training, not search
+
+This part holds up better than the specific values. Cloudflare reports that model training accounts for roughly **80 percent** of AI crawler activity, up from 72 percent a year earlier. Search takes about 18 percent, and user-triggered actions 2 percent.
+
+So the vast majority of what crawlers take away **doesn't come back as a visit** — and that isn't a failure or bad faith, it's the purpose of that crawling. It's exactly why Cloudflare's [AI crawler settings](/blog/cloudflare-ai-bot-blocking/) split training, search, and agents into three separate controls.
+
+## How to find your own number
+
+Since July 2026, Cloudflare offers a report showing the crawl-to-refer ratio **for your site and broken down by operator**, over the past 24 hours, 7 days, or 30 days.
+
+<Stepper
+  steps={[
+    { label: "Step 1", title: "Find the report in Cloudflare", text: "Look for the reports on AI traffic and attribution. Menu labels move around, so go by the concept rather than a specific path." },
+    { label: "Step 2", title: "Pick 30 days, not 24 hours", text: "Shorter windows are vulnerable to one-off spikes. A single day when someone crawled you en masse tells you nothing." },
+    { label: "Step 3", title: "Break the number down by operator", text: "A site-wide total averages out the extremes. What matters is who specifically takes a lot and returns little." },
+    { label: "Step 4", title: "Compare against the previous period", text: "Watch the trend, not one data point. And check whether a sudden shift lines up with a change you made on your own side." },
+    { label: "Step 5", title: "No Cloudflare? Go to the logs", text: "The same information is readable from server logs by user agent, just with more work. Ask your admin for a 30-day breakdown." },
+  ]}
+/>
+
+## When the number is worth acting on
+
+The size of the ratio doesn't decide anything on its own. A framework for thinking it through:
+
+- **When your content is easy to rewrite into an answer** (how-tos, descriptions, comparisons), a high ratio on a given platform means real value walking out the door. This is where deciding deliberately pays off.
+- **When the content is supporting material and the sale happens elsewhere** (referrals, resellers, a physical location), the same number may not sting at all. Load isn't the same as loss.
+- **When the number shifts suddenly, don't block right away.** Verify the 30-day trend and check whether the change traces back to something on your side.
+- **When you don't know what the AI channel brings you at all**, that's a signal to fix measurement first, not to block. The article on [the limits of measurement](/blog/measuring-ai-mode-limits/) works through it.
+
+## What this article doesn't cover
+
+**It doesn't recommend blocking or allowing.** The framework for that decision is in the article on [opting out of AI answers](/blog/should-you-block-ai-answers/), and the CDN-level implementation is in the article on [Cloudflare](/blog/cloudflare-ai-bot-blocking/).
+
+**It doesn't cover hosting costs** and isn't a guide for server admins. Caching and rate limiting are a separate topic.
+
+## What to take away
+
+More useful than "how much are AI crawlers costing me" is the question of how much content each operator takes for every visit it sends back. We've found it helps to picture it as an **exchange rate** — Cloudflare doesn't describe it that way, but it captures nicely that the figure varies by orders of magnitude between operators and changes fast.
+
+Take two things from this. **Most crawling goes to training**, so a large share of the load will never come back by design — and that's intended. And for the first time, instead of someone else's numbers you can see **your own**, broken down by operator and over a sensible window.
+
+If you see differences between platforms in those numbers but don't know what to allow, what to restrict, and how to reflect it in measurement, that's exactly when it's worth bringing someone in.
+
+---
+
+**Not sure how to read your own numbers?** This site is run by **[Sniper Design](https://www.sniperdesign.cz/)** — an AI SEO audit covers measurement, visibility, and technical setup, and names what you should actually be deciding from.
+
+*Sources: the Cloudflare blog ("The crawl-to-click gap," July 2025 data) and the Cloudflare changelog of July 1, 2026. Current as of July 19, 2026 — these values change fast, and we'll keep the article updated.*
