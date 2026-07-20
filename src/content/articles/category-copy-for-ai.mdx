@@ -1,0 +1,188 @@
+---
+title: "Category copy for AI: a 2026 guide for online stores"
+description: "Category copy can raise the odds AI cites you on best X queries. How to write category descriptions for AI and for buyers."
+answer: "Category copy helps AI understand your product range and the criteria buyers decide on, which can raise the odds AI uses you on queries like best X or X for Y. Put a short answer above the product grid, add buying criteria, segmentation, and a comparison of types, then layer on structured data. A category should help people decide, not just list products."
+slug: "category-copy-for-ai"
+category: "tutorial"
+tags:
+  - "eshopy"
+  - "obsah"
+published: "2026-07-11"
+updated: "2026-07-11"
+keywords:
+  - "category copy for ai"
+  - "category pages ai search"
+  - "ecommerce category description"
+  - "category page ai visibility"
+  - "ai seo category pages"
+variant: "rich"
+stats:
+  - value: "150–300"
+    label: "words of intro copy above the product grid — enough to orient the buyer and AI alike (a rough guide)"
+  - value: "~83%"
+    label: "some 2026 analyses find an AI answer shows up often on best [product] queries; the share is directional and varies by industry"
+  - value: "decide"
+    label: "a category should help the buyer decide, not just list products"
+  - value: "3 types"
+    label: "structured data for a category: CollectionPage, ItemList, and BreadcrumbList"
+howto:
+  name: "How to write category copy for AI"
+  steps:
+    - name: "Put a short answer above the grid"
+      text: "In the first sentence or two above the product grid, say what the category contains and who it is for. AI draws on that short answer easily when it assembles a response to a query like best product in a given field."
+    - name: "Spell out the buying criteria"
+      text: "Explain what to choose on — size, material, performance, price, or how the product is used. Criteria help the buyer and AI alike understand how the products differ and who each one suits."
+    - name: "Segment and compare the types"
+      text: "Split the range by who it is for (for beginners, for professionals, for the home, for travel), and if the category holds several product types, explain the differences, ideally in a comparison table."
+    - name: "Add category structured data"
+      text: "Add CollectionPage (the page type), ItemList (the list of products), and BreadcrumbList (the breadcrumb trail). Together they give AI and search engines a machine-readable map of what the category holds and where it sits in the store's structure."
+    - name: "Link out to subcategories and guides"
+      text: "Link to relevant subcategories, your hero products, and a blog buying guide or comparison. Internal linking helps the customer and AI get their bearings in your range and in the related topics."
+faq:
+  - q: "Why do categories show up in AI answers, and not just products?"
+    a: "On queries like best X or X for Y, AI needs to understand the whole range and the criteria for choosing within it, not just one product. That is exactly what well-written category copy provides: an overview of what you sell, how you break it down, and what to decide on. The category supplies the context AI can work from when it recommends or cites, and product pages then fill in the details."
+  - q: "How long should category copy be?"
+    a: "The intro above the product grid usually runs somewhere around 150 to 300 words — enough to explain what the category is about and how to choose within it, but not so long that it pushes the products off the screen. Longer content, like detailed buying criteria, type comparisons, or an FAQ, belongs below the grid. What matters more than length is whether the copy genuinely helps the buyer decide."
+  - q: "Where should category copy go — above or below the grid?"
+    a: "Both are worth doing. Put the short answer and the most important criteria above the grid, because users and AI see them right away. Put the extended content — detailed buying criteria, comparison tables, or an FAQ — below the products. Avoid hiding all the copy behind a read more link or dumping it at the very bottom with no summary up top."
+  - q: "What structured data should a category page have?"
+    a: "Three types make sense for a category: CollectionPage describes it as a page presenting a selection of content, ItemList enumerates the products in the category, and BreadcrumbList describes the path (category and subcategory). Together they give AI and Google a machine-readable map of what the category holds and how it fits into the store's structure. Structured data should match what is actually visible on the page."
+  - q: "Does every category need its own copy?"
+    a: "Ideally yes, if the copy is going to be useful. Generic or auto-duplicated text across categories tends to do less for AI and search engines, and it often does not help the buyer either. You do not need to write an essay — even a few sentences with specific criteria and segmentation beat an empty category or the same paragraph everywhere. With a large range, start with your most important and highest-demand categories."
+  - q: "Does this apply to WooCommerce and Shopify too?"
+    a: "Yes. Most e-commerce platforms, WooCommerce and Shopify included, let you place copy both above and below the product grid, so you can use both — a short answer and criteria up top, extended content underneath. Watch for the auto-generated duplicate descriptions some themes add. And write the way people actually ask, so best X or X for Y phrasing shows up naturally in the copy."
+---
+
+import Checklist from "~/components/blocks/Checklist.astro";
+import Insight from "~/components/blocks/Insight.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Category copy helps AI understand your product range and the criteria buyers decide on, which can raise the odds AI uses you on queries like “best X” or “X for Y.”** On commercial queries, AI often draws on overview and category pages, not just individual products. This guide covers what to write in your category copy and how to back it with structured data, so both AI and customers get something out of it.
+
+## Why categories matter for AI
+
+When someone asks AI for the “best X for Y,” the model needs to understand the whole range and what to decide on within it. That is exactly what well-written category copy provides: an overview of what you sell, how you break it down, and what the buying criteria are. Product pages then fill in the details — we cover how in the article on [product pages for AI](/blog/product-pages-for-ai/).
+
+Some 2026 analyses also find that AI answers show up often on “best [product]” queries; the share is directional and varies by industry. So on shopping topics, categories have a real shot at being one of the sources.
+
+<Insight tone="key">
+The key shift: a category is no longer just a signpost pointing at products. To AI it is a page you can read an entire selection off of and recommend from. So it should help the buyer decide, not just list what you have in stock.
+</Insight>
+
+## What belongs in category copy
+
+Good category copy is not about length — it is about whether it helps someone decide. Here is what it should not be missing.
+
+<Checklist title="The building blocks of category copy" items={[
+  { title: "A short answer up top", desc: "In a sentence or two, say what the category holds and who it is for — it tends to be easy for AI and users alike to read." },
+  { title: "Buying criteria", desc: "What to choose on: size, material, performance, price, how it gets used." },
+  { title: "Segmentation by who it is for", desc: "Split the range: for beginners, for professionals, for the home, for travel." },
+  { title: "A comparison of types", desc: "When the category holds several types, explain the differences, ideally in a [comparison table](/blog/comparison-articles-for-ai/)." },
+  { title: "A category FAQ", desc: "Common questions like how to choose or which is better — short questions with short answers." },
+  { title: "Natural language", desc: "Write the way people ask, not in bare keywords; cover the phrasing real queries use." },
+]} />
+
+## How to write category copy step by step
+
+<Stepper
+  steps={[
+    {
+      label: "Answer",
+      title: "Put a short answer above the grid",
+      text: "In the first sentence or two above the product grid, say what the category contains and who it is for. A short answer like that tends to be easy for AI and users alike to read, and it helps people grasp what the category is about fast.",
+    },
+    {
+      label: "Criteria",
+      title: "Spell out the buying criteria",
+      text: "Explain what to choose on — size, material, performance, price, or how the product is used. Criteria help the buyer and AI alike understand how the products differ and who each one suits.",
+    },
+    {
+      label: "Segmentation",
+      title: "Segment and compare the types",
+      text: "Split the range by who it is for, and if the category holds several product types, explain the differences, ideally in a comparison table. Every self-contained, clearly written passage raises the odds AI picks up the right context from it when it answers.",
+    },
+    {
+      label: "Data",
+      title: "Add category structured data",
+      text: "Add CollectionPage, ItemList, and BreadcrumbList structured data. Together they give AI and search engines a machine-readable map of what the category holds and where it sits in the store's structure.",
+    },
+    {
+      label: "Linking",
+      title: "Link out to subcategories and guides",
+      text: "Link to relevant subcategories, your hero products, and a blog buying guide or comparison. Internal linking helps the customer and AI get their bearings in your range and in the related topics.",
+    },
+  ]}
+/>
+
+## Structured data for a category
+
+Alongside the copy, a machine-readable description of the category through [structured data](/blog/structured-data-for-ai/) helps too. Three types are usually the most relevant for a category.
+
+<CompareTable
+  caption="Structured data for an online store's category page"
+  columns={["Type", "What it tells AI and Google"]}
+  rows={[
+    { icon: "🗂️", label: "CollectionPage", left: "The page type", right: "That this is a page presenting a selection of content — a category or a listing" },
+    { icon: "📋", label: "ItemList", left: "The list of products", right: "Which products the category holds — a machine-readable map of the range" },
+    { icon: "🧭", label: "BreadcrumbList", left: "Breadcrumb navigation", right: "Where the category sits in the store's structure (category and subcategory)" },
+  ]}
+/>
+
+<Insight tone="warning">
+Structured data has to match what is actually visible on the page. If ItemList enumerates products that are not on the page, or the description promises a range you do not carry, you create a mismatch that helps neither AI nor Google.
+</Insight>
+
+## The most common mistakes
+
+<MistakeGrid>
+  <Mistake number="01" title="A category with no copy">
+    A bare product grid tells AI very little. With no intro copy and no criteria, the model has nothing to work from to understand what the category is about and who it suits.
+  </Mistake>
+  <Mistake number="02" title="Copy written for keywords only">
+    Text stuffed with keywords and no value for the buyer helps neither people nor AI. Usefulness to the buyer usually does more than phrase density.
+  </Mistake>
+  <Mistake number="03" title="It describes but does not help you decide">
+    Copy that describes the range in general terms, with no criteria and no segmentation, makes the choice no easier for the buyer or for AI. A category should help people decide.
+  </Mistake>
+  <Mistake number="04" title="Duplicate copy across categories">
+    A generic paragraph copied into every category tends to do less for AI and search engines, and it often does not help the buyer either. Every important category deserves its own specific copy.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="What to do"
+  dontTitle="What to avoid"
+  doItems={[
+    "Write a short answer and the criteria above the product grid.",
+    "Help people decide — criteria, segmentation, a comparison of types.",
+    "Add CollectionPage, ItemList, and BreadcrumbList.",
+    "Link to subcategories, products, and buying guides.",
+    "Write naturally, the way people ask about products.",
+  ]}
+  dontItems={[
+    "Leaving a category with no copy at all.",
+    "Cramming keywords into the copy with no value behind them.",
+    "Just describing the range with no decision criteria.",
+    "Copying the same text into every category.",
+    "Hiding all the copy behind a read more link.",
+  ]}
+/>
+
+## What to take away
+
+- **Categories can be one of AI's sources on shopping queries** — on “best X,” AI often draws on the overview, not just the products.
+- **The short answer and the criteria belong above the grid** — users and AI see them right away.
+- **The copy should help people decide** — criteria, segmentation, a comparison of types, not just a list.
+- **Add CollectionPage, ItemList, and BreadcrumbList** — a machine-readable map of the category.
+- **Every important category gets its own copy** — generic duplicate descriptions do not help.
+- **Link things up and verify** the results across AI platforms; we cover the broader e-commerce context in [SEO for e-commerce in the AI era](/blog/seo-for-ecommerce-ai-era/).
+
+---
+
+**Want categories that AI cites more easily and that help customers decide?** This site is run by **[Sniper Design](https://www.sniperdesign.cz/)** — an AI SEO audit walks your categories, products, and structured data from an AI visibility standpoint and shows you where a change adds the most.
+
+*For transparency: Sniper Design works on e-commerce category and product content routinely. The figures in this article come from public analyses and guides to e-commerce AI SEO current as of summer 2026 — treat them as directional. They vary by industry and methodology, and they shift over time.*

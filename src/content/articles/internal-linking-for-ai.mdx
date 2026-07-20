@@ -1,0 +1,192 @@
+---
+title: "Internal linking for AI: how to connect your content"
+description: "Internal links help search engines and AI understand how your content connects. Learn to write anchor text and find orphan and thinly linked pages."
+answer: "Internal linking means connecting the pages of your own site with internal links. It helps readers, search engines, and AI systems work out what belongs together and which pages carry higher priority within the site. In practice what decides it is descriptive anchor text, whether the page is reachable from relevant places, and whether anything links to it at all."
+slug: "internal-linking-for-ai"
+category: "tutorial"
+tags:
+  - "obsah"
+published: "2026-07-11"
+updated: "2026-07-11"
+keywords:
+  - "internal linking"
+  - "internal links seo"
+  - "anchor text"
+  - "orphan pages"
+  - "site link structure"
+variant: "rich"
+stats:
+  - value: "anchor text"
+    label: "descriptive anchor text says what is on the other side; the word here says nothing"
+  - value: "in-body"
+    label: "a link from the body of an article usually carries more specific context than one in the menu or footer"
+  - value: "orphans"
+    label: "a page nothing links to is harder to discover and harder to place in context"
+  - value: "relevance"
+    label: "link to what genuinely belongs together — not to as many pages as possible"
+howto:
+  name: "How to link your content so it makes sense to people and machines"
+  steps:
+    - name: "Find orphan and thinly linked pages"
+      text: "Build a list of every important URL from your CMS, your exports, and your sitemap. Then compare it against the URLs a crawl finds by following internal links. Anything on the list that the crawl never reaches is a candidate orphan page — verify those. Google Search Console is only a supporting signal; it knows only the URLs it has already discovered."
+    - name: "Replace anchor text like here"
+      text: "Anchor text should describe what is on the other side. Instead of click here, write what the target page is about — say, structured data for AI."
+    - name: "Connect related topics from the body copy"
+      text: "Link from where it makes sense to the reader, which means straight out of the text. A link inside a paragraph carries more context than one buried in the footer."
+    - name: "Shorten the path to important pages"
+      text: "Check how many clicks your most important pages sit from the homepage. If they are buried deep, add links from relevant places."
+    - name: "Check for broken links and redirects"
+      text: "Internal links should point straight at the destination URL. Fix links to error pages and links that run through a redirect chain after a migration."
+faq:
+  - q: "What is internal linking?"
+    a: "Internal linking means connecting the pages of your own site with internal links. It does two jobs at once: it makes it easier for readers to move to related content, and it helps search engines and AI systems work out what belongs together and what carries higher priority on the site. Internal links are also the path crawlers use to reach your content in the first place."
+  - q: "Why should I avoid click here as anchor text?"
+    a: "Because anchor text is context. The word here says nothing about what is on the other side, while descriptive anchor text says it outright — to readers and machines alike. Write anchor text naturally so it fits the sentence; it should not be the same canned phrase stuffed in over and over."
+  - q: "What is an orphan page?"
+    a: "An orphan page is one that no internal link points to; a page with very few links is better described as thinly linked. Crawlers reach it less easily, and it is harder to tell where it belongs within the site. To find candidates, compare the list of known URLs from your CMS and sitemap against the URLs a crawl finds by following links; the difference needs to be verified. Google Search Console is only a supporting signal, because it knows only the URLs it has already discovered."
+  - q: "How many internal links should an article have?"
+    a: "There is no specific number, and setting one makes no sense. Relevance decides it, not volume: link where it helps the reader. Fifty links in a single paragraph is just as unusable as none at all. If a link makes no sense to a reader, it makes no sense to a machine either."
+  - q: "Does internal linking help in AI answers?"
+    a: "It helps indirectly. Many AI systems work with retrieved chunks of content when they answer, and descriptive anchor text helps them understand what belongs together. Internal linking also shows that the site devotes more than one page to the topic. Exactly how individual systems weight internal links is not published, though, so do not treat it as a lever on visibility."
+  - q: "Are links in the menu and footer enough?"
+    a: "As basic navigation, yes, and they do say something about the structure of the site. They carry specific context less well, though: a link from the body copy sits in a clear relationship, and both reader and machine can see why it is there. The menu and footer are identical on every page, so for the relationship between two specific topics a link in the text itself is usually more useful."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Internal linking means connecting the pages of your own site with internal links.** It helps readers, search engines, and AI systems work out what belongs together and which pages carry higher priority within the site. In practice what decides it is descriptive anchor text, whether the page is reachable from relevant places, and whether anything links to it at all.
+
+## What internal links actually do
+
+Three things that are broadly beyond dispute:
+
+- **A path to the content** — crawlers follow links to reach pages. Without an internal link, discovery and placement within the site structure is usually harder, even though a page can surface another way, through the sitemap or an external link.
+- **Context** — anchor text says what is on the other side before anyone clicks through.
+- **Relationships and priority** — the link structure signals what belongs together and which pages carry higher priority within the site.
+
+<Insight tone="key">
+What you cannot claim: how much "power" a link passes, or exactly how AI systems weight internal links. Nobody publishes those weights. Stick to what can be verified — links help content get discovered and help make the relationships clear. That is reason enough to do them properly.
+</Insight>
+
+## Four things that matter in practice
+
+<CompareTable
+  caption="What decides the value of an internal link"
+  columns={["Element", "Why it matters"]}
+  rows={[
+    { icon: "🔤", label: "Anchor text", left: "Context", right: "Descriptive anchor text says what is on the other side; here says nothing" },
+    { icon: "📍", label: "Where you link from", left: "Placement", right: "A link from the body copy usually carries more specific context than one in the footer" },
+    { icon: "🪜", label: "Reachability", left: "Depth", right: "Important pages should be easy to reach from relevant parts of the site, not needlessly buried" },
+    { icon: "🔗", label: "Relevance", left: "Purpose", right: "Link to what genuinely belongs together — not to as many pages as possible" },
+  ]}
+/>
+
+## Step by step
+
+<Stepper
+  steps={[
+    {
+      label: "Orphans",
+      title: "Find the pages nothing links to",
+      text: "Compare your list of known URLs (CMS, sitemap) against what a crawl finds by following links. The difference is your list of candidate orphan pages.",
+    },
+    {
+      label: "Anchors",
+      title: "Get rid of anchor text like here",
+      text: "Anchor text should describe the target page. Write it naturally so it fits the sentence, rather than repeating the same canned phrase.",
+    },
+    {
+      label: "In-body",
+      title: "Connect related topics from your paragraphs",
+      text: "Link from where it makes sense to the reader. A link in the context of a sentence says more than a link in the footer.",
+    },
+    {
+      label: "Depth",
+      title: "Shorten the path to important pages",
+      text: "Work out how many clicks from the homepage your key pages sit, and add links from relevant places.",
+    },
+    {
+      label: "Cleanup",
+      title: "Fix broken links and redirects",
+      text: "Internal links should point straight at the destination. Fix links to error pages and links that run through a redirect chain.",
+    },
+  ]}
+/>
+
+That last step matters most right after a site rebuild — the article on [migration and redesign](/blog/migration-redesign-ai-visibility/) explains why.
+
+## What this adds in AI answers
+
+Many AI systems work with retrieved chunks of content when they answer. Descriptive anchor text helps them understand what is on the other side, and internal linking shows that the site devotes more than one isolated page to the topic. The same principle drives pillar content structure, which is covered in [how to structure pillar content](/blog/how-to-structure-pillar-content/).
+
+<Insight tone="warning">
+Do not overrate it. Internal links will not rescue content that has nothing to offer — they only make it easier to find what is already there. If a page answers no question at all, ten links will not save it; [how AI cites sources](/blog/how-ai-cites-sources/) explains why.
+</Insight>
+
+## How to check your own site
+
+<Checklist
+  items={[
+    { title: "Candidate orphan pages", desc: "Compare your list of known URLs (CMS, sitemap) against what a crawl finds by following links. Verify the difference." },
+    { title: "The Google Search Console report", desc: "It shows the pages with the fewest links. Treat it as a supporting signal — it knows only the URLs it has already discovered." },
+    { title: "A test on your important pages", desc: "Take your handful of most important pages and count the clicks from the homepage." },
+    { title: "Anchor text", desc: "Search your site for here and more — and rewrite them into something descriptive." },
+    { title: "Broken links", desc: "Find internal links pointing at error pages and links that run through a redirect." },
+  ]}
+/>
+
+## The most common mistakes
+
+<MistakeGrid>
+  <Mistake number="01" title="Click here">
+    Anchor text with no context. Neither reader nor machine can tell what is waiting on the other side.
+  </Mistake>
+  <Mistake number="02" title="Orphan pages">
+    An article gets published and then nothing internal ever links to it. It is harder to discover and harder to place in context.
+  </Mistake>
+  <Mistake number="03" title="Links only in the footer">
+    The menu and footer are identical everywhere. For the relationship between two specific topics, a link in the text itself is usually more useful.
+  </Mistake>
+  <Mistake number="04" title="Links for the sake of links">
+    Forcing in links where no relationship exists. If they make no sense to a reader, they make no sense to a machine either.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="Do this"
+  dontTitle="Avoid this"
+  doItems={[
+    "Write descriptive anchor text that reads naturally in the sentence.",
+    "Link from the body copy, where it makes sense.",
+    "Keep important pages easy to reach from relevant places.",
+    "Hunt for orphan pages on a regular schedule.",
+    "Point links straight at the destination URL.",
+  ]}
+  dontItems={[
+    "Use here and more as anchor text.",
+    "Repeat the same canned phrase in every link.",
+    "Leave a published page without a single link to it.",
+    "Force in links where no relationship exists.",
+    "Leave internal links running through redirects.",
+  ]}
+/>
+
+## Key takeaways
+
+- **Anchor text is context** — descriptive wording instead of here and more.
+- **A link from the text usually beats one from the footer** — it carries clearer context.
+- **Hunt for orphan and thinly linked pages regularly** — publishing is not enough.
+- **Relevance decides it, not volume** — there is no magic number of links.
+- **Do not overrate it** — links make value easier to find, they do not create it; content structure is covered in [content for AI](/blog/ai-seo-content/).
+
+---
+
+**Not sure which pages on your site lead nowhere?** An AI SEO audit from **Sniper Design** crawls your site, helps surface orphan and thinly linked pages, weak anchor text, and links running through redirects, and proposes what to connect. If you are building a new site, our AI SEO Wireframe Pack includes page blueprints that show where links to related content belong.
+
+*Full transparency: these recommendations come from public search engine documentation and hands-on practice as of July 11, 2026. Exactly how individual search engines and AI systems weight internal links is not published; the steps above make a site easier to understand, but they do not guarantee results.*

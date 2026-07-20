@@ -1,0 +1,186 @@
+---
+title: "Share of Model: The Brand Visibility Metric for AI"
+description: "Share of Model (SoM) measures your brand's share of mentions in AI answers. How it differs from Share of Voice, how to measure it, and how to read it."
+answer: "Share of Model (SoM) is an AI visibility metric: it measures how often and how prominently a given AI model mentions you across relevant queries — relative to your competitors. It's the equivalent of Share of Voice, but for AI answers instead of search rankings. Because answers vary from run to run, SoM is a directional trend indicator, not a precise number."
+slug: "share-of-model"
+category: "analysis"
+tags:
+  - "mereni"
+published: "2026-07-11"
+updated: "2026-07-11"
+keywords:
+  - "share of model"
+  - "share of mentions in ai"
+  - "ai share of voice"
+  - "measuring ai visibility"
+  - "brand visibility in ai"
+variant: "rich"
+stats:
+  - value: "SoM"
+    label: "your brand's share of mentions in AI answers across relevant queries"
+  - value: "rank isn't enough"
+    label: "in an AI answer, classic ranking matters less than whether and how you're mentioned"
+  - value: "one model at a time"
+    label: "measure each model separately — ChatGPT, Perplexity, and Gemini behave differently"
+  - value: "trend > number"
+    label: "because answers fluctuate, watch the direction over time, not a single result"
+faq:
+  - q: "What is Share of Model?"
+    a: "Share of Model (SoM) is a metric that measures how often and how prominently a given AI model mentions you across relevant queries — relative to your competitors. It's the equivalent of Share of Voice from classic marketing, except that instead of ad exposure or search rankings it tracks mentions in AI answers from tools like ChatGPT, Perplexity, and Gemini."
+  - q: "How does Share of Model differ from Share of Voice?"
+    a: "Share of Voice measures your share of visibility or mentions in a chosen channel — in practice, advertising, organic search, media, or social. Share of Model carries the same idea into AI answers, where there often is no ranked list of results, just a single synthesized answer. So you aren't measuring a position; you're measuring whether and how prominently the model mentions you compared with the competition."
+  - q: "How do I measure Share of Model?"
+    a: "Build a set of 10 to 30 real queries your customers actually ask and run them across models (ChatGPT, Perplexity, Gemini). For each answer, record whether your brand and your competitors are mentioned, then calculate your share of the mentions. Repeat the measurement on a regular schedule and watch the trend, because any single result fluctuates."
+  - q: "Why should I take Share of Model numbers with a grain of salt?"
+    a: "AI answers are non-deterministic — the same query returns a slightly different answer every time. Results are also shaped by region, personalization, and model updates, and a small query set introduces noise. That makes Share of Model a directional trend indicator, not a precise number. Deriving specific sales promises from it doesn't hold up."
+  - q: "Does Share of Model replace traffic measurement?"
+    a: "No, it complements it. Share of Model is the outside view — what the model says about you. Measuring traffic and conversions from AI is the inside view, from your own site. It makes sense to watch both: Share of Model as a directional visibility indicator, and traffic and conversions as outcome metrics where you check whether they're moving in the same direction as your AI visibility."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import Stepper from "~/components/blocks/Stepper.astro";
+import Checklist from "~/components/blocks/Checklist.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**Share of Model (SoM) is an AI visibility metric that measures how often and how prominently a given AI model mentions you across relevant queries — relative to your competitors.** It's the equivalent of Share of Voice, but for AI answers instead of search rankings. And because answers vary from run to run, SoM is a directional trend indicator, not a precise number. This piece covers what SoM is, how to measure it, and how to read it alongside classic search metrics.
+
+## Why classic rankings carry less weight
+
+Classic search gives you a **ranked list of results**. You could measure position, click share, category visibility. In an AI answer you often don't get a list of results at all — you get a **synthesized answer**, sometimes with sources attached, in which brands show up with varying prominence.
+
+That changes the question you're asking. Instead of "where do we rank," it's now **are we in the answer at all, how prominently, and in what context**. That's exactly what Share of Model tries to capture.
+
+<Insight tone="key">
+Share of Model isn't about your site — it's about what the model says about you. You can rank high on Google and still be absent from a share of AI answers, and vice versa. That makes it a separate signal that classic rankings don't replace.
+</Insight>
+
+## Share of Model vs. related metrics
+
+SoM is easy to confuse with similar-sounding terms. The difference is in what exactly each one measures.
+
+<CompareTable
+  caption="How Share of Model differs from related metrics"
+  columns={["Metric", "What it measures"]}
+  rows={[
+    { icon: "🤖", label: "Share of Model", left: "Mentions in AI", right: "Your share of the mentions in AI answers across a set of queries" },
+    { icon: "📣", label: "Share of Voice", left: "Visibility in a channel", right: "Your share of visibility or mentions in a chosen channel (advertising, organic, media, social)" },
+    { icon: "🔎", label: "Share of Search", left: "Brand interest", right: "The brand's share of search queries, often used as a directional indicator of interest" },
+    { icon: "💬", label: "Mention count", left: "Frequency", right: "How often the model mentions you — with no ratio against the competition" },
+  ]}
+/>
+
+## How to measure Share of Model
+
+You don't need a paid tool right away. A manual test gives you the basic picture as long as you run it consistently. There's no settled standard for the calculation yet, so the most important thing is holding the same method over time. Beyond the raw share, you can also score the prominence of the mention separately — whether it was a passing mention, a recommendation, or a cited source.
+
+<Stepper
+  steps={[
+    {
+      label: "Queries",
+      title: "Build a set of real queries",
+      text: "Write down 10 to 30 questions your customers genuinely ask — the right solution for a given situation, not queries on your own name.",
+    },
+    {
+      label: "Models",
+      title: "Run them across models",
+      text: "Put the queries into ChatGPT, Perplexity, and Gemini. Behavior differs between models, so measure each one separately.",
+    },
+    {
+      label: "Record",
+      title: "Record the mentions",
+      text: "For each answer, note whether your brand is mentioned, which competitors appear, and who is listed as a source.",
+    },
+    {
+      label: "Share",
+      title: "Calculate the share of mentions",
+      text: "Divide your brand's mentions by all brand mentions in the answers. Calculate it per model first, then across all of them.",
+    },
+    {
+      label: "Repeat",
+      title: "Measure regularly and watch the trend",
+      text: "Repeat the same queries over time — monthly, for example. What you care about is the direction of travel, not a one-off number.",
+    },
+  ]}
+/>
+
+## Why to take the numbers with a grain of salt
+
+Time to be honest: Share of Model is an **estimate, not an exact metric**. A few reasons not to trust any single number:
+
+<Checklist
+  items={[
+    { title: "Non-determinism", desc: "The same query returns a slightly different answer every time — models don't always generate the same output." },
+    { title: "Personalization and region", desc: "Results can be shaped by location, language, the mode you used, conversation history, or being signed in; it varies by service and model." },
+    { title: "Models change", desc: "A model update can shift your SoM overnight without you doing anything at all." },
+    { title: "Small sample = noise", desc: "A handful of queries isn't enough; even a larger set only gives you a directional estimate." },
+    { title: "A mention isn't a recommendation", desc: "Distinguish a passing mention, a cited source, and an active recommendation — they aren't the same thing." },
+  ]}
+/>
+
+<Insight tone="warning">
+That's why you should never derive hard promises from Share of Model — nothing along the lines of "higher SoM means this many more sales." Treat it as a directional visibility indicator you track as a trend, not as a precise number on the books.
+</Insight>
+
+## What moves Share of Model
+
+When SoM rises or falls, it usually comes down to how much the models have to go on when it comes to recognizing you:
+
+- **Citable content** — authoritative, well-structured content; see [how AI cites sources](/blog/how-ai-cites-sources/).
+- **Third-party mentions** — reviews, industry directories, community discussions; for models these are often an important supporting signal alongside your own pages, as [brand mentions in AI](/blog/ai-brand-mentions/) shows.
+- **A clear brand entity** — a consistent description of the company across your site, so the model connects the mentions to a single subject.
+- **Presence on sources the models trust** — the authorities in your category, not just your own site.
+
+This ties into the [zero-click](/blog/zero-click-and-ai-overviews/) reality: if you aren't in the answer, you can be less visible to a share of users no matter how well you're doing in classic search.
+
+## The most common measurement mistakes
+
+<MistakeGrid>
+  <Mistake number="01" title="One measurement = a conclusion">
+    Answers fluctuate. A single snapshot tells you nothing; only repeated measurement and a trend mean anything.
+  </Mistake>
+  <Mistake number="02" title="Branded queries">
+    Asking the model about your own name inflates the result. Measure on neutral queries that address a problem, not a brand.
+  </Mistake>
+  <Mistake number="03" title="One model standing in for all">
+    Behavior differs between ChatGPT, Perplexity, and Gemini. Averaging across a single model distorts the overall picture.
+  </Mistake>
+  <Mistake number="04" title="SoM instead of results">
+    Share of Model is a directional indicator, not a goal in itself. Always pair it with traffic and conversions.
+  </Mistake>
+</MistakeGrid>
+
+<DoDont
+  doTitle="What to do"
+  dontTitle="What to avoid"
+  doItems={[
+    "Measure on a set of real, non-branded queries.",
+    "Track the trend over time, not a one-off number.",
+    "Separate the models and measure each one on its own.",
+    "Pair SoM with traffic and conversions from AI.",
+    "Treat the numbers as a directional estimate.",
+  ]}
+  dontItems={[
+    "Deriving hard sales promises from a single number.",
+    "Measuring only on queries about your own brand.",
+    "Relying on a single measurement or a single model.",
+    "Mistaking a mention for a recommendation.",
+    "Ignoring the fluctuation and personalization of results.",
+  ]}
+/>
+
+## Key takeaways
+
+- **Share of Model measures your share of mentions in AI** — how prominently the model mentions you compared with the competition.
+- **Classic rankings alone aren't enough** — in an AI answer, what often decides things isn't just your search position but whether and how the brand shows up in the answer.
+- **Measure manually and regularly** — a set of queries across models, repeated, with the trend tracked.
+- **The numbers are directional** — between fluctuation and personalization, it's an estimate, not a precise metric.
+- **Pair it with results** — SoM is a directional indicator, so verify it with the [AI segments report in Search Console](/blog/gsc-ai-report/) and [traffic from AI](/blog/ai-traffic-and-conversions/).
+
+---
+
+**Want to know where you stand in AI answers compared with your competitors?** This site is run by **[Sniper Design](https://www.sniperdesign.cz/)** — an AI SEO audit works through your visibility in AI, benchmarks you against competitors on real queries, and shows where you're missing and how to change it.
+
+*For transparency: Share of Model is a metric that's still taking shape; this description is based on public practice and the tools available as of July 11, 2026. The principles here are directional — specific results vary by category, language, and model, and they shift over time. We describe how the content on this site is produced on the [author page](/author/kamil/).*
