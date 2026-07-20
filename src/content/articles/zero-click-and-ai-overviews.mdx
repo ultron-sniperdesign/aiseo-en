@@ -1,0 +1,144 @@
+---
+title: "Zero-Click and AI Overviews in 2026: How to Measure and Compensate"
+description: "Zero-click keeps growing, and AI Overviews are part of it. How to measure the impact in Google Search Console and make up for the clicks you lose."
+answer: "Zero-click search is when a user gets the answer directly in the results and never clicks a link. AI Overviews push that share higher for a lot of queries. Google Search Console has separate AI Mode and AI Overviews segments, but the clicks from them aren't separated from classic organic. Not every zero-click is a problem — sometimes a citation builds the brand."
+slug: "zero-click-and-ai-overviews"
+category: "analysis"
+tags:
+  - "mereni"
+  - "strategie"
+published: "2026-05-28"
+updated: "2026-05-28"
+variant: "rich"
+keywords:
+  - "zero-click ai"
+  - "zero-click search"
+  - "ai overviews ctr"
+  - "how to measure zero-click"
+  - "ai overviews click loss"
+  - "ai search console"
+  - "ai overviews impact"
+stats:
+  - value: "AI segments"
+    label: "since mid-2025 GSC shows AI Mode and AI Overviews separately"
+  - value: "not separable"
+    label: "clicks from AI Overviews are mixed in with classic organic"
+  - value: "good vs. bad"
+    label: "not every zero-click is a problem — it depends on the query type"
+  - value: "brand"
+    label: "on branded queries, an AI Overviews citation can even lift CTR"
+howto:
+  name: "How to measure and compensate for zero-click in the AI era"
+  steps:
+    - name: "Use the AI segments in GSC"
+      text: "In Google Search Console, open Performance → Search Appearance and pick the AI Mode or AI Overviews segments if they're available for your site. Watch impressions and CTR above all."
+    - name: "Identify the affected queries"
+      text: "Find keywords where impressions are rising but CTR is falling — a possible signal of growing zero-click. Check it against position, seasonality, and whether an AI Overview actually appears."
+    - name: "Sort the good zero-click from the bad"
+      text: "An informational query with no conversion potential is a very different situation from losing a valuable visit. Judge by query type and intent."
+    - name: "Make up for the loss"
+      text: "Build the brand through AI citations, invest in the middle of the funnel (comparisons, reviews), and measure indirect value too."
+faq:
+  - q: "What is zero-click search?"
+    a: "Zero-click search is when a user types a query, gets the answer directly in the results, and never clicks through to anyone's site. It has grown alongside rich results, featured snippets, and in recent years especially AI Overviews. According to available analyses, the share of zero-click queries in 2026 is approaching two-thirds."
+  - q: "How do I measure zero-click in Google Search Console?"
+    a: "Since mid-2025, Google Search Console has shown separate AI Mode and AI Overviews segments under the Search Appearance filter. Use them to watch impressions and CTR — as of 2026, clicks can't be reliably separated from classic organic search, so evaluate the trend in impressions, CTR, and queries together. Rising impressions on a query alongside falling CTR is a signal that zero-click is growing."
+  - q: "Can GSC separate AI Overviews clicks from classic organic?"
+    a: "No, not as of 2026. Google Search Console includes AI Overviews clicks in its reports but doesn't distinguish them from classic organic clicks. You can track impressions and CTR separately within the AI Mode and AI Overviews segments, but the clicks inside them aren't separated from classic ones at the level of an individual click."
+  - q: "Is every zero-click a problem?"
+    a: "No. There are two types. Good zero-click means AI cites you or names your brand — the user registers the brand even without clicking. Bad zero-click is when AI or an expanded result takes over the answer on a query with commercial value (comparisons, pricing, reviews, queries close to conversion) and the user neither sees your brand nor clicks. So judge the value of a zero-click by query type and by whether any brand visibility survives it."
+  - q: "How do I make up for clicks lost to AI Overviews?"
+    a: "Instead of focusing on click volume alone, build the value of being cited in the results — brand, structured data, and content with clear definitions, concise answers, verifiable facts, and structured data, all of which can improve your odds of being cited in AI answers. Invest in the middle of the funnel (comparisons, reviews, branded queries), where the conversion decision actually gets made. And measure indirect metrics too: branded search, mentions in AI answers, conversions from qualified visits."
+  - q: "Should I turn off AI Overviews to get more clicks?"
+    a: "Usually not. There's no simple site-level switch for AI Overviews — you can limit how Google uses your content in previews and answers, but that can hit classic results too. The guide on [how to turn off or limit AI Overviews](/blog/how-to-turn-off-ai-overviews/) goes into more detail. For most sites, measuring and compensating makes more sense than walking away."
+---
+
+import Checklist from "../../components/blocks/Checklist.astro";
+import Insight from "../../components/blocks/Insight.astro";
+import CompareTable from "../../components/blocks/CompareTable.astro";
+import MistakeGrid from "../../components/blocks/MistakeGrid.astro";
+import Mistake from "../../components/blocks/Mistake.astro";
+
+## Zero-click in the AI era: what's actually happening
+
+**Zero-click search is when a user gets the answer directly in the results and never clicks a link.** On a lot of queries, AI Overviews can push that share higher — the user sometimes gets a good enough answer right there in the result and has no reason to continue to a site. But for brands this isn't purely lost clicks: some zero-click queries build the brand at the same time, through citations. The key is to **measure the impact and compensate deliberately**, not to panic over a traffic dip.
+
+This analysis adds an **analytical angle** to the [guide on turning off AI Overviews](/blog/how-to-turn-off-ai-overviews/): how to measure zero-click in Google Search Console, when it's a problem, and how to make up for the loss. For broader performance tracking, the [guide to measuring SEO performance](/blog/measuring-seo-performance/) is a good companion.
+
+<Insight tone="accent" icon="!" label="What to take away">
+  Not every zero-click is a loss. A citation in AI Overviews can build the brand even when the user doesn't click. The goal isn't to save every zero-click — it's to tell the good ones from the bad ones and compensate for the valuable visits you lose.
+</Insight>
+
+## How AI Overviews change CTR and the zero-click share
+
+Zero-click isn't new, but AI Overviews amplify it considerably:
+
+- The share of zero-click queries in Google is rising — various analyses from 2025–2026 show it approaching **two-thirds** of queries in some markets. Treat that as a rough trend, not a universal benchmark.
+- On queries that trigger AI Overviews, the zero-click share tends to be significantly higher still.
+- Organic CTR on queries with an AI Overview drops noticeably according to those analyses — but the spread is wide and depends on query type, vertical, and what the result looks like.
+
+Specific percentages differ between studies depending on market, device, query type, and measurement methodology — read them as a trend, not a benchmark.
+
+## How to measure zero-click in Google Search Console
+
+In mid-2025, Google added separate AI segments to GSC. Here's what to do with them:
+
+<Checklist tone="seo" title="Measuring zero-click in GSC" items={[
+  { title: "AI segments in Search Appearance", desc: "the filter contains AI Mode and AI Overviews (where they're available for your account) — impressions and CTR show up inside that report." },
+  { title: "Impressions trend vs. CTR", desc: "rising impressions with falling CTR is a possible zero-click signal; check it against position, seasonality, and whether an AI Overview appears." },
+  { title: "Comparing segments", desc: "wherever AI Overviews behave differently from classic results, that's the area to work on." },
+  { title: "Branded vs. non-branded queries", desc: "on branded queries, an AI Overviews citation can even lift CTR — track them separately." }
+]} />
+
+<Insight tone="seo" icon="i" label="What GSC can't do as of 2026">
+  As of 2026, Google Search Console can't reliably tell whether an individual click came from an AI Overview or a classic result. Treat CTR inside the AI Mode / AI Overviews segment as a directional metric for that report, not as an exact split of every click. To evaluate it properly, combine impressions, CTR, position, query type, and a manual look at the SERP.
+</Insight>
+
+## Good zero-click vs. bad zero-click
+
+Not every zero-click is a problem. Telling them apart is what decides when to compensate for the loss and when to accept it:
+
+<CompareTable
+  leftLabel="Good zero-click"
+  leftTone="seo"
+  rightLabel="Bad zero-click"
+  rightTone="aeo"
+  rows={[
+    { icon: "🏷️", label: "Brand footprint", left: "The AI Overviews citation names the brand", right: "The user never sees the brand at all" },
+    { icon: "🎯", label: "Query intent", left: "Informational, no conversion potential", right: "A valuable visit that would have converted" },
+    { icon: "📈", label: "Impact", left: "More trust, more branded search", right: "Real loss of traffic and conversions" },
+    { icon: "🛠️", label: "What to do", left: "Strengthen the brand's presence in AI", right: "Compensate through brand and mid-funnel" }
+  ]}
+/>
+
+## How to make up for lost clicks
+
+If zero-click is taking over valuable queries, focusing on click volume alone isn't enough. Move both your measurement and your strategy:
+
+- **Build the brand through AI citations** — a citation in AI Overviews can raise brand visibility even without a click, as long as the source or brand is clearly named in the result. [E-E-A-T for AI](/blog/e-e-a-t-for-ai/) helps here.
+- **Invest in the middle of the funnel** — comparisons, reviews, branded queries, and queries about vendors, alternatives, and pricing, where the purchase decision gets made.
+- **Work on mentions off your own site** — [mentions and reviews](/blog/ai-brand-mentions/) can help strengthen your brand's discoverability and credibility across the ecosystem of sources AI answers draw from.
+- **Measure indirect metrics too** — branded search, mentions in AI answers, conversion quality, not just visit volume.
+
+## Common mistakes
+
+<MistakeGrid>
+  <Mistake num="01" title="Judging the AI era by clicks alone" fix="Measure brand and AI citations too.">
+    Part of the value in the AI era shows up as brand, not as clicks.
+  </Mistake>
+  <Mistake num="02" title="Turning off AI Overviews right away" fix="Measure first, then decide.">
+    Switching it off can also cost you citations that were genuinely helping the brand.
+  </Mistake>
+  <Mistake num="03" title="Blaming every dip on AI Overviews" fix="Check the segments in GSC.">
+    Without the data in context, it's easy to blame AI where it played no part.
+  </Mistake>
+  <Mistake num="04" title="Relying on the classic top of the funnel" fix="Move into the middle of the funnel.">
+    AI tools are eating the top of the buying journey — more of the decision happens in the middle.
+  </Mistake>
+</MistakeGrid>
+
+## What's next: put zero-click in context
+
+Zero-click isn't the end of AI visibility — it's a different game. The [practical SEO for AI checklist](/blog/seo-for-ai-checklist/) sums up how to follow through on it systematically.
+
+Want to know which queries are losing you clicks to AI Overviews and where compensating is actually worth it? That's what an AI visibility audit from **[Sniper Design](https://www.sniperdesign.cz/)** is built to answer.

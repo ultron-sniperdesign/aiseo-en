@@ -1,0 +1,156 @@
+---
+title: "AI Mode and E-Commerce: What Changes for Shopping Queries"
+description: "In AI Mode there are no organic results next to the answer. What that changes for online stores, which product data decides, and why it's hard to measure."
+answer: "AI Mode is a conversational search mode where the answer stands on its own and there are no organic results next to it. For an online store that changes the shape of the opportunity: it isn't about your position in a list, it's about being one of the sources the answer is built from. What decides is the data a customer actually cares about — price, availability, specs."
+slug: "ai-mode-for-ecommerce"
+category: "analysis"
+tags:
+  - "eshopy"
+  - "ai-platformy"
+published: "2026-07-18"
+updated: "2026-07-18"
+keywords:
+  - "ai mode ecommerce"
+  - "shopping queries in ai"
+  - "ai mode for online stores"
+  - "product data for ai"
+  - "ai visibility for ecommerce"
+variant: "rich"
+stats:
+  - value: "no list"
+    label: "in AI Mode there are no organic results next to the answer — position disappears, the role of source remains"
+  - value: "1,867"
+    label: "visits from AI tools over twelve months on our own store, 90 percent of them sent by ChatGPT"
+  - value: "3.5% vs. 0.88%"
+    label: "conversion rate from ChatGPT against Google organic — one store, the starting point before any optimization"
+  - value: "measure separately?"
+    label: "AI Mode can't be isolated from the usual data; the Search Console report covers AI features in aggregate"
+faq:
+  - q: "What changes for an online store in AI Mode compared with regular search?"
+    a: "Mainly that there's no list of organic results next to the answer. The customer gets an assembled answer and, sometimes, links to the sources. For a store that shifts the question from what position am I in to am I one of the sources the answer is built from. And the conditions for showing up are, according to Google, the same as for regular search."
+  - q: "Which product data matters most?"
+    a: "The data a customer weighs when deciding: price, availability and delivery time, key specs, shipping and return terms. When one of those is missing from the page, lives only inside an image, or contradicts your product feed, the system has nothing to draw on and reaches for another source. That's why page-to-feed consistency is worth watching."
+  - q: "Is the manufacturer's product description enough?"
+    a: "For comparison queries, usually not. Your competitors have the same manufacturer copy, so it adds nothing that would set your listing apart. What tends to be more useful is whatever you can add yourself: who the product suits, what it pairs with, where its limits are, what you've learned using it."
+  - q: "How much traffic do AI tools actually send?"
+    a: "On our own store it was 1,867 visits over twelve months, 90 percent of them from ChatGPT. The conversion rate was 3.5 percent against 0.88 percent from Google organic, and close to three times the revenue per visit. But that's one store and the starting point before any deliberate optimization, so treat it as an illustration, not a market benchmark."
+  - q: "Can you measure AI Mode performance on its own?"
+    a: "On its own, not really — not yet. The Search Console report covers generative AI features in aggregate, and assistant traffic tends to get mixed together in analytics; in our case ChatGPT accounted for ninety percent of it. So numbers measured on AI Overviews can't be passed off as AI Mode results."
+  - q: "Does this mean I should be doing something different?"
+    a: "More like the same things, but more rigorously. Google's own documentation says there are no special requirements for AI features. What changes is the tolerance for sloppy data: in a list of results you could get away with missing availability, but in an assembled answer it means your product has nothing to contribute."
+---
+
+import Insight from "~/components/blocks/Insight.astro";
+import CompareTable from "~/components/blocks/CompareTable.astro";
+import MistakeGrid from "~/components/blocks/MistakeGrid.astro";
+import Mistake from "~/components/blocks/Mistake.astro";
+import DoDont from "~/components/blocks/DoDont.astro";
+
+**AI Mode is a conversational search mode where the answer stands on its own and there are no organic results next to it.** For an online store that changes the shape of the opportunity: it isn't about your position in a list, it's about being one of the sources the answer is built from. What decides is the data a customer actually cares about — price, availability, specs.
+
+That sounds like a big change, and in one respect it is. In another it's boring: the rules stay the same, it just shows more plainly when the data is sloppy.
+
+## What changes and what doesn't
+
+<CompareTable
+  caption="A shopping query in a list of results and in AI Mode"
+  columns={["Regular results", "AI Mode"]}
+  rows={[
+    { icon: "📋", label: "What the customer sees", left: "A list of stores, they pick themselves", right: "An assembled answer and links to sources" },
+    { icon: "🥇", label: "What's at stake", left: "Position in the list", right: "Being one of the answer's sources" },
+    { icon: "⚖️", label: "Comparison query", left: "The customer opens several tabs", right: "The system assembles the comparison from several sources" },
+    { icon: "🧾", label: "What decides", left: "Relevance and position", right: "Available, consistent product data" },
+  ]}
+/>
+
+The conditions for showing up don't change. Google's own documentation says there are no special requirements for AI features and no separate markup — the same foundation applies as for regular search. Among its recommendations it also notes that important content should be in text form and that structured data should match the visible text. That's covered in more detail in [how to appear in AI Mode](/blog/how-to-appear-in-ai-mode/).
+
+## Shopping queries are comparison queries
+
+Here's what matters for a store. Queries like "which vacuum is best for pet hair" or "what should I use on my paint after winter" aren't about one product — they're about criteria. The answer is assembled from several sources, and each one contributes whatever it has that the others don't.
+
+A store carrying nothing but the manufacturer's description has nothing to contribute. Your competitors have the same copy.
+
+<Insight tone="key">
+In a comparison query, the prettiest page doesn't win — the one with **data you can actually compare** does: price, availability, specs, who the product suits and where its limits are. Anything missing on your side, or contradicting your feed, the system fills in from somewhere else.
+</Insight>
+
+How to write a product page that clears that bar is covered in [product pages for AI](/blog/product-pages-for-ai/); why a readable price is a particularly sensitive spot, in [pricing on your site and AI](/blog/pricing-on-your-site-and-ai/).
+
+## How much traffic this actually brings — our data
+
+So this isn't purely theoretical: on our own store we measured what AI tools really send. Over twelve months it was **1,867 visits**, **90 percent** of them from ChatGPT. Their conversion rate was **3.5 percent** against **0.88 percent** from Google organic, and close to **three times the revenue per visit**.
+
+So: small volume, higher-quality visit. The full data and the methodology are in the [AI traffic case study](/blog/case-study-ai-traffic/).
+
+<Insight tone="warning">
+Three caveats come with those numbers. It's **one store**, it's the **starting point before any deliberate optimization**, and — most important for this article — **none of it is AI Mode**. The impressions we measured in Google's generative AI features fall under AI Overviews. Passing them off as AI Mode results would be exactly the mistake [AI Mode vs. AI Overviews](/blog/ai-mode-vs-ai-overviews/) warns about.
+</Insight>
+
+## Why it's hard to measure
+
+This is the uncomfortable but honest part. AI Mode can't be isolated from the data that's commonly available:
+
+- The Search Console report is kept for **generative AI features in aggregate**, not per surface.
+- Assistant traffic gets mixed together in analytics, and in our case ChatGPT accounted for ninety percent of it.
+- Citations also shift between individual generations — earlier research cited in an Ahrefs study puts it at roughly 45 percent — so a one-off check proves nothing.
+
+In practice that means the claim "we get X visits from AI Mode" would be hard to back up today — and so would any offer that promises that result.
+
+## Common mistakes
+
+<MistakeGrid>
+  <Mistake number="01" title="Treating AI Mode and AI Overviews as one thing">
+    They're different surfaces with different citations — in an Ahrefs analysis from September 2025 (US), the cited URLs overlapped by 13.7 percent. A number from one tells you nothing about the other.
+  </Mistake>
+  <Mistake number="02" title="Passing data from one surface off as the other">
+    It happens most often with Search Console impressions, which are reported in aggregate.
+  </Mistake>
+  <Mistake number="03" title="Relying on the manufacturer's description">
+    It adds nothing to a comparison that your competitors don't also have. The value is in what you add.
+  </Mistake>
+  <Mistake number="04" title="A mismatch between the page and the feed">
+    When price or availability contradict each other, the system has nothing to work from and looks elsewhere.
+  </Mistake>
+</MistakeGrid>
+
+## Where this article stops
+
+**It doesn't give market-specific AI Mode numbers.** None are publicly documented and availability is rolling out gradually, so we'd rather leave them out than estimate.
+
+**Our data is an illustration, not a benchmark.** One store, one period, the state before optimization.
+
+**It doesn't promise sales.** It describes what changes and what you can influence. Anyone promising specific revenue from AI Mode is promising more than anyone can back up today.
+
+**It doesn't cover shopping agents in general.** For those, see [AI shopping agents and online stores](/blog/ai-shopping-agents/).
+
+<DoDont
+  doTitle="Do"
+  dontTitle="Don't"
+  doItems={[
+    "Fill in the data a customer weighs when deciding",
+    "Watch the consistency between your pages and your feed",
+    "Add what the manufacturer's description doesn't have",
+    "Track AI surfaces separately and repeatedly",
+  ]}
+  dontItems={[
+    "Pass AI Overviews impressions off as AI Mode results",
+    "Promise revenue from AI Mode — it can't be backed up today",
+    "Leave price or availability only inside an image",
+    "Draw a conclusion from a single answer you tried",
+  ]}
+/>
+
+## What to take away
+
+For an online store, AI Mode doesn't change the rules — it changes the shape of the opportunity. Instead of a position in a list, it's about being one of the sources of an assembled answer — and only someone with something to compare gets into the comparison.
+
+The volume is still small. Our data shows 1,867 visits over twelve months at a single store, but with a much better conversion rate than organic. That's a good reason to pay attention and a bad reason to bend your whole budget around it.
+
+And above all: be careful with numbers. Even we can't separate AI Mode performance from the rest today — and anyone claiming they can should show the methodology first. For the wider context, see [SEO for e-commerce in the AI era](/blog/seo-for-ecommerce-ai-era/).
+
+---
+
+Want to know whether your product data has what an assembled answer needs? **[Sniper Design](https://www.sniperdesign.cz/)** runs AI SEO audits that go through product pages, structured data, and page-to-feed consistency, and help name the next steps.
+
+*Data sources: our own store's measurement over twelve months (published July 17, 2026) and Google Search Central documentation on AI features.*
